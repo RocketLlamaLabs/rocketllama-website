@@ -34,3 +34,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Stack
+
+- **Next.js 16** (App Router, TypeScript, Tailwind) in `src/`
+- **Supabase** — clients in `src/lib/supabase/` (`client.ts` for the browser, `server.ts` for Server Components/Actions). `src/proxy.ts` refreshes the auth session on each request.
+- **Vercel** — import the GitHub repo in Vercel; Next.js is auto-detected. Set the env vars from `.env.example` in the Vercel project settings.
+
+## Local setup
+
+```bash
+cp .env.example .env.local   # then fill in your Supabase URL and publishable key
+npm install
+npm run dev
+```
