@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowUpRight, Download } from "lucide-react";
 import { Card, PageHeader } from "@/components/ui";
 import {
@@ -128,9 +127,9 @@ export default function V2KitPage() {
           CSS variables on <code className="font-mono text-sm">.v2</code> in{" "}
           <code className="font-mono text-sm">src/app/v2/v2.css</code>; change
           them there to restyle every page at once. The v1 brand kit is{" "}
-          <Link href="/admin/brand" className="text-link underline">
+          <a target="_blank" rel="noopener" href="/admin/brand" className="text-link underline">
             here
-          </Link>
+          </a>
           .
         </p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

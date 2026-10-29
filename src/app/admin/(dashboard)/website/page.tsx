@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Card, PageHeader } from "@/components/ui";
 import { siteVersions } from "@/lib/site-versions";
@@ -53,19 +52,19 @@ export default function WebsitePage() {
                 <ArrowUpRight className="size-4" />
               </a>
               {v.kitHref ? (
-                <Link
+                <a target="_blank" rel="noopener"
                   href={v.kitHref}
                   className="inline-flex min-h-11 items-center rounded-md border-[1.5px] border-navy px-5 font-semibold hover:bg-mist"
                 >
                   Version 2 kit
-                </Link>
+                </a>
               ) : (
-                <Link
+                <a target="_blank" rel="noopener"
                   href="/admin/brand"
                   className="inline-flex min-h-11 items-center rounded-md border-[1.5px] border-navy px-5 font-semibold hover:bg-mist"
                 >
                   Brand kit
-                </Link>
+                </a>
               )}
             </div>
           </Card>
