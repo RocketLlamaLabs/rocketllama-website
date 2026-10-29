@@ -221,6 +221,8 @@ export default function V2KitPage() {
                 <a
                   href={`/v2/video/${v.file}`}
                   download
+                  target="_blank"
+                  rel="noopener"
                   className="mt-2 inline-flex items-center gap-1 text-sm text-link underline"
                 >
                   <Download className="size-3.5" /> {v.file}
@@ -232,6 +234,8 @@ export default function V2KitPage() {
               <a
                 href={`/v2/video/${v2Poster}`}
                 download
+                target="_blank"
+                rel="noopener"
                 className="mt-2 inline-flex items-center gap-1 text-sm text-link underline"
               >
                 <Download className="size-3.5" /> {v2Poster}
@@ -308,6 +312,8 @@ export default function V2KitPage() {
                       key={file}
                       href={`/v2/brand/${r.favicon}/${file}`}
                       download
+                      target="_blank"
+                      rel="noopener"
                       className="text-link underline"
                     >
                       {file}
@@ -375,6 +381,8 @@ function AssetCard({
         <a
           href={src}
           download
+          target="_blank"
+          rel="noopener"
           aria-label={`Download ${title}`}
           className="shrink-0 rounded-md p-1 text-muted hover:bg-mist hover:text-navy"
         >
