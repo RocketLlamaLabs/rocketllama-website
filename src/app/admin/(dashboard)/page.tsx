@@ -1,10 +1,16 @@
 import Link from "next/link";
-import { ArrowRight, Building2, FolderOpen, Palette } from "lucide-react";
+import { ArrowRight, Building2, FolderOpen, Globe, Palette } from "lucide-react";
 import { Card, PageHeader } from "@/components/ui";
 import { getAdminUser } from "@/lib/admin-auth";
 import { formatDate, type Asset } from "@/lib/assets";
 
 const shortcuts = [
+  {
+    href: "/admin/website",
+    icon: Globe,
+    title: "Website",
+    body: "Version 1, live, and the version 2 sample with its kit.",
+  },
   {
     href: "/admin/brand",
     icon: Palette,
@@ -48,7 +54,7 @@ export default async function AdminHome() {
         lead="Everything about Rocket Llama Labs in one place: the company, the brand and the files behind them."
       />
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {shortcuts.map(({ href, icon: Icon, title, body }) => (
           <Link key={href} href={href} className="group">
             <Card className="h-full hover:shadow-md">

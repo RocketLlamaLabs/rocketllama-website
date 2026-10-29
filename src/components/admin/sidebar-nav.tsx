@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   Building2,
   FolderOpen,
+  Globe,
   LayoutDashboard,
   Palette,
   Settings,
@@ -12,6 +13,7 @@ import {
 
 const items = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/admin/website", label: "Website", icon: Globe },
   { href: "/admin/company", label: "Company", icon: Building2 },
   { href: "/admin/brand", label: "Brand kit", icon: Palette },
   { href: "/admin/assets", label: "Assets", icon: FolderOpen },
