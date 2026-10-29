@@ -41,6 +41,18 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - **Supabase** — clients in `src/lib/supabase/` (`client.ts` for the browser, `server.ts` for Server Components/Actions). `src/proxy.ts` refreshes the auth session on each request.
 - **Vercel** — import the GitHub repo in Vercel; Next.js is auto-detected. Set the env vars from `.env.example` in the Vercel project settings.
 
+## Website versions
+
+- **Version 1** is the homepage at `/` (`src/app/page.tsx`).
+- **Version 2** is the sample site under `/v2` (`src/app/v2`, components in `src/components/v2`), ported from the BBM Local mockup C in [RocketLlamaLabs/bbm-plan](https://github.com/RocketLlamaLabs/bbm-plan). Its photos, video cuts and the logo rounds are in `public/v2`. The admin lists both under **Website**, and `/admin/website/v2` is the version 2 kit: pages, quizzes, calendar, design tokens and every asset.
+
+To re-port after editing the mockup sources, with a checkout of `bbm-plan` beside this repository:
+
+```bash
+python3 scripts/build-v2-css.py
+python3 scripts/port-v2-site.py ../rocketllamalabs/bbm-plan
+```
+
 ## Local setup
 
 ```bash
