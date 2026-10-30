@@ -45,6 +45,14 @@ export default function Home() {
             <a href="#contact" className="hover:underline">
               Contact
             </a>
+            <Link
+              href="/admin"
+              target="_blank"
+              rel="noopener"
+              className="rounded-md border-[1.5px] border-navy px-3 py-1.5 hover:bg-mist"
+            >
+              Admin
+            </Link>
           </nav>
           <a
             href="#contact"
@@ -175,8 +183,13 @@ export default function Home() {
           <p className="text-sm text-mist">
             Software &amp; AI studio. We build the thing, then we ship it.
           </p>
-          <Link href="/admin" className="text-sm text-mist hover:underline">
-            Owner sign in
+          <Link
+            href="/admin"
+            target="_blank"
+            rel="noopener"
+            className="text-sm text-mist hover:underline"
+          >
+            Admin
           </Link>
         </div>
       </footer>
