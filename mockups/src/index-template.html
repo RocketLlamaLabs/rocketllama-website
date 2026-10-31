@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rocket Llama Labs mockups</title>
+<meta name="description" content="Website mockups for Rocket Llama Labs: version 1 and three version 2 concepts, with the competitor research and the search and AI optimization checklist behind them.">
+<link rel="icon" href="__MASCOT__">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+__CSS__
+.hero { padding: 56px 0 24px; }
+.hero h1 { margin-top: 14px; max-width: 16ch; }
+.versions { display: grid; gap: 20px; margin-top: 40px; }
+@media (min-width: 720px) { .versions { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .versions { grid-template-columns: repeat(4, 1fr); } }
+.vcard { display: grid; grid-template-rows: auto 1fr auto; text-decoration: none; color: var(--navy); }
+.vcard .thumb { background: var(--mist); border-radius: 12px; height: 150px; display: grid; place-items: center; position: relative; overflow: hidden; }
+.vcard .thumb img { width: 120px; }
+.vcard .thumb .tag { position: absolute; left: 12px; top: 12px; }
+.vcard h3 { font-size: 20px; margin-top: 16px; }
+.vcard .go { margin-top: 16px; font-weight: 600; color: var(--link); }
+.vcard ul { margin: 12px 0 0; padding-left: 18px; font-size: 15px; display: grid; gap: 4px; }
+.pages { display: none; } .pages.active { display: block; animation: rise .35s ease both; }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 32px; border-bottom: 1px solid var(--divider); }
+.tabs button { border: 0; background: transparent; padding: 12px 16px; font-weight: 600; color: var(--navy); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+.tabs button[aria-selected="true"] { color: var(--blue); border-bottom-color: var(--blue); }
+table.research { width: 100%; border-collapse: collapse; margin-top: 28px; font-size: 15px; }
+table.research th, table.research td { text-align: left; padding: 14px 12px; border-bottom: 1px solid var(--divider); vertical-align: top; }
+table.research th { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--muted); }
+table.research td:first-child { font-weight: 600; white-space: nowrap; }
+table.research td small { display: block; font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+.two-col { display: grid; gap: 20px; margin-top: 32px; }
+@media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; } }
+.list { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 10px; }
+.list li { display: grid; grid-template-columns: 26px 1fr; gap: 10px; font-size: 15px; }
+.list li .n { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 13px; color: #fff; background: var(--blue); }
+.list.bad li .n { background: var(--navy); }
+.engines { display: grid; gap: 14px; margin-top: 28px; }
+@media (min-width: 720px) { .engines { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .engines { grid-template-columns: repeat(3, 1fr); } }
+.engine { background: var(--white); border: 1px solid var(--divider); border-radius: 12px; padding: 18px; font-size: 15px; }
+.engine h4 { font-size: 17px; }
+.engine .via { font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+.engine ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 4px; }
+.rules { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
+.rules li { display: grid; grid-template-columns: 36px 1fr; gap: 12px; padding: 16px; background: var(--white); border: 1px solid var(--divider); border-radius: 12px; font-size: 15px; }
+.rules .n { font-family: var(--display); font-weight: 800; color: var(--blue); font-size: 20px; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo-link" href="#top" aria-label="Rocket Llama Labs mockups"><img src="__WORDMARK__" alt="Rocket Llama Labs" width="320" height="32"></a>
+    <nav class="nav" aria-label="Primary"><a href="#versions">Mockups</a><a href="#research">Competitor research</a><a href="#optimize">Search and AI</a><a href="#brand">Brand rules</a></nav>
+    <div class="header-actions"><a class="btn btn-secondary header-cta" href="v2-instant-audit.html">Open version 2</a></div>
+  </div>
+</header>
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Mockups · October 2026</p>
+    <h1>Four complete websites. One brand book. <span class="accent">Ten competitors read.</span></h1>
+    <p class="lead" style="margin-top:20px">Four full, multi-page websites on the same brand book. Version 1 keeps the holding-site structure. Versions 2, 3 and 4 each attack a different gap we found in the competition, with the BBM Local content as the base and search and AI optimization built in. Open any of them; every page is working and interactive.</p>
+  </div>
+</section>
+
+<section id="versions" style="padding-top:0">
+  <div class="wrap">
+    <div class="versions">
+      <a class="card vcard" href="v1-rocketllama-brand-mockup.html"><div class="thumb"><span class="chip tag">Version 1</span><img src="__LOCKUP3__" alt=""></div><h3>The holding site, in brand</h3><p class="muted" style="font-size:15px">Seven pages. All the copy from the BBM Local holding site, restyled to the brand book, with the 60-second check and the booking funnel.</p><ul><li>Home, Services, Industries, Pricing, About, Book, Brand check</li><li>Interactive: 60-second check, pricing bands, booking</li></ul><span class="go">Open version 1 →</span></a>
+      <a class="card vcard" href="v2-instant-audit.html"><div class="thumb"><span class="chip tag blue">Version 2</span><img src="__MASCOT__" alt=""></div><h3>The instant audit</h3><p class="muted" style="font-size:15px">Lead with the tool, not the form. A 20-second audit in the hero with no email. Industries changes the benchmark by trade. Pricing has the revenue slider.</p><ul><li>Home, Services, Industries, Pricing, About, Book, Check</li><li>Interactive: audit, system tabs, trade findings, price slider</li></ul><span class="go">Open version 2 →</span></a>
+      <a class="card vcard" href="v3-the-map.html"><div class="thumb"><span class="chip tag blue">Version 3</span><img src="__MASCOT_SHORT__" alt=""></div><h3>The map</h3><p class="muted" style="font-size:15px">One company per trade per city on a Valley map. Pick a trade and every page rewrites. A Cities page holds the full spot matrix; Industries has the season chart.</p><ul><li>Home, Services, Industries, Cities, Pricing, About, Book, Check</li><li>Interactive: map, trade switcher, matrix, season chart, speed race</li></ul><span class="go">Open version 3 →</span></a>
+      <a class="card vcard" href="v4-open-book.html"><div class="thumb"><span class="chip tag blue">Version 4</span><img src="__LOCKUP3__" alt=""></div><h3>The open book</h3><p class="muted" style="font-size:15px">The home page is the client’s monthly report. Services carries the live phone demo. Pricing has the itemised invoice and the one-page agreement. Reporting has six months and the return calculator.</p><ul><li>Home, Services, Industries, Pricing, Reporting, About, Book, Check</li><li>Interactive: report months, bad-month toggle, math, invoice dial, exit switch, phone demo, calculator</li></ul><span class="go">Open version 4 →</span></a>
+    </div>
+    <p class="muted" style="margin-top:20px;font-size:14px">Shared across all four versions: pricing on the page, four-field booking, click-to-call phone, a sticky mobile action bar, sourced statistics, FAQ with matching schema, a Phoenix address in the footer and a "Search and AI check" section explaining the optimization for whoever builds the real pages.</p>
+  </div>
+</section>
+
+<section class="band-mist" id="research">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Competitor research</p>
+      <h2>Ten home services marketing agencies, read in October 2026</h2>
+      <p class="lead">Public home pages and one trade page each. What they do well, what they do badly, and how the concepts use it. Named here, never on the client-facing pages.</p>
+    </div>
+    <table class="research">
+      <thead><tr><th>Agency</th><th>Working best</th><th>Weak spot</th><th>Price shown</th></tr></thead>
+      <tbody>
+        <tr><td>Scorpion<small>scorpion.co · Lehi, UT</small></td><td>"Your next customer is asking AI who to call." Booked-jobs attribution. Named owner case studies by trade. Discloses the 12-month contract and exit terms.</td><td>No pricing. One generic hub for six trades. "$100B+" on one page, "$3B+" on the next. Blank address and a misspelled telephone key in its schema.</td><td>No</td></tr>
+        <tr><td>Blue Corona / RYNO<small>bluecorona.com · rynoss.com · merging</small></td><td>"You own 100% of everything we create." Lead recovery within two hours. 24/7 call answering. $2.5M and 77:1 case studies.</td><td>No pricing. Mid-merger branding. 17 trades, 20+ services, 11-checkbox form. RYNO is Phoenix-based and never says so. No city pages.</td><td>No</td></tr>
+        <tr><td>Hook Agency<small>hookagency.com · Minneapolis</small></td><td>The only one with prices: SEO $3,750, ads from $2,000, sites $12K to $24K. Dollar case studies. Strong trade content and podcasts.</td><td>Yearly commitment. Turns away under $1M. 11-field form. Unfinished "[Contact Us for Pricing]" placeholder live. All-caps headings and emoji.</td><td>Yes</td></tr>
+        <tr><td>Lemonade Stand<small>lemonadestand.org · Orem, UT</small></td><td>"No contracts." Named account manager. "Rank on AI" as a service in the hero. HVAC and plumber pages.</td><td>No outcome numbers. Generalist sprawl: law, MSPs, self-storage, a podcast studio. California phone number on a Utah address.</td><td>No</td></tr>
+        <tr><td>1SEO<small>1seo.com · now part of Scorpion</small></td><td>Instant digital marketing report as a free lead magnet. Pay-per-lead program. Radiant Plumbing case study.</td><td>Acquisition banner above the fold. Lead counts "in 2020 alone." No AI positioning. Vague contract answers.</td><td>No</td></tr>
+        <tr><td>Townsquare Interactive<small>townsquareinteractive.com · Charlotte</small></td><td>"Your next customer isn't searching. They're asking." Four pillars of AI visibility. Lifecycle story from lead to invoice.</td><td>No pricing on the pricing page. Ecommerce, towing and food in the nav. "20K" and "23K" clients on the same site. Typos live.</td><td>No</td></tr>
+        <tr><td>LeadHub<small>leadhub.net · San Antonio</small></td><td>Real home services specialism. +162% revenue and +393% leads cards with owner photos. ServiceTitan certified. Visible address.</td><td>"Your hub for all things marketing" says nothing. A 2016 testimonial. No AI positioning. No pricing. No city pages despite one home city.</td><td>No</td></tr>
+        <tr><td>CI Web Group<small>ciwebgroup.com · Houston</small></td><td>Prices on components and tiers. Dated percent-only client wins with a stated method. Live staging builds with Lighthouse scores. Homeowner tools like an instant quote estimator.</td><td>Hydra OS, Cortex, MemPalace, AEO, GEO, LSO, SXO, AXO, AAO. "Six disciplines" lists seven. "100× the output." Proprietary lock-in at $25,000.</td><td>Yes</td></tr>
+        <tr><td>Valve+Meter<small>valveandmeter.com · Indianapolis</small></td><td>"Turn your marketing into booked jobs." "Math before marketing." Plain-English FAQ. $1.6M incremental revenue testimonial. One consistent CTA.</td><td>No pricing. "After serving [x] of clients" placeholder live in the FAQ. No client count, rating or address on the home page. A 2023 case study.</td><td>No</td></tr>
+      </tbody>
+    </table>
+    <div class="two-col">
+      <div class="card">
+        <p class="eyebrow">What works, kept</p>
+        <ol class="list">
+          <li><span class="n">1</span><span><b>Numbers with an owner’s name.</b> Case cards show the result, the owner, the trade, the city and the dates. Every version uses that format.</span></li>
+          <li><span class="n">2</span><span><b>Booked jobs, not clicks.</b> Scorpion and Valve+Meter own this line. We make it concrete with the CRM window and the return calculator.</span></li>
+          <li><span class="n">3</span><span><b>AI search in the hero.</b> Scorpion and Townsquare say it. Version 2 shows it: three AI engines asked for a plumber, and whether you are the answer.</span></li>
+          <li><span class="n">4</span><span><b>You own everything.</b> Blue Corona’s best line. It is in the proof strip on every version, and Version 4 has a switch that proves it.</span></li>
+          <li><span class="n">5</span><span><b>Free competitor analysis.</b> RYNO, Blue Corona and 1SEO gate it. Version 2 runs it in the hero with no email.</span></li>
+          <li><span class="n">6</span><span><b>Click-to-call in the header.</b> Half of them have it. We add the sticky mobile bar.</span></li>
+        </ol>
+      </div>
+      <div class="card">
+        <p class="eyebrow">What fails, and the opening</p>
+        <ol class="list bad">
+          <li><span class="n">1</span><span><b>Eight of ten hide the price.</b> Every version puts the three lines on a pricing page. Version 4 goes further and shows the whole invoice and the agreement.</span></li>
+          <li><span class="n">2</span><span><b>Twelve-month contracts.</b> Month to month is in the proof strip and the comparison table.</span></li>
+          <li><span class="n">3</span><span><b>Zero city pages, national sprawl.</b> Version 3 makes the city the unit of the whole site. All versions carry a Phoenix address and city-level schema.</span></li>
+          <li><span class="n">4</span><span><b>Seven to eleven form fields.</b> Four fields, then optional questions after booking.</span></li>
+          <li><span class="n">5</span><span><b>Jargon.</b> No AEO, GEO, LSA, CSR or GBP anywhere. Google profile, search and AI search, the phone.</span></li>
+          <li><span class="n">6</span><span><b>Sloppy claims and schema.</b> Blank addresses, typos, placeholders, stale stats. Every number on our pages names its source and the schema matches the footer.</span></li>
+          <li><span class="n">7</span><span><b>Nothing to try.</b> Only CI Web Group ships tools. Versions 2, 3 and 4 each lead with one: the audit, the map, the open report and the live demo.</span></li>
+        </ol>
+      </div>
+    </div>
+    <p class="source" style="margin-top:20px">Ranking lists consulted for the shortlist: Housecall Pro, Harris and Ward, Zio Advertising, Revved Digital, all 2026. Vendor-written, used only to pick the ten sites.</p>
+  </div>
+</section>
+
+<section id="optimize">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Search and AI optimization</p>
+      <h2>Five search engines, three AI engines, one set of work</h2>
+      <p class="lead">Most of it is the same hygiene the agencies above skip. The pieces that differ by engine are below. Everything marked "in the mockup" is already in the four sites.</p>
+    </div>
+    <div class="engines">
+      <div class="engine"><h4>Google</h4><p class="via">own index · feeds Gemini and AI Overviews</p><ul><li>Organization, ProfessionalService, FAQPage, HowTo and speakable schema <b>in the mockup</b></li><li>Google Business Profile complete, posted weekly, every review answered</li><li>Core Web Vitals: real text, next/image, fonts with swap</li><li>A page per trade per city</li></ul></div>
+      <div class="engine"><h4>Bing</h4><p class="via">own index · feeds ChatGPT browsing and Copilot</p><ul><li>Bing Webmaster Tools verified, sitemap submitted</li><li>IndexNow ping on every publish</li><li>Bing Places listing matching the Google profile</li><li>Same schema as Google <b>in the mockup</b></li></ul></div>
+      <div class="engine"><h4>Yahoo</h4><p class="via">results from Bing</p><ul><li>Covered by the Bing work above</li><li>Yahoo Local pulls from Yelp: keep the Yelp listing complete and matched</li></ul></div>
+      <div class="engine"><h4>DuckDuckGo</h4><p class="via">results from Bing · maps from Apple</p><ul><li>Covered by the Bing work above</li><li>Apple Business Connect listing with the same name, address, phone and hours</li><li>Yelp reviews surface in DuckDuckGo local results</li></ul></div>
+      <div class="engine"><h4>Brave</h4><p class="via">own index · feeds Brave Leo and some AI tools</p><ul><li>Rewards original text over thin or duplicated pages</li><li>No special markup: the city pages with real, specific content are the work</li><li>Allow its crawler in robots.txt</li></ul></div>
+      <div class="engine"><h4>ChatGPT, Gemini, Perplexity</h4><p class="via">Bing · Google · own crawler plus Bing</p><ul><li>Sourced statistics in full sentences <b>in the mockup</b></li><li>FAQ answers that match the schema word for word <b>in the mockup</b></li><li>Named author with Person schema <b>in the mockup</b></li><li>Reddit, Yelp and Google reviews feed Perplexity: a reviews program is AI search</li><li>Allow GPTBot, Google-Extended, PerplexityBot and ClaudeBot. llms.txt is cheap hygiene, not a lever</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="band-mist" id="brand">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Brand rules</p>
+      <h2>Eight rules from brand book v1.0, held in every mockup</h2>
+    </div>
+    <ol class="rules">
+      <li><span class="n">1</span><span>Supplied logo files only, never redrawn or recolored. The footer wordmark sits on a white plate instead of being inverted.</span></li>
+      <li><span class="n">2</span><span>Clear space around every logo of at least the cap height of the R.</span></li>
+      <li><span class="n">3</span><span>Navy Montserrat Bold headings. 16px Inter body minimum. Nothing under 12px.</span></li>
+      <li><span class="n">4</span><span>One blue primary button per screen. The header and the mobile action bar are outlined navy, so the hero button is the one blue.</span></li>
+      <li><span class="n">5</span><span>Four colors only. The competitors’ greens, teals and yellows are gone. Photography sits under a flat navy overlay.</span></li>
+      <li><span class="n">6</span><span>No gradients. Every band, bar, ring and chart is a flat fill.</span></li>
+      <li><span class="n">7</span><span>Sentence case everywhere. No exclamation marks. No all-caps headings, no emoji.</span></li>
+      <li><span class="n">8</span><span>One H1 per page, alt text on every logo, the mascot as favicon.</span></li>
+    </ol>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div><span class="logo-plate"><img src="__WORDMARK__" alt="Rocket Llama Labs" width="320" height="32"></span><p style="margin-top:18px;max-width:36ch;color:var(--mist)">Internal mockup hub. Not indexed.</p></div>
+      <div><h4>Mockups</h4><ul><li><a href="v1-rocketllama-brand-mockup.html">Version 1</a></li><li><a href="v2-instant-audit.html">Version 2 · the instant audit</a></li><li><a href="v3-the-map.html">Version 3 · the map</a></li><li><a href="v4-open-book.html">Version 4 · the open book</a></li></ul></div>
+      <div><h4>Notes</h4><ul><li><a href="#research">Competitor research</a></li><li><a href="#optimize">Search and AI</a></li><li><a href="#brand">Brand rules</a></li></ul></div>
+      <div><h4>Repo</h4><ul><li><span class="mono" style="font-size:13px;color:var(--mist)">mockups/</span></li></ul></div>
+    </div>
+    <div class="bottom"><span>© 2026 Rocket Llama Labs LLC</span><span class="mono" style="font-size:13px">Mockup hub · brand book v1.0</span></div>
+  </div>
+</footer>
+</body>
+</html>

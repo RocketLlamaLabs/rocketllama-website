@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rocket Llama Labs · The report we send you on the first of the month</title>
+<meta name="description" content="Marketing and technology for Phoenix home services companies, run as an open book: the monthly report, the itemised invoice and the one-page agreement are on the website before you ever call. Every lead answered in under 60 seconds. Month to month. You own everything.">
+<link rel="canonical" href="https://rocketllamalabs.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Here is the report we would send you on the first of the month">
+<meta property="og:description" content="Booked jobs by source, cost per booked job, return per dollar. The invoice and the agreement too. Nothing hidden behind a call.">
+<meta property="og:url" content="https://rocketllamalabs.com/">
+<meta property="og:site_name" content="Rocket Llama Labs">
+<meta name="twitter:card" content="summary_large_image">
+@@HEAD_LINKS@@
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":["Organization","ProfessionalService"],"@id":"https://rocketllamalabs.com/#org","name":"Rocket Llama Labs","legalName":"Rocket Llama Labs LLC","url":"https://rocketllamalabs.com/","logo":"https://rocketllamalabs.com/brand/lockup-horizontal.svg","image":"https://rocketllamalabs.com/brand/mascot.svg","description":"Marketing and technology for local home services companies, run as an open book: monthly reporting of booked jobs by source, an itemised invoice, a one-page month-to-month agreement, every lead answered in under 60 seconds, and every asset owned by the client.","telephone":"+1-602-555-0100","email":"hello@rocketllamalabs.com","address":{"@type":"PostalAddress","streetAddress":"Street address to confirm","addressLocality":"Phoenix","addressRegion":"AZ","postalCode":"85016","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":33.4484,"longitude":-112.0740},"areaServed":{"@type":"AdministrativeArea","name":"Phoenix metropolitan area"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"},"founder":{"@type":"Person","name":"Brian Greenberg","url":"https://briangreenberg.com"},
+  "makesOffer":[{"@type":"Offer","name":"Platform base","description":"Website hosting, tracked phones, AI receptionist and CRM, running every month.","priceSpecification":{"@type":"UnitPriceSpecification","price":"797","priceCurrency":"USD","unitText":"month"},"availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Setup from scratch","description":"Website, funnels, phones, CRM and ad accounts set up once. Refunded if the client does not like the website design shown first.","priceSpecification":{"@type":"PriceSpecification","minPrice":"5000","maxPrice":"7500","priceCurrency":"USD"}},{"@type":"Offer","name":"Monthly program for a $500K company","description":"Platform base, our work itemised, and ad spend billed directly by Google and Meta. About 10% of revenue.","priceSpecification":{"@type":"UnitPriceSpecification","price":"4250","priceCurrency":"USD","unitText":"month"}}]},
+ {"@type":"WebSite","@id":"https://rocketllamalabs.com/#site","url":"https://rocketllamalabs.com/","name":"Rocket Llama Labs","publisher":{"@id":"https://rocketllamalabs.com/#org"}},
+ {"@type":"WebPage","@id":"https://rocketllamalabs.com/#page","url":"https://rocketllamalabs.com/","name":"The report we send you on the first of the month","isPartOf":{"@id":"https://rocketllamalabs.com/#site"},"speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".lead"]}},
+ {"@type":"HowTo","name":"How a lead gets answered and booked in under a minute","step":[{"@type":"HowToStep","name":"The call comes in on a tracked number","text":"One tracked number per source, so you know which ad made it ring. Your team is rung first."},{"@type":"HowToStep","name":"The AI receptionist answers in seconds","text":"If nobody picks up, the AI answers on a Tier 1 carrier, takes the details and books a callback or an appointment."},{"@type":"HowToStep","name":"A text and an email go out in under 60 seconds","text":"In your voice, with the tech's name and the time, so the homeowner stops calling the next company."},{"@type":"HowToStep","name":"The job lands in your CRM with its source and value","text":"Pipeline from lead to paid job, and a return-on-spend dashboard that sets next month's budget."}]},
+ {"@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"What do you report every month?","acceptedAnswer":{"@type":"Answer","text":"Booked jobs by source, closed-job value by source, cost per booked job, return per dollar spent, median reply time, and what we changed. Not clicks, impressions or lead counts."}},
+  {"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"About 10% of revenue in three lines a month: a $797 platform base, our work itemised, and ad spend billed to you directly by Google and Meta. A $500K company runs about $4,250 a month. Setup from scratch is $5,000 to $7,500, refunded if you do not like the website design we show you first."}},
+  {"@type":"Question","name":"What happens if I leave?","acceptedAnswer":{"@type":"Answer","text":"You leave with everything: the website code transferred to your GitHub, the CRM data exported, the phone numbers ported, and the ad accounts, which were always yours. We help the next provider get set up for 30 days."}},
+  {"@type":"Question","name":"Is there a contract?","acceptedAnswer":{"@type":"Answer","text":"A one-page agreement, month to month, cancel with 30 days notice. The whole agreement is on the pricing page."}},
+  {"@type":"Question","name":"What if a month is bad?","acceptedAnswer":{"@type":"Answer","text":"You see it in the report, with the reason and what we are changing. The floor is two dollars back for every dollar spent over a rolling quarter. If we miss it, we work free until we are back above it."}},
+  {"@type":"Question","name":"Does the AI replace my office staff?","acceptedAnswer":{"@type":"Answer","text":"No. The phone rings your team first. The AI picks up only when nobody can, takes the details, and books a callback or an appointment instead of sending the caller to voicemail."}}
+ ]}
+]}
+</script>
+<style>
+__CSS__
+@@SITE_CSS@@
+
+/* ---- Version 4: the open book ---- */
+.report { background: var(--white); border: 1px solid var(--divider); border-radius: var(--r-lg); box-shadow: var(--shadow-lg); overflow: hidden; }
+.report .bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding: 16px 22px; border-bottom: 1px solid var(--divider); background: var(--mist); }
+.report .bar .ttl { font-family: var(--display); font-weight: 700; font-size: 16px; }
+.report .bar .ttl small { display: block; font-family: var(--mono); font-weight: 400; font-size: 12.5px; color: var(--muted); }
+.months { display: inline-flex; gap: 4px; padding: 4px; background: var(--white); border-radius: 10px; border: 1px solid var(--divider); }
+.months button { border: 0; background: transparent; font-family: var(--mono); font-size: 13px; color: var(--navy); padding: 8px 10px; border-radius: 7px; cursor: pointer; min-height: 36px; }
+.months button[aria-pressed="true"] { background: var(--navy); color: var(--white); }
+.kpis { display: grid; grid-template-columns: repeat(2, 1fr); border-bottom: 1px solid var(--divider); }
+@media (min-width: 640px) { .kpis { grid-template-columns: repeat(4, 1fr); } }
+.kpi { padding: 18px 22px; border-right: 1px solid var(--divider); border-bottom: 1px solid var(--divider); }
+.kpi:nth-child(4n) { border-right: 0; }
+@media (max-width: 639px) { .kpi:nth-child(2n) { border-right: 0; } }
+.kpi .l { font-size: 13px; color: var(--muted); }
+.kpi .v { font-family: var(--display); font-weight: 700; font-size: 28px; line-height: 1.1; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.kpi .d { font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+.kpi .d.up { color: var(--blue); }
+.report .body { padding: 22px; display: grid; gap: 22px; }
+@media (min-width: 720px) { .report .body { grid-template-columns: 1.2fr .8fr; } }
+.report h3 { font-size: 16px; }
+.chart { margin-top: 12px; display: grid; gap: 10px; }
+.chart .row { display: grid; grid-template-columns: 120px 1fr 64px; gap: 10px; align-items: center; font-size: 14px; }
+.chart .row .trk { height: 18px; background: var(--mist); border-radius: 9px; overflow: hidden; }
+.chart .row .trk i { display: block; height: 100%; width: 0; background: var(--navy); border-radius: 9px; transition: width .6s ease; }
+.chart .row.ai .trk i { background: var(--blue); }
+.chart .row .n { font-family: var(--mono); font-size: 13px; text-align: right; color: var(--muted); }
+.notes { background: var(--mist); border-radius: 12px; padding: 16px; font-size: 14px; }
+.notes .k { font-family: var(--mono); font-size: 12.5px; color: var(--blue); }
+.notes ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 6px; }
+.report .foot { padding: 14px 22px; border-top: 1px solid var(--divider); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.honest { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--navy); background: none; border: 1.5px solid var(--navy); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+.honest[aria-pressed="true"] { background: var(--navy); color: var(--white); }
+.trend { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; align-items: end; height: 160px; margin-top: 18px; }
+.trend .col { display: grid; gap: 4px; align-content: end; height: 100%; }
+.trend .col .bar-r { background: var(--navy); border-radius: 4px 4px 0 0; }
+.trend .col .bar-s { background: var(--mist); border-radius: 4px 4px 0 0; }
+.trend .col span { font-family: var(--mono); font-size: 12px; color: var(--muted); text-align: center; }
+.trend-key { display: flex; gap: 18px; font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 8px; }
+.trend-key i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.math { display: grid; gap: 20px; margin-top: 40px; }
+@media (min-width: 1000px) { .math { grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; } }
+.eq { display: grid; grid-template-columns: 48px 1fr auto; gap: 16px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--divider); }
+.eq .n { font-family: var(--display); font-weight: 800; font-size: 26px; color: var(--blue); }
+.eq .v { font-family: var(--display); font-weight: 700; font-size: 24px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.eq .v.accent { color: var(--blue); }
+.eq p { font-size: 15px; }
+.eq p b { display: block; font-size: 16px; }
+.invoice { background: var(--white); border: 1px solid var(--divider); border-radius: 12px; padding: 28px; box-shadow: var(--shadow-md); font-variant-numeric: tabular-nums; position: relative; }
+.invoice::before { content: ""; position: absolute; left: 24px; right: 24px; top: 0; height: 4px; background: var(--blue); border-radius: 0 0 4px 4px; }
+.invoice .hd { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.invoice .hd b { display: block; font-family: var(--display); font-size: 18px; color: var(--navy); font-weight: 700; }
+.invoice table { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 15px; }
+.invoice td { padding: 10px 0; border-bottom: 1px solid var(--divider); vertical-align: top; }
+.invoice td:last-child { text-align: right; font-family: var(--display); font-weight: 700; white-space: nowrap; }
+.invoice td small { display: block; color: var(--muted); font-size: 13px; }
+.invoice tr.grp td { font-family: var(--mono); font-size: 12.5px; color: var(--blue); border-bottom: 0; padding-top: 16px; }
+.invoice tr.sum td { border-bottom: 0; padding-top: 14px; }
+.invoice tr.sum td:last-child { font-size: 26px; color: var(--blue); }
+.invoice .ext { margin-top: 14px; padding: 12px 14px; background: var(--mist); border-radius: 10px; font-size: 14px; }
+.doc { background: var(--white); border: 1px solid var(--divider); border-radius: 12px; padding: 32px; box-shadow: var(--shadow-md); margin-top: 36px; max-width: 860px; }
+.doc .dochd { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--mono); font-size: 12.5px; color: var(--muted); padding-bottom: 16px; border-bottom: 1px solid var(--divider); }
+.doc .dochd b { display: block; font-family: var(--display); font-size: 22px; color: var(--navy); font-weight: 700; }
+.clause { padding: 16px 0; border-bottom: 1px solid var(--divider); display: grid; grid-template-columns: 36px 1fr; gap: 14px; }
+.clause .n { font-family: var(--display); font-weight: 800; color: var(--blue); }
+.clause p { font-size: 16px; }
+.clause details { margin-top: 8px; }
+.clause summary { cursor: pointer; font-size: 14px; color: var(--link); list-style: none; }
+.clause summary::-webkit-details-marker { display: none; }
+.clause details p { font-size: 14px; color: var(--muted); margin-top: 6px; padding: 10px 12px; background: var(--mist); border-radius: 8px; }
+.sign { display: flex; flex-wrap: wrap; gap: 24px 48px; padding-top: 20px; font-size: 14px; color: var(--muted); }
+.sign b { display: block; font-family: var(--display); color: var(--navy); font-size: 18px; margin-bottom: 4px; }
+.leave { display: grid; gap: 24px; margin-top: 36px; align-items: start; }
+@media (min-width: 900px) { .leave { grid-template-columns: .9fr 1.1fr; gap: 48px; } }
+.toggle { display: inline-flex; align-items: center; gap: 12px; cursor: pointer; font-weight: 600; }
+.toggle input { position: absolute; opacity: 0; width: 1px; height: 1px; min-height: 0; }
+.toggle .sw { width: 56px; height: 32px; border-radius: 16px; background: var(--divider); position: relative; transition: background .2s; flex: none; }
+.toggle .sw::after { content: ""; position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: 50%; background: var(--white); box-shadow: var(--shadow-sm); transition: left .2s; }
+.toggle input:checked + .sw { background: var(--navy); }
+.toggle input:checked + .sw::after { left: 27px; }
+.assets { display: grid; gap: 10px; }
+.asset { display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: center; padding: 14px 16px; border: 1px solid var(--divider); border-radius: 12px; background: var(--white); font-size: 15px; transition: border-color .3s; }
+.asset .ic { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--divider); display: grid; place-items: center; }
+.asset.on { border-color: var(--blue); }
+.asset.on .ic { background: var(--blue); border-color: var(--blue); }
+.asset.on .ic::after { content: ""; width: 10px; height: 6px; border-left: 2.5px solid #fff; border-bottom: 2.5px solid #fff; transform: translateY(-1px) rotate(-45deg); }
+.asset b { display: block; }
+.asset small { color: var(--muted); font-size: 13.5px; }
+.asset .st { font-family: var(--mono); font-size: 12.5px; color: var(--muted); text-align: right; }
+.asset.on .st { color: var(--blue); }
+.tl { display: grid; margin-top: 40px; border-left: 3px solid var(--divider); margin-left: 10px; }
+@media (min-width: 900px) { .tl { grid-template-columns: repeat(6, 1fr); border-left: 0; border-top: 3px solid var(--divider); margin-left: 0; } }
+.tl .t { position: relative; padding: 0 0 28px 28px; }
+@media (min-width: 900px) { .tl .t { padding: 24px 16px 0 0; } }
+.tl .t::before { content: ""; position: absolute; left: -11px; top: 2px; width: 18px; height: 18px; border-radius: 50%; background: var(--white); border: 3px solid var(--navy); }
+@media (min-width: 900px) { .tl .t::before { left: 0; top: -12px; } }
+.tl .t.key::before { background: var(--blue); border-color: var(--blue); }
+.tl .t .w { font-family: var(--mono); font-size: 12.5px; color: var(--blue); }
+.tl .t h3 { font-size: 17px; margin-top: 4px; }
+.tl .t p { font-size: 14px; margin-top: 6px; color: var(--muted); }
+/* phone demo */
+.demo { position: relative; display: grid; place-items: center; min-height: 560px; }
+.demo .disc { position: absolute; width: 520px; height: 520px; max-width: 100%; border-radius: 50%; background: var(--mist); }
+.phone { position: relative; width: 320px; height: 640px; background: var(--navy); border-radius: 44px; padding: 14px; box-shadow: var(--shadow-lg); }
+.phone .screen { position: relative; background: var(--white); border-radius: 32px; height: 100%; overflow: hidden; display: flex; flex-direction: column; }
+.phone .status { display: flex; justify-content: space-between; align-items: center; padding: 34px 20px 0; font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+.phone .status .t { font-family: var(--display); font-weight: 700; font-size: 20px; color: var(--navy); }
+.phone .notch { width: 110px; height: 26px; background: var(--navy); border-radius: 0 0 16px 16px; position: absolute; left: 50%; top: 0; transform: translateX(-50%); }
+.phone .stopwatch { margin: 18px 20px 0; padding: 12px 14px; background: var(--mist); border-radius: 14px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+.phone .stopwatch .n { font-family: var(--display); font-weight: 700; font-size: 28px; line-height: 1; font-variant-numeric: tabular-nums; }
+.phone .stopwatch .n small { font-family: var(--mono); font-weight: 400; font-size: 11.5px; color: var(--muted); display: block; margin-top: 2px; white-space: nowrap; }
+.phone .stopwatch .src { font-family: var(--mono); font-size: 11.5px; color: var(--muted); text-align: right; white-space: nowrap; }
+.phone .stopwatch .src b { display: block; color: var(--navy); font-weight: 400; }
+.feed { padding: 14px 16px 20px; display: grid; gap: 10px; align-content: start; overflow: hidden; flex: 1; }
+.ev { display: none; animation: pop .35s ease both; }
+.ev.on { display: block; }
+@keyframes pop { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
+.ev .call { background: var(--navy); color: var(--white); border-radius: 16px; padding: 14px; display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center; }
+.ev .call .av { width: 44px; height: 44px; border-radius: 50%; background: rgb(255 255 255 / .15); display: grid; place-items: center; }
+.ev .call .av svg { width: 22px; height: 22px; }
+.ev .call b { display: block; font-size: 15px; }
+.ev .call small { font-family: var(--mono); font-size: 12px; color: var(--mist); }
+.ev .sys { font-family: var(--mono); font-size: 12px; color: var(--muted); text-align: center; }
+.ev .sys b { color: var(--blue); font-weight: 400; }
+.ev .bubble { max-width: 86%; padding: 10px 14px; border-radius: 16px; font-size: 14px; line-height: 1.45; }
+.ev .bubble.ai { background: var(--mist); border-bottom-left-radius: 6px; }
+.ev .bubble.them { background: var(--white); border: 1px solid var(--divider); border-bottom-right-radius: 6px; margin-left: auto; }
+.ev .bubble.sms { background: var(--blue); color: var(--white); border-bottom-right-radius: 6px; margin-left: auto; }
+.ev .bubble .who { display: block; font-family: var(--mono); font-size: 11.5px; opacity: .75; margin-bottom: 4px; }
+.ev .cal { border: 1.5px solid var(--blue); border-radius: 14px; padding: 12px 14px; display: grid; grid-template-columns: 54px 1fr; gap: 12px; align-items: center; }
+.ev .cal .d { background: var(--blue); color: var(--white); border-radius: 10px; text-align: center; padding: 6px 0; font-family: var(--display); font-weight: 700; line-height: 1.1; }
+.ev .cal .d small { display: block; font-family: var(--mono); font-weight: 400; font-size: 11px; }
+.ev .cal b { display: block; font-size: 14px; }
+.ev .cal small { color: var(--muted); font-size: 13px; }
+.ev .crm { background: var(--navy); color: var(--mist); border-radius: 14px; padding: 12px 14px; font-family: var(--mono); font-size: 12px; display: grid; gap: 4px; }
+.ev .crm span b { color: var(--white); font-weight: 400; float: right; }
+.demo .mascot { position: absolute; right: 0; bottom: 24px; width: 150px; transform: rotate(-6deg); filter: drop-shadow(0 12px 20px rgb(2 44 106 / .2)); }
+@media (max-width: 1000px) { .demo .mascot { width: 100px; right: 4px; } }
+.counter { background: var(--white); border-radius: var(--r-lg); border: 1px solid var(--divider); padding: 28px; box-shadow: var(--shadow-md); display: grid; gap: 24px; margin-top: 36px; }
+@media (min-width: 900px) { .counter { grid-template-columns: 1fr 1fr 1fr; align-items: center; } }
+.counter .big { font-family: var(--display); font-weight: 700; font-size: 56px; line-height: 1; font-variant-numeric: tabular-nums; }
+.counter .big small { display: block; font-family: var(--sans); font-weight: 500; font-size: 14px; color: var(--muted); margin-top: 8px; }
+.counter .track { height: 14px; background: var(--mist); border-radius: 7px; overflow: hidden; position: relative; margin-top: 12px; }
+.counter .track i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--navy); border-radius: 7px; }
+.counter .track b { position: absolute; left: 4.76%; top: -4px; bottom: -4px; width: 3px; background: var(--blue); }
+.counter .ticks { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+.chapters { display: grid; margin-top: 48px; border-top: 1px solid var(--divider); }
+.chapter { display: grid; gap: 20px; padding: 40px 0; border-bottom: 1px solid var(--divider); align-items: center; }
+@media (min-width: 900px) { .chapter { grid-template-columns: 140px 1fr 1.1fr; gap: 40px; } }
+.chapter .num { font-family: var(--display); font-weight: 800; font-size: 72px; line-height: 1; color: var(--mist); -webkit-text-stroke: 2px var(--navy); }
+.chapter h3 { font-size: 28px; }
+.chapter p { margin-top: 10px; }
+.chapter .vis { background: var(--mist); border-radius: var(--r-lg); padding: 22px; font-family: var(--mono); font-size: 13.5px; color: var(--navy); }
+.chapter .vis .ln { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgb(2 44 106 / .1); }
+.chapter .vis .ln:last-child { border-bottom: 0; }
+.chapter .vis .ok { color: var(--blue); font-weight: 700; }
+.calc { display: grid; gap: 24px; margin-top: 40px; align-items: start; }
+@media (min-width: 1000px) { .calc { grid-template-columns: 1fr 1fr; gap: 48px; } }
+.calc .out { display: grid; gap: 14px; }
+.calc .out .row { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--divider); }
+.calc .out .row .v { font-family: var(--display); font-weight: 700; font-size: 26px; white-space: nowrap; }
+.calc .out .row.total { background: var(--mist); margin: 0 -28px -28px; padding: 20px 28px; border-radius: 0 0 var(--r-lg) var(--r-lg); border-bottom: 0; }
+.calc .out .row.total .v { font-size: 40px; color: var(--blue); }
+.calc .out small { display: block; color: var(--muted); font-size: 14px; }
+.trade-kpis { display: grid; gap: 14px; margin-top: 28px; }
+@media (min-width: 720px) { .trade-kpis { grid-template-columns: repeat(4, 1fr); } }
+.trade-kpis .card .v { font-family: var(--display); font-weight: 700; font-size: 32px; line-height: 1.1; margin-top: 8px; }
+</style>
+</head>
+<body class="has-actionbar" data-page="home">
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo-link" href="#home" data-nav="home" aria-label="Rocket Llama Labs home"><img src="__WORDMARK__" alt="Rocket Llama Labs" width="320" height="32"></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#home" data-nav="home">Home</a><a href="#services" data-nav="services">Services</a><a href="#industries" data-nav="industries">Industries</a><a href="#pricing" data-nav="pricing">Pricing</a><a href="#reporting" data-nav="reporting">Reporting</a><a href="#about" data-nav="about">About</a><a href="#book" data-nav="book">Book</a><a href="#check" data-nav="check">Check</a>
+    </nav>
+    <div class="header-actions">
+      <a class="header-phone" href="tel:+16025550100"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>(602) 555-0100</a>
+      <a class="btn btn-secondary header-cta" href="#book" data-nav="book">Book a walkthrough</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#home" data-nav="home">Home</a><a href="#services" data-nav="services">Services</a><a href="#industries" data-nav="industries">Industries</a><a href="#pricing" data-nav="pricing">Pricing</a><a href="#reporting" data-nav="reporting">Reporting</a><a href="#about" data-nav="about">About</a><a href="#book" data-nav="book">Book a walkthrough</a><a href="#check" data-nav="check">Search and brand check</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HOME ============ -->
+<div class="page" id="page-home" data-title="Rocket Llama Labs · The report we send you on the first of the month">
+  <section class="hero">
+    <div class="wrap start">
+      <div>
+        <p class="eyebrow">Marketing and technology for local home services · Phoenix</p>
+        <h1>Here is the report we would send you on the <span class="accent">first of the month.</span></h1>
+        <p class="lead">Booked jobs by source. What they were worth. What they cost. The return per dollar. Most agencies show you clicks and a dashboard login. We show you this, every month, and we put it on the website before you call. The invoice and the agreement are on the pricing page.</p>
+        <div class="cta-row"><a class="btn btn-primary btn-lg" href="#book" data-nav="book">Book a walkthrough <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-secondary btn-lg" href="#reporting" data-nav="reporting">See six months of reports</a></div>
+        <p class="proof"><span>Invoice and agreement on this site</span><span>Month to month</span><span>You own everything</span><span>Every lead answered in 60 seconds</span></p>
+      </div>
+      <div class="report rep" role="region" aria-label="Sample monthly report">
+        <div class="bar"><div class="ttl">Sun Valley Air · monthly report<small>sample client · HVAC · Chandler · jobs attributed to the system · illustrative</small></div><div class="months" role="group" aria-label="Month"></div></div>
+        <div class="kpis"><div class="kpi"><div class="l">Booked jobs</div><div class="v k-jobs">—</div><div class="d k-jobs-d"></div></div><div class="kpi"><div class="l">Closed-job value</div><div class="v k-rev">—</div><div class="d k-rev-d"></div></div><div class="kpi"><div class="l">Total spend, all three lines</div><div class="v k-spend">—</div><div class="d">platform + work + ads</div></div><div class="kpi"><div class="l">Return per $1</div><div class="v k-roi">—</div><div class="d k-roi-d">floor is $2.00</div></div></div>
+        <div class="body">
+          <div><h3>Booked jobs by source</h3><div class="chart"><div class="row"><span>Google profile</span><div class="trk"><i></i></div><span class="n"></span></div><div class="row"><span>Local Services Ads</span><div class="trk"><i></i></div><span class="n"></span></div><div class="row"><span>Search ads</span><div class="trk"><i></i></div><span class="n"></span></div><div class="row"><span>Meta</span><div class="trk"><i></i></div><span class="n"></span></div><div class="row ai"><span>AI search</span><div class="trk"><i></i></div><span class="n"></span></div><div class="row"><span>Referrals, repeat</span><div class="trk"><i></i></div><span class="n"></span></div></div></div>
+          <div class="notes"><span class="k">What we changed, and why</span><ul class="k-notes"></ul><p style="margin-top:12px"><span class="k">Median reply time</span><br><b class="k-reply">—</b> <span class="muted" style="font-size:13px">text and email, every lead</span></p></div>
+        </div>
+        <div class="foot"><span>Floor: $2 back per $1, rolling quarter · <b class="k-floor">—</b></span><button class="honest" type="button" aria-pressed="false">Show me a bad month</button></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip"><div class="wrap">
+    <span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 14h4"/></svg>The whole invoice, itemised</span>
+    <span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg>The one-page agreement, in full</span>
+    <span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>You own the code, data and numbers</span>
+    <span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Every lead answered in under 60 seconds</span>
+  </div></div>
+
+  <section class="band-mist">
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">The math before the marketing</p><h2>Four lines of arithmetic, before anyone talks about tactics</h2><p class="lead">Move the two sliders. The budget, the break-even and the floor are derived, not pitched. The walkthrough replaces the illustration with your real numbers.</p></div>
+      <div class="math">
+        <div class="card ctl">
+          <div class="f"><label for="m-rev"><span>Revenue last year</span><output id="o-rev">$500K</output></label><input type="range" id="m-rev" min="250" max="2000" step="50" value="500"><div class="ticks"><span>$250K</span><span>$1M</span><span>$2M</span></div></div>
+          <div class="f"><label for="m-job"><span>Average job value</span><output id="o-job">$1,900</output></label><input type="range" id="m-job" min="300" max="15000" step="100" value="1900"><div class="ticks"><span>$300</span><span>$7,500</span><span>$15,000</span></div></div>
+          <p class="muted" style="font-size:14px">The 10% rule is the planning number most owners use. Platform base is fixed at $797. Our work and the ad spend scale with the business.</p>
+        </div>
+        <div class="card">
+          <div class="eq"><span class="n">1</span><p><b>About 10% of revenue goes back into marketing</b>Per month, that is revenue times 0.10, divided by 12.</p><span class="v" id="e-budget">$4,250</span></div>
+          <div class="eq"><span class="n">2</span><p><b>Split into three lines</b>Platform base, our work, and ad spend billed to you by Google and Meta.</p><span class="v" id="e-split" style="font-size:18px">$797 + $1,063 + $2,390</span></div>
+          <div class="eq"><span class="n">3</span><p><b>Jobs to break even</b>Budget divided by your average job. The extra jobs a month that pay for the whole program.</p><span class="v" id="e-even">2.2 jobs</span></div>
+          <div class="eq" style="border-bottom:0"><span class="n">4</span><p><b>The floor we hold ourselves to</b>Two dollars of closed jobs for every dollar spent, over a rolling quarter. In jobs:</p><span class="v accent" id="e-floor">4.5 jobs</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="leave">
+        <div><p class="eyebrow">Leaving</p><h2 style="margin-top:10px">Flip the switch. Watch what you walk out with.</h2><p class="lead" style="margin-top:16px">The best test of an agency is the day you fire it. We built ours to pass. Everything on the right is in your name from day one, so leaving is a checklist, not a negotiation.</p><label class="toggle" style="margin-top:24px"><input type="checkbox" id="leave-sw"><span class="sw"></span><span id="leave-lbl">I am leaving Rocket Llama Labs</span></label><p class="muted" id="leave-note" style="margin-top:16px;font-size:15px">Flip it to run the exit.</p></div>
+        <div class="assets" id="assets">
+          <div class="asset"><span class="ic"></span><div><b>The website code</b><small>Transferred to your GitHub. It was already there. Hosting stays free.</small></div><span class="st">yours now</span></div>
+          <div class="asset"><span class="ic"></span><div><b>The CRM data</b><small>Every lead, call, text, job and value. Exported as CSV any time.</small></div><span class="st">yours now</span></div>
+          <div class="asset"><span class="ic"></span><div><b>The tracked phone numbers</b><small>Ported to any carrier you choose. Callers never notice.</small></div><span class="st">yours now</span></div>
+          <div class="asset"><span class="ic"></span><div><b>The ad accounts and history</b><small>Google, Local Services and Meta. Your accounts, your card, since day one.</small></div><span class="st">yours now</span></div>
+          <div class="asset"><span class="ic"></span><div><b>The reviews and the Google profile</b><small>Always yours. We only ever had manager access.</small></div><span class="st">yours now</span></div>
+          <div class="asset"><span class="ic"></span><div><b>Thirty days of handover</b><small>We set the next provider up, at no charge, and answer their questions.</small></div><span class="st">included</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-mist">
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">What you see, week by week</p><h2>Ninety days, with the two moments you can walk away</h2></div>
+      <div class="tl">
+        <div class="t"><span class="w">Week 1</span><h3>Scope</h3><p>One hour on a call. The live audit, your numbers, the one-page agreement.</p></div>
+        <div class="t key"><span class="w">Week 2</span><h3>Design shown</h3><p>The website design, on screen. Do not like it? Setup refunded. First exit.</p></div>
+        <div class="t"><span class="w">Weeks 3 to 4</span><h3>Build</h3><p>Site, funnels, phones, CRM and ad accounts, all in your name.</p></div>
+        <div class="t"><span class="w">Week 5</span><h3>Live</h3><p>Ads on. Monthly billing starts. Every lead answered in under 60 seconds.</p></div>
+        <div class="t"><span class="w">Day 60</span><h3>First report</h3><p>Booked jobs by source, what they were worth, what we changed.</p></div>
+        <div class="t key"><span class="w">Day 90</span><h3>Floor check</h3><p>Two dollars back per dollar, or we work free. Month to month from here. Second exit, any month.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">Side by side</p><h2>Us against the typical home services agency</h2><p class="lead">From the public websites of ten agencies, read in October 2026.</p></div>
+      <table class="compare"><thead><tr><th></th><th class="us">Rocket Llama Labs</th><th>Typical agency</th></tr></thead><tbody>
+        <tr><td>What the report shows</td><td class="us">Booked jobs and value by source, return per $1</td><td>Clicks, calls, lead counts. Two of ten report revenue.</td></tr>
+        <tr><td>Where the invoice is</td><td class="us">On the pricing page, every line</td><td>After the consultation. Eight of ten show no price.</td></tr>
+        <tr><td>Where the agreement is</td><td class="us">On the pricing page, one page</td><td>Sent with the proposal. 12 months typical.</td></tr>
+        <tr><td>Who the ad money goes to</td><td class="us">Google and Meta, directly, your card</td><td>Often routed through the agency</td></tr>
+        <tr><td>Who owns the website</td><td class="us">You, code in your GitHub</td><td>Varies. One: "you'll need another vendor to rebuild your website"</td></tr>
+        <tr><td>Guarantee</td><td class="us">$2 back per $1 over a quarter, or we work free</td><td>"We do not guarantee results"</td></tr>
+        <tr><td>A bad month</td><td class="us">In the report, with the reason and the fix</td><td>Not shown</td></tr>
+      </tbody></table>
+    </div>
+  </section>
+
+  <section class="band-navy">
+    <div class="wrap">
+      <div class="split">
+        <div><p class="eyebrow">Who you are talking to</p><h2 style="margin-top:10px">Rocket Llama Labs is Brian, Branson and Madison. We have done this before.</h2><p class="lead muted" style="margin-top:16px"><b style="color:var(--white)">Brian Greenberg</b> built three companies on this exact system, customers finding him online and booking themselves, and sold all three. He ran them open-book too. Branson and Madison run the day to day.</p><p style="margin-top:20px"><a class="btn-text" style="color:#fff" href="#about" data-nav="about">Read Brian’s story</a></p></div>
+        <div class="card" style="color:var(--navy);display:grid;grid-template-columns:96px 1fr;gap:20px;align-items:center"><img src="__BRIAN__" alt="Brian Greenberg" width="96" height="116" style="border-radius:12px;width:96px"><blockquote style="margin:0;font-family:var(--display);font-weight:600;font-size:17px;line-height:1.4">“I never wanted to pressure anyone. So I built systems where customers sell themselves.”<cite style="display:block;font-family:var(--sans);font-style:normal;font-weight:500;font-size:14px;color:var(--muted);margin-top:10px">Brian Greenberg, founder</cite></blockquote></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band"><div class="wrap"><div><p class="eyebrow">Next step</p><h2 style="margin-top:10px">Bring last year’s revenue. We will have the report template open.</h2></div><div class="actions"><a class="btn btn-secondary" href="#book" data-nav="book">Book a walkthrough</a><a class="btn-text" href="#pricing" data-nav="pricing">Read the agreement</a></div></div></section>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<div class="page" id="page-services" data-title="Services · Rocket Llama Labs">
+  <section class="hero">
+    <div class="wrap">
+      <div><p class="eyebrow">Services</p><h1 style="max-width:14ch">Answer in 60 seconds, or lose the job to the company <span class="accent">that did.</span></h1><p class="lead">Eight pieces, one system, built around one number. The phone on the right is doing it right now: a lead answered, texted and booked in 52 seconds, with the source and the value logged for the report.</p><p class="proof"><span>One tracked number per source</span><span>AI backup, never voicemail</span><span>Text and email in under 60 s</span><span>Logged for the first of the month</span></p></div>
+      <div class="demo"><div class="disc" aria-hidden="true"></div>
+        <div class="phone" role="img" aria-label="A phone showing a lead being answered by the AI receptionist, texted in 38 seconds and booked in under a minute"><div class="screen"><div class="notch"></div><div class="status"><span class="t">7:02</span><span>Sun Valley Air · tracked line</span></div><div class="stopwatch"><div class="n"><span id="sw">0:00</span><small>since the call</small></div><div class="src">source<b>Google Ads · AC repair</b></div></div>
+          <div class="feed" id="feed">
+            <div class="ev" data-at="0"><div class="call"><span class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><div><b>Incoming · (480) 555-0147</b><small>Chandler, AZ · ringing your team</small></div></div></div>
+            <div class="ev" data-at="4"><p class="sys">no pickup after 3 rings · <b>AI receptionist answered at 0:04</b></p></div>
+            <div class="ev" data-at="6"><div class="bubble ai"><span class="who">Receptionist</span>Sun Valley Air, this is Riley. Is this about heating or cooling today?</div></div>
+            <div class="ev" data-at="10"><div class="bubble them"><span class="who">Caller</span>The AC quit about an hour ago. House is already 88.</div></div>
+            <div class="ev" data-at="15"><div class="bubble ai"><span class="who">Receptionist</span>I can get a tech out today. What is the address, and is 10:30 or 2:30 better?</div></div>
+            <div class="ev" data-at="22"><div class="bubble them"><span class="who">Caller</span>10:30. 1420 West Ray Road, Chandler.</div></div>
+            <div class="ev" data-at="38"><div class="bubble sms"><span class="who">Text · sent 0:38</span>Hi Dana, Riley from Sun Valley Air. Marco is booked for 10:30 today at 1420 W Ray Rd. Reply here if anything changes.</div></div>
+            <div class="ev" data-at="46"><div class="cal"><div class="d">Thu<small>10:30</small></div><div><b>AC repair · Dana R.</b><small>Marco · Chandler · booked at 0:46</small></div></div></div>
+            <div class="ev" data-at="52"><div class="crm"><span>crm · new job <b>#4821</b></span><span>source <b>Google Ads · AC repair</b></span><span>est. value <b>$640 to $6,800</b></span><span>reply time <b>38 s</b></span></div></div>
+          </div></div></div>
+        <img class="mascot" src="__MASCOT__" alt="" width="150" height="113">
+      </div>
+    </div>
+  </section>
+
+  <section class="band-mist">
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">The 42-minute problem</p><h2>Answer in two minutes and 62% of leads close. Wait 42, and it is 28%.</h2><p class="lead">The average home services company takes 42 minutes to respond to a new lead. Only 12% respond inside five minutes. This counter started when you opened the site.</p></div>
+      <div class="counter"><div><p class="big"><span id="since">0:00</span><small>since you arrived</small></p></div><div><p class="big"><span id="odds">62%</span><small>chance the lead still closes if the average company replied right now</small></p><div class="track"><i id="track"></i><b title="two minutes"></b></div><div class="ticks"><span>0</span><span>2 min · 62%</span><span>42 min · 28%</span></div></div><div><p class="big accent">38 s<small>median reply on the system: a text and an email in your voice, every lead, 24 hours a day</small></p></div></div>
+      <p class="source">ServiceTitan, 2025 · Hatch, 2026. The chance is interpolated between the two published points.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">How it works</p><h2>Found. Answered. Booked. Tracked.</h2><p class="lead">Everything points to a website you own. Everything lands in a CRM you own. Every step writes a line in the report.</p></div>
+      <div class="chapters">
+        <div class="chapter"><div class="num">01</div><div><h3>Found</h3><p>A website you own, hosted free, with service pages per service and per city, and schema on every page so Google, Gemini and ChatGPT can recommend you by name. Your Google profile built out and posted weekly. Reviews requested after every job and answered in your voice.</p></div><div class="vis"><div class="ln"><span>"ac repair chandler" · google</span><span class="ok">#2 map pack</span></div><div class="ln"><span>chatgpt · "best ac company chandler"</span><span class="ok">cited</span></div><div class="ln"><span>profile · 412 reviews · 4.8★</span><span class="ok">replied 100%</span></div></div></div>
+        <div class="chapter"><div class="num">02</div><div><h3>Answered</h3><p>One tracked number per source. Your team is rung first. If nobody picks up, an AI receptionist on a Tier 1 carrier takes the details and books a callback or an appointment. Every form gets a text and an email in under 60 seconds, in your voice.</p></div><div class="vis"><div class="ln"><span>07:02 · inbound · google ads line</span><span class="ok">answered 4 s</span></div><div class="ln"><span>text + email</span><span class="ok">38 s</span></div><div class="ln"><span>after hours · 23:40</span><span class="ok">booked, not voicemail</span></div></div></div>
+        <div class="chapter"><div class="num">03</div><div><h3>Booked</h3><p>Funnels, not contact forms: qualifying questions, address autofill, your offer and your reviews, then a calendar. Our funnels convert at 20 to 30% against a 5% industry average, and every submission lands in the CRM with its source.</p></div><div class="vis"><div class="ln"><span>funnel · ac-repair · meta ad 3</span><span class="ok">27% this week</span></div><div class="ln"><span>address autofill · 85226</span><span class="ok">in area</span></div><div class="ln"><span>booked · thu 10:30</span><span class="ok">crm #4821</span></div></div></div>
+        <div class="chapter"><div class="num">04</div><div><h3>Tracked</h3><p>Pipeline from lead to paid job. Closed-job value per source. A return-on-spend dashboard that sets next month’s budget, up in busy months and down in slow ones. The floor is two dollars back for every dollar spent. It all lands in the report on the first.</p></div><div class="vis"><div class="ln"><span>job #4821 · closed</span><span class="ok">$4,180</span></div><div class="ln"><span>return this month</span><span class="ok">$3.88 per $1</span></div><div class="ln"><span>august budget</span><span class="ok">down $300, season turning</span></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-mist">
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">What we build</p><h2>Eight pieces. One system. Yours.</h2></div>
+      <div class="grid grid-3">@@SERVICE_CARDS@@<article class="card card-navy"><span class="k">The rule</span><h3>Limited spots per trade per area</h3><p class="muted">We cap how many companies we take in each trade and area, so our clients are never fighting each other for the same calls. Your spot is yours for as long as you are with us.</p><p style="margin-top:18px"><a class="btn btn-secondary on-navy" href="#book" data-nav="book">Claim your spot</a></p></article></div>
+    </div>
+  </section>
+
+  <section><div class="wrap"><div class="section-head"><p class="eyebrow">How it connects</p><h2>Everything points to a website you own. Everything lands in a CRM you own.</h2></div>@@DIAGRAM@@</div></section>
+
+  <section class="band-navy cta-band"><div class="wrap"><div><p class="eyebrow">Next step</p><h2 style="margin-top:10px">We will call your number on the walkthrough and time it.</h2><p class="muted" style="margin-top:12px">The phone test is the first thing on the live audit.</p></div><div class="actions"><a class="btn btn-primary" href="#book" data-nav="book">Book a walkthrough</a></div></div></section>
+</div>
+
+<!-- ============ INDUSTRIES ============ -->
+<div class="page" id="page-industries" data-title="Industries · Rocket Llama Labs">
+  <section class="hero tight"><div class="wrap one"><div><p class="eyebrow">Industries</p><h1 style="max-width:18ch">Every trade that goes to a <span class="accent">customer’s home.</span></h1><p class="lead">If you send a truck to a house, this is built for you. Pick a trade to see what its first-quarter report would look like on the system. We limit how many clients we take per trade per service area.</p></div></div></section>
+  <section>
+    <div class="wrap">
+      <div class="trade-cards" id="ind-cards">@@TRADE_CARDS@@</div>
+      <div class="section-head" style="margin-top:40px"><p class="eyebrow">A realistic first quarter for <span class="ind-trade">HVAC</span></p><h2>What the report would say on day 90</h2><p class="lead">Illustrative, built from the trade’s typical job value and lead volume. The walkthrough replaces it with your numbers.</p></div>
+      <div class="trade-kpis">
+        <div class="card"><span class="k">Average job</span><p class="v" id="tk-job">$6,800</p><p class="muted" style="font-size:14px">average across repairs and installs</p></div>
+        <div class="card"><span class="k">Booked jobs, quarter</span><p class="v" id="tk-jobs">31</p><p class="muted" style="font-size:14px">attributed to the system</p></div>
+        <div class="card"><span class="k">Closed-job value</span><p class="v" id="tk-rev">$39,100</p><p class="muted" style="font-size:14px">quarter, from attributed jobs</p></div>
+        <div class="card card-navy"><span class="k">Return per $1</span><p class="v" id="tk-roi">$3.07</p><p class="muted" style="font-size:14px">against a $2.00 floor</p></div>
+      </div>
+      <p class="source">Spend for the quarter: three months of the $500K plan, $12,750. Figures illustrative.</p>
+    </div>
+  </section>
+  <section class="band-mist">
+    <div class="wrap">
+      <div class="grid grid-3" style="margin-top:0">
+        <article class="card card-navy"><p class="eyebrow">The rule</p><h3>Limited spots per trade per area</h3><p class="muted">We cap how many companies we take in each trade and area, so our clients are never fighting each other for the same calls. Your spot is yours for as long as you are with us. When the spots are gone, they’re gone.</p></article>
+        <article class="card"><p class="eyebrow">Outside your area</p><h3>Leads you cannot take still get handled</h3><p>Leads outside your area go to a trusted provider you approve, who sends you theirs.</p></article>
+        <article class="card"><p class="eyebrow">Phoenix first</p><h3>Built in Phoenix, for the companies that keep Phoenix running.</h3><p>Everything is remote-capable and we expand city by city. Phoenix owners get Brian in person for the proposal.</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="band-navy cta-band"><div class="wrap"><div><p class="eyebrow">Next step</p><h2 style="margin-top:10px">See the <span class="ind-trade">HVAC</span> report with your numbers in it</h2></div><div class="actions"><a class="btn btn-primary" href="#book" data-nav="book">Book a walkthrough</a></div></div></section>
+</div>
+
+<!-- ============ PRICING ============ -->
+<div class="page" id="page-pricing" data-title="Pricing and agreement · Rocket Llama Labs">
+  <section class="hero tight"><div class="wrap one"><div><p class="eyebrow">Pricing</p><h1 style="max-width:20ch">Every line of the invoice. Every clause of the agreement. <span class="accent">Before you call.</span></h1><p class="lead">About 10% of revenue, in three lines a month: the platform base that keeps your site, phones, AI and CRM running; our work, itemised; and the ad spend, billed to you directly by Google and Meta. Eight of the ten agencies we read show no price at all. Here is the whole invoice, down to the line.</p></div></div></section>
+  <section>
+    <div class="wrap">
+      <div class="split top">
+        <div>
+          <p class="eyebrow">The invoice</p><h2 style="margin-top:10px">Turn the ad spend dial. Only one line moves.</h2>
+          <p class="lead" style="margin-top:16px">The ad money never touches us. Google and Meta bill your card directly. Our part is the platform base and the itemised work.</p>
+          <div class="ctl" style="margin-top:24px"><div class="f"><label for="i-ads"><span>Ad spend this month</span><output id="o-ads">$2,390</output></label><input type="range" id="i-ads" min="1000" max="6000" step="50" value="2390"><div class="ticks"><span>Slow month</span><span>Busy month</span></div></div></div>
+          <p class="muted" style="margin-top:20px;font-size:15px">Setup from scratch is $5,000 to $7,500, charged once, refunded if you do not like the website design we show you first. Already have a website or ad accounts? Your setup comes down. Monthly billing starts when the ads do.</p>
+        </div>
+        <div class="invoice" aria-label="Sample invoice">
+          <div class="hd"><div><b>Invoice · sample</b>Rocket Llama Labs LLC · Phoenix, AZ</div><div style="text-align:right">Sun Valley Air<br>for the month of July</div></div>
+          <table>
+            <tr class="grp"><td colspan="2">Platform base</td></tr>
+            <tr><td>Website hosting, tracked numbers, AI receptionist, CRM<small>fixed, every month</small></td><td>$797</td></tr>
+            <tr class="grp"><td colspan="2">Our work, itemised</td></tr>
+            <tr><td>Google profile: 4 posts, 31 reviews requested, 27 answered</td><td>$240</td></tr>
+            <tr><td>Search and AI search: 2 city pages, schema, rank and mention report</td><td>$380</td></tr>
+            <tr><td>Ads management: Local Services, search, Meta, 3 funnels</td><td>$343</td></tr>
+            <tr><td>Reporting and the monthly call</td><td>$100</td></tr>
+            <tr class="grp"><td colspan="2">Billed to you by Google and Meta, not by us</td></tr>
+            <tr><td>Local Services Ads, search ads, Meta ads<small>your accounts, your card</small></td><td id="i-adsline">$2,390</td></tr>
+            <tr class="sum"><td><b>Total working for you this month</b></td><td id="i-total">$4,250</td></tr>
+          </table>
+          <div class="ext"><b>Paid to Rocket Llama Labs:</b> <span id="i-us">$1,860</span> · <b>paid to Google and Meta:</b> <span id="i-them">$2,390</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="band-mist">
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">The agreement</p><h2>One page, in plain English. This is the whole thing.</h2><p class="lead">Open any clause to see what the typical agency says instead. We quoted them; we did not name them.</p></div>
+      <div class="doc">
+        <div class="dochd"><div><b>Services agreement</b>Rocket Llama Labs LLC and the client</div><div style="text-align:right">One page · month to month<br>Sample for the mockup</div></div>
+        <div class="clause"><span class="n">1</span><div><p><b>Term.</b> Month to month. Either side can end it with 30 days notice, for any reason.</p><details><summary>What the typical agency says</summary><p>"Scorpion typically requires a 12-month contract for our marketing technology and certain marketing services like SEO." Another runs an FAQ titled "Why is there a yearly commitment?"</p></details></div></div>
+        <div class="clause"><span class="n">2</span><div><p><b>Price.</b> A platform base of $797 a month, our work itemised on each invoice, and ad spend billed to you directly by Google and Meta. Setup from scratch is $5,000 to $7,500, charged once.</p><details><summary>What the typical agency says</summary><p>"The investment you decide to make depends on your business goals." "Every investment is tailored to your goals." "There isn't one right budget for every contractor." Eight of ten show no number.</p></details></div></div>
+        <div class="clause"><span class="n">3</span><div><p><b>Design first.</b> We show you the website design before we build it. If you do not like it, the setup fee is refunded.</p><details><summary>What the typical agency says</summary><p>Website launch "takes four to 10 weeks." No refund terms stated on any of the ten sites.</p></details></div></div>
+        <div class="clause"><span class="n">4</span><div><p><b>Ownership.</b> The website code lives in your GitHub, the phone numbers and ad accounts are in your name, and the CRM data is yours to export at any time.</p><details><summary>What the typical agency says</summary><p>One says you own 100% of everything. Another: "You'll need to work with another vendor to rebuild your website" when you leave.</p></details></div></div>
+        <div class="clause"><span class="n">5</span><div><p><b>Exclusivity.</b> We take one company per trade per area. Your spot is yours for as long as you are with us.</p><details><summary>What the typical agency says</summary><p>Nothing. Ten of ten take unlimited clients per trade and area.</p></details></div></div>
+        <div class="clause"><span class="n">6</span><div><p><b>Reporting.</b> On the first of each month: booked jobs by source, closed-job value, cost per booked job, return per dollar, median reply time, and what we changed.</p><details><summary>What the typical agency says</summary><p>Two of ten report revenue. Most report clicks, form fills and lead counts, with a dashboard login.</p></details></div></div>
+        <div class="clause"><span class="n">7</span><div><p><b>The floor.</b> Two dollars of closed jobs for every dollar spent, measured over a rolling quarter. If we miss it, we work free until we are back above it.</p><details><summary>What the typical agency says</summary><p>"No, we do not guarantee digital marketing results." "Virtually every client has doubled, tripled, or quadrupled their web leads within six months," with no number behind it.</p></details></div></div>
+        <div class="clause" style="border-bottom:0"><span class="n">8</span><div><p><b>Leaving.</b> You leave with everything in clause 4. We help the next provider get set up for 30 days at no charge.</p><details><summary>What the typical agency says</summary><p>One transfers analytics and ad accounts and keeps the website. Most do not say.</p></details></div></div>
+        <div class="sign"><div><b>Rocket Llama Labs LLC</b>Brian Greenberg, founder</div><div><b>The client</b>Signed on the walkthrough, or not at all</div></div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">Questions</p><h2>The things every owner asks.</h2></div>
+      <div class="faq">
+        <details open><summary>What do you report every month?</summary><p>Booked jobs by source, closed-job value by source, cost per booked job, return per dollar spent, median reply time, and what we changed. Not clicks, impressions or lead counts.</p></details>
+        <details><summary>What does it cost?</summary><p>About 10% of revenue in three lines a month: a $797 platform base, our work itemised, and ad spend billed to you directly by Google and Meta. A $500K company runs about $4,250 a month. Setup from scratch is $5,000 to $7,500, refunded if you do not like the website design we show you first.</p></details>
+        <details><summary>What happens if I leave?</summary><p>You leave with everything: the website code transferred to your GitHub, the CRM data exported, the phone numbers ported, and the ad accounts, which were always yours. We help the next provider get set up for 30 days.</p></details>
+        <details><summary>Is there a contract?</summary><p>A one-page agreement, month to month, cancel with 30 days notice. The whole agreement is on the pricing page.</p></details>
+        <details><summary>What if a month is bad?</summary><p>You see it in the report, with the reason and what we are changing. The floor is two dollars back for every dollar spent over a rolling quarter. If we miss it, we work free until we are back above it.</p></details>
+        <details><summary>Does the AI replace my office staff?</summary><p>No. The phone rings your team first. The AI picks up only when nobody can, takes the details, and books a callback or an appointment instead of sending the caller to voicemail.</p></details>
+      </div>
+    </div>
+  </section>
+  <section class="band-navy cta-band"><div class="wrap"><div><p class="eyebrow">Next step</p><h2 style="margin-top:10px">Your four lines of math, with your numbers</h2><p class="muted" style="margin-top:12px">The walkthrough opens with a free live audit. No obligation.</p></div><div class="actions"><a class="btn btn-primary" href="#book" data-nav="book">Book a walkthrough</a></div></div></section>
+</div>
+
+<!-- ============ REPORTING ============ -->
+<div class="page" id="page-reporting" data-title="Reporting · Rocket Llama Labs">
+  <section class="hero tight"><div class="wrap one"><div><p class="eyebrow">Reporting</p><h1 style="max-width:18ch">Six months of a sample client, <span class="accent">bad month included.</span></h1><p class="lead">This is the report, month by month, for a sample HVAC company in Chandler. It is illustrative, and it is the format every client gets on the first of the month. June was a bad month. It is in here with the reason and the fix, because that is the point.</p></div></div></section>
+  <section>
+    <div class="wrap">
+      <div class="card"><p class="eyebrow">Six months at a glance</p><h3 style="margin-top:8px">Closed-job value against spend</h3><div class="trend" id="trend"></div><p class="trend-key"><span><i style="background:var(--navy)"></i>Closed-job value</span><span><i style="background:var(--mist);border:1px solid var(--divider)"></i>Spend, all three lines</span></p></div>
+      <div class="report rep" role="region" aria-label="Sample monthly report, full" style="margin-top:28px">
+        <div class="bar"><div class="ttl">Sun Valley Air · monthly report<small>sample client · HVAC · Chandler · jobs attributed to the system · illustrative</small></div><div class="months" role="group" aria-label="Month"></div></div>
+        <div class="kpis"><div class="kpi"><div class="l">Booked jobs</div><div class="v k-jobs">—</div><div class="d k-jobs-d"></div></div><div class="kpi"><div class="l">Closed-job value</div><div class="v k-rev">—</div><div class="d k-rev-d"></div></div><div class="kpi"><div class="l">Total spend, all three lines</div><div class="v k-spend">—</div><div class="d">platform + work + ads</div></div><div class="kpi"><div class="l">Return per $1</div><div class="v k-roi">—</div><div class="d k-roi-d">floor is $2.00</div></div></div>
+        <div class="body">
+          <div><h3>Booked jobs by source</h3><div class="chart"><div class="row"><span>Google profile</span><div class="trk"><i></i></div><span class="n"></span></div><div class="row"><span>Local Services Ads</span><div class="trk"><i></i></div><span class="n"></span></div><div class="row"><span>Search ads</span><div class="trk"><i></i></div><span class="n"></span></div><div class="row"><span>Meta</span><div class="trk"><i></i></div><span class="n"></span></div><div class="row ai"><span>AI search</span><div class="trk"><i></i></div><span class="n"></span></div><div class="row"><span>Referrals, repeat</span><div class="trk"><i></i></div><span class="n"></span></div></div></div>
+          <div class="notes"><span class="k">What we changed, and why</span><ul class="k-notes"></ul><p style="margin-top:12px"><span class="k">Median reply time</span><br><b class="k-reply">—</b> <span class="muted" style="font-size:13px">text and email, every lead</span></p></div>
+        </div>
+        <div class="foot"><span>Floor: $2 back per $1, rolling quarter · <b class="k-floor">—</b></span><button class="honest" type="button" aria-pressed="false">Show me the bad month</button></div>
+      </div>
+    </div>
+  </section>
+  <section class="band-mist">
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">Your return</p><h2>What answering in 60 seconds is worth to your company</h2><p class="lead">Four sliders. The math uses the published close rates, your job value and your lead volume. An illustration the walkthrough replaces with your real numbers.</p></div>
+      <div class="calc">
+        <div class="ctl card">
+          <div class="f"><label for="c-leads"><span>New leads a month, calls and forms</span><output id="o-leads">60</output></label><input type="range" id="c-leads" min="10" max="300" step="5" value="60"><div class="ticks"><span>10</span><span>150</span><span>300</span></div></div>
+          <div class="f"><label for="c-job"><span>Average job value</span><output id="o-cjob">$1,900</output></label><input type="range" id="c-job" min="300" max="15000" step="100" value="1900"><div class="ticks"><span>$300</span><span>$7,500</span><span>$15,000</span></div></div>
+          <div class="f"><label for="c-fast"><span>Share of leads you answer inside two minutes today</span><output id="o-fast">20%</output></label><input type="range" id="c-fast" min="0" max="100" step="5" value="20"><div class="ticks"><span>0%</span><span>50%</span><span>100%</span></div></div>
+          <div class="f"><label for="c-rev"><span>Revenue last year, for the plan price</span><output id="o-crev">$500K</output></label><input type="range" id="c-rev" min="250" max="2000" step="50" value="500"><div class="ticks"><span>$250K</span><span>$1M</span><span>$2M</span></div></div>
+        </div>
+        <div class="card out">
+          <div class="row"><div>Jobs you close now<small>62% of fast leads plus 28% of slow ones</small></div><span class="v" id="v-now">—</span></div>
+          <div class="row"><div>Jobs on the system<small>every lead answered inside two minutes, at 62%</small></div><span class="v" id="v-sys">—</span></div>
+          <div class="row"><div>Extra jobs a month<small>same leads, same ads, faster answer</small></div><span class="v accent" id="v-extra">—</span></div>
+          <div class="row"><div>Extra revenue a month<small>extra jobs times your average job</small></div><span class="v" id="v-rev">—</span></div>
+          <div class="row"><div>Plan, all three lines<small id="s-plan">for a $500K company</small></div><span class="v" id="v-plan">—</span></div>
+          <div class="row total"><div><b>Return on the plan</b><small>from faster answers alone, before any new leads from search, AI and ads</small></div><span class="v" id="v-roi">—</span></div>
+        </div>
+      </div>
+      <p class="source">Close rates: ServiceTitan, 2025 · Hatch, 2026. Plan price scaled from the $500K example. Illustrative.</p>
+    </div>
+  </section>
+  <section class="band-navy cta-band"><div class="wrap"><div><p class="eyebrow">Next step</p><h2 style="margin-top:10px">We will fill this template in with your numbers on the call</h2></div><div class="actions"><a class="btn btn-primary" href="#book" data-nav="book">Book a walkthrough</a></div></div></section>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<div class="page" id="page-about" data-title="About · Rocket Llama Labs">
+  <section class="hero tight"><div class="wrap"><div><p class="eyebrow">Who is behind Rocket Llama Labs</p><h1 style="max-width:14ch">Brian Greenberg has <span class="accent">done this before.</span></h1><p class="lead">Rocket Llama Labs is Brian, Branson and Madison. Brian built three companies on this exact system, customers finding him online and booking themselves, and sold all three. He ran them open-book. Branson and Madison run the day to day.</p></div><div class="art-plate" style="background:var(--white);padding:0"><img src="__LOCKUP__" alt="Rocket Llama Labs horizontal lockup" width="520" height="200"></div></div></section>
+  <section><div class="wrap">@@BRIAN_BIO@@</div></section>
+  <section class="band-mist"><div class="wrap"><div class="section-head"><p class="eyebrow">The day to day</p><h2>Branson and Madison run the day to day</h2><p class="lead">Their bios follow. Placeholders until the copy lands.</p></div>@@TEAM@@</div></section>
+  <section>
+    <div class="wrap">
+      <div class="split">
+        <div><p class="eyebrow">Why open book</p><h2 style="margin-top:10px">We read ten agency websites. Eight hid the price. Most hid the terms.</h2><p class="lead" style="margin-top:16px">So the report is on the home page, the invoice and the agreement are on the pricing page, and the leave-anytime switch is right under the math. If a client can see everything before the first call, the first call is about their business. The research is on the <a href="#check" data-nav="check">check page</a>.</p></div>
+        <div class="card card-mist"><p class="eyebrow">Phoenix first</p><h3>Built in Phoenix, for the companies that keep Phoenix running.</h3><p>Everything is remote-capable and we expand city by city. Phoenix owners get Brian in person for the proposal.</p><ul class="check-list"><li>Rocket Llama Labs LLC, an Arizona company</li><li>Marketing and technology for local home services</li><li>One trade, one area at a time</li></ul></div>
+      </div>
+    </div>
+  </section>
+  <section class="band-navy cta-band"><div class="wrap"><div><p class="eyebrow">Next step</p><h2 style="margin-top:10px">Phoenix owners get Brian in person for the proposal</h2></div><div class="actions"><a class="btn btn-primary" href="#book" data-nav="book">Book a walkthrough</a></div></div></section>
+</div>
+
+<!-- ============ BOOK ============ -->
+<div class="page" id="page-book" data-title="Book a walkthrough · Rocket Llama Labs">
+  <section class="hero tight"><div class="wrap one"><div><p class="eyebrow">Book a walkthrough</p><h1 style="max-width:16ch">Pick a time. <span class="accent">About a minute.</span></h1><p class="lead">The call opens with a free live audit, then your four lines of math, then the report template filled in with a realistic first quarter. Thirty to forty-five minutes. No obligation. Bring last year’s revenue and your average job if you have them.</p><p class="proof"><span>Book first, questions after, optional</span><span>Free live audit on the call</span><span>No obligation</span><span>Nothing shared outside Rocket Llama Labs</span></p></div></div></section>
+  <section>
+    <div class="wrap">
+      <div class="book">
+        <form class="card form" onsubmit="event.preventDefault(); this.querySelector('.fields').hidden=true; this.querySelector('.success').classList.add('on');">
+          <div class="fields" style="display:grid;gap:18px">
+            <div class="two"><div><label for="b-tr">Trade</label><select id="b-tr">@@TRADE_OPTIONS@@</select></div><div><label for="b-co">Company</label><input id="b-co" placeholder="Company name"></div></div>
+            <div><p style="font-weight:600;font-size:14px">Day, Phoenix time</p><div class="slots days" id="days-book"></div></div>
+            <div><p style="font-weight:600;font-size:14px">Time</p><div class="slots"><label class="slot"><input type="radio" name="t">9:00<small>am</small></label><label class="slot"><input type="radio" name="t">10:30<small>am</small></label><label class="slot sel"><input type="radio" name="t" checked>1:00<small>pm</small></label><label class="slot"><input type="radio" name="t">2:30<small>pm</small></label><label class="slot"><input type="radio" name="t">4:00<small>pm</small></label></div></div>
+            <div class="two"><div><label for="b-name">Your name</label><input id="b-name" placeholder="First and last name"></div><div><label for="b-email">Email</label><input id="b-email" type="email" placeholder="you@company.com"></div></div>
+            <div class="two"><div><label for="b-mobile">Mobile</label><input id="b-mobile" type="tel" placeholder="(602) 555-0100"></div><div><label for="b-rev">Revenue last year, roughly</label><select id="b-rev"><option>Under $250K</option><option>$250K to $500K</option><option selected>$500K to $1M</option><option>$1M to $2M</option><option>$2M and up</option></select></div></div>
+            @@CONSENT@@
+            <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center"><button class="btn btn-primary" type="submit">Book the walkthrough</button><span class="muted" style="font-size:14px">You will hear from us in under 60 seconds, naturally.</span></div>
+          </div>
+          <div class="success"><p class="eyebrow">You are booked</p><h3 style="margin-top:8px">Check your phone. The text is already there.</h3><p>The Zoom link is on its way by email. We will have the report template open with your revenue band filled in.</p></div>
+        </form>
+        @@BOOK_ASIDE@@
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ CHECK ============ -->
+<div class="page" id="page-check" data-title="Search and brand check · Rocket Llama Labs">
+  <section class="hero tight"><div class="wrap one"><div><p class="eyebrow">Search, AI and brand check</p><h1 style="max-width:16ch">How version 4 is built to be <span class="accent">found and cited</span></h1><p class="lead">A working reference for whoever ships the real pages. An open book is also the most citable thing a site can be. Prices, terms and guarantees stated in full sentences are what engines quote.</p></div></div></section>
+  <section class="band-mist">
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">Search and AI</p><h2>Built in, not bolted on</h2></div>
+      <div class="seo-grid">
+        <div class="seo-item"><span class="ok">✓</span><div><b>Offers with real prices in schema</b><span class="how">The $797 platform base, the $5,000 to $7,500 setup and the $4,250 example are UnitPriceSpecification offers. Google can show them; ChatGPT and Perplexity can answer "what does Rocket Llama Labs cost" with a number. No competitor site we read marks up a price.</span></div></div>
+        <div class="seo-item"><span class="ok">✓</span><div><b>HowTo schema for the four steps</b><span class="how">Found, answered, booked, tracked is marked up as a HowTo, which Google and Gemini render as steps and Perplexity cites as a process.</span></div></div>
+        <div class="seo-item"><span class="ok">✓</span><div><b>FAQPage that matches the visible FAQ</b><span class="how">Six questions, word for word on the pricing page, including "what if a month is bad," which is the question owners actually ask an AI.</span></div></div>
+        <div class="seo-item"><span class="ok">✓</span><div><b>One entity, consistent everywhere</b><span class="how">Organization and ProfessionalService schema with the Phoenix address, phone, hours and founder, matching the footer, Google Business Profile, Bing Places, Apple Business Connect and Yelp.</span></div></div>
+        <div class="seo-item"><span class="ok">✓</span><div><b>The agreement as real text</b><span class="how">Eight clauses in HTML, not a PDF. Brave and the AI crawlers index it; an owner asking "which agencies have no contract" can be answered from it.</span></div></div>
+        <div class="seo-item"><span class="ok">✓</span><div><b>Bing, Yahoo, DuckDuckGo and Brave</b><span class="how">IndexNow on every publish, Bing Webmaster Tools verified, Bing Places matched to the Google profile. Yahoo and DuckDuckGo inherit all of it. Brave indexes real text, and this site is nothing but.</span></div></div>
+        <div class="seo-item"><span class="ok">✓</span><div><b>Sourced claims only</b><span class="how">Every quoted competitor line came from a public page read in October 2026. The sample report is labelled illustrative. Unsourced or inflated numbers are what engines learn to distrust.</span></div></div>
+        <div class="seo-item"><span class="ok">✓</span><div><b>Speakable and fast</b><span class="how">H1 and lead marked speakable. The phone demo is CSS and a few lines of script, no video to load. Production swaps embedded images for next/image.</span></div></div>
+      </div>
+    </div>
+  </section>
+  <section><div class="wrap"><div class="section-head"><p class="eyebrow">Brand book v1.0</p><h2>Eight rules, held on every page</h2></div>@@BRAND_RULES@@</div></section>
+</div>
+
+</main>
+
+@@FOOTER@@
+
+<script>
+(function () {
+  var PAGES = ['home','services','industries','pricing','reporting','about','book','check'];
+@@TABS_JS@@
+  var $ = function (id) { return document.getElementById(id); }, money = function (x) { return '$' + Math.round(x).toLocaleString('en-US'); };
+
+  /* ---- Sample report (illustrative), rendered into every .rep ---- */
+  var MONTHS = [
+    { m: 'Mar', jobs: 8, rev: 9400, spend: 4250, reply: '41 s', src: [3, 2, 1, 1, 0, 1], notes: ['First full month live. Local Services Ads on from the 3rd.', 'Two city pages published: Chandler and Gilbert.', 'Review requests started; 14 new reviews.'] },
+    { m: 'Apr', jobs: 10, rev: 12600, spend: 4250, reply: '38 s', src: [3, 3, 1, 1, 1, 1], notes: ['Search ads tightened to repair terms; cost per booked call down 18%.', 'First AI search mention: ChatGPT cites the Chandler page.', 'Profile posts weekly. 19 new reviews.'] },
+    { m: 'May', jobs: 13, rev: 17100, spend: 4900, reply: '36 s', src: [4, 3, 2, 1, 2, 1], notes: ['Ad spend up $650 ahead of the heat. Your call, our recommendation.', 'Meta offer: $59 tune-up, 3 funnels, 27% conversion.', 'Gemini now lists the company for "ac repair chandler".'] },
+    { m: 'Jun', jobs: 9, rev: 10900, spend: 5100, reply: '44 s', src: [3, 2, 1, 1, 1, 1], notes: ['Two techs out sick week 3; 4 booked jobs pushed to July. Reply time slipped to 44 s on the 19th, fixed by the 20th.', 'Return for the month is $2.14 per $1. The quarter is still above the floor.', 'Peoria page published.'] },
+    { m: 'Jul', jobs: 16, rev: 19800, spend: 5100, reply: '35 s', src: [5, 4, 2, 1, 2, 2], notes: ['Pushed jobs landed. Best month so far.', 'Local Services Ads guaranteed badge live; cost per booked call $38.', 'Perplexity cites the company in 2 of 5 test questions.'] },
+    { m: 'Aug', jobs: 15, rev: 17600, spend: 4800, reply: '37 s', src: [5, 4, 2, 1, 2, 1], notes: ['Spend eased $300 as the season turns. The dashboard sets September.', 'Review count passes 400. Every one answered.', 'Return for the quarter: $3.22 per $1.'] }
+  ];
+  document.querySelectorAll('.rep').forEach(function (rep) {
+    var cur = 4, honest = false, mbar = rep.querySelector('.months'), hb = rep.querySelector('.honest');
+    MONTHS.forEach(function (mo, i) { var b = document.createElement('button'); b.type = 'button'; b.textContent = mo.m; b.addEventListener('click', function () { cur = i; honest = false; hb.setAttribute('aria-pressed', 'false'); hb.textContent = hb.getAttribute('data-label') || hb.textContent; draw(); }); mbar.appendChild(b); });
+    hb.setAttribute('data-label', hb.textContent);
+    function draw() {
+      var i = honest ? 3 : cur, mo = MONTHS[i], prev = MONTHS[i - 1] || mo;
+      mbar.querySelectorAll('button').forEach(function (b, k) { b.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
+      var q = function (sel) { return rep.querySelector(sel); };
+      q('.k-jobs').textContent = mo.jobs; q('.k-jobs-d').textContent = (mo.jobs >= prev.jobs ? '+' : '−') + Math.abs(mo.jobs - prev.jobs) + ' vs ' + prev.m; q('.k-jobs-d').classList.toggle('up', mo.jobs >= prev.jobs);
+      q('.k-rev').textContent = money(mo.rev); q('.k-rev-d').textContent = (mo.rev >= prev.rev ? '+' : '−') + money(Math.abs(mo.rev - prev.rev)) + ' vs ' + prev.m; q('.k-rev-d').classList.toggle('up', mo.rev >= prev.rev);
+      q('.k-spend').textContent = money(mo.spend); var roi = mo.rev / mo.spend; q('.k-roi').textContent = '$' + roi.toFixed(2); q('.k-roi-d').classList.toggle('up', roi >= 2);
+      var max = Math.max.apply(null, mo.src); rep.querySelectorAll('.chart .row').forEach(function (r, k) { r.querySelector('i').style.width = (mo.src[k] / max * 100) + '%'; r.querySelector('.n').textContent = mo.src[k] + ' jobs'; });
+      q('.k-notes').innerHTML = mo.notes.map(function (n) { return '<li>' + n + '</li>'; }).join(''); q('.k-reply').textContent = mo.reply;
+      var qs = MONTHS.slice(Math.max(0, i - 2), i + 1), qr = qs.reduce(function (a, m) { return a + m.rev; }, 0) / qs.reduce(function (a, m) { return a + m.spend; }, 0);
+      q('.k-floor').textContent = 'quarter at $' + qr.toFixed(2) + ' per $1' + (qr >= 2 ? ', above the floor' : ', below the floor, we work free');
+    }
+    hb.addEventListener('click', function () { honest = !honest; hb.setAttribute('aria-pressed', honest ? 'true' : 'false'); hb.textContent = honest ? 'That is June. Back to the month I picked' : hb.getAttribute('data-label'); draw(); });
+    draw();
+  });
+  /* trend */
+  var mx = Math.max.apply(null, MONTHS.map(function (m) { return m.rev; }));
+  $('trend').innerHTML = MONTHS.map(function (m) { return '<div class="col"><div class="bar-r" style="height:' + (m.rev / mx * 130) + 'px" title="' + money(m.rev) + '"></div><div class="bar-s" style="height:' + (m.spend / mx * 130) + 'px" title="' + money(m.spend) + '"></div><span>' + m.m + '</span></div>'; }).join('');
+
+  /* ---- Math ---- */
+  function math() { var rev = +$('m-rev').value, job = +$('m-job').value, f = rev / 500, label = rev >= 1000 ? '$' + (rev / 1000).toFixed(2).replace(/\.?0+$/, '') + 'M' : '$' + rev + 'K'; $('o-rev').textContent = label; $('o-job').textContent = money(job); var base = 797, work = f === 1 ? 1063 : Math.round(1063 * f / 10) * 10, ads = f === 1 ? 2390 : Math.round(2390 * f / 10) * 10, budget = base + work + ads; $('e-budget').textContent = money(budget); $('e-split').textContent = money(base) + ' + ' + money(work) + ' + ' + money(ads); $('e-even').textContent = (budget / job).toFixed(1) + ' jobs'; $('e-floor').textContent = (budget * 2 / job).toFixed(1) + ' jobs'; }
+  $('m-rev').addEventListener('input', math); $('m-job').addEventListener('input', math); math();
+  /* ---- Invoice ---- */
+  function inv() { var ads = +$('i-ads').value, us = 797 + 240 + 380 + 343 + 100; $('o-ads').textContent = money(ads); $('i-adsline').textContent = money(ads); $('i-total').textContent = money(us + ads); $('i-us').textContent = money(us); $('i-them').textContent = money(ads); }
+  $('i-ads').addEventListener('input', inv); inv();
+  /* ---- Leave ---- */
+  $('leave-sw').addEventListener('change', function () { var on = this.checked, items = [].slice.call(document.querySelectorAll('#assets .asset')); $('leave-lbl').textContent = on ? 'Leaving. Running the exit' : 'I am leaving Rocket Llama Labs'; $('leave-note').textContent = on ? 'Six items, about an afternoon. No negotiation, no exit fee, no hostage website.' : 'Flip it to run the exit.'; items.forEach(function (a, k) { a.classList.remove('on'); if (on) setTimeout(function () { a.classList.add('on'); a.querySelector('.st').textContent = k === 5 ? 'scheduled' : 'transferred'; }, 250 * (k + 1)); else a.querySelector('.st').textContent = k === 5 ? 'included' : 'yours now'; }); });
+
+  /* ---- Phone demo ---- */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches, evs = [].slice.call(document.querySelectorAll('#feed .ev')), sw = $('sw'), SPEED = reduce ? 1 : 3.7, start = null;
+  function fmt(s) { return Math.floor(s / 60) + ':' + (Math.floor(s % 60) < 10 ? '0' : '') + Math.floor(s % 60); }
+  function loop(ts) { if (!start) start = ts; var sim = (ts - start) / 1000 * SPEED; sw.textContent = fmt(Math.min(sim, 52)); evs.forEach(function (e) { e.classList.toggle('on', sim >= parseFloat(e.getAttribute('data-at'))); }); var shown = evs.filter(function (e) { return e.classList.contains('on'); }); while (shown.length > 5) { shown.shift().classList.remove('on'); } if (sim >= 66) start = null; requestAnimationFrame(loop); }
+  if (reduce) { evs.slice(4).forEach(function (e) { e.classList.add('on'); }); sw.textContent = '0:52'; } else requestAnimationFrame(loop);
+  /* ---- 42-minute counter ---- */
+  var t0 = Date.now();
+  function tick() { var s = (Date.now() - t0) / 1000, m = Math.min(s, 2520); $('since').textContent = fmt(s); $('odds').textContent = Math.round(62 - 34 * Math.min(1, Math.max(0, (m - 120) / 2400))) + '%'; $('track').style.width = (m / 2520 * 100) + '%'; }
+  tick(); setInterval(tick, 1000);
+
+  /* ---- Industries: quarter report by trade ---- */
+  var TR = { 'HVAC': [1250, 32], 'Plumbing': [1900, 21], 'Electrical': [2400, 17], 'Roofing': [14500, 3], 'Garage door': [900, 44], 'Pest control': [480, 85], 'Landscaping': [3200, 12], 'Painting': [4100, 10], 'Window and pressure washing': [420, 95], 'Handyman': [650, 60], 'Mobile mechanic': [520, 75], 'Windows and doors': [7800, 5], 'Solar': [21000, 2], 'Flooring': [6200, 6], 'Remodeling': [28000, 2], 'Other home service': [1500, 27] };
+  var indTrade = 'HVAC';
+  function renderInd() { var d = TR[indTrade], rev = d[0] * d[1]; $('tk-job').textContent = money(d[0]); $('tk-jobs').textContent = d[1]; $('tk-rev').textContent = money(rev); $('tk-roi').textContent = '$' + (rev / 12750).toFixed(2); document.querySelectorAll('.ind-trade').forEach(function (e) { e.textContent = indTrade; }); document.querySelectorAll('#ind-cards .trade-card').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-trade') === indTrade ? 'true' : 'false'); }); var bt = $('b-tr'); if (bt) bt.value = indTrade; }
+  document.querySelectorAll('#ind-cards .trade-card').forEach(function (b) { b.addEventListener('click', function () { indTrade = b.getAttribute('data-trade'); renderInd(); }); });
+  window.setTrade = function (t) { indTrade = t; renderInd(); }; renderInd();
+
+  /* ---- Calculator ---- */
+  function calc() { var leads = +$('c-leads').value, job = +$('c-job').value, fast = +$('c-fast').value / 100, rev = +$('c-rev').value; $('o-leads').textContent = leads; $('o-cjob').textContent = money(job); $('o-fast').textContent = Math.round(fast * 100) + '%'; var revLabel = rev >= 1000 ? '$' + (rev / 1000).toFixed(2).replace(/\.?0+$/, '') + 'M' : '$' + rev + 'K'; $('o-crev').textContent = revLabel; var now = leads * (fast * .62 + (1 - fast) * .28), sys = leads * .62, extra = Math.max(0, sys - now), extraRev = extra * job; var f = rev / 500, base = 797, work = f === 1 ? 1063 : Math.round(1063 * f / 10) * 10, ads = f === 1 ? 2390 : Math.round(2390 * f / 10) * 10, plan = base + work + ads; $('v-now').textContent = now.toFixed(1); $('v-sys').textContent = sys.toFixed(1); $('v-extra').textContent = '+' + extra.toFixed(1); $('v-rev').textContent = money(extraRev); $('v-plan').textContent = money(plan); $('s-plan').textContent = 'for a ' + revLabel + ' company'; $('v-roi').textContent = (extraRev / plan).toFixed(1) + '×'; }
+  ['c-leads','c-job','c-fast','c-rev'].forEach(function (id) { $(id).addEventListener('input', calc); }); calc();
+
+  show(location.hash.replace('#', '') || 'home', false);
+})();
+</script>
+</body>
+</html>

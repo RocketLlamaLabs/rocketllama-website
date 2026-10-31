@@ -1,0 +1,315 @@
+<!-- Shared fragments for the full-site templates. The build script inlines these by token. -->
+
+<!-- @@HEAD_LINKS@@ -->
+<link rel="icon" href="__MASCOT__">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<!-- @@END@@ -->
+
+<!-- @@SITE_CSS@@ -->
+/* ---- Full-site shared: tabs, hero, forms, diagram, trades, pricing lines, compare ---- */
+.page { display: none; }
+.page.active { display: block; animation: rise .35s ease both; }
+.hero { padding: 48px 0 40px; overflow: hidden; position: relative; }
+@media (min-width: 1000px) { .hero { padding: 72px 0 56px; } }
+.hero .wrap { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 1000px) { .hero .wrap { grid-template-columns: 1.05fr .95fr; gap: 56px; } }
+.hero .wrap.one { grid-template-columns: 1fr; }
+.hero .wrap.start { align-items: start; }
+.hero h1 { margin-top: 16px; max-width: 14ch; }
+.hero .lead { margin-top: 22px; }
+.hero.tight { padding-bottom: 0; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; align-items: center; }
+.proof { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px 20px; font-family: var(--mono); font-size: 14px; color: var(--muted); }
+.proof span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); margin-right: 8px; vertical-align: 1px; }
+.hero-art { position: relative; display: flex; justify-content: center; align-items: center; min-height: 320px; }
+.hero-art .disc { position: absolute; width: 78%; aspect-ratio: 1; border-radius: 50%; background: var(--mist); right: 0; top: 50%; transform: translateY(-50%); }
+.hero-art img { position: relative; width: min(100%, 520px); filter: drop-shadow(0 20px 30px rgb(2 44 106 / .18)); }
+.float { animation: float 6s ease-in-out infinite; }
+@keyframes float { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-14px) rotate(1.5deg); } }
+.art-plate { background: var(--mist); border-radius: var(--r-lg); padding: 40px; display: grid; place-items: center; min-height: 300px; }
+.art-plate img { width: min(100%, 440px); }
+.ticker { padding: 18px 0; overflow: hidden; white-space: nowrap; }
+.ticker-track { display: inline-flex; gap: 48px; animation: ticker 44s linear infinite; font-family: var(--mono); font-size: 14px; color: var(--mist); padding-right: 48px; }
+.ticker-track span::before { content: "/"; color: var(--blue); margin-right: 16px; font-weight: 700; }
+@keyframes ticker { to { transform: translateX(-50%); } }
+.note { margin-top: 24px; padding: 14px 18px; border-left: 4px solid var(--blue); background: var(--mist); border-radius: 0 var(--r-md) var(--r-md) 0; font-size: 15px; }
+.strip { padding: 22px 0; border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider); }
+.strip .wrap { display: flex; flex-wrap: wrap; gap: 14px 36px; align-items: center; justify-content: space-between; font-size: 15px; }
+.strip .item { display: inline-flex; align-items: center; gap: 10px; font-weight: 500; }
+.strip .item svg { width: 22px; height: 22px; color: var(--blue); flex: none; }
+.video { position: relative; border-radius: var(--r-lg); overflow: hidden; background: var(--navy); aspect-ratio: 16 / 9; box-shadow: var(--shadow-md); display: block; }
+.video img { width: 100%; height: 100%; object-fit: cover; opacity: .85; }
+.video .play { position: absolute; inset: 0; display: grid; place-items: center; }
+.video .play span { width: 84px; height: 84px; border-radius: 50%; background: var(--blue); display: grid; place-items: center; box-shadow: var(--shadow-md); }
+.video .play svg { width: 34px; height: 34px; fill: var(--white); margin-left: 4px; }
+.video .tag { position: absolute; left: 16px; bottom: 16px; background: var(--white); }
+.diag { width: 100%; height: auto; display: block; margin-top: 36px; font-family: var(--sans); }
+.diag .box { fill: var(--white); stroke: var(--divider); stroke-width: 1.5; }
+.diag .hub { fill: var(--navy); }
+.diag .own { stroke: var(--blue); stroke-width: 2.5; }
+.diag .t { fill: var(--navy); font-size: 14px; }
+.diag text.w { fill: var(--white); }
+.diag .b { font-weight: 600; font-size: 14px; }
+.diag .h { font-family: var(--display); font-weight: 700; font-size: 17px; }
+.diag .s { font-size: 12.5px; fill: var(--muted); }
+.diag text.w .s { fill: var(--mist); }
+.diag .lab { font-family: var(--display); font-weight: 700; font-size: 13px; fill: var(--blue); letter-spacing: .02em; }
+.diag .arrow { fill: none; stroke: var(--navy); stroke-width: 1.8; marker-end: url(#arr); opacity: .8; }
+.diag .mk { fill: var(--navy); }
+.trade-cards { display: grid; gap: 14px; margin-top: 36px; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 720px) { .trade-cards { grid-template-columns: repeat(4, 1fr); } }
+.trade-card { display: grid; gap: 8px; align-content: start; padding: 22px; border-radius: 12px; background: var(--white); border: 1.5px solid var(--divider); text-decoration: none; color: var(--navy); font-weight: 600; transition: transform .2s, box-shadow .2s, border-color .2s; cursor: pointer; text-align: left; font-size: 16px; }
+.trade-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.trade-card[aria-pressed="true"] { border-color: var(--blue); }
+.trade-card .ic { width: 40px; height: 40px; border-radius: 10px; background: var(--mist); display: grid; place-items: center; color: var(--blue); }
+.trade-card .ic svg { width: 22px; height: 22px; }
+.trade-card small { font-weight: 400; color: var(--muted); font-size: 14px; }
+.lines { border-top: 1px solid var(--divider); margin-top: 18px; }
+.lines .ln { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--divider); }
+.lines .ln .amt { font-family: var(--display); font-weight: 700; white-space: nowrap; }
+.lines .ln.total { background: var(--mist); margin: 0 -28px -28px; padding: 18px 28px; border-radius: 0 0 var(--r-lg) var(--r-lg); border-bottom: 0; }
+.lines .ln.total .amt { font-size: 26px; color: var(--blue); }
+.seg { display: inline-flex; flex-wrap: wrap; gap: 6px; padding: 6px; background: var(--mist); border-radius: 12px; margin-top: 16px; }
+.seg button { border: 0; background: transparent; font-weight: 600; color: var(--navy); padding: 10px 14px; border-radius: 8px; cursor: pointer; min-height: 44px; }
+.seg button[aria-pressed="true"] { background: var(--white); box-shadow: var(--shadow-sm); color: var(--blue); }
+.range input[type=range], .ctl input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; border-radius: 4px; background: var(--mist); border: 0; padding: 0; min-height: 0; margin-top: 10px; }
+.range input[type=range]::-webkit-slider-thumb, .ctl input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; border-radius: 50%; background: var(--blue); border: 3px solid #fff; box-shadow: var(--shadow-md); cursor: pointer; }
+.range input[type=range]::-moz-range-thumb, .ctl input[type=range]::-moz-range-thumb { width: 28px; height: 28px; border-radius: 50%; background: var(--blue); border: 3px solid #fff; box-shadow: var(--shadow-md); cursor: pointer; }
+.range .ticks, .ctl .ticks { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+.range .big { font-family: var(--display); font-weight: 700; font-size: 40px; line-height: 1; margin-top: 8px; }
+.ctl { display: grid; gap: 22px; }
+.ctl .f label { display: flex; justify-content: space-between; align-items: baseline; }
+.ctl .f label output { font-family: var(--display); font-weight: 700; font-size: 22px; color: var(--navy); }
+table.plain { width: 100%; border-collapse: collapse; margin-top: 32px; font-size: 16px; }
+table.plain th, table.plain td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--divider); vertical-align: top; }
+table.plain th { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--muted); }
+.compare { width: 100%; border-collapse: collapse; margin-top: 32px; font-size: 15px; }
+.compare th, .compare td { text-align: left; padding: 14px 14px; border-bottom: 1px solid var(--divider); vertical-align: top; }
+.compare th { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--muted); }
+.compare th.us, .compare td.us { background: var(--mist); }
+.compare th.us { color: var(--blue); }
+.compare td.us { font-weight: 600; }
+.compare .src { font-family: var(--mono); font-size: 12.5px; color: var(--muted); display: block; margin-top: 4px; }
+@media (max-width: 639px) { .compare th:nth-child(3), .compare td:nth-child(3) { display: none; } }
+.book { display: grid; gap: 24px; align-items: start; }
+@media (min-width: 1000px) { .book { grid-template-columns: 1.2fr .8fr; gap: 40px; } }
+.slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; margin-top: 8px; }
+.slot { position: relative; display: block; text-align: center; padding: 12px 6px; border: 1.5px solid var(--divider); border-radius: 10px; cursor: pointer; font-weight: 500; font-size: 15px; margin: 0; }
+.slot input { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; min-height: 0; }
+.slot.sel { border-color: var(--blue); background: var(--mist); }
+.slot small { display: block; font-size: 13px; color: var(--muted); font-weight: 400; }
+.success { display: none; } .success.on { display: block; }
+.consent { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: var(--muted); font-weight: 400; }
+.consent input { width: 20px; height: 20px; min-height: 0; margin: 2px 0 0; accent-color: var(--blue); flex: none; }
+.aside .card + .card { margin-top: 16px; }
+.aside ol { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 10px; }
+.aside ol b { display: block; }
+.bio { display: grid; gap: 32px; align-items: start; }
+@media (min-width: 900px) { .bio { grid-template-columns: 320px 1fr; gap: 56px; } }
+.bio .face { border-radius: var(--r-lg); width: 100%; box-shadow: var(--shadow-md); }
+.bio blockquote { margin: 28px 0 0; padding: 24px 28px; background: var(--mist); border-left: 4px solid var(--blue); border-radius: 0 var(--r-md) var(--r-md) 0; font-family: var(--display); font-weight: 600; font-size: 20px; line-height: 1.4; }
+.bio blockquote cite { display: block; font-family: var(--sans); font-style: normal; font-weight: 500; font-size: 15px; color: var(--muted); margin-top: 12px; }
+.steps { display: grid; gap: 24px; margin-top: 40px; }
+@media (min-width: 900px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 20px; } .steps.four { grid-template-columns: repeat(4, 1fr); } }
+.step { position: relative; padding-top: 20px; border-top: 3px solid var(--divider); }
+.step::before { content: ""; position: absolute; top: -3px; left: 0; width: 56px; height: 3px; background: var(--blue); }
+.step .num { font-family: var(--display); font-weight: 800; font-size: 44px; line-height: 1; color: var(--blue); }
+.step h3 { margin-top: 10px; font-size: 20px; }
+.step p { margin-top: 8px; }
+.swatches { display: grid; gap: 14px; margin-top: 24px; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 720px) { .swatches { grid-template-columns: repeat(4, 1fr); } }
+.swatch { border: 1px solid var(--divider); border-radius: 12px; overflow: hidden; background: var(--white); }
+.swatch .color { height: 72px; display: flex; align-items: flex-end; padding: 10px; font-family: var(--mono); font-size: 13px; }
+.swatch .info { padding: 12px; font-size: 14px; }
+.swatch .info strong { font-family: var(--mono); display: block; }
+.rules { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
+.rules li { display: grid; grid-template-columns: 36px 1fr; gap: 12px; padding: 16px; background: var(--white); border: 1px solid var(--divider); border-radius: 12px; font-size: 15px; }
+.rules .n { font-family: var(--display); font-weight: 800; color: var(--blue); font-size: 20px; }
+.proof-cards { display: grid; gap: 20px; margin-top: 40px; }
+@media (min-width: 720px) { .proof-cards { grid-template-columns: repeat(3, 1fr); } }
+.proof-cards .card .big { font-family: var(--display); font-weight: 700; font-size: 44px; line-height: 1; color: var(--blue); margin-top: 10px; }
+.proof-cards .card .who { display: flex; gap: 12px; align-items: center; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--divider); font-size: 14px; color: var(--muted); }
+.proof-cards .card .who i { width: 40px; height: 40px; border-radius: 50%; background: var(--mist); display: grid; place-items: center; color: var(--navy); font-family: var(--display); font-weight: 700; font-size: 14px; flex: none; font-style: normal; }
+.window { background: var(--navy); color: var(--mist); border-radius: 12px; padding: 18px; font-family: var(--mono); font-size: 13.5px; margin-top: 20px; }
+.window .ln { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgb(255 255 255 / .12); }
+.window .ln:last-child { border-bottom: 0; }
+.window .ok { color: var(--white); }
+/* @@END@@ -->
+
+<!-- @@DIAGRAM@@ -->
+<svg class="diag" viewBox="0 0 1000 690" role="img" aria-label="The marketing system: traffic sources feed a website you own, the phones and website feed your CRM, the CRM books jobs, and closed jobs set next month's spend">
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk"/></marker></defs>
+  <text x="20" y="22" class="lab">Where customers come from</text>
+  <g><rect x="20" y="32" width="200" height="78" rx="12" class="box"/><text x="120" y="60" text-anchor="middle" class="t"><tspan class="b">Google Business Profile</tspan><tspan x="120" dy="19" class="s">reviews, maps, free clicks</tspan></text></g>
+  <g><rect x="260" y="32" width="200" height="78" rx="12" class="box"/><text x="360" y="60" text-anchor="middle" class="t"><tspan class="b">Google Ads and Local Services</tspan><tspan x="360" dy="19" class="s">highest intent, your own account</tspan></text></g>
+  <g><rect x="500" y="32" width="200" height="78" rx="12" class="box"/><text x="600" y="60" text-anchor="middle" class="t"><tspan class="b">Facebook and Instagram ads</tspan><tspan x="600" dy="19" class="s">lead forms, your own account</tspan></text></g>
+  <g><rect x="740" y="32" width="240" height="78" rx="12" class="box"/><text x="860" y="60" text-anchor="middle" class="t"><tspan class="b">YouTube, social and AI search</tspan><tspan x="860" dy="19" class="s">your channels, your name</tspan></text></g>
+  <g><rect x="300" y="200" width="400" height="150" rx="14" class="hub"/><text x="500" y="236" text-anchor="middle" class="t w"><tspan class="h">Your website: home base</tspan><tspan x="500" dy="26" class="s">Next.js on Vercel, code in your GitHub, hosted free</tspan><tspan x="500" dy="20" class="s">schema for Google and AI search, stars per service</tspan><tspan x="500" dy="20" class="s">funnels: questions, address autofill, offer, booking</tspan></text></g>
+  <g><rect x="20" y="220" width="230" height="110" rx="12" class="box"/><text x="135" y="250" text-anchor="middle" class="t"><tspan class="b">Phones and AI receptionist</tspan><tspan x="135" dy="19" class="s">tracked numbers on a Tier 1 carrier</tspan><tspan x="135" dy="18" class="s">answers, transfers to you, returns</tspan><tspan x="135" dy="18" class="s">to the AI to book or take a message</tspan></text></g>
+  <g><rect x="750" y="220" width="230" height="110" rx="12" class="box"/><text x="865" y="250" text-anchor="middle" class="t"><tspan class="b">Reviews per service</tspan><tspan x="865" dy="19" class="s">existing reviews cross-referenced</tspan><tspan x="865" dy="18" class="s">with your jobs; new ones collected</tspan><tspan x="865" dy="18" class="s">automatically after every job</tspan></text></g>
+  <g><rect x="200" y="430" width="600" height="110" rx="14" class="hub"/><text x="500" y="462" text-anchor="middle" class="t w"><tspan class="h">Your CRM</tspan><tspan x="500" dy="26" class="s">pipelines, automations, AI text and email reply within 60 seconds</tspan><tspan x="500" dy="20" class="s">booking, call tracking, closed-job value, return on ad spend dashboard</tspan></text></g>
+  <g><rect x="20" y="590" width="280" height="64" rx="12" class="box own"/><text x="160" y="617" text-anchor="middle" class="t"><tspan class="b">You own all of it</tspan><tspan x="160" dy="19" class="s">export data, port numbers, take the code</tspan></text></g>
+  <g><rect x="360" y="590" width="280" height="64" rx="12" class="box"/><text x="500" y="617" text-anchor="middle" class="t"><tspan class="b">Booked calls and appointments</tspan><tspan x="500" dy="19" class="s">leads that already want to work with you</tspan></text></g>
+  <g><rect x="700" y="590" width="280" height="64" rx="12" class="box"/><text x="840" y="617" text-anchor="middle" class="t"><tspan class="b">Closed jobs and revenue</tspan><tspan x="840" dy="19" class="s">goal: at least $2 back per $1 spent</tspan></text></g>
+  <path d="M120 110 L120 220" class="arrow"/><path d="M360 110 L420 200" class="arrow"/><path d="M600 110 L560 200" class="arrow"/><path d="M860 110 L700 205" class="arrow"/>
+  <path d="M250 275 L300 275" class="arrow"/><path d="M750 275 L700 275" class="arrow"/>
+  <path d="M135 330 L135 400 L260 400 L260 430" class="arrow"/><path d="M500 350 L500 430" class="arrow"/><path d="M865 330 L865 400 L740 400 L740 430" class="arrow"/>
+  <path d="M500 540 L500 590" class="arrow"/><path d="M640 622 L700 622" class="arrow"/>
+  <path d="M300 622 L360 622" class="arrow" style="stroke-dasharray:4 4"/>
+  <path d="M980 590 L992 590 L992 71 L980 71" class="arrow" style="stroke-dasharray:4 4"/>
+  <text x="980" y="165" class="lab" text-anchor="end">Spend follows results</text>
+</svg>
+<!-- @@END@@ -->
+
+<!-- @@SERVICE_CARDS@@ -->
+<article class="card"><span class="k">01 · Website</span><h3>A website you own, hosted free</h3><p>Next.js, the code in your GitHub, on Vercel. Preview every change before it goes live. Stop paying Wix or GoDaddy.</p><ul class="check-list"><li>Service pages per service and per city</li><li>Reviews and stars on every page</li><li>Loads fast on a phone in a driveway</li></ul></article>
+<article class="card"><span class="k">02 · Search and AI search</span><h3>Found by Google and by AI</h3><p>Schema on every page: FAQs, authorship, services and review stars per service, so Gemini and ChatGPT can recommend you by name.</p><ul class="check-list"><li>Local pages that answer real questions</li><li>Structured data an AI can read</li><li>Monthly rank and mention report</li></ul></article>
+<article class="card"><span class="k">03 · Reviews</span><h3>Google profile and reviews, worked hard</h3><p>Complete profiles get seven times more clicks. We request a review after every job and answer every one.</p><ul class="check-list"><li>Profile fully built out and posted weekly</li><li>Review requests by text, timed to the job</li><li>Every review answered in your voice</li></ul></article>
+<article class="card"><span class="k">04 · Funnels</span><h3>Funnels, not contact forms</h3><p>Qualifying questions, address autofill, your offer and your reviews, then a booking calendar or a call-back button.</p><ul class="check-list"><li>20 to 30% conversion against a 5% average</li><li>One funnel per service and per ad</li><li>Every submission lands in the CRM</li></ul></article>
+<article class="card"><span class="k">05 · Phones</span><h3>An AI receptionist that gets you the call first</h3><p>Clear audio on a Tier 1 carrier. Takes details, rings your team, and if nobody answers, books a callback or takes a message.</p><ul class="check-list"><li>One tracked number per source</li><li>Call recording and transcripts</li><li>After-hours booking, not voicemail</li></ul></article>
+<article class="card"><span class="k">06 · CRM</span><h3>Your CRM, with AI follow-up</h3><p>Text and email reply in under a minute, pipelines, booking, closed-job value and the return-on-spend dashboard.</p><ul class="check-list"><li>Every lead answered in under 60 seconds</li><li>Pipeline from lead to paid job</li><li>The dashboard that sets next month’s budget</li></ul></article>
+<article class="card"><span class="k">07 · Ads</span><h3>Google, Local Services and Meta ads, in your name</h3><p>Your accounts, your card, our management. Budget up in busy months, down in slow ones, never a contract.</p><ul class="check-list"><li>Local Services Ads with the guaranteed badge</li><li>Search for the jobs you want</li><li>Meta for the offers that fill the calendar</li></ul></article>
+<article class="card"><span class="k">08 · Ownership</span><h3>Never locked in</h3><p>Export your data, port your numbers, take the code. If you leave, we help the next provider get set up.</p><ul class="check-list"><li>Month to month</li><li>Everything in your name</li><li>Free hosting for life of the site</li></ul></article>
+<!-- @@END@@ -->
+
+<!-- @@TRADE_CARDS@@ -->
+<button class="trade-card" type="button" data-trade="HVAC"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.2 2.2M16.2 16.2l2.2 2.2M5.6 18.4l2.2-2.2M16.2 7.8l2.2-2.2"/></svg></span>HVAC<small>Heating and cooling</small></button>
+<button class="trade-card" type="button" data-trade="Plumbing"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6M8 9h8v4a4 4 0 0 1-8 0zM12 17v4"/></svg></span>Plumbing<small>Repair, drains, water heaters</small></button>
+<button class="trade-card" type="button" data-trade="Electrical"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2L5 14h6l-1 8 9-13h-6z"/></svg></span>Electrical<small>Panels, EV chargers, repair</small></button>
+<button class="trade-card" type="button" data-trade="Roofing"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 12l9-8 9 8M5 11v9h14v-9"/></svg></span>Roofing<small>Repair and replacement</small></button>
+<button class="trade-card" type="button" data-trade="Garage door"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 10l9-6 9 6v10H3zM7 14h10M7 17h10"/></svg></span>Garage door<small>Springs, openers, installs</small></button>
+<button class="trade-card" type="button" data-trade="Pest control"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="13" rx="5" ry="7"/><path d="M12 6V3M7 10l-3-2M17 10l3-2M7 16l-3 2M17 16l3 2"/></svg></span>Pest control<small>Quarterly and one-time</small></button>
+<button class="trade-card" type="button" data-trade="Landscaping"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21v-8M12 13c-4 0-6-3-6-7 4 0 6 3 6 7zM12 13c4 0 6-3 6-7-4 0-6 3-6 7zM4 21h16"/></svg></span>Landscaping<small>Maintenance and design</small></button>
+<button class="trade-card" type="button" data-trade="Painting"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="4" y="3" width="14" height="6" rx="1"/><path d="M18 6h2v5h-9v3M11 14h2v7h-2z"/></svg></span>Painting<small>Interior and exterior</small></button>
+<button class="trade-card" type="button" data-trade="Window and pressure washing"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4zM12 4v16M4 12h16"/></svg></span>Window and pressure washing<small>Residential and commercial</small></button>
+<button class="trade-card" type="button" data-trade="Handyman"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7l3 3M3 21l6-6M14.5 3.5a4 4 0 0 0 5 5l-9 9a2 2 0 0 1-3-3z"/></svg></span>Handyman<small>Repairs and small jobs</small></button>
+<button class="trade-card" type="button" data-trade="Mobile mechanic"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 13l2-5h14l2 5v5H3zM7 18v2M17 18v2"/><circle cx="7.5" cy="14.5" r="1"/><circle cx="16.5" cy="14.5" r="1"/></svg></span>Mobile mechanic<small>At the driveway</small></button>
+<button class="trade-card" type="button" data-trade="Windows and doors"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M15 12h1"/></svg></span>Windows and doors<small>Replacement and install</small></button>
+<button class="trade-card" type="button" data-trade="Solar"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 18l2-10h12l2 10zM4 14h16M9 8l-1 10M15 8l1 10M12 18v3"/></svg></span>Solar<small>Sales and installation</small></button>
+<button class="trade-card" type="button" data-trade="Flooring"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 6h18v12H3zM3 10h18M3 14h18M9 6v4M15 10v4M9 14v4"/></svg></span>Flooring<small>Tile, wood, vinyl, carpet</small></button>
+<button class="trade-card" type="button" data-trade="Remodeling"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10-10-4-4L4 16zM13 7l4 4"/></svg></span>Remodeling<small>Kitchens, baths, additions</small></button>
+<button class="trade-card" type="button" data-trade="Other home service" style="border-style:dashed"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>Other home service<small>Pool, appliance, junk removal</small></button>
+<!-- @@END@@ -->
+
+<!-- @@TRADE_OPTIONS@@ -->
+<option>HVAC</option><option>Plumbing</option><option>Electrical</option><option>Roofing</option><option>Garage door</option><option>Pest control</option><option>Landscaping</option><option>Painting</option><option>Window and pressure washing</option><option>Handyman</option><option>Mobile mechanic</option><option>Windows and doors</option><option>Solar</option><option>Flooring</option><option>Remodeling</option><option>Other home service</option>
+<!-- @@END@@ -->
+
+<!-- @@FAQ_BASE@@ -->
+<details><summary>What if I already get plenty of work from referrals?</summary><p>Good. Referrals check you on Google before they call, and referrals do not scale when you want a third truck. We make sure what they find closes the deal, and we build the second engine for when you want it.</p></details>
+<details><summary>I already have a website and ad accounts. Can you use them?</summary><p>Yes. We audit what you have on the first call, keep what is working and fix what is not. A site or ad account that is already set up simply lowers your setup fee, because there is less to build. We may tune them (tracking, landing pages, review schema, the way the phone is answered), but we never start over for the sake of it.</p></details>
+<details><summary>What if I want to leave?</summary><p>You leave with everything: the website code, the data, the phone numbers, the ad accounts. We will help the next provider get set up. Month to month, cancel any time.</p></details>
+<details><summary>Can I build a website with AI for free?</summary><p>You can, and it will look fine. Most AI-built sites are invisible to Google and to ChatGPT because nothing is structured underneath. Ours ship with the schema, the stars and the funnels wired in, on the same stack the professionals use, and you own the code.</p></details>
+<details><summary>Do you work outside Phoenix?</summary><p>Yes. Everything is remote-capable, and we expand city by city. Phoenix owners get Brian in person for the proposal.</p></details>
+<!-- @@END@@ -->
+
+<!-- @@BRIAN_BIO@@ -->
+<div class="bio">
+  <div>
+    <img class="face" src="__BRIAN__" alt="Brian Greenberg" width="800" height="968">
+    <dl class="stats" style="grid-template-columns:1fr;gap:18px;margin-top:28px">
+      <div class="stat"><dt style="font-size:36px">$50M+</dt><dd>sold online, no cold calls</dd></div>
+      <div class="stat"><dt style="font-size:36px">200,000+</dt><dd>leads through his platform</dd></div>
+      <div class="stat"><dt style="font-size:36px">3</dt><dd>companies built and sold</dd></div>
+    </dl>
+  </div>
+  <div>
+    <h2>Brian Greenberg</h2>
+    <p class="muted" style="margin-top:8px">Founder. Author of <a href="https://briangreenberg.com" target="_blank" rel="noopener"><em>The Salesman Who Doesn’t Sell</em></a>, a marketing guide to making money while you sleep. More at <a href="https://briangreenberg.com" target="_blank" rel="noopener">briangreenberg.com</a>.</p>
+    <p class="lead" style="margin-top:24px">Brian built <b>True Blue Life Insurance</b> from a one-person agency into a company that sold more than $50 million of policies online, ranked in the top 1% of agents worldwide, and sold it in 2022. He did it without cold calls: his customers found him on Google, read his reviews, and booked themselves. He built and sold two more companies the same way, an SEO agency in 2012 and BJG Digital in 2025, and today runs <b>Quoteplicity</b>, the quoting platform behind more than 200,000 insurance leads.</p>
+    <p style="margin-top:18px">“I never wanted to pressure anyone. So I built systems where customers sell themselves.” That system, the reviews, the search rankings and the booking funnel, is what Rocket Llama Labs installs for one trade in one area at a time. Branson and Madison run the day to day; Brian runs the strategy and sits in on every proposal.</p>
+    <blockquote>“I competed for the top spots on the internet nationally against the biggest players. Doing it for one city and one trade is the fight I want.”<cite>Brian Greenberg</cite></blockquote>
+  </div>
+</div>
+<!-- @@END@@ -->
+
+<!-- @@TEAM@@ -->
+<div class="grid grid-2">
+  <article class="card"><span class="chip">Operations</span><h3>Branson</h3><p class="muted">Placeholder bio. Two sentences on what Branson runs: onboarding, the build, the phones and the CRM.</p></article>
+  <article class="card"><span class="chip">Client work</span><h3>Madison</h3><p class="muted">Placeholder bio. Two sentences on what Madison runs: reviews, ads, the monthly report and the client calls.</p></article>
+</div>
+<!-- @@END@@ -->
+
+<!-- @@BOOK_ASIDE@@ -->
+<aside class="aside">
+  <div class="card card-mist"><p class="eyebrow">What happens next</p><ol><li><b>Pick a time.</b>Company, name, email, and you are booked.</li><li><b>A few quick questions, if you have a minute.</b>One per screen, most a single tap, so the call is about your business from the first minute. Skip them if you are in a hurry.</li><li><b>The walkthrough.</b>Thirty to forty-five minutes. What the top company in your trade is doing to get customers, and your numbers on the same system.</li></ol></div>
+  <div class="card"><p class="eyebrow">The free live audit</p><h4 style="margin-top:8px">Ten minutes, on screen, and you keep the notes.</h4><ul class="check-list" style="font-size:15px"><li>Your Google Business Profile: completeness, photos, posts, and map rank for your top three searches</li><li>Your reviews: count, pace and replies, against the top company in your trade</li><li>Your website: speed on a phone, what a search engine and an AI can read, and whether a lead can book</li><li>The phone test: we call your number and time how long it takes to reach a person</li></ul></div>
+  <div class="card card-navy"><p class="eyebrow">The rule</p><p><b>Limited spots per trade per area.</b> We cap how many companies we take in each trade and area, so our clients are never fighting each other for the same calls. Your spot is yours for as long as you are with us.</p></div>
+</aside>
+<!-- @@END@@ -->
+
+<!-- @@CONSENT@@ -->
+<label class="consent"><input type="checkbox"><span><b style="color:var(--navy)">Yes, text me about this request.</b> By checking this box and providing your mobile number, you agree to receive text messages from Rocket Llama Labs about this request: your qualification result, your walkthrough booking and reminders, and your free live audit. No marketing texts without a separate opt-in. Message frequency varies. Message and data rates may apply. Reply STOP to opt out at any time and HELP for help. Consent is not a condition of doing business with us. See our <a href="#book">Privacy Policy</a> and <a href="#book">Terms</a>.</span></label>
+<!-- @@END@@ -->
+
+<!-- @@BRAND_RULES@@ -->
+<ol class="rules">
+  <li><span class="n">1</span><span>Supplied logo files only, never redrawn or recolored. The footer wordmark sits on a white plate instead of being inverted.</span></li>
+  <li><span class="n">2</span><span>Clear space around every logo of at least the cap height of the R.</span></li>
+  <li><span class="n">3</span><span>Navy Montserrat Bold headings. 16px Inter body minimum. Nothing under 12px.</span></li>
+  <li><span class="n">4</span><span>One blue primary button per screen. The header and the mobile action bar are outlined navy, so each page has exactly one blue button.</span></li>
+  <li><span class="n">5</span><span>Four colors only: navy, blue, mist, white. Photography sits under a flat navy overlay. The mascot keeps its own palette.</span></li>
+  <li><span class="n">6</span><span>No gradients. Every band, bar, ring and chart is a flat fill.</span></li>
+  <li><span class="n">7</span><span>Sentence case everywhere. No exclamation marks. No all-caps headings, no emoji.</span></li>
+  <li><span class="n">8</span><span>One H1 per page, alt text on every logo, the mascot as favicon.</span></li>
+</ol>
+<div class="swatches">
+  <div class="swatch"><div class="color" style="background:#022C6A;color:#fff">brand-navy</div><div class="info"><strong>#022C6A</strong>All text and every dark background.</div></div>
+  <div class="swatch"><div class="color" style="background:#006EFF;color:#fff">brand-blue</div><div class="info"><strong>#006EFF</strong>The one accent.</div></div>
+  <div class="swatch"><div class="color" style="background:#DFE9F2;color:#022C6A">brand-mist</div><div class="info"><strong>#DFE9F2</strong>The one tint.</div></div>
+  <div class="swatch"><div class="color" style="background:#FFFFFF;color:#022C6A">white</div><div class="info"><strong>#FFFFFF</strong>Page background.</div></div>
+</div>
+<!-- @@END@@ -->
+
+<!-- @@FOOTER@@ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div><span class="logo-plate"><img src="__WORDMARK__" alt="Rocket Llama Labs" width="320" height="32"></span><p style="margin-top:18px;max-width:36ch;color:var(--mist)">Marketing and technology for local home services. Phoenix, Arizona. Brian, Branson and Madison.</p></div>
+      <div><h4>Pages</h4><ul><li><a href="#home" data-nav="home">Home</a></li><li><a href="#services" data-nav="services">Services</a></li><li><a href="#industries" data-nav="industries">Industries</a></li><li><a href="#pricing" data-nav="pricing">Pricing</a></li><li><a href="#about" data-nav="about">About</a></li></ul></div>
+      <div><h4>Contact</h4><address>Rocket Llama Labs LLC<br>Street address to confirm<br>Phoenix, AZ 85016<br><a href="tel:+16025550100">(602) 555-0100</a><br><a href="mailto:hello@rocketllamalabs.com">hello@rocketllamalabs.com</a></address></div>
+      <div><h4>Hours</h4><address>Monday to Friday<br>8 am to 5 pm Arizona time<br><br>Leads are answered in under 60 seconds, 24 hours a day.</address></div>
+    </div>
+    <div class="bottom"><span>© 2026 Rocket Llama Labs LLC</span><span class="mono" style="font-size:13px">__VERSION_LABEL__</span></div>
+  </div>
+</footer>
+<div class="actionbar" aria-label="Quick actions">
+  <a class="btn btn-secondary" href="tel:+16025550100">Call</a>
+  <a class="btn btn-secondary" href="#book" data-nav="book">Book a walkthrough</a>
+</div>
+<!-- @@END@@ -->
+
+<!-- @@TABS_JS@@ -->
+  var pages = PAGES;
+  var menuBtn = document.querySelector('.menu-btn'), mobileNav = document.getElementById('mobile-nav');
+  function show(name, push, scrollTo) {
+    if (pages.indexOf(name) < 0) name = 'home';
+    pages.forEach(function (p) { var el = document.getElementById('page-' + p); if (el) el.classList.toggle('active', p === name); });
+    document.querySelectorAll('.nav [data-nav], .mobile-nav [data-nav]').forEach(function (a) { if (a.getAttribute('data-nav') === name) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    document.body.setAttribute('data-page', name);
+    var pg = document.getElementById('page-' + name); document.title = pg.getAttribute('data-title') || 'Rocket Llama Labs';
+    if (push && location.hash !== '#' + name) history.pushState(null, '', '#' + name);
+    mobileNav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false');
+    document.dispatchEvent(new CustomEvent('pageshow:' + name));
+    if (scrollTo) { var el = document.getElementById(scrollTo); if (el) { var y = el.getBoundingClientRect().top + window.pageYOffset - 72; window.scrollTo({ top: y, behavior: 'smooth' }); return; } }
+    window.scrollTo({ top: 0 });
+    if (window.revealAll) window.revealAll();
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-nav], [data-scroll]'); if (!a) return;
+    e.preventDefault();
+    var target = a.getAttribute('data-nav') || document.body.getAttribute('data-page');
+    var trade = a.getAttribute('data-trade'); if (trade && window.setTrade) window.setTrade(trade);
+    var city = a.getAttribute('data-city'); if (city && window.setCity) window.setCity(city);
+    show(target, true, a.getAttribute('data-scroll'));
+  });
+  menuBtn.addEventListener('click', function () { var o = mobileNav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+  window.addEventListener('popstate', function () { show(location.hash.replace('#', ''), false); });
+  /* booking slots, shared */
+  document.querySelectorAll('.days').forEach(function (days) { var names = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], d = new Date(), added = 0; while (added < 6) { d.setDate(d.getDate() + 1); if (d.getDay() === 0 || d.getDay() === 6) continue; var l = document.createElement('label'); l.className = 'slot' + (added === 0 ? ' sel' : ''); l.innerHTML = '<input type="radio" name="d-' + days.id + '"' + (added === 0 ? ' checked' : '') + '>' + names[d.getDay()] + '<small>' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + '</small>'; days.appendChild(l); added++; } });
+  document.addEventListener('change', function (e) { var t = e.target; if (t.type !== 'radio' || !t.closest('.slot')) return; document.querySelectorAll('input[name="' + t.name + '"]').forEach(function (r) { r.closest('.slot').classList.toggle('sel', r.checked); }); });
+  /* reveal */
+  if ('IntersectionObserver' in window) { var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .1 }); document.querySelectorAll('.card, .stat, .seo-item, .step, .trade-card').forEach(function (el) { el.classList.add('reveal'); io.observe(el); }); window.revealAll = function () { document.querySelectorAll('.page.active .reveal').forEach(function (el) { setTimeout(function () { el.classList.add('in'); }, 400); }); }; }
+<!-- @@END@@ -->
