@@ -125,7 +125,7 @@ ADJUST_CSS = '''
 .{S} .rot .rslide:nth-child(3){animation-delay:14s}
 .{S} .rot .rslide:nth-child(4){animation-delay:21s}
 .{S} .rot .rslide:not(:first-child){pointer-events:none}
-@keyframes {S}txt{0%{opacity:0;transform:translateY(14px)}3%{opacity:1;transform:none}22.5%{opacity:1;transform:none}25%{opacity:0;transform:translateY(-10px)}100%{opacity:0;transform:translateY(14px)}}
+@keyframes {S}txt{0%{opacity:0;transform:translateY(14px)}3%{opacity:1;transform:none}24.5%{opacity:1;transform:none}27.5%{opacity:0;transform:translateY(-10px)}100%{opacity:0;transform:translateY(14px)}}
 @media (prefers-reduced-motion:reduce){
   .{S} .rot .rslide{animation:none;display:none}
   .{S} .rot .rslide:first-child{display:block;opacity:1}
