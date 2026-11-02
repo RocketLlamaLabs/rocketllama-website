@@ -124,6 +124,10 @@ c+='''
 .v3 .hero::after{background:linear-gradient(180deg,rgba(4,23,58,.22) 0%,rgba(4,23,58,.12) 35%,rgba(4,23,58,.82) 100%)}
 .v3 .band::before{background:linear-gradient(90deg,rgba(4,23,58,.78) 0%,rgba(4,23,58,.48) 55%,rgba(4,23,58,.12) 100%)}
 .v3 .band.center::before{background:linear-gradient(180deg,rgba(4,23,58,.3),rgba(4,23,58,.7))}
+/* Kickers over photos and dark bands are white, not blue, so they read on any image. */
+.v3 .hero .kicker,.v3 .band .kicker,.v3 .watch .kicker,.v3 .fhero .kicker{color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+.v3 .hero .kicker::before,.v3 .band .kicker::before,.v3 .watch .kicker::before,.v3 .fhero .kicker::before{background:#fff}
+.v3 .abox.rule .k{color:#fff}
 '''
 open(cp,'w').write(c)
 print('v3 written')
