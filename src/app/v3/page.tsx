@@ -31,8 +31,12 @@ export default function Page() {
   </div>
   <div className="wrap in">
     <p className="kicker">Marketing and technology for local home services</p>
-    <h1>Your calendar should be <em>full.</em></h1>
-    <p className="lede">For plumbers, electricians, HVAC, roofers and every trade that goes to a customer&rsquo;s home. Calls, forms and free-estimate requests, every one answered in under a minute and booked onto your calendar. Every dollar tracked to a paid job. You own all of it.</p>
+    <div className="rot">
+      <div className="rslide"><h1>Your calendar should be <em>full.</em></h1><p className="lede">For plumbers, electricians, HVAC, roofers and every trade that goes to a customer&rsquo;s home. Calls, forms and free-estimate requests, every one answered in under a minute and booked onto your calendar. Every dollar tracked to a paid job. You own all of it.</p></div>
+      <div className="rslide"><h1>Every call <em>answered</em> in under a minute.</h1><p className="lede">Calls, forms and estimate requests get a text and an email back in under a minute, in your voice, even when you are on a job. The phone still rings you first. If nobody can pick up, the AI books the appointment.</p></div>
+      <div className="rslide"><h1>Found by Google. <em>Recommended by AI.</em></h1><p className="lede">A website you own, built with the structure Google and ChatGPT can read. Your Google profile and reviews worked hard. Ads in your name. One system, built to get the call.</p></div>
+      <div className="rslide"><h1>One company per trade, <em>per city.</em></h1><p className="lede">We take one company per trade per city, so our clients never fight each other for the same calls. Your spot is yours for as long as you are with us. When it is gone, it is gone.</p></div>
+    </div>
     <div className="ctas"><a className="btn light" href="/v3/book">Book a walkthrough</a><a className="btn outline" href="#check">Take the 60-second check</a></div>
     <p className="trust"><b>Month to month.</b> No contracts. <b>Limited spots per trade per area.</b> Hosting free. <b>Not happy?</b> We work free until you are.</p>
   </div>

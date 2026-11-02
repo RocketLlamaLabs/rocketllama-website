@@ -83,6 +83,18 @@ for dirpath,_,files in os.walk(dst):
             s=s.replace('<a href="#pricing">Pricing</a>','<a href="#plan">Your plan</a>')
             s=s.replace('A site or ad account that is already set up simply lowers your setup fee, because there is less to build.','A site or ad account that is already set up means there is less to build, and your plan reflects that.')
             s=s.replace("<SixtySecondCheck />",'<SixtySecondCheck base="/v3" />').replace("<FreeScan />",'<FreeScan base="/v3" />')
+            # Four headline + subtext pairs that crossfade in step with the four hero photos.
+            m=re.search(r'    <h1>Your calendar should be <em>full\.</em></h1>\n    <p className="lede">(.*?)</p>\n',s,flags=re.S)
+            assert m, 'hero headline not found'
+            lede1=m.group(1)
+            rot='''    <div className="rot">
+      <div className="rslide"><h1>Your calendar should be <em>full.</em></h1><p className="lede">'''+lede1+'''</p></div>
+      <div className="rslide"><h1>Every call <em>answered</em> in under a minute.</h1><p className="lede">Calls, forms and estimate requests get a text and an email back in under a minute, in your voice, even when you are on a job. The phone still rings you first. If nobody can pick up, the AI books the appointment.</p></div>
+      <div className="rslide"><h1>Found by Google. <em>Recommended by AI.</em></h1><p className="lede">A website you own, built with the structure Google and ChatGPT can read. Your Google profile and reviews worked hard. Ads in your name. One system, built to get the call.</p></div>
+      <div className="rslide"><h1>One company per trade, <em>per city.</em></h1><p className="lede">We take one company per trade per city, so our clients never fight each other for the same calls. Your spot is yours for as long as you are with us. When it is gone, it is gone.</p></div>
+    </div>
+'''
+            s=s[:m.start()]+rot+s[m.end():]
         # links: /v2 -> /v3 except the shared assets under /v2/img and /v2/video
         s=re.sub(r'(?<!components)/v2(?!/img|/video)(?=[/#"?\'`\s)])','/v3',s)
         s=s.replace('/v3#pricing">Pricing</a>','/v3#plan">Your plan</a>').replace('<a href="/v3#pricing">Pricing</a>','<a href="/v3#plan">Your plan</a>')
@@ -128,6 +140,20 @@ c+='''
 .v3 .hero .kicker,.v3 .band .kicker,.v3 .watch .kicker,.v3 .fhero .kicker{color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.35)}
 .v3 .hero .kicker::before,.v3 .band .kicker::before,.v3 .watch .kicker::before,.v3 .fhero .kicker::before{background:#fff}
 .v3 .abox.rule .k{color:#fff}
+/* The emphasised word sits on a blue highlight so it reads on any photo. */
+.v3 .hero h1 em{color:#fff;background:var(--accent);padding:0 .14em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* Rotating headlines: four text slides on the same 28s cycle as the photos (7s each). */
+.v3 .rot{display:grid}
+.v3 .rot .rslide{grid-area:1/1;opacity:0;animation:v3txt 28s linear infinite;will-change:opacity,transform}
+.v3 .rot .rslide:nth-child(2){animation-delay:7s}
+.v3 .rot .rslide:nth-child(3){animation-delay:14s}
+.v3 .rot .rslide:nth-child(4){animation-delay:21s}
+.v3 .rot .rslide:not(:first-child){pointer-events:none}
+@keyframes v3txt{0%{opacity:0;transform:translateY(14px)}3.5%{opacity:1;transform:none}23.5%{opacity:1;transform:none}27%{opacity:0;transform:translateY(-10px)}100%{opacity:0;transform:translateY(14px)}}
+@media (prefers-reduced-motion:reduce){
+  .v3 .rot .rslide{animation:none;display:none}
+  .v3 .rot .rslide:first-child{display:block;opacity:1}
+}
 '''
 open(cp,'w').write(c)
 print('v3 written')
