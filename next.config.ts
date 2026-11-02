@@ -14,6 +14,13 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // Version 3 moved to the root; its old /v3 links still work.
+  async redirects() {
+    return [
+      { source: "/v3", destination: "/", permanent: false },
+      { source: "/v3/:path*", destination: "/:path*", permanent: false },
+    ];
+  },
   // Versions 4, 5 and 6 are static pages under /public/mockups; these give
   // them version URLs like the Next.js versions have.
   async rewrites() {

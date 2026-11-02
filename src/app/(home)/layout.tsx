@@ -17,14 +17,14 @@ const sourceSerif = Source_Serif_4({
 
 export const metadata: Metadata = {
   title: {
-    default: "Rocket Llama Labs · Version 3",
-    template: "%s · Rocket Llama Labs v3",
+    default: "Rocket Llama Labs",
+    template: "%s · Rocket Llama Labs",
   },
 };
 
-// Every page under /v3 renders inside .v3, which scopes the sample's styles
-// (src/app/v3/v2.css) away from the admin and the v1 homepage.
-export default function V3Layout({ children }: LayoutProps<"/v3">) {
+// Every page under  renders inside .v2, which scopes the sample's styles
+// (src/app/v2.css) away from the admin and the v1 homepage.
+export default function V3Layout({ children }: LayoutProps<"/">) {
   return (
     <div
       className={`v3 ${libreFranklin.variable} ${sourceSerif.variable} flex-1`}

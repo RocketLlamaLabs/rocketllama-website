@@ -17,10 +17,10 @@ export const siteVersions: SiteVersion[] = [
   {
     id: "v1",
     name: "Version 1",
-    status: "live",
-    href: "/",
+    status: "sample",
+    href: "/v1",
     summary:
-      "The software and AI studio homepage, mocked. Brand book v1.0: navy, blue, mist, Montserrat and Inter.",
+      "The software and AI studio homepage, mocked. Brand book v1.0: navy, blue, mist, Montserrat and Inter. It was the site at / until version 3 replaced it.",
     origin: "Built in this repository, October 2026.",
   },
   {
@@ -38,14 +38,14 @@ export const siteVersions: SiteVersion[] = [
   {
     id: "v3",
     name: "Version 3",
-    status: "sample",
-    href: "/v3",
+    status: "live",
+    href: "/",
     kitHref: "/admin/website/v2",
     kitLabel: "Version 2 kit (shared)",
     summary:
       "Version 2's layout in the Rocket Llama colors: navy, blue and mist instead of green, the stacked logo (mascot, then Rocket / Llama on two lines), and no price list. Pricing is replaced by a custom-plan section that sends people to book a call.",
     origin:
-      "Generated from the version 2 source by scripts/make-v3.py, November 2026. Same pages, quizzes, funnel and photos.",
+      "Generated from the version 2 source by scripts/make-v3.py, November 2026. Same pages, quizzes, funnel and photos. Live at the root since November 2026; /v3 redirects there.",
   },
   {
     id: "v4",

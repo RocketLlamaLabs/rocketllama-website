@@ -15,8 +15,8 @@ export default function Page() {
   return (
     <>
 <nav className="nav"><div className="wrap in">
-  <a className="wm" href="/v3" aria-label="Rocket Llama Labs home"><img src="/brand/logo-stacked.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links" style={{display:"flex"} as CSSProperties}><a className="backlink" href="/v3">&larr; Back to the site</a></div>
+  <a className="wm" href="/" aria-label="Rocket Llama Labs home"><img src="/brand/logo-stacked.svg" alt="Rocket Llama Labs" /></a>
+  <div className="links" style={{display:"flex"} as CSSProperties}><a className="backlink" href="/">&larr; Back to the site</a></div>
   <span className="cnt" style={{fontFamily:"var(--sans)",fontSize:"13px",fontWeight:"600",color:"var(--muted)"} as CSSProperties}>About a minute</span>
 </div></nav>
 <main>

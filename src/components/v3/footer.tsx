@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// Footer for the version 3 pages: the version 2 layout in the Rocket Llama
-// colors, with the stacked logo (mascot, then Rocket / Llama on two lines).
+// Footer for version 3, the live site at the root: the version 2 layout in the
+// Rocket Llama colors, with the stacked logo (mascot, then Rocket / Llama on two lines).
 export function V3Footer({ note }: { note: string }) {
   return (
     <footer>
       <div className="wrap in">
-        <Link className="wm" href="/v3" aria-label="Rocket Llama Labs home">
+        <Link className="wm" href="/" aria-label="Rocket Llama Labs home">
           <Image
             src="/brand/logo-stacked.svg"
             alt="Rocket Llama Labs"

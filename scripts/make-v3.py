@@ -1,11 +1,14 @@
-# Generates src/app/v3 (and src/components/v3/footer.tsx) from the version 2
-# source: same pages, rescoped under .v3, recolored to the Rocket Llama brand,
-# stacked logo, pricing replaced by the custom-plan section. Re-run after
-# editing version 2 to carry changes forward:  python3 scripts/make-v3.py
+# Generates version 3, the live site at the root (src/app/(home): /, /services,
+# /book, /qualify, /about-brian) and src/components/v3/footer.tsx from the
+# version 2 source: same pages, rescoped under .v3, recolored to the Rocket
+# Llama brand, stacked logo, pricing replaced by the custom-plan section,
+# rotating hero headlines. Re-run after editing version 2 to carry changes
+# forward:  python3 scripts/make-v3.py
 import os, re, shutil
 root=os.path.abspath(os.path.join(os.path.dirname(__file__),'..'))
-src=os.path.join(root,'src/app/v2'); dst=os.path.join(root,'src/app/v3')
-if os.path.exists(dst): shutil.rmtree(dst)
+src=os.path.join(root,'src/app/v2'); dst=os.path.join(root,'src/app/(home)')
+for old in (dst, os.path.join(root,'src/app/v3')):
+    if os.path.exists(old): shutil.rmtree(old)
 shutil.copytree(src,dst)
 os.rename(os.path.join(dst,'v2.css'),os.path.join(dst,'v3.css'))
 
@@ -39,13 +42,13 @@ os.makedirs(os.path.join(root,'src/components/v3'),exist_ok=True)
 open(os.path.join(root,'src/components/v3/footer.tsx'),'w').write('''import Image from "next/image";
 import Link from "next/link";
 
-// Footer for the version 3 pages: the version 2 layout in the Rocket Llama
-// colors, with the stacked logo (mascot, then Rocket / Llama on two lines).
+// Footer for version 3, the live site at the root: the version 2 layout in the
+// Rocket Llama colors, with the stacked logo (mascot, then Rocket / Llama on two lines).
 export function V3Footer({ note }: { note: string }) {
   return (
     <footer>
       <div className="wrap in">
-        <Link className="wm" href="/v3" aria-label="Rocket Llama Labs home">
+        <Link className="wm" href="/" aria-label="Rocket Llama Labs home">
           <Image
             src="/brand/logo-stacked.svg"
             alt="Rocket Llama Labs"
@@ -72,7 +75,7 @@ plan_section='''<section id="plan" className="feature"><div className="wrap">
   <p className="kicker">Your plan</p>
   <h2>No price list. A marketing plan written for your company.</h2>
   <p className="sub">Every company is quoted on its own. On the walkthrough we look at your trade, your area, your calendar and what you already have, then write the plan with a number on it. You see the plan before you pay for anything, and you keep it either way.</p>
-  <div className="ctas"><a className="btn" href="/v3/book">Book a call</a><a className="btn ghost" href="#check">Take the 60-second check</a></div>
+  <div className="ctas"><a className="btn" href="/book">Book a call</a><a className="btn ghost" href="#check">Take the 60-second check</a></div>
 </div></section>'''
 for dirpath,_,files in os.walk(dst):
     for f in files:
@@ -82,7 +85,7 @@ for dirpath,_,files in os.walk(dst):
             s=re.sub(r'<section id="pricing">.*?</section>\n',plan_section+'\n',s,flags=re.S)
             s=s.replace('<a href="#pricing">Pricing</a>','<a href="#plan">Your plan</a>')
             s=s.replace('A site or ad account that is already set up simply lowers your setup fee, because there is less to build.','A site or ad account that is already set up means there is less to build, and your plan reflects that.')
-            s=s.replace("<SixtySecondCheck />",'<SixtySecondCheck base="/v3" />').replace("<FreeScan />",'<FreeScan base="/v3" />')
+            s=s.replace("<SixtySecondCheck />",'<SixtySecondCheck base="" />').replace("<FreeScan />",'<FreeScan base="" />')
             # Four headline + subtext pairs that crossfade in step with the four hero photos.
             m=re.search(r'    <h1>Your calendar should be <em>full\.</em></h1>\n    <p className="lede">(.*?)</p>\n',s,flags=re.S)
             assert m, 'hero headline not found'
@@ -95,22 +98,26 @@ for dirpath,_,files in os.walk(dst):
     </div>
 '''
             s=s[:m.start()]+rot+s[m.end():]
-        # links: /v2 -> /v3 except the shared assets under /v2/img and /v2/video
-        s=re.sub(r'(?<!components)/v2(?!/img|/video)(?=[/#"?\'`\s)])','/v3',s)
-        s=s.replace('/v3#pricing">Pricing</a>','/v3#plan">Your plan</a>').replace('<a href="/v3#pricing">Pricing</a>','<a href="/v3#plan">Your plan</a>')
+        # links: /v2/... -> /... (the site lives at the root), except the shared assets under /v2/img and /v2/video
+        s=re.sub(r'(?<!components)/v2(?!/img|/video)(?=[/#"?\'`\s)])','',s)
+        s=s.replace('href=""','href="/"')
+        s=s.replace('<a href="/#pricing">Pricing</a>','<a href="/#plan">Your plan</a>')
         s=s.replace('./v2.css','./v3.css')
         s=s.replace('@/components/v2/footer','@/components/v3/footer').replace('V2Footer','V3Footer')
         s=s.replace('src="/brand/wordmark-horizontal-rocket-o.svg"','src="/brand/logo-stacked.svg"')
         s=s.replace('Rocket Llama Labs v2','Rocket Llama Labs v3').replace('Version 2 sample','Version 3').replace('Version 2','Version 3').replace('version 2','version 3').replace('v2 ·','v3 ·')
-        s=s.replace('className={`v2 ${','className={`v3 ${').replace('V2Layout','V3Layout').replace('LayoutProps<"/v2">','LayoutProps<"/v3">')
+        s=s.replace('className={`v2 ${','className={`v3 ${').replace('V2Layout','V3Layout').replace('LayoutProps<"/v2">','LayoutProps<"/">').replace('LayoutProps<"">','LayoutProps<"/">')
+        s=s.replace('    default: "Rocket Llama Labs · Version 3",\n    template: "%s · Rocket Llama Labs v3",','    default: "Rocket Llama Labs",\n    template: "%s · Rocket Llama Labs",')
+        if f=='page.tsx' and dirpath==dst:
+            s=s.replace("  title: 'Home',",'  title: { absolute: "Rocket Llama Labs · Marketing and technology for local home services" },')
         s=s.replace('background:"var(--accent-soft)",borderColor:"#bbf7d0"','background:"var(--accent-soft)",borderColor:"#BFD8FF"')
-        s=s.replace('Website version 3 sample for Rocket Llama Labs: version 3 of the light design.','Website version 3 for Rocket Llama Labs: the version 2 layout in the Rocket Llama colors.')
+        s=s.replace('Website version 3 sample for Rocket Llama Labs: version 3 of the light design.','Marketing and technology for local home services in Phoenix: a website you own, every lead answered in under a minute, every dollar tracked to a paid job.')
         open(p,'w').write(s)
 
 # layout comment + scoping note
 lp=os.path.join(dst,'layout.tsx'); s=open(lp).read()
 s=s.replace('// The version 3 keeps the mockup','// Version 3 keeps the version 2 mockup').replace('// Every page under /v3 renders inside .v2','// Every page under /v3 renders inside .v3')
-s=s.replace('(src/app/v3/v3.css) away from the admin and the v1 homepage.','(src/app/v3/v3.css) away from the admin, the v1 homepage and /v2.')
+s=s.replace('// Every page under /v3 renders inside .v2','// Every page of the live site renders inside .v3').replace('(src/app/v3/v3.css) away from the admin and the v1 homepage.','(src/app/(home)/v3.css) away from the admin, /v1 and /v2.')
 open(lp,'w').write(s)
 
 # ---------- stylesheet: rescope and recolor
