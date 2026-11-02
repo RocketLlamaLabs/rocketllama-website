@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rocket Llama Labs · Direction A · Ignition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: light cinematic. White page, one inset full-bleed photo hero with slow zoom, brand blue + rocket-flame orange accents, soft aurora blooms. */
+:root{
+  --bg:#FFFFFF; --bg2:#F3F7FC; --ink:#0B1A3A; --ink2:#42526B; --ink3:#6B7A94; --accent-text:#0057D9;
+  --navy:#022C6A; --blue:#006EFF; --sky:#38B6FF; --cyan:#19E3FF; --flame:#FF7A1A; --ember:#FF4D2E; --mint:#4DFFB4;
+  --line:rgba(2,44,106,.12); --glass:rgba(255,255,255,.75); --glass2:rgba(2,44,106,.06); --shadow:0 20px 60px rgba(2,44,106,.10);
+  --display:"Montserrat",system-ui,sans-serif; --sans:"Inter",system-ui,sans-serif; --mono:"Inter",system-ui,sans-serif;
+  --max:1240px; --gx:max(20px,env(safe-area-inset-left,0px)); --gxr:max(20px,env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;line-height:1.05;margin:0;text-wrap:balance}
+h1{font-size:clamp(44px,7.2vw,96px);font-weight:900}
+h2{font-size:clamp(32px,4.6vw,58px);font-weight:800}
+h3{font-size:22px;font-weight:700;line-height:1.25}
+p{margin:0}
+.wrap{max-width:var(--max);margin-inline:auto;padding-left:var(--gx);padding-right:var(--gxr)}
+.eyebrow{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-text)}
+.lead{font-size:clamp(17px,1.4vw,21px);color:var(--ink2);max-width:58ch}
+.grad{background:linear-gradient(100deg,var(--blue) 0%,var(--sky) 35%,var(--flame) 70%,var(--ember) 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 7s linear infinite}
+@keyframes shimmer{to{background-position:220% 0}}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:16px;padding:16px 26px;border-radius:999px;text-decoration:none;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s;min-height:48px}
+.btn:hover{transform:translateY(-2px)}
+.btn-fire{background:linear-gradient(90deg,var(--blue),var(--sky));color:#fff;box-shadow:0 10px 30px rgba(0,110,255,.35)}
+.btn-fire:hover{box-shadow:0 14px 50px rgba(0,110,255,.6)}
+.btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn svg{width:18px;height:18px}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+
+/* aurora + grain */
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;border-radius:50%;filter:blur(100px);opacity:.28;animation:drift 22s ease-in-out infinite alternate}
+.aurora i:nth-child(1){width:60vw;height:60vw;left:-15vw;top:-20vw;background:radial-gradient(circle,#006EFF,transparent 62%)}
+.aurora i:nth-child(2){width:50vw;height:50vw;right:-12vw;top:10vh;background:radial-gradient(circle,#FF7A1A,transparent 62%);animation-delay:-8s;opacity:.18}
+.aurora i:nth-child(3){width:45vw;height:45vw;left:30vw;top:60vh;background:radial-gradient(circle,#19E3FF,transparent 62%);animation-delay:-14s;opacity:.18}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(8vw,6vh) scale(1.15)}}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.page{position:relative;z-index:2}
+.glow{position:fixed;z-index:1;width:520px;height:520px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(0,110,255,.10),transparent 60%);transform:translate(-50%,-50%);left:-999px;top:-999px;transition:left .25s ease-out,top .25s ease-out}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:blur(16px);background:rgba(255,255,255,.78);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:84px}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{height:58px;width:auto}
+.menu{display:flex;gap:28px;font-size:15px;font-weight:500;color:var(--ink2)}
+.menu a{text-decoration:none;padding:8px 0;border-bottom:2px solid transparent}
+.menu a:hover,.menu a[aria-current]{color:var(--ink);border-color:var(--blue)}
+.nav .btn{padding:12px 20px;font-size:15px}
+@media (max-width:900px){.menu{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden}
+.hero-media{position:relative;border-radius:28px;overflow:hidden;min-height:720px;box-shadow:var(--shadow);isolation:isolate;max-width:100%}
+.hero-media>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 30%;animation:kenburns 24s ease-in-out infinite alternate}
+.kb{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.kb img{width:100%;height:100%;object-fit:cover;object-position:center 40%;animation:kenburns 24s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.16)}}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding-block:64px 72px}
+.hero-copy{display:grid;gap:26px}
+.hero h1 .line{display:block}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px}
+.proof{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14px;font-weight:500;color:var(--ink2)}
+.proof span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--flame);margin-right:9px}
+@media (max-width:980px){.hero .wrap{grid-template-columns:1fr;padding-block:48px}.hero-media{min-height:560px}}
+
+/* live lead panel */
+.panel{position:absolute;right:18px;bottom:18px;width:min(430px,calc(100% - 36px));z-index:2;background:rgba(255,255,255,.94);border:1px solid rgba(255,255,255,.6);border-radius:22px;color:var(--ink);padding:20px;backdrop-filter:blur(18px);box-shadow:0 30px 60px rgba(2,44,106,.25);display:grid;gap:12px}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.panel-head{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;color:var(--ink3)}
+.live{display:inline-flex;align-items:center;gap:8px;color:#0A8A52}
+.live i{width:8px;height:8px;border-radius:50%;background:#19C37D;box-shadow:0 0 0 0 rgba(25,195,125,.6);animation:pulse 1.6s infinite}
+@keyframes pulse{to{box-shadow:0 0 0 10px rgba(25,195,125,0)}}
+.evt{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
+.evt.on{opacity:1;transform:none}
+.evt .ic{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:#EEF3FA}
+.evt .ic svg{width:18px;height:18px}
+.evt b{display:block;font-size:14px}
+.evt small{font-size:12px;color:var(--ink3)}
+.bubble{background:linear-gradient(135deg,var(--blue),#1C8BFF);border-radius:16px 16px 16px 4px;padding:12px 14px;font-size:14px;line-height:1.5;min-height:46px}
+.bubble .cur{display:inline-block;width:2px;height:1em;background:#fff;vertical-align:-2px;margin-left:2px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.booked{display:flex;justify-content:space-between;align-items:center;background:#E6FFF3;border:1px solid #9BE9C5;border-radius:14px;padding:12px 14px;font-size:14px;font-weight:600;color:#0A6B40}
+.booked b{font-size:18px}
+
+/* ticker */
+.ticker{border-block:1px solid var(--line);background:var(--bg2);overflow:hidden;padding-block:16px;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.ticker div{display:flex;gap:48px;width:max-content;animation:tick 40s linear infinite}
+.ticker span::before{content:"✦";color:var(--flame);margin-right:14px}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* sections */
+.sec{padding-block:clamp(72px,9vw,128px)}
+.sec-head{display:grid;gap:16px;max-width:780px;margin-bottom:clamp(36px,5vw,64px)}
+.reveal{transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.pre{opacity:0;transform:translateY(24px)}
+.reveal.in{opacity:1;transform:none}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.stat{position:relative;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow);border-radius:22px;padding:30px 28px;display:grid;gap:10px;overflow:hidden}
+.stat::before{content:"";position:absolute;inset:-1px;background:radial-gradient(400px 120px at 20% 0%,rgba(0,110,255,.14),transparent 70%);pointer-events:none}
+.stat .n{font-family:var(--display);font-weight:900;font-size:clamp(44px,5.4vw,72px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.stat .n em{font-style:normal;color:var(--flame)}
+.stat .n small{font-size:.42em;color:var(--ink3);font-weight:700;letter-spacing:0;margin-left:6px}
+.stat p{color:var(--ink2);font-size:15px}
+.stat cite{display:block;font-size:12px;color:var(--ink3);font-style:normal}
+@media (max-width:900px){.stats{grid-template-columns:1fr}}
+
+/* race */
+.race{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.photo{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;max-width:100%;isolation:isolate}
+.photo img{width:100%;height:100%;object-fit:cover;animation:kenburns 20s ease-in-out infinite alternate}
+.photo.wide{aspect-ratio:16/10}
+.photo .tag{position:absolute;left:18px;bottom:18px;background:#fff;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--ink)}
+.lanes{display:grid;gap:22px;margin-top:28px}
+.lane{display:grid;gap:8px}
+.lane .lbl{display:flex;justify-content:space-between;font-size:14px;color:var(--ink2)}
+.lane .lbl b{color:var(--ink)}
+.trk{height:14px;border-radius:999px;background:#E6EDF7;overflow:hidden;position:relative}
+.trk i{position:absolute;inset:0;width:0;border-radius:999px}
+.lane.us .trk i{background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 24px rgba(0,110,255,.35)}
+.lane.them .trk i{background:#B9C6DA}
+.race.in .lane.us .trk i{animation:fill 2.2s cubic-bezier(.2,.8,.2,1) forwards}
+.race.in .lane.them .trk i{animation:fill 42s linear forwards}
+@keyframes fill{to{width:100%}}
+@media (max-width:900px){.race{grid-template-columns:1fr}}
+
+/* photo rail */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,1fr);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.rail .card{scroll-snap-align:start;position:relative;border-radius:24px;overflow:hidden;aspect-ratio:3/4;isolation:isolate}
+.rail .card img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1);animation:kenburns 26s ease-in-out infinite alternate}
+.rail .card:nth-child(even) img{animation-direction:alternate-reverse}
+.rail .card:hover img{transform:scale(1.08)}
+.rail .cap{position:absolute;left:14px;bottom:14px;z-index:1;display:grid;gap:2px;background:#fff;color:var(--ink);border-radius:16px;padding:10px 14px}
+.rail .cap b{font-family:var(--display);font-size:18px}
+.rail .cap span{font-size:12px;font-weight:600;color:var(--accent-text)}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.cell{border:1px solid var(--line);background:#fff;border-radius:22px;padding:26px;display:grid;gap:10px;align-content:start;position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
+.cell:hover{border-color:rgba(0,110,255,.5);transform:translateY(-3px);box-shadow:var(--shadow)}
+.cell .k{font-size:12px;font-weight:600;color:var(--accent-text);letter-spacing:.08em;text-transform:uppercase}
+.cell p{color:var(--ink2);font-size:15px}
+.c2{grid-column:span 2}.c3{grid-column:span 3}.c4{grid-column:span 4}
+.cell.hot{background:linear-gradient(135deg,rgba(0,110,255,.12),rgba(255,122,26,.12));border-color:rgba(0,110,255,.35)}
+.cell .pic{border-radius:14px;overflow:hidden;aspect-ratio:16/8;max-width:100%;border:1px solid var(--line);margin-top:6px}
+.cell .pic img{width:100%;height:100%;object-fit:cover;object-position:top}
+@media (max-width:900px){.bento{grid-template-columns:1fr 1fr}.c3,.c4{grid-column:span 2}}
+@media (max-width:560px){.bento{grid-template-columns:1fr}.c2,.c3,.c4{grid-column:span 1}}
+
+/* results band */
+.band{position:relative;overflow:hidden;border-radius:32px;padding:clamp(40px,6vw,80px);isolation:isolate;color:var(--ink);box-shadow:var(--shadow)}
+.band .kb img{object-position:center 60%}
+.band::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.86) 45%,rgba(255,255,255,.15) 100%);z-index:-1}
+.band .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.band .grid>div{background:rgba(255,255,255,.85);border-radius:18px;padding:18px}
+.band .big{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.4vw,60px);letter-spacing:-.04em;line-height:1}
+.band .big.o{color:var(--flame)}
+.band .grid p{color:var(--ink2);font-size:14px;margin-top:8px}
+@media (max-width:900px){.band .grid{grid-template-columns:1fr 1fr}}
+
+/* pricing */
+.price{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.invoice{border:1px solid var(--line);background:#fff;box-shadow:var(--shadow);border-radius:24px;padding:28px;display:grid;gap:14px;font-variant-numeric:tabular-nums}
+.invoice .row{display:flex;justify-content:space-between;gap:16px;padding-block:10px;border-bottom:1px dashed var(--line);font-size:15px}
+.invoice .row b{font-weight:600}
+.invoice .tot{display:flex;justify-content:space-between;align-items:baseline;padding-top:8px;font-weight:600}
+.invoice .tot b{font-family:var(--display);font-size:38px;color:var(--blue);letter-spacing:-.03em}
+.slider{display:grid;gap:6px;font-size:13px;color:var(--ink3)}
+input[type=range]{width:100%;accent-color:var(--blue)}
+@media (max-width:900px){.price{grid-template-columns:1fr}}
+
+/* founders */
+.founders{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.slot{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/3;border:1px dashed rgba(0,110,255,.5);background:
+ radial-gradient(500px 300px at 30% 20%,rgba(0,110,255,.18),transparent 70%),radial-gradient(400px 300px at 90% 90%,rgba(255,122,26,.2),transparent 70%),var(--bg2);display:grid;place-items:center;text-align:center;padding:32px}
+.slot img{width:46%;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5))}
+.slot p{font-size:13px;font-weight:500;color:var(--accent-text);max-width:34ch;margin-top:14px}
+.brian{display:flex;gap:16px;align-items:center;margin-top:22px}
+.brian img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--blue)}
+.brian small{display:block;color:var(--ink3);font-size:13px}
+@media (max-width:900px){.founders{grid-template-columns:1fr}}
+
+/* final cta */
+.final{text-align:center;display:grid;gap:26px;justify-items:center;position:relative;padding-block:clamp(80px,10vw,140px)}
+.final h2{font-size:clamp(38px,6vw,80px);font-weight:900}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:500;text-decoration:none;transition:background .2s,border-color .2s}
+.chip:hover{background:rgba(0,110,255,.08);border-color:var(--blue)}
+
+footer{border-top:1px solid var(--line);background:var(--bg2);padding-block:48px;color:var(--ink3);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center}
+footer img{height:54px}
+footer nav{display:flex;flex-wrap:wrap;gap:20px}
+footer a{text-decoration:none}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.race .trk i{width:100%}}
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="glow" id="glow" aria-hidden="true"></div>
+<div class="page">
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="Rocket Llama Labs home"><img src="img/logo-stacked.svg" alt="Rocket Llama Labs"></a>
+    <nav class="menu" aria-label="Primary">
+      <a href="#" aria-current="page">Home</a><a href="#system">Services</a><a href="#trades">Industries</a><a href="#pricing">Pricing</a><a href="#team">About</a>
+    </nav>
+    <a class="btn btn-fire" href="#book">Book a walkthrough</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">Marketing + technology for home services · Phoenix first</p>
+      <h1><span class="line">Your calendar</span><span class="line">should be <span class="grad">full.</span></span></h1>
+      <p class="lead">For plumbers, electricians, HVAC, roofers and every trade that sends a truck to a house. Every call, form and estimate request answered in under a minute and booked onto your calendar. Every dollar tracked to a paid job. You own all of it.</p>
+      <div class="cta-row">
+        <a class="btn btn-fire" href="#book">Book a walkthrough <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#scan">Free 20-second scan</a>
+      </div>
+      <div class="proof"><span>Month to month</span><span>One company per trade per city</span><span>You own the code, numbers and accounts</span></div>
+    </div>
+    <div class="hero-media">
+      <img src="img/roofers.jpg" alt="Roofers laying tile above the Valley at sunset">
+      <aside class="panel" aria-label="Live example of a lead being answered">
+      <div class="panel-head"><span class="live"><i></i>LIVE · Desert Peak Plumbing</span><span id="clock">6:42 PM</span></div>
+      <div class="evt" id="e1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#006EFF" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg></span><div><b>Missed call · Chandler, AZ</b><small>Water heater · tracked number: Google Ads</small></div></div>
+      <div class="evt" id="e2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0A8A52" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></span><div><b>AI answered in <span id="secs">00.0</span>s</b><small>Text + email, in your voice</small></div></div>
+      <div class="evt" id="e3"><div class="ic" style="visibility:hidden"></div><div class="bubble" id="bubble"><span id="typed"></span><span class="cur"></span></div></div>
+      <div class="evt" id="e4"><div class="ic" style="visibility:hidden"></div><div class="booked"><span>Booked · Tue 8–10 AM</span><b id="val">$1,900</b></div></div>
+    </aside>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div>
+  <span>HVAC</span><span>Plumbing</span><span>Electrical</span><span>Roofing</span><span>Garage door</span><span>Pest control</span><span>Landscaping</span><span>Painting</span><span>Handyman</span><span>Solar</span><span>Flooring</span><span>Remodeling</span>
+  <span>HVAC</span><span>Plumbing</span><span>Electrical</span><span>Roofing</span><span>Garage door</span><span>Pest control</span><span>Landscaping</span><span>Painting</span><span>Handyman</span><span>Solar</span><span>Flooring</span><span>Remodeling</span>
+</div></div>
+
+<section class="sec" id="why">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="eyebrow">Why good companies lose jobs</p><h2>Three leaks. All three are fixable this month.</h2><p class="lead">You buy your leads, answer them late, and can't be found where people look now.</p></div>
+    <div class="stats">
+      <div class="stat reveal"><div class="n">1 <small>in</small> <em>5</em></div><p>Your odds on a shared Yelp or Angi lead. It is sold to four other contractors and you pay whether you win it or not.</p><cite>Top Three Web Design, 2026</cite></div>
+      <div class="stat reveal"><div class="n"><span data-count="62">0</span>% <small>vs</small> <em>28%</em></div><p>Close rate when you answer inside two minutes, against the 42-minute average. Only 12% of contractors reply inside five minutes.</p><cite>ServiceTitan 2025 · Hatch 2026</cite></div>
+      <div class="stat reveal"><div class="n"><span data-count="45">0</span>%</div><p>Now ask an AI for a local pro, up from 6% a year earlier. Most contractor websites have nothing an AI can read.</p><cite>Elev8 Operations roundup, 2026</cite></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="speed">
+  <div class="wrap race reveal">
+    <div class="photo"><img src="img/van.jpg" alt="A technician on the phone in his work van at golden hour"><span class="tag">Tracked number · AI picks up in 2s</span></div>
+    <div>
+      <p class="eyebrow">Speed to lead</p>
+      <h2>Whether it calls or fills out a form, it gets answered and booked.</h2>
+      <p class="lead" style="margin-top:18px">A text and an email in under a minute, in your voice, even when you are on a roof in 112 degrees. The phone still rings you first. If nobody picks up, the AI books the slot.</p>
+      <div class="lanes">
+        <div class="lane us"><div class="lbl"><span>You, on the system</span><b>38 seconds</b></div><div class="trk"><i></i></div></div>
+        <div class="lane them"><div class="lbl"><span>The average company</span><b>42 minutes</b></div><div class="trk"><i></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="trades">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="eyebrow">Industries</p><h2>Every trade that goes to a customer's home.</h2><p class="lead">One company per trade per city, so our clients never fight each other for the same calls. When a spot is gone, it is gone.</p></div>
+    <div class="rail reveal">
+      <a class="card" href="#"><img src="img/hvac.jpg" alt="HVAC technician on a Phoenix rooftop"><div class="cap"><b>HVAC</b><span>Phoenix · 1 of 1 open</span></div></a>
+      <a class="card" href="#"><img src="img/plumber.jpg" alt="Plumber working under a kitchen sink"><div class="cap"><b>Plumbing</b><span>Scottsdale · taken</span></div></a>
+      <a class="card" href="#"><img src="img/electrician.jpg" alt="Electrician at a breaker panel"><div class="cap"><b>Electrical</b><span>Mesa · 1 of 1 open</span></div></a>
+      <a class="card" href="#"><img src="img/roofers.jpg" alt="Roofers laying tile at sunset"><div class="cap"><b>Roofing</b><span>Gilbert · 1 of 1 open</span></div></a>
+      <a class="card" href="#"><img src="img/door.jpg" alt="Technicians greeting a homeowner at the door"><div class="cap"><b>Garage door</b><span>Chandler · 1 of 1 open</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="system">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="eyebrow">The system on one page</p><h2>Everything points to a website you own. Everything lands in a CRM you own.</h2></div>
+    <div class="bento">
+      <div class="cell c3 hot reveal"><span class="k">Website</span><h3>A website you own, hosted free</h3><p>Next.js, code in your GitHub, on Vercel. Preview before live. Stop paying Wix or GoDaddy.</p><div class="pic"><img src="img/sample-site.jpg" alt="A sample client website"></div></div>
+      <div class="cell c3 reveal"><span class="k">Search + AI search</span><h3>Found by Google and by ChatGPT</h3><p>Schema on every page: FAQs, authorship, services, review stars per service, so Gemini, ChatGPT and Perplexity can recommend you by name.</p></div>
+      <div class="cell c2 reveal"><span class="k">Reviews</span><h3>Google profile, worked hard</h3><p>Complete profiles get 7× more clicks. Requests after every job, every review answered.</p></div>
+      <div class="cell c2 reveal"><span class="k">Funnels</span><h3>Funnels, not contact forms</h3><p>Qualifying questions, address autofill, your offer, then a booking calendar.</p></div>
+      <div class="cell c2 reveal"><span class="k">Phones</span><h3>AI receptionist, you first</h3><p>Rings your team, and if nobody answers, books a callback or takes a message.</p></div>
+      <div class="cell c2 reveal"><span class="k">CRM</span><h3>Your CRM with AI follow-up</h3><p>Reply in under a minute, pipelines, call recording, closed-job value.</p></div>
+      <div class="cell c2 reveal"><span class="k">Ads</span><h3>Google, LSA and Meta, in your name</h3><p>Your accounts, your card, our management. Funnels convert at 20 to 30%.</p></div>
+      <div class="cell c2 reveal"><span class="k">Ownership</span><h3>Never locked in</h3><p>Export your data, port your numbers, take the code. If you leave, we help the next provider.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="band reveal">
+      <div class="kb" aria-hidden="true"><img src="img/aerial.jpg" alt=""></div>
+      <p class="eyebrow">Tracked to the job</p>
+      <h2 style="max-width:16ch">We don't report clicks. We report booked jobs and what they were worth.</h2>
+      <div class="grid">
+        <div><div class="big">$2 : $1</div><p>Our floor. Two dollars back for every dollar spent, or we work free.</p></div>
+        <div><div class="big o">$3 to $4</div><p>What many clients see. Owner's field results.</p></div>
+        <div><div class="big">&lt;60s</div><p>AI reply to every new lead, text and email.</p></div>
+        <div><div class="big o">1 per source</div><p>Tracked phone numbers, so we know which ad made it ring.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="pricing">
+  <div class="wrap price">
+    <div class="reveal">
+      <p class="eyebrow">Pricing</p>
+      <h2>Put about 10% of revenue back into marketing. We spend it where you can see it.</h2>
+      <p class="lead" style="margin-top:18px">Three lines, every month: the platform that keeps your site, phones, AI and CRM running; our work, itemised; and the ad spend, billed to you directly by Google and Meta.</p>
+    </div>
+    <div class="invoice reveal">
+      <div class="slider"><label for="rev">Revenue last year · <b id="revLbl">$500K</b></label><input type="range" id="rev" min="250" max="3000" step="50" value="500"></div>
+      <div class="row"><span>Platform base</span><b>$797</b></div>
+      <div class="row"><span>Our work</span><b id="work">$1,063</b></div>
+      <div class="row"><span>Ad spend, paid to Google and Meta</span><b id="ads">$2,390</b></div>
+      <div class="tot"><span>Total working for you, per month</span><b id="total">$4,250</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="team">
+  <div class="wrap founders">
+    <div class="reveal">
+      <p class="eyebrow">Who you are talking to</p>
+      <h2>Rocket Llama Labs is Brian, Branson and Madison. We have done this before.</h2>
+      <p class="lead" style="margin-top:18px">Brian Greenberg built three companies on this exact system, customers finding him online and booking themselves, and sold all three. Branson and Madison run the day to day. Phoenix owners get Brian in person for the proposal.</p>
+      <div class="brian"><img src="img/brian.jpg" alt="Brian Greenberg"><div><b>Brian Greenberg</b><small>Founder · three exits on this system</small></div></div>
+    </div>
+    <div class="slot reveal"><div><img src="img/mascot.svg" alt=""><p>[ DROP IN: the photo of the developer at his desk with the llama in sunglasses working beside him ]</p></div></div>
+  </div>
+</section>
+
+<section class="final wrap" id="book">
+  <p class="eyebrow">Book a walkthrough</p>
+  <h2>Start here.<br>What trade are <span class="grad">you</span> in?</h2>
+  <div class="chips">
+    <a class="chip" href="#">HVAC</a><a class="chip" href="#">Plumbing</a><a class="chip" href="#">Electrical</a><a class="chip" href="#">Roofing</a><a class="chip" href="#">Garage door</a><a class="chip" href="#">Pest control</a><a class="chip" href="#">Landscaping</a><a class="chip" href="#">Painting</a><a class="chip" href="#">Solar</a><a class="chip" href="#">Something else</a>
+  </div>
+  <a class="btn btn-fire" href="#">Pick a time on the calendar</a>
+  <p class="proof" style="justify-content:center;color:var(--ink2)"><span>About a minute</span><span>No contract</span><span>Brian in person, in the Valley</span></p>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo-stacked.svg" alt="Rocket Llama Labs">
+    <nav aria-label="Footer"><a href="#">Services</a><a href="#">Industries</a><a href="#">Pricing</a><a href="#">About</a><a href="#">Brand check</a></nav>
+    <span>© 2026 Rocket Llama Labs LLC · Phoenix, AZ · (602) 555-0100</span>
+  </div>
+</footer>
+</div>
+
+<script>
+(function(){
+  var rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // cursor glow
+  var g=document.getElementById('glow');
+  if(!rm && matchMedia('(pointer:fine)').matches){ addEventListener('pointermove',function(e){ g.style.left=e.clientX+'px'; g.style.top=e.clientY+'px'; },{passive:true}); }
+  // reveal
+  var io=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} }); },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ if(!rm && el.getBoundingClientRect().top>innerHeight){ el.classList.add('pre'); } io.observe(el); });
+  // counters
+  var co=new IntersectionObserver(function(es){ es.forEach(function(en){ if(!en.isIntersecting) return; var el=en.target, end=+el.dataset.count, t0=performance.now();
+    (function step(t){ var p=Math.min(1,(t-t0)/1400); el.textContent=Math.round(end*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(step); })(t0); co.unobserve(el); }); },{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(el){ co.observe(el); });
+  // live lead demo
+  var msg="Hi Maria, this is Desert Peak Plumbing. We can have a tech at your place tomorrow between 8 and 10. Want me to lock that in?";
+  var e=[1,2,3,4].map(function(i){return document.getElementById('e'+i)}), typed=document.getElementById('typed'), secs=document.getElementById('secs');
+  function run(){ e.forEach(function(x){x.classList.remove('on')}); typed.textContent=''; secs.textContent='00.0';
+    setTimeout(function(){e[0].classList.add('on')},600);
+    setTimeout(function(){e[1].classList.add('on'); var n=0; var iv=setInterval(function(){ n+=0.1; secs.textContent=(n<10?'0':'')+n.toFixed(1); if(n>=1.9) clearInterval(iv); },100);},1800);
+    setTimeout(function(){e[2].classList.add('on'); var i=0; var tv=setInterval(function(){ typed.textContent=msg.slice(0,++i); if(i>=msg.length) clearInterval(tv); },28);},3200);
+    setTimeout(function(){e[3].classList.add('on')},7600);
+    setTimeout(run,12500);
+  }
+  if(rm){ e.forEach(function(x){x.classList.add('on')}); typed.textContent=msg; secs.textContent='01.9'; } else run();
+  // clock
+  var c=document.getElementById('clock'); function tick(){ var d=new Date(); c.textContent=d.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}); } tick(); setInterval(tick,30000);
+  // pricing slider
+  var rev=document.getElementById('rev'); function fmt(n){ return '$'+Math.round(n).toLocaleString('en-US'); }
+  function price(){ var r=+rev.value*1000, m=r*0.10/12, base=797, work=Math.max(600,Math.round(m*0.25)), ads=Math.max(500,Math.round(m-base-work));
+    document.getElementById('revLbl').textContent=(r>=1e6?'$'+(r/1e6).toFixed(r%1e6?1:0)+'M':'$'+(r/1000)+'K'); document.getElementById('work').textContent=fmt(work); document.getElementById('ads').textContent=fmt(ads); document.getElementById('total').textContent=fmt(base+work+ads); }
+  rev.addEventListener('input',price); price();
+})();
+</script>
+</body>
+</html>
