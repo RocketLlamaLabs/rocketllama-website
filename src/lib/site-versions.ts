@@ -3,7 +3,7 @@
 // brand mark rounds live under /public/v2, copied from the bbm-plan repository.
 
 export type SiteVersion = {
-  id: "v1" | "v2" | "v3" | "v4" | "v5" | "v6";
+  id: "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7";
   name: string;
   status: "live" | "sample";
   href: string;
@@ -76,6 +76,18 @@ export const siteVersions: SiteVersion[] = [
       "Homepage direction C: clean and editorial. A different display face, a yellow highlighter accent on blue, a live feed of booked jobs over the hero photo, a travelling beam through the three-step system and the monthly report as a live card.",
     origin:
       "Built from Madie's copy and photos as a static page (public/mockups/v6.html), November 2026.",
+  },
+  {
+    id: "v7",
+    name: "Version 7",
+    status: "sample",
+    href: "/v7",
+    kitHref: "/admin/website/v2",
+    kitLabel: "Version 2 kit (shared)",
+    summary:
+      "Version 3 plus the custom elements from Madison's mockups: the instant audit in the hero, the four promises strip, why owners switch, the Valley map with open and taken spots per trade, the per-trade tuning and photo band, the speed-to-lead race, the monthly report card with a bad month, the exit checklist, the 90-day timeline and the agency comparison. No price list.",
+    origin:
+      "Generated from the version 2 source by scripts/make-v3.py with the version 7 extras; the custom components live in src/components/v7. November 2026.",
   },
 ];
 

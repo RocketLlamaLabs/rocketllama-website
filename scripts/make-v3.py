@@ -1,54 +1,65 @@
-# Generates version 3, the live site at the root (src/app/(home): /, /services,
-# /book, /qualify, /about-brian) and src/components/v3/footer.tsx from the
-# version 2 source: same pages, rescoped under .v3, recolored to the Rocket
-# Llama brand, stacked logo, pricing replaced by the custom-plan section,
-# rotating hero headlines. Re-run after editing version 2 to carry changes
-# forward:  python3 scripts/make-v3.py
+# Generates the versions that derive from the version 2 source:
+#
+#   version 3  ->  src/app/(home)  (the live site: /, /services, /book, /qualify, /about-brian)
+#   version 7  ->  src/app/v7      (version 3 plus the custom elements from Madison's mockups)
+#
+# Both keep version 2's pages, quizzes, funnel and photos, rescoped under their
+# own class (.v3 / .v7), recolored to the Rocket Llama brand, with the stacked
+# logo, no price list (the custom-plan section instead) and rotating hero
+# headlines. Version 7 also splices in the instant audit, the Valley city map
+# with per-trade tuning, the speed-to-lead race, the monthly report card, the
+# exit checklist, the 90-day timeline and the agency comparison, whose
+# components live in src/components/v7 (hand-written, not generated).
+#
+# Re-run after editing version 2 to carry changes forward:
+#     python3 scripts/make-v3.py
 import os, re, shutil
-root=os.path.abspath(os.path.join(os.path.dirname(__file__),'..'))
-src=os.path.join(root,'src/app/v2'); dst=os.path.join(root,'src/app/(home)')
-for old in (dst, os.path.join(root,'src/app/v3')):
-    if os.path.exists(old): shutil.rmtree(old)
-shutil.copytree(src,dst)
-os.rename(os.path.join(dst,'v2.css'),os.path.join(dst,'v3.css'))
 
-# ---------- shared components: colors become CSS variables (identical in v2), links take a base
-comp=os.path.join(root,'src/components/v2')
-def edit(path,pairs):
-    s=open(path).read()
-    for a,b in pairs:
+root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+src = os.path.join(root, 'src/app/v2')
+
+
+def edit(path, pairs):
+    s = open(path).read()
+    for a, b in pairs:
         if a not in s:
-            if b in s: continue  # already applied on an earlier run
+            if b in s:
+                continue  # already applied on an earlier run
             raise SystemExit(f'MISSING in {path}: {a[:60]}')
-        s=s.replace(a,b)
-    open(path,'w').write(s)
-for f in ['book-funnel.tsx','qualify-quiz.tsx']:
-    edit(os.path.join(comp,f),[('stroke="#dfe7e1"','stroke="var(--line)"'),('fill="#f4f8f5"','fill="var(--bg)"'),('fill="#16a34a"','fill="var(--accent)"')])
-edit(os.path.join(comp,'sixty-second-check.tsx'),[
- ('stroke="#e5ece7"','stroke="var(--line)"'),('stroke="#16a34a"','stroke="var(--accent)"'),
- ('export function SixtySecondCheck() {','export function SixtySecondCheck({ base = "/v2" }: { base?: string }) {'),
- ('href="/v2/book">Book a walkthrough</a>','href={`${base}/book`}>Book a walkthrough</a>'),
-])
-edit(os.path.join(comp,'behavior/sixty-second-check.js'),[
- ("document.getElementById('chk_book').href='/v2/book?score='+s;","var bk=document.getElementById('chk_book'); bk.href=bk.getAttribute('href').split('?')[0]+'?score='+s;"),
-])
-edit(os.path.join(comp,'free-scan.tsx'),[
- ('export function FreeScan() {','export function FreeScan({ base = "/v2" }: { base?: string }) {'),
- ('href="/v2/book">Book a walkthrough</a>','href={`${base}/book`}>Book a walkthrough</a>'),
-])
+        s = s.replace(a, b)
+    open(path, 'w').write(s)
 
-# ---------- v3 footer
-os.makedirs(os.path.join(root,'src/components/v3'),exist_ok=True)
-open(os.path.join(root,'src/components/v3/footer.tsx'),'w').write('''import Image from "next/image";
+
+# ---------- shared components (src/components/v2): colors become CSS variables
+# (identical in v2), links take a base. Idempotent.
+def patch_shared():
+    comp = os.path.join(root, 'src/components/v2')
+    for f in ['book-funnel.tsx', 'qualify-quiz.tsx']:
+        edit(os.path.join(comp, f), [('stroke="#dfe7e1"', 'stroke="var(--line)"'), ('fill="#f4f8f5"', 'fill="var(--bg)"'), ('fill="#16a34a"', 'fill="var(--accent)"')])
+    edit(os.path.join(comp, 'sixty-second-check.tsx'), [
+        ('stroke="#e5ece7"', 'stroke="var(--line)"'), ('stroke="#16a34a"', 'stroke="var(--accent)"'),
+        ('export function SixtySecondCheck() {', 'export function SixtySecondCheck({ base = "/v2" }: { base?: string }) {'),
+        ('href="/v2/book">Book a walkthrough</a>', 'href={`${base}/book`}>Book a walkthrough</a>'),
+    ])
+    edit(os.path.join(comp, 'behavior/sixty-second-check.js'), [
+        ("document.getElementById('chk_book').href='/v2/book?score='+s;", "var bk=document.getElementById('chk_book'); bk.href=bk.getAttribute('href').split('?')[0]+'?score='+s;"),
+    ])
+    edit(os.path.join(comp, 'free-scan.tsx'), [
+        ('export function FreeScan() {', 'export function FreeScan({ base = "/v2" }: { base?: string }) {'),
+        ('href="/v2/book">Book a walkthrough</a>', 'href={`${base}/book`}>Book a walkthrough</a>'),
+    ])
+
+
+FOOTER = '''import Image from "next/image";
 import Link from "next/link";
 
-// Footer for version 3, the live site at the root: the version 2 layout in the
-// Rocket Llama colors, with the stacked logo (mascot, then Rocket / Llama on two lines).
-export function V3Footer({ note }: { note: string }) {
+// Footer for version {N}: the version 2 layout in the Rocket Llama colors,
+// with the stacked logo (mascot, then Rocket / Llama on two lines).
+export function V{N}Footer({ note }: { note: string }) {
   return (
     <footer>
       <div className="wrap in">
-        <Link className="wm" href="/" aria-label="Rocket Llama Labs home">
+        <Link className="wm" href="{HOME}" aria-label="Rocket Llama Labs home">
           <Image
             src="/brand/logo-stacked.svg"
             alt="Rocket Llama Labs"
@@ -68,99 +79,177 @@ export function V3Footer({ note }: { note: string }) {
     </footer>
   );
 }
-''')
+'''
 
-# ---------- pages
-plan_section='''<section id="plan" className="feature"><div className="wrap">
+PLAN_SECTION = '''<section id="plan" className="feature"><div className="wrap">
   <p className="kicker">Your plan</p>
   <h2>No price list. A marketing plan written for your company.</h2>
   <p className="sub">Every company is quoted on its own. On the walkthrough we look at your trade, your area, your calendar and what you already have, then write the plan with a number on it. You see the plan before you pay for anything, and you keep it either way.</p>
-  <div className="ctas"><a className="btn" href="/book">Book a call</a><a className="btn ghost" href="#check">Take the 60-second check</a></div>
+  <div className="ctas"><a className="btn" href="{BASE}/book">Book a call</a><a className="btn ghost" href="#check">Take the 60-second check</a></div>
 </div></section>'''
-for dirpath,_,files in os.walk(dst):
-    for f in files:
-        if not f.endswith('.tsx'): continue
-        p=os.path.join(dirpath,f); s=open(p).read()
-        if f=='page.tsx' and dirpath==dst:
-            s=re.sub(r'<section id="pricing">.*?</section>\n',plan_section+'\n',s,flags=re.S)
-            s=s.replace('<a href="#pricing">Pricing</a>','<a href="#plan">Your plan</a>')
-            s=s.replace('A site or ad account that is already set up simply lowers your setup fee, because there is less to build.','A site or ad account that is already set up means there is less to build, and your plan reflects that.')
-            s=s.replace("<SixtySecondCheck />",'<SixtySecondCheck base="" />').replace("<FreeScan />",'<FreeScan base="" />')
-            # Four headline + subtext pairs that crossfade in step with the four hero photos.
-            m=re.search(r'    <h1>Your calendar should be <em>full\.</em></h1>\n    <p className="lede">(.*?)</p>\n',s,flags=re.S)
-            assert m, 'hero headline not found'
-            lede1=m.group(1)
-            rot='''    <div className="rot">
-      <div className="rslide"><h1>Your calendar should be <em>full.</em></h1><p className="lede">'''+lede1+'''</p></div>
+
+ROT = '''    <div className="rot">
+      <div className="rslide"><h1>Your calendar should be <em>full.</em></h1><p className="lede">{LEDE}</p></div>
       <div className="rslide"><h1>Every call <em>answered</em> in under a minute.</h1><p className="lede">Calls, forms and estimate requests get a text and an email back in under a minute, in your voice, even when you are on a job. The phone still rings you first. If nobody can pick up, the AI books the appointment.</p></div>
       <div className="rslide"><h1>Found by Google. <em>Recommended by AI.</em></h1><p className="lede">A website you own, built with the structure Google and ChatGPT can read. Your Google profile and reviews worked hard. Ads in your name. One system, built to get the call.</p></div>
       <div className="rslide"><h1>One company per trade, <em>per city.</em></h1><p className="lede">We take one company per trade per city, so our clients never fight each other for the same calls. Your spot is yours for as long as you are with us. When it is gone, it is gone.</p></div>
     </div>
 '''
-            s=s[:m.start()]+rot+s[m.end():]
-        # links: /v2/... -> /... (the site lives at the root), except the shared assets under /v2/img and /v2/video
-        s=re.sub(r'(?<!components)/v2(?!/img|/video)(?=[/#"?\'`\s)])','',s)
-        s=s.replace('href=""','href="/"')
-        s=s.replace('<a href="/#pricing">Pricing</a>','<a href="/#plan">Your plan</a>')
-        s=s.replace('./v2.css','./v3.css')
-        s=s.replace('@/components/v2/footer','@/components/v3/footer').replace('V2Footer','V3Footer')
-        s=s.replace('src="/brand/wordmark-horizontal-rocket-o.svg"','src="/brand/logo-stacked.svg"')
-        s=s.replace('Rocket Llama Labs v2','Rocket Llama Labs v3').replace('Version 2 sample','Version 3').replace('Version 2','Version 3').replace('version 2','version 3').replace('v2 ·','v3 ·')
-        s=s.replace('className={`v2 ${','className={`v3 ${').replace('V2Layout','V3Layout').replace('LayoutProps<"/v2">','LayoutProps<"/">').replace('LayoutProps<"">','LayoutProps<"/">')
-        s=s.replace('    default: "Rocket Llama Labs · Version 3",\n    template: "%s · Rocket Llama Labs v3",','    default: "Rocket Llama Labs",\n    template: "%s · Rocket Llama Labs",')
-        if f=='page.tsx' and dirpath==dst:
-            s=s.replace("  title: 'Home',",'  title: { absolute: "Rocket Llama Labs · Marketing and technology for local home services" },')
-        s=s.replace('background:"var(--accent-soft)",borderColor:"#bbf7d0"','background:"var(--accent-soft)",borderColor:"#BFD8FF"')
-        s=s.replace('Website version 3 sample for Rocket Llama Labs: version 3 of the light design.','Marketing and technology for local home services in Phoenix: a website you own, every lead answered in under a minute, every dollar tracked to a paid job.')
-        open(p,'w').write(s)
 
-# layout comment + scoping note
-lp=os.path.join(dst,'layout.tsx'); s=open(lp).read()
-s=s.replace('// The version 3 keeps the mockup','// Version 3 keeps the version 2 mockup').replace('// Every page under /v3 renders inside .v2','// Every page under /v3 renders inside .v3')
-s=s.replace('// Every page under /v3 renders inside .v2','// Every page of the live site renders inside .v3').replace('(src/app/v3/v3.css) away from the admin and the v1 homepage.','(src/app/(home)/v3.css) away from the admin, /v1 and /v2.')
-open(lp,'w').write(s)
-
-# ---------- stylesheet: rescope and recolor
-cp=os.path.join(dst,'v3.css'); c=open(cp).read()
-c=c.replace('.v2','.v3')
-c=c.replace('Version 2 sample site: the BBM Local mockup C stylesheet, scoped under .v3.','Version 3: the version 2 stylesheet rescoped under .v3 and recolored to the Rocket Llama brand (navy, blue, mist) by scripts/make-v3.py.')
-cmap=[
- ('#f6f8f6','#ffffff'),('#0e1512','#022c6a'),('#4b5a52','#45587a'),('#87958d','#6b7c98'),('#dde5df','#c9d8e6'),
- ('#16a34a','#006eff'),('#4ade80','#4da3ff'),('#eefbf1','#eaf2ff'),('#15803d','#0057d9'),('#0b1f16','#04173a'),
- ('rgba(11,31,22,','rgba(4,23,58,'),('rgba(22,163,74,','rgba(0,110,255,'),
- ('#bbf7d0','#bfd8ff'),('#b9cfc3','#b7cbe8'),('#cde7dc','#cfe0f7'),('#dce9e1','#dce7f7'),('#e4efe8','#e3ecfa'),('#e6ede8','#e6edf7'),('#eef3ef','#eef3fa'),
- ("%234b5a52","%2345587a"),
+COLOR_MAP = [
+    ('#f6f8f6', '#ffffff'), ('#0e1512', '#022c6a'), ('#4b5a52', '#45587a'), ('#87958d', '#6b7c98'), ('#dde5df', '#c9d8e6'),
+    ('#16a34a', '#006eff'), ('#4ade80', '#4da3ff'), ('#eefbf1', '#eaf2ff'), ('#15803d', '#0057d9'), ('#0b1f16', '#04173a'),
+    ('rgba(11,31,22,', 'rgba(4,23,58,'), ('rgba(22,163,74,', 'rgba(0,110,255,'),
+    ('#bbf7d0', '#bfd8ff'), ('#b9cfc3', '#b7cbe8'), ('#cde7dc', '#cfe0f7'), ('#dce9e1', '#dce7f7'), ('#e4efe8', '#e3ecfa'), ('#e6ede8', '#e6edf7'), ('#eef3ef', '#eef3fa'),
+    ('%234b5a52', '%2345587a'),
 ]
-for a,b in cmap:
-    assert a in c, a
-    c=c.replace(a,b)
-c=c.replace('--deep:#04173a;','--deep:#04173a;--mint-line:#bfd8ff;')
-c+='''
-/* ---- Version 3 adjustments ---- */
-.v3 .feature{background:#f4f8fd}
-.v3 .nav .wm img{height:54px}
-.v3 footer .wm img{height:40px}
-.v3 .hero::after{background:linear-gradient(180deg,rgba(4,23,58,.22) 0%,rgba(4,23,58,.12) 35%,rgba(4,23,58,.82) 100%)}
-.v3 .band::before{background:linear-gradient(90deg,rgba(4,23,58,.78) 0%,rgba(4,23,58,.48) 55%,rgba(4,23,58,.12) 100%)}
-.v3 .band.center::before{background:linear-gradient(180deg,rgba(4,23,58,.3),rgba(4,23,58,.7))}
+
+ADJUST_CSS = '''
+/* ---- Version {N} adjustments ---- */
+.{S} .feature{background:#f4f8fd}
+.{S} .nav .wm img{height:54px}
+.{S} footer .wm img{height:40px}
+.{S} .hero::after{background:linear-gradient(180deg,rgba(4,23,58,.22) 0%,rgba(4,23,58,.12) 35%,rgba(4,23,58,.82) 100%)}
+.{S} .band::before{background:linear-gradient(90deg,rgba(4,23,58,.78) 0%,rgba(4,23,58,.48) 55%,rgba(4,23,58,.12) 100%)}
+.{S} .band.center::before{background:linear-gradient(180deg,rgba(4,23,58,.3),rgba(4,23,58,.7))}
 /* Kickers over photos and dark bands are white, not blue, so they read on any image. */
-.v3 .hero .kicker,.v3 .band .kicker,.v3 .watch .kicker,.v3 .fhero .kicker{color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.35)}
-.v3 .hero .kicker::before,.v3 .band .kicker::before,.v3 .watch .kicker::before,.v3 .fhero .kicker::before{background:#fff}
-.v3 .abox.rule .k{color:#fff}
+.{S} .hero .kicker,.{S} .band .kicker,.{S} .watch .kicker,.{S} .fhero .kicker{color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+.{S} .hero .kicker::before,.{S} .band .kicker::before,.{S} .watch .kicker::before,.{S} .fhero .kicker::before{background:#fff}
+.{S} .abox.rule .k{color:#fff}
 /* The emphasised word sits on a blue highlight so it reads on any photo. */
-.v3 .hero h1 em{color:#fff;background:var(--accent);padding:0 .14em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.{S} .hero h1 em{color:#fff;background:var(--accent);padding:0 .14em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 /* Rotating headlines: four text slides on the same 28s cycle as the photos (7s each). */
-.v3 .rot{display:grid}
-.v3 .rot .rslide{grid-area:1/1;opacity:0;animation:v3txt 28s linear infinite;will-change:opacity,transform}
-.v3 .rot .rslide:nth-child(2){animation-delay:7s}
-.v3 .rot .rslide:nth-child(3){animation-delay:14s}
-.v3 .rot .rslide:nth-child(4){animation-delay:21s}
-.v3 .rot .rslide:not(:first-child){pointer-events:none}
-@keyframes v3txt{0%{opacity:0;transform:translateY(14px)}3.5%{opacity:1;transform:none}23.5%{opacity:1;transform:none}27%{opacity:0;transform:translateY(-10px)}100%{opacity:0;transform:translateY(14px)}}
+.{S} .rot{display:grid}
+.{S} .rot .rslide{grid-area:1/1;opacity:0;animation:{S}txt 28s linear infinite;will-change:opacity,transform}
+.{S} .rot .rslide:nth-child(2){animation-delay:7s}
+.{S} .rot .rslide:nth-child(3){animation-delay:14s}
+.{S} .rot .rslide:nth-child(4){animation-delay:21s}
+.{S} .rot .rslide:not(:first-child){pointer-events:none}
+@keyframes {S}txt{0%{opacity:0;transform:translateY(14px)}3%{opacity:1;transform:none}22.5%{opacity:1;transform:none}25%{opacity:0;transform:translateY(-10px)}100%{opacity:0;transform:translateY(14px)}}
 @media (prefers-reduced-motion:reduce){
-  .v3 .rot .rslide{animation:none;display:none}
-  .v3 .rot .rslide:first-child{display:block;opacity:1}
+  .{S} .rot .rslide{animation:none;display:none}
+  .{S} .rot .rslide:first-child{display:block;opacity:1}
 }
 '''
-open(cp,'w').write(c)
-print('v3 written')
+
+
+def transform_page(s, f, is_home, base, n, scope, extras):
+    """Apply the version 2 -> version N transforms to one .tsx file."""
+    home = base or '/'
+    if is_home:
+        s = re.sub(r'<section id="pricing">.*?</section>\n', PLAN_SECTION.replace('{BASE}', base) + '\n', s, flags=re.S)
+        s = s.replace('<a href="#pricing">Pricing</a>', '<a href="#plan">Your plan</a>')
+        s = s.replace('A site or ad account that is already set up simply lowers your setup fee, because there is less to build.', 'A site or ad account that is already set up means there is less to build, and your plan reflects that.')
+        s = s.replace("<SixtySecondCheck />", f'<SixtySecondCheck base="{base}" />').replace("<FreeScan />", f'<FreeScan base="{base}" />')
+        m = re.search(r'    <h1>Your calendar should be <em>full\.</em></h1>\n    <p className="lede">(.*?)</p>\n', s, flags=re.S)
+        assert m, 'hero headline not found'
+        s = s[:m.start()] + ROT.replace('{LEDE}', m.group(1)) + s[m.end():]
+        s = s.replace("  title: 'Home',", '  title: { absolute: "Rocket Llama Labs · Marketing and technology for local home services" },')
+    # links: /v2/... -> base/..., except the shared assets under /v2/img and /v2/video
+    s = re.sub(r'(?<!components)/v2(?!/img|/video)(?=[/#"?\'`\s)])', base, s)
+    s = s.replace('href=""', 'href="/"')
+    s = s.replace(f'<a href="{base}#pricing">Pricing</a>', f'<a href="{base}#plan">Your plan</a>')
+    s = s.replace('./v2.css', f'./v{n}.css')
+    s = s.replace('@/components/v2/footer', f'@/components/v{n}/footer').replace('V2Footer', f'V{n}Footer')
+    s = s.replace('src="/brand/wordmark-horizontal-rocket-o.svg"', 'src="/brand/logo-stacked.svg"')
+    s = s.replace('Rocket Llama Labs v2', f'Rocket Llama Labs v{n}').replace('Version 2 sample', f'Version {n}').replace('Version 2', f'Version {n}').replace('version 2', f'version {n}').replace('v2 ·', f'v{n} ·')
+    s = s.replace('className={`v2 ${', f'className={{`{scope} ${{').replace('V2Layout', f'V{n}Layout').replace('LayoutProps<"/v2">', f'LayoutProps<"{home}">').replace('LayoutProps<"">', 'LayoutProps<"/">')
+    if base == '':
+        s = s.replace(f'    default: "Rocket Llama Labs · Version {n}",\n    template: "%s · Rocket Llama Labs v{n}",', '    default: "Rocket Llama Labs",\n    template: "%s · Rocket Llama Labs",')
+    s = s.replace('background:"var(--accent-soft)",borderColor:"#bbf7d0"', 'background:"var(--accent-soft)",borderColor:"#BFD8FF"')
+    s = s.replace(f'Website version {n} sample for Rocket Llama Labs: version {n} of the light design.', 'Marketing and technology for local home services in Phoenix: a website you own, every lead answered in under a minute, every dollar tracked to a paid job.')
+    if extras:
+        s = extras(s, f, is_home, base)
+    return s
+
+
+def build(dst_rel, base, n, extras=None, extra_css_import=None, layout_note=''):
+    scope = f'v{n}'
+    dst = os.path.join(root, dst_rel)
+    if os.path.exists(dst):
+        shutil.rmtree(dst)
+    shutil.copytree(src, dst)
+    os.rename(os.path.join(dst, 'v2.css'), os.path.join(dst, f'v{n}.css'))
+    # footer
+    os.makedirs(os.path.join(root, f'src/components/v{n}'), exist_ok=True)
+    open(os.path.join(root, f'src/components/v{n}/footer.tsx'), 'w').write(FOOTER.replace('{N}', str(n)).replace('{HOME}', base or '/'))
+    # pages
+    for dirpath, _, files in os.walk(dst):
+        for f in files:
+            if not f.endswith('.tsx'):
+                continue
+            p = os.path.join(dirpath, f)
+            s = open(p).read()
+            s = transform_page(s, f, f == 'page.tsx' and dirpath == dst, base, n, scope, extras)
+            open(p, 'w').write(s)
+    lp = os.path.join(dst, 'layout.tsx')
+    s = open(lp).read()
+    s = s.replace(f'// The version {n} keeps the mockup', f'// Version {n} keeps the version 2 mockup')
+    s = s.replace(f'// Every page under /v{n} renders inside .v2', f'// Every page of version {n} renders inside .{scope}')
+    s = s.replace('// Every page under /v2 renders inside .v2', f'// Every page of version {n} renders inside .{scope}')
+    s = s.replace(f'(src/app/v{n}/v2.css) away from the admin and the v1 homepage.', f'({dst_rel}/v{n}.css) away from the admin and the other versions.{layout_note}')
+    if extra_css_import:
+        s = s.replace(f'import "./v{n}.css";', f'import "./v{n}.css";\nimport "{extra_css_import}";')
+    open(lp, 'w').write(s)
+    # stylesheet: rescope and recolor
+    cp = os.path.join(dst, f'v{n}.css')
+    c = open(cp).read()
+    c = c.replace('.v2', f'.{scope}')
+    c = c.replace(f'Version 2 sample site: the BBM Local mockup C stylesheet, scoped under .{scope}.', f'Version {n}: the version 2 stylesheet rescoped under .{scope} and recolored to the Rocket Llama brand (navy, blue, mist) by scripts/make-v3.py.')
+    for a, b in COLOR_MAP:
+        assert a in c, a
+        c = c.replace(a, b)
+    c = c.replace('--deep:#04173a;', '--deep:#04173a;--mint-line:#bfd8ff;')
+    c += ADJUST_CSS.replace('{N}', str(n)).replace('{S}', scope)
+    open(cp, 'w').write(c)
+    print(f'v{n} written to {dst_rel}')
+
+
+# ---------- version 7: splice in the custom elements from Madison's mockups
+V7_IMPORTS = '''import { InstantAudit } from "@/components/v7/instant-audit";
+import { TrustStrip } from "@/components/v7/trust-strip";
+import { WhySwitch } from "@/components/v7/why-switch";
+import { Valley } from "@/components/v7/valley";
+import { Race } from "@/components/v7/race";
+import { ReportSection } from "@/components/v7/report-section";
+import { LeaveSwitch } from "@/components/v7/leave-switch";
+import { Timeline } from "@/components/v7/timeline";
+import { CompareTable } from "@/components/v7/compare-table";
+'''
+
+
+def v7_extras(s, f, is_home, base):
+    if not is_home:
+        return s
+    # imports
+    s = s.replace('import { FreeScan } from "@/components/v2/free-scan";\n', 'import { FreeScan } from "@/components/v2/free-scan";\n' + V7_IMPORTS)
+    # nav: a Cities link
+    s = s.replace('<a href="#industries">Industries</a>', '<a href="#cities">Cities</a><a href="#industries">Industries</a>', 1)
+    s = s.replace(f'<a href="{base}/services#video">The video</a>', '')
+    # hero: two columns, the instant audit on the right
+    a = '  <div className="wrap in">\n    <p className="kicker">Marketing and technology for local home services</p>\n'
+    assert a in s, 'hero open'
+    s = s.replace(a, '  <div className="wrap in hero-grid">\n   <div>\n    <p className="kicker">Marketing and technology for local home services</p>\n')
+    a = '  </div>\n  <div className="dots" aria-hidden="true">'
+    assert a in s, 'hero close'
+    s = s.replace(a, f'   </div>\n   <InstantAudit base="{base}" />\n  </div>\n  <div className="dots" aria-hidden="true">')
+    # trust strip under the hero
+    s = s.replace('</header>\n\n<section id="problem">', '</header>\n<TrustStrip />\n\n<section id="problem">')
+    # why owners switch, before the 60-second check
+    s = s.replace('\n<section id="check" className="qzsec">', '\n<WhySwitch />\n\n<section id="check" className="qzsec">')
+    # the speed-to-lead band becomes the Valley map, the per-trade photo band and tuning, then the race
+    s, k = re.subn(r'<div className="band" style=\{\{"--img":"url\(/v2/img/band-van\.jpg\)"\} as CSSProperties\}>.*?</div></div>\n', f'<Valley base="{base}" />\n<Race />\n', s, flags=re.S)
+    assert k == 1, 'speed band'
+    # the tracked-to-the-job band becomes the monthly report section
+    s, k = re.subn(r'<div className="band" id="proof".*?\n  </div>\n</div></div>\n', '<ReportSection />\n', s, flags=re.S)
+    assert k == 1, 'proof band'
+    # leaving, the 90 days and the comparison, before "who you are talking to"
+    s = s.replace('\n<section id="who" className="feature">', '\n<LeaveSwitch />\n<Timeline />\n<CompareTable />\n\n<section id="who" className="feature">')
+    s = s.replace('  title: { absolute: "Rocket Llama Labs · Marketing and technology for local home services" },', '  title: { absolute: "Rocket Llama Labs · Version 7" },')
+    return s
+
+
+if __name__ == '__main__':
+    patch_shared()
+    build('src/app/(home)', '', 3)
+    build('src/app/v7', '/v7', 7, extras=v7_extras, extra_css_import='@/components/v7/v7.css', layout_note=' The custom elements and their styles live in src/components/v7.')
