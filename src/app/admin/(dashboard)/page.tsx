@@ -9,7 +9,7 @@ const shortcuts = [
     href: "/admin/website",
     icon: Globe,
     title: "Website",
-    body: "Version 1, live, and the version 2 sample with its kit.",
+    body: "Version 1, live, and versions 2 to 6: the samples and the three homepage directions.",
   },
   {
     href: "/admin/brand",

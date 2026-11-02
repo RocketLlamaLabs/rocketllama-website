@@ -14,6 +14,16 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // Versions 4, 5 and 6 are static pages under /public/mockups; these give
+  // them version URLs like the Next.js versions have.
+  async rewrites() {
+    return [
+      { source: "/v4", destination: "/mockups/v4.html" },
+      { source: "/v5", destination: "/mockups/v5.html" },
+      { source: "/v6", destination: "/mockups/v6.html" },
+      { source: "/mockups", destination: "/mockups/index.html" },
+    ];
+  },
   turbopack: {
     rules: {
       "*.css": {

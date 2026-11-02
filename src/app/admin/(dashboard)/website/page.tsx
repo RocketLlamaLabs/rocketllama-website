@@ -16,7 +16,7 @@ export default function WebsitePage() {
       <PageHeader
         eyebrow="Website"
         title="Website versions"
-        lead="Every version of the public site, where it runs and what it was built from. Version 2 has a kit with its pages, components and assets."
+        lead="Every version of the public site, where it runs and what it was built from. Versions 2 and 3 share a kit with their pages, components and assets; versions 4 to 6 are the three homepage directions."
       />
 
       <div className="grid gap-4 md:grid-cols-2">
@@ -75,11 +75,18 @@ export default function WebsitePage() {
         <h2 className="text-xl font-semibold">How versions work here</h2>
         <p className="mt-2 text-muted">
           Version 1 is the homepage at <code className="font-mono text-sm">/</code>.
-          Version 2 lives under <code className="font-mono text-sm">/v2</code>{" "}
-          with its own stylesheet, fonts and components, so the two can be
-          changed independently. Both are kept out of search engines until
-          launch. When version 2 is ready to replace version 1, its routes move
-          to the root.
+          Versions 2 and 3 live under <code className="font-mono text-sm">/v2</code>{" "}
+          and <code className="font-mono text-sm">/v3</code> with their own
+          stylesheets, fonts and components; version 3 is generated from the
+          version 2 source by <code className="font-mono text-sm">scripts/make-v3.py</code>,
+          so edits to version 2 can be carried forward. Versions 4 to 6 are
+          single static pages under{" "}
+          <code className="font-mono text-sm">/v4</code>,{" "}
+          <code className="font-mono text-sm">/v5</code> and{" "}
+          <code className="font-mono text-sm">/v6</code> (
+          <a className="underline" href="/mockups" target="_blank" rel="noopener">side by side</a>
+          ). Everything is kept out of search engines until launch. When a
+          version is ready to replace version 1, its routes move to the root.
         </p>
       </Card>
     </div>

@@ -3,11 +3,12 @@
 // brand mark rounds live under /public/v2, copied from the bbm-plan repository.
 
 export type SiteVersion = {
-  id: "v1" | "v2";
+  id: "v1" | "v2" | "v3" | "v4" | "v5" | "v6";
   name: string;
   status: "live" | "sample";
   href: string;
   kitHref?: string;
+  kitLabel?: string;
   summary: string;
   origin: string;
 };
@@ -28,10 +29,53 @@ export const siteVersions: SiteVersion[] = [
     status: "sample",
     href: "/v2",
     kitHref: "/admin/website/v2",
+    kitLabel: "Version 2 kit",
     summary:
       "The local home-services marketing site: slideshow hero, the video, the 60-second check, the booking funnel and the qualify quiz. A sample to redesign from.",
     origin:
       "Ported from the BBM Local mockup C (RocketLlamaLabs/bbm-plan), October 2026.",
+  },
+  {
+    id: "v3",
+    name: "Version 3",
+    status: "sample",
+    href: "/v3",
+    kitHref: "/admin/website/v2",
+    kitLabel: "Version 2 kit (shared)",
+    summary:
+      "Version 2's layout in the Rocket Llama colors: navy, blue and mist instead of green, the stacked logo (mascot, then Rocket / Llama on two lines), and no price list. Pricing is replaced by a custom-plan section that sends people to book a call.",
+    origin:
+      "Generated from the version 2 source by scripts/make-v3.py, November 2026. Same pages, quizzes, funnel and photos.",
+  },
+  {
+    id: "v4",
+    name: "Version 4 · Ignition",
+    status: "sample",
+    href: "/v4",
+    summary:
+      "Homepage direction A: bold Montserrat, one vivid photo panel beside the headline with a live \"missed call, AI reply, booked\" card playing on top of it. Brand blue with rocket-flame orange as the second accent.",
+    origin:
+      "Built from Madie's copy and photos as a static page (public/mockups/v4.html), November 2026.",
+  },
+  {
+    id: "v5",
+    name: "Version 5 · Sunrise Valley",
+    status: "sample",
+    href: "/v5",
+    summary:
+      "Homepage direction B: the warmest and most colorful. A photo bento hero, a Phoenix-sunrise gradient (gold, coral, ember) against brand blue, big rounded shapes, the mascot on a gradient tile and the horizontal logo in the nav.",
+    origin:
+      "Built from Madie's copy and photos as a static page (public/mockups/v5.html), November 2026.",
+  },
+  {
+    id: "v6",
+    name: "Version 6 · Signal",
+    status: "sample",
+    href: "/v6",
+    summary:
+      "Homepage direction C: clean and editorial. A different display face, a yellow highlighter accent on blue, a live feed of booked jobs over the hero photo, a travelling beam through the three-step system and the monthly report as a live card.",
+    origin:
+      "Built from Madie's copy and photos as a static page (public/mockups/v6.html), November 2026.",
   },
 ];
 

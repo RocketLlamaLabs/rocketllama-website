@@ -21,7 +21,7 @@ export function mountSixtySecondCheck() {
     var sc=document.getElementById('chk_score'), arc=document.getElementById('chk_arc'); var t0=null;
     requestAnimationFrame(function step(ts){ if(!t0) t0=ts; var k=Math.min(1,(ts-t0)/900); sc.textContent=Math.round(s*k); if(k<1) requestAnimationFrame(step) });
     setTimeout(function(){ arc.style.strokeDashoffset=String(326.7*(1-s/100)) },50);
-    document.getElementById('chk_book').href='/v2/book?score='+s;
+    var bk=document.getElementById('chk_book'); bk.href=bk.getAttribute('href').split('?')[0]+'?score='+s;
     res.scrollIntoView({behavior:'smooth',block:'nearest'});
   }
   document.getElementById('chk_again').addEventListener('click',function(){ root.querySelectorAll('input').forEach(function(r){r.checked=false; r.closest('.opt').classList.remove('sel')}); document.getElementById('chk_res').classList.remove('on'); document.getElementById('chk_arc').style.strokeDashoffset='326.7'; i=0; show() });

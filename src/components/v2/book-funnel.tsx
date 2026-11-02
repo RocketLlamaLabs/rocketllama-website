@@ -78,11 +78,11 @@ export function BookFunnel() {
           </div>
         </div>
         <svg className="ring" viewBox="0 0 240 240" aria-hidden="true">
-          <defs><pattern id="qzgrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#dfe7e1" strokeWidth="1" /></pattern></defs>
-          <rect width="240" height="240" rx="18" fill="#f4f8f5" /><rect width="240" height="240" rx="18" fill="url(#qzgrid)" />
+          <defs><pattern id="qzgrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="var(--line)" strokeWidth="1" /></pattern></defs>
+          <rect width="240" height="240" rx="18" fill="var(--bg)" /><rect width="240" height="240" rx="18" fill="url(#qzgrid)" />
           <circle className="r r50" cx="120" cy="120" r="104" /><circle className="r r30" cx="120" cy="120" r="66" /><circle className="r r15" cx="120" cy="120" r="34" />
-          <g className="pin2"><circle cx="196" cy="52" r="9" fill="#16a34a" opacity=".9" /><circle cx="56" cy="190" r="9" fill="#16a34a" opacity=".9" /></g>
-          <circle cx="120" cy="120" r="9" fill="#16a34a" stroke="#fff" strokeWidth="3" />
+          <g className="pin2"><circle cx="196" cy="52" r="9" fill="var(--accent)" opacity=".9" /><circle cx="56" cy="190" r="9" fill="var(--accent)" opacity=".9" /></g>
+          <circle cx="120" cy="120" r="9" fill="var(--accent)" stroke="#fff" strokeWidth="3" />
           <text className="lbl" x="120" y="228" textAnchor="middle" id="q_ringlbl">Pick a home base</text>
         </svg>
       </div>

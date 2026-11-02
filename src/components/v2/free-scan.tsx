@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { mountFreeScan } from "./behavior/free-scan";
 
 // FreeScan: markup from the mockup's _scan.html, behaviour mounted on the client.
-export function FreeScan() {
+export function FreeScan({ base = "/v2" }: { base?: string }) {
   useEffect(mountFreeScan, []);
   return (
     <>
@@ -36,7 +36,7 @@ export function FreeScan() {
       <div className="tick">&#10003;</div>
       <h3>On its way.</h3>
       <p>Your scan lands within one business day. If you want the fixes done, the walkthrough is one click away.</p>
-      <a className="btn" style={{display:"block",textAlign:"center",textDecoration:"none"} as CSSProperties} href="/v2/book">Book a walkthrough</a>
+      <a className="btn" style={{display:"block",textAlign:"center",textDecoration:"none"} as CSSProperties} href={`${base}/book`}>Book a walkthrough</a>
     </div>
   </div>
 </div>
