@@ -91,8 +91,8 @@ PLAN_SECTION = '''<section id="plan" className="feature"><div className="wrap">
 ROT = '''    <div className="rot">
       <div className="rslide"><h1>Your calendar should be <em>full.</em></h1><p className="lede">{LEDE}</p></div>
       <div className="rslide"><h1>Every call <em>answered</em> in under a minute.</h1><p className="lede">Calls, forms and estimate requests get a text and an email back in under a minute, in your voice, even when you are on a job. The phone still rings you first. If nobody can pick up, the AI books the appointment.</p></div>
-      <div className="rslide"><h1>Found by Google. <em>Recommended by AI.</em></h1><p className="lede">A website you own, built with the structure Google and ChatGPT can read. Your Google profile and reviews worked hard. Ads in your name. One system, built to get the call.</p></div>
-      <div className="rslide"><h1>One company per trade, <em>per city.</em></h1><p className="lede">We take one company per trade per city, so our clients never fight each other for the same calls. Your spot is yours for as long as you are with us. When it is gone, it is gone.</p></div>
+      <div className="rslide"><h1>Be the company Google and AI <em>recommend.</em></h1><p className="lede">When a homeowner searches, or asks ChatGPT, for someone in your trade in your city, the answer should be you. A website you own that search engines and AI can read, your Google profile and reviews worked hard, and ads in your name.</p></div>
+      <div className="rslide"><h1>Every dollar tracked to a <em>paid job.</em></h1><p className="lede">We do not report clicks. Every call and form lands in a CRM you own with its source and what the job was worth, and that number sets next month&rsquo;s spend. You see exactly what the marketing brought in.</p></div>
     </div>
 '''
 
@@ -117,7 +117,7 @@ ADJUST_CSS = '''
 .{S} .hero .kicker::before,.{S} .band .kicker::before,.{S} .watch .kicker::before,.{S} .fhero .kicker::before{background:#fff}
 .{S} .abox.rule .k{color:#fff}
 /* The emphasised word sits on a blue highlight so it reads on any photo. */
-.{S} .hero h1 em{color:#fff;background:var(--accent);padding:0 .14em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.{S} .hero h1 em{color:#fff;background:linear-gradient(transparent 10%,var(--accent) 10%,var(--accent) 92%,transparent 92%);padding:0 .08em;margin:0 -.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone;white-space:nowrap}
 /* Rotating headlines: four text slides on the same 28s cycle as the photos (7s each). */
 .{S} .rot{display:grid}
 .{S} .rot .rslide{grid-area:1/1;opacity:0;animation:{S}txt 28s linear infinite;will-change:opacity,transform}
@@ -158,8 +158,38 @@ def transform_page(s, f, is_home, base, n, scope, extras):
         s = s.replace(f'    default: "Rocket Llama Labs · Version {n}",\n    template: "%s · Rocket Llama Labs v{n}",', '    default: "Rocket Llama Labs",\n    template: "%s · Rocket Llama Labs",')
     s = s.replace('background:"var(--accent-soft)",borderColor:"#bbf7d0"', 'background:"var(--accent-soft)",borderColor:"#BFD8FF"')
     s = s.replace(f'Website version {n} sample for Rocket Llama Labs: version {n} of the light design.', 'Marketing and technology for local home services in Phoenix: a website you own, every lead answered in under a minute, every dollar tracked to a paid job.')
+    s = scrub_exclusivity(s)
     if extras:
         s = extras(s, f, is_home, base)
+    return s
+
+
+# The version 2 source advertises a cap on clients per trade per area. The
+# generated versions do not: leads are exclusive (never shared), but we do not
+# promise one company per city.
+SCRUB = [
+    ('<p><b>Limited spots per trade per area.</b> We cap how many companies we take in each trade and area, so our clients are never fighting each other for the same calls. Your spot is yours for as long as you are with us.</p>', '<p><b>Exclusive leads, never shared.</b> Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors; we never do.</p>'),
+    ('<p className="k">The rule</p>', '<p className="k">Your leads</p>'),
+    ('<b>Limited spots per trade per area.</b> ', '<b>Exclusive leads, never shared.</b> '),
+    (' We start in Phoenix and limit how many clients we take per trade per service area, so our clients are never fighting each other for the same calls. Leads outside your area go to a trusted provider you approve, who sends you theirs.', ' We start in Phoenix and expand city by city. Every lead comes from your own site and your own ads, so it is yours alone, never sold to four other contractors.'),
+    ('<p className="kicker" style={{justifyContent:"center"} as CSSProperties}>The rule</p>\n  <h2>We limit how many companies we take per trade per area. When the spots are gone, they&rsquo;re gone.</h2>\n  <p>We cap how many companies we take in each trade and area, so our clients are never fighting each other for the same calls. Your spot is yours for as long as you are with us.</p>\n  <div className="ctas" style={{justifyContent:"center"} as CSSProperties}><a className="btn light" href="BASE/book">Claim your spot</a></div>',
+     '<p className="kicker" style={{justifyContent:"center"} as CSSProperties}>Your leads, yours alone</p>\n  <h2>Leads from your own site and your own ads. Never shared, never resold.</h2>\n  <p>A marketplace sells the same homeowner to four contractors. Ours come from a website you own and ads in your name, so every call is yours and the cost per booked job is about a third.</p>\n  <div className="ctas" style={{justifyContent:"center"} as CSSProperties}><a className="btn light" href="BASE/book">Book a walkthrough</a></div>'),
+    (' A few optional questions after, so the call is about you from the first minute. We limit how many companies we take per trade per area.', ' A few optional questions after, so the call is about you from the first minute.'),
+    (' No obligation, and we limit how many companies we take per trade per area.', ' No obligation.'),
+    ('<p><b>Limited spots per trade per area.</b> We cap how many companies we take in each trade and area, so our clients are never fighting each other for the same calls. Your spot is yours for as long as you are with us.</p>', '<p><b>Exclusive leads, never shared.</b> Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors; we never do.</p>'),
+    ('<span className="k">The rule</span><h3>Limited spots per trade per area</h3><p>We cap how many companies we take in each trade and area, so our clients are never fighting each other for the same calls. Your spot is yours for as long as you are with us.</p><p style={{marginTop:"14px"} as CSSProperties}><a className="btn sm" href="BASE/book">Claim your spot</a></p>',
+     '<span className="k">Your leads</span><h3>Exclusive, never shared</h3><p>Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors; we never do.</p><p style={{marginTop:"14px"} as CSSProperties}><a className="btn sm" href="BASE/book">Book a walkthrough</a></p>'),
+    ('If you send a truck to a house, this is built for you. We limit how many clients we take per trade per service area.', 'If you send a truck to a house, this is built for you.'),
+    ('We limit how many companies we take per trade per area, and we like to know the business before we talk, so t', 'We like to know the business before we talk, so t'),
+]
+
+
+def scrub_exclusivity(s):
+    for a, b in SCRUB:
+        for base in ('', '/v7', '/v2', '/v3'):
+            s = s.replace(a.replace('BASE', base), b.replace('BASE', base))
+    for bad in ('per trade per area', 'per trade per city', 'one company per', 'limit how many', 'cap how many', 'Claim your spot', 'spots are gone'):
+        assert bad.lower() not in s.lower(), f'exclusivity claim left: {bad}'
     return s
 
 
@@ -232,7 +262,14 @@ def v7_extras(s, f, is_home, base):
     s = s.replace(a, '  <div className="wrap in hero-grid">\n   <div>\n    <p className="kicker">Marketing and technology for local home services</p>\n')
     a = '  </div>\n  <div className="dots" aria-hidden="true">'
     assert a in s, 'hero close'
-    s = s.replace(a, f'   </div>\n   <InstantAudit base="{base}" />\n  </div>\n  <div className="dots" aria-hidden="true">')
+    s = s.replace(a, f'   </div>\n   <div className="hero-check"><SixtySecondCheck base="{base}" /></div>\n  </div>\n  <div className="dots" aria-hidden="true">')
+    # the former 60-second-check section becomes the instant audit
+    a = '  <p className="kicker">The 60-second check</p>\n  <h2>How does your company show up online?</h2>\n  <p className="sub">Four questions, one tap each. You get a score out of 100 and the honest read on where the jobs are leaking. No email needed to see it.</p>\n  <SixtySecondCheck base="' + base + '" />'
+    assert a in s, 'check section'
+    s = s.replace(a, '  <p className="kicker">The instant audit</p>\n  <h2>See how you show up online. In 20 seconds.</h2>\n  <p className="sub">Your Google profile, your reviews, your website, your phone and what the AI engines say about you, side by side with the top company in your trade in your area. No email, no call, no sales rep. Then decide.</p>\n  <InstantAudit base="' + base + '" />')
+    s = s.replace('<a className="btn outline" href="#check">Take the 60-second check</a>', '<a className="btn outline" href="#check">Run the instant audit</a>')
+    s = s.replace('<a href="#check">60-second check</a>', '<a href="#check">Instant audit</a>')
+    s = s.replace('<a className="btn ghost" href="#check">Take the 60-second check</a>', '<a className="btn ghost" href="#check">Run the instant audit</a>')
     # trust strip under the hero
     s = s.replace('</header>\n\n<section id="problem">', '</header>\n<TrustStrip />\n\n<section id="problem">')
     # why owners switch, before the 60-second check

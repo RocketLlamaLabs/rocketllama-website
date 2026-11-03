@@ -15,7 +15,7 @@ export function mountSixtySecondCheck() {
     qs.forEach(function(q){q.classList.remove('on')}); bar.style.width='100%'; n.textContent='Done';
     var v,p; if(s<40){v='The town cannot find you yet.'; p='Under 40 means the customers who are searching right now are landing on someone else. The fix is the foundation: the Google profile, the reviews, a site that books, and a phone that always answers. All of it is on the walkthrough.'}
     else if(s<70){v='Getting found, losing jobs.'; p='Between 40 and 70 means the work is coming in, and a chunk of it is leaking: slow answers, a site that does not book, leads you are sharing with four other companies. The walkthrough shows you where, with your own numbers.'}
-    else {v='Strong. Now make it exclusive.'; p='Over 70 puts you ahead of most companies in your trade. The question is whether the spot for your trade in your area is still open, because we limit how many companies we take per trade per area.'}
+    else {v='Strong. Now make it compound.'; p='Over 70 puts you ahead of most companies in your trade. The walkthrough shows where the next jobs come from: the searches you are not on yet, the reviews you are not asking for, and the leads that still go to voicemail.'}
     document.getElementById('chk_v').textContent=v; document.getElementById('chk_p').textContent=p;
     var res=document.getElementById('chk_res'); res.classList.add('on');
     var sc=document.getElementById('chk_score'), arc=document.getElementById('chk_arc'); var t0=null;

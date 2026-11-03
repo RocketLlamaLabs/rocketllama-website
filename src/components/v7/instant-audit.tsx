@@ -10,7 +10,6 @@ export function InstantAudit({ base = "" }: { base?: string }) {
   useEffect(mountInstantAudit, []);
   return (
     <form className="audit" id="audit" onSubmit={(e) => e.preventDefault()}>
-      <img className="mascot" src="/brand/mascot.svg" alt="" width="120" height="90" />
       <div className="top"><span className="live"><i></i>Instant audit</span><span>Free · no email needed</span></div>
       <h2>Run the audit on your company</h2>
       <div className="row">

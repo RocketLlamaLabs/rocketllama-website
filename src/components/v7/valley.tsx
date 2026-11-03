@@ -4,10 +4,11 @@ import type { CSSProperties } from "react";
 import { useEffect } from "react";
 import { mountValley } from "./behavior/valley";
 
-// The Valley: one company per trade per city. From Madison's "Is yours taken?"
-// mockup: the map with open and taken spots, the twelve cities, the photo band
-// and the per-trade tuning (searches, season, job value). One trade state
-// drives all of it. Spot counts are illustrative until the CRM feeds them.
+// The Valley: the cities we serve. From Madison's map mockup, without the
+// open or closed spots: pick your trade, tap a city, and see what people
+// search for there, who the top company is, and how the system is tuned to
+// that trade (the photo band and the three tuning cards). Figures are
+// illustrative until the CRM feeds them.
 const CITIES: [string, number, number, string][] = [
   ["Surprise", 95, 150, "r"], ["Peoria", 170, 190, "r"], ["Glendale", 220, 240, "l"], ["Cave Creek", 300, 80, "r"],
   ["Phoenix", 300, 250, "t"], ["Scottsdale", 410, 180, "r"], ["Tempe", 370, 300, "r"], ["Mesa", 470, 300, "r"],
@@ -22,22 +23,22 @@ export function Valley({ base = "" }: { base?: string }) {
 <section id="cities" className="feature"><div className="wrap">
   <div className="valley">
     <div>
-      <p className="kicker">One company per trade per city</p>
-      <h2>One <span data-t="trade-lc">HVAC</span> company per city. Is yours taken?</h2>
-      <p className="sub">We take one company per trade per city, so our clients never fight each other for the same calls. Pick your trade, then tap a city. Blue spots are open. Navy ones are gone.</p>
+      <p className="kicker">Phoenix first, city by city</p>
+      <h2>Built for <span data-t="trade-lc">HVAC</span> companies across the Valley.</h2>
+      <p className="sub">Pick your trade, then tap a city. A page for every city you serve, built around what people there actually search for, with the top company in your trade as the bar to beat.</p>
       <div className="tradebar" role="group" aria-label="Pick your trade">
         {TRADES.map((t, i) => (<button key={t} className="tchip" type="button" data-trade={t} aria-pressed={i === 0 ? "true" : "false"}>{t}</button>))}
         <a className="tchip other" href="#industries">All trades</a>
       </div>
       <div className="citycard">
-        <div><h3><span data-t="city">Phoenix</span> · <span data-t="trade">HVAC</span></h3><div className="meta"><span className="status open" id="cc-status">1 of 1 spot open</span><span id="cc-search">about 9,900 searches a month</span><span id="cc-top">top company: 4.8★, 1,240 reviews</span></div></div>
-        <a className="btn" href={`${base}/book`} id="cc-cta">Claim this spot</a>
+        <div><h3><span data-t="city">Phoenix</span> · <span data-t="trade">HVAC</span></h3><div className="meta"><span className="status open" id="cc-status">your page: /hvac/phoenix</span><span id="cc-search">about 9,900 searches a month</span><span id="cc-top">top company: 4.8★, 1,240 reviews</span></div></div>
+        <a className="btn" href={`${base}/book`} id="cc-cta">Book a walkthrough for Phoenix</a>
       </div>
-      <p className="note">Spot counts are illustrative in this version. Live counts come from the CRM.</p>
+      <p className="note">Search and review figures are illustrative in this version. The real pages pull them from live data.</p>
     </div>
     <div>
       <div className="mapwrap">
-        <svg className="map" viewBox="0 0 640 520" role="img" aria-label="Map of the Phoenix metropolitan area with the cities Rocket Llama Labs serves. Blue circles are open spots for the chosen trade, navy circles are taken." id="svgmap">
+        <svg className="map" viewBox="0 0 640 520" role="img" aria-label="Map of the Phoenix metropolitan area with the twelve cities Rocket Llama Labs serves." id="svgmap">
           <path className="land" d="M40 110 C120 40, 300 20, 420 60 C520 90, 610 150, 600 260 C590 360, 520 470, 400 490 C280 510, 120 480, 70 400 C30 330, 10 200, 40 110 Z" />
           <path className="river" d="M80 300 C180 290, 260 300, 340 280 C420 260, 500 270, 590 240" />
           <path className="road" d="M60 230 L600 215" /><path className="road" d="M330 40 L310 500" /><path className="road" d="M110 110 L540 440" /><path className="road" d="M460 80 L200 480" />
@@ -52,12 +53,12 @@ export function Valley({ base = "" }: { base?: string }) {
           ))}
         </svg>
         <img className="pin" id="pin" src="/brand/mascot.svg" alt="" width="74" height="56" />
-        <div className="mapkey"><span><i className="open"></i>Open</span><span><i className="taken"></i>Taken</span><span>Tap a city</span></div>
+        <div className="mapkey"><span><i className="open"></i>A city we serve</span><span>Tap a city</span></div>
       </div>
     </div>
   </div>
-  <p className="kicker cities-k">Open spots for <span data-t="trade-lc">HVAC</span></p>
-  <h3 className="cities-h">Twelve cities. When the spots are gone, they are gone.</h3>
+  <p className="kicker cities-k">Twelve cities, one trade at a time</p>
+  <h3 className="cities-h">What people search for, city by city, for <span data-t="trade-lc">HVAC</span>.</h3>
   <div className="cities citygrid"></div>
 </div></section>
 

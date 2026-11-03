@@ -24,7 +24,7 @@ export default function Page() {
 <header className="fhero" id="top"><div className="wrap in">
   <p className="kicker">Book a walkthrough</p>
   <h1>Pick a time. About a minute.</h1>
-  <p>Book the walkthrough and the call opens with a free live audit of how you show up online: your Google profile, your reviews, your website and how your phone gets answered, side by side with the top company in your trade. No obligation, and we limit how many companies we take per trade per area.</p>
+  <p>Book the walkthrough and the call opens with a free live audit of how you show up online: your Google profile, your reviews, your website and how your phone gets answered, side by side with the top company in your trade. No obligation.</p>
   <div className="meta"><span><b>Book first</b> · questions after, optional</span><span><b>Free live audit</b> on the call</span><span><b>No obligation</b></span><span><b>Nothing shared</b> outside Rocket Llama Labs</span></div>
 </div></header>
 
@@ -62,8 +62,8 @@ export default function Page() {
       </ul>
     </div>
     <div className="abox rule">
-      <p className="k">The rule</p>
-      <p><b>Limited spots per trade per area.</b> We cap how many companies we take in each trade and area, so our clients are never fighting each other for the same calls. Your spot is yours for as long as you are with us.</p>
+      <p className="k">Your leads</p>
+      <p><b>Exclusive leads, never shared.</b> Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors; we never do.</p>
     </div>
     <div className="abox quote">
       <img src="/v2/img/brian-greenberg.jpg" alt="Brian Greenberg" width="64" height="64" loading="lazy" />

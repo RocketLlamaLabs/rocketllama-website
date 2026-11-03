@@ -14,7 +14,7 @@ export function CompareTable() {
           <tr><td>Contract</td><td className="us">Month to month</td><td>12 months typical<span className="src">stated in FAQs</span></td></tr>
           <tr><td>Who owns the website</td><td className="us">You, code in your GitHub, hosting free</td><td>Varies. One: &ldquo;you&rsquo;ll need another vendor to rebuild your website&rdquo;</td></tr>
           <tr><td>Who the ad money goes to</td><td className="us">Google and Meta, directly, your card</td><td>Often routed through the agency</td></tr>
-          <tr><td>Clients per trade per area</td><td className="us">Capped. One spot, yours</td><td>Unlimited</td></tr>
+          <tr><td>Where the leads come from</td><td className="us">Your own site and ads, exclusive to you</td><td>Shared marketplaces, sold to four contractors</td></tr>
           <tr><td>Local footprint</td><td className="us">Phoenix address, city pages, Brian in person</td><td>National, no city pages<span className="src">10 of 10</span></td></tr>
           <tr><td>Fields to book a call</td><td className="us">Four, then optional questions</td><td>7 to 11, including annual revenue</td></tr>
           <tr><td>Speed to lead</td><td className="us">Under 60 seconds, text and email, every lead</td><td>&ldquo;Within 2 hours&rdquo; at best</td></tr>

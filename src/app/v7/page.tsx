@@ -26,7 +26,7 @@ export default function Page() {
     <>
 <nav className="nav"><div className="wrap in">
   <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-stacked.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links"><a href="#problem">Why us</a><a href="#check">60-second check</a><a href="/v7/services">Services</a><a href="#cities">Cities</a><a href="#industries">Industries</a><a href="#plan">Your plan</a><a href="#who">About</a></div>
+  <div className="links"><a href="#problem">Why us</a><a href="#check">Instant audit</a><a href="/v7/services">Services</a><a href="#cities">Cities</a><a href="#industries">Industries</a><a href="#plan">Your plan</a><a href="#who">About</a></div>
   <a className="btn sm" href="/v7/book">Book a walkthrough</a>
 </div></nav>
 <main>
@@ -44,13 +44,13 @@ export default function Page() {
     <div className="rot">
       <div className="rslide"><h1>Your calendar should be <em>full.</em></h1><p className="lede">For plumbers, electricians, HVAC, roofers and every trade that goes to a customer&rsquo;s home. Calls, forms and free-estimate requests, every one answered in under a minute and booked onto your calendar. Every dollar tracked to a paid job. You own all of it.</p></div>
       <div className="rslide"><h1>Every call <em>answered</em> in under a minute.</h1><p className="lede">Calls, forms and estimate requests get a text and an email back in under a minute, in your voice, even when you are on a job. The phone still rings you first. If nobody can pick up, the AI books the appointment.</p></div>
-      <div className="rslide"><h1>Found by Google. <em>Recommended by AI.</em></h1><p className="lede">A website you own, built with the structure Google and ChatGPT can read. Your Google profile and reviews worked hard. Ads in your name. One system, built to get the call.</p></div>
-      <div className="rslide"><h1>One company per trade, <em>per city.</em></h1><p className="lede">We take one company per trade per city, so our clients never fight each other for the same calls. Your spot is yours for as long as you are with us. When it is gone, it is gone.</p></div>
+      <div className="rslide"><h1>Be the company Google and AI <em>recommend.</em></h1><p className="lede">When a homeowner searches, or asks ChatGPT, for someone in your trade in your city, the answer should be you. A website you own that search engines and AI can read, your Google profile and reviews worked hard, and ads in your name.</p></div>
+      <div className="rslide"><h1>Every dollar tracked to a <em>paid job.</em></h1><p className="lede">We do not report clicks. Every call and form lands in a CRM you own with its source and what the job was worth, and that number sets next month&rsquo;s spend. You see exactly what the marketing brought in.</p></div>
     </div>
-    <div className="ctas"><a className="btn light" href="/v7/book">Book a walkthrough</a><a className="btn outline" href="#check">Take the 60-second check</a></div>
-    <p className="trust"><b>Month to month.</b> No contracts. <b>Limited spots per trade per area.</b> Hosting free. <b>Not happy?</b> We work free until you are.</p>
+    <div className="ctas"><a className="btn light" href="/v7/book">Book a walkthrough</a><a className="btn outline" href="#check">Run the instant audit</a></div>
+    <p className="trust"><b>Month to month.</b> No contracts. <b>Exclusive leads, never shared.</b> Hosting free. <b>Not happy?</b> We work free until you are.</p>
    </div>
-   <InstantAudit base="/v7" />
+   <div className="hero-check"><SixtySecondCheck base="/v7" /></div>
   </div>
   <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 </header>
@@ -69,10 +69,10 @@ export default function Page() {
 <WhySwitch />
 
 <section id="check" className="qzsec"><div className="wrap">
-  <p className="kicker">The 60-second check</p>
-  <h2>How does your company show up online?</h2>
-  <p className="sub">Four questions, one tap each. You get a score out of 100 and the honest read on where the jobs are leaking. No email needed to see it.</p>
-  <SixtySecondCheck base="/v7" />
+  <p className="kicker">The instant audit</p>
+  <h2>See how you show up online. In 20 seconds.</h2>
+  <p className="sub">Your Google profile, your reviews, your website, your phone and what the AI engines say about you, side by side with the top company in your trade in your area. No email, no call, no sales rep. Then decide.</p>
+  <InstantAudit base="/v7" />
 </div></section>
 
 <Valley base="/v7" />
@@ -99,22 +99,22 @@ export default function Page() {
 <section id="industries"><div className="wrap">
   <p className="kicker">Industries</p>
   <h2>Every trade that goes to a customer&rsquo;s home.</h2>
-  <p className="sub">If you send a truck to a house, this is built for you. We start in Phoenix and limit how many clients we take per trade per service area, so our clients are never fighting each other for the same calls. Leads outside your area go to a trusted provider you approve, who sends you theirs.</p>
+  <p className="sub">If you send a truck to a house, this is built for you. We start in Phoenix and expand city by city. Every lead comes from your own site and your own ads, so it is yours alone, never sold to four other contractors.</p>
   <div className="trades"><a className="trade" href="/v7/book?trade=HVAC">HVAC</a><a className="trade" href="/v7/book?trade=Plumbing">Plumbing</a><a className="trade" href="/v7/book?trade=Electrical">Electrical</a><a className="trade" href="/v7/book?trade=Roofing">Roofing</a><a className="trade" href="/v7/book?trade=Garage%20door">Garage door</a><a className="trade" href="/v7/book?trade=Pest%20control">Pest control</a><a className="trade" href="/v7/book?trade=Landscaping">Landscaping</a><a className="trade" href="/v7/book?trade=Painting">Painting</a><a className="trade" href="/v7/book?trade=Window%20and%20pressure%20washing">Window and pressure washing</a><a className="trade" href="/v7/book?trade=Handyman">Handyman</a><a className="trade" href="/v7/book?trade=Mobile%20mechanic">Mobile mechanic</a><a className="trade" href="/v7/book?trade=Windows%20and%20doors">Windows and doors</a><a className="trade" href="/v7/book?trade=Solar">Solar</a><a className="trade" href="/v7/book?trade=Flooring">Flooring</a><a className="trade" href="/v7/book?trade=Remodeling">Remodeling</a><a className="trade other" href="/v7/book?trade=Other">Other home service &rarr;</a></div>
 </div></section>
 
 <div className="band center" style={{"--img":"url(/v2/img/band-landscaper.jpg)"} as CSSProperties}><div className="wrap in">
-  <p className="kicker" style={{justifyContent:"center"} as CSSProperties}>The rule</p>
-  <h2>We limit how many companies we take per trade per area. When the spots are gone, they&rsquo;re gone.</h2>
-  <p>We cap how many companies we take in each trade and area, so our clients are never fighting each other for the same calls. Your spot is yours for as long as you are with us.</p>
-  <div className="ctas" style={{justifyContent:"center"} as CSSProperties}><a className="btn light" href="/v7/book">Claim your spot</a></div>
+  <p className="kicker" style={{justifyContent:"center"} as CSSProperties}>Your leads, yours alone</p>
+  <h2>Leads from your own site and your own ads. Never shared, never resold.</h2>
+  <p>A marketplace sells the same homeowner to four contractors. Ours come from a website you own and ads in your name, so every call is yours and the cost per booked job is about a third.</p>
+  <div className="ctas" style={{justifyContent:"center"} as CSSProperties}><a className="btn light" href="/v7/book">Book a walkthrough</a></div>
 </div></div>
 
 <section id="plan" className="feature"><div className="wrap">
   <p className="kicker">Your plan</p>
   <h2>No price list. A marketing plan written for your company.</h2>
   <p className="sub">Every company is quoted on its own. On the walkthrough we look at your trade, your area, your calendar and what you already have, then write the plan with a number on it. You see the plan before you pay for anything, and you keep it either way.</p>
-  <div className="ctas"><a className="btn" href="/v7/book">Book a call</a><a className="btn ghost" href="#check">Take the 60-second check</a></div>
+  <div className="ctas"><a className="btn" href="/v7/book">Book a call</a><a className="btn ghost" href="#check">Run the instant audit</a></div>
 </div></section>
 
 <LeaveSwitch />
@@ -137,7 +137,7 @@ export default function Page() {
 <section id="qualify" className="qzsec"><div className="wrap">
   <p className="kicker">Book a walkthrough</p>
   <h2>Start here. What trade are you in?</h2>
-  <p className="sub">Pick your trade, then a time on the calendar. About a minute. A few optional questions after, so the call is about you from the first minute. We limit how many companies we take per trade per area.</p>
+  <p className="sub">Pick your trade, then a time on the calendar. About a minute. A few optional questions after, so the call is about you from the first minute.</p>
   <div className="starter">
     <a href="/v7/book?trade=HVAC">HVAC</a>
     <a href="/v7/book?trade=Plumbing">Plumbing</a>

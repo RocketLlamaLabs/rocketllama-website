@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { mountRace } from "./behavior/race";
 
 // Speed to lead as a race: you on the system against the average company,
-// at 60 times real speed. From Madison's "Is yours taken?" mockup.
+// at 60 times real speed. From Madison's mockup.
 export function Race() {
   useEffect(mountRace, []);
   return (

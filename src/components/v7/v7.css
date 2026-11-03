@@ -26,8 +26,6 @@
 .v7 .audit button.btn{cursor:pointer}
 .v7 .audit button.btn:disabled{opacity:.6;cursor:wait}
 .v7 .audit .fine{font-size:14px;color:var(--muted);margin:0}
-.v7 .audit .mascot{position:absolute;right:16px;top:-62px;width:110px;transform:rotate(-8deg);filter:drop-shadow(0 10px 18px rgba(4,23,58,.25))}
-@media(max-width:639px){.v7 .audit .mascot{width:80px;right:8px;top:-46px}}
 .v7 .achecks{display:none;margin-top:20px;border-top:1px solid var(--line)}
 .v7 .achecks.on{display:block}
 .v7 .arow{display:grid;grid-template-columns:28px 1fr auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);opacity:.35;transition:opacity .3s}
@@ -72,6 +70,15 @@
 .v7 .audit .ctas{margin-top:18px}
 .v7 .audit .btn.ghost{color:var(--ink)}
 
+/* ---- the 60-second check in the hero ---- */
+.v7 .hero .hero-grid h1{font-size:clamp(2.3rem,4.6vw,4rem);max-width:16ch}
+.v7 .hero .hero-grid .lede{font-size:clamp(1.05rem,1.5vw,1.2rem)}
+.v7 .hero .hero-check .chk{margin:0;max-width:none;text-shadow:none;color:var(--ink);box-shadow:0 30px 60px -24px rgba(4,23,58,.55)}
+.v7 .hero .hero-check .chk .kicker{color:var(--accent-ink);text-shadow:none}
+.v7 .hero .hero-check .chk .kicker::before{background:var(--accent)}
+.v7 .hero .hero-check .chk h3{color:var(--ink)}
+.v7 .audit{margin-top:30px;max-width:900px}
+
 /* ---- trust strip ---- */
 .v7 .strip{padding:20px 0;border-bottom:1px solid var(--line);background:var(--surface);font-family:var(--sans)}
 .v7 .strip .wrap{display:flex;flex-wrap:wrap;gap:12px 36px;align-items:center;justify-content:space-between;font-size:15px}
@@ -101,7 +108,6 @@
 .v7 .map .river{fill:none;stroke:var(--line);stroke-width:5;stroke-linecap:round;opacity:.7}
 .v7 .map .city{cursor:pointer}
 .v7 .map .city circle.dot{fill:var(--surface);stroke:var(--accent);stroke-width:3;transition:r .2s}
-.v7 .map .city.taken circle.dot{fill:var(--deep);stroke:var(--deep)}
 .v7 .map .city.sel circle.dot{stroke-width:5}
 .v7 .map .city:hover circle.dot{r:15}
 .v7 .map .city text{font-size:13px;font-weight:700;fill:var(--ink);pointer-events:none}
@@ -113,7 +119,7 @@
 .v7 .pin{position:absolute;width:74px;transition:left .4s ease,top .4s ease;filter:drop-shadow(0 8px 14px rgba(4,23,58,.25));pointer-events:none;left:-200px;top:-200px}
 .v7 .mapkey{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--sans);font-size:13px;color:var(--muted);padding:10px 6px 0}
 .v7 .mapkey i{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:-1px;margin-right:6px}
-.v7 .mapkey i.open{background:#fff;border:3px solid var(--accent)}.v7 .mapkey i.taken{background:var(--deep)}
+.v7 .mapkey i.open{background:#fff;border:3px solid var(--accent)}
 .v7 .citycard{background:var(--surface);border-radius:14px;padding:18px 20px;margin-top:22px;display:grid;gap:14px;border:1px solid var(--line);font-family:var(--sans)}
 @media(min-width:640px){.v7 .citycard{grid-template-columns:1fr auto;align-items:center}}
 .v7 .citycard h3{font-size:1.3rem;font-weight:800;margin:0;letter-spacing:-.02em}
@@ -130,7 +136,6 @@
 .v7 .citybtn small{font-weight:400;font-size:12.5px;color:var(--muted)}
 .v7 .citybtn .st{font-size:13.5px;font-weight:700}
 .v7 .citybtn .st.open{color:var(--accent-ink)}
-.v7 .citybtn .st.taken{color:var(--muted)}
 .v7 .band.photo-band::before{background:linear-gradient(90deg,rgba(4,23,58,.8) 0%,rgba(4,23,58,.5) 55%,rgba(4,23,58,.15) 100%)}
 .v7 .pers{display:grid;gap:16px;margin-top:36px}
 @media(min-width:900px){.v7 .pers{grid-template-columns:repeat(3,1fr)}}

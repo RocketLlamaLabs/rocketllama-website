@@ -475,7 +475,7 @@
 .v7 .hero .kicker::before,.v7 .band .kicker::before,.v7 .watch .kicker::before,.v7 .fhero .kicker::before{background:#fff}
 .v7 .abox.rule .k{color:#fff}
 /* The emphasised word sits on a blue highlight so it reads on any photo. */
-.v7 .hero h1 em{color:#fff;background:var(--accent);padding:0 .14em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.v7 .hero h1 em{color:#fff;background:linear-gradient(transparent 10%,var(--accent) 10%,var(--accent) 92%,transparent 92%);padding:0 .08em;margin:0 -.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone;white-space:nowrap}
 /* Rotating headlines: four text slides on the same 28s cycle as the photos (7s each). */
 .v7 .rot{display:grid}
 .v7 .rot .rslide{grid-area:1/1;opacity:0;animation:v7txt 28s linear infinite;will-change:opacity,transform}
