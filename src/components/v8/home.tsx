@@ -32,13 +32,13 @@ export function V8Home({ base }: { base: string }) {
     <>
 <nav className="nav"><div className="wrap in">
   <a className="wm" href={base} aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links"><a href="#problem">Why us</a><a href="#check">60-second check</a><a href={`${base}/services`}>Services</a><a href="#qualify">Industries</a><a href="#how">Your plan</a><a href="#who">About</a></div>
-  <a className="btn sm" href={`${base}/book`}>Book a walkthrough</a>
+  <div className="links"><a href="#who">About Us</a><a href={`${base}/services`}>Services</a><a href="#qualify">Industries</a></div>
+  <a className="btn sm" href={`${base}/book`}>Schedule a call</a>
   <details className="menu">
     <summary aria-label="Menu"><span></span></summary>
     <div className="panel">
-      <a href="#problem">Why us</a><a href="#check">60-second check</a><a href={`${base}/services`}>Services</a><a href="#qualify">Industries</a><a href="#how">Your plan</a><a href="#who">About</a>
-      <a className="btn sm" href={`${base}/book`}>Book a walkthrough</a>
+      <a href="#who">About Us</a><a href={`${base}/services`}>Services</a><a href="#qualify">Industries</a>
+      <a className="btn sm" href={`${base}/book`}>Schedule a call</a>
     </div>
   </details>
 </div></nav>
@@ -56,7 +56,7 @@ export function V8Home({ base }: { base: string }) {
     <p className="kicker">Marketing and technology for local home services</p>
     <h1>Your calendar should be <em>full.</em></h1>
     <p className="lede">We run the whole marketing system for plumbers, electricians, HVAC, roofers and every trade that goes to a customer&rsquo;s home. Every lead answered in under a minute. Every dollar tracked to a paid job. You own all of it.</p>
-    <div className="ctas"><a className="btn light" href={`${base}/book`}>Book a walkthrough</a></div>
+    <div className="ctas"><a className="btn light" href={`${base}/book`}>Schedule a call</a></div>
     <p className="trust"><b>Month to month.</b> No contracts. <b>Exclusive leads, never shared.</b> Hosting free.</p>
   </div>
   <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -66,7 +66,7 @@ export function V8Home({ base }: { base: string }) {
   <p className="kicker">The 60-second check</p>
   <h2>How does your company show up online?</h2>
   <p className="sub">Four questions, one tap each. You get a score out of 100 and the honest read on where the jobs are leaking. No email needed to see it.</p>
-  <SixtySecondCheck base={base} />
+  <SixtySecondCheck base={base} cta="Schedule a call" />
 </div></section>
 
 <section id="problem"><div className="wrap">
@@ -95,7 +95,7 @@ export function V8Home({ base }: { base: string }) {
   <div className="evolve">
     <p><b>Our system is constantly evolving</b>, because the marketing systems it runs on never stop changing. Our goal is simple: make your job easier and bring you customers.</p>
     <p className="dream">If you can dream it, we can build it.</p>
-    <a className="btn" href={`${base}/book`}>Book a walkthrough</a>
+    <a className="btn" href={`${base}/book`}>Schedule a call</a>
   </div>
 </div></section>
 
@@ -114,7 +114,7 @@ export function V8Home({ base }: { base: string }) {
   <p className="kicker">How it works</p>
   <h2>Getting started is simple. Keeping your phone ringing is our job.</h2>
   <div className="steps4">
-    <div className="step"><span className="num">1</span><h3>Book a walkthrough</h3><p>About a minute to book. On the call we run a live audit of how you show up online, side by side with the top company in your trade.</p></div>
+    <div className="step"><span className="num">1</span><h3>Schedule a call</h3><p>About a minute to book. On the call we run a live audit of how you show up online, side by side with the top company in your trade.</p></div>
     <div className="step"><span className="num">2</span><h3>We write your plan</h3><p>Your trade, your area, your calendar and what you already have, written up with a number on it. You see it before you pay for anything.</p></div>
     <div className="step"><span className="num">3</span><h3>We build and run everything</h3><p>Site, phones, CRM, ads and reviews, all in your name. Ads go on. Every lead is answered in under a minute.</p></div>
     <div className="step"><span className="num">4</span><h3>Your phone starts ringing</h3><p>On the first of every month you get the report: booked jobs by source, what they were worth, and what we changed.</p></div>
@@ -132,7 +132,7 @@ export function V8Home({ base }: { base: string }) {
 </div></section>
 
 <section id="qualify" className="qzsec"><div className="wrap">
-  <p className="kicker">Book a walkthrough</p>
+  <p className="kicker">Schedule a call</p>
   <h2>Start here. What trade are you in?</h2>
   <p className="sub">Pick your trade, then a time on the calendar. About a minute.</p>
   <div className="starter">

@@ -25,7 +25,7 @@ export default function Page() {
   return (
     <>
 <nav className="nav"><div className="wrap in">
-  <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-stacked.svg" alt="Rocket Llama Labs" /></a>
+  <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
   <div className="links"><a href="#problem">Why us</a><a href="#check">Instant audit</a><a href="/v7/services">Services</a><a href="#cities">Cities</a><a href="#industries">Industries</a><a href="#plan">Your plan</a><a href="#who">About</a></div>
   <a className="btn sm" href="/v7/book">Book a walkthrough</a>
 </div></nav>

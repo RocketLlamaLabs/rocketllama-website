@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { mountSixtySecondCheck } from "./behavior/sixty-second-check";
 
 // SixtySecondCheck: markup from the mockup's _check.html, behaviour mounted on the client.
-export function SixtySecondCheck({ base = "/v2" }: { base?: string }) {
+export function SixtySecondCheck({ base = "/v2", cta = "Book a walkthrough" }: { base?: string; cta?: string }) {
   useEffect(mountSixtySecondCheck, []);
   return (
     <>
@@ -28,7 +28,7 @@ export function SixtySecondCheck({ base = "/v2" }: { base?: string }) {
       <p className="kicker" style={{marginBottom:"8px"} as CSSProperties}>Your online visibility</p>
       <h3 className="verdict" id="chk_v"></h3>
       <p className="why" id="chk_p"></p>
-      <div className="ctas"><a className="btn" id="chk_book" href={`${base}/book`}>Book a walkthrough</a><a className="btn ghost" href="#scan">Get the free scan</a></div>
+      <div className="ctas"><a className="btn" id="chk_book" href={`${base}/book`}>{cta}</a><a className="btn ghost" href="#scan">Get the free scan</a></div>
       <a className="again" id="chk_again">Start over</a>
     </div>
   </div>

@@ -16,7 +16,7 @@ export default function Page() {
 <nav className="nav"><div className="wrap in">
   <a className="wm" href="/v8" aria-label="Rocket Llama Labs home"><img src="/brand/logo-stacked.svg" alt="Rocket Llama Labs" /></a>
   <div className="links" style={{display:"flex"} as CSSProperties}><a className="backlink" href="/v8">&larr; Back to the site</a></div>
-  <a className="btn sm" href="/v8/book">Book a walkthrough</a>
+  <a className="btn sm" href="/v8/book">Schedule a call</a>
 </div></nav>
 <main>
 
@@ -44,7 +44,7 @@ export default function Page() {
   </div>
 </div></section>
 
-<section className="feature" style={{paddingTop:"0"} as CSSProperties}><div className="wrap"><p className="note">Branson and Madison run the day to day at Rocket Llama Labs. Their bios follow. <a href="/v8/book">Book a walkthrough</a> or <a href="/v8">back to the site</a>.</p></div></section>
+<section className="feature" style={{paddingTop:"0"} as CSSProperties}><div className="wrap"><p className="note">Branson and Madison run the day to day at Rocket Llama Labs. Their bios follow. <a href="/v8/book">Schedule a call</a> or <a href="/v8">back to the site</a>.</p></div></section>
 </main>
       <V8Footer note='Version 8, about page' />
     </>

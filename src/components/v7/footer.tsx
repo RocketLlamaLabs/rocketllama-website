@@ -9,9 +9,9 @@ export function V7Footer({ note }: { note: string }) {
       <div className="wrap in">
         <Link className="wm" href="/v7" aria-label="Rocket Llama Labs home">
           <Image
-            src="/brand/logo-stacked.svg"
+            src="/brand/logo-nav.svg"
             alt="Rocket Llama Labs"
-            width={137}
+            width={249}
             height={40}
           />
         </Link>

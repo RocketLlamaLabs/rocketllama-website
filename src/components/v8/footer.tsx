@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Footer for version 8: the version 2 layout in the Rocket Llama colors,
-// with the same one-line logo as the top nav (public/brand/logo-nav.svg).
+// with the stacked logo (mascot, then Rocket / Llama on two lines).
 export function V8Footer({ note }: { note: string }) {
   return (
     <footer>

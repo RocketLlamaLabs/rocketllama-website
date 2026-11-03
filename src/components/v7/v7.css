@@ -260,3 +260,15 @@
   .v7 .audit .top .live i,.v7 .map .city.sel .ring{animation:none}
   .v7 .pin{transition:none}
 }
+
+/* Nav and footer logo: the one-line Rocket Llama Labs lockup (public/brand/logo-nav.svg). */
+.v7 .nav .in{min-height:72px;padding-block:10px}
+.v7 .nav .wm img{height:52px}
+.v7 .nav .links{gap:18px;font-size:.88rem}
+.v7 .nav .links a{white-space:nowrap}
+.v7 footer .wm img{height:44px;width:auto}
+@media(max-width:640px){
+  .v7 .nav .in{min-height:60px;padding-block:8px}
+  .v7 .nav .wm img{height:32px}
+  .v7 .nav .btn.sm{padding:9px 14px;font-size:.85rem}
+}

@@ -40,8 +40,8 @@ def patch_shared():
         edit(os.path.join(comp, f), [('stroke="#dfe7e1"', 'stroke="var(--line)"'), ('fill="#f4f8f5"', 'fill="var(--bg)"'), ('fill="#16a34a"', 'fill="var(--accent)"')])
     edit(os.path.join(comp, 'sixty-second-check.tsx'), [
         ('stroke="#e5ece7"', 'stroke="var(--line)"'), ('stroke="#16a34a"', 'stroke="var(--accent)"'),
-        ('export function SixtySecondCheck() {', 'export function SixtySecondCheck({ base = "/v2" }: { base?: string }) {'),
-        ('href="/v2/book">Book a walkthrough</a>', 'href={`${base}/book`}>Book a walkthrough</a>'),
+        ('export function SixtySecondCheck() {', 'export function SixtySecondCheck({ base = "/v2", cta = "Book a walkthrough" }: { base?: string; cta?: string }) {'),
+        ('href="/v2/book">Book a walkthrough</a>', 'href={`${base}/book`}>{cta}</a>'),
     ])
     edit(os.path.join(comp, 'behavior/sixty-second-check.js'), [
         ("document.getElementById('chk_book').href='/v2/book?score='+s;", "var bk=document.getElementById('chk_book'); bk.href=bk.getAttribute('href').split('?')[0]+'?score='+s;"),
@@ -205,6 +205,9 @@ def build(dst_rel, base, n, extras=None, extra_css_import=None, layout_note=''):
     # footer
     os.makedirs(os.path.join(root, f'src/components/v{n}'), exist_ok=True)
     open(os.path.join(root, f'src/components/v{n}/footer.tsx'), 'w').write(FOOTER.replace('{N}', str(n)).replace('{HOME}', base or '/'))
+    if n in (7, 8):  # v7 and v8 footers carry the one-line nav logo
+        fp = os.path.join(root, f'src/components/v{n}/footer.tsx'); t = open(fp).read()
+        open(fp, 'w').write(t.replace('/brand/logo-stacked.svg', '/brand/logo-nav.svg').replace('width={137}', 'width={249}'))
     # pages
     for dirpath, _, files in os.walk(dst):
         for f in files:
@@ -251,6 +254,8 @@ import { CompareTable } from "@/components/v7/compare-table";
 
 
 def v7_extras(s, f, is_home, base):
+    # the one-line nav logo (public/brand/logo-nav.svg) on every v7 page
+    s = s.replace('src="/brand/logo-stacked.svg"', 'src="/brand/logo-nav.svg"')
     if not is_home:
         return s
     # imports
@@ -307,7 +312,10 @@ export default function Page() {
 
 
 def v8_extras(s, f, is_home, base):
-    return V8_PAGE if is_home else s
+    if is_home:
+        return V8_PAGE
+    # the call to action is 'Schedule a call' on every v8 page
+    return s.replace('Book a walkthrough', 'Schedule a call').replace('book a walkthrough', 'schedule a call').replace('Book your free walkthrough', 'Schedule your free call')
 
 
 if __name__ == '__main__':

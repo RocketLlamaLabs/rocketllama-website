@@ -6,8 +6,8 @@ import { V8Footer } from "@/components/v8/footer";
 import { BookFunnel } from "@/components/v2/book-funnel";
 
 export const metadata: Metadata = {
-  title: 'Book your free walkthrough',
-  description: 'Rocket Llama Labs funnel v2 : book a walkthrough first, then a few optional questions. The free scan is the exit-intent offer.',
+  title: 'Schedule your free call',
+  description: 'Rocket Llama Labs funnel v2 : schedule a call first, then a few optional questions. The free scan is the exit-intent offer.',
 };
 
 // Ported from the mockup's src-c-book.html.
@@ -22,7 +22,7 @@ export default function Page() {
 <main>
 
 <header className="fhero" id="top"><div className="wrap in">
-  <p className="kicker">Book a walkthrough</p>
+  <p className="kicker">Schedule a call</p>
   <h1>Pick a time. About a minute.</h1>
   <p>Book the walkthrough and the call opens with a free live audit of how you show up online: your Google profile, your reviews, your website and how your phone gets answered, side by side with the top company in your trade. No obligation.</p>
   <div className="meta"><span><b>Book first</b> · questions after, optional</span><span><b>Free live audit</b> on the call</span><span><b>No obligation</b></span><span><b>Nothing shared</b> outside Rocket Llama Labs</span></div>
