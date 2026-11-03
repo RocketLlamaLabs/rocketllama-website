@@ -13,6 +13,7 @@
 .v8 .nav .menu .panel a{text-decoration:none;color:var(--ink);font-family:var(--sans);font-weight:600;font-size:1rem;padding:10px 14px;border-radius:10px}
 .v8 .nav .menu .panel a:hover{background:var(--surface)}
 .v8 .nav .menu .panel .btn{margin-top:8px;justify-content:center;color:#fff}
+.v8 footer .wm img{height:44px;width:auto}
 @media(max-width:899px){
   .v8 .nav .in{min-height:60px;padding-block:7px}
   .v8 .nav .wm img{height:46px}
