@@ -2,6 +2,8 @@
 #
 #   version 3  ->  src/app/(home)  (the live site: /, /services, /book, /qualify, /about-brian)
 #   version 7  ->  src/app/v7      (version 3 plus the custom elements from Madison's mockups)
+#   version 8  ->  src/app/v8      (the simplified homepage; its home lives in src/components/v8/home.tsx,
+#                                   the sub-pages come from version 2 like the others)
 #
 # Both keep version 2's pages, quizzes, funnel and photos, rescoped under their
 # own class (.v3 / .v7), recolored to the Rocket Llama brand, with the stacked
@@ -186,7 +188,7 @@ SCRUB = [
 
 def scrub_exclusivity(s):
     for a, b in SCRUB:
-        for base in ('', '/v7', '/v2', '/v3'):
+        for base in ('', '/v7', '/v8', '/v2', '/v3'):
             s = s.replace(a.replace('BASE', base), b.replace('BASE', base))
     for bad in ('per trade per area', 'per trade per city', 'one company per', 'limit how many', 'cap how many', 'Claim your spot', 'spots are gone'):
         assert bad.lower() not in s.lower(), f'exclusivity claim left: {bad}'
@@ -286,7 +288,30 @@ def v7_extras(s, f, is_home, base):
     return s
 
 
+# ---------- version 8: the home page is hand-written in src/components/v8/home.tsx
+V8_PAGE = '''import type { Metadata } from "next";
+import { V8Home } from "@/components/v8/home";
+
+export const metadata: Metadata = {
+  title: { absolute: "Rocket Llama Labs · Version 8" },
+  description: "The simplest version of the homepage: the 60-second check under the banner, the full system as one list, how it works, and the trade picker.",
+};
+
+// Version 8's home is hand-written; see src/components/v8/home.tsx. The
+// sub-pages (/services, /book, /qualify, /about-brian) come from version 2
+// through scripts/make-v3.py like the other versions.
+export default function Page() {
+  return <V8Home base="/v8" />;
+}
+'''
+
+
+def v8_extras(s, f, is_home, base):
+    return V8_PAGE if is_home else s
+
+
 if __name__ == '__main__':
     patch_shared()
     build('src/app/(home)', '', 3)
     build('src/app/v7', '/v7', 7, extras=v7_extras, extra_css_import='@/components/v7/v7.css', layout_note=' The custom elements and their styles live in src/components/v7.')
+    build('src/app/v8', '/v8', 8, extras=v8_extras, extra_css_import='@/components/v8/v8.css', layout_note=' The home page itself is src/components/v8/home.tsx.')

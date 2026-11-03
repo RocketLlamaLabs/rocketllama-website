@@ -3,7 +3,7 @@
 // brand mark rounds live under /public/v2, copied from the bbm-plan repository.
 
 export type SiteVersion = {
-  id: "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7";
+  id: "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7" | "v8";
   name: string;
   status: "live" | "sample";
   href: string;
@@ -88,6 +88,18 @@ export const siteVersions: SiteVersion[] = [
       "Version 3 plus the custom elements from Madison's mockups: the instant audit in the hero, the four promises strip, why owners switch, the Valley map with open and taken spots per trade, the per-trade tuning and photo band, the speed-to-lead race, the monthly report card with a bad month, the exit checklist, the 90-day timeline and the agency comparison. No price list.",
     origin:
       "Generated from the version 2 source by scripts/make-v3.py with the version 7 extras; the custom components live in src/components/v7. November 2026.",
+  },
+  {
+    id: "v8",
+    name: "Version 8",
+    status: "sample",
+    href: "/v8",
+    kitHref: "/admin/website/v2",
+    kitLabel: "Version 2 kit (shared)",
+    summary:
+      "The simplest homepage. A calm banner with one button, the 60-second check right under it, the three leaks, the full system as one list of everything we run (phones, CRM, AI attendant, search, AI search, Google profile, Google, Facebook, Instagram, YouTube and Local Services ads, hosting, design, content, links, AI booking, reviews, funnels, support, custom projects, local commercials, email, voicemail drop), how it works in four steps, who you are talking to, and the trade picker. No pricing.",
+    origin:
+      "Hand-written home in src/components/v8/home.tsx; sub-pages generated from version 2 by scripts/make-v3.py. Structure modelled on a classic home services agency page. November 2026.",
   },
 ];
 

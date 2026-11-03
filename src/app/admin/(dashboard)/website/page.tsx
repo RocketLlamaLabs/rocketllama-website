@@ -16,7 +16,7 @@ export default function WebsitePage() {
       <PageHeader
         eyebrow="Website"
         title="Website versions"
-        lead="Every version of the public site, where it runs and what it was built from. Version 3 is live at the root. Versions 2 and 3 share a kit with their pages, components and assets; versions 4 to 6 are the three homepage directions; version 7 is version 3 with the custom elements from Madison's mockups."
+        lead="Every version of the public site, where it runs and what it was built from. Version 3 is live at the root. Versions 2 and 3 share a kit with their pages, components and assets; versions 4 to 6 are the three homepage directions; version 7 is version 3 with the custom elements from Madison's mockups; version 8 is the simplified homepage."
       />
 
       <div className="grid gap-4 md:grid-cols-2">
