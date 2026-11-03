@@ -1,7 +1,9 @@
 /* Version 8: the simplified homepage. Built on the generated .v8 tokens. */
 /* Nav logo: the one-line lockup, mascot on the left, plain O. */
-.v8 .nav .wm img{height:38px}
-@media(max-width:640px){.v8 .nav .wm img{height:30px}}
+.v8 .nav .wm img{height:32px}
+@media(max-width:640px){.v8 .nav .wm img{height:26px}}
+.v8 .nav .links{gap:20px;font-size:.9rem}
+.v8 .nav .links a{white-space:nowrap}
 .v8 .hero.v8hero{min-height:min(72vh,680px)}
 .v8 .hero.v8hero .in{padding-block:clamp(90px,14vh,150px) clamp(40px,6vw,72px)}
 .v8 .hero.v8hero h1 em{color:#fff;background:linear-gradient(transparent 10%,var(--accent) 10%,var(--accent) 92%,transparent 92%);padding:0 .08em;margin:0 -.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone;white-space:nowrap}
