@@ -285,4 +285,4 @@
   .v7 .nav .in>.btn{display:none}
 }
 /* The fixed line at the foot of the banner, set at the headline size; it stays put while the photos change. */
-.v7 .hero .tagline{margin:clamp(40px,7vh,80px) 0 0;font-family:var(--sans);font-size:clamp(2.7rem,7vw,5.6rem);line-height:.98;letter-spacing:-.045em;font-weight:900;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25);text-wrap:balance;max-width:16ch}
+.v7 .hero .tagline{margin:clamp(36px,6vh,72px) 0 0;font-family:var(--sans);font-size:clamp(.9rem,3.75vw,3rem);line-height:1;letter-spacing:-.04em;font-weight:900;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25);white-space:nowrap;max-width:none}
