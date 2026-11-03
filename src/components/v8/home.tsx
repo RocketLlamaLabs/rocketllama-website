@@ -31,10 +31,18 @@ export function V8Home({ base }: { base: string }) {
   return (
     <>
 <nav className="nav"><div className="wrap in">
-  <a className="wm" href={base} aria-label="Rocket Llama Labs home"><img src="/brand/logo-3line-left.svg" alt="Rocket Llama Labs" /></a>
+  <a className="wm" href={base} aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
   <div className="links"><a href="#problem">Why us</a><a href="#check">60-second check</a><a href={`${base}/services`}>Services</a><a href="#qualify">Industries</a><a href="#how">Your plan</a><a href="#who">About</a></div>
   <a className="btn sm" href={`${base}/book`}>Book a walkthrough</a>
+  <details className="menu">
+    <summary aria-label="Menu"><span></span></summary>
+    <div className="panel">
+      <a href="#problem">Why us</a><a href="#check">60-second check</a><a href={`${base}/services`}>Services</a><a href="#qualify">Industries</a><a href="#how">Your plan</a><a href="#who">About</a>
+      <a className="btn sm" href={`${base}/book`}>Book a walkthrough</a>
+    </div>
+  </details>
 </div></nav>
+<script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v8 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v8 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}})"}} />
 <main>
 
 <header className="hero v8hero" id="top">
