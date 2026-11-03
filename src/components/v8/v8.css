@@ -1,5 +1,5 @@
 /* Version 8: the simplified homepage. Built on the generated .v8 tokens. */
-/* Nav logo: Rocket / Llama / Labs flush left, mascot on the right (public/brand/logo-3line-left-icon-right.svg). */
+/* Nav logo: mascot on the left, then Rocket / Llama / Labs flush left (public/brand/logo-3line-left.svg). */
 .v8 .nav .wm img{height:54px}
 @media(max-width:640px){.v8 .nav .wm img{height:42px}}
 .v8 .nav .links{gap:20px;font-size:.9rem}
