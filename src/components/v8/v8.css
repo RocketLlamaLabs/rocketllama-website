@@ -1,5 +1,5 @@
 /* Version 8: the simplified homepage. Built on the generated .v8 tokens. */
-/* Nav logo: the horizontal lockup from the Illustrator PDF (public/brand/logo-horizontal-pdf.svg). */
+/* Nav logo: the Rocket Horizontal SVG2 lockup (public/brand/logo-horizontal-2.svg). */
 .v8 .nav .wm img{height:46px}
 @media(max-width:640px){.v8 .nav .wm img{height:36px}}
 .v8 .nav .links{gap:20px;font-size:.9rem}
