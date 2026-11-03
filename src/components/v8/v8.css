@@ -1,8 +1,8 @@
 /* Version 8: the simplified homepage. Built on the generated .v8 tokens. */
 /* Nav: the one-line Rocket Llama Labs lockup (public/brand/logo-nav.svg), 44px in a 72px bar on
    desktop, 34px with a hamburger menu below 900px. */
-.v8 .nav .in{min-height:72px;padding-block:14px}
-.v8 .nav .wm img{height:44px}
+.v8 .nav .in{min-height:72px;padding-block:8px}
+.v8 .nav .wm img{height:64px}
 .v8 .nav .menu{display:none;position:relative;margin-left:auto;background:none;border:0;border-radius:0;padding:0}
 .v8 .nav .menu summary{list-style:none;cursor:pointer;width:44px;height:44px;display:grid;place-items:center;border-radius:12px}
 .v8 .nav .menu summary::after,.v8 .nav .menu[open] summary::after{content:none}
@@ -14,8 +14,8 @@
 .v8 .nav .menu .panel a:hover{background:var(--surface)}
 .v8 .nav .menu .panel .btn{margin-top:8px;justify-content:center;color:#fff}
 @media(max-width:899px){
-  .v8 .nav .in{min-height:60px;padding-block:10px}
-  .v8 .nav .wm img{height:34px}
+  .v8 .nav .in{min-height:60px;padding-block:7px}
+  .v8 .nav .wm img{height:46px}
   .v8 .nav .menu{display:block}
   .v8 .nav .in>.btn{display:none}
 }
