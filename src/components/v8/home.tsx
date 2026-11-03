@@ -31,7 +31,7 @@ export function V8Home({ base }: { base: string }) {
   return (
     <>
 <nav className="nav"><div className="wrap in">
-  <a className="wm" href={base} aria-label="Rocket Llama Labs home"><img src="/brand/logo-horizontal.svg" alt="Rocket Llama Labs" /></a>
+  <a className="wm" href={base} aria-label="Rocket Llama Labs home"><img src="/brand/logo-horizontal-pdf.svg" alt="Rocket Llama Labs" /></a>
   <div className="links"><a href="#problem">Why us</a><a href="#check">60-second check</a><a href={`${base}/services`}>Services</a><a href="#qualify">Industries</a><a href="#how">Your plan</a><a href="#who">About</a></div>
   <a className="btn sm" href={`${base}/book`}>Book a walkthrough</a>
 </div></nav>

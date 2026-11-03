@@ -1,7 +1,7 @@
 /* Version 8: the simplified homepage. Built on the generated .v8 tokens. */
-/* Nav logo: the one-line lockup, mascot on the left, plain O. */
-.v8 .nav .wm img{height:32px}
-@media(max-width:640px){.v8 .nav .wm img{height:26px}}
+/* Nav logo: the horizontal lockup from the Illustrator PDF (public/brand/logo-horizontal-pdf.svg). */
+.v8 .nav .wm img{height:46px}
+@media(max-width:640px){.v8 .nav .wm img{height:36px}}
 .v8 .nav .links{gap:20px;font-size:.9rem}
 .v8 .nav .links a{white-space:nowrap}
 .v8 .hero.v8hero{min-height:min(72vh,680px)}
