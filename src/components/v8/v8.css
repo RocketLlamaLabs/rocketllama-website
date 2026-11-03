@@ -1,7 +1,7 @@
 /* Version 8: the simplified homepage. Built on the generated .v8 tokens. */
-/* Nav logo: the Rocket O three-line lockup (public/brand/logo-rocket-o-3line.svg). */
-.v8 .nav .wm img{height:54px}
-@media(max-width:640px){.v8 .nav .wm img{height:42px}}
+/* Nav logo: the Rocket Horizontal SVG2 lockup, both lines at one height (public/brand/logo-horizontal-3.svg). */
+.v8 .nav .wm img{height:48px}
+@media(max-width:640px){.v8 .nav .wm img{height:38px}}
 .v8 .nav .links{gap:20px;font-size:.9rem}
 .v8 .nav .links a{white-space:nowrap}
 .v8 .hero.v8hero{min-height:min(72vh,680px)}
