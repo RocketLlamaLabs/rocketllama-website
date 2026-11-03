@@ -253,7 +253,7 @@ import { CompareTable } from "@/components/v7/compare-table";
 '''
 
 
-def v7_extras(s, f, is_home, base):
+def v7_extras_core(s, f, is_home, base):
     # the one-line nav logo (public/brand/logo-nav.svg) on every v7 page
     s = s.replace('src="/brand/logo-stacked.svg"', 'src="/brand/logo-nav.svg"')
     if not is_home:
@@ -309,6 +309,39 @@ export default function Page() {
   return <V8Home base="/v8" />;
 }
 '''
+
+
+MENU_SCRIPT = "document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}})"
+
+
+def v7_extras(s, f, is_home, base):
+    s = v7_extras_core(s, f, is_home, base)
+    # wording: every call to action schedules a call
+    s = s.replace('Book a walkthrough', 'Schedule a call').replace('book a walkthrough', 'schedule a call').replace('Book your free walkthrough', 'Schedule your free call')
+    s = s.replace(f'<SixtySecondCheck base="{base}" />', f'<SixtySecondCheck base="{base}" cta="Schedule a call" />')
+    # nav: About Us first, then Services, Cities, Industries; a hamburger menu below 900px
+    pfx = '' if is_home else base
+    links = f'<a href="{pfx}#who">About Us</a><a href="{base}/services">Services</a><a href="{pfx}#cities">Cities</a><a href="{pfx}#industries">Industries</a>'
+    s = re.sub(r'<div className="links">.*?</div>', '<div className="links">' + links + '</div>', s, count=1)
+    btn = f'  <a className="btn sm" href="{base}/book">Schedule a call</a>\n</div></nav>'
+    if btn not in s:  # layout.tsx has no nav
+        return s
+    menu = ('\n  <details className="menu">\n    <summary aria-label="Menu"><span></span></summary>\n    <div className="panel">\n      ' + links
+            + f'\n      <a className="btn sm" href="{base}/book">Schedule a call</a>\n    </div>\n  </details>')
+    s = s.replace(btn, f'  <a className="btn sm" href="{base}/book">Schedule a call</a>{menu}\n</div></nav>\n<script dangerouslySetInnerHTML={{{{__html:"{MENU_SCRIPT}"}}}} />', 1)
+    if is_home:
+        # banner: the tagline moves from above the headline to the foot of the banner, at headline size
+        a = '   <div>\n    <p className="kicker">Marketing and technology for local home services</p>\n'
+        assert a in s; s = s.replace(a, '   <div>\n', 1)
+        a = 'We work free until you are.</p>\n   </div>'
+        assert a in s; s = s.replace(a, 'We work free until you are.</p>\n    <p className="tagline">Marketing and technology for local home services</p>\n   </div>', 1)
+        # no question box in the banner: single column, the check keeps its own section further down
+        a = f'   <div className="hero-check"><SixtySecondCheck base="{base}" cta="Schedule a call" /></div>\n'
+        assert a in s; s = s.replace(a, '', 1)
+        s = s.replace('<div className="wrap in hero-grid">', '<div className="wrap in">', 1)
+        if '<SixtySecondCheck' not in s:
+            s = s.replace('import { SixtySecondCheck } from "@/components/v2/sixty-second-check";\n', '', 1)
+    return s
 
 
 def v8_extras(s, f, is_home, base):

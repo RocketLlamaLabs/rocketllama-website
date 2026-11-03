@@ -16,9 +16,17 @@ export default function Page() {
     <>
 <nav className="nav"><div className="wrap in">
   <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links"><a href="/v7#problem">Why us</a><a href="/v7#system">The system</a><a className="on" href="#top">Services</a><a href="/v7#industries">Industries</a><a href="/v7#plan">Your plan</a><a href="/v7#who">About</a></div>
-  <a className="btn sm" href="/v7/book">Book a walkthrough</a>
+  <div className="links"><a href="/v7#who">About Us</a><a href="/v7/services">Services</a><a href="/v7#cities">Cities</a><a href="/v7#industries">Industries</a></div>
+  <a className="btn sm" href="/v7/book">Schedule a call</a>
+  <details className="menu">
+    <summary aria-label="Menu"><span></span></summary>
+    <div className="panel">
+      <a href="/v7#who">About Us</a><a href="/v7/services">Services</a><a href="/v7#cities">Cities</a><a href="/v7#industries">Industries</a>
+      <a className="btn sm" href="/v7/book">Schedule a call</a>
+    </div>
+  </details>
 </div></nav>
+<script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}})"}} />
 <main>
 
 <header className="hero small" id="top">
@@ -35,7 +43,7 @@ export default function Page() {
     <p className="kicker">Ninety seconds</p>
     <h2>The full walkthrough.</h2>
     <p>The three ways good companies lose jobs, what we build instead, how the money is tracked, and who is behind it.</p>
-    <p><a className="lk" href="/v7/book">Book a walkthrough</a> &nbsp;·&nbsp; In a hurry? <a className="lk" href="/v2/video/bbm-local-30s.mp4" target="_blank" rel="noopener">The 30-second cut</a></p>
+    <p><a className="lk" href="/v7/book">Schedule a call</a> &nbsp;·&nbsp; In a hurry? <a className="lk" href="/v2/video/bbm-local-30s.mp4" target="_blank" rel="noopener">The 30-second cut</a></p>
   </div>
   <div className="shot"><video controls playsInline preload="metadata" poster="/v2/video/poster.png"><source src="/v2/video/bbm-local-full.mp4" type="video/mp4" /></video><span className="tag">90 seconds</span></div>
 </div></section>
@@ -52,7 +60,7 @@ export default function Page() {
     <div className="card"><span className="k">06 · CRM</span><h3>Your CRM, with AI follow-up</h3><p>Text and email reply in under a minute, pipelines, booking, closed-job value and the return-on-spend dashboard.</p><ul><li>Every lead answered in under 60 seconds</li><li>Pipeline from lead to paid job</li><li>The dashboard that sets next month&rsquo;s budget</li></ul></div>
     <div className="card"><span className="k">07 · Ads</span><h3>Google, Local Services and Meta ads, in your name</h3><p>Your accounts, your card, our management. Budget up in busy months, down in slow ones, never a contract.</p><ul><li>Local Services Ads with the guaranteed badge</li><li>Search for the jobs you want</li><li>Meta for the offers that fill the calendar</li></ul></div>
     <div className="card"><span className="k">08 · Ownership</span><h3>Never locked in</h3><p>Export your data, port your numbers, take the code. If you leave, we help the next provider get set up.</p><ul><li>Month to month</li><li>Everything in your name</li><li>Free hosting for life of the site</li></ul></div>
-    <div className="card" style={{background:"var(--accent-soft)",borderColor:"#BFD8FF"} as CSSProperties}><span className="k">Your leads</span><h3>Exclusive, never shared</h3><p>Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors; we never do.</p><p style={{marginTop:"14px"} as CSSProperties}><a className="btn sm" href="/v7/book">Book a walkthrough</a></p></div>
+    <div className="card" style={{background:"var(--accent-soft)",borderColor:"#BFD8FF"} as CSSProperties}><span className="k">Your leads</span><h3>Exclusive, never shared</h3><p>Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors; we never do.</p><p style={{marginTop:"14px"} as CSSProperties}><a className="btn sm" href="/v7/book">Schedule a call</a></p></div>
   </div>
 </div></section>
 
@@ -74,7 +82,7 @@ export default function Page() {
   <h2>Every trade that goes to a customer&rsquo;s home.</h2>
   <p className="sub">If you send a truck to a house, this is built for you.</p>
   <div className="trades"><a className="trade" href="/v7/book?trade=HVAC">HVAC</a><a className="trade" href="/v7/book?trade=Plumbing">Plumbing</a><a className="trade" href="/v7/book?trade=Electrical">Electrical</a><a className="trade" href="/v7/book?trade=Roofing">Roofing</a><a className="trade" href="/v7/book?trade=Garage%20door">Garage door</a><a className="trade" href="/v7/book?trade=Pest%20control">Pest control</a><a className="trade" href="/v7/book?trade=Landscaping">Landscaping</a><a className="trade" href="/v7/book?trade=Painting">Painting</a><a className="trade" href="/v7/book?trade=Window%20and%20pressure%20washing">Window and pressure washing</a><a className="trade" href="/v7/book?trade=Handyman">Handyman</a><a className="trade" href="/v7/book?trade=Mobile%20mechanic">Mobile mechanic</a><a className="trade" href="/v7/book?trade=Windows%20and%20doors">Windows and doors</a><a className="trade" href="/v7/book?trade=Solar">Solar</a><a className="trade" href="/v7/book?trade=Flooring">Flooring</a><a className="trade" href="/v7/book?trade=Remodeling">Remodeling</a><a className="trade other" href="/v7/book?trade=Other">Other home service &rarr;</a></div>
-  <div className="ctas"><a className="btn" href="/v7/book">Book a walkthrough</a><a className="btn ghost" href="/v7#pricing">Pricing</a></div>
+  <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a><a className="btn ghost" href="/v7#pricing">Pricing</a></div>
 </div></section>
 </main>
       <V7Footer note='Version 7, services page' />

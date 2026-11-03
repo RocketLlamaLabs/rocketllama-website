@@ -32,7 +32,7 @@ export function Valley({ base = "" }: { base?: string }) {
       </div>
       <div className="citycard">
         <div><h3><span data-t="city">Phoenix</span> · <span data-t="trade">HVAC</span></h3><div className="meta"><span className="status open" id="cc-status">your page: /hvac/phoenix</span><span id="cc-search">about 9,900 searches a month</span><span id="cc-top">top company: 4.8★, 1,240 reviews</span></div></div>
-        <a className="btn" href={`${base}/book`} id="cc-cta">Book a walkthrough for Phoenix</a>
+        <a className="btn" href={`${base}/book`} id="cc-cta">Schedule a call for Phoenix</a>
       </div>
       <p className="note">Search and review figures are illustrative in this version. The real pages pull them from live data.</p>
     </div>

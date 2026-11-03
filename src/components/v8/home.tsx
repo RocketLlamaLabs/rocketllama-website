@@ -53,11 +53,11 @@ export function V8Home({ base }: { base: string }) {
     <img src="/v2/img/hero-roofing.jpg" alt="" />
   </div>
   <div className="wrap in">
-    <p className="kicker">Marketing and technology for local home services</p>
     <h1>Your calendar should be <em>full.</em></h1>
     <p className="lede">We run the whole marketing system for plumbers, electricians, HVAC, roofers and every trade that goes to a customer&rsquo;s home. Every lead answered in under a minute. Every dollar tracked to a paid job. You own all of it.</p>
     <div className="ctas"><a className="btn light" href={`${base}/book`}>Schedule a call</a></div>
     <p className="trust"><b>Month to month.</b> No contracts. <b>Exclusive leads, never shared.</b> Hosting free.</p>
+    <p className="tagline">Marketing and technology for local home services</p>
   </div>
   <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 </header>

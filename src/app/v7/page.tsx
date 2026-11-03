@@ -3,7 +3,6 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { V7Footer } from "@/components/v7/footer";
-import { SixtySecondCheck } from "@/components/v2/sixty-second-check";
 import { FreeScan } from "@/components/v2/free-scan";
 import { InstantAudit } from "@/components/v7/instant-audit";
 import { TrustStrip } from "@/components/v7/trust-strip";
@@ -26,9 +25,17 @@ export default function Page() {
     <>
 <nav className="nav"><div className="wrap in">
   <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links"><a href="#problem">Why us</a><a href="#check">Instant audit</a><a href="/v7/services">Services</a><a href="#cities">Cities</a><a href="#industries">Industries</a><a href="#plan">Your plan</a><a href="#who">About</a></div>
-  <a className="btn sm" href="/v7/book">Book a walkthrough</a>
+  <div className="links"><a href="#who">About Us</a><a href="/v7/services">Services</a><a href="#cities">Cities</a><a href="#industries">Industries</a></div>
+  <a className="btn sm" href="/v7/book">Schedule a call</a>
+  <details className="menu">
+    <summary aria-label="Menu"><span></span></summary>
+    <div className="panel">
+      <a href="#who">About Us</a><a href="/v7/services">Services</a><a href="#cities">Cities</a><a href="#industries">Industries</a>
+      <a className="btn sm" href="/v7/book">Schedule a call</a>
+    </div>
+  </details>
 </div></nav>
+<script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}})"}} />
 <main>
 
 <header className="hero" id="top">
@@ -38,19 +45,18 @@ export default function Page() {
     <img src="/v2/img/hero-electrical.jpg" alt="" />
     <img src="/v2/img/hero-roofing.jpg" alt="" />
   </div>
-  <div className="wrap in hero-grid">
+  <div className="wrap in">
    <div>
-    <p className="kicker">Marketing and technology for local home services</p>
     <div className="rot">
       <div className="rslide"><h1>Your calendar should be <em>full.</em></h1><p className="lede">For plumbers, electricians, HVAC, roofers and every trade that goes to a customer&rsquo;s home. Calls, forms and free-estimate requests, every one answered in under a minute and booked onto your calendar. Every dollar tracked to a paid job. You own all of it.</p></div>
       <div className="rslide"><h1>Every call <em>answered</em> in under a minute.</h1><p className="lede">Calls, forms and estimate requests get a text and an email back in under a minute, in your voice, even when you are on a job. The phone still rings you first. If nobody can pick up, the AI books the appointment.</p></div>
       <div className="rslide"><h1>Be the company Google and AI <em>recommend.</em></h1><p className="lede">When a homeowner searches, or asks ChatGPT, for someone in your trade in your city, the answer should be you. A website you own that search engines and AI can read, your Google profile and reviews worked hard, and ads in your name.</p></div>
       <div className="rslide"><h1>Every dollar tracked to a <em>paid job.</em></h1><p className="lede">We do not report clicks. Every call and form lands in a CRM you own with its source and what the job was worth, and that number sets next month&rsquo;s spend. You see exactly what the marketing brought in.</p></div>
     </div>
-    <div className="ctas"><a className="btn light" href="/v7/book">Book a walkthrough</a><a className="btn outline" href="#check">Run the instant audit</a></div>
+    <div className="ctas"><a className="btn light" href="/v7/book">Schedule a call</a><a className="btn outline" href="#check">Run the instant audit</a></div>
     <p className="trust"><b>Month to month.</b> No contracts. <b>Exclusive leads, never shared.</b> Hosting free. <b>Not happy?</b> We work free until you are.</p>
+    <p className="tagline">Marketing and technology for local home services</p>
    </div>
-   <div className="hero-check"><SixtySecondCheck base="/v7" /></div>
   </div>
   <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 </header>
@@ -107,7 +113,7 @@ export default function Page() {
   <p className="kicker" style={{justifyContent:"center"} as CSSProperties}>Your leads, yours alone</p>
   <h2>Leads from your own site and your own ads. Never shared, never resold.</h2>
   <p>A marketplace sells the same homeowner to four contractors. Ours come from a website you own and ads in your name, so every call is yours and the cost per booked job is about a third.</p>
-  <div className="ctas" style={{justifyContent:"center"} as CSSProperties}><a className="btn light" href="/v7/book">Book a walkthrough</a></div>
+  <div className="ctas" style={{justifyContent:"center"} as CSSProperties}><a className="btn light" href="/v7/book">Schedule a call</a></div>
 </div></div>
 
 <section id="plan" className="feature"><div className="wrap">
@@ -135,7 +141,7 @@ export default function Page() {
 </div></div>
 
 <section id="qualify" className="qzsec"><div className="wrap">
-  <p className="kicker">Book a walkthrough</p>
+  <p className="kicker">Schedule a call</p>
   <h2>Start here. What trade are you in?</h2>
   <p className="sub">Pick your trade, then a time on the calendar. About a minute. A few optional questions after, so the call is about you from the first minute.</p>
   <div className="starter">

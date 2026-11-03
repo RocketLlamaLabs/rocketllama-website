@@ -16,8 +16,16 @@ export default function Page() {
 <nav className="nav"><div className="wrap in">
   <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
   <div className="links" style={{display:"flex"} as CSSProperties}><a className="backlink" href="/v7">&larr; Back to the site</a></div>
-  <a className="btn sm" href="/v7/book">Book a walkthrough</a>
+  <a className="btn sm" href="/v7/book">Schedule a call</a>
+  <details className="menu">
+    <summary aria-label="Menu"><span></span></summary>
+    <div className="panel">
+      <a href="/v7#who">About Us</a><a href="/v7/services">Services</a><a href="/v7#cities">Cities</a><a href="/v7#industries">Industries</a>
+      <a className="btn sm" href="/v7/book">Schedule a call</a>
+    </div>
+  </details>
 </div></nav>
+<script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}})"}} />
 <main>
 
 <div style={{height:"12px"} as CSSProperties}></div>
@@ -44,7 +52,7 @@ export default function Page() {
   </div>
 </div></section>
 
-<section className="feature" style={{paddingTop:"0"} as CSSProperties}><div className="wrap"><p className="note">Branson and Madison run the day to day at Rocket Llama Labs. Their bios follow. <a href="/v7/book">Book a walkthrough</a> or <a href="/v7">back to the site</a>.</p></div></section>
+<section className="feature" style={{paddingTop:"0"} as CSSProperties}><div className="wrap"><p className="note">Branson and Madison run the day to day at Rocket Llama Labs. Their bios follow. <a href="/v7/book">Schedule a call</a> or <a href="/v7">back to the site</a>.</p></div></section>
 </main>
       <V7Footer note='Version 7, about page' />
     </>

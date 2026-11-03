@@ -47,7 +47,7 @@ export function InstantAudit({ base = "" }: { base?: string }) {
           <div className="ai-card"><span className="eng"><span>Gemini</span><span>same question</span></span><p>Lists the top company with its rating and hours. Your profile is missing hours, services and photos.</p></div>
           <div className="ai-card"><span className="eng"><span>Perplexity</span><span>same question</span></span><p>Cites Yelp and Reddit threads. You appear in neither.</p></div>
         </div>
-        <div className="ctas"><a className="btn" href={`${base}/book`}>Book a walkthrough, we fix all five</a><a className="btn ghost" href="#scan">Email me the full written scan</a></div>
+        <div className="ctas"><a className="btn" href={`${base}/book`}>Schedule a call, we fix all five</a><a className="btn ghost" href="#scan">Email me the full written scan</a></div>
         <p className="fine">Illustrative results. The real audit reads the live Google profile, review feeds, PageSpeed and the three AI engines.</p>
       </div>
     </form>

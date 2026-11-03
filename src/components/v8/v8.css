@@ -24,6 +24,8 @@
 .v8 .nav .links a{white-space:nowrap}
 .v8 .hero.v8hero{min-height:min(72vh,680px)}
 .v8 .hero.v8hero .in{padding-block:clamp(90px,14vh,150px) clamp(40px,6vw,72px)}
+/* The fixed line at the foot of the banner, set at the headline size; it stays put while the photos change. */
+.v8 .hero.v8hero .tagline{margin:clamp(40px,7vh,80px) 0 0;font-family:var(--sans);font-size:clamp(2.7rem,7vw,5.6rem);line-height:.98;letter-spacing:-.045em;font-weight:900;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25);text-wrap:balance;max-width:16ch}
 .v8 .hero.v8hero h1 em{color:#fff;background:linear-gradient(transparent 10%,var(--accent) 10%,var(--accent) 92%,transparent 92%);padding:0 .08em;margin:0 -.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone;white-space:nowrap}
 .v8 .v8check{padding-block:clamp(48px,6vw,80px)}
 .v8 .v8check .chk{margin-top:26px}

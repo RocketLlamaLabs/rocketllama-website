@@ -34,7 +34,7 @@ export function mountValley() {
     document.getElementById('cc-status').textContent = 'your page: /' + slug(lc()) + '/' + slug(state.city);
     document.getElementById('cc-search').textContent = 'about ' + SEARCH[state.city].toLocaleString('en-US') + ' searches a month';
     document.getElementById('cc-top').textContent = 'top company: ' + TOP[state.city];
-    document.getElementById('cc-cta').textContent = 'Book a walkthrough for ' + state.city;
+    document.getElementById('cc-cta').textContent = 'Schedule a call for ' + state.city;
     document.querySelectorAll('.citygrid').forEach(function (grid) { grid.innerHTML = ''; CITIES.forEach(function (c) { var b = document.createElement('button'); b.type = 'button'; b.className = 'citybtn'; b.setAttribute('aria-pressed', c === state.city ? 'true' : 'false'); b.innerHTML = '<span>' + c + '</span><small>top company ' + TOP[c] + '</small><span class="st open">about ' + SEARCH[c].toLocaleString('en-US') + ' searches / mo</span>'; b.addEventListener('click', function () { state.city = c; render(); }); grid.appendChild(b); }); });
     var pb = document.getElementById('tradeband'); pb.style.setProperty('--img', 'url(' + t.photo + ')'); pb.querySelector('.photo-h2').textContent = t.h2; pb.querySelector('.photo-p').textContent = t.p;
     document.querySelectorAll('.p-kw').forEach(function (e) { e.innerHTML = t.kw.map(function (k) { return '<span>' + k + '</span>'; }).join(''); });
