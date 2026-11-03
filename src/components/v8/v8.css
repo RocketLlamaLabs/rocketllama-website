@@ -1,7 +1,7 @@
 /* Version 8: the simplified homepage. Built on the generated .v8 tokens. */
-/* Nav logo: Rocket Llama on one line, small Labs centred below (public/brand/logo-oneline-labs.svg). */
-.v8 .nav .wm img{height:44px}
-@media(max-width:640px){.v8 .nav .wm img{height:34px}}
+/* Nav logo: Rocket / Llama / Labs flush left, mascot on the right (public/brand/logo-3line-left-icon-right.svg). */
+.v8 .nav .wm img{height:54px}
+@media(max-width:640px){.v8 .nav .wm img{height:42px}}
 .v8 .nav .links{gap:20px;font-size:.9rem}
 .v8 .nav .links a{white-space:nowrap}
 .v8 .hero.v8hero{min-height:min(72vh,680px)}
