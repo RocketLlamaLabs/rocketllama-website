@@ -6,7 +6,6 @@ import { V7Footer } from "@/components/v7/footer";
 import { FullSystem, HowItWorks } from "@/components/v8/full-system";
 import { SixtySecondCheck } from "@/components/v2/sixty-second-check";
 import { Valley } from "@/components/v7/valley";
-import { Race } from "@/components/v7/race";
 import { HeroCarousel } from "@/components/v7/hero-carousel";
 
 export const metadata: Metadata = {
@@ -20,12 +19,12 @@ export default function Page() {
     <>
 <nav className="nav"><div className="wrap in">
   <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links"><a href="/v7/about">About Us</a><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a></div>
+  <div className="links"><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About Us</a></div>
   <a className="btn sm" href="/v7/book">Schedule a call</a>
   <details className="menu">
     <summary aria-label="Menu"><span></span></summary>
     <div className="panel">
-      <a href="/v7/about">About Us</a><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a>
+      <a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About Us</a>
       <a className="btn sm" href="/v7/book">Schedule a call</a>
     </div>
   </details>
@@ -74,7 +73,6 @@ export default function Page() {
 </div></section>
 
 <Valley base="/v7" />
-<Race />
 
 <FullSystem base="/v7" id="fullsystem" photo={{ src: "/v2/img/band-van.jpg", alt: "A service van on a Phoenix street" }} detailed />
 <HowItWorks base="/v7" />

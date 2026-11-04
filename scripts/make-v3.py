@@ -209,7 +209,7 @@ def build(dst_rel, base, n, extras=None, extra_css_import=None, layout_note=''):
         fp = os.path.join(root, f'src/components/v{n}/footer.tsx'); t = open(fp).read()
         t = t.replace('/brand/logo-stacked.svg', '/brand/logo-nav.svg').replace('width={137}', 'width={249}')
         if n == 7:  # a simple footer: the logo and the copyright line
-            t = re.sub(r'        <span>\n          <b>Rocket Llama Labs</b>.*?</span>\n(        <span>\n.*?</span>\n)', '        <span>&copy; 2026 Rocket Llama Labs LLC</span>\n', t, count=1, flags=re.S)
+            t = re.sub(r'        <span>\n          <b>Rocket Llama Labs</b>.*?</span>\n(        <span>\n.*?</span>\n)', '        <span className="copy">&copy; 2026 Rocket Llama Labs LLC</span>\n        <span className="legal"><Link href="/v7/privacy">Privacy policy</Link> / <Link href="/v7/terms">Website conditions</Link></span>\n', t, count=1, flags=re.S)
             t = t.replace('export function V7Footer({ note }: { note: string }) {', 'export function V7Footer({ note: _note }: { note: string }) {')
         open(fp, 'w').write(t)
     # pages
@@ -347,7 +347,7 @@ def v7_extras(s, f, is_home, base):
     s = s.replace(f'<SixtySecondCheck base="{base}" />', f'<SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an audit", href: "{base}/audit" }}}} />')
     # nav: About Us first, then Services, Cities, Industries; a hamburger menu below 900px
     pfx = '' if is_home else base
-    links = f'<a href="{base}/about">About Us</a><a href="{base}/services">Services</a><a href="{base}/industries">Industries</a>'
+    links = f'<a href="{base}/services">Services</a><a href="{base}/industries">Industries</a><a href="{base}/about">About Us</a>'
     s = re.sub(r'<div className="links"[^>]*>.*?</div>', '<div className="links">' + links + '</div>', s, count=1)
     btn = f'  <a className="btn sm" href="{base}/book">Schedule a call</a>\n</div></nav>'
     if btn not in s:  # layout.tsx has no nav
@@ -355,6 +355,12 @@ def v7_extras(s, f, is_home, base):
     menu = ('\n  <details className="menu">\n    <summary aria-label="Menu"><span></span></summary>\n    <div className="panel">\n      ' + links
             + f'\n      <a className="btn sm" href="{base}/book">Schedule a call</a>\n    </div>\n  </details>')
     s = s.replace(btn, f'  <a className="btn sm" href="{base}/book">Schedule a call</a>{menu}\n</div></nav>\n<script dangerouslySetInnerHTML={{{{__html:"{MENU_SCRIPT}"}}}} />', 1)
+    if f == 'page.tsx' and '<section id="what">' in s and '<Race />' not in s:
+        # services page: the speed-to-lead race sits after the service list
+        a = '<section id="map" className="feature">'
+        if a in s:
+            s = s.replace(a, '<Race />\n\n' + a, 1)
+            s = s.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { Race } from "@/components/v7/race";\n', 1)
     if is_home:
         # banner: the tagline sits above the rotating headline, large
         a = '   <div>\n    <p className="kicker">Marketing and technology for local home services</p>\n'
@@ -386,7 +392,10 @@ def v7_extras(s, f, is_home, base):
         s = s[:k0] + s[k1:].lstrip('\n')
         n0 = s.index('<section id="industries">'); n1 = s.index('</div></section>\n', n0) + len('</div></section>\n')
         V7_IND[0] = s[n0:n1]; s = s[:n0] + s[n1:].lstrip('\n')
-        # after the race: the full system from version 8, then how it works, then nothing else
+        # the race moves to the services page
+        s = s.replace('<Race />\n', '', 1)
+        s = s.replace('import { Race } from "@/components/v7/race";\n', '', 1)
+        # after the carousel: the full system from version 8, then how it works, then nothing else
         t0 = s.index('\n<div className="band center"'); t1 = s.index('</main>')
         s = s[:t0] + f'\n<FullSystem base="{base}" id="fullsystem" photo={{{{ src: "/v2/img/band-van.jpg", alt: "A service van on a Phoenix street" }}}} detailed />\n<HowItWorks base="{base}" />\n' + s[t1:]
         s = s.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { FullSystem, HowItWorks } from "@/components/v8/full-system";\n', 1)
@@ -457,6 +466,22 @@ def write_v7_industries():
     open(os.path.join(root, 'src/app/v7/industries/page.tsx'), 'w').write(t)
 
 
+def write_v7_legal():
+    """Placeholder privacy policy and website conditions pages, linked from the footer."""
+    shell = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
+    for slug, title, body in [
+        ('privacy', 'Privacy policy', 'What we collect when you use this site or book a call, how we use it, and how to ask us to delete it. The full policy is being written; until then, email admin@rocketllamalabs.com with any question.'),
+        ('terms', 'Website conditions', 'The conditions for using this website. The full text is being written; until then, email admin@rocketllamalabs.com with any question.'),
+    ]:
+        t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", f"  title: '{title}',\n  description: \"{title} for rocketllamalabs.com.\",", shell, count=1)
+        t = re.sub(r'// Ported from the mockup.*?\n', f'// {title}: placeholder until the legal text is final.\n', t, count=1)
+        i = t.index('<main>'); j = t.index('</main>') + len('</main>')
+        t = t[:i] + f'<main>\n<section className="feature"><div className="wrap">\n  <p className="kicker">Legal</p>\n  <h1>{title}</h1>\n  <p className="sub">{body}</p>\n</div></section>\n</main>' + t[j:]
+        t = t.replace("note='Version 7, about page'", f"note='Version 7, {title.lower()}'")
+        os.makedirs(os.path.join(root, f'src/app/v7/{slug}'), exist_ok=True)
+        open(os.path.join(root, f'src/app/v7/{slug}/page.tsx'), 'w').write(t)
+
+
 def v8_extras(s, f, is_home, base):
     if is_home:
         return V8_PAGE
@@ -472,4 +497,5 @@ if __name__ == '__main__':
     write_v7_about()
     write_v7_audit()
     write_v7_industries()
+    write_v7_legal()
     build('src/app/v8', '/v8', 8, extras=v8_extras, extra_css_import='@/components/v8/v8.css', layout_note=' The home page itself is src/components/v8/home.tsx.')

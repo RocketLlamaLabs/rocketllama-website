@@ -15,7 +15,8 @@ export function V7Footer({ note: _note }: { note: string }) {
             height={40}
           />
         </Link>
-        <span>&copy; 2026 Rocket Llama Labs LLC</span>
+        <span className="copy">&copy; 2026 Rocket Llama Labs LLC</span>
+        <span className="legal"><Link href="/v7/privacy">Privacy policy</Link> / <Link href="/v7/terms">Website conditions</Link></span>
       </div>
     </footer>
   );
