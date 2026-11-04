@@ -366,8 +366,8 @@
 .v7 .band.photo-band .in{width:100%;max-width:1180px;margin:0 auto;padding-inline:clamp(16px,5vw,40px)}
 .v7 .band.photo-band .in h2,.v7 .band.photo-band .in p{margin-inline:0;text-align:left}
 /* The banner audit button: solid white with the bright blue. */
-.v7 .hero .btn.light.audit{background:#fff;color:var(--accent);border-color:#fff}
-.v7 .hero .btn.light.audit:hover{background:#f1f6ff}
+.v7 .hero .btn.light.audit-btn{background:#fff;color:var(--accent);border-color:#fff}
+.v7 .hero .btn.light.audit-btn:hover{background:#f1f6ff}
 /* Two nav buttons: the audit as an outline, the call solid. */
 .v7 .nav .navbtns{display:flex;gap:10px;align-items:center}
 .v7 .nav .navbtns .ghost{color:var(--accent);border-color:var(--accent);background:transparent}
@@ -376,4 +376,4 @@
 @media(max-width:899px){.v7 .nav .navbtns{display:none}}
 /* Banner buttons sit on one baseline. */
 .v7 .hero .ctas{align-items:center}
-.v7 .hero .btn.light.audit{padding:13px 22px}
+.v7 .hero .btn.light.audit-btn{padding:13px 22px}

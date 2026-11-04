@@ -49,7 +49,7 @@ export default function Page() {
       <div className="rslide"><h2>Be the company Google and AI <em>recommend.</em></h2><p className="lede">When a homeowner searches, or asks ChatGPT, for someone in your trade in your city, the answer should be you. A website you own that search engines and AI can read, your Google profile and reviews worked hard, and ads in your name.</p></div>
       <div className="rslide"><h2>Every dollar tracked to a <em>paid job.</em></h2><p className="lede">We do not report clicks. Every call and form lands in a CRM you own with its source and what the job was worth, and that number sets next month&rsquo;s spend. You see exactly what the marketing brought in.</p></div>
     </div>
-    <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a><a className="btn light audit" href="/v7/audit">Run an instant audit</a></div>
+    <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a><a className="btn light audit-btn" href="/v7/audit">Run an instant audit</a></div>
    </div>
   </div>
   <div className="dots"><button type="button" aria-label="Picture 1"></button><button type="button" aria-label="Picture 2"></button><button type="button" aria-label="Picture 3"></button><button type="button" aria-label="Picture 4"></button></div>
