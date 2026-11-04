@@ -292,5 +292,5 @@
 .v7 .hero{align-items:stretch}
 .v7 .hero .in{display:flex;padding-top:clamp(40px,6vh,72px)}
 .v7 .hero .in>div{flex:1;display:flex;flex-direction:column}
-.v7 .hero .rot{margin-bottom:auto}
-.v7 .hero .ctas{margin-top:clamp(40px,8vh,96px)}
+.v7 .hero .rot{margin-block:auto;padding-block:clamp(16px,4vh,40px)}
+.v7 .hero .ctas{margin-top:0}
