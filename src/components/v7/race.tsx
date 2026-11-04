@@ -17,7 +17,7 @@ export function Race() {
         <div className="lane us"><div className="lbl"><span>You, on the system</span><span id="us-t">—</span></div><div className="trk"><div className="fill" id="us-fill"></div><img className="flag" id="us-flag" src="/brand/mascot.svg" alt="" width="56" height="42" /></div><div className="marks"><span>call</span><span>AI answers</span><span>text + email</span><span>booked</span></div><div className="done" id="us-done"></div></div>
         <div className="lane them"><div className="lbl"><span>The average company</span><span id="them-t">—</span></div><div className="trk"><div className="fill" id="them-fill"></div></div><div className="marks"><span>call</span><span>voicemail</span><span>…</span><span>callback at 42 min</span></div><div className="done" id="them-done"></div></div>
         <div className="odds"><div><p className="n accent">62%</p><p className="m">chance the job is yours when you answer inside two minutes</p></div><div><p className="n" id="odds-them">62%</p><p className="m">chance for the company that calls back later. It falls as the clock runs.</p></div></div>
-        <p className="src">ServiceTitan, 2025 · Hatch, 2026. The demo runs at 60 times real speed.</p>
+        <p className="src">ServiceTitan, 2025 · Hatch, 2026. The demo runs at 45 times real speed.</p>
       </div>
     </div></section>
   );

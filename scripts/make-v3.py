@@ -282,6 +282,13 @@ def v7_extras_core(s, f, is_home, base):
     s = s[:i] + s[j:].lstrip('\n')
     s = s.replace('<a className="btn outline" href="#check">Run the instant audit</a>', '').replace('<a className="btn ghost" href="#check">Run the instant audit</a>', '')
     s = s.replace('import { InstantAudit } from "@/components/v7/instant-audit";\n', '', 1)
+    # the monthly report has its own page (/v7/report) and the exit switch tile is gone
+    s = s.replace('import { ReportSection } from "@/components/v7/report-section";\n', '', 1).replace('import { LeaveSwitch } from "@/components/v7/leave-switch";\n', '', 1)
+    k = s.index('<p className="kicker">The system on one page</p>'); e = s.index('</div></section>', k)
+    s = s[:e] + f'  <p className="note"><a href="{base}/report">See a sample monthly report &rarr;</a></p>\n' + s[e:]
+    # the trust line lives in the 'system on one page' section, under its intro
+    k = s.index('<p className="kicker">The system on one page</p>'); m = s.index('</p>\n  <div className="list">', k) + len('</p>\n')
+    s = s[:m] + '  <p className="trust"><b>Month to month.</b> No contracts. <b>Exclusive leads, never shared.</b> Hosting free. <b>You own everything:</b> the site, the data, the numbers and the ad accounts. <b>Not happy?</b> We work free until you are.</p>\n' + s[m:]
     # the 60-second check from version 8 sits right under the banner, ahead of the 'three ways' tile
     check = ('</header>\n\n<section id="quiz" className="qzsec quiz60"><div className="wrap">\n'
              '  <p className="kicker">The 60-second check</p>\n'
@@ -333,7 +340,7 @@ def v7_extras(s, f, is_home, base):
     s = s.replace(f'<SixtySecondCheck base="{base}" />', f'<SixtySecondCheck base="{base}" cta="Schedule a call" />')
     # nav: About Us first, then Services, Cities, Industries; a hamburger menu below 900px
     pfx = '' if is_home else base
-    links = f'<a href="{pfx}#who">About Us</a><a href="{base}/services">Services</a><a href="{pfx}#industries">Industries</a>'
+    links = f'<a href="{base}/about">About Us</a><a href="{base}/services">Services</a><a href="{pfx}#industries">Industries</a>'
     s = re.sub(r'<div className="links">.*?</div>', '<div className="links">' + links + '</div>', s, count=1)
     btn = f'  <a className="btn sm" href="{base}/book">Schedule a call</a>\n</div></nav>'
     if btn not in s:  # layout.tsx has no nav
@@ -355,7 +362,47 @@ def v7_extras(s, f, is_home, base):
         s = s.replace('<div className="wrap in hero-grid">', '<div className="wrap in">', 1)
         if '<SixtySecondCheck' not in s:
             s = s.replace('import { SixtySecondCheck } from "@/components/v2/sixty-second-check";\n', '', 1)
+        # the monthly report and the 'who you are talking to' section live on their own pages
+        s = s.replace('<ReportSection />\n', '', 1)
+        w0 = s.index('<section id="who" className="feature">'); w1 = s.index('</div></section>\n', w0) + len('</div></section>\n')
+        V7_WHO[0] = s[w0:w1]
+        # after Industries: the full system from version 8, then how it works, then nothing else
+        t0 = s.index('\n<div className="band center"'); t1 = s.index('</main>')
+        s = s[:t0] + f'\n<FullSystem base="{base}" id="fullsystem" />\n<HowItWorks base="{base}" />\n' + s[t1:]
+        s = s.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { FullSystem, HowItWorks } from "@/components/v8/full-system";\n', 1)
+        for name, path in [('FreeScan', '@/components/v2/free-scan'), ('WhySwitch', '@/components/v7/why-switch'), ('Timeline', '@/components/v7/timeline'), ('CompareTable', '@/components/v7/compare-table')]:
+            if f'<{name}' not in s:
+                s = s.replace(f'import {{ {name} }} from "{path}";\n', '', 1)
     return s
+
+
+V7_WHO = ['']
+
+
+def write_v7_report():
+    """The monthly report card on its own page, built from the about page's shell."""
+    t = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
+    t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", "  title: 'The monthly report',\n  description: \"What a Rocket Llama Labs monthly report looks like: booked jobs by source, what they were worth, what it cost and what we changed.\",", t, count=1)
+    t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { ReportSection } from "@/components/v7/report-section";\n', 1)
+    t = re.sub(r'// Ported from the mockup.*?\n', '// The sample monthly report, moved off the home page on 4 November 2026.\n', t, count=1)
+    i = t.index('<main>'); j = t.index('</main>') + len('</main>')
+    t = t[:i] + '<main>\n<ReportSection />\n</main>' + t[j:]
+    t = t.replace("note='Version 7, about page'", "note='Version 7, monthly report'")
+    os.makedirs(os.path.join(root, 'src/app/v7/report'), exist_ok=True)
+    open(os.path.join(root, 'src/app/v7/report/page.tsx'), 'w').write(t)
+
+
+def write_v7_about():
+    """The 'who you are talking to' section on its own About page."""
+    t = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
+    t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", "  title: 'About Us',\n  description: \"Rocket Llama Labs is Brian, Branson and Madison. Brian built three companies on this system and sold all three.\",", t, count=1)
+    t = re.sub(r'// Ported from the mockup.*?\n', '// About Us, moved off the home page on 4 November 2026.\n', t, count=1)
+    i = t.index('<main>'); j = t.index('</main>') + len('</main>')
+    who = V7_WHO[0].replace('<h2>', '<h1>', 1).replace('</h2>', '</h1>', 1)
+    t = t[:i] + '<main>\n' + who + '</main>' + t[j:]
+    t = t.replace("note='Version 7, about page'", "note='Version 7, about us'")
+    os.makedirs(os.path.join(root, 'src/app/v7/about'), exist_ok=True)
+    open(os.path.join(root, 'src/app/v7/about/page.tsx'), 'w').write(t)
 
 
 def v8_extras(s, f, is_home, base):
@@ -369,4 +416,6 @@ if __name__ == '__main__':
     patch_shared()
     build('src/app/(home)', '', 3)
     build('src/app/v7', '/v7', 7, extras=v7_extras, extra_css_import='@/components/v7/v7.css', layout_note=' The custom elements and their styles live in src/components/v7.')
+    write_v7_report()
+    write_v7_about()
     build('src/app/v8', '/v8', 8, extras=v8_extras, extra_css_import='@/components/v8/v8.css', layout_note=' The home page itself is src/components/v8/home.tsx.')

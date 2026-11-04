@@ -3,15 +3,10 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { V7Footer } from "@/components/v7/footer";
+import { FullSystem, HowItWorks } from "@/components/v8/full-system";
 import { SixtySecondCheck } from "@/components/v2/sixty-second-check";
-import { FreeScan } from "@/components/v2/free-scan";
-import { WhySwitch } from "@/components/v7/why-switch";
 import { Valley } from "@/components/v7/valley";
 import { Race } from "@/components/v7/race";
-import { ReportSection } from "@/components/v7/report-section";
-import { LeaveSwitch } from "@/components/v7/leave-switch";
-import { Timeline } from "@/components/v7/timeline";
-import { CompareTable } from "@/components/v7/compare-table";
 
 export const metadata: Metadata = {
   title: { absolute: "Rocket Llama Labs · Version 7" },
@@ -24,12 +19,12 @@ export default function Page() {
     <>
 <nav className="nav"><div className="wrap in">
   <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links"><a href="#who">About Us</a><a href="/v7/services">Services</a><a href="#industries">Industries</a></div>
+  <div className="links"><a href="/v7/about">About Us</a><a href="/v7/services">Services</a><a href="#industries">Industries</a></div>
   <a className="btn sm" href="/v7/book">Schedule a call</a>
   <details className="menu">
     <summary aria-label="Menu"><span></span></summary>
     <div className="panel">
-      <a href="#who">About Us</a><a href="/v7/services">Services</a><a href="#industries">Industries</a>
+      <a href="/v7/about">About Us</a><a href="/v7/services">Services</a><a href="#industries">Industries</a>
       <a className="btn sm" href="/v7/book">Schedule a call</a>
     </div>
   </details>
@@ -83,6 +78,7 @@ export default function Page() {
   <p className="kicker">The system on one page</p>
   <h2>Everything points to a website you own. Everything lands in a CRM you own.</h2>
   <p className="sub">Traffic from Google, Meta and your reviews feeds a site built for search and AI search. The site and the phones feed your CRM. The CRM books the job and records what it was worth, and that number decides next month&rsquo;s spend. <a href="/v7/services">See every service in detail.</a></p>
+  <p className="trust"><b>Month to month.</b> No contracts. <b>Exclusive leads, never shared.</b> Hosting free. <b>You own everything:</b> the site, the data, the numbers and the ad accounts. <b>Not happy?</b> We work free until you are.</p>
   <div className="list">
     <div className="li"><span className="d"></span><span><b>A website you own, hosted free</b><span>Next.js, code in your GitHub, on Vercel. Preview before live. Stop paying Wix or GoDaddy.</span></span></div>
     <div className="li"><span className="d"></span><span><b>Found by Google and by AI</b><span>Schema on every page: FAQs, authorship, services, and review stars per service, so Gemini and ChatGPT can recommend you.</span></span></div>
@@ -93,9 +89,9 @@ export default function Page() {
     <div className="li"><span className="d"></span><span><b>Google, Local Services and Meta ads, in your name</b><span>Your accounts, your card, our management. Our funnels convert at 20 to 30% against a 5% industry average.</span></span></div>
     <div className="li"><span className="d"></span><span><b>Never locked in</b><span>Export your data, port your numbers, take the code. If you leave, we help the next provider.</span></span></div>
   </div>
+  <p className="note"><a href="/v7/report">See a sample monthly report &rarr;</a></p>
 </div></section>
 
-<ReportSection />
 
 <section id="industries"><div className="wrap">
   <p className="kicker">Industries</p>
@@ -104,75 +100,8 @@ export default function Page() {
   <div className="trades"><a className="trade" href="/v7/book?trade=HVAC">HVAC</a><a className="trade" href="/v7/book?trade=Plumbing">Plumbing</a><a className="trade" href="/v7/book?trade=Electrical">Electrical</a><a className="trade" href="/v7/book?trade=Roofing">Roofing</a><a className="trade" href="/v7/book?trade=Garage%20door">Garage door</a><a className="trade" href="/v7/book?trade=Pest%20control">Pest control</a><a className="trade" href="/v7/book?trade=Landscaping">Landscaping</a><a className="trade" href="/v7/book?trade=Painting">Painting</a><a className="trade" href="/v7/book?trade=Window%20and%20pressure%20washing">Window and pressure washing</a><a className="trade" href="/v7/book?trade=Handyman">Handyman</a><a className="trade" href="/v7/book?trade=Mobile%20mechanic">Mobile mechanic</a><a className="trade" href="/v7/book?trade=Windows%20and%20doors">Windows and doors</a><a className="trade" href="/v7/book?trade=Solar">Solar</a><a className="trade" href="/v7/book?trade=Flooring">Flooring</a><a className="trade" href="/v7/book?trade=Remodeling">Remodeling</a><a className="trade other" href="/v7/book?trade=Other">Other home service &rarr;</a></div>
 </div></section>
 
-<div className="band center" style={{"--img":"url(/v2/img/band-landscaper.jpg)"} as CSSProperties}><div className="wrap in">
-  <p className="kicker" style={{justifyContent:"center"} as CSSProperties}>Your leads, yours alone</p>
-  <h2>Leads from your own site and your own ads. Never shared, never resold.</h2>
-  <p>A marketplace sells the same homeowner to four contractors. Ours come from a website you own and ads in your name, so every call is yours and the cost per booked job is about a third.</p>
-  <div className="ctas" style={{justifyContent:"center"} as CSSProperties}><a className="btn light" href="/v7/book">Schedule a call</a></div>
-</div></div>
-
-<section id="plan" className="feature"><div className="wrap">
-  <p className="kicker">Your plan</p>
-  <h2>No price list. A marketing plan written for your company.</h2>
-  <p className="sub">Every company is quoted on its own. On the walkthrough we look at your trade, your area, your calendar and what you already have, then write the plan with a number on it. You see the plan before you pay for anything, and you keep it either way.</p>
-  <div className="ctas"><a className="btn" href="/v7/book">Book a call</a></div>
-</div></section>
-
-<LeaveSwitch />
-<Timeline />
-<CompareTable />
-
-<section id="who" className="feature"><div className="wrap">
-  <p className="kicker">Who you are talking to</p>
-  <h2>Rocket Llama Labs is Brian, Branson and Madison. We have done this before.</h2>
-  <p className="sub"><a href="/v7/about-brian">Brian Greenberg</a> built three companies on this exact system, customers finding him online and booking themselves, and sold all three. Branson and Madison run the day to day. Phoenix owners get Brian in person for the proposal.</p>
-  <p className="note"><a href="/v7/about-brian">Read Brian&rsquo;s story &rarr;</a></p>
-</div></section>
-
-<div className="band" style={{"--img":"url(/v2/img/band-neighborhood.jpg)"} as CSSProperties}><div className="wrap in">
-  <p className="kicker">Phoenix first</p>
-  <h2>Built in Phoenix, for the companies that keep Phoenix running.</h2>
-  <p>Everything is remote-capable and we expand city by city. Phoenix owners get Brian in person for the proposal.</p>
-</div></div>
-
-<section id="qualify" className="qzsec"><div className="wrap">
-  <p className="kicker">Schedule a call</p>
-  <h2>Start here. What trade are you in?</h2>
-  <p className="sub">Pick your trade, then a time on the calendar. About a minute. A few optional questions after, so the call is about you from the first minute.</p>
-  <div className="starter">
-    <a href="/v7/book?trade=HVAC">HVAC</a>
-    <a href="/v7/book?trade=Plumbing">Plumbing</a>
-    <a href="/v7/book?trade=Electrical">Electrical</a>
-    <a href="/v7/book?trade=Roofing">Roofing</a>
-    <a href="/v7/book?trade=Garage%20door">Garage door</a>
-    <a href="/v7/book?trade=Pest%20control">Pest control</a>
-    <a href="/v7/book?trade=Landscaping">Landscaping</a>
-    <a href="/v7/book?trade=Painting">Painting</a>
-    <a href="/v7/book?trade=Handyman">Handyman</a>
-    <a href="/v7/book?trade=Solar">Solar</a>
-    <a className="other" href="/v7/book?trade=Other">Something else &rarr;</a>
-  </div>
-  <p className="note">Prefer to talk first? <a href="/v7/services">See every service</a> or <a href="/v7/book">go straight to booking</a>.</p>
-</div></section>
-
-<section id="scan"><div className="wrap">
-  <p className="kicker">Free, no call</p>
-  <h2>Not ready to talk? Get the free scan.</h2>
-  <p className="sub">A written scan of how you show up online, against the top company in your trade in your area, with the three fixes that matter most.</p>
-  <FreeScan base="/v7" />
-</div></section>
-
-<section id="faq"><div className="wrap">
-  <p className="kicker">Questions</p>
-  <h2>The things every owner asks.</h2>
-  <div className="faq">
-    <details><summary>What if I already get plenty of work from referrals?</summary><p>Good. Referrals check you on Google before they call, and referrals do not scale when you want a third truck. We make sure what they find closes the deal, and we build the second engine for when you want it.</p></details>
-    <details><summary>I already have a website and ad accounts. Can you use them?</summary><p>Yes. We audit what you have on the first call, keep what is working and fix what is not. A site or ad account that is already set up means there is less to build, and your plan reflects that. We may tune them (tracking, landing pages, review schema, the way the phone is answered), but we never start over for the sake of it.</p></details>
-    <details><summary>What if I want to leave?</summary><p>You leave with everything: the website code, the data, the phone numbers, the ad accounts. We will help the next provider get set up. Month to month, cancel any time.</p></details>
-    <details><summary>Can I build a website with AI for free?</summary><p>You can, and it will look fine. Most AI-built sites are invisible to Google and to ChatGPT because nothing is structured underneath. Ours ship with the schema, the stars and the funnels wired in, on the same stack the professionals use, and you own the code.</p></details>
-    <details><summary>Do you work outside Phoenix?</summary><p>Yes. Everything is remote-capable, and we expand city by city. Phoenix owners get Brian in person for the proposal.</p></details>
-  </div>
-</div></section>
+<FullSystem base="/v7" id="fullsystem" />
+<HowItWorks base="/v7" />
 </main>
       <V7Footer note='Version 7 · built from the BBM Local mockup C' />
     </>
