@@ -377,3 +377,8 @@
 /* Banner buttons sit on one baseline. */
 .v7 .hero .ctas{align-items:center}
 .v7 .hero .btn.light.audit-btn{padding:13px 22px}
+/* Both banner buttons share one width. */
+.v7 .hero .ctas .btn{min-width:220px;justify-content:center}
+/* Footer text in the navy. */
+.v7 footer,.v7 footer .copy,.v7 footer .legal a{color:var(--deep)}
+.v7 footer .legal a:hover{color:var(--accent)}
