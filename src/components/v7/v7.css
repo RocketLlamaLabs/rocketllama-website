@@ -390,3 +390,10 @@
 .v7 .btn.ghost:not(.sm):hover,.v7 .btn.outline:hover,.v7 .chk .btn.ghost:hover,.v7 .nav .navbtns .btn.ghost:hover{background:#f1f6ff}
 /* On a white background the white button gets the royal blue border. */
 .v7 .nav .navbtns .btn.ghost,.v7 .nav .menu .panel .btn.ghost,.v7 .chk .btn.ghost{border-color:var(--accent);box-shadow:none}
+/* Subpage banners (.hero.small) keep a plain stacked layout: the home-banner rules do not apply. */
+.v7 .hero.small{min-height:min(52vh,480px);display:grid;align-items:center}
+.v7 .hero.small .in{display:block;padding-block:clamp(56px,9vh,96px)}
+.v7 .hero.small .kicker{margin:0 0 16px}
+.v7 .hero.small h1{font-size:clamp(2.3rem,5vw,4rem);line-height:1.02;max-width:18ch;margin:0}
+.v7 .hero.small .lede{margin:20px 0 0;max-width:52ch}
+.v7 .hero.small h1 em{color:#fff;background:linear-gradient(transparent 10%,#FBF719 10%,#FBF719 92%,transparent 92%);padding:0 .08em;margin:0 -.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone;text-shadow:0 1px 2px rgba(0,0,0,.55),0 0 10px rgba(0,0,0,.25)}

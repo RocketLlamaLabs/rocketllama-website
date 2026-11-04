@@ -34,9 +34,9 @@ export default function Page() {
 <header className="hero small" id="top">
   <div className="slides" aria-hidden="true" style={{backgroundImage:"url(/v2/img/hero-roofing.jpg)"} as CSSProperties}></div>
   <div className="wrap in">
-    <p className="kicker">Services</p>
-    <h1>Everything a local home services company needs to <em>get the call.</em></h1>
-    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. You own every piece.</p>
+    <p className="kicker">Our services</p>
+    <h1>Everything your company needs to <em>get the call.</em></h1>
+    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. Here is every piece we run for you, and how they fit together.</p>
   </div>
 </header>
 
@@ -47,7 +47,7 @@ export default function Page() {
     <p>The three ways good companies lose jobs, what we build instead, how the money is tracked, and who is behind it.</p>
     <p><a className="lk" href="/v7/book">Schedule a call</a> &nbsp;·&nbsp; In a hurry? <a className="lk" href="/v2/video/bbm-local-30s.mp4" target="_blank" rel="noopener">The 30-second cut</a></p>
   </div>
-  <div className="shot"><video controls playsInline preload="metadata" poster="/v2/video/poster.png"><source src="/v2/video/bbm-local-full.mp4" type="video/mp4" /></video><span className="tag">90 seconds</span></div>
+  <div className="shot"><video controls playsInline preload="metadata" poster="/v7/video-poster.png"><source src="/v2/video/bbm-local-full.mp4" type="video/mp4" /></video><span className="tag">90 seconds</span></div>
 </div></section>
 
 <section id="what"><div className="wrap">
@@ -75,18 +75,12 @@ export default function Page() {
   <div className="diagwrap"><SystemDiagram /></div>
 </div></section>
 
-<div className="band" style={{"--img":"url(/v2/img/band-van.jpg)"} as CSSProperties}><div className="wrap in">
-  <p className="kicker">Speed to lead</p>
-  <h2>Answer in two minutes and 62% of leads close. Wait 42, and it&rsquo;s 28%.</h2>
-  <p>The whole system is built around that one number. The site, the phones and the CRM exist to get you the call first and to answer it when you can&rsquo;t.</p>
-</div></div>
-
 <section id="industries"><div className="wrap">
   <p className="kicker">Industries</p>
   <h2>Every trade that goes to a customer&rsquo;s home.</h2>
   <p className="sub">If you send a truck to a house, this is built for you.</p>
   <div className="trades"><a className="trade" href="/v7/book?trade=HVAC">HVAC</a><a className="trade" href="/v7/book?trade=Plumbing">Plumbing</a><a className="trade" href="/v7/book?trade=Electrical">Electrical</a><a className="trade" href="/v7/book?trade=Roofing">Roofing</a><a className="trade" href="/v7/book?trade=Garage%20door">Garage door</a><a className="trade" href="/v7/book?trade=Pest%20control">Pest control</a><a className="trade" href="/v7/book?trade=Landscaping">Landscaping</a><a className="trade" href="/v7/book?trade=Painting">Painting</a><a className="trade" href="/v7/book?trade=Window%20and%20pressure%20washing">Window and pressure washing</a><a className="trade" href="/v7/book?trade=Handyman">Handyman</a><a className="trade" href="/v7/book?trade=Mobile%20mechanic">Mobile mechanic</a><a className="trade" href="/v7/book?trade=Windows%20and%20doors">Windows and doors</a><a className="trade" href="/v7/book?trade=Solar">Solar</a><a className="trade" href="/v7/book?trade=Flooring">Flooring</a><a className="trade" href="/v7/book?trade=Remodeling">Remodeling</a><a className="trade other" href="/v7/book?trade=Other">Other home service &rarr;</a></div>
-  <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a><a className="btn ghost" href="/v7#pricing">Pricing</a></div>
+  <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a></div>
 </div></section>
 </main>
       <V7Footer note='Version 7, services page' />

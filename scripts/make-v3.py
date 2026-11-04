@@ -356,7 +356,15 @@ def v7_extras(s, f, is_home, base):
             + f'\n      <a className="btn sm" href="{base}/book">Schedule a call</a>\n      <a className="btn sm ghost" href="{base}/audit">Run an instant audit</a>\n    </div>\n  </details>')
     s = s.replace(btn, f'  <div className="navbtns"><a className="btn sm" href="{base}/book">Schedule a call</a><a className="btn sm ghost" href="{base}/audit">Run an instant audit</a></div>{menu}\n</div></nav>\n<script dangerouslySetInnerHTML={{{{__html:"{MENU_SCRIPT}"}}}} />', 1)
     if f == 'page.tsx' and '<section id="what">' in s and '<Race />' not in s:
-        # services page: the speed-to-lead race sits after the service list
+        # services page: a clear banner, a branded poster on the video, then the race after the service list
+        s = s.replace('poster="/v2/video/poster.png"', 'poster="/v7/video-poster.png"', 1)
+        # no pricing link; the van band repeats the race's headline, so it goes
+        s = s.replace('<a className="btn ghost" href="/v7#pricing">Pricing</a>', '', 1)
+        b0 = s.find('<div className="band" style={{"--img":"url(/v2/img/band-van.jpg)"}')
+        if b0 >= 0:
+            b1 = s.index('</div></div>\n', b0) + len('</div></div>\n'); s = s[:b0] + s[b1:].lstrip('\n')
+        s = s.replace('<p className="kicker">Services</p>\n    <h1>Everything a local home services company needs to <em>get the call.</em></h1>\n    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. You own every piece.</p>',
+                      '<p className="kicker">Our services</p>\n    <h1>Everything your company needs to <em>get the call.</em></h1>\n    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. Here is every piece we run for you, and how they fit together.</p>', 1)
         a = '<section id="map" className="feature">'
         if a in s:
             s = s.replace(a, '<Race />\n\n' + a, 1)
@@ -410,8 +418,8 @@ V7_WHO = ['']
 V7_ROT = '''    <div className="rot">
       <div className="rslide"><h2>Your calendar should be <em>full.</em></h2><p className="lede">Built for HVAC companies, plumbers, electricians, roofers, and every home service trade. Every call, form submission, and estimate request gets a response in under 60 seconds and is booked directly onto your calendar. Track every marketing dollar all the way to a completed, paid job. You own the leads, the data, and the results.</p></div>
       <div className="rslide"><h2>Never miss a call <em>again.</em></h2><p className="lede">When a new lead comes in, they get a text and email in under 60 seconds, written in your voice&mdash;even while at a job site. The system calls you first. If you can&rsquo;t answer, AI steps in to capture the customer&rsquo;s details, qualify the lead, and book the appointment directly on your calendar.</p></div>
-      <div className="rslide"><h2>Show up where homeowners <em>look first.</em></h2><p className="lede">Google search, Google Maps and now ChatGPT. A website you own that search engines and AI can read, a Google profile worked hard, and ads in your name, so the answer in your city is you.</p></div>
-      <div className="rslide"><h2>Know what every dollar <em>brought in.</em></h2><p className="lede">No clicks, no dashboards. Every call and form lands in a CRM you own, with where it came from and what the job was worth. That number sets next month&rsquo;s spend.</p></div>
+      <div className="rslide"><h2>Show up where homeowners <em>look first.</em></h2><p className="lede">When they search Google, check Google Maps, or ask ChatGPT who to call, your business shows up. With a website you own that&rsquo;s built for search engines and AI, an optimized Google Business Profile, and ads running under your name, you&rsquo;re positioned to be the go-to home service company.</p></div>
+      <div className="rslide"><h2>Know what every dollar <em>brought in.</em></h2><p className="lede">No chasing clicks or digging through dashboards. Every call and form submission is tracked in a CRM you own, showing where each lead came from and how much revenue it generated. Real results&mdash;not guesswork&mdash;drive your marketing budget.</p></div>
     </div>
 '''
 V7_IND = ['']
