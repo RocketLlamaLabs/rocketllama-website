@@ -282,7 +282,7 @@
   .v7 .nav .in{min-height:60px;padding-block:7px}
   .v7 .nav .wm img{height:46px}
   .v7 .nav .menu{display:block}
-  .v7 .nav .in>.btn{display:none}
+  .v7 .nav .navbtns{display:none}
 }
 /* The page headline; it stays put while the photos and the smaller rotating lines change. */
 .v7 .hero .tagline{margin:0;font-family:var(--sans);font-size:clamp(1rem,4.3vw,3.45rem);line-height:1;letter-spacing:-.04em;font-weight:900;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25);white-space:nowrap;max-width:none}
@@ -354,7 +354,8 @@
 .v7 .evolve-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;display:block}
 /* The line under each big number in the three-ways cards. */
 .v7 #problem .card h3{color:var(--accent)}
-/* Footer: logo left, copyright centred, legal links right. */
+/* Footer: logo left, copyright centred, legal links right, on the light blue. */
+.v7 footer{background:#eaf2fd;border-top:0}
 .v7 footer .in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
 .v7 footer .copy{text-align:center}
 .v7 footer .legal{justify-self:end;white-space:nowrap}
@@ -364,3 +365,15 @@
 /* Built-for carousel copy lines up with the page, like every other section. */
 .v7 .band.photo-band .in{width:100%;max-width:1180px;margin:0 auto;padding-inline:clamp(16px,5vw,40px)}
 .v7 .band.photo-band .in h2,.v7 .band.photo-band .in p{margin-inline:0;text-align:left}
+/* The banner audit button: solid white with the bright blue. */
+.v7 .hero .btn.light.audit{background:#fff;color:var(--accent);border-color:#fff}
+.v7 .hero .btn.light.audit:hover{background:#f1f6ff}
+/* Two nav buttons: the audit as an outline, the call solid. */
+.v7 .nav .navbtns{display:flex;gap:10px;align-items:center}
+.v7 .nav .navbtns .ghost{color:var(--accent);border-color:var(--accent);background:transparent}
+.v7 .nav .navbtns .ghost:hover{background:var(--accent-soft)}
+.v7 .nav .menu .panel .btn.ghost{color:var(--accent);border-color:var(--accent);background:transparent;margin-top:8px}
+@media(max-width:899px){.v7 .nav .navbtns{display:none}}
+/* Banner buttons sit on one baseline. */
+.v7 .hero .ctas{align-items:center}
+.v7 .hero .btn.light.audit{padding:13px 22px}

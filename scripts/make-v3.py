@@ -209,7 +209,7 @@ def build(dst_rel, base, n, extras=None, extra_css_import=None, layout_note=''):
         fp = os.path.join(root, f'src/components/v{n}/footer.tsx'); t = open(fp).read()
         t = t.replace('/brand/logo-stacked.svg', '/brand/logo-nav.svg').replace('width={137}', 'width={249}')
         if n == 7:  # a simple footer: the logo and the copyright line
-            t = re.sub(r'        <span>\n          <b>Rocket Llama Labs</b>.*?</span>\n(        <span>\n.*?</span>\n)', '        <span className="copy">&copy; 2026 Rocket Llama Labs LLC</span>\n        <span className="legal"><Link href="/v7/privacy">Privacy policy</Link> / <Link href="/v7/terms">Website conditions</Link></span>\n', t, count=1, flags=re.S)
+            t = re.sub(r'        <span>\n          <b>Rocket Llama Labs</b>.*?</span>\n(        <span>\n.*?</span>\n)', '        <span className="copy">&copy; 2026 Rocket Llama Labs LLC</span>\n        <span className="legal"><Link href="/v7/privacy">Privacy Policy</Link> / <Link href="/v7/terms">Website Policy</Link></span>\n', t, count=1, flags=re.S)
             t = t.replace('export function V7Footer({ note }: { note: string }) {', 'export function V7Footer({ note: _note }: { note: string }) {')
         open(fp, 'w').write(t)
     # pages
@@ -301,7 +301,7 @@ def v7_extras_core(s, f, is_home, base):
              '  <p className="kicker">The 60-second check</p>\n'
              '  <h2>How does your company show up online?</h2>\n'
              '  <p className="sub">Four questions, one tap each. You get a score out of 100 and the honest read on where the jobs are leaking. No email needed to see it.</p>\n'
-             f'  <SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an audit", href: "{base}/audit" }}}} />\n'
+             f'  <SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an instant audit", href: "{base}/audit" }}}} />\n'
              '</div></section>\n\n<section id="problem">')
     a = '</header>\n\n<section id="problem">'
     assert a in s; s = s.replace(a, check, 1)
@@ -344,7 +344,7 @@ def v7_extras(s, f, is_home, base):
     s = v7_extras_core(s, f, is_home, base)
     # wording: every call to action schedules a call
     s = s.replace('Book a walkthrough', 'Schedule a call').replace('book a walkthrough', 'schedule a call').replace('Book your free walkthrough', 'Schedule your free call')
-    s = s.replace(f'<SixtySecondCheck base="{base}" />', f'<SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an audit", href: "{base}/audit" }}}} />')
+    s = s.replace(f'<SixtySecondCheck base="{base}" />', f'<SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an instant audit", href: "{base}/audit" }}}} />')
     # nav: About Us first, then Services, Cities, Industries; a hamburger menu below 900px
     pfx = '' if is_home else base
     links = f'<a href="{base}/services">Services</a><a href="{base}/industries">Industries</a><a href="{base}/about">About Us</a>'
@@ -353,8 +353,8 @@ def v7_extras(s, f, is_home, base):
     if btn not in s:  # layout.tsx has no nav
         return s
     menu = ('\n  <details className="menu">\n    <summary aria-label="Menu"><span></span></summary>\n    <div className="panel">\n      ' + links
-            + f'\n      <a className="btn sm" href="{base}/book">Schedule a call</a>\n    </div>\n  </details>')
-    s = s.replace(btn, f'  <a className="btn sm" href="{base}/book">Schedule a call</a>{menu}\n</div></nav>\n<script dangerouslySetInnerHTML={{{{__html:"{MENU_SCRIPT}"}}}} />', 1)
+            + f'\n      <a className="btn sm ghost" href="{base}/audit">Run an instant audit</a>\n      <a className="btn sm" href="{base}/book">Schedule a call</a>\n    </div>\n  </details>')
+    s = s.replace(btn, f'  <div className="navbtns"><a className="btn sm ghost" href="{base}/audit">Run an instant audit</a><a className="btn sm" href="{base}/book">Schedule a call</a></div>{menu}\n</div></nav>\n<script dangerouslySetInnerHTML={{{{__html:"{MENU_SCRIPT}"}}}} />', 1)
     if f == 'page.tsx' and '<section id="what">' in s and '<Race />' not in s:
         # services page: the speed-to-lead race sits after the service list
         a = '<section id="map" className="feature">'
@@ -370,7 +370,7 @@ def v7_extras(s, f, is_home, base):
         # the rotating lines stay, as h2 headings under the H1, each with its supporting paragraph
         s = s.replace('<div className="rslide"><h1>', '<div className="rslide"><h2>').replace('</h1><p className="lede">', '</h2><p className="lede">')
         # no question box in the banner: single column, the check keeps its own section further down
-        a = f'   <div className="hero-check"><SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an audit", href: "{base}/audit" }}}} /></div>\n'
+        a = f'   <div className="hero-check"><SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an instant audit", href: "{base}/audit" }}}} /></div>\n'
         assert a in s; s = s.replace(a, '', 1)
         s = s.replace('<div className="wrap in hero-grid">', '<div className="wrap in">', 1)
         if '<SixtySecondCheck' not in s:
@@ -382,7 +382,7 @@ def v7_extras(s, f, is_home, base):
         assert a in s; s = s.replace(a, '  <div className="dots"><button type="button" aria-label="Picture 1"></button><button type="button" aria-label="Picture 2"></button><button type="button" aria-label="Picture 3"></button><button type="button" aria-label="Picture 4"></button></div>\n</header>\n<HeroCarousel />\n', 1)
         s = s.replace('import { Race } from "@/components/v7/race";\n', 'import { Race } from "@/components/v7/race";\nimport { HeroCarousel } from "@/components/v7/hero-carousel";\n', 1)
         a = f'<div className="ctas"><a className="btn light" href="{base}/book">Schedule a call</a><a className="btn outline" href="{base}/audit">Run the audit</a></div>'
-        assert a in s; s = s.replace(a, f'<div className="ctas"><a className="btn" href="{base}/book">Schedule a call</a><a className="btn outline" href="{base}/audit">Run an instant audit</a></div>', 1)
+        assert a in s; s = s.replace(a, f'<div className="ctas"><a className="btn" href="{base}/book">Schedule a call</a><a className="btn light audit" href="{base}/audit">Run an instant audit</a></div>', 1)
         # the monthly report and the 'who you are talking to' section live on their own pages
         s = s.replace('<ReportSection />\n', '', 1)
         w0 = s.index('<section id="who" className="feature">'); w1 = s.index('</div></section>\n', w0) + len('</div></section>\n')
@@ -438,7 +438,7 @@ def write_v7_about():
 def write_v7_audit():
     """The instant audit on its own page, linked from the 60-second check."""
     t = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
-    t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", "  title: 'Run an audit',\n  description: \"See how your company shows up online in 20 seconds: your Google profile, reviews, website, phone and what the AI engines say, next to the top company in your trade.\",", t, count=1)
+    t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", "  title: 'Run an instant audit',\n  description: \"See how your company shows up online in 20 seconds: your Google profile, reviews, website, phone and what the AI engines say, next to the top company in your trade.\",", t, count=1)
     t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { InstantAudit } from "@/components/v7/instant-audit";\n', 1)
     t = re.sub(r'// Ported from the mockup.*?\n', '// The instant audit, on its own page since 4 November 2026.\n', t, count=1)
     i = t.index('<main>'); j = t.index('</main>') + len('</main>')
@@ -470,8 +470,8 @@ def write_v7_legal():
     """Placeholder privacy policy and website conditions pages, linked from the footer."""
     shell = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
     for slug, title, body in [
-        ('privacy', 'Privacy policy', 'What we collect when you use this site or book a call, how we use it, and how to ask us to delete it. The full policy is being written; until then, email admin@rocketllamalabs.com with any question.'),
-        ('terms', 'Website conditions', 'The conditions for using this website. The full text is being written; until then, email admin@rocketllamalabs.com with any question.'),
+        ('privacy', 'Privacy Policy', 'What we collect when you use this site or book a call, how we use it, and how to ask us to delete it. The full policy is being written; until then, email admin@rocketllamalabs.com with any question.'),
+        ('terms', 'Website Policy', 'The conditions for using this website. The full text is being written; until then, email admin@rocketllamalabs.com with any question.'),
     ]:
         t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", f"  title: '{title}',\n  description: \"{title} for rocketllamalabs.com.\",", shell, count=1)
         t = re.sub(r'// Ported from the mockup.*?\n', f'// {title}: placeholder until the legal text is final.\n', t, count=1)

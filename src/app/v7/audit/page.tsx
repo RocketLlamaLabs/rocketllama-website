@@ -6,7 +6,7 @@ import { V7Footer } from "@/components/v7/footer";
 import { InstantAudit } from "@/components/v7/instant-audit";
 
 export const metadata: Metadata = {
-  title: 'Run an audit',
+  title: 'Run an instant audit',
   description: "See how your company shows up online in 20 seconds: your Google profile, reviews, website, phone and what the AI engines say, next to the top company in your trade.",
 };
 
@@ -17,11 +17,12 @@ export default function Page() {
 <nav className="nav"><div className="wrap in">
   <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
   <div className="links"><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About Us</a></div>
-  <a className="btn sm" href="/v7/book">Schedule a call</a>
+  <div className="navbtns"><a className="btn sm ghost" href="/v7/audit">Run an instant audit</a><a className="btn sm" href="/v7/book">Schedule a call</a></div>
   <details className="menu">
     <summary aria-label="Menu"><span></span></summary>
     <div className="panel">
       <a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About Us</a>
+      <a className="btn sm ghost" href="/v7/audit">Run an instant audit</a>
       <a className="btn sm" href="/v7/book">Schedule a call</a>
     </div>
   </details>

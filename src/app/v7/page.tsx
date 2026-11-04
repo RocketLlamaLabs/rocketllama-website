@@ -20,11 +20,12 @@ export default function Page() {
 <nav className="nav"><div className="wrap in">
   <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
   <div className="links"><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About Us</a></div>
-  <a className="btn sm" href="/v7/book">Schedule a call</a>
+  <div className="navbtns"><a className="btn sm ghost" href="/v7/audit">Run an instant audit</a><a className="btn sm" href="/v7/book">Schedule a call</a></div>
   <details className="menu">
     <summary aria-label="Menu"><span></span></summary>
     <div className="panel">
       <a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About Us</a>
+      <a className="btn sm ghost" href="/v7/audit">Run an instant audit</a>
       <a className="btn sm" href="/v7/book">Schedule a call</a>
     </div>
   </details>
@@ -48,7 +49,7 @@ export default function Page() {
       <div className="rslide"><h2>Be the company Google and AI <em>recommend.</em></h2><p className="lede">When a homeowner searches, or asks ChatGPT, for someone in your trade in your city, the answer should be you. A website you own that search engines and AI can read, your Google profile and reviews worked hard, and ads in your name.</p></div>
       <div className="rslide"><h2>Every dollar tracked to a <em>paid job.</em></h2><p className="lede">We do not report clicks. Every call and form lands in a CRM you own with its source and what the job was worth, and that number sets next month&rsquo;s spend. You see exactly what the marketing brought in.</p></div>
     </div>
-    <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a><a className="btn outline" href="/v7/audit">Run an instant audit</a></div>
+    <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a><a className="btn light audit" href="/v7/audit">Run an instant audit</a></div>
    </div>
   </div>
   <div className="dots"><button type="button" aria-label="Picture 1"></button><button type="button" aria-label="Picture 2"></button><button type="button" aria-label="Picture 3"></button><button type="button" aria-label="Picture 4"></button></div>
@@ -59,7 +60,7 @@ export default function Page() {
   <p className="kicker">The 60-second check</p>
   <h2>How does your company show up online?</h2>
   <p className="sub">Four questions, one tap each. You get a score out of 100 and the honest read on where the jobs are leaking. No email needed to see it.</p>
-  <SixtySecondCheck base="/v7" cta="Schedule a call" alt={{ label: "Run an audit", href: "/v7/audit" }} />
+  <SixtySecondCheck base="/v7" cta="Schedule a call" alt={{ label: "Run an instant audit", href: "/v7/audit" }} />
 </div></section>
 
 <section id="problem"><div className="wrap">
