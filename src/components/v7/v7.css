@@ -284,5 +284,5 @@
   .v7 .nav .menu{display:block}
   .v7 .nav .in>.btn{display:none}
 }
-/* The fixed line at the foot of the banner, set at the headline size; it stays put while the photos change. */
-.v7 .hero .tagline{margin:clamp(36px,6vh,72px) 0 0;font-family:var(--sans);font-size:clamp(.9rem,3.75vw,3rem);line-height:1;letter-spacing:-.04em;font-weight:900;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25);white-space:nowrap;max-width:none}
+/* The line above the rotating headline; it stays put while the photos and headlines change. */
+.v7 .hero .tagline{margin:0 0 22px;font-family:var(--sans);font-size:clamp(1.5rem,4.6vw,3.6rem);line-height:1.04;letter-spacing:-.035em;font-weight:800;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25);max-width:19ch;text-wrap:balance}

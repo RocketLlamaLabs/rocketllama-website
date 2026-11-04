@@ -330,11 +330,9 @@ def v7_extras(s, f, is_home, base):
             + f'\n      <a className="btn sm" href="{base}/book">Schedule a call</a>\n    </div>\n  </details>')
     s = s.replace(btn, f'  <a className="btn sm" href="{base}/book">Schedule a call</a>{menu}\n</div></nav>\n<script dangerouslySetInnerHTML={{{{__html:"{MENU_SCRIPT}"}}}} />', 1)
     if is_home:
-        # banner: the tagline moves from above the headline to the foot of the banner, at headline size
+        # banner: the tagline sits above the rotating headline, large
         a = '   <div>\n    <p className="kicker">Marketing and technology for local home services</p>\n'
-        assert a in s; s = s.replace(a, '   <div>\n', 1)
-        a = 'We work free until you are.</p>\n   </div>'
-        assert a in s; s = s.replace(a, 'We work free until you are.</p>\n    <p className="tagline">Marketing and technology for local home services</p>\n   </div>', 1)
+        assert a in s; s = s.replace(a, '   <div>\n    <p className="tagline">Marketing and technology for local home services</p>\n', 1)
         # no question box in the banner: single column, the check keeps its own section further down
         a = f'   <div className="hero-check"><SixtySecondCheck base="{base}" cta="Schedule a call" /></div>\n'
         assert a in s; s = s.replace(a, '', 1)

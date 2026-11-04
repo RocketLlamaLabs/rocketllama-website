@@ -47,6 +47,7 @@ export default function Page() {
   </div>
   <div className="wrap in">
    <div>
+    <p className="tagline">Marketing and technology for local home services</p>
     <div className="rot">
       <div className="rslide"><h1>Your calendar should be <em>full.</em></h1><p className="lede">For plumbers, electricians, HVAC, roofers and every trade that goes to a customer&rsquo;s home. Calls, forms and free-estimate requests, every one answered in under a minute and booked onto your calendar. Every dollar tracked to a paid job. You own all of it.</p></div>
       <div className="rslide"><h1>Every call <em>answered</em> in under a minute.</h1><p className="lede">Calls, forms and estimate requests get a text and an email back in under a minute, in your voice, even when you are on a job. The phone still rings you first. If nobody can pick up, the AI books the appointment.</p></div>
@@ -55,7 +56,6 @@ export default function Page() {
     </div>
     <div className="ctas"><a className="btn light" href="/v7/book">Schedule a call</a><a className="btn outline" href="#check">Run the instant audit</a></div>
     <p className="trust"><b>Month to month.</b> No contracts. <b>Exclusive leads, never shared.</b> Hosting free. <b>Not happy?</b> We work free until you are.</p>
-    <p className="tagline">Marketing and technology for local home services</p>
    </div>
   </div>
   <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
