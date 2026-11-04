@@ -332,7 +332,10 @@ def v7_extras(s, f, is_home, base):
     if is_home:
         # banner: the tagline sits above the rotating headline, large
         a = '   <div>\n    <p className="kicker">Marketing and technology for local home services</p>\n'
-        assert a in s; s = s.replace(a, '   <div>\n    <p className="tagline">Marketing and technology for local home services</p>\n', 1)
+        assert a in s; s = s.replace(a, '   <div>\n    <h1 className="tagline">Marketing and technology for local home services</h1>\n', 1)
+        # the rotating headline and lede are gone from the banner (the wording was handed back to the owner as a Word document)
+        i = s.index('    <div className="rot">\n'); j = s.index('    </div>\n', i) + len('    </div>\n')
+        s = s[:i] + s[j:]
         # no question box in the banner: single column, the check keeps its own section further down
         a = f'   <div className="hero-check"><SixtySecondCheck base="{base}" cta="Schedule a call" /></div>\n'
         assert a in s; s = s.replace(a, '', 1)
