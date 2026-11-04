@@ -367,8 +367,9 @@ def v7_extras(s, f, is_home, base):
         assert a in s; s = s.replace(a, '   <div>\n    <h1 className="tagline">Marketing and technology for home services</h1>\n', 1)
         # no trust line at the foot of the banner
         s = re.sub(r'    <p className="trust"><b>Month to month\.</b>.*?</p>\n', '', s, count=1)
-        # the rotating lines stay, as h2 headings under the H1, each with its supporting paragraph
-        s = s.replace('<div className="rslide"><h1>', '<div className="rslide"><h2>').replace('</h1><p className="lede">', '</h2><p className="lede">')
+        # the rotating lines stay, as h2 headings under the H1, each with its supporting paragraph; v7 has its own wording
+        i0 = s.index('    <div className="rot">\n'); i1 = s.index('    </div>\n', i0) + len('    </div>\n')
+        s = s[:i0] + V7_ROT + s[i1:]
         # no question box in the banner: single column, the check keeps its own section further down
         a = f'   <div className="hero-check"><SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an instant audit", href: "{base}/audit" }}}} /></div>\n'
         assert a in s; s = s.replace(a, '', 1)
@@ -406,6 +407,13 @@ def v7_extras(s, f, is_home, base):
 
 
 V7_WHO = ['']
+V7_ROT = '''    <div className="rot">
+      <div className="rslide"><h2>Your calendar should be <em>full.</em></h2><p className="lede">The whole marketing system for every trade that goes to a customer&rsquo;s home. Found online, answered in under a minute, booked on your calendar. Every dollar tracked to a paid job, and you own all of it.</p></div>
+      <div className="rslide"><h2>Never miss a call <em>again.</em></h2><p className="lede">A new lead gets a text and an email back in under a minute, in your voice, while you are still on the roof. The phone rings you first. If nobody picks up, the AI takes the details and books the job.</p></div>
+      <div className="rslide"><h2>Show up where homeowners <em>look first.</em></h2><p className="lede">Google search, Google Maps and now ChatGPT. A website you own that search engines and AI can read, a Google profile worked hard, and ads in your name, so the answer in your city is you.</p></div>
+      <div className="rslide"><h2>Know what every dollar <em>brought in.</em></h2><p className="lede">No clicks, no dashboards. Every call and form lands in a CRM you own, with where it came from and what the job was worth. That number sets next month&rsquo;s spend.</p></div>
+    </div>
+'''
 V7_IND = ['']
 
 

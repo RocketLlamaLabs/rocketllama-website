@@ -291,7 +291,7 @@
 /* Banner layout: H1 and the rotating line at the top, buttons and trust line at the foot. */
 .v7 .hero{align-items:stretch;min-height:calc(100svh - 72px)}
 @media(max-width:899px){.v7 .hero{min-height:calc(100svh - 60px)}}
-.v7 .hero .in{display:flex;padding-block:clamp(32px,5vh,56px)}
+.v7 .hero .in{display:flex;padding-block:clamp(20px,3vh,36px)}
 .v7 .hero .in>div{flex:1;display:flex;flex-direction:column;justify-content:space-between}
 .v7 .hero .rot{margin-block:auto;padding:0}
 .v7 .hero .ctas{margin-top:0}
@@ -336,7 +336,7 @@
 .v7{overflow-x:clip}
 /* Carousels driven by script: no CSS animation, crossfades on .on, dashes as buttons. */
 .v7 .hero .slides img{animation:none;opacity:0;transform:scale(1);transition:opacity 1.2s ease}
-.v7 .hero .slides img.on{opacity:1;animation:v7zoom 7.6s linear forwards}
+.v7 .hero .slides img.on{opacity:1;animation:v7zoom 9.6s linear forwards}
 @keyframes v7zoom{0%{transform:scale(1)}100%{transform:scale(1.13)}}
 .v7 .rot .rslide{animation:none;opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s ease;pointer-events:none}
 .v7 .rot .rslide.on{opacity:1;transform:none;pointer-events:auto}

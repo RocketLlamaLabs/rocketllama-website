@@ -13,7 +13,7 @@ export function mountHero() {
     lines.forEach(function (e, j) { e.classList.toggle('on', j === i); });
     dots.forEach(function (e, j) { e.classList.toggle('on', j === i); e.setAttribute('aria-current', j === i ? 'true' : 'false'); });
   }
-  function start() { if (timer) clearInterval(timer); if (!still) timer = setInterval(function () { show(i + 1); }, 7000); }
+  function start() { if (timer) clearInterval(timer); if (!still) timer = setInterval(function () { show(i + 1); }, 9000); }
   dots.forEach(function (d, j) { d.addEventListener('click', function () { show(j); start(); }); });
   show(0); start();
 }

@@ -44,10 +44,10 @@ export default function Page() {
    <div>
     <h1 className="tagline">Marketing and technology for home services</h1>
     <div className="rot">
-      <div className="rslide"><h2>Your calendar should be <em>full.</em></h2><p className="lede">For plumbers, electricians, HVAC, roofers and every trade that goes to a customer&rsquo;s home. Calls, forms and free-estimate requests, every one answered in under a minute and booked onto your calendar. Every dollar tracked to a paid job. You own all of it.</p></div>
-      <div className="rslide"><h2>Every call <em>answered</em> in under a minute.</h2><p className="lede">Calls, forms and estimate requests get a text and an email back in under a minute, in your voice, even when you are on a job. The phone still rings you first. If nobody can pick up, the AI books the appointment.</p></div>
-      <div className="rslide"><h2>Be the company Google and AI <em>recommend.</em></h2><p className="lede">When a homeowner searches, or asks ChatGPT, for someone in your trade in your city, the answer should be you. A website you own that search engines and AI can read, your Google profile and reviews worked hard, and ads in your name.</p></div>
-      <div className="rslide"><h2>Every dollar tracked to a <em>paid job.</em></h2><p className="lede">We do not report clicks. Every call and form lands in a CRM you own with its source and what the job was worth, and that number sets next month&rsquo;s spend. You see exactly what the marketing brought in.</p></div>
+      <div className="rslide"><h2>Your calendar should be <em>full.</em></h2><p className="lede">The whole marketing system for every trade that goes to a customer&rsquo;s home. Found online, answered in under a minute, booked on your calendar. Every dollar tracked to a paid job, and you own all of it.</p></div>
+      <div className="rslide"><h2>Never miss a call <em>again.</em></h2><p className="lede">A new lead gets a text and an email back in under a minute, in your voice, while you are still on the roof. The phone rings you first. If nobody picks up, the AI takes the details and books the job.</p></div>
+      <div className="rslide"><h2>Show up where homeowners <em>look first.</em></h2><p className="lede">Google search, Google Maps and now ChatGPT. A website you own that search engines and AI can read, a Google profile worked hard, and ads in your name, so the answer in your city is you.</p></div>
+      <div className="rslide"><h2>Know what every dollar <em>brought in.</em></h2><p className="lede">No clicks, no dashboards. Every call and form lands in a CRM you own, with where it came from and what the job was worth. That number sets next month&rsquo;s spend.</p></div>
     </div>
     <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a><a className="btn light audit-btn" href="/v7/audit">Run an instant audit</a></div>
    </div>
