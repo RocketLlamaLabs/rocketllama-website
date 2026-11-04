@@ -49,13 +49,12 @@ export default function Page() {
    <div>
     <h1 className="tagline">Marketing and technology for local home services</h1>
     <div className="rot">
-      <div className="rslide"><h2>Your calendar should be <em>full.</em></h2></div>
-      <div className="rslide"><h2>Every call <em>answered</em> in under a minute.</h2></div>
-      <div className="rslide"><h2>Be the company Google and AI <em>recommend.</em></h2></div>
-      <div className="rslide"><h2>Every dollar tracked to a <em>paid job.</em></h2></div>
+      <div className="rslide"><h2>Your calendar should be <em>full.</em></h2><p className="lede">For plumbers, electricians, HVAC, roofers and every trade that goes to a customer&rsquo;s home. Calls, forms and free-estimate requests, every one answered in under a minute and booked onto your calendar. Every dollar tracked to a paid job. You own all of it.</p></div>
+      <div className="rslide"><h2>Every call <em>answered</em> in under a minute.</h2><p className="lede">Calls, forms and estimate requests get a text and an email back in under a minute, in your voice, even when you are on a job. The phone still rings you first. If nobody can pick up, the AI books the appointment.</p></div>
+      <div className="rslide"><h2>Be the company Google and AI <em>recommend.</em></h2><p className="lede">When a homeowner searches, or asks ChatGPT, for someone in your trade in your city, the answer should be you. A website you own that search engines and AI can read, your Google profile and reviews worked hard, and ads in your name.</p></div>
+      <div className="rslide"><h2>Every dollar tracked to a <em>paid job.</em></h2><p className="lede">We do not report clicks. Every call and form lands in a CRM you own with its source and what the job was worth, and that number sets next month&rsquo;s spend. You see exactly what the marketing brought in.</p></div>
     </div>
     <div className="ctas"><a className="btn light" href="/v7/book">Schedule a call</a><a className="btn outline" href="#check">Run the instant audit</a></div>
-    <p className="trust"><b>Month to month.</b> No contracts. <b>Exclusive leads, never shared.</b> Hosting free. <b>Not happy?</b> We work free until you are.</p>
    </div>
   </div>
   <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
