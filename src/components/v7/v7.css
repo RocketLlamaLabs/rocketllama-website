@@ -377,8 +377,16 @@
 /* Banner buttons sit on one baseline. */
 .v7 .hero .ctas{align-items:center}
 .v7 .hero .btn.light.audit-btn{padding:13px 22px}
-/* Both banner buttons share one width. */
-.v7 .hero .ctas .btn{min-width:220px;justify-content:center}
 /* Footer text in the navy. */
 .v7 footer,.v7 footer .copy,.v7 footer .legal a{color:var(--deep)}
 .v7 footer .legal a:hover{color:var(--accent)}
+/* Both nav buttons share one width, labels centred. */
+.v7 .nav .navbtns .btn{min-width:176px;justify-content:center}
+.v7 .nav .menu .panel .btn{justify-content:center}
+/* Every full-size button on version 7 is the same width, label centred. */
+.v7 .btn:not(.sm){min-width:220px;justify-content:center;text-align:center}
+/* Every secondary button looks like the banner's: solid white, blue text, same size as the blue one. */
+.v7 .btn.ghost:not(.sm),.v7 .btn.outline,.v7 .chk .btn.ghost,.v7 .nav .navbtns .btn.ghost,.v7 .nav .menu .panel .btn.ghost{background:#fff;color:var(--accent);border-color:#fff;box-shadow:0 1px 0 rgba(4,23,58,.06)}
+.v7 .btn.ghost:not(.sm):hover,.v7 .btn.outline:hover,.v7 .chk .btn.ghost:hover,.v7 .nav .navbtns .btn.ghost:hover{background:#f1f6ff}
+/* On a white background the white button gets the royal blue border. */
+.v7 .nav .navbtns .btn.ghost,.v7 .nav .menu .panel .btn.ghost,.v7 .chk .btn.ghost{border-color:var(--accent);box-shadow:none}
