@@ -7,6 +7,7 @@ import { FullSystem, HowItWorks } from "@/components/v8/full-system";
 import { SixtySecondCheck } from "@/components/v2/sixty-second-check";
 import { Valley } from "@/components/v7/valley";
 import { Race } from "@/components/v7/race";
+import { HeroCarousel } from "@/components/v7/hero-carousel";
 
 export const metadata: Metadata = {
   title: { absolute: "Rocket Llama Labs · Version 7" },
@@ -19,12 +20,12 @@ export default function Page() {
     <>
 <nav className="nav"><div className="wrap in">
   <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links"><a href="/v7/about">About Us</a><a href="/v7/services">Services</a><a href="#industries">Industries</a></div>
+  <div className="links"><a href="/v7/about">About Us</a><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a></div>
   <a className="btn sm" href="/v7/book">Schedule a call</a>
   <details className="menu">
     <summary aria-label="Menu"><span></span></summary>
     <div className="panel">
-      <a href="/v7/about">About Us</a><a href="/v7/services">Services</a><a href="#industries">Industries</a>
+      <a href="/v7/about">About Us</a><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a>
       <a className="btn sm" href="/v7/book">Schedule a call</a>
     </div>
   </details>
@@ -41,18 +42,19 @@ export default function Page() {
   </div>
   <div className="wrap in">
    <div>
-    <h1 className="tagline">Marketing and technology for local home services</h1>
+    <h1 className="tagline">Marketing and technology for home services</h1>
     <div className="rot">
       <div className="rslide"><h2>Your calendar should be <em>full.</em></h2><p className="lede">For plumbers, electricians, HVAC, roofers and every trade that goes to a customer&rsquo;s home. Calls, forms and free-estimate requests, every one answered in under a minute and booked onto your calendar. Every dollar tracked to a paid job. You own all of it.</p></div>
       <div className="rslide"><h2>Every call <em>answered</em> in under a minute.</h2><p className="lede">Calls, forms and estimate requests get a text and an email back in under a minute, in your voice, even when you are on a job. The phone still rings you first. If nobody can pick up, the AI books the appointment.</p></div>
       <div className="rslide"><h2>Be the company Google and AI <em>recommend.</em></h2><p className="lede">When a homeowner searches, or asks ChatGPT, for someone in your trade in your city, the answer should be you. A website you own that search engines and AI can read, your Google profile and reviews worked hard, and ads in your name.</p></div>
       <div className="rslide"><h2>Every dollar tracked to a <em>paid job.</em></h2><p className="lede">We do not report clicks. Every call and form lands in a CRM you own with its source and what the job was worth, and that number sets next month&rsquo;s spend. You see exactly what the marketing brought in.</p></div>
     </div>
-    <div className="ctas"><a className="btn light" href="/v7/book">Schedule a call</a><a className="btn outline" href="/v7/audit">Run the audit</a></div>
+    <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a><a className="btn outline" href="/v7/audit">Run an instant audit</a></div>
    </div>
   </div>
-  <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div className="dots"><button type="button" aria-label="Picture 1"></button><button type="button" aria-label="Picture 2"></button><button type="button" aria-label="Picture 3"></button><button type="button" aria-label="Picture 4"></button></div>
 </header>
+<HeroCarousel />
 
 <section id="quiz" className="qzsec quiz60"><div className="wrap">
   <p className="kicker">The 60-second check</p>
@@ -74,33 +76,7 @@ export default function Page() {
 <Valley base="/v7" />
 <Race />
 
-<section id="system" className="feature"><div className="wrap">
-  <p className="kicker">The system on one page</p>
-  <h2>Everything points to a website <em>you</em> own. Everything lands in a CRM <em>you</em> own.</h2>
-  <p className="sub">Traffic from Google, Meta and your reviews feeds a site built for search and AI search. The site and the phones feed your CRM. The CRM books the job and records what it was worth, and that number decides next month&rsquo;s spend. <a href="/v7/services">See every service in detail.</a></p>
-  <p className="trust"><b>Month to month.</b> No contracts. <b>You own everything:</b> the site, the data, the numbers and the ad accounts.</p>
-  <div className="list">
-    <div className="li"><span className="d"></span><span><b>A website you own, hosted free</b><span>Next.js, code in your GitHub, on Vercel. Preview before live. Stop paying Wix or GoDaddy.</span></span></div>
-    <div className="li"><span className="d"></span><span><b>Found by Google and by AI</b><span>Schema on every page: FAQs, authorship, services, and review stars per service, so Gemini and ChatGPT can recommend you.</span></span></div>
-    <div className="li"><span className="d"></span><span><b>Google profile and reviews, worked hard</b><span>Complete profiles get 7 times more clicks. Review requests after every job, every review answered.</span></span></div>
-    <div className="li"><span className="d"></span><span><b>Funnels, not contact forms</b><span>Qualifying questions, address autofill, your offer and your reviews, then a booking calendar or a call-back button.</span></span></div>
-    <div className="li"><span className="d"></span><span><b>An AI receptionist that gets you the call first</b><span>Takes details, rings your team, and if nobody answers, books a callback or takes a message.</span></span></div>
-    <div className="li"><span className="d"></span><span><b>Your CRM, with AI follow-up</b><span>Text and email reply in under a minute, pipelines, booking, call recording, closed-job value, the return-on-spend dashboard.</span></span></div>
-    <div className="li"><span className="d"></span><span><b>Google, Local Services and Meta ads, in your name</b><span>Your accounts, your card, our management. Our funnels convert at 20 to 30% against a 5% industry average.</span></span></div>
-    <div className="li"><span className="d"></span><span><b>Never locked in</b><span>Export your data, port your numbers, take the code. If you leave, we help the next provider.</span></span></div>
-  </div>
-  <p className="note"><a href="/v7/report">See a sample monthly report &rarr;</a></p>
-</div></section>
-
-
-<section id="industries"><div className="wrap">
-  <p className="kicker">Industries</p>
-  <h2>Every trade that goes to a customer&rsquo;s home.</h2>
-  <p className="sub">If you send a truck to a house, this is built for you. We start in Phoenix and expand city by city. Every lead comes from your own site and your own ads, so it is yours alone, never sold to four other contractors.</p>
-  <div className="trades"><a className="trade" href="/v7/book?trade=HVAC">HVAC</a><a className="trade" href="/v7/book?trade=Plumbing">Plumbing</a><a className="trade" href="/v7/book?trade=Electrical">Electrical</a><a className="trade" href="/v7/book?trade=Roofing">Roofing</a><a className="trade" href="/v7/book?trade=Garage%20door">Garage door</a><a className="trade" href="/v7/book?trade=Pest%20control">Pest control</a><a className="trade" href="/v7/book?trade=Landscaping">Landscaping</a><a className="trade" href="/v7/book?trade=Painting">Painting</a><a className="trade" href="/v7/book?trade=Window%20and%20pressure%20washing">Window and pressure washing</a><a className="trade" href="/v7/book?trade=Handyman">Handyman</a><a className="trade" href="/v7/book?trade=Mobile%20mechanic">Mobile mechanic</a><a className="trade" href="/v7/book?trade=Windows%20and%20doors">Windows and doors</a><a className="trade" href="/v7/book?trade=Solar">Solar</a><a className="trade" href="/v7/book?trade=Flooring">Flooring</a><a className="trade" href="/v7/book?trade=Remodeling">Remodeling</a><a className="trade other" href="/v7/book?trade=Other">Other home service &rarr;</a></div>
-</div></section>
-
-<FullSystem base="/v7" id="fullsystem" />
+<FullSystem base="/v7" id="fullsystem" photo={{ src: "/v2/img/band-van.jpg", alt: "A service van on a Phoenix street" }} detailed />
 <HowItWorks base="/v7" />
 </main>
       <V7Footer note='Version 7 · built from the BBM Local mockup C' />

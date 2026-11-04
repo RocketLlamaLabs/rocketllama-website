@@ -347,7 +347,7 @@ def v7_extras(s, f, is_home, base):
     s = s.replace(f'<SixtySecondCheck base="{base}" />', f'<SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an audit", href: "{base}/audit" }}}} />')
     # nav: About Us first, then Services, Cities, Industries; a hamburger menu below 900px
     pfx = '' if is_home else base
-    links = f'<a href="{base}/about">About Us</a><a href="{base}/services">Services</a><a href="{pfx}#industries">Industries</a>'
+    links = f'<a href="{base}/about">About Us</a><a href="{base}/services">Services</a><a href="{base}/industries">Industries</a>'
     s = re.sub(r'<div className="links"[^>]*>.*?</div>', '<div className="links">' + links + '</div>', s, count=1)
     btn = f'  <a className="btn sm" href="{base}/book">Schedule a call</a>\n</div></nav>'
     if btn not in s:  # layout.tsx has no nav
@@ -358,7 +358,7 @@ def v7_extras(s, f, is_home, base):
     if is_home:
         # banner: the tagline sits above the rotating headline, large
         a = '   <div>\n    <p className="kicker">Marketing and technology for local home services</p>\n'
-        assert a in s; s = s.replace(a, '   <div>\n    <h1 className="tagline">Marketing and technology for local home services</h1>\n', 1)
+        assert a in s; s = s.replace(a, '   <div>\n    <h1 className="tagline">Marketing and technology for home services</h1>\n', 1)
         # no trust line at the foot of the banner
         s = re.sub(r'    <p className="trust"><b>Month to month\.</b>.*?</p>\n', '', s, count=1)
         # the rotating lines stay, as h2 headings under the H1, each with its supporting paragraph
@@ -371,13 +371,24 @@ def v7_extras(s, f, is_home, base):
             s = s.replace('import { SixtySecondCheck } from "@/components/v2/sixty-second-check";\n', '', 1)
         # the 'vs' in the close-rate card is the bright blue
         s = s.replace('<span style={{fontSize:".5em",color:"var(--muted)"} as CSSProperties}>vs</span>', '<span style={{fontSize:".5em",color:"var(--accent)"} as CSSProperties}>vs</span>', 1)
+        # banner: dashes are buttons, the carousel runs on a script, the two buttons sit side by side
+        a = '  <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>\n</header>\n'
+        assert a in s; s = s.replace(a, '  <div className="dots"><button type="button" aria-label="Picture 1"></button><button type="button" aria-label="Picture 2"></button><button type="button" aria-label="Picture 3"></button><button type="button" aria-label="Picture 4"></button></div>\n</header>\n<HeroCarousel />\n', 1)
+        s = s.replace('import { Race } from "@/components/v7/race";\n', 'import { Race } from "@/components/v7/race";\nimport { HeroCarousel } from "@/components/v7/hero-carousel";\n', 1)
+        a = f'<div className="ctas"><a className="btn light" href="{base}/book">Schedule a call</a><a className="btn outline" href="{base}/audit">Run the audit</a></div>'
+        assert a in s; s = s.replace(a, f'<div className="ctas"><a className="btn" href="{base}/book">Schedule a call</a><a className="btn outline" href="{base}/audit">Run an instant audit</a></div>', 1)
         # the monthly report and the 'who you are talking to' section live on their own pages
         s = s.replace('<ReportSection />\n', '', 1)
         w0 = s.index('<section id="who" className="feature">'); w1 = s.index('</div></section>\n', w0) + len('</div></section>\n')
         V7_WHO[0] = s[w0:w1]
-        # after Industries: the full system from version 8, then how it works, then nothing else
+        # the 'system on one page' section is gone; Industries lives on its own page
+        k0 = s.index('<section id="system" className="feature">'); k1 = s.index('</div></section>\n', k0) + len('</div></section>\n')
+        s = s[:k0] + s[k1:].lstrip('\n')
+        n0 = s.index('<section id="industries">'); n1 = s.index('</div></section>\n', n0) + len('</div></section>\n')
+        V7_IND[0] = s[n0:n1]; s = s[:n0] + s[n1:].lstrip('\n')
+        # after the race: the full system from version 8, then how it works, then nothing else
         t0 = s.index('\n<div className="band center"'); t1 = s.index('</main>')
-        s = s[:t0] + f'\n<FullSystem base="{base}" id="fullsystem" />\n<HowItWorks base="{base}" />\n' + s[t1:]
+        s = s[:t0] + f'\n<FullSystem base="{base}" id="fullsystem" photo={{{{ src: "/v2/img/band-van.jpg", alt: "A service van on a Phoenix street" }}}} detailed />\n<HowItWorks base="{base}" />\n' + s[t1:]
         s = s.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { FullSystem, HowItWorks } from "@/components/v8/full-system";\n', 1)
         for name, path in [('FreeScan', '@/components/v2/free-scan'), ('WhySwitch', '@/components/v7/why-switch'), ('Timeline', '@/components/v7/timeline'), ('CompareTable', '@/components/v7/compare-table')]:
             if f'<{name}' not in s:
@@ -386,6 +397,7 @@ def v7_extras(s, f, is_home, base):
 
 
 V7_WHO = ['']
+V7_IND = ['']
 
 
 def write_v7_report():
@@ -432,6 +444,19 @@ def write_v7_audit():
     open(os.path.join(root, 'src/app/v7/audit/page.tsx'), 'w').write(t)
 
 
+def write_v7_industries():
+    """The Industries section on its own page."""
+    t = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
+    t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", "  title: 'Industries',\n  description: \"Every trade that goes to a customer's home: HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping and more.\",", t, count=1)
+    t = re.sub(r'// Ported from the mockup.*?\n', '// Industries, moved off the home page on 4 November 2026.\n', t, count=1)
+    i = t.index('<main>'); j = t.index('</main>') + len('</main>')
+    ind = V7_IND[0].replace('<h2>', '<h1>', 1).replace('</h2>', '</h1>', 1)
+    t = t[:i] + '<main>\n' + ind + '</main>' + t[j:]
+    t = t.replace("note='Version 7, about page'", "note='Version 7, industries'")
+    os.makedirs(os.path.join(root, 'src/app/v7/industries'), exist_ok=True)
+    open(os.path.join(root, 'src/app/v7/industries/page.tsx'), 'w').write(t)
+
+
 def v8_extras(s, f, is_home, base):
     if is_home:
         return V8_PAGE
@@ -446,4 +471,5 @@ if __name__ == '__main__':
     write_v7_report()
     write_v7_about()
     write_v7_audit()
+    write_v7_industries()
     build('src/app/v8', '/v8', 8, extras=v8_extras, extra_css_import='@/components/v8/v8.css', layout_note=' The home page itself is src/components/v8/home.tsx.')

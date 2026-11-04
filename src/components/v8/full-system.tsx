@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element -- same photo markup as the other versions */
 // The full-system list and the four "how it works" steps, shared by the
 // version 8 home and the version 7 home.
 
@@ -16,14 +17,25 @@ const SYSTEM: [string, string, string[]][] = [
   ]],
 ];
 
-export function FullSystem({ base, id = "system" }: { base: string; id?: string }) {
+// More detail for the "Keep it running" column, used where the page asks for it.
+const KEEP_RUNNING_MORE = [
+  "Monthly report: booked jobs by source and what they were worth",
+  "Ad budgets adjusted to last month's booked jobs",
+  "Review requests after every job, every review answered",
+  "Website updates and new pages as you add services or cities",
+  "Tracked numbers and call recordings kept current",
+  "Thirty days of handover if you ever leave",
+];
+
+export function FullSystem({ base, id = "system", photo, detailed }: { base: string; id?: string; photo?: { src: string; alt: string }; detailed?: boolean }) {
+  const groups = detailed ? SYSTEM.map(([name, blurb, items]) => [name, blurb, name === "Keep it running" ? [...items, ...KEEP_RUNNING_MORE] : items] as [string, string, string[]]) : SYSTEM;
   return (
 <section id={id} className="feature"><div className="wrap">
   <p className="kicker">The full system</p>
   <h2>Most agencies sell you one tactic. We run the whole thing.</h2>
   <p className="sub">Phones, website, search, ads, reviews, the CRM and the AI that answers for you, built as one system and run by one team. Pick the pieces you need; most owners want all of it.</p>
   <div className="sysgrid">
-    {SYSTEM.map(([name, blurb, items]) => (
+    {groups.map(([name, blurb, items]) => (
       <div className="sysgroup" key={name}>
         <h3>{name}</h3>
         <p className="blurb">{blurb}</p>
@@ -31,10 +43,13 @@ export function FullSystem({ base, id = "system" }: { base: string; id?: string 
       </div>
     ))}
   </div>
-  <div className="evolve">
+  <div className={photo ? "evolve with-photo" : "evolve"}>
+    <div className="evolve-text">
     <p><b>Our system is constantly evolving</b>, because the marketing systems it runs on never stop changing. Our goal is simple: make your job easier and bring you customers.</p>
     <p className="dream">If you can dream it, we can build it.</p>
     <a className="btn" href={`${base}/book`}>Schedule a call</a>
+    </div>
+    {photo ? <img className="evolve-photo" src={photo.src} alt={photo.alt} /> : null}
   </div>
 </div></section>
   );

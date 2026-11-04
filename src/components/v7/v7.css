@@ -285,11 +285,12 @@
   .v7 .nav .in>.btn{display:none}
 }
 /* The page headline; it stays put while the photos and the smaller rotating lines change. */
-.v7 .hero .tagline{margin:0;font-family:var(--sans);font-size:clamp(.9rem,3.8vw,3.04rem);line-height:1;letter-spacing:-.04em;font-weight:900;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25);white-space:nowrap;max-width:none}
+.v7 .hero .tagline{margin:0;font-family:var(--sans);font-size:clamp(1rem,4.3vw,3.45rem);line-height:1;letter-spacing:-.04em;font-weight:900;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25);white-space:nowrap;max-width:none}
 .v7 .rot .rslide h2{margin:0 0 4px;font-family:var(--sans);font-size:clamp(1.6rem,3.6vw,2.8rem);line-height:1.04;letter-spacing:-.035em;font-weight:900;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25);max-width:none;text-wrap:balance}
 .v7 .rot .rslide h2 em{font-style:normal;color:#fff;background:linear-gradient(transparent 10%,#FBF719 10%,#FBF719 92%,transparent 92%);padding:0 .08em;margin:0 -.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.55),0 0 10px rgba(0,0,0,.25)}
 /* Banner layout: H1 and the rotating line at the top, buttons and trust line at the foot. */
-.v7 .hero{align-items:stretch;min-height:min(70vh,640px)}
+.v7 .hero{align-items:stretch;min-height:calc(100svh - 72px)}
+@media(max-width:899px){.v7 .hero{min-height:calc(100svh - 60px)}}
 .v7 .hero .in{display:flex;padding-block:clamp(32px,5vh,56px)}
 .v7 .hero .in>div{flex:1;display:flex;flex-direction:column;justify-content:space-between}
 .v7 .hero .rot{margin-block:auto;padding:0}
@@ -329,9 +330,26 @@
 .v7 .step .num{font-family:var(--sans);font-weight:900;font-size:2.4rem;line-height:1;color:var(--accent-ink);display:block}
 .v7 .step h3{font-family:var(--sans);font-size:1.15rem;font-weight:800;margin:10px 0 6px;letter-spacing:-.01em}
 .v7 .step p{margin:0;color:var(--muted);font-size:.97rem;line-height:1.5}
-/* The pain in each carousel line, highlighted like the banner. */
-.v7 .photo-band .photo-h2 em{font-style:normal;color:#fff;background:linear-gradient(transparent 10%,#FBF719 10%,#FBF719 92%,transparent 92%);padding:0 .08em;margin:0 -.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone;text-shadow:0 1px 2px rgba(0,0,0,.55),0 0 10px rgba(0,0,0,.25)}
 /* The two "you" in the system heading. */
 .v7 #system h2 em{font-style:normal;color:inherit;background:linear-gradient(transparent 10%,#FBF719 10%,#FBF719 92%,transparent 92%);padding:0 .06em;margin:0 -.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 /* overflow-x:hidden made .v7 a scroll container and un-stuck the nav; clip does not. */
 .v7{overflow-x:clip}
+/* Carousels driven by script: no CSS animation, crossfades on .on, dashes as buttons. */
+.v7 .hero .slides img{animation:none;opacity:0;transition:opacity 1.2s ease}
+.v7 .hero .slides img.on{opacity:1}
+.v7 .rot .rslide{animation:none;opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s ease;pointer-events:none}
+.v7 .rot .rslide.on{opacity:1;transform:none;pointer-events:auto}
+.v7 .dots{z-index:3}
+.v7 .dots button{width:26px;height:18px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+.v7 .dots button::before{content:"";position:absolute;left:0;right:0;top:50%;height:3px;margin-top:-1.5px;border-radius:2px;background:rgba(255,255,255,.35);transition:background .3s}
+.v7 .dots button:hover::before{background:rgba(255,255,255,.7)}
+.v7 .dots button.on::before{background:#fff}
+.v7 .dots button:focus-visible{outline:2px solid #fff;outline-offset:2px;border-radius:4px}
+@media(prefers-reduced-motion:reduce){.v7 .hero .slides img,.v7 .rot .rslide{transition:none}}
+/* The evolving-system callout with a photo on the right. */
+.v7 .evolve.with-photo{display:grid;gap:28px;align-items:center}
+@media(min-width:860px){.v7 .evolve.with-photo{grid-template-columns:1.15fr .85fr;gap:40px}}
+.v7 .evolve.with-photo .evolve-text{display:grid;gap:14px;justify-items:start}
+.v7 .evolve-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;display:block}
+/* The line under each big number in the three-ways cards. */
+.v7 #problem .card h3{color:var(--accent)}
