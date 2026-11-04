@@ -19,7 +19,7 @@ export function mountSixtySecondCheck() {
     document.getElementById('chk_v').textContent=v; document.getElementById('chk_p').textContent=p;
     var res=document.getElementById('chk_res'); res.classList.add('on');
     var sc=document.getElementById('chk_score'), arc=document.getElementById('chk_arc'); var t0=null;
-    if(v7){ var band=s<40?'low':s<80?'mid':'high'; sc.setAttribute('data-band', band); arc.setAttribute('data-band', band); }
+    if(v7){ var band=s<40?'low':s<81?'mid':'high'; sc.setAttribute('data-band', band); arc.setAttribute('data-band', band); }
     requestAnimationFrame(function step(ts){ if(!t0) t0=ts; var k=Math.min(1,(ts-t0)/900); sc.textContent=Math.round(s*k); if(k<1) requestAnimationFrame(step) });
     setTimeout(function(){ arc.style.strokeDashoffset=String(326.7*(1-s/100)) },50);
     var bk=document.getElementById('chk_book'); bk.href=bk.getAttribute('href').split('?')[0]+'?score='+s;
