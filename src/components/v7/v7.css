@@ -297,3 +297,9 @@
 /* The 60-second check tile right under the banner. */
 .v7 .qzsec.quiz60{padding-block:clamp(48px,6vw,80px)}
 .v7 .qzsec.quiz60 .chk{margin-top:26px}
+/* "Built for" carousel: two photo layers crossfade under the band's gradient; text and cards fade on the swap. */
+.v7 .photo-band .bg{position:absolute;inset:0;z-index:-2;background:var(--deep) center/cover no-repeat;opacity:0;transition:opacity 1s ease}
+.v7 .photo-band .bg.on{opacity:1}
+.v7 .photo-band .in,.v7 #tuned .pers,.v7 #tuned .kicker{transition:opacity .42s ease}
+.v7 .photo-band.swap .in,.v7 #tuned.swap .pers,.v7 #tuned.swap .kicker{opacity:0}
+@media(prefers-reduced-motion:reduce){.v7 .photo-band .bg,.v7 .photo-band .in,.v7 #tuned .pers,.v7 #tuned .kicker{transition:none}}

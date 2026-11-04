@@ -1,13 +1,9 @@
-// Behaviour for the Valley: one trade state drives the map, the city card,
-// the city grid, the photo band and the tuning cards. Ported from Madison's
-// map mockup; photos point at the version 2 set.
+// Behaviour for the "Built for" carousel: a timer walks the photo band
+// through the trades on the banner's timing. Photos point at the version 2 set.
 export function mountValley() {
-  var svg = document.getElementById('svgmap'); if (!svg || svg.dataset.mounted) return;
-  svg.dataset.mounted = '1';
+  var band = document.getElementById('tradeband'); if (!band || band.dataset.mounted) return;
+  band.dataset.mounted = '1';
   var P = { hvac: '/v2/img/hero-hvac.jpg', plumbing: '/v2/img/hero-plumbing.jpg', electrical: '/v2/img/hero-electrical.jpg', roofing: '/v2/img/hero-roofing.jpg', door: '/v2/img/band-door.jpg', nb: '/v2/img/band-neighborhood.jpg' };
-  var CITIES = ['Phoenix','Scottsdale','Mesa','Chandler','Gilbert','Glendale','Tempe','Peoria','Surprise','Goodyear','Queen Creek','Cave Creek'];
-  var SEARCH = { Phoenix: 9900, Scottsdale: 3600, Mesa: 4400, Chandler: 2900, Gilbert: 2400, Glendale: 2900, Tempe: 1900, Peoria: 1600, Surprise: 1300, Goodyear: 1000, 'Queen Creek': 720, 'Cave Creek': 390 };
-  var TOP = { Phoenix: '4.8★, 1,240 reviews', Scottsdale: '4.9★, 880 reviews', Mesa: '4.7★, 610 reviews', Chandler: '4.8★, 540 reviews', Gilbert: '4.9★, 470 reviews', Glendale: '4.6★, 390 reviews', Tempe: '4.7★, 310 reviews', Peoria: '4.8★, 280 reviews', Surprise: '4.7★, 210 reviews', Goodyear: '4.8★, 190 reviews', 'Queen Creek': '4.9★, 140 reviews', 'Cave Creek': '4.8★, 90 reviews' };
   var MON = ['J','F','M','A','M','J','J','A','S','O','N','D'];
   var TRADES = {
     'HVAC': { kw: ['ac repair phoenix','emergency ac repair near me','hvac company chandler','ac replacement cost mesa','heat pump install gilbert'], season: 'June to September', seasonP: 'Peak cooling season in the Valley. Local Services Ads and search budgets rise with the temperature and come down in October.', curve: [40,38,45,55,75,100,100,95,80,55,40,42], job: '$6,800', jobP: 'Illustrative average for a replacement in the Phoenix market. The CRM records the real number per job, and that sets next month’s spend.', photo: P.hvac, h2: 'When the AC dies in July, the first company to answer gets the job.', p: 'Every new lead gets a text and an email in under a minute, in your voice, even when your techs are on a roof in 112 degrees. The phone still rings you first. If nobody can pick up, the AI books it.' },
@@ -18,33 +14,29 @@ export function mountValley() {
     'Pest control': { kw: ['pest control phoenix','scorpion control scottsdale','termite inspection mesa','pest control near me'], season: 'March to October', seasonP: 'Scorpion and termite season. Recurring plans mean the first job is worth a year of jobs.', curve: [40,45,70,85,95,100,100,95,85,70,45,40], job: '$480 per year', jobP: 'Illustrative annual value of a quarterly plan. Recurring revenue changes the math on every lead.', photo: P.nb, h2: 'One scorpion in the bathtub and they are searching tonight.', p: 'Recurring plans are won on the first reply. The AI books the inspection, the CRM runs the renewal.' },
     'Landscaping': { kw: ['landscaper near me','desert landscaping phoenix','artificial turf install gilbert','irrigation repair chandler'], season: 'February to May, and October', seasonP: 'Planting and installs run spring and fall. Maintenance plans carry the summer.', curve: [60,80,95,100,85,55,45,45,60,90,75,55], job: '$3,200', jobP: 'Illustrative average for an install. Maintenance plans are recurring.', photo: P.nb, h2: 'They want the yard done before the party in April.', p: 'Spring is a race for installs. The first company with a design slot wins the project and the maintenance plan after it.' }
   };
-  var state = { trade: 'HVAC', city: 'Phoenix' };
+  var ORDER = ['HVAC', 'Plumbing', 'Electrical', 'Roofing', 'Garage door', 'Pest control', 'Landscaping'];
+  var state = { trade: 'HVAC' };
   var T = function () { return TRADES[state.trade]; };
   var lc = function () { return state.trade === 'HVAC' ? 'HVAC' : state.trade.toLowerCase(); };
-  var slug = function (x) { return x.toLowerCase().replace(/ /g, '-'); };
   function fill(sel, text) { document.querySelectorAll('[data-t="' + sel + '"]').forEach(function (el) { el.textContent = text; }); }
-  function render() {
+  var layers = band.querySelectorAll('.bg'), onLayer = 0;
+  function paint() {
     var t = T();
-    fill('trade', state.trade); fill('trade-lc', lc()); fill('city', state.city);
-    document.querySelectorAll('.tradebar .tchip[data-trade]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-trade') === state.trade ? 'true' : 'false'); });
-    svg.querySelectorAll('.city').forEach(function (g) { var c = g.getAttribute('data-city'); g.classList.toggle('sel', c === state.city); g.querySelector('text.n').textContent = (SEARCH[c] / 1000).toFixed(1).replace(/\.0$/, '') + 'k / mo'; });
-    var g = svg.querySelector('.city[data-city="' + state.city + '"]'), m = /translate\(([\d.]+),([\d.]+)\)/.exec(g.getAttribute('transform'));
-    var r = svg.getBoundingClientRect(), wrap = svg.parentNode.getBoundingClientRect();
-    if (r.width) { var x = (parseFloat(m[1]) / 640) * r.width + (r.left - wrap.left), y = (parseFloat(m[2]) / 520) * r.height + (r.top - wrap.top); var pin = document.getElementById('pin'); pin.style.left = (x - 10) + 'px'; pin.style.top = (y - 66) + 'px'; }
-    document.getElementById('cc-status').textContent = 'your page: /' + slug(lc()) + '/' + slug(state.city);
-    document.getElementById('cc-search').textContent = 'about ' + SEARCH[state.city].toLocaleString('en-US') + ' searches a month';
-    document.getElementById('cc-top').textContent = 'top company: ' + TOP[state.city];
-    document.getElementById('cc-cta').textContent = 'Schedule a call for ' + state.city;
-    document.querySelectorAll('.citygrid').forEach(function (grid) { grid.innerHTML = ''; CITIES.forEach(function (c) { var b = document.createElement('button'); b.type = 'button'; b.className = 'citybtn'; b.setAttribute('aria-pressed', c === state.city ? 'true' : 'false'); b.innerHTML = '<span>' + c + '</span><small>top company ' + TOP[c] + '</small><span class="st open">about ' + SEARCH[c].toLocaleString('en-US') + ' searches / mo</span>'; b.addEventListener('click', function () { state.city = c; render(); }); grid.appendChild(b); }); });
-    var pb = document.getElementById('tradeband'); pb.style.setProperty('--img', 'url(' + t.photo + ')'); pb.querySelector('.photo-h2').textContent = t.h2; pb.querySelector('.photo-p').textContent = t.p;
-    document.querySelectorAll('.p-kw').forEach(function (e) { e.innerHTML = t.kw.map(function (k) { return '<span>' + k + '</span>'; }).join(''); });
-    document.querySelectorAll('.p-season').forEach(function (e) { e.textContent = t.season; }); document.querySelectorAll('.p-season-p').forEach(function (e) { e.textContent = t.seasonP; });
-    document.querySelectorAll('.p-job').forEach(function (e) { e.textContent = t.job; }); document.querySelectorAll('.p-job-p').forEach(function (e) { e.textContent = t.jobP; });
-    var mx = Math.max.apply(null, t.curve); document.getElementById('season').innerHTML = t.curve.map(function (v, i) { return '<div class="b' + (v >= mx * .9 ? ' peak' : '') + '" style="height:' + (v / mx * 100) + '%"><span>' + MON[i] + '</span></div>'; }).join('');
-    var ct = document.getElementById('clock-city'); if (ct) ct.textContent = state.city; var tt = document.getElementById('clock-trade'); if (tt) tt.textContent = lc();
+    fill('trade', state.trade); fill('trade-lc', lc());
+    band.querySelector('.photo-h2').textContent = t.h2; band.querySelector('.photo-p').textContent = t.p;
   }
-  document.querySelectorAll('.tradebar .tchip[data-trade]').forEach(function (b) { b.addEventListener('click', function () { state.trade = b.getAttribute('data-trade'); render(); }); });
-  svg.querySelectorAll('.city').forEach(function (g) { g.addEventListener('click', function () { state.city = g.getAttribute('data-city'); render(); }); });
-  window.addEventListener('resize', render);
-  render(); window.addEventListener('load', render); setTimeout(render, 300);
+  function photo() {
+    if (layers.length < 2) { band.style.setProperty('--img', 'url(' + T().photo + ')'); return; }
+    var next = 1 - onLayer; layers[next].style.backgroundImage = 'url(' + T().photo + ')';
+    layers[next].classList.add('on'); layers[onLayer].classList.remove('on'); onLayer = next;
+  }
+  function show(trade, animate) {
+    state.trade = trade;
+    if (!animate) { paint(); photo(); return; }
+    photo(); band.classList.add('swap');
+    setTimeout(function () { paint(); band.classList.remove('swap'); }, 420);
+  }
+  show('HVAC', false);
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!still) { var i = 0; setInterval(function () { i = (i + 1) % ORDER.length; show(ORDER[i], true); }, 7000); }
 }

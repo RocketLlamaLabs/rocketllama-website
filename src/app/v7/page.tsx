@@ -5,7 +5,6 @@ import type { Metadata } from "next";
 import { V7Footer } from "@/components/v7/footer";
 import { SixtySecondCheck } from "@/components/v2/sixty-second-check";
 import { FreeScan } from "@/components/v2/free-scan";
-import { InstantAudit } from "@/components/v7/instant-audit";
 import { WhySwitch } from "@/components/v7/why-switch";
 import { Valley } from "@/components/v7/valley";
 import { Race } from "@/components/v7/race";
@@ -25,12 +24,12 @@ export default function Page() {
     <>
 <nav className="nav"><div className="wrap in">
   <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links"><a href="#who">About Us</a><a href="/v7/services">Services</a><a href="#cities">Cities</a><a href="#industries">Industries</a></div>
+  <div className="links"><a href="#who">About Us</a><a href="/v7/services">Services</a><a href="#industries">Industries</a></div>
   <a className="btn sm" href="/v7/book">Schedule a call</a>
   <details className="menu">
     <summary aria-label="Menu"><span></span></summary>
     <div className="panel">
-      <a href="#who">About Us</a><a href="/v7/services">Services</a><a href="#cities">Cities</a><a href="#industries">Industries</a>
+      <a href="#who">About Us</a><a href="/v7/services">Services</a><a href="#industries">Industries</a>
       <a className="btn sm" href="/v7/book">Schedule a call</a>
     </div>
   </details>
@@ -54,7 +53,7 @@ export default function Page() {
       <div className="rslide"><h2>Be the company Google and AI <em>recommend.</em></h2><p className="lede">When a homeowner searches, or asks ChatGPT, for someone in your trade in your city, the answer should be you. A website you own that search engines and AI can read, your Google profile and reviews worked hard, and ads in your name.</p></div>
       <div className="rslide"><h2>Every dollar tracked to a <em>paid job.</em></h2><p className="lede">We do not report clicks. Every call and form lands in a CRM you own with its source and what the job was worth, and that number sets next month&rsquo;s spend. You see exactly what the marketing brought in.</p></div>
     </div>
-    <div className="ctas"><a className="btn light" href="/v7/book">Schedule a call</a><a className="btn outline" href="#check">Run the instant audit</a></div>
+    <div className="ctas"><a className="btn light" href="/v7/book">Schedule a call</a></div>
    </div>
   </div>
   <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -75,15 +74,6 @@ export default function Page() {
     <div className="card"><div className="n">62% <span style={{fontSize:".5em",color:"var(--muted)"} as CSSProperties}>vs</span> 28%</div><h3>close rate, fast vs average</h3><p>Answer inside two minutes and 62% of leads convert. The average company answers in 42 minutes and converts 28%. Only 12% of contractors respond inside five minutes.</p><span className="src">ServiceTitan, 2025 · Hatch, 2026</span></div>
     <div className="card"><div className="n">45%</div><h3>now ask an AI for a local pro</h3><p>Up from 6% a year earlier. AI Overviews appear on 68% of local-business searches. Most contractor websites have nothing an AI can read.</p><span className="src">Elev8 Operations roundup, 2026</span></div>
   </div>
-</div></section>
-
-<WhySwitch />
-
-<section id="check" className="qzsec"><div className="wrap">
-  <p className="kicker">The instant audit</p>
-  <h2>See how you show up online. In 20 seconds.</h2>
-  <p className="sub">Your Google profile, your reviews, your website, your phone and what the AI engines say about you, side by side with the top company in your trade in your area. No email, no call, no sales rep. Then decide.</p>
-  <InstantAudit base="/v7" />
 </div></section>
 
 <Valley base="/v7" />
@@ -125,7 +115,7 @@ export default function Page() {
   <p className="kicker">Your plan</p>
   <h2>No price list. A marketing plan written for your company.</h2>
   <p className="sub">Every company is quoted on its own. On the walkthrough we look at your trade, your area, your calendar and what you already have, then write the plan with a number on it. You see the plan before you pay for anything, and you keep it either way.</p>
-  <div className="ctas"><a className="btn" href="/v7/book">Book a call</a><a className="btn ghost" href="#check">Run the instant audit</a></div>
+  <div className="ctas"><a className="btn" href="/v7/book">Book a call</a></div>
 </div></section>
 
 <LeaveSwitch />

@@ -20,7 +20,7 @@ export default function Page() {
   <details className="menu">
     <summary aria-label="Menu"><span></span></summary>
     <div className="panel">
-      <a href="/v7#who">About Us</a><a href="/v7/services">Services</a><a href="/v7#cities">Cities</a><a href="/v7#industries">Industries</a>
+      <a href="/v7#who">About Us</a><a href="/v7/services">Services</a><a href="/v7#industries">Industries</a>
       <a className="btn sm" href="/v7/book">Schedule a call</a>
     </div>
   </details>

@@ -277,6 +277,11 @@ def v7_extras_core(s, f, is_home, base):
     s = s.replace('<a href="#check">60-second check</a>', '<a href="#check">Instant audit</a>')
     s = s.replace('<a className="btn ghost" href="#check">Take the 60-second check</a>', '<a className="btn ghost" href="#check">Run the instant audit</a>')
     # trust strip under the hero
+    # the instant audit section is gone, along with the buttons that pointed at it
+    i = s.index('<section id="check" className="qzsec">'); j = s.index('</div></section>\n', i) + len('</div></section>\n')
+    s = s[:i] + s[j:].lstrip('\n')
+    s = s.replace('<a className="btn outline" href="#check">Run the instant audit</a>', '').replace('<a className="btn ghost" href="#check">Run the instant audit</a>', '')
+    s = s.replace('import { InstantAudit } from "@/components/v7/instant-audit";\n', '', 1)
     # the 60-second check from version 8 sits right under the banner, ahead of the 'three ways' tile
     check = ('</header>\n\n<section id="quiz" className="qzsec quiz60"><div className="wrap">\n'
              '  <p className="kicker">The 60-second check</p>\n'
@@ -328,7 +333,7 @@ def v7_extras(s, f, is_home, base):
     s = s.replace(f'<SixtySecondCheck base="{base}" />', f'<SixtySecondCheck base="{base}" cta="Schedule a call" />')
     # nav: About Us first, then Services, Cities, Industries; a hamburger menu below 900px
     pfx = '' if is_home else base
-    links = f'<a href="{pfx}#who">About Us</a><a href="{base}/services">Services</a><a href="{pfx}#cities">Cities</a><a href="{pfx}#industries">Industries</a>'
+    links = f'<a href="{pfx}#who">About Us</a><a href="{base}/services">Services</a><a href="{pfx}#industries">Industries</a>'
     s = re.sub(r'<div className="links">.*?</div>', '<div className="links">' + links + '</div>', s, count=1)
     btn = f'  <a className="btn sm" href="{base}/book">Schedule a call</a>\n</div></nav>'
     if btn not in s:  # layout.tsx has no nav
