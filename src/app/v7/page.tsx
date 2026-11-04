@@ -5,7 +5,6 @@ import type { Metadata } from "next";
 import { V7Footer } from "@/components/v7/footer";
 import { FreeScan } from "@/components/v2/free-scan";
 import { InstantAudit } from "@/components/v7/instant-audit";
-import { TrustStrip } from "@/components/v7/trust-strip";
 import { WhySwitch } from "@/components/v7/why-switch";
 import { Valley } from "@/components/v7/valley";
 import { Race } from "@/components/v7/race";
@@ -59,7 +58,6 @@ export default function Page() {
   </div>
   <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 </header>
-<TrustStrip />
 
 <section id="problem"><div className="wrap">
   <p className="kicker">Three ways good companies lose jobs</p>

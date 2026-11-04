@@ -242,7 +242,6 @@ def build(dst_rel, base, n, extras=None, extra_css_import=None, layout_note=''):
 
 # ---------- version 7: splice in the custom elements from Madison's mockups
 V7_IMPORTS = '''import { InstantAudit } from "@/components/v7/instant-audit";
-import { TrustStrip } from "@/components/v7/trust-strip";
 import { WhySwitch } from "@/components/v7/why-switch";
 import { Valley } from "@/components/v7/valley";
 import { Race } from "@/components/v7/race";
@@ -278,7 +277,7 @@ def v7_extras_core(s, f, is_home, base):
     s = s.replace('<a href="#check">60-second check</a>', '<a href="#check">Instant audit</a>')
     s = s.replace('<a className="btn ghost" href="#check">Take the 60-second check</a>', '<a className="btn ghost" href="#check">Run the instant audit</a>')
     # trust strip under the hero
-    s = s.replace('</header>\n\n<section id="problem">', '</header>\n<TrustStrip />\n\n<section id="problem">')
+    # (the trust strip under the banner was removed on 4 November 2026)
     # why owners switch, before the 60-second check
     s = s.replace('\n<section id="check" className="qzsec">', '\n<WhySwitch />\n\n<section id="check" className="qzsec">')
     # the speed-to-lead band becomes the Valley map, the per-trade photo band and tuning, then the race
