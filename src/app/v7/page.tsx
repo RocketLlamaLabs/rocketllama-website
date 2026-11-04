@@ -48,6 +48,12 @@ export default function Page() {
   <div className="wrap in">
    <div>
     <h1 className="tagline">Marketing and technology for local home services</h1>
+    <div className="rot">
+      <div className="rslide"><h2>Your calendar should be <em>full.</em></h2></div>
+      <div className="rslide"><h2>Every call <em>answered</em> in under a minute.</h2></div>
+      <div className="rslide"><h2>Be the company Google and AI <em>recommend.</em></h2></div>
+      <div className="rslide"><h2>Every dollar tracked to a <em>paid job.</em></h2></div>
+    </div>
     <div className="ctas"><a className="btn light" href="/v7/book">Schedule a call</a><a className="btn outline" href="#check">Run the instant audit</a></div>
     <p className="trust"><b>Month to month.</b> No contracts. <b>Exclusive leads, never shared.</b> Hosting free. <b>Not happy?</b> We work free until you are.</p>
    </div>

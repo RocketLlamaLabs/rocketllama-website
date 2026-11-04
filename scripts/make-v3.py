@@ -333,9 +333,9 @@ def v7_extras(s, f, is_home, base):
         # banner: the tagline sits above the rotating headline, large
         a = '   <div>\n    <p className="kicker">Marketing and technology for local home services</p>\n'
         assert a in s; s = s.replace(a, '   <div>\n    <h1 className="tagline">Marketing and technology for local home services</h1>\n', 1)
-        # the rotating headline and lede are gone from the banner (the wording was handed back to the owner as a Word document)
-        i = s.index('    <div className="rot">\n'); j = s.index('    </div>\n', i) + len('    </div>\n')
-        s = s[:i] + s[j:]
+        # the rotating lines stay, as h2 headings under the H1, without their supporting paragraphs
+        s = s.replace('<div className="rslide"><h1>', '<div className="rslide"><h2>').replace('</h1><p className="lede">', '</h2><p className="lede">')
+        s = re.sub(r'(<div className="rslide"><h2>.*?</h2>)<p className="lede">.*?</p>', r'\1', s)
         # no question box in the banner: single column, the check keeps its own section further down
         a = f'   <div className="hero-check"><SixtySecondCheck base="{base}" cta="Schedule a call" /></div>\n'
         assert a in s; s = s.replace(a, '', 1)
