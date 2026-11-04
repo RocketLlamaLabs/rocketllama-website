@@ -3,6 +3,7 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { V7Footer } from "@/components/v7/footer";
+import { SixtySecondCheck } from "@/components/v2/sixty-second-check";
 import { FreeScan } from "@/components/v2/free-scan";
 import { InstantAudit } from "@/components/v7/instant-audit";
 import { WhySwitch } from "@/components/v7/why-switch";
@@ -58,6 +59,13 @@ export default function Page() {
   </div>
   <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 </header>
+
+<section id="quiz" className="qzsec quiz60"><div className="wrap">
+  <p className="kicker">The 60-second check</p>
+  <h2>How does your company show up online?</h2>
+  <p className="sub">Four questions, one tap each. You get a score out of 100 and the honest read on where the jobs are leaking. No email needed to see it.</p>
+  <SixtySecondCheck base="/v7" cta="Schedule a call" />
+</div></section>
 
 <section id="problem"><div className="wrap">
   <p className="kicker">Three ways good companies lose jobs</p>

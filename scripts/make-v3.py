@@ -277,7 +277,15 @@ def v7_extras_core(s, f, is_home, base):
     s = s.replace('<a href="#check">60-second check</a>', '<a href="#check">Instant audit</a>')
     s = s.replace('<a className="btn ghost" href="#check">Take the 60-second check</a>', '<a className="btn ghost" href="#check">Run the instant audit</a>')
     # trust strip under the hero
-    # (the trust strip under the banner was removed on 4 November 2026)
+    # the 60-second check from version 8 sits right under the banner, ahead of the 'three ways' tile
+    check = ('</header>\n\n<section id="quiz" className="qzsec quiz60"><div className="wrap">\n'
+             '  <p className="kicker">The 60-second check</p>\n'
+             '  <h2>How does your company show up online?</h2>\n'
+             '  <p className="sub">Four questions, one tap each. You get a score out of 100 and the honest read on where the jobs are leaking. No email needed to see it.</p>\n'
+             f'  <SixtySecondCheck base="{base}" cta="Schedule a call" />\n'
+             '</div></section>\n\n<section id="problem">')
+    a = '</header>\n\n<section id="problem">'
+    assert a in s; s = s.replace(a, check, 1)
     # why owners switch, before the 60-second check
     s = s.replace('\n<section id="check" className="qzsec">', '\n<WhySwitch />\n\n<section id="check" className="qzsec">')
     # the speed-to-lead band becomes the Valley map, the per-trade photo band and tuning, then the race
