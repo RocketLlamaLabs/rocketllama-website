@@ -408,3 +408,6 @@
 .v7 .chk .ring circle[data-band="low"]{stroke:#e3001b}
 .v7 .chk .ring circle[data-band="mid"]{stroke:#ffd400}
 .v7 .chk .ring circle[data-band="high"]{stroke:#00a84f}
+/* Callout: the button sits centred in the space under the headline, level with the photo's foot. */
+.v7 .evolve.with-photo .evolve-text{align-self:stretch;grid-template-rows:auto auto 1fr}
+.v7 .evolve.with-photo .evolve-text .btn{align-self:center;margin-top:0}
