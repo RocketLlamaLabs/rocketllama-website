@@ -329,3 +329,9 @@
 .v7 .step .num{font-family:var(--sans);font-weight:900;font-size:2.4rem;line-height:1;color:var(--accent-ink);display:block}
 .v7 .step h3{font-family:var(--sans);font-size:1.15rem;font-weight:800;margin:10px 0 6px;letter-spacing:-.01em}
 .v7 .step p{margin:0;color:var(--muted);font-size:.97rem;line-height:1.5}
+/* The pain in each carousel line, highlighted like the banner. */
+.v7 .photo-band .photo-h2 em{font-style:normal;color:#fff;background:linear-gradient(transparent 10%,#FBF719 10%,#FBF719 92%,transparent 92%);padding:0 .08em;margin:0 -.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone;text-shadow:0 1px 2px rgba(0,0,0,.55),0 0 10px rgba(0,0,0,.25)}
+/* The two "you" in the system heading. */
+.v7 #system h2 em{font-style:normal;color:inherit;background:linear-gradient(transparent 10%,#FBF719 10%,#FBF719 92%,transparent 92%);padding:0 .06em;margin:0 -.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* overflow-x:hidden made .v7 a scroll container and un-stuck the nav; clip does not. */
+.v7{overflow-x:clip}

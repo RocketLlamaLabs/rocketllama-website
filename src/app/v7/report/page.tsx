@@ -16,7 +16,7 @@ export default function Page() {
     <>
 <nav className="nav"><div className="wrap in">
   <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links" style={{display:"flex"} as CSSProperties}><a className="backlink" href="/v7">&larr; Back to the site</a></div>
+  <div className="links"><a href="/v7/about">About Us</a><a href="/v7/services">Services</a><a href="/v7#industries">Industries</a></div>
   <a className="btn sm" href="/v7/book">Schedule a call</a>
   <details className="menu">
     <summary aria-label="Menu"><span></span></summary>

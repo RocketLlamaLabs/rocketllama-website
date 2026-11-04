@@ -3,7 +3,7 @@ import Link from "next/link";
 
 // Footer for version 7: the version 2 layout in the Rocket Llama colors,
 // with the stacked logo (mascot, then Rocket / Llama on two lines).
-export function V7Footer({ note }: { note: string }) {
+export function V7Footer({ note: _note }: { note: string }) {
   return (
     <footer>
       <div className="wrap in">
@@ -15,14 +15,7 @@ export function V7Footer({ note }: { note: string }) {
             height={40}
           />
         </Link>
-        <span>
-          <b>Rocket Llama Labs</b> · Phoenix, Arizona · Branson, Brian and
-          Madison
-        </span>
-        <span>
-          {note} · not indexed ·{" "}
-          <Link href="/admin/website">Website versions</Link>
-        </span>
+        <span>&copy; 2026 Rocket Llama Labs LLC</span>
       </div>
     </footer>
   );

@@ -40,7 +40,7 @@ def patch_shared():
         edit(os.path.join(comp, f), [('stroke="#dfe7e1"', 'stroke="var(--line)"'), ('fill="#f4f8f5"', 'fill="var(--bg)"'), ('fill="#16a34a"', 'fill="var(--accent)"')])
     edit(os.path.join(comp, 'sixty-second-check.tsx'), [
         ('stroke="#e5ece7"', 'stroke="var(--line)"'), ('stroke="#16a34a"', 'stroke="var(--accent)"'),
-        ('export function SixtySecondCheck() {', 'export function SixtySecondCheck({ base = "/v2", cta = "Book a walkthrough" }: { base?: string; cta?: string }) {'),
+        ('export function SixtySecondCheck() {', 'export function SixtySecondCheck({ base = "/v2", cta = "Book a walkthrough", alt = { label: "Get the free scan", href: "#scan" } }: { base?: string; cta?: string; alt?: { label: string; href: string } }) {'),
         ('href="/v2/book">Book a walkthrough</a>', 'href={`${base}/book`}>{cta}</a>'),
     ])
     edit(os.path.join(comp, 'behavior/sixty-second-check.js'), [
@@ -207,7 +207,11 @@ def build(dst_rel, base, n, extras=None, extra_css_import=None, layout_note=''):
     open(os.path.join(root, f'src/components/v{n}/footer.tsx'), 'w').write(FOOTER.replace('{N}', str(n)).replace('{HOME}', base or '/'))
     if n in (7, 8):  # v7 and v8 footers carry the one-line nav logo
         fp = os.path.join(root, f'src/components/v{n}/footer.tsx'); t = open(fp).read()
-        open(fp, 'w').write(t.replace('/brand/logo-stacked.svg', '/brand/logo-nav.svg').replace('width={137}', 'width={249}'))
+        t = t.replace('/brand/logo-stacked.svg', '/brand/logo-nav.svg').replace('width={137}', 'width={249}')
+        if n == 7:  # a simple footer: the logo and the copyright line
+            t = re.sub(r'        <span>\n          <b>Rocket Llama Labs</b>.*?</span>\n(        <span>\n.*?</span>\n)', '        <span>&copy; 2026 Rocket Llama Labs LLC</span>\n', t, count=1, flags=re.S)
+            t = t.replace('export function V7Footer({ note }: { note: string }) {', 'export function V7Footer({ note: _note }: { note: string }) {')
+        open(fp, 'w').write(t)
     # pages
     for dirpath, _, files in os.walk(dst):
         for f in files:
@@ -280,7 +284,7 @@ def v7_extras_core(s, f, is_home, base):
     # the instant audit section is gone, along with the buttons that pointed at it
     i = s.index('<section id="check" className="qzsec">'); j = s.index('</div></section>\n', i) + len('</div></section>\n')
     s = s[:i] + s[j:].lstrip('\n')
-    s = s.replace('<a className="btn outline" href="#check">Run the instant audit</a>', '').replace('<a className="btn ghost" href="#check">Run the instant audit</a>', '')
+    s = s.replace('<a className="btn outline" href="#check">Run the instant audit</a>', f'<a className="btn outline" href="{base}/audit">Run the audit</a>').replace('<a className="btn ghost" href="#check">Run the instant audit</a>', '')
     s = s.replace('import { InstantAudit } from "@/components/v7/instant-audit";\n', '', 1)
     # the monthly report has its own page (/v7/report) and the exit switch tile is gone
     s = s.replace('import { ReportSection } from "@/components/v7/report-section";\n', '', 1).replace('import { LeaveSwitch } from "@/components/v7/leave-switch";\n', '', 1)
@@ -288,13 +292,16 @@ def v7_extras_core(s, f, is_home, base):
     s = s[:e] + f'  <p className="note"><a href="{base}/report">See a sample monthly report &rarr;</a></p>\n' + s[e:]
     # the trust line lives in the 'system on one page' section, under its intro
     k = s.index('<p className="kicker">The system on one page</p>'); m = s.index('</p>\n  <div className="list">', k) + len('</p>\n')
-    s = s[:m] + '  <p className="trust"><b>Month to month.</b> No contracts. <b>Exclusive leads, never shared.</b> Hosting free. <b>You own everything:</b> the site, the data, the numbers and the ad accounts. <b>Not happy?</b> We work free until you are.</p>\n' + s[m:]
+    s = s[:m] + '  <p className="trust"><b>Month to month.</b> No contracts. <b>You own everything:</b> the site, the data, the numbers and the ad accounts.</p>\n' + s[m:]
+    # both 'you' in the section heading carry the yellow highlight
+    a = '<h2>Everything points to a website you own. Everything lands in a CRM you own.</h2>'
+    assert a in s; s = s.replace(a, '<h2>Everything points to a website <em>you</em> own. Everything lands in a CRM <em>you</em> own.</h2>', 1)
     # the 60-second check from version 8 sits right under the banner, ahead of the 'three ways' tile
     check = ('</header>\n\n<section id="quiz" className="qzsec quiz60"><div className="wrap">\n'
              '  <p className="kicker">The 60-second check</p>\n'
              '  <h2>How does your company show up online?</h2>\n'
              '  <p className="sub">Four questions, one tap each. You get a score out of 100 and the honest read on where the jobs are leaking. No email needed to see it.</p>\n'
-             f'  <SixtySecondCheck base="{base}" cta="Schedule a call" />\n'
+             f'  <SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an audit", href: "{base}/audit" }}}} />\n'
              '</div></section>\n\n<section id="problem">')
     a = '</header>\n\n<section id="problem">'
     assert a in s; s = s.replace(a, check, 1)
@@ -337,11 +344,11 @@ def v7_extras(s, f, is_home, base):
     s = v7_extras_core(s, f, is_home, base)
     # wording: every call to action schedules a call
     s = s.replace('Book a walkthrough', 'Schedule a call').replace('book a walkthrough', 'schedule a call').replace('Book your free walkthrough', 'Schedule your free call')
-    s = s.replace(f'<SixtySecondCheck base="{base}" />', f'<SixtySecondCheck base="{base}" cta="Schedule a call" />')
+    s = s.replace(f'<SixtySecondCheck base="{base}" />', f'<SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an audit", href: "{base}/audit" }}}} />')
     # nav: About Us first, then Services, Cities, Industries; a hamburger menu below 900px
     pfx = '' if is_home else base
     links = f'<a href="{base}/about">About Us</a><a href="{base}/services">Services</a><a href="{pfx}#industries">Industries</a>'
-    s = re.sub(r'<div className="links">.*?</div>', '<div className="links">' + links + '</div>', s, count=1)
+    s = re.sub(r'<div className="links"[^>]*>.*?</div>', '<div className="links">' + links + '</div>', s, count=1)
     btn = f'  <a className="btn sm" href="{base}/book">Schedule a call</a>\n</div></nav>'
     if btn not in s:  # layout.tsx has no nav
         return s
@@ -357,11 +364,13 @@ def v7_extras(s, f, is_home, base):
         # the rotating lines stay, as h2 headings under the H1, each with its supporting paragraph
         s = s.replace('<div className="rslide"><h1>', '<div className="rslide"><h2>').replace('</h1><p className="lede">', '</h2><p className="lede">')
         # no question box in the banner: single column, the check keeps its own section further down
-        a = f'   <div className="hero-check"><SixtySecondCheck base="{base}" cta="Schedule a call" /></div>\n'
+        a = f'   <div className="hero-check"><SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an audit", href: "{base}/audit" }}}} /></div>\n'
         assert a in s; s = s.replace(a, '', 1)
         s = s.replace('<div className="wrap in hero-grid">', '<div className="wrap in">', 1)
         if '<SixtySecondCheck' not in s:
             s = s.replace('import { SixtySecondCheck } from "@/components/v2/sixty-second-check";\n', '', 1)
+        # the 'vs' in the close-rate card is the bright blue
+        s = s.replace('<span style={{fontSize:".5em",color:"var(--muted)"} as CSSProperties}>vs</span>', '<span style={{fontSize:".5em",color:"var(--accent)"} as CSSProperties}>vs</span>', 1)
         # the monthly report and the 'who you are talking to' section live on their own pages
         s = s.replace('<ReportSection />\n', '', 1)
         w0 = s.index('<section id="who" className="feature">'); w1 = s.index('</div></section>\n', w0) + len('</div></section>\n')
@@ -405,6 +414,24 @@ def write_v7_about():
     open(os.path.join(root, 'src/app/v7/about/page.tsx'), 'w').write(t)
 
 
+def write_v7_audit():
+    """The instant audit on its own page, linked from the 60-second check."""
+    t = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
+    t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", "  title: 'Run an audit',\n  description: \"See how your company shows up online in 20 seconds: your Google profile, reviews, website, phone and what the AI engines say, next to the top company in your trade.\",", t, count=1)
+    t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { InstantAudit } from "@/components/v7/instant-audit";\n', 1)
+    t = re.sub(r'// Ported from the mockup.*?\n', '// The instant audit, on its own page since 4 November 2026.\n', t, count=1)
+    i = t.index('<main>'); j = t.index('</main>') + len('</main>')
+    main = ('<main>\n<section id="check" className="qzsec"><div className="wrap">\n'
+            '  <p className="kicker">The audit</p>\n'
+            '  <h1>See how you show up online. In 20 seconds.</h1>\n'
+            '  <p className="sub">Your Google profile, your reviews, your website, your phone and what the AI engines say about you, side by side with the top company in your trade in your area. No email, no call, no sales rep. Then decide.</p>\n'
+            '  <InstantAudit base="/v7" />\n</div></section>\n</main>')
+    t = t[:i] + main + t[j:]
+    t = t.replace("note='Version 7, about page'", "note='Version 7, audit'")
+    os.makedirs(os.path.join(root, 'src/app/v7/audit'), exist_ok=True)
+    open(os.path.join(root, 'src/app/v7/audit/page.tsx'), 'w').write(t)
+
+
 def v8_extras(s, f, is_home, base):
     if is_home:
         return V8_PAGE
@@ -418,4 +445,5 @@ if __name__ == '__main__':
     build('src/app/v7', '/v7', 7, extras=v7_extras, extra_css_import='@/components/v7/v7.css', layout_note=' The custom elements and their styles live in src/components/v7.')
     write_v7_report()
     write_v7_about()
+    write_v7_audit()
     build('src/app/v8', '/v8', 8, extras=v8_extras, extra_css_import='@/components/v8/v8.css', layout_note=' The home page itself is src/components/v8/home.tsx.')
