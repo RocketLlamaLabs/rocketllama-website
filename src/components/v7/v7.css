@@ -291,7 +291,7 @@
 /* Banner layout: H1 and the rotating line at the top, buttons and trust line at the foot. */
 .v7 .hero{align-items:stretch;min-height:calc(100svh - 72px)}
 @media(max-width:899px){.v7 .hero{min-height:calc(100svh - 60px)}}
-.v7 .hero .in{display:flex;padding-block:clamp(20px,3vh,36px)}
+.v7 .hero .in{display:flex;padding-block:clamp(40px,6.5vh,76px)}
 .v7 .hero .in>div{flex:1;display:flex;flex-direction:column;justify-content:space-between}
 .v7 .hero .rot{margin-block:auto;padding:0}
 .v7 .hero .ctas{margin-top:0}

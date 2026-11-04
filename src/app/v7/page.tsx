@@ -44,7 +44,7 @@ export default function Page() {
    <div>
     <h1 className="tagline">Marketing and technology for home services</h1>
     <div className="rot">
-      <div className="rslide"><h2>Your calendar should be <em>full.</em></h2><p className="lede">The whole marketing system for every trade that goes to a customer&rsquo;s home. Found online, answered in under a minute, booked on your calendar. Every dollar tracked to a paid job, and you own all of it.</p></div>
+      <div className="rslide"><h2>Your calendar should be <em>full.</em></h2><p className="lede">Built for HVAC companies, plumbers, electricians, roofers, and every home service trade. Every call, form submission, and estimate request gets a response in under 60 seconds and is booked directly onto your calendar. Track every marketing dollar all the way to a completed, paid job. You own the leads, the data, and the results.</p></div>
       <div className="rslide"><h2>Never miss a call <em>again.</em></h2><p className="lede">A new lead gets a text and an email back in under a minute, in your voice, while you are still on the roof. The phone rings you first. If nobody picks up, the AI takes the details and books the job.</p></div>
       <div className="rslide"><h2>Show up where homeowners <em>look first.</em></h2><p className="lede">Google search, Google Maps and now ChatGPT. A website you own that search engines and AI can read, a Google profile worked hard, and ads in your name, so the answer in your city is you.</p></div>
       <div className="rslide"><h2>Know what every dollar <em>brought in.</em></h2><p className="lede">No clicks, no dashboards. Every call and form lands in a CRM you own, with where it came from and what the job was worth. That number sets next month&rsquo;s spend.</p></div>
