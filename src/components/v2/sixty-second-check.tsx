@@ -6,6 +6,7 @@ import { mountSixtySecondCheck } from "./behavior/sixty-second-check";
 
 // SixtySecondCheck: markup from the mockup's _check.html, behaviour mounted on the client.
 export function SixtySecondCheck({ base = "/v2", cta = "Book a walkthrough", alt = { label: "Get the free scan", href: "#scan" } }: { base?: string; cta?: string; alt?: { label: string; href: string } }) {
+  const v7 = base === "/v7";
   useEffect(mountSixtySecondCheck, []);
   return (
     <>
@@ -17,7 +18,7 @@ export function SixtySecondCheck({ base = "/v2", cta = "Book a walkthrough", alt
   <div className="q on" data-q="1"><h3>How many Google reviews does your company have?</h3>
     <div className="opts"><label className="opt"><input type="radio" name="c1" value="5" />Under 20</label><label className="opt"><input type="radio" name="c1" value="12" />20 to 50</label><label className="opt"><input type="radio" name="c1" value="20" />50 to 150</label><label className="opt"><input type="radio" name="c1" value="25" />More than 150</label></div></div>
   <div className="q" data-q="2"><h3>A new customer calls while you are on a job. What happens?</h3>
-    <div className="opts"><label className="opt"><input type="radio" name="c2" value="0" />Voicemail, and I call back when I can</label><label className="opt"><input type="radio" name="c2" value="8" />Someone in the office picks up, sometimes</label><label className="opt"><input type="radio" name="c2" value="18" />Someone always answers</label><label className="opt"><input type="radio" name="c2" value="25" />It gets answered and booked in under a minute, every time</label></div></div>
+    <div className="opts"><label className="opt"><input type="radio" name="c2" value="0" />{v7 ? "Voicemail and I call back when I can" : "{v7 ? "Voicemail and I call back when I can" : "Voicemail, and I call back when I can"}"}</label><label className="opt"><input type="radio" name="c2" value="8" />Someone in the office picks up, sometimes</label><label className="opt"><input type="radio" name="c2" value="18" />Someone always answers</label><label className="opt"><input type="radio" name="c2" value="25" />It gets answered and booked in under a minute, every time</label></div></div>
   <div className="q" data-q="3"><h3>Your website. Which is closest?</h3>
     <div className="opts"><label className="opt"><input type="radio" name="c3" value="0" />We do not have one</label><label className="opt"><input type="radio" name="c3" value="8" />I built it myself and it is fine</label><label className="opt"><input type="radio" name="c3" value="14" />An agency built it, not sure it brings in work</label><label className="opt"><input type="radio" name="c3" value="25" />It books jobs on its own every week</label></div></div>
   <div className="q" data-q="4"><h3>Where do most new jobs come from?</h3>

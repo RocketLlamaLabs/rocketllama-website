@@ -40,8 +40,9 @@ def patch_shared():
         edit(os.path.join(comp, f), [('stroke="#dfe7e1"', 'stroke="var(--line)"'), ('fill="#f4f8f5"', 'fill="var(--bg)"'), ('fill="#16a34a"', 'fill="var(--accent)"')])
     edit(os.path.join(comp, 'sixty-second-check.tsx'), [
         ('stroke="#e5ece7"', 'stroke="var(--line)"'), ('stroke="#16a34a"', 'stroke="var(--accent)"'),
-        ('export function SixtySecondCheck() {', 'export function SixtySecondCheck({ base = "/v2", cta = "Book a walkthrough", alt = { label: "Get the free scan", href: "#scan" } }: { base?: string; cta?: string; alt?: { label: string; href: string } }) {'),
+        ('export function SixtySecondCheck() {', 'export function SixtySecondCheck({ base = "/v2", cta = "Book a walkthrough", alt = { label: "Get the free scan", href: "#scan" } }: { base?: string; cta?: string; alt?: { label: string; href: string } }) {\n  const v7 = base === "/v7";'),  # already applied; kept for a fresh checkout
         ('href="/v2/book">Book a walkthrough</a>', 'href={`${base}/book`}>{cta}</a>'),
+        ('Voicemail, and I call back when I can', '{v7 ? "Voicemail and I call back when I can" : "Voicemail, and I call back when I can"}'),
     ])
     edit(os.path.join(comp, 'behavior/sixty-second-check.js'), [
         ("document.getElementById('chk_book').href='/v2/book?score='+s;", "var bk=document.getElementById('chk_book'); bk.href=bk.getAttribute('href').split('?')[0]+'?score='+s;"),
