@@ -400,7 +400,7 @@
 /* The score dial: no Tailwind ring shadow (the class name collides), top edge level with the text. */
 .v7 .chk .ring{box-shadow:none}
 @media(min-width:720px){.v7 .chk .res.on{align-items:start}.v7 .chk .ring{margin-top:4px}}
-/* Score number by band: red under 40, yellow 40 to 84, green 85 and up. */
+/* Score number by band: red under 40, yellow 40 to 79, green 80 and up. */
 .v7 .chk .ring .n [data-band="low"]{color:#d92d20}
 .v7 .chk .ring .n [data-band="mid"]{color:#e0a800}
 .v7 .chk .ring .n [data-band="high"]{color:#12a150}
