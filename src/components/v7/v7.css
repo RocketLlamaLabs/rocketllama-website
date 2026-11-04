@@ -404,3 +404,7 @@
 .v7 .chk .ring .n [data-band="low"]{color:#e3001b}
 .v7 .chk .ring .n [data-band="mid"]{color:#ffd400}
 .v7 .chk .ring .n [data-band="high"]{color:#00a84f}
+/* The arc takes the same stop-light colour as the number. */
+.v7 .chk .ring circle[data-band="low"]{stroke:#e3001b}
+.v7 .chk .ring circle[data-band="mid"]{stroke:#ffd400}
+.v7 .chk .ring circle[data-band="high"]{stroke:#00a84f}
