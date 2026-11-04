@@ -372,7 +372,7 @@
 .v7 .nav .navbtns{display:flex;gap:10px;align-items:center}
 .v7 .nav .navbtns .ghost{color:var(--accent);border-color:var(--accent);background:transparent}
 .v7 .nav .navbtns .ghost:hover{background:var(--accent-soft)}
-.v7 .nav .menu .panel .btn.ghost{color:var(--accent);border-color:var(--accent);background:transparent;margin-top:8px}
+.v7 .nav .menu .panel .btn.ghost{color:var(--accent);border-color:var(--accent);background:transparent;margin-top:0}
 @media(max-width:899px){.v7 .nav .navbtns{display:none}}
 /* Banner buttons sit on one baseline. */
 .v7 .hero .ctas{align-items:center}
