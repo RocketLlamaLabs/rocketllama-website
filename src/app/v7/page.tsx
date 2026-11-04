@@ -59,7 +59,7 @@ export default function Page() {
 <section id="quiz" className="qzsec quiz60"><div className="wrap">
   <p className="kicker">The 60-second check</p>
   <h2>How does your company show up online?</h2>
-  <p className="sub">Four questions, one click each. You&rsquo;ll get a score out of 100 and see where you stand on visibility, so you know where to improve. No email needed to see it.</p>
+  <p className="sub">Four questions, one click each. You&rsquo;ll get a score out of 100 and see where you stand on your company&rsquo;s visibility. Know where you perform well and learn where you need to improve.</p>
   <SixtySecondCheck base="/v7" cta="Schedule a call" alt={{ label: "Run an instant audit", href: "/v7/audit" }} />
 </div></section>
 
