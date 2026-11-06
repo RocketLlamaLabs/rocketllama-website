@@ -454,7 +454,7 @@ V7_BRIAN_MAIN = '''<main>
 <header className="hero small" id="top">
   <div className="slides" aria-hidden="true" style={{backgroundImage:"url(/v2/img/band-neighborhood.jpg)"} as CSSProperties}></div>
   <div className="wrap in">
-    <p className="kicker">Brian Greenberg &middot; Co-Founder and CEO</p>
+    <p className="kicker">Brian Greenberg &middot; CEO</p>
     <h1>&ldquo;Nobody wakes up wanting to be sold to. So don&rsquo;t sell. <em>Get found.</em>&rdquo;</h1>
     <p className="lede">Brian has spent more than twenty years building businesses that get found online. He built True Blue Life Insurance into a fully digital agency that sold in all 50 states with no cold calls, generating over $50 million in revenue through inbound marketing, and he has delivered the same local SEO and inbound playbook to home services companies, including Phoenix pool service companies. He is the author of <em>The Salesman Who Doesn&rsquo;t Sell</em> and a Million Dollar Round Table member.</p>
   </div>
@@ -560,7 +560,7 @@ def write_v7_about():
         '  <p className="kicker">The team</p>\n'
         '  <h2>Three people. One system.</h2>\n'
         '  <div className="team">\n'
-        '    <article className="card"><img className="headshot photo" src="/v7/brian-greenberg.jpg" alt="Brian Greenberg, Co-Founder and CEO of Rocket Llama Labs" /><h3 id="brian-greenberg">Brian Greenberg</h3><p className="role">Co-Founder and CEO</p>'
+        '    <article className="card"><img className="headshot photo" src="/v7/brian-greenberg.jpg" alt="Brian Greenberg, CEO of Rocket Llama Labs" /><h3 id="brian-greenberg">Brian Greenberg</h3><p className="role">CEO</p>'
         '<p>Brian sets the strategy and the marketing playbook for every client. He has spent more than twenty years building businesses that get found online, including a fully digital insurance agency that generated $50M+ through inbound marketing, and he wrote <em>The Salesman Who Doesn&rsquo;t Sell</em>. He has run that same playbook for Phoenix home service companies.</p>'
         '<details className="bio"><summary>Read more</summary>'
         '<p>Entrepreneurship is the family trade. Brian learned it from his father, and it was everywhere around him: his grandfather ran his own business, and so did every one of his uncles. Growing up in Highland Park, Illinois, he never seriously considered working for anyone else. The University of Arizona&rsquo;s Eller College of Management gave him the formal version, entrepreneurship and marketing, sharpened by the McGuire Entrepreneurship Program. Then he settled in Scottsdale, Arizona, and got to work.</p>'
@@ -586,7 +586,6 @@ def write_v7_about():
         '<p>Outside of her professional work, Madison enjoys working out, reading and traveling. She has a strong appreciation for personal growth, wellness and discovering new places and cultures. These interests inspire her creativity, broaden her perspective and encourage her to continuously learn, evolve and approach both life and work with an open mind.</p>'
         '</details></article>\n'
         '  </div>\n'
-        '  <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a><a className="btn ghost" href="/v7/audit">Run an instant audit</a></div>\n'
         '</div></section>\n\n'
         '<section id="faq" className="feature"><div className="wrap">\n'
         '  <p className="kicker">Questions</p>\n'
