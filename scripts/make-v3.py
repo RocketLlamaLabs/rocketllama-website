@@ -516,7 +516,7 @@ def write_v7_about():
         '  <div className="wrap in">\n'
         '    <p className="kicker">About us</p>\n'
         '    <h1>Built by people who have <em>done this before.</em></h1>\n'
-        '    <p className="lede">Rocket Llama Labs is Brian, Branson and Madison. We build and run the whole marketing system for home service companies, and we have grown and sold companies on it ourselves.</p>\n'
+        '    <p className="lede">Rocket Llama Labs is a small team with decades of experience across building businesses, growing them and designing the way they show up online. We build and run the whole marketing system for home service companies, and every piece of it is something we have done before.</p>\n'
         '  </div>\n'
         '</header>\n\n'
         '<section id="story" className="feature"><div className="wrap">\n'
@@ -526,7 +526,7 @@ def write_v7_about():
         '    <div className="story-text">\n'
         '      <p className="sub">[Your story goes here. Two or three short paragraphs: where the three of you came from, what you ran before Rocket Llama Labs, and why you built a marketing system for home service companies instead of selling tactics one at a time.]</p>\n'
         '      <p className="sub">[A second paragraph for what you believe about the work: owning your leads, answering in under a minute, tracking every dollar to a paid job.]</p>\n'
-        '      <p className="note"><a href="/v7/about-brian">Read Brian&rsquo;s story &rarr;</a></p>\n'
+
         '    </div>\n'
 
         '  </div>\n'
@@ -537,7 +537,13 @@ def write_v7_about():
         '  <div className="team">\n'
         '    <article className="card"><img className="headshot photo" src="/v2/img/brian-greenberg.jpg" alt="Brian Greenberg" /><h3>Brian Greenberg</h3><p className="role">Co-Founder and CEO</p>'
         '<p>Brian has spent more than twenty years building businesses that get found online, including a fully digital insurance agency that generated $50M+ through inbound marketing. He is the author of <em>The Salesman Who Doesn&rsquo;t Sell</em> and has run local SEO for Phoenix home service companies.</p>'
-        '<p className="note"><a href="/v7/about-brian">Brian&rsquo;s page &rarr;</a></p></article>\n'
+        '<details className="bio"><summary>Read more</summary>'
+        '<p>Entrepreneurship is the family trade. Brian learned it from his father, and it was everywhere around him: his grandfather ran his own business, and so did every one of his uncles. Growing up in Highland Park, Illinois, he never seriously considered working for anyone else. The University of Arizona&rsquo;s Eller College of Management gave him the formal version, entrepreneurship and marketing, sharpened by the McGuire Entrepreneurship Program. Then he settled in Scottsdale, Arizona, and got to work.</p>'
+        '<p>In 2003 Brian started two companies at once: True Blue Life Insurance and Wholesale Warehouse Supply, an e-commerce business. At True Blue he pioneered selling life insurance fully online, in all 50 states. No cold calls. No kitchen-table pitches. Content, search, funnels and automation did the selling, and the results followed: more than $1 million in annual premium for ten consecutive years, over $50 million in total revenue, and membership in the Million Dollar Round Table, the top 1% of financial professionals worldwide.</p>'
+        '<p>The inbound system that sold policies also powered Wholesale Warehouse Supply&rsquo;s online stores, and Brian has been delivering it to other businesses ever since. He built SEO Services Internet Marketing LLC, a digital marketing and SEO company, and later BJG Digital, a local services marketing agency that helped Phoenix pool service companies win their local market through local SEO, reviews and inbound funnels. He also leads Quoteplicity, quoting software for insurance agents whose funnels have generated more than 200,000 leads.</p>'
+        '<p>Rocket Llama Labs brings that playbook to local home services companies, run with modern AI tools so a small team delivers what used to take an agency floor. Brian&rsquo;s job as CEO is to keep the company pointed at the only thing that matters to a client: being the business people find first, and the one they call.</p>'
+        '<p>He is the author of <em>The Salesman Who Doesn&rsquo;t Sell: A Marketing Guide to Making Money While You Sleep</em>, with a foreword by Marques Colston, Super Bowl champion wide receiver. <a href="https://www.amazon.com/Salesman-Who-Doesnt-Sell-Marketing-ebook/dp/B078HMS1CQ" target="_blank" rel="noopener">Buy on Amazon</a> or <a href="https://www.audible.com/pd/The-Salesman-Who-Doesnt-Sell-A-Marketing-Guide-for-Making-Money-While-You-Sleep-Audiobook/B0794Q3418" target="_blank" rel="noopener">listen on Audible</a>. Featured in Forbes, Entrepreneur, Fast Company, HuffPost, Bloomberg, USA Today, Yahoo Finance, Fox, NBC and CBS.</p>'
+        '</details></article>\n'
         '    <article className="card"><img className="headshot photo" src="/v7/branson-cobb.jpg" alt="Branson Cobb" /><h3>Branson Cobb</h3><p className="role">President and COO</p>'
         '<p>Branson helps home service companies generate more qualified leads and grow through modern marketing, after more than 23 years leading sales, business development and client strategy for some of the country&rsquo;s largest healthcare organizations.</p>'
         '<details className="bio"><summary>Read more</summary>'
@@ -623,10 +629,10 @@ if __name__ == '__main__':
     patch_shared()
     build('src/app/(home)', '', 3)
     build('src/app/v7', '/v7', 7, extras=v7_extras, extra_css_import='@/components/v7/v7.css', layout_note=' The custom elements and their styles live in src/components/v7.')
-    write_v7_brian()
     write_v7_report()
     write_v7_about()
     write_v7_audit()
     write_v7_industries()
     write_v7_legal()
+    shutil.rmtree(os.path.join(root, 'src/app/v7/about-brian'), ignore_errors=True)  # no separate page for Brian on v7
     build('src/app/v8', '/v8', 8, extras=v8_extras, extra_css_import='@/components/v8/v8.css', layout_note=' The home page itself is src/components/v8/home.tsx.')

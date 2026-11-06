@@ -454,3 +454,5 @@
 /* Story block without the photo slot: one column. */
 .v7 #story .story:not(:has(.story-side)){grid-template-columns:1fr}
 .v7 #story .story-text .sub{max-width:68ch}
+/* Links inside a folded bio. */
+.v7 .team .card details.bio a{color:var(--accent);font-weight:600}

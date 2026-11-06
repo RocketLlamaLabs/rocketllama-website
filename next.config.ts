@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/v3", destination: "/", permanent: false },
       { source: "/v3/:path*", destination: "/:path*", permanent: false },
+      { source: "/v7/about-brian", destination: "/v7/about", permanent: false },
     ];
   },
   // Versions 4, 5 and 6 are static pages under /public/mockups; these give
