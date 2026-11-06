@@ -564,3 +564,5 @@
 .v7 .pagehead.with-badge{background:#eaf2fd;border-bottom:0}
 /* Industries page on the light blue. */
 .v7 #industries{background:#eaf2fd}
+/* Ring a little closer to the words. */
+.v7 .pagehead .dream-badge{right:clamp(40px,9vw,130px)}
