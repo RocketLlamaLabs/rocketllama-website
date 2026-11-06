@@ -494,3 +494,11 @@
 
 /* Industries page: title in the same navy as the Services and About page headers. */
 .v7 #industries h1{color:var(--deep)}
+
+/* Race: Rocket Llama Labs sits in white at the centre of our lane. It is invisible on the pale track and shows up as the blue fill passes under it. */
+.v7 .lane .trk .wm-txt{position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;letter-spacing:.01em;pointer-events:none;z-index:1}
+.v7 .lane .trk .flag{z-index:2}
+
+/* Race odds: our 62% in the check's green, the average company's 28% in its red. */
+.v7 .race .odds .n.good{color:#00a84f}
+.v7 .race .odds .n.bad{color:#e3001b}
