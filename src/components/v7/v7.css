@@ -475,10 +475,11 @@
 /* Race: the mascot rides the leading edge of the fill with no lag, centred on it. */
 .v7 .lane .trk .flag{transition:none;transform:translate(0,-50%)}
 /* Legal pages: readable column, clear section headings. */
-.v7 .legal{max-width:76ch}
+.v7 .legal{max-width:none}
 .v7 .legal-sec{margin-top:36px;padding-block:0}
 .v7 .legal-sec:first-child{margin-top:0}
 .v7 .legal-sec h2{font-family:var(--sans);font-size:1.35rem;font-weight:800;letter-spacing:-.02em;margin:0 0 10px}
 .v7 .legal-sec p{margin:0 0 12px;color:var(--muted);line-height:1.65}
 .v7 .legal-sec ul{margin:0 0 12px;padding-left:22px;color:var(--muted);line-height:1.6}
 .v7 .legal-sec li{margin-bottom:8px}
+.v7 .legal-sec p,.v7 .legal-sec li{text-align:justify;hyphens:auto}
