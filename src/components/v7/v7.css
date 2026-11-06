@@ -466,3 +466,5 @@
 .v7 .pagehead .lede{margin:20px 0 0;max-width:none;text-align:justify;hyphens:auto;font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.55;color:var(--muted)}
 /* No text shadow on H1s that sit on white (industries, audit, report, legal). */
 .v7 main>section h1,.v7 main>section .wrap h1{text-shadow:none}
+/* The system diagram tile sits on white. */
+.v7 .diagwrap{background:#fff}
