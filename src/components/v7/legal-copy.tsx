@@ -6,7 +6,7 @@
 // owners' lawyer to review; the effective date is the day it went live.
 
 export const EFFECTIVE = "November 6, 2026";
-export const CONTACT_EMAIL = "hello@rocketllamalabs.com";
+export const CONTACT_EMAIL = "admin@rocketllamallc.com";
 
 type Section = { h: string; p: (string | string[])[] };
 
