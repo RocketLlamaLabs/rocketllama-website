@@ -503,8 +503,12 @@
 .v7 .race .odds .n.good{color:#00a84f}
 .v7 .race .odds .n.bad{color:#e3001b}
 
-/* Race lane: mascot starts at the far left; the lane text is larger and only shows once the blue has run the full length. */
+/* Race lane: mascot starts at the far left; the white lane text is revealed as the blue fill passes under it. */
 .v7 .lane .trk .flag{left:0}
-.v7 .lane .trk .wm-txt{font-size:20px;font-weight:900;letter-spacing:-.01em;opacity:0;transition:opacity .35s ease}
-.v7 .lane .trk .wm-txt.show{opacity:1}
+.v7 .lane .trk .wm-txt{font-weight:900}
 .v7 .lane .trk .wm-txt{font-size:34px;line-height:1;letter-spacing:-.03em}
+/* Race countdown colors by value. */
+.v7 .race .odds .n[data-band="high"]{color:#00a84f}
+.v7 .race .odds .n[data-band="mid"]{color:#ffd400}
+.v7 .race .odds .n[data-band="low"]{color:#e3001b}
+.v7 .lane .trk .wm-txt{clip-path:inset(0 100% 0 0)}
