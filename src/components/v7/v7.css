@@ -534,8 +534,9 @@
 @media(prefers-reduced-motion:reduce){.v7 .dream-badge svg{animation:none}}
 /* Services header: intro kept to the left at the title's width, the badge large on the right in royal blue. */
 .v7 .pagehead.with-badge .in{position:relative}
-.v7 .pagehead.with-badge h1,.v7 .pagehead.with-badge .lede{max-width:calc(100% - clamp(220px,26vw,360px))}
+.v7 .pagehead.with-badge h1,.v7 .pagehead.with-badge .lede{max-width:calc(100% - clamp(200px,22vw,300px))}
 .v7 .pagehead.with-badge .lede{text-align:left;hyphens:none}
-.v7 .pagehead .dream-badge{right:clamp(16px,5vw,40px);top:50%;transform:translateY(-50%);width:clamp(180px,22vw,310px)}
+.v7 .pagehead .copy{position:relative}
+.v7 .pagehead .dream-badge{right:0;top:0;bottom:0;height:100%;width:auto}
 .v7 .dream-badge.blue text{fill:var(--accent)}
 @media(max-width:859px){.v7 .pagehead.with-badge h1,.v7 .pagehead.with-badge .lede{max-width:none}.v7 .pagehead .dream-badge{display:none}}
