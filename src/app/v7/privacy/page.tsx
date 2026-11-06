@@ -34,11 +34,12 @@ export default function Page() {
   <div className="wrap in">
     <p className="kicker">Legal</p>
     <h1>Privacy Policy</h1>
-    <p className="lede">What we collect, how we use it, who we share it with, and the choices you have. Effective {EFFECTIVE}.</p>
+    <p className="lede">What we collect, how we use it, who we share it with, and the choices you have.</p>
   </div>
 </header>
 <section className="feature"><div className="wrap">
   <LegalBody sections={PRIVACY} />
+  <p className="effective">Effective {EFFECTIVE}.</p>
 </div></section>
 </main>
       <V7Footer note='Version 7, privacy policy' />

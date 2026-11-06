@@ -5,7 +5,7 @@
 // and the AI tools we use in client work. Written as a starting point for the
 // owners' lawyer to review; the effective date is the day it went live.
 
-export const EFFECTIVE = "October 4, 2026";
+export const EFFECTIVE = "October 2026";
 export const CONTACT_EMAIL = "admin@rocketllamalabs.com";
 
 type Section = { h: string; p: (string | string[])[] };
@@ -81,7 +81,7 @@ export const PRIVACY: Section[] = [
     "Our site links to other sites, including our clients' sites and third-party services. Their privacy practices are their own and we are not responsible for them.",
   ]},
   { h: "Changes to this policy", p: [
-    "We may update this policy. When we do, we will change the effective date at the top of the page, and, if the change is material, we will tell current clients and recent contacts by email. Continued use of the site after a change means you accept it.",
+    "We may update this policy. When we do, we will change the effective date at the foot of the page, and, if the change is material, we will tell current clients and recent contacts by email. Continued use of the site after a change means you accept it.",
   ]},
   { h: "Contact", p: [
     `Rocket Llama Labs LLC, Phoenix, Arizona. Email ${CONTACT_EMAIL}.`,
@@ -133,7 +133,7 @@ export const TERMS: Section[] = [
     "These conditions are governed by the laws of the State of Arizona, without regard to its conflict-of-law rules. Any dispute connected with the site will be brought in the state or federal courts in Maricopa County, Arizona, and you consent to their jurisdiction. Before filing, each side agrees to try to resolve the dispute by discussion for 30 days.",
   ]},
   { h: "Changes", p: [
-    "We may change the site or these conditions at any time. Changes take effect when posted. The effective date at the top of the page tells you when they last changed. Continued use after a change means you accept it.",
+    "We may change the site or these conditions at any time. Changes take effect when posted. The effective date at the foot of the page tells you when they last changed. Continued use after a change means you accept it.",
   ]},
   { h: "General", p: [
     "If any part of these conditions is found unenforceable, the rest still applies. Our failure to enforce a term is not a waiver of it. These conditions, with the privacy policy and the AI policy, are the whole agreement between you and us about the site.",

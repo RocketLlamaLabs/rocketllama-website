@@ -34,11 +34,12 @@ export default function Page() {
   <div className="wrap in">
     <p className="kicker">Legal</p>
     <h1>AI Policy</h1>
-    <p className="lede">Where we use artificial intelligence, what it does, and where a person is responsible. Effective {EFFECTIVE}.</p>
+    <p className="lede">Where we use artificial intelligence, what it does, and where a person is responsible.</p>
   </div>
 </header>
 <section className="feature"><div className="wrap">
   <LegalBody sections={AI} />
+  <p className="effective">Effective {EFFECTIVE}.</p>
 </div></section>
 </main>
       <V7Footer note='Version 7, ai policy' />

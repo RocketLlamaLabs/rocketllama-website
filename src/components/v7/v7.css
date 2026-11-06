@@ -487,3 +487,5 @@
 .v7 .legal-sec li{position:relative;padding-left:46px}
 .v7 .legal-sec li::before{content:"";position:absolute;left:28px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--accent)}
 .v7 .legal-sec p,.v7 .legal-sec li{text-align:justify;hyphens:auto}
+/* Legal pages: the effective date closes the page. */
+.v7 .effective{margin:40px 0 0;padding-left:28px;font-family:var(--sans);font-size:.9rem;color:var(--muted)}

@@ -34,11 +34,12 @@ export default function Page() {
   <div className="wrap in">
     <p className="kicker">Legal</p>
     <h1>Website Policy</h1>
-    <p className="lede">The conditions for using this website and the tools on it. Effective {EFFECTIVE}.</p>
+    <p className="lede">The conditions for using this website and the tools on it.</p>
   </div>
 </header>
 <section className="feature"><div className="wrap">
   <LegalBody sections={TERMS} />
+  <p className="effective">Effective {EFFECTIVE}.</p>
 </div></section>
 </main>
       <V7Footer note='Version 7, website policy' />

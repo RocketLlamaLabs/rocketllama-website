@@ -647,8 +647,8 @@ def write_v7_legal():
         i = t.index('<main>'); j = t.index('</main>') + len('</main>')
         t = t[:i] + ('<main>\n<header className="pagehead" id="top">\n  <div className="wrap in">\n'
                      '    <p className="kicker">Legal</p>\n    <h1>' + title + '</h1>\n'
-                     '    <p className="lede">' + intro + ' Effective {EFFECTIVE}.</p>\n  </div>\n</header>\n'
-                     '<section className="feature"><div className="wrap">\n  <LegalBody sections={' + const + '} />\n</div></section>\n</main>') + t[j:]
+                     '    <p className="lede">' + intro + '</p>\n  </div>\n</header>\n'
+                     '<section className="feature"><div className="wrap">\n  <LegalBody sections={' + const + '} />\n  <p className="effective">Effective {EFFECTIVE}.</p>\n</div></section>\n</main>') + t[j:]
         t = t.replace("note='Version 7, about page'", "note='Version 7, " + title.lower() + "'")
         os.makedirs(os.path.join(root, 'src/app/v7/' + slug), exist_ok=True)
         open(os.path.join(root, 'src/app/v7/' + slug + '/page.tsx'), 'w').write(t)
