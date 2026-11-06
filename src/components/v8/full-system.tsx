@@ -18,17 +18,16 @@ const SYSTEM: [string, string, string[]][] = [
 ];
 
 // More detail for the "Keep it running" column, used where the page asks for it.
-const KEEP_RUNNING_MORE = [
+const KEEP_RUNNING_DETAILED = [
+  "Ongoing technical support",
   "Monthly report: booked jobs by source and what they were worth",
-  "Ad budgets adjusted to last month's booked jobs",
+  "Custom projects upon request",
   "Review requests after every job, every review answered",
-  "Website updates and new pages as you add services or cities",
-  "Tracked numbers and call recordings kept current",
-  "Thirty days of handover if you ever leave",
+  "Website updates and new pages as your company grows",
 ];
 
 export function FullSystem({ base, id = "system", photo, detailed }: { base: string; id?: string; photo?: { src: string; alt: string }; detailed?: boolean }) {
-  const groups = detailed ? SYSTEM.map(([name, blurb, items]) => [name, blurb, name === "Keep it running" ? [...items, ...KEEP_RUNNING_MORE] : items] as [string, string, string[]]) : SYSTEM;
+  const groups = detailed ? SYSTEM.map(([name, blurb, items]) => [name, blurb, name === "Keep it running" ? KEEP_RUNNING_DETAILED : items] as [string, string, string[]]) : SYSTEM;
   return (
 <section id={id} className="feature"><div className="wrap">
   <p className="kicker">The full system</p>
