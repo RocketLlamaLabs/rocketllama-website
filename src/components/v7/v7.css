@@ -468,3 +468,7 @@
 .v7 main>section h1,.v7 main>section .wrap h1{text-shadow:none}
 /* The system diagram tile sits on white. */
 .v7 .diagwrap{background:#fff}
+/* Race: Start over sits to the left of the button. */
+.v7 .race .head .go{display:flex;align-items:center;gap:18px}
+.v7 .race .again{font-family:var(--sans);font-size:.9rem;color:var(--muted);text-decoration:underline;cursor:pointer}
+.v7 .race .again:hover{color:var(--ink)}

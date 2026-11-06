@@ -5,6 +5,13 @@ export function mountRace() {
   go.dataset.mounted = '1';
   var raf = null, t0 = null, $ = function (id) { return document.getElementById(id); };
   function fmtClock(s) { var m = Math.floor(s / 60), r = Math.floor(s % 60); return (m < 10 ? '0' : '') + m + ':' + (r < 10 ? '0' : '') + r; }
+  var reset = $('race-reset');
+  if (reset) reset.addEventListener('click', function () {
+    if (raf) cancelAnimationFrame(raf); raf = null; t0 = null;
+    $('clock').textContent = '00:00'; $('us-fill').style.width = '0%'; $('us-flag').style.left = '4%'; $('them-fill').style.width = '0%';
+    $('us-t').textContent = '\u2014'; $('them-t').textContent = '\u2014'; $('odds-them').textContent = '62%';
+    $('us-done').textContent = ''; $('them-done').textContent = ''; go.disabled = false; go.textContent = 'A customer calls';
+  });
   go.addEventListener('click', function () {
     if (raf) cancelAnimationFrame(raf); t0 = null; go.disabled = true; go.textContent = 'Ringing…'; $('us-done').textContent = ''; $('them-done').textContent = '';
     function frame(ts) {
