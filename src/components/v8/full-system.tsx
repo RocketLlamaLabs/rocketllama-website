@@ -32,7 +32,7 @@ export function FullSystem({ base, id = "system", photo, detailed }: { base: str
   return (
 <section id={id} className="feature"><div className="wrap">
   <p className="kicker">The full system</p>
-  <h2>Most agencies sell you one tactic. We run the whole thing.</h2>
+  <h2>Most agencies sell you one tactic.<br />We run the whole thing.</h2>
   <p className="sub">Phones, website, search, ads, reviews, the CRM and the AI that answers for you, built as one system and run by one team. Pick the pieces you need; most owners want all of it.</p>
   <div className="sysgrid">
     {groups.map(([name, blurb, items]) => (
