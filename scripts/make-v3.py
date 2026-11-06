@@ -538,7 +538,7 @@ def write_v7_about():
         '    <article className="card"><img className="headshot photo" src="/v2/img/brian-greenberg.jpg" alt="Brian Greenberg" /><h3>Brian Greenberg</h3><p className="role">Co-Founder and CEO</p>'
         '<p>Brian has spent more than twenty years building businesses that get found online, including a fully digital insurance agency that generated $50M+ through inbound marketing. He is the author of <em>The Salesman Who Doesn&rsquo;t Sell</em> and has run local SEO for Phoenix home service companies.</p>'
         '<p className="note"><a href="/v7/about-brian">Brian&rsquo;s page &rarr;</a></p></article>\n'
-        '    <article className="card"><div className="headshot"><span>Photo</span></div><h3>Branson Cobb</h3><p className="role">President and COO</p>'
+        '    <article className="card"><img className="headshot photo" src="/v7/branson-cobb.jpg" alt="Branson Cobb" /><h3>Branson Cobb</h3><p className="role">President and COO</p>'
         '<p>Branson helps home service companies generate more qualified leads and grow through modern marketing, after more than 23 years leading sales, business development and client strategy for some of the country&rsquo;s largest healthcare organizations.</p>'
         '<details className="bio"><summary>Read more</summary>'
         '<p>Before launching Rocket Llama Labs, Branson served as Market President for CBIZ&rsquo;s Arizona and California offices, where he led market growth, business operations and client retention initiatives. Prior to CBIZ, he spent more than five years with Aetna, leading business development for Arizona&rsquo;s Public and Labor segment and helping organizations develop strategic growth initiatives.</p>'
