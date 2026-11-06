@@ -358,6 +358,10 @@ def v7_extras(s, f, is_home, base):
     if f == 'page.tsx' and '<section id="what">' in s and '<Race />' not in s:
         # services page: a clear banner, a branded poster on the video, then the race after the service list
         s = s.replace('poster="/v2/video/poster.png"', 'poster="/v7/video-poster.png"', 1)
+        # the industries block has its own page now
+        n0 = s.find('<section id="industries">')
+        if n0 >= 0:
+            n1 = s.index('</div></section>\n', n0) + len('</div></section>\n'); s = s[:n0] + s[n1:].lstrip('\n')
         # no pricing link; the van band repeats the race's headline, so it goes
         s = s.replace('<a className="btn ghost" href="/v7#pricing">Pricing</a>', '', 1)
         b0 = s.find('<div className="band" style={{"--img":"url(/v2/img/band-van.jpg)"}')

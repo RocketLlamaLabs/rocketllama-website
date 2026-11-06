@@ -75,13 +75,6 @@ export default function Page() {
   <div className="diagwrap"><SystemDiagram /></div>
 </div></section>
 
-<section id="industries"><div className="wrap">
-  <p className="kicker">Industries</p>
-  <h2>Every trade that goes to a customer&rsquo;s home.</h2>
-  <p className="sub">If you send a truck to a house, this is built for you.</p>
-  <div className="trades"><a className="trade" href="/v7/book?trade=HVAC">HVAC</a><a className="trade" href="/v7/book?trade=Plumbing">Plumbing</a><a className="trade" href="/v7/book?trade=Electrical">Electrical</a><a className="trade" href="/v7/book?trade=Roofing">Roofing</a><a className="trade" href="/v7/book?trade=Garage%20door">Garage door</a><a className="trade" href="/v7/book?trade=Pest%20control">Pest control</a><a className="trade" href="/v7/book?trade=Landscaping">Landscaping</a><a className="trade" href="/v7/book?trade=Painting">Painting</a><a className="trade" href="/v7/book?trade=Window%20and%20pressure%20washing">Window and pressure washing</a><a className="trade" href="/v7/book?trade=Handyman">Handyman</a><a className="trade" href="/v7/book?trade=Mobile%20mechanic">Mobile mechanic</a><a className="trade" href="/v7/book?trade=Windows%20and%20doors">Windows and doors</a><a className="trade" href="/v7/book?trade=Solar">Solar</a><a className="trade" href="/v7/book?trade=Flooring">Flooring</a><a className="trade" href="/v7/book?trade=Remodeling">Remodeling</a><a className="trade other" href="/v7/book?trade=Other">Other home service &rarr;</a></div>
-  <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a></div>
-</div></section>
 </main>
       <V7Footer note='Version 7, services page' />
     </>
