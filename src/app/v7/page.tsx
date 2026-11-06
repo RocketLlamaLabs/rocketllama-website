@@ -19,12 +19,12 @@ export default function Page() {
     <>
 <nav className="nav"><div className="wrap in">
   <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links"><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About Us</a></div>
+  <div className="links"><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About</a></div>
   <div className="navbtns"><a className="btn sm" href="/v7/book">Schedule a call</a><a className="btn sm ghost" href="/v7/audit">Run an instant audit</a></div>
   <details className="menu">
     <summary aria-label="Menu"><span></span></summary>
     <div className="panel">
-      <a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About Us</a>
+      <a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About</a>
       <a className="btn sm" href="/v7/book">Schedule a call</a>
       <a className="btn sm ghost" href="/v7/audit">Run an instant audit</a>
     </div>

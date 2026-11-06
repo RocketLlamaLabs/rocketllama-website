@@ -347,7 +347,7 @@ def v7_extras(s, f, is_home, base):
     s = s.replace(f'<SixtySecondCheck base="{base}" />', f'<SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an instant audit", href: "{base}/audit" }}}} />')
     # nav: About Us first, then Services, Cities, Industries; a hamburger menu below 900px
     pfx = '' if is_home else base
-    links = f'<a href="{base}/services">Services</a><a href="{base}/industries">Industries</a><a href="{base}/about">About Us</a>'
+    links = f'<a href="{base}/services">Services</a><a href="{base}/industries">Industries</a><a href="{base}/about">About</a>'
     s = re.sub(r'<div className="links"[^>]*>.*?</div>', '<div className="links">' + links + '</div>', s, count=1)
     btn = f'  <a className="btn sm" href="{base}/book">Schedule a call</a>\n</div></nav>'
     if btn not in s:  # layout.tsx has no nav
@@ -415,6 +415,21 @@ def v7_extras(s, f, is_home, base):
 
 
 V7_WHO = ['']
+ABOUT_META = """export const metadata: Metadata = {
+  title: { absolute: "About Rocket Llama Labs: the Phoenix marketing team for home service companies" },
+  description: "Rocket Llama Labs is Brian Greenberg, Branson Cobb and Madison Schantz, a Phoenix, Arizona team that builds and runs the whole marketing system for home service companies: website, search and AI search, ads, reviews, phones, AI receptionist and CRM. Every lead answered in under a minute, every dollar tracked to a paid job, and you own all of it.",
+  alternates: { canonical: "https://rocketllamalabs.com/v7/about" },
+  openGraph: {
+    type: "website",
+    url: "https://rocketllamalabs.com/v7/about",
+    siteName: "Rocket Llama Labs",
+    title: "About Rocket Llama Labs",
+    description: "The Phoenix marketing and technology team for home service companies. Brian Greenberg, Branson Cobb and Madison Schantz build and run one system that gets you found, answers every lead in under a minute, and tracks every dollar to a paid job.",
+    images: [{ url: "https://rocketllamalabs.com/v7/og.png", width: 1200, height: 630, alt: "Rocket Llama Labs: marketing and technology for home services" }],
+    locale: "en_US",
+  },
+  twitter: { card: "summary_large_image", title: "About Rocket Llama Labs", description: "The Phoenix marketing and technology team for home service companies.", images: ["https://rocketllamalabs.com/v7/og.png"] },
+};"""
 V7_ROT = '''    <div className="rot">
       <div className="rslide"><h2>Your calendar should be <em>full.</em></h2><p className="lede">Built for HVAC companies, plumbers, electricians, roofers, and every home service trade. Every call, form submission, and estimate request gets a response in under 60 seconds and is booked directly onto your calendar. Track every marketing dollar all the way to a completed, paid job. You own the leads, the data, and the results.</p></div>
       <div className="rslide"><h2>Never miss a <em>call</em> again.</h2><p className="lede">When a new lead comes in, they get a text and email in under 60 seconds, written in your voice&mdash;even while at a job site. The system calls you first. If you can&rsquo;t answer, AI steps in to capture the customer&rsquo;s details, qualify the lead, and book the appointment directly on your calendar.</p></div>
@@ -506,7 +521,8 @@ def write_v7_about():
     """About Us on its own page, laid out like the other subpages: a photo banner, then a
     section that holds a placeholder for the owners' own story."""
     t = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
-    t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", "  title: 'About Us',\n  description: \"Who is behind Rocket Llama Labs and why we built it for home service companies.\",", t, count=1)
+    t = re.sub(r"export const metadata: Metadata = \{.*?\n\};", ABOUT_META, t, count=1, flags=re.S)
+    t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { AboutStructuredData, ABOUT_FAQ } from "@/components/v7/about-seo";\n', 1)
     t = re.sub(r'// Ported from the mockup.*?\n', '// About Us, on its own page. The story section is a placeholder until the owners supply their copy.\n', t, count=1)
     i = t.index('<main>'); j = t.index('</main>') + len('</main>')
     main = (
@@ -516,7 +532,7 @@ def write_v7_about():
         '  <div className="wrap in">\n'
         '    <p className="kicker">About us</p>\n'
         '    <h1>Built by people who have <em>done this before.</em></h1>\n'
-        '    <p className="lede">Rocket Llama Labs is a small team with decades of experience across building businesses, growing them and designing the way they show up online. We build and run the whole marketing system for home service companies, and every piece of it is something we have done before.</p>\n'
+        '    <p className="lede">Rocket Llama Labs is a Phoenix, Arizona marketing and technology company for home service companies: HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting and every trade that goes to a customer&rsquo;s home. We build and run the whole system, and every piece of it is something we have done before.</p>\n'
         '  </div>\n'
         '</header>\n\n'
         '<section id="story" className="feature"><div className="wrap">\n'
@@ -525,8 +541,8 @@ def write_v7_about():
         '  <div className="story">\n'
         '    <div className="story-text">\n'
         '      <p className="sub">Home service owners are some of the hardest-working people we know, and most are losing jobs they never hear about: the homeowner searched, found someone else, or called and got voicemail. The agencies pitching them sell one tactic at a time, and nobody is responsible for whether the phone rings.</p>\n'
-        '      <p className="sub">We had each seen the other way work. Brian built and sold companies on an inbound system where customers found him online and booked themselves. Branson spent two decades growing businesses by tying every decision to a measurable result. Madison builds the brands, websites and AI tools that make a company one you want to call. We put the three together.</p>\n'
-        '      <p className="sub">Our goal is to be the marketing team you never have to think about. One system, built and run by us, that answers every lead in under a minute, tracks every dollar to a paid job, and belongs to you. If we do our job, you will not notice the marketing. You will notice the phone ringing and the calendar filling.</p>\n'
+        '      <p className="sub">We had each seen the other way work. Brian built and sold companies on an inbound system where customers found him online and booked themselves, including a fully digital insurance agency that passed $50 million in revenue with no cold calls, and he wrote the playbook down in <em>The Salesman Who Doesn&rsquo;t Sell</em>. Branson spent two decades growing businesses by tying every decision to a measurable result. Madison builds the brands, websites and AI tools that make a company one you want to call. We put the three together in Phoenix and built one system for home service companies.</p>\n'
+        '      <p className="sub">Our goal is to be the marketing team you never have to think about. <a href="/v7/services">One system</a>, built and run by us, that answers every lead in under a minute, tracks every dollar to a paid job, and belongs to you. We run it for <a href="/v7/industries">every trade that goes to a customer&rsquo;s home</a>, across the Valley and beyond. If we do our job, you will not notice the marketing. You will notice the phone ringing and the calendar filling.</p>\n'
         '    </div>\n'
 
         '  </div>\n'
@@ -535,7 +551,7 @@ def write_v7_about():
         '  <p className="kicker">The team</p>\n'
         '  <h2>Three people. One system.</h2>\n'
         '  <div className="team">\n'
-        '    <article className="card"><img className="headshot photo" src="/v7/brian-greenberg.jpg" alt="Brian Greenberg" /><h3>Brian Greenberg</h3><p className="role">Co-Founder and CEO</p>'
+        '    <article className="card"><img className="headshot photo" src="/v7/brian-greenberg.jpg" alt="Brian Greenberg, Co-Founder and CEO of Rocket Llama Labs" /><h3 id="brian-greenberg">Brian Greenberg</h3><p className="role">Co-Founder and CEO</p>'
         '<p>Brian sets the strategy and the marketing playbook for every client. He has spent more than twenty years building businesses that get found online, including a fully digital insurance agency that generated $50M+ through inbound marketing, and he wrote <em>The Salesman Who Doesn&rsquo;t Sell</em>. He has run that same playbook for Phoenix home service companies.</p>'
         '<details className="bio"><summary>Read more</summary>'
         '<p>Entrepreneurship is the family trade. Brian learned it from his father, and it was everywhere around him: his grandfather ran his own business, and so did every one of his uncles. Growing up in Highland Park, Illinois, he never seriously considered working for anyone else. The University of Arizona&rsquo;s Eller College of Management gave him the formal version, entrepreneurship and marketing, sharpened by the McGuire Entrepreneurship Program. Then he settled in Scottsdale, Arizona, and got to work.</p>'
@@ -544,7 +560,7 @@ def write_v7_about():
         '<p>Rocket Llama Labs brings that playbook to local home services companies, run with modern AI tools so a small team delivers what used to take an agency floor. Brian&rsquo;s job as CEO is to keep the company pointed at the only thing that matters to a client: being the business people find first, and the one they call.</p>'
         '<p>He is the author of <em>The Salesman Who Doesn&rsquo;t Sell: A Marketing Guide to Making Money While You Sleep</em>, with a foreword by Marques Colston, Super Bowl champion wide receiver. <a href="https://www.amazon.com/Salesman-Who-Doesnt-Sell-Marketing-ebook/dp/B078HMS1CQ" target="_blank" rel="noopener">Buy on Amazon</a> or <a href="https://www.audible.com/pd/The-Salesman-Who-Doesnt-Sell-A-Marketing-Guide-for-Making-Money-While-You-Sleep-Audiobook/B0794Q3418" target="_blank" rel="noopener">listen on Audible</a>. Featured in Forbes, Entrepreneur, Fast Company, HuffPost, Bloomberg, USA Today, Yahoo Finance, Fox, NBC and CBS.</p>'
         '</details></article>\n'
-        '    <article className="card"><img className="headshot photo" src="/v7/branson-cobb.jpg" alt="Branson Cobb" /><h3>Branson Cobb</h3><p className="role">President and COO</p>'
+        '    <article className="card"><img className="headshot photo" src="/v7/branson-cobb.jpg" alt="Branson Cobb, President and COO of Rocket Llama Labs" /><h3 id="branson-cobb">Branson Cobb</h3><p className="role">President and COO</p>'
         '<p>Branson runs the business and every client relationship. He spent more than 23 years leading sales, business development and client strategy for some of the country&rsquo;s largest healthcare organizations, and he brings that growth discipline to home service companies that want more qualified leads and measurable results.</p>'
         '<details className="bio"><summary>Read more</summary>'
         '<p>Before launching Rocket Llama Labs, Branson served as Market President for CBIZ&rsquo;s Arizona and California offices, where he led market growth, business operations and client retention initiatives. Prior to CBIZ, he spent more than five years with Aetna, leading business development for Arizona&rsquo;s Public and Labor segment and helping organizations develop strategic growth initiatives.</p>'
@@ -552,7 +568,7 @@ def write_v7_about():
         '<p>At Rocket Llama Labs, Branson believes great marketing is not about chasing trends. It is about building systems that consistently generate leads, drive revenue and help business owners focus on what they do best. His forward-looking approach combines data-driven decision-making with innovative marketing strategies designed specifically for home service businesses.</p>'
         '<p>Outside of work, Branson enjoys traveling, scuba diving, skiing and fishing with his dad. He earned his Bachelor of Science in Finance from the University of Arizona.</p>'
         '</details></article>\n'
-        '    <article className="card"><img className="headshot photo" src="/v7/madison.jpg" alt="Madison Schantz" /><h3>Madison Schantz</h3><p className="role">Creative Director and Digital Architect</p>'
+        '    <article className="card"><img className="headshot photo" src="/v7/madison.jpg" alt="Madison Schantz, Creative Director and Digital Architect at Rocket Llama Labs" /><h3 id="madison-schantz">Madison Schantz</h3><p className="role">Creative Director and Digital Architect</p>'
         '<p>Madison designs the brand, the website and the AI-powered tools each client runs on. Her background spans branding, web design, AI content and digital strategy, and she builds every piece so a home service company looks strong online and turns visitors into booked jobs.</p>'
         '<details className="bio"><summary>Read more</summary>'
         '<p>Madison is a creative digital designer, branding specialist, AI content creator and digital architecture expert with a passion for transforming innovative ideas into meaningful digital experiences. With experience in website design, brand development, artificial intelligence and digital strategy, she specializes in creating visually compelling, functional and user-friendly solutions that help businesses establish a strong and memorable online presence.</p>'
@@ -562,11 +578,19 @@ def write_v7_about():
         '</details></article>\n'
         '  </div>\n'
         '  <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a><a className="btn ghost" href="/v7/audit">Run an instant audit</a></div>\n'
+        '</div></section>\n\n'
+        '<section id="faq" className="feature"><div className="wrap">\n'
+        '  <p className="kicker">Questions</p>\n'
+        '  <h2>The short version.</h2>\n'
+        '  <div className="faq">\n'
+        '    {ABOUT_FAQ.map(([q, a]) => (<details key={q}><summary>{q}</summary><p>{a}</p></details>))}\n'
+        '  </div>\n'
         '</div></section>\n'
         '</main>'
     )
     t = t[:i] + main + t[j:]
     t = t.replace("note='Version 7, about page'", "note='Version 7, about us'")
+    t = t.replace('<main>\n<header className="hero small" id="top">', '<main>\n<AboutStructuredData />\n<header className="hero small" id="top">', 1)
     os.makedirs(os.path.join(root, 'src/app/v7/about'), exist_ok=True)
     open(os.path.join(root, 'src/app/v7/about/page.tsx'), 'w').write(t)
 
