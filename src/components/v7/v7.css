@@ -573,3 +573,5 @@
 .v7 #story.feature{background:#fff;border-block:0}
 .v7 #team{background:#eaf2fd}
 .v7 #faq.feature{background:#fff;border-block:0}
+/* Ring: slightly smaller than the block and placed so it clears the title with a gap. */
+.v7 .pagehead .dream-badge{height:90%;top:5%;bottom:auto;right:clamp(16px,4vw,56px)}
