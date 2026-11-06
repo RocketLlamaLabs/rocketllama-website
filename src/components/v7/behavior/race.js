@@ -5,8 +5,8 @@ export function mountRace() {
   go.dataset.mounted = '1';
   var raf = null, t0 = null, $ = function (id) { return document.getElementById(id); };
   function fmtClock(s) { var m = Math.floor(s / 60), r = Math.floor(s % 60); return (m < 10 ? '0' : '') + m + ':' + (r < 10 ? '0' : '') + r; }
-  // The falling number is green above 49, yellow at 49 and red below it, like the 60-second check score.
-  function setOdds(n) { var el = $('odds-them'); el.textContent = n + '%'; el.setAttribute('data-band', n > 49 ? 'high' : n === 49 ? 'mid' : 'low'); }
+  // The falling number is green from 60 up, yellow from 50 to 59 and red at 49 and below, like the 60-second check score.
+  function setOdds(n) { var el = $('odds-them'); el.textContent = n + '%'; el.setAttribute('data-band', n >= 60 ? 'high' : n >= 50 ? 'mid' : 'low'); }
   var reset = $('race-reset');
   if (reset) reset.addEventListener('click', function () {
     if (raf) cancelAnimationFrame(raf); raf = null; t0 = null;
