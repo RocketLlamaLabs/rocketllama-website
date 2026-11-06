@@ -75,7 +75,7 @@ const PEOPLE = [
     "@type": "Person",
     "@id": `${SITE}/v7/about#madison-schantz`,
     name: "Madison Schantz",
-    jobTitle: "Creative Director and Digital Architect",
+    jobTitle: "Chief Marketing Officer",
     worksFor: { "@id": `${SITE}/#organization` },
     image: `${SITE}/v7/madison.jpg`,
     url: `${SITE}/v7/about#madison-schantz`,
@@ -85,7 +85,7 @@ const PEOPLE = [
 ];
 
 export const ABOUT_FAQ: [string, string][] = [
-  ["Who is Rocket Llama Labs?", "Rocket Llama Labs is a marketing and technology company in Phoenix, Arizona, run by Brian Greenberg (Co-Founder and CEO), Branson Cobb (President and COO) and Madison Schantz (Creative Director and Digital Architect). We build and run the whole marketing system for home service companies."],
+  ["Who is Rocket Llama Labs?", "Rocket Llama Labs is a marketing and technology company in Phoenix, Arizona, run by Brian Greenberg (Co-Founder and CEO), Branson Cobb (President and COO) and Madison Schantz (Chief Marketing Officer). We build and run the whole marketing system for home service companies."],
   ["Where is Rocket Llama Labs based?", "Phoenix, Arizona. We serve home service companies across the Valley, including Scottsdale, Mesa, Chandler, Gilbert, Glendale, Tempe and Peoria, and work with companies in other markets remotely."],
   ["What trades does Rocket Llama Labs work with?", "HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting and every other trade that goes to a customer's home."],
   ["What does Rocket Llama Labs do?", "One system, built and run by us: a website you own, Google and AI search, your Google Business Profile, ads in your name, review management, tracked phone numbers, an AI receptionist and a CRM. Every lead is answered in under a minute and every dollar is tracked to a paid job."],
