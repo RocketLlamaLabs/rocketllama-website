@@ -379,7 +379,7 @@ def v7_extras(s, f, is_home, base):
     if is_home:
         # banner: the tagline sits above the rotating headline, large
         a = '   <div>\n    <p className="kicker">Marketing and technology for local home services</p>\n'
-        assert a in s; s = s.replace(a, '   <div>\n    <h1 className="tagline">Marketing and technology for home services</h1>\n', 1)
+        assert a in s; s = s.replace(a, '   <div>\n    <h1 className="tagline">Marketing and technology for home services</h1>\n    <DreamBadge />\n', 1)
         # no trust line at the foot of the banner
         s = re.sub(r'    <p className="trust"><b>Month to month\.</b>.*?</p>\n', '', s, count=1)
         # the rotating lines stay, as h2 headings under the H1, each with its supporting paragraph; v7 has its own wording
@@ -397,7 +397,7 @@ def v7_extras(s, f, is_home, base):
         # banner: dashes are buttons, the carousel runs on a script, the two buttons sit side by side
         a = '  <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>\n</header>\n'
         assert a in s; s = s.replace(a, '  <div className="dots"><button type="button" aria-label="Picture 1"></button><button type="button" aria-label="Picture 2"></button><button type="button" aria-label="Picture 3"></button><button type="button" aria-label="Picture 4"></button></div>\n</header>\n<HeroCarousel />\n', 1)
-        s = s.replace('import { Race } from "@/components/v7/race";\n', 'import { Race } from "@/components/v7/race";\nimport { HeroCarousel } from "@/components/v7/hero-carousel";\n', 1)
+        s = s.replace('import { Race } from "@/components/v7/race";\n', 'import { Race } from "@/components/v7/race";\nimport { HeroCarousel } from "@/components/v7/hero-carousel";\nimport { DreamBadge } from "@/components/v7/dream-badge";\n', 1)
         a = f'<div className="ctas"><a className="btn light" href="{base}/book">Schedule a call</a><a className="btn outline" href="{base}/audit">Run the audit</a></div>'
         assert a in s; s = s.replace(a, f'<div className="ctas"><a className="btn" href="{base}/book">Schedule a call</a><a className="btn light audit-btn" href="{base}/audit">Run an instant audit</a></div>', 1)
         # the monthly report and the 'who you are talking to' section live on their own pages

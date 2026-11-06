@@ -525,3 +525,12 @@
 /* Full system lists: half-size bullet dots, kept on the first line of the item. */
 .v7 .sysgroup li{padding-left:18px}
 .v7 .sysgroup li::before{width:8px;height:8px;top:.45em;left:2px}
+
+/* Banner badge: "If you can dream it · We can build it" revolving at the top right corner of the H1. */
+.v7 .hero .in>div{position:relative}
+.v7 .dream-badge{position:absolute;right:0;top:0;width:clamp(96px,11vw,156px);aspect-ratio:1;transform:translate(28%,-34%);pointer-events:none;z-index:2;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35))}
+.v7 .dream-badge svg{width:100%;height:100%;display:block;animation:dream-spin 22s linear infinite}
+.v7 .dream-badge text{font-family:var(--sans);font-weight:700;font-size:15.5px;letter-spacing:.14em;fill:#fff}
+@keyframes dream-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.v7 .dream-badge svg{animation:none}}
+@media(max-width:699px){.v7 .dream-badge{width:84px;transform:translate(6%,-40%)}}
