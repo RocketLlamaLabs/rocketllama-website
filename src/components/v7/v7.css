@@ -547,3 +547,6 @@
 .v7 .pagehead.with-badge .lede{text-align:justify;max-width:none;width:calc(var(--h1) * 9.185 - 2.4em)}
 /* Services header copy: flush left with the title, no indent. */
 .v7 .pagehead.with-badge .lede{margin-left:0;width:calc(var(--h1) * 9.185)}
+/* Services title at the homepage H2 size. */
+.v7 .pagehead.with-badge{--h1:clamp(1.9rem,4.4vw,3.1rem)}
+.v7 .pagehead.with-badge h1{font-size:var(--h1)}
