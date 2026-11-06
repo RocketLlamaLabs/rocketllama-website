@@ -58,7 +58,7 @@ export function HowItWorks({ base }: { base: string }) {
   return (
 <section id="how"><div className="wrap">
   <p className="kicker">How it works</p>
-  <h2>Getting started is simple. Keeping your phone ringing is our job.</h2>
+  <h2>Getting started is simple. Keeping your phone ringing and your calendar full is our job.</h2>
   <div className="steps4">
     <div className="step"><span className="num">1</span><h3>Schedule a call</h3><p>About a minute to book. On the call we run a live audit of how you show up online, side by side with the top company in your trade.</p></div>
     <div className="step"><span className="num">2</span><h3>We write your plan</h3><p>Your trade, your area, your calendar and what you already have, written up with a number on it. You see it before you pay for anything.</p></div>
