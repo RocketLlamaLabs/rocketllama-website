@@ -480,6 +480,10 @@
 .v7 .legal-sec:first-child{margin-top:0}
 .v7 .legal-sec h2{font-family:var(--sans);font-size:1.35rem;font-weight:800;letter-spacing:-.02em;margin:0 0 10px}
 .v7 .legal-sec p{margin:0 0 12px;color:var(--muted);line-height:1.65}
-.v7 .legal-sec ul{margin:0 0 12px;padding-left:22px;color:var(--muted);line-height:1.6}
-.v7 .legal-sec li{margin-bottom:8px}
+.v7 .legal-sec ul{margin:0 0 12px;padding:0;list-style:none;color:var(--muted);line-height:1.65}
+.v7 .legal-sec li{margin:0 0 12px}
+/* One hanging indent for everything under a heading: paragraphs and list items alike. */
+.v7 .legal-sec p,.v7 .legal-sec li{padding-left:28px}
+.v7 .legal-sec li{position:relative;padding-left:46px}
+.v7 .legal-sec li::before{content:"";position:absolute;left:28px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--accent)}
 .v7 .legal-sec p,.v7 .legal-sec li{text-align:justify;hyphens:auto}
