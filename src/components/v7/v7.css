@@ -552,3 +552,6 @@
 .v7 .pagehead.with-badge h1{font-size:var(--h1)}
 /* Industries and About titles at the homepage H2 size too. */
 .v7 .pagehead h1,.v7 #industries h1{font-size:clamp(1.9rem,4.4vw,3.1rem)}
+/* Services title: original size, in the heading navy. */
+.v7 .pagehead.with-badge{--h1:clamp(2.3rem,5vw,4rem)}
+.v7 .pagehead.with-badge h1{color:var(--ink)}
