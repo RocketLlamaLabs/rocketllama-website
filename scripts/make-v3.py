@@ -527,11 +527,10 @@ def write_v7_about():
     i = t.index('<main>'); j = t.index('</main>') + len('</main>')
     main = (
         '<main>\n'
-        '<header className="hero small" id="top">\n'
-        '  <div className="slides" aria-hidden="true" style={{backgroundImage:"url(/v2/img/band-neighborhood.jpg)"} as CSSProperties}></div>\n'
+        '<header className="pagehead" id="top">\n'
         '  <div className="wrap in">\n'
         '    <p className="kicker">About us</p>\n'
-        '    <h1>Built by people who have <em>done this before.</em></h1>\n'
+        '    <h1>Built by people who have done this before.</h1>\n'
         '    <p className="lede">Rocket Llama Labs is a Phoenix, Arizona marketing and technology company for home service companies: HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting and every trade that goes to a customer&rsquo;s home. We build and run the whole system, and every piece of it is something we have done before.</p>\n'
         '  </div>\n'
         '</header>\n\n'

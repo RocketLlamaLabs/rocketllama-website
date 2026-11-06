@@ -40,12 +40,10 @@ export default function Page() {
 </div></nav>
 <script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}})"}} />
 <main>
-<AboutStructuredData />
-<header className="hero small" id="top">
-  <div className="slides" aria-hidden="true" style={{backgroundImage:"url(/v2/img/band-neighborhood.jpg)"} as CSSProperties}></div>
+<header className="pagehead" id="top">
   <div className="wrap in">
     <p className="kicker">About us</p>
-    <h1>Built by people who have <em>done this before.</em></h1>
+    <h1>Built by people who have done this before.</h1>
     <p className="lede">Rocket Llama Labs is a Phoenix, Arizona marketing and technology company for home service companies: HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting and every trade that goes to a customer&rsquo;s home. We build and run the whole system, and every piece of it is something we have done before.</p>
   </div>
 </header>
