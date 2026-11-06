@@ -42,8 +42,9 @@ export default function Page() {
   <h2>Who we are and why we built this.</h2>
   <div className="story">
     <div className="story-text">
-      <p className="sub">[Your story goes here. Two or three short paragraphs: where the three of you came from, what you ran before Rocket Llama Labs, and why you built a marketing system for home service companies instead of selling tactics one at a time.]</p>
-      <p className="sub">[A second paragraph for what you believe about the work: owning your leads, answering in under a minute, tracking every dollar to a paid job.]</p>
+      <p className="sub">Rocket Llama Labs started with a simple observation. The owners of home service companies are some of the hardest-working people we know, and most of them are losing jobs they never hear about. The homeowner searched, found someone else, or called and got voicemail. Meanwhile the agencies pitching those owners sell one tactic at a time: a website here, an ad campaign there, a reviews tool from someone else, and nobody is responsible for whether the phone actually rings.</p>
+      <p className="sub">We had each seen the other way work. Brian built and sold companies on an inbound system where customers found him online, trusted the reviews, and booked themselves, no cold calls. Branson spent two decades growing business for large organizations by tying every decision to a measurable result. Madison builds the brands, websites and AI tools that make all of it look and feel like a company you want to call. We put those three things together and built one system for one kind of customer.</p>
+      <p className="sub">Our goal is to be the marketing team a home service company never has to think about. Every piece, from the website and the search rankings to the ads, the reviews, the phones and the CRM, is built together and run by us. Every lead gets answered in under a minute. Every dollar is tracked to a paid job. And everything we build belongs to you, so you are never locked in. If we do our job, you will not notice the marketing. You will notice that the phone rings, the calendar fills, and you have your evenings back.</p>
     </div>
   </div>
 </div></section>
