@@ -514,3 +514,6 @@
 .v7 .lane .trk .wm-txt{clip-path:inset(0 100% 0 0)}
 /* Lane wordmark: the logo artwork in white, a little under the bar height. */
 .v7 .lane .trk .wm-txt img{height:30px;width:auto;display:block}
+
+/* Home stat cards: the big numbers in the heading navy. */
+.v7 .card .n{color:var(--ink)}
