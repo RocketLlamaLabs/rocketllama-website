@@ -428,3 +428,9 @@
 .v7 #team .ctas{margin-top:36px}
 /* Secondary button on the About page foot sits on white: blue border. */
 .v7 #team .ctas .btn.ghost{border-color:var(--accent)}
+/* Team cards: the full bio folds under a "Read more" link. */
+.v7 .team .card details.bio{background:none;border:0;border-radius:0;padding:0;margin-top:12px}
+.v7 .team .card details.bio summary{display:inline;font-family:var(--sans);font-weight:700;font-size:.92rem;color:var(--accent);cursor:pointer;list-style:none}
+.v7 .team .card details.bio summary::after{content:none}
+.v7 .team .card details.bio[open] summary{display:none}
+.v7 .team .card details.bio p{margin:12px 0 0;color:var(--muted);font-size:.95rem;line-height:1.55}
