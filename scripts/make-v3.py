@@ -367,8 +367,9 @@ def v7_extras(s, f, is_home, base):
         b0 = s.find('<div className="band" style={{"--img":"url(/v2/img/band-van.jpg)"}')
         if b0 >= 0:
             b1 = s.index('</div></div>\n', b0) + len('</div></div>\n'); s = s[:b0] + s[b1:].lstrip('\n')
-        s = s.replace('<p className="kicker">Services</p>\n    <h1>Everything a local home services company needs to <em>get the call.</em></h1>\n    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. You own every piece.</p>',
-                      '<p className="kicker">Our services</p>\n    <h1>Everything your company needs to <em>get the call.</em></h1>\n    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. Here is every piece we run for you, and how they fit together.</p>', 1)
+        a = '<header className="hero small" id="top">\n  <div className="slides" aria-hidden="true" style={{backgroundImage:"url(/v2/img/hero-roofing.jpg)"} as CSSProperties}></div>\n  <div className="wrap in">\n    <p className="kicker">Services</p>\n    <h1>Everything a local home services company needs to <em>get the call.</em></h1>\n    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. You own every piece.</p>\n  </div>\n</header>'
+        assert a in s, 'services banner'
+        s = s.replace(a, '<header className="pagehead" id="top">\n  <div className="wrap in">\n    <p className="kicker">Our services</p>\n    <h1>Everything your company needs to get the call.</h1>\n    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. Here is every piece we run for you, and how they fit together.</p>\n  </div>\n</header>', 1)
         a = '<section id="map" className="feature">'
         if a in s:
             s = s.replace(a, '<Race />\n\n' + a, 1)

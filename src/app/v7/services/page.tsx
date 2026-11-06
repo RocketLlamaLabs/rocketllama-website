@@ -31,11 +31,10 @@ export default function Page() {
 <script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}})"}} />
 <main>
 
-<header className="hero small" id="top">
-  <div className="slides" aria-hidden="true" style={{backgroundImage:"url(/v2/img/hero-roofing.jpg)"} as CSSProperties}></div>
+<header className="pagehead" id="top">
   <div className="wrap in">
     <p className="kicker">Our services</p>
-    <h1>Everything your company needs to <em>get the call.</em></h1>
+    <h1>Everything your company needs to get the call.</h1>
     <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. Here is every piece we run for you, and how they fit together.</p>
   </div>
 </header>
