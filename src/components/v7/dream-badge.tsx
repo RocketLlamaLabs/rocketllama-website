@@ -10,7 +10,7 @@ export function DreamBadge() {
         </defs>
         <text textLength="490" lengthAdjust="spacing">
           <textPath href="#dream-ring" startOffset="0" textLength="490" lengthAdjust="spacing">
-            IF YOU CAN DREAM IT · WE CAN BUILD IT ·
+            {"IF YOU CAN DREAM IT \u00b7 WE CAN BUILD IT \u00b7\u00a0"}
           </textPath>
         </text>
       </svg>
