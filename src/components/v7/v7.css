@@ -491,3 +491,6 @@
 .v7 .effective{margin:40px 0 0;padding-left:28px;font-family:var(--sans);font-size:.9rem;color:var(--muted)}
 /* The system diagram section on the services page sits on white, tile and all. */
 .v7 #map.feature{background:#fff;border-block:0}
+
+/* Industries page: title in the same navy as the Services and About page headers. */
+.v7 #industries h1{color:var(--deep)}
