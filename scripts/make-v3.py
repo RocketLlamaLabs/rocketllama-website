@@ -337,7 +337,9 @@ export default function Page() {
 '''
 
 
+LESS_SCRIPT = "document.addEventListener('click',function(e){var b=e.target.closest('.v7 .team details.bio .less');if(b){var d=b.closest('details');d.removeAttribute('open');d.closest('.card').scrollIntoView({block:'nearest'})}})"
 MENU_SCRIPT = "document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}})"
+MENU_SCRIPT = MENU_SCRIPT + ';' + LESS_SCRIPT
 
 
 def v7_extras(s, f, is_home, base):
@@ -568,7 +570,7 @@ def write_v7_about():
         '<p>The inbound system that sold policies also powered Wholesale Warehouse Supply&rsquo;s online stores, and Brian has been delivering it to other businesses ever since. He built SEO Services Internet Marketing LLC, a digital marketing and SEO company, and later BJG Digital, a local services marketing agency that helped Phoenix pool service companies win their local market through local SEO, reviews and inbound funnels. He also leads Quoteplicity, quoting software for insurance agents whose funnels have generated more than 200,000 leads.</p>'
         '<p>Rocket Llama Labs brings that playbook to local home services companies, run with modern AI tools so a small team delivers what used to take an agency floor. Brian&rsquo;s job as CEO is to keep the company pointed at the only thing that matters to a client: being the business people find first, and the one they call.</p>'
         '<p>He is the author of <em>The Salesman Who Doesn&rsquo;t Sell: A Marketing Guide to Making Money While You Sleep</em>, with a foreword by Marques Colston, Super Bowl champion wide receiver. <a href="https://www.amazon.com/Salesman-Who-Doesnt-Sell-Marketing-ebook/dp/B078HMS1CQ" target="_blank" rel="noopener">Buy on Amazon</a> or <a href="https://www.audible.com/pd/The-Salesman-Who-Doesnt-Sell-A-Marketing-Guide-for-Making-Money-While-You-Sleep-Audiobook/B0794Q3418" target="_blank" rel="noopener">listen on Audible</a>. Featured in Forbes, Entrepreneur, Fast Company, HuffPost, Bloomberg, USA Today, Yahoo Finance, Fox, NBC and CBS.</p>'
-        '</details></article>\n'
+        '<button type="button" className="less">Read less</button></details></article>\n'
         '    <article className="card"><img className="headshot photo" src="/v7/branson-cobb.jpg" alt="Branson Cobb, President and COO of Rocket Llama Labs" /><h3 id="branson-cobb">Branson Cobb</h3><p className="role">President and COO</p>'
         '<p>Branson runs the business and every client relationship. He spent more than 23 years leading sales, business development and client strategy for some of the country&rsquo;s largest healthcare organizations, and he brings that growth discipline to home service companies that want more qualified leads and measurable results.</p>'
         '<details className="bio"><summary>Read more</summary>'
@@ -576,7 +578,7 @@ def write_v7_about():
         '<p>Branson began his career at Cigna, where he spent 13 years advancing from Medical and Dental Underwriter to Senior Account Executive. His background in underwriting, analytics, account management and sales gave him a unique ability to connect financial insights with business strategy, an approach he continues to bring to every client relationship today.</p>'
         '<p>At Rocket Llama Labs, Branson believes great marketing is not about chasing trends. It is about building systems that consistently generate leads, drive revenue and help business owners focus on what they do best. His forward-looking approach combines data-driven decision-making with innovative marketing strategies designed specifically for home service businesses.</p>'
         '<p>Outside of work, Branson enjoys traveling, scuba diving, skiing and fishing with his dad. He earned his Bachelor of Science in Finance from the University of Arizona.</p>'
-        '</details></article>\n'
+        '<button type="button" className="less">Read less</button></details></article>\n'
         '    <article className="card"><img className="headshot photo" src="/v7/madison.jpg" alt="Madison Schantz, Chief Marketing Officer at Rocket Llama Labs" /><h3 id="madison-schantz">Madison Schantz</h3><p className="role">Chief Marketing Officer</p>'
         '<p>Madison designs the brand, the website and the AI-powered tools each client runs on. Her background spans branding, web design, AI content and digital strategy, and she builds every piece so a home service company looks strong online and turns visitors into booked jobs.</p>'
         '<details className="bio"><summary>Read more</summary>'
@@ -584,7 +586,7 @@ def write_v7_about():
         '<p>Her expertise combines creative design with emerging technology, allowing her to develop cohesive brand identities, modern websites and AI-powered digital solutions tailored to each client&rsquo;s unique vision. As a digital architect, Madison focuses on the balance between aesthetics, functionality and strategy, ensuring every project is thoughtfully designed to enhance user experience, strengthen brand recognition and support long-term growth.</p>'
         '<p>Driven by curiosity and a passion for innovation, Madison enjoys exploring new technologies, creative trends and opportunities to push the boundaries of traditional digital design. She values attention to detail, strategic thinking and bringing fresh perspectives to every project.</p>'
         '<p>Outside of her professional work, Madison enjoys working out, reading and traveling. She has a strong appreciation for personal growth, wellness and discovering new places and cultures. These interests inspire her creativity, broaden her perspective and encourage her to continuously learn, evolve and approach both life and work with an open mind.</p>'
-        '</details></article>\n'
+        '<button type="button" className="less">Read less</button></details></article>\n'
         '  </div>\n'
         '</div></section>\n\n'
         '<section id="faq" className="feature"><div className="wrap">\n'
