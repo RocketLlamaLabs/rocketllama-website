@@ -12,7 +12,7 @@ const ORG = {
   legalName: "Rocket Llama Labs LLC",
   url: SITE,
   logo: `${SITE}/brand/logo-nav.svg`,
-  email: "admin@rocketllamalabs.com",
+  email: "info@rocketllamalabs.com",
   description:
     "A Phoenix, Arizona marketing and technology company that builds and runs the whole marketing system for home service companies: website, search and AI search, Google Business Profile, ads, reviews, phones, AI receptionist and CRM, with every lead answered in under a minute and every dollar tracked to a paid job.",
   address: { "@type": "PostalAddress", addressLocality: "Phoenix", addressRegion: "AZ", addressCountry: "US" },
