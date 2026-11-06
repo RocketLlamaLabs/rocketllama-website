@@ -517,4 +517,7 @@
 
 /* Home stat cards: the big numbers in the heading navy. */
 .v7 .card .n{color:var(--ink)}
-.v7 .card .n .sm{font-size:.6em;color:var(--accent)}
+.v7 .card .n .sm{font-size:.72em;color:var(--accent)}
+/* Proportional figures so the 1 in "1 in 5" does not carry tabular blank space beside it. */
+.v7 .card .n{font-variant-numeric:normal}
+.v7 .card .n .sm{vertical-align:baseline;line-height:1}
