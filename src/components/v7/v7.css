@@ -542,3 +542,6 @@
 @media(max-width:859px){.v7 .pagehead.with-badge h1,.v7 .pagehead.with-badge .lede{max-width:none}.v7 .pagehead .dream-badge{display:none}}
 /* Services header copy: indented under the title by about the width of "the". */
 .v7 .pagehead.with-badge .lede{margin-left:2.4em}
+/* Services header copy: justified, its right edge on the end of "call." (the title line is 9.185 times the title font size). */
+.v7 .pagehead.with-badge{--h1:clamp(2.3rem,5vw,4rem)}
+.v7 .pagehead.with-badge .lede{text-align:justify;max-width:none;width:calc(var(--h1) * 9.185 - 2.4em)}
