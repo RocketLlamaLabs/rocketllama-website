@@ -439,13 +439,47 @@ def write_v7_report():
 
 
 def write_v7_about():
-    """The 'who you are talking to' section on its own About page."""
+    """About Us on its own page, laid out like the other subpages: a photo banner, then a
+    section that holds a placeholder for the owners' own story."""
     t = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
-    t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", "  title: 'About Us',\n  description: \"Rocket Llama Labs is Brian, Branson and Madison. Brian built three companies on this system and sold all three.\",", t, count=1)
-    t = re.sub(r'// Ported from the mockup.*?\n', '// About Us, moved off the home page on 4 November 2026.\n', t, count=1)
+    t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", "  title: 'About Us',\n  description: \"Who is behind Rocket Llama Labs and why we built it for home service companies.\",", t, count=1)
+    t = re.sub(r'// Ported from the mockup.*?\n', '// About Us, on its own page. The story section is a placeholder until the owners supply their copy.\n', t, count=1)
     i = t.index('<main>'); j = t.index('</main>') + len('</main>')
-    who = V7_WHO[0].replace('<h2>', '<h1>', 1).replace('</h2>', '</h1>', 1)
-    t = t[:i] + '<main>\n' + who + '</main>' + t[j:]
+    main = (
+        '<main>\n'
+        '<header className="hero small" id="top">\n'
+        '  <div className="slides" aria-hidden="true" style={{backgroundImage:"url(/v2/img/band-neighborhood.jpg)"} as CSSProperties}></div>\n'
+        '  <div className="wrap in">\n'
+        '    <p className="kicker">About us</p>\n'
+        '    <h1>Built by people who have <em>done this before.</em></h1>\n'
+        '    <p className="lede">Rocket Llama Labs is Brian, Branson and Madison. We build and run the whole marketing system for home service companies, and we have grown and sold companies on it ourselves.</p>\n'
+        '  </div>\n'
+        '</header>\n\n'
+        '<section id="story" className="feature"><div className="wrap">\n'
+        '  <p className="kicker">Our story</p>\n'
+        '  <h2>Who we are and why we built this.</h2>\n'
+        '  <div className="story">\n'
+        '    <div className="story-text">\n'
+        '      <p className="sub">[Your story goes here. Two or three short paragraphs: where the three of you came from, what you ran before Rocket Llama Labs, and why you built a marketing system for home service companies instead of selling tactics one at a time.]</p>\n'
+        '      <p className="sub">[A second paragraph for what you believe about the work: owning your leads, answering in under a minute, tracking every dollar to a paid job.]</p>\n'
+        '      <p className="note"><a href="/v7/about-brian">Read Brian&rsquo;s story &rarr;</a></p>\n'
+        '    </div>\n'
+        '    <div className="story-photo" aria-label="Team photo placeholder"><span>Team photo</span></div>\n'
+        '  </div>\n'
+        '</div></section>\n\n'
+        '<section id="team"><div className="wrap">\n'
+        '  <p className="kicker">The team</p>\n'
+        '  <h2>Three people. One system.</h2>\n'
+        '  <div className="team">\n'
+        '    <article className="card"><div className="headshot"><span>Photo</span></div><h3>Brian Greenberg</h3><p className="role">[Role]</p><p>[Two sentences about Brian.]</p></article>\n'
+        '    <article className="card"><div className="headshot"><span>Photo</span></div><h3>Branson</h3><p className="role">[Role]</p><p>[Two sentences about Branson.]</p></article>\n'
+        '    <article className="card"><div className="headshot"><span>Photo</span></div><h3>Madison</h3><p className="role">[Role]</p><p>[Two sentences about Madison.]</p></article>\n'
+        '  </div>\n'
+        '  <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a><a className="btn ghost" href="/v7/audit">Run an instant audit</a></div>\n'
+        '</div></section>\n'
+        '</main>'
+    )
+    t = t[:i] + main + t[j:]
     t = t.replace("note='Version 7, about page'", "note='Version 7, about us'")
     os.makedirs(os.path.join(root, 'src/app/v7/about'), exist_ok=True)
     open(os.path.join(root, 'src/app/v7/about/page.tsx'), 'w').write(t)
