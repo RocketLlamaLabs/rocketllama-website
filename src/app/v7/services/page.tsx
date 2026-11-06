@@ -4,6 +4,7 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { V7Footer } from "@/components/v7/footer";
 import { Race } from "@/components/v7/race";
+import { DreamBadge } from "@/components/v7/dream-badge";
 import { SystemDiagram } from "@/components/v2/system-diagram";
 
 export const metadata: Metadata = {
@@ -31,8 +32,9 @@ export default function Page() {
 <script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}})"}} />
 <main>
 
-<header className="pagehead" id="top">
+<header className="pagehead with-badge" id="top">
   <div className="wrap in">
+    <DreamBadge tone="blue" />
     <p className="kicker">Our services</p>
     <h1>Everything your company needs to get the call.</h1>
     <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. Here is every piece we run for you, and how they fit together.</p>
@@ -46,7 +48,7 @@ export default function Page() {
     <p>The three ways good companies lose jobs, what we build instead, how the money is tracked, and who is behind it.</p>
     <p><a className="lk" href="/v7/book">Schedule a call</a> &nbsp;·&nbsp; In a hurry? <a className="lk" href="/v2/video/bbm-local-30s.mp4" target="_blank" rel="noopener">The 30-second cut</a></p>
   </div>
-  <div className="shot"><video controls playsInline preload="metadata" poster="/v7/video-poster.png"><source src="/v2/video/bbm-local-full.mp4" type="video/mp4" /></video><span className="tag">90 seconds</span></div>
+  <div className="shot"><video controls playsInline preload="metadata" poster="/v7/video-poster.png"><source src="/v7/video/rocket-llama-full.mp4" type="video/mp4" /></video><span className="tag">90 seconds</span></div>
 </div></section>
 
 <section id="what"><div className="wrap">

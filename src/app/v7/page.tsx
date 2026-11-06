@@ -44,7 +44,6 @@ export default function Page() {
   <div className="wrap in">
    <div>
     <h1 className="tagline">Marketing and technology for home services</h1>
-    <DreamBadge />
     <div className="rot">
       <div className="rslide"><h2>Your calendar should be <em>full.</em></h2><p className="lede">Built for HVAC companies, plumbers, electricians, roofers, and every home service trade. Every call, form submission, and estimate request gets a response in under 60 seconds and is booked directly onto your calendar. Track every marketing dollar all the way to a completed, paid job. You own the leads, the data, and the results.</p></div>
       <div className="rslide"><h2>Never miss a <em>call</em> again.</h2><p className="lede">When a new lead comes in, they get a text and email in under 60 seconds, written in your voice&mdash;even while at a job site. The system calls you first. If you can&rsquo;t answer, AI steps in to capture the customer&rsquo;s details, qualify the lead, and book the appointment directly on your calendar.</p></div>
@@ -77,7 +76,7 @@ export default function Page() {
 
 <Valley base="/v7" />
 
-<FullSystem base="/v7" id="fullsystem" photo={{ src: "/v2/img/band-van.jpg", alt: "A service van on a Phoenix street" }} detailed />
+<FullSystem base="/v7" id="fullsystem" photo={{ src: "/v2/img/band-van.jpg", alt: "A service van on a Phoenix street" }} detailed noDream badge={<DreamBadge />} />
 <HowItWorks base="/v7" />
 </main>
       <V7Footer note='Version 7 · built from the BBM Local mockup C' />

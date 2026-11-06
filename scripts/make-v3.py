@@ -371,15 +371,17 @@ def v7_extras(s, f, is_home, base):
             b1 = s.index('</div></div>\n', b0) + len('</div></div>\n'); s = s[:b0] + s[b1:].lstrip('\n')
         a = '<header className="hero small" id="top">\n  <div className="slides" aria-hidden="true" style={{backgroundImage:"url(/v2/img/hero-roofing.jpg)"} as CSSProperties}></div>\n  <div className="wrap in">\n    <p className="kicker">Services</p>\n    <h1>Everything a local home services company needs to <em>get the call.</em></h1>\n    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. You own every piece.</p>\n  </div>\n</header>'
         assert a in s, 'services banner'
-        s = s.replace(a, '<header className="pagehead" id="top">\n  <div className="wrap in">\n    <p className="kicker">Our services</p>\n    <h1>Everything your company needs to get the call.</h1>\n    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. Here is every piece we run for you, and how they fit together.</p>\n  </div>\n</header>', 1)
+        s = s.replace(a, '<header className="pagehead with-badge" id="top">\n  <div className="wrap in">\n    <DreamBadge tone="blue" />\n    <p className="kicker">Our services</p>\n    <h1>Everything your company needs to get the call.</h1>\n    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. Here is every piece we run for you, and how they fit together.</p>\n  </div>\n</header>', 1)
         a = '<section id="map" className="feature">'
         if a in s:
             s = s.replace(a, '<Race />\n\n' + a, 1)
-            s = s.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { Race } from "@/components/v7/race";\n', 1)
+            s = s.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { Race } from "@/components/v7/race";\nimport { DreamBadge } from "@/components/v7/dream-badge";\n', 1)
+            # the walkthrough video is the Rocket Llama cut
+            s = s.replace('/v2/video/bbm-local-full.mp4', '/v7/video/rocket-llama-full.mp4')
     if is_home:
         # banner: the tagline sits above the rotating headline, large
         a = '   <div>\n    <p className="kicker">Marketing and technology for local home services</p>\n'
-        assert a in s; s = s.replace(a, '   <div>\n    <h1 className="tagline">Marketing and technology for home services</h1>\n    <DreamBadge />\n', 1)
+        assert a in s; s = s.replace(a, '   <div>\n    <h1 className="tagline">Marketing and technology for home services</h1>\n', 1)
         # no trust line at the foot of the banner
         s = re.sub(r'    <p className="trust"><b>Month to month\.</b>.*?</p>\n', '', s, count=1)
         # the rotating lines stay, as h2 headings under the H1, each with its supporting paragraph; v7 has its own wording
@@ -414,7 +416,7 @@ def v7_extras(s, f, is_home, base):
         s = s.replace('import { Race } from "@/components/v7/race";\n', '', 1)
         # after the carousel: the full system from version 8, then how it works, then nothing else
         t0 = s.index('\n<div className="band center"'); t1 = s.index('</main>')
-        s = s[:t0] + f'\n<FullSystem base="{base}" id="fullsystem" photo={{{{ src: "/v2/img/band-van.jpg", alt: "A service van on a Phoenix street" }}}} detailed />\n<HowItWorks base="{base}" />\n' + s[t1:]
+        s = s[:t0] + f'\n<FullSystem base="{base}" id="fullsystem" photo={{{{ src: "/v2/img/band-van.jpg", alt: "A service van on a Phoenix street" }}}} detailed noDream badge={{<DreamBadge />}} />\n<HowItWorks base="{base}" />\n' + s[t1:]
         s = s.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { FullSystem, HowItWorks } from "@/components/v8/full-system";\n', 1)
         for name, path in [('FreeScan', '@/components/v2/free-scan'), ('WhySwitch', '@/components/v7/why-switch'), ('Timeline', '@/components/v7/timeline'), ('CompareTable', '@/components/v7/compare-table')]:
             if f'<{name}' not in s:
