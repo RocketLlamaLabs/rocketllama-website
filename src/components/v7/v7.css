@@ -472,3 +472,5 @@
 .v7 .race .head .go{display:flex;align-items:center;gap:18px}
 .v7 .race .again{font-family:var(--sans);font-size:.9rem;color:var(--muted);text-decoration:underline;cursor:pointer}
 .v7 .race .again:hover{color:var(--ink)}
+/* Race: the mascot rides the leading edge of the fill with no lag, centred on it. */
+.v7 .lane .trk .flag{transition:none;transform:translate(0,-50%)}
