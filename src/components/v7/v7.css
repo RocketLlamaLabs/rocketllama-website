@@ -560,3 +560,5 @@
 .v7 .pagehead.about-head{--h1:clamp(2.3rem,5vw,4rem)}
 .v7 .pagehead.about-head .lede{text-align:justify;hyphens:none;max-width:none;width:calc(var(--h1) * 9.826)}
 @media(max-width:859px){.v7 .pagehead.about-head .lede{width:auto}}
+/* Services header on the light blue used by the footer. */
+.v7 .pagehead.with-badge{background:#eaf2fd;border-bottom:0}
