@@ -60,7 +60,7 @@ export function HowItWorks({ base }: { base: string }) {
   <p className="kicker">How it works</p>
   <h2>Getting started is simple. Keeping your phone ringing and your calendar full is our job.</h2>
   <div className="steps4">
-    <div className="step"><span className="num">1</span><h3>Schedule a call</h3><p>About a minute to book. On the call we run a live audit of how you show up online, side by side with the top company in your trade.</p></div>
+    <div className="step"><span className="num">1</span><h3>Schedule a call</h3><p>It takes about a minute to book. On the call we will discuss an audit of how you show up online.</p></div>
     <div className="step"><span className="num">2</span><h3>We write your plan</h3><p>Your trade, your area, your calendar and what you already have, written up with a number on it. You see it before you pay for anything.</p></div>
     <div className="step"><span className="num">3</span><h3>We build and run everything</h3><p>Site, phones, CRM, ads and reviews, all in your name. Ads go on. Every lead is answered in under a minute.</p></div>
     <div className="step"><span className="num">4</span><h3>Your phone starts ringing</h3><p>On the first of every month you get the report: booked jobs by source, what they were worth, and what we changed.</p></div>
