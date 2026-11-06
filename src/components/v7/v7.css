@@ -453,6 +453,6 @@
 .v7 #book .ctas .btn.ghost,.v7 #press .ctas .btn.ghost{border-color:var(--accent)}
 /* Story block without the photo slot: one column. */
 .v7 #story .story:not(:has(.story-side)){grid-template-columns:1fr}
-.v7 #story .story-text .sub{max-width:68ch}
+.v7 #story .story-text .sub{max-width:76ch}
 /* Links inside a folded bio. */
 .v7 .team .card details.bio a{color:var(--accent);font-weight:600}
