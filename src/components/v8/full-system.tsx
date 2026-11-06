@@ -62,7 +62,7 @@ export function HowItWorks({ base }: { base: string }) {
   <div className="steps4">
     <div className="step"><span className="num">1</span><h3>Schedule a call</h3><p>It takes about a minute to book. On the call we will discuss an audit of how you show up online.</p></div>
     <div className="step"><span className="num">2</span><h3>We quote your plan</h3><p>We take your vision and what you currently have, add our suggestions, our expertise and our technology, and provide you a quote.</p></div>
-    <div className="step"><span className="num">3</span><h3>We build and run everything</h3><p>Site, phones, CRM, ads and reviews, all in your name. Ads go on. Every lead is answered in under a minute.</p></div>
+    <div className="step"><span className="num">3</span><h3>We build and run everything</h3><p>Your website, phones, your CRM, the ads, and your reviews are all in your name. Every lead is answered in under a minute.</p></div>
     <div className="step"><span className="num">4</span><h3>Your phone starts ringing</h3><p>On the first of every month you get the report: booked jobs by source, what they were worth, and what we changed.</p></div>
   </div>
 </div></section>
