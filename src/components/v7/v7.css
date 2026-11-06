@@ -502,3 +502,9 @@
 /* Race odds: our 62% in the check's green, the average company's 28% in its red. */
 .v7 .race .odds .n.good{color:#00a84f}
 .v7 .race .odds .n.bad{color:#e3001b}
+
+/* Race lane: mascot starts at the far left; the lane text is larger and only shows once the blue has run the full length. */
+.v7 .lane .trk .flag{left:0}
+.v7 .lane .trk .wm-txt{font-size:20px;font-weight:900;letter-spacing:-.01em;opacity:0;transition:opacity .35s ease}
+.v7 .lane .trk .wm-txt.show{opacity:1}
+.v7 .lane .trk .wm-txt{font-size:34px;line-height:1;letter-spacing:-.03em}

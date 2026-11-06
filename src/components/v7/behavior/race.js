@@ -10,10 +10,10 @@ export function mountRace() {
     if (raf) cancelAnimationFrame(raf); raf = null; t0 = null;
     $('clock').textContent = '00:00'; $('us-fill').style.width = '0%'; $('us-flag').style.left = 'calc(0% - 0px)'; $('them-fill').style.width = '0%';
     $('us-t').textContent = '\u2014'; $('them-t').textContent = '\u2014'; $('odds-them').textContent = '28%'; 
-    $('us-done').textContent = ''; $('them-done').textContent = ''; go.disabled = false; go.textContent = 'A customer calls';
+    $('us-done').textContent = ''; $('them-done').textContent = ''; $('us-wm').classList.remove('show'); go.disabled = false; go.textContent = 'A customer calls';
   });
   go.addEventListener('click', function () {
-    if (raf) cancelAnimationFrame(raf); t0 = null; go.disabled = true; go.textContent = 'Ringing…'; $('us-done').textContent = ''; $('them-done').textContent = '';
+    if (raf) cancelAnimationFrame(raf); t0 = null; go.disabled = true; go.textContent = 'Ringing…'; $('us-done').textContent = ''; $('them-done').textContent = ''; $('us-wm').classList.remove('show');
     function frame(ts) {
       if (!t0) t0 = ts; var sim = (ts - t0) / 1000 * 45; $('clock').textContent = fmtClock(sim);
       var usP = Math.min(1, sim / 105), themP = Math.min(1, sim / 2520);
@@ -22,6 +22,7 @@ export function mountRace() {
       $('them-t').textContent = sim < 20 ? 'ringing' : sim < 2520 ? 'voicemail' : 'calling back';
       $('odds-them').textContent = Math.max(28, Math.round(62 - 34 * Math.min(1, Math.max(0, (sim - 120) / 2400)))) + '%';
       if (sim >= 105 && !$('us-done').textContent) $('us-done').textContent = 'Booked. The homeowner has a name, a time and a text to prove it.';
+      if (sim >= 105) $('us-wm').classList.add('show');
       if (sim < 2520) raf = requestAnimationFrame(frame); else { $('them-done').textContent = 'Callback at 42 minutes. The job was booked 40 minutes ago.'; go.disabled = false; go.textContent = 'Run it again'; }
     }
     raf = requestAnimationFrame(frame);
