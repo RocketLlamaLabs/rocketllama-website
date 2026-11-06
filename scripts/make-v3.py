@@ -552,7 +552,7 @@ def write_v7_about():
         '<p>At Rocket Llama Labs, Branson believes great marketing is not about chasing trends. It is about building systems that consistently generate leads, drive revenue and help business owners focus on what they do best. His forward-looking approach combines data-driven decision-making with innovative marketing strategies designed specifically for home service businesses.</p>'
         '<p>Outside of work, Branson enjoys traveling, scuba diving, skiing and fishing with his dad. He earned his Bachelor of Science in Finance from the University of Arizona.</p>'
         '</details></article>\n'
-        '    <article className="card"><div className="headshot"><span>Photo</span></div><h3>Madison</h3><p className="role">Creative digital designer and digital architect</p>'
+        '    <article className="card"><img className="headshot photo" src="/v7/madison.jpg" alt="Madison" /><h3>Madison</h3><p className="role">Creative digital designer and digital architect</p>'
         '<p>Branding, websites and AI-powered digital solutions, built to give a business a strong and memorable online presence.</p>'
         '<details className="bio"><summary>Read more</summary>'
         '<p>Madison is a creative digital designer, branding specialist, AI content creator and digital architecture expert with a passion for transforming innovative ideas into meaningful digital experiences. With experience in website design, brand development, artificial intelligence and digital strategy, she specializes in creating visually compelling, functional and user-friendly solutions that help businesses establish a strong and memorable online presence.</p>'
