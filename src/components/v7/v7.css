@@ -456,3 +456,5 @@
 .v7 #story .story-text .sub{max-width:none}
 /* Links inside a folded bio. */
 .v7 .team .card details.bio a{color:var(--accent);font-weight:600}
+/* Story paragraphs: both edges straight. */
+.v7 #story .story-text .sub{text-align:justify;hyphens:auto}
