@@ -462,5 +462,5 @@
 .v7 .pagehead{background:#fff;border-bottom:1px solid var(--line)}
 .v7 .pagehead .in{padding-block:clamp(56px,8vh,96px) clamp(40px,6vh,64px)}
 .v7 .pagehead .kicker{margin:0 0 16px}
-.v7 .pagehead h1{font-size:clamp(2.3rem,5vw,4rem);line-height:1.02;letter-spacing:-.04em;color:var(--deep);max-width:20ch;margin:0;text-shadow:none}
-.v7 .pagehead .lede{margin:20px 0 0;max-width:62ch;font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.55;color:var(--muted)}
+.v7 .pagehead h1{font-size:clamp(2.3rem,5vw,4rem);line-height:1.02;letter-spacing:-.04em;color:var(--deep);max-width:none;margin:0;text-shadow:none}
+.v7 .pagehead .lede{margin:20px 0 0;max-width:none;text-align:justify;hyphens:auto;font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.55;color:var(--muted)}
