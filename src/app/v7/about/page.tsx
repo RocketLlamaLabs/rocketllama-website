@@ -40,7 +40,7 @@ export default function Page() {
 </div></nav>
 <script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}})"}} />
 <main>
-<header className="pagehead" id="top">
+<header className="pagehead about-head" id="top">
   <div className="wrap in">
     <p className="kicker">About us</p>
     <h1>Built by people who have done this before.</h1>

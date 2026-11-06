@@ -537,7 +537,7 @@ def write_v7_about():
     i = t.index('<main>'); j = t.index('</main>') + len('</main>')
     main = (
         '<main>\n'
-        '<header className="pagehead" id="top">\n'
+        '<header className="pagehead about-head" id="top">\n'
         '  <div className="wrap in">\n'
         '    <p className="kicker">About us</p>\n'
         '    <h1>Built by people who have done this before.</h1>\n'
