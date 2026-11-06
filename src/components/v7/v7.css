@@ -458,8 +458,3 @@
 .v7 .team .card details.bio a{color:var(--accent);font-weight:600}
 /* Story paragraphs: both edges straight. */
 .v7 #story .story-text .sub{text-align:justify;hyphens:auto}
-/* How it works: the line above each step fills by quarters. */
-.v7 .steps4 .step:nth-child(1)::before{width:25%}
-.v7 .steps4 .step:nth-child(2)::before{width:50%}
-.v7 .steps4 .step:nth-child(3)::before{width:75%}
-.v7 .steps4 .step:nth-child(4)::before{width:100%}
