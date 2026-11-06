@@ -517,3 +517,4 @@
 
 /* Home stat cards: the big numbers in the heading navy. */
 .v7 .card .n{color:var(--ink)}
+.v7 .card .n .sm{font-size:.6em;color:var(--accent)}

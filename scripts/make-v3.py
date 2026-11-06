@@ -391,8 +391,9 @@ def v7_extras(s, f, is_home, base):
         s = s.replace('<div className="wrap in hero-grid">', '<div className="wrap in">', 1)
         if '<SixtySecondCheck' not in s:
             s = s.replace('import { SixtySecondCheck } from "@/components/v2/sixty-second-check";\n', '', 1)
-        # the 'vs' in the close-rate card is the bright blue
-        s = s.replace('<span style={{fontSize:".5em",color:"var(--muted)"} as CSSProperties}>vs</span>', '<span style={{fontSize:".5em",color:"var(--accent)"} as CSSProperties}>vs</span>', 1)
+        # the 'in' and 'vs' in the stat cards share one smaller royal blue style (v7.css .card .n .sm)
+        s = s.replace('<span style={{fontSize:".5em",color:"var(--muted)"} as CSSProperties}>vs</span>', '<span className="sm">vs</span>', 1)
+        s = s.replace('<div className="n">1 in 5</div>', '<div className="n">1 <span className="sm">in</span> 5</div>', 1)
         # banner: dashes are buttons, the carousel runs on a script, the two buttons sit side by side
         a = '  <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>\n</header>\n'
         assert a in s; s = s.replace(a, '  <div className="dots"><button type="button" aria-label="Picture 1"></button><button type="button" aria-label="Picture 2"></button><button type="button" aria-label="Picture 3"></button><button type="button" aria-label="Picture 4"></button></div>\n</header>\n<HeroCarousel />\n', 1)
