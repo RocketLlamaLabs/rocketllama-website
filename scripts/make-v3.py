@@ -535,7 +535,7 @@ def write_v7_about():
         '  <p className="kicker">The team</p>\n'
         '  <h2>Three people. One system.</h2>\n'
         '  <div className="team">\n'
-        '    <article className="card"><img className="headshot photo" src="/v2/img/brian-greenberg.jpg" alt="Brian Greenberg" /><h3>Brian Greenberg</h3><p className="role">Co-Founder and CEO</p>'
+        '    <article className="card"><img className="headshot photo" src="/v7/brian-greenberg.jpg" alt="Brian Greenberg" /><h3>Brian Greenberg</h3><p className="role">Co-Founder and CEO</p>'
         '<p>Brian has spent more than twenty years building businesses that get found online, including a fully digital insurance agency that generated $50M+ through inbound marketing. He is the author of <em>The Salesman Who Doesn&rsquo;t Sell</em> and has run local SEO for Phoenix home service companies.</p>'
         '<details className="bio"><summary>Read more</summary>'
         '<p>Entrepreneurship is the family trade. Brian learned it from his father, and it was everywhere around him: his grandfather ran his own business, and so did every one of his uncles. Growing up in Highland Park, Illinois, he never seriously considered working for anyone else. The University of Arizona&rsquo;s Eller College of Management gave him the formal version, entrepreneurship and marketing, sharpened by the McGuire Entrepreneurship Program. Then he settled in Scottsdale, Arizona, and got to work.</p>'
