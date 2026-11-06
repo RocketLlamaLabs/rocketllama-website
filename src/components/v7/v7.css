@@ -568,3 +568,8 @@
 .v7 .pagehead .dream-badge{right:clamp(40px,9vw,130px)}
 /* Industries page: white footer under the light blue page. */
 .v7:has(#industries) footer{background:#fff}
+/* About page bands: light blue header, white story, light blue team, white questions, light blue footer. */
+.v7 .pagehead.about-head{background:#eaf2fd;border-bottom:0}
+.v7 #story.feature{background:#fff;border-block:0}
+.v7 #team{background:#eaf2fd}
+.v7 #faq.feature{background:#fff;border-block:0}
