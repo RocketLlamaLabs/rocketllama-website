@@ -209,7 +209,7 @@ def build(dst_rel, base, n, extras=None, extra_css_import=None, layout_note=''):
         fp = os.path.join(root, f'src/components/v{n}/footer.tsx'); t = open(fp).read()
         t = t.replace('/brand/logo-stacked.svg', '/brand/logo-nav.svg').replace('width={137}', 'width={249}')
         if n == 7:  # a simple footer: the logo and the copyright line
-            t = re.sub(r'        <span>\n          <b>Rocket Llama Labs</b>.*?</span>\n(        <span>\n.*?</span>\n)', '        <span className="copy">&copy; 2026 Rocket Llama Labs LLC</span>\n        <span className="legal"><Link href="/v7/privacy">Privacy Policy</Link> / <Link href="/v7/terms">Website Policy</Link></span>\n', t, count=1, flags=re.S)
+            t = re.sub(r'        <span>\n          <b>Rocket Llama Labs</b>.*?</span>\n(        <span>\n.*?</span>\n)', '        <span className="copy">&copy; 2026 Rocket Llama Labs LLC</span>\n        <span className="legal"><Link href="/v7/privacy">Privacy Policy</Link> / <Link href="/v7/terms">Website Policy</Link> / <Link href="/v7/ai-policy">AI Policy</Link></span>\n', t, count=1, flags=re.S)
             t = t.replace('export function V7Footer({ note }: { note: string }) {', 'export function V7Footer({ note: _note }: { note: string }) {')
         open(fp, 'w').write(t)
     # pages
@@ -342,6 +342,8 @@ MENU_SCRIPT = "document.addEventListener('click',function(e){var m=e.target.clos
 
 def v7_extras(s, f, is_home, base):
     s = v7_extras_core(s, f, is_home, base)
+    # the book page: Arizona time
+    s = s.replace('<BookFunnel />', '<BookFunnel tz="Arizona time" />', 1)
     # wording: every call to action schedules a call
     s = s.replace('Book a walkthrough', 'Schedule a call').replace('book a walkthrough', 'schedule a call').replace('Book your free walkthrough', 'Schedule your free call')
     s = s.replace(f'<SixtySecondCheck base="{base}" />', f'<SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an instant audit", href: "{base}/audit" }}}} />')
@@ -631,19 +633,25 @@ def write_v7_industries():
 
 
 def write_v7_legal():
-    """Placeholder privacy policy and website conditions pages, linked from the footer."""
+    """The privacy policy, website policy and AI policy pages, built from the copy in
+    src/components/v7/legal-copy.tsx and the same page shell as the other subpages."""
     shell = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
-    for slug, title, body in [
-        ('privacy', 'Privacy Policy', 'What we collect when you use this site or book a call, how we use it, and how to ask us to delete it. The full policy is being written; until then, email admin@rocketllamalabs.com with any question.'),
-        ('terms', 'Website Policy', 'The conditions for using this website. The full text is being written; until then, email admin@rocketllamalabs.com with any question.'),
+    for slug, title, const, desc, intro in [
+        ('privacy', 'Privacy Policy', 'PRIVACY', 'How Rocket Llama Labs collects, uses, shares and protects personal information, including text-message consent, call recording and cookies.', 'What we collect, how we use it, who we share it with, and the choices you have.'),
+        ('terms', 'Website Policy', 'TERMS', 'The conditions for using rocketllamalabs.com.', 'The conditions for using this website and the tools on it.'),
+        ('ai-policy', 'AI Policy', 'AI', 'Where Rocket Llama Labs uses artificial intelligence, what it does, and where a person is responsible.', 'Where we use artificial intelligence, what it does, and where a person is responsible.'),
     ]:
-        t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", f"  title: '{title}',\n  description: \"{title} for rocketllamalabs.com.\",", shell, count=1)
-        t = re.sub(r'// Ported from the mockup.*?\n', f'// {title}: placeholder until the legal text is final.\n', t, count=1)
+        t = re.sub(r"export const metadata: Metadata = \{.*?\n\};", 'export const metadata: Metadata = {\n  title: "' + title + '",\n  description: "' + desc + '",\n  alternates: { canonical: "https://rocketllamalabs.com/v7/' + slug + '" },\n};', shell, count=1, flags=re.S)
+        t = re.sub(r'// Ported from the mockup.*?\n', '// ' + title + ', built from src/components/v7/legal-copy.tsx.\n', t, count=1)
+        t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { LegalBody, ' + const + ', EFFECTIVE } from "@/components/v7/legal-copy";\n', 1)
         i = t.index('<main>'); j = t.index('</main>') + len('</main>')
-        t = t[:i] + f'<main>\n<section className="feature"><div className="wrap">\n  <p className="kicker">Legal</p>\n  <h1>{title}</h1>\n  <p className="sub">{body}</p>\n</div></section>\n</main>' + t[j:]
-        t = t.replace("note='Version 7, about page'", f"note='Version 7, {title.lower()}'")
-        os.makedirs(os.path.join(root, f'src/app/v7/{slug}'), exist_ok=True)
-        open(os.path.join(root, f'src/app/v7/{slug}/page.tsx'), 'w').write(t)
+        t = t[:i] + ('<main>\n<header className="pagehead" id="top">\n  <div className="wrap in">\n'
+                     '    <p className="kicker">Legal</p>\n    <h1>' + title + '</h1>\n'
+                     '    <p className="lede">' + intro + ' Effective {EFFECTIVE}.</p>\n  </div>\n</header>\n'
+                     '<section className="feature"><div className="wrap">\n  <LegalBody sections={' + const + '} />\n</div></section>\n</main>') + t[j:]
+        t = t.replace("note='Version 7, about page'", "note='Version 7, " + title.lower() + "'")
+        os.makedirs(os.path.join(root, 'src/app/v7/' + slug), exist_ok=True)
+        open(os.path.join(root, 'src/app/v7/' + slug + '/page.tsx'), 'w').write(t)
 
 
 def v8_extras(s, f, is_home, base):

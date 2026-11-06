@@ -3,13 +3,15 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { V7Footer } from "@/components/v7/footer";
+import { LegalBody, TERMS, EFFECTIVE } from "@/components/v7/legal-copy";
 
 export const metadata: Metadata = {
-  title: 'Website Policy',
-  description: "Website Policy for rocketllamalabs.com.",
+  title: "Website Policy",
+  description: "The conditions for using rocketllamalabs.com.",
+  alternates: { canonical: "https://rocketllamalabs.com/v7/terms" },
 };
 
-// Website Policy: placeholder until the legal text is final.
+// Website Policy, built from src/components/v7/legal-copy.tsx.
 export default function Page() {
   return (
     <>
@@ -28,10 +30,15 @@ export default function Page() {
 </div></nav>
 <script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}})"}} />
 <main>
+<header className="pagehead" id="top">
+  <div className="wrap in">
+    <p className="kicker">Legal</p>
+    <h1>Website Policy</h1>
+    <p className="lede">The conditions for using this website and the tools on it. Effective {EFFECTIVE}.</p>
+  </div>
+</header>
 <section className="feature"><div className="wrap">
-  <p className="kicker">Legal</p>
-  <h1>Website Policy</h1>
-  <p className="sub">The conditions for using this website. The full text is being written; until then, email admin@rocketllamalabs.com with any question.</p>
+  <LegalBody sections={TERMS} />
 </div></section>
 </main>
       <V7Footer note='Version 7, website policy' />

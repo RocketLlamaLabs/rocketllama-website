@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { mountBookFunnel } from "./behavior/book-funnel";
 
 // BookFunnel: markup from the mockup's _book.html, behaviour mounted on the client.
-export function BookFunnel() {
+export function BookFunnel({ tz = "Phoenix time" }: { tz?: string }) {
   useEffect(mountBookFunnel, []);
   return (
     <>
@@ -18,7 +18,7 @@ export function BookFunnel() {
 
     <div className="step on" data-q="slot" data-auto="1">
       <h3>Pick a time.</h3>
-      <p className="why">Phoenix time. The Zoom link comes by text and email, and you can move it any time.</p>
+      <p className="why">{tz}. The Zoom link comes by text and email, and you can move it any time.</p>
       <span className="f">Day</span>
       <div className="opts five" data-single="q_day" id="q_days" style={{marginTop:"10px"} as CSSProperties}></div>
       <div className="grp" id="g_slots" hidden><span className="f">Time</span><div className="opts five" data-single="q_slot" id="q_slots" style={{marginTop:"10px"} as CSSProperties}></div></div>

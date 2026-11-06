@@ -3,13 +3,15 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { V7Footer } from "@/components/v7/footer";
+import { LegalBody, PRIVACY, EFFECTIVE } from "@/components/v7/legal-copy";
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy',
-  description: "Privacy Policy for rocketllamalabs.com.",
+  title: "Privacy Policy",
+  description: "How Rocket Llama Labs collects, uses, shares and protects personal information, including text-message consent, call recording and cookies.",
+  alternates: { canonical: "https://rocketllamalabs.com/v7/privacy" },
 };
 
-// Privacy Policy: placeholder until the legal text is final.
+// Privacy Policy, built from src/components/v7/legal-copy.tsx.
 export default function Page() {
   return (
     <>
@@ -28,10 +30,15 @@ export default function Page() {
 </div></nav>
 <script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}})"}} />
 <main>
+<header className="pagehead" id="top">
+  <div className="wrap in">
+    <p className="kicker">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p className="lede">What we collect, how we use it, who we share it with, and the choices you have. Effective {EFFECTIVE}.</p>
+  </div>
+</header>
 <section className="feature"><div className="wrap">
-  <p className="kicker">Legal</p>
-  <h1>Privacy Policy</h1>
-  <p className="sub">What we collect when you use this site or book a call, how we use it, and how to ask us to delete it. The full policy is being written; until then, email admin@rocketllamalabs.com with any question.</p>
+  <LegalBody sections={PRIVACY} />
 </div></section>
 </main>
       <V7Footer note='Version 7, privacy policy' />
