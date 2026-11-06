@@ -526,13 +526,10 @@
 .v7 .sysgroup li{padding-left:18px}
 .v7 .sysgroup li::before{width:8px;height:8px;top:.45em;left:2px}
 
-/* Banner badge: "If you can dream it · We can build it" revolving in front of the H1, which makes room for it on its left. */
-.v7 .hero .in>div{position:relative}
-.v7 .hero .tagline{padding-left:calc(var(--badge) + 22px);font-size:clamp(1rem,3.5vw,2.85rem)}
-.v7 .hero .in>div{--badge:clamp(96px,10.5vw,150px)}
-.v7 .dream-badge{position:absolute;left:0;top:-10px;width:var(--badge);aspect-ratio:1;pointer-events:none;z-index:2;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35))}
+/* Banner badge: "If you can dream it · We can build it" revolving around the M of the H1. The H1 keeps its place; the ring is centred on the M and scales with the type. */
+.v7 .hero .in>div{position:relative;--tag:clamp(1rem,4.3vw,3.45rem);--badge:calc(var(--tag) * 2.5)}
+.v7 .dream-badge{position:absolute;left:calc(var(--tag) * .45 - var(--badge) / 2);top:calc(var(--tag) * .5 - var(--badge) / 2);width:var(--badge);aspect-ratio:1;pointer-events:none;z-index:2;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35))}
 .v7 .dream-badge svg{width:100%;height:100%;display:block;animation:dream-spin 22s linear infinite}
 .v7 .dream-badge text{font-family:var(--sans);font-weight:700;font-size:15.5px;letter-spacing:.14em;fill:#fff}
 @keyframes dream-spin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.v7 .dream-badge svg{animation:none}}
-@media(max-width:699px){.v7 .hero .tagline{padding-left:0}.v7 .dream-badge{left:auto;right:0;top:0;width:84px;transform:translate(6%,-40%)}}
