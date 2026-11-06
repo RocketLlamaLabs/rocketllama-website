@@ -566,3 +566,5 @@
 .v7 #industries{background:#eaf2fd}
 /* Ring a little closer to the words. */
 .v7 .pagehead .dream-badge{right:clamp(40px,9vw,130px)}
+/* Industries page: white footer under the light blue page. */
+.v7:has(#industries) footer{background:#fff}
