@@ -526,26 +526,16 @@
 .v7 .sysgroup li{padding-left:18px}
 .v7 .sysgroup li::before{width:8px;height:8px;top:.45em;left:2px}
 
-/* Full system card: taller, text centred and larger, the revolving "If you can dream it · We can build it" badge on the bottom left corner of the photo. */
-.v7 .evolve.with-photo{min-height:560px;padding:clamp(32px,4.5vw,56px)}
-.v7 .evolve.with-photo .evolve-text{align-self:center;grid-template-rows:none;margin-bottom:0;justify-items:center;text-align:center;gap:26px}
-.v7 .evolve.with-photo .evolve-text .btn{transform:none;margin-top:4px}
-.v7 .evolve p{max-width:none;font-size:clamp(1.15rem,1.6vw,1.45rem);line-height:1.6}
-.v7 .evolve-photo-wrap{position:relative;align-self:stretch;min-height:360px}
-.v7 .evolve-photo-wrap .evolve-photo{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto}
-.v7 .dream-badge{position:absolute;left:0;bottom:0;transform:translate(-32%,32%);width:clamp(120px,13vw,176px);aspect-ratio:1;pointer-events:none;z-index:2;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35))}
+/* Revolving "If you can dream it · We can build it" badge (used on the Services header). */
+.v7 .dream-badge{position:absolute;aspect-ratio:1;pointer-events:none;z-index:2}
 .v7 .dream-badge svg{width:100%;height:100%;display:block;animation:dream-spin 22s linear infinite}
 .v7 .dream-badge text{font-family:var(--sans);font-weight:700;font-size:15.5px;letter-spacing:.14em;fill:#fff}
 @keyframes dream-spin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.v7 .dream-badge svg{animation:none}}
-@media(max-width:859px){.v7 .evolve.with-photo{min-height:0}.v7 .evolve-photo-wrap{min-height:0;aspect-ratio:4/3}.v7 .dream-badge{transform:translate(-18%,24%);width:110px}}
-
-/* Photo wrapper must take the whole grid cell (the card start-justifies its items). */
-.v7 .evolve-photo-wrap{justify-self:stretch;width:100%}
 /* Services header: intro kept to the left at the title's width, the badge large on the right in royal blue. */
 .v7 .pagehead.with-badge .in{position:relative}
 .v7 .pagehead.with-badge h1,.v7 .pagehead.with-badge .lede{max-width:calc(100% - clamp(220px,26vw,360px))}
 .v7 .pagehead.with-badge .lede{text-align:left;hyphens:none}
-.v7 .pagehead .dream-badge{left:auto;bottom:auto;right:clamp(16px,5vw,40px);top:50%;transform:translateY(-50%);width:clamp(180px,22vw,310px);filter:none}
+.v7 .pagehead .dream-badge{right:clamp(16px,5vw,40px);top:50%;transform:translateY(-50%);width:clamp(180px,22vw,310px)}
 .v7 .dream-badge.blue text{fill:var(--accent)}
 @media(max-width:859px){.v7 .pagehead.with-badge h1,.v7 .pagehead.with-badge .lede{max-width:none}.v7 .pagehead .dream-badge{display:none}}

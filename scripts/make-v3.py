@@ -399,7 +399,7 @@ def v7_extras(s, f, is_home, base):
         # banner: dashes are buttons, the carousel runs on a script, the two buttons sit side by side
         a = '  <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>\n</header>\n'
         assert a in s; s = s.replace(a, '  <div className="dots"><button type="button" aria-label="Picture 1"></button><button type="button" aria-label="Picture 2"></button><button type="button" aria-label="Picture 3"></button><button type="button" aria-label="Picture 4"></button></div>\n</header>\n<HeroCarousel />\n', 1)
-        s = s.replace('import { Race } from "@/components/v7/race";\n', 'import { Race } from "@/components/v7/race";\nimport { HeroCarousel } from "@/components/v7/hero-carousel";\nimport { DreamBadge } from "@/components/v7/dream-badge";\n', 1)
+        s = s.replace('import { Race } from "@/components/v7/race";\n', 'import { Race } from "@/components/v7/race";\nimport { HeroCarousel } from "@/components/v7/hero-carousel";\n', 1)
         a = f'<div className="ctas"><a className="btn light" href="{base}/book">Schedule a call</a><a className="btn outline" href="{base}/audit">Run the audit</a></div>'
         assert a in s; s = s.replace(a, f'<div className="ctas"><a className="btn" href="{base}/book">Schedule a call</a><a className="btn light audit-btn" href="{base}/audit">Run an instant audit</a></div>', 1)
         # the monthly report and the 'who you are talking to' section live on their own pages
@@ -416,7 +416,7 @@ def v7_extras(s, f, is_home, base):
         s = s.replace('import { Race } from "@/components/v7/race";\n', '', 1)
         # after the carousel: the full system from version 8, then how it works, then nothing else
         t0 = s.index('\n<div className="band center"'); t1 = s.index('</main>')
-        s = s[:t0] + f'\n<FullSystem base="{base}" id="fullsystem" photo={{{{ src: "/v2/img/band-van.jpg", alt: "A service van on a Phoenix street" }}}} detailed noDream badge={{<DreamBadge />}} />\n<HowItWorks base="{base}" />\n' + s[t1:]
+        s = s[:t0] + f'\n<FullSystem base="{base}" id="fullsystem" photo={{{{ src: "/v2/img/band-van.jpg", alt: "A service van on a Phoenix street" }}}} detailed />\n<HowItWorks base="{base}" />\n' + s[t1:]
         s = s.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { FullSystem, HowItWorks } from "@/components/v8/full-system";\n', 1)
         for name, path in [('FreeScan', '@/components/v2/free-scan'), ('WhySwitch', '@/components/v7/why-switch'), ('Timeline', '@/components/v7/timeline'), ('CompareTable', '@/components/v7/compare-table')]:
             if f'<{name}' not in s:

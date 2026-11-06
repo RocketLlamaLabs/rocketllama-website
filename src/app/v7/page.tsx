@@ -7,7 +7,6 @@ import { FullSystem, HowItWorks } from "@/components/v8/full-system";
 import { SixtySecondCheck } from "@/components/v2/sixty-second-check";
 import { Valley } from "@/components/v7/valley";
 import { HeroCarousel } from "@/components/v7/hero-carousel";
-import { DreamBadge } from "@/components/v7/dream-badge";
 
 export const metadata: Metadata = {
   title: { absolute: "Rocket Llama Labs · Version 7" },
@@ -76,7 +75,7 @@ export default function Page() {
 
 <Valley base="/v7" />
 
-<FullSystem base="/v7" id="fullsystem" photo={{ src: "/v2/img/band-van.jpg", alt: "A service van on a Phoenix street" }} detailed noDream badge={<DreamBadge />} />
+<FullSystem base="/v7" id="fullsystem" photo={{ src: "/v2/img/band-van.jpg", alt: "A service van on a Phoenix street" }} detailed />
 <HowItWorks base="/v7" />
 </main>
       <V7Footer note='Version 7 · built from the BBM Local mockup C' />
