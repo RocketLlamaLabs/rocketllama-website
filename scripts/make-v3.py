@@ -383,6 +383,8 @@ def v7_extras(s, f, is_home, base):
             # the walkthrough video is the Rocket Llama cut
             s = s.replace('/v2/video/bbm-local-full.mp4', '/v7/video/rocket-llama-full.mp4')
             s = s.replace('<span className="tag">90 seconds</span>', '', 1)
+            # under the video copy: one action button, no 30-second-cut link
+            s = s.replace('<p><a className="lk" href="/v7/book">Schedule a call</a> &nbsp;·&nbsp; In a hurry? <a className="lk" href="/v2/video/bbm-local-30s.mp4" target="_blank" rel="noopener">The 30-second cut</a></p>', '<div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a></div>', 1)
             # website card: lead with the benefit, not the stack
             s = s.replace('<p>Next.js, the code in your GitHub, on Vercel. Preview every change before it goes live. Stop paying Wix or GoDaddy.</p>', '<p>Preview every change before it goes live. Stop paying Wix or GoDaddy.</p>', 1)
             s = s.replace('20 to 30% conversion against a 5% average', '20% to 30% conversion against a 5% average', 1)

@@ -48,7 +48,7 @@ export default function Page() {
     <p className="kicker">Ninety seconds</p>
     <h2>The full walkthrough.</h2>
     <p>The three ways good companies lose jobs, what we build instead, how the money is tracked, and who is behind it.</p>
-    <p><a className="lk" href="/v7/book">Schedule a call</a> &nbsp;·&nbsp; In a hurry? <a className="lk" href="/v2/video/bbm-local-30s.mp4" target="_blank" rel="noopener">The 30-second cut</a></p>
+    <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a></div>
   </div>
   <div className="shot"><video controls playsInline preload="metadata" poster="/v7/video-poster.png"><source src="/v7/video/rocket-llama-full.mp4" type="video/mp4" /></video></div>
 </div></section>
