@@ -605,3 +605,5 @@
 .v7 #proof .bstats .l{color:#fff}
 /* Proof band: second sentence in white too. */
 .v7 #proof h3.bsub{color:#fff}
+/* System diagram: the centred sources label at twice the size. */
+.v7 .diag .lab.lab-lg{font-size:21px;letter-spacing:.12em}
