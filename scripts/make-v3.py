@@ -1,3 +1,4 @@
+import re
 # Generates the versions that derive from the version 2 source:
 #
 #   version 3  ->  src/app/(home)  (the live site: /, /services, /book, /qualify, /about-brian)
@@ -261,6 +262,8 @@ def v7_extras_core(s, f, is_home, base):
     s = s.replace('src="/brand/logo-stacked.svg"', 'src="/brand/logo-nav.svg"')
     # copy edits that apply to every v7 page
     s = s.replace('four contractors; we never do.', 'four contractors. We never do.')
+    # no Brian quote box on the book and qualify pages
+    s = re.sub(r'\n\s*<div className="abox quote">.*?</blockquote>\n\s*</div>', '', s, flags=re.S)
     s = s.replace('If you send a truck to a house, this is built for you. We start in Phoenix and expand city by city. Every lead comes from your own site and your own ads, so it is yours alone, never sold to four other contractors.', 'If you send a truck to a house this is built for you. We start in your service area and expand city by city. Every lead comes from your own site and your own ads so it is yours alone, never sold to four other contractors.')
     if not is_home:
         return s

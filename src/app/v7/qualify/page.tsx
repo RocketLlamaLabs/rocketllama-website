@@ -65,10 +65,6 @@ export default function Page() {
       <p className="k">Your leads</p>
       <p><b>Exclusive leads, never shared.</b> Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors. We never do.</p>
     </div>
-    <div className="abox quote">
-      <img src="/v2/img/brian-greenberg.jpg" alt="Brian Greenberg" width="64" height="64" loading="lazy" />
-      <blockquote>&quot;I competed for the top spots on the internet nationally against the biggest players. Doing it for one city and one trade is the fight I want.&quot;<cite>Brian Greenberg, Rocket Llama Labs</cite></blockquote>
-    </div>
   </aside>
 </div></section>
 </main>
