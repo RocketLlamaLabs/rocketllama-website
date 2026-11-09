@@ -577,3 +577,7 @@
 .v7 .pagehead .dream-badge{height:90%;top:5%;bottom:auto;right:clamp(16px,4vw,56px)}
 /* Team bios: a "Read less" link at the foot of an opened bio. */
 .v7 .team .card details.bio .less{display:inline-block;margin-top:12px;padding:0;border:0;background:none;font-family:var(--sans);font-weight:700;font-size:.92rem;color:var(--accent);cursor:pointer}
+/* Service cards: royal blue dots on the list items. */
+.v7 .svc .card ul{list-style:none;padding-left:0}
+.v7 .svc .card ul li{position:relative;padding-left:18px}
+.v7 .svc .card ul li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--accent)}
