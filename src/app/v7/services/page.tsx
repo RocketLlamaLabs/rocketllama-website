@@ -73,7 +73,8 @@ export default function Page() {
 
 <div className="band" id="proof" style={{"--img":"url(/v2/img/band-door.jpg)"} as CSSProperties}><div className="wrap in">
   <p className="kicker">Tracked to the job</p>
-  <h2>We don&rsquo;t report clicks. We report booked jobs and what they were worth.</h2>
+  <h2>We don&rsquo;t report clicks.</h2>
+  <h3 className="bsub">We report booked jobs and what they were worth.</h3>
   <div className="bstats">
     <div><div className="b">$2 : $1</div><div className="l">Our floor: two dollars back for every dollar spent, or we work free</div></div>
     <div><div className="b">&lt;60s</div><div className="l">Every new lead gets a text and an email, in your voice</div></div>
