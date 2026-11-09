@@ -591,3 +591,5 @@
 .v7 #proof .kicker{font-size:12.5px;letter-spacing:.08em}
 /* Proof band: second sentence as an H3 under the headline. */
 .v7 #proof h3.bsub{font-family:var(--sans);font-size:1.5rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;color:#fff;margin:12px 0 0;max-width:30ch;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+/* Proof band: same label-to-headline gap as the other sections. */
+.v7 #proof .kicker{margin-bottom:18px}
