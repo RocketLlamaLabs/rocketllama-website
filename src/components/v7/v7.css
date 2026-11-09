@@ -609,3 +609,5 @@
 .v7 .diag .lab.lab-lg{font-size:15.75px;letter-spacing:.12em}
 /* Legal pages: bullets in the heading navy. */
 .v7 .legal-sec li::before{background:var(--ink)}
+/* Stat cards: "in" and "vs" in the navy like the numbers. */
+.v7 .card .n .sm{color:var(--ink)}
