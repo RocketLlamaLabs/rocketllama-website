@@ -5,7 +5,7 @@ const PHONES_DEFAULT = ["tracked numbers on Telnyx (Tier 1)", "answers, transfer
 
 const WEBSITE_DEFAULT = ["Next.js on Vercel, code in your GitHub, hosted free", "schema for Google and AI search, stars per service", "funnels: questions, address autofill, offer, booking"];
 
-export function SystemDiagram({ phones = PHONES_DEFAULT, website = WEBSITE_DEFAULT, crmTitle = "Your CRM (Pulse)", googleSub = "highest intent, your own account", metaSub = "lead forms, your own account", websiteTextY = 236 }: { phones?: string[]; website?: string[]; crmTitle?: string; googleSub?: string; metaSub?: string; websiteTextY?: number } = {}) {
+export function SystemDiagram({ phones = PHONES_DEFAULT, website = WEBSITE_DEFAULT, crmTitle = "Your CRM (Pulse)", googleSub = "highest intent, your own account", metaSub = "lead forms, your own account", websiteTextY = 236, spendLabel = "SPEND FOLLOWS RESULTS" }: { phones?: string[]; website?: string[]; crmTitle?: string; googleSub?: string; metaSub?: string; websiteTextY?: number; spendLabel?: string } = {}) {
   return (
 <svg className="diag" viewBox="0 0 1000 680" role="img" aria-label="The client's marketing system: traffic sources feed a website they own, the phone system and website feed the CRM, the CRM books jobs, closed jobs feed the return on ad spend loop">
   <defs><marker id="arrC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" className="mk" /></marker></defs>
@@ -39,7 +39,7 @@ export function SystemDiagram({ phones = PHONES_DEFAULT, website = WEBSITE_DEFAU
   <path d="M640 622 L700 622" className="arrow" />
   <path d="M300 622 L360 622" className="arrow" style={{strokeDasharray:"4 4"} as CSSProperties} />
   <path d="M980 590 L992 590 L992 71 L980 71" className="arrow" style={{strokeDasharray:"4 4"} as CSSProperties} />
-  <text x="980" y="165" className="lab" textAnchor="end">SPEND FOLLOWS RESULTS</text>
+  {spendLabel ? <text x="980" y="165" className="lab" textAnchor="end">{spendLabel}</text> : null}
 </svg>
   );
 }
