@@ -587,3 +587,5 @@
 .v7 .watch .ctas{margin-top:22px}
 /* What-we-build section: the button at the standard size like every other one. */
 .v7 #what .btn.sm{font-size:1rem;padding:13px 22px;min-width:220px;justify-content:center}
+/* Services proof band: standard kicker size. */
+.v7 #proof .kicker{font-size:12.5px;letter-spacing:.08em}
