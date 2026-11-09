@@ -344,6 +344,18 @@ LESS_SCRIPT = "document.addEventListener('click',function(e){var b=e.target.clos
 MENU_SCRIPT = "document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}})"
 MENU_SCRIPT = MENU_SCRIPT + ';' + LESS_SCRIPT
 
+V7_PROOF_BAND = '''<div className="band" id="proof" style={{"--img":"url(/v2/img/band-door.jpg)"} as CSSProperties}><div className="wrap in">
+  <p className="kicker">Tracked to the job</p>
+  <h2>We don&rsquo;t report clicks. We report booked jobs and what they were worth.</h2>
+  <div className="bstats">
+    <div><div className="b">$2 : $1</div><div className="l">Our floor: two dollars back for every dollar spent, or we work free</div></div>
+    <div><div className="b">&lt;60s</div><div className="l">Every new lead gets a text and an email, in your voice</div></div>
+    <div><div className="b">1 per source</div><div className="l">Tracked phone numbers, so we know which ad made it ring</div></div>
+    <div><div className="b">100%</div><div className="l">Yours: the site, the data, the numbers and the ad accounts</div></div>
+  </div>
+</div></div>'''
+
+
 
 def v7_extras(s, f, is_home, base):
     s = v7_extras_core(s, f, is_home, base)
@@ -379,7 +391,7 @@ def v7_extras(s, f, is_home, base):
         s = s.replace(a, '<header className="pagehead with-badge" id="top">\n  <div className="wrap in">\n    <div className="copy">\n    <p className="kicker">Our services</p>\n    <h1>Everything your company needs to get the call.</h1>\n    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. Here is every piece we run for you, and how they fit together.</p>\n    <DreamBadge tone="blue" />\n    </div>\n  </div>\n</header>', 1)
         a = '<section id="map" className="feature">'
         if a in s:
-            s = s.replace(a, '<Race />\n\n' + a, 1)
+            s = s.replace(a, '<Race />\n\n' + V7_PROOF_BAND + '\n\n' + a, 1)
             s = s.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { Race } from "@/components/v7/race";\nimport { DreamBadge } from "@/components/v7/dream-badge";\n', 1)
             # the walkthrough video is the Rocket Llama cut
             s = s.replace('/v2/video/bbm-local-full.mp4', '/v7/video/rocket-llama-full.mp4')
