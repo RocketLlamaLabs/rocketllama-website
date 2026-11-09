@@ -352,7 +352,7 @@ V7_PROOF_BAND = '''<div className="band" id="proof" style={{"--img":"url(/v2/img
     <div><div className="b">$2 : $1</div><div className="l">Our floor: two dollars back for every dollar spent or we work free</div></div>
     <div><div className="b">&lt;60s</div><div className="l">Every new lead gets a text and an email in your voice</div></div>
     <div><div className="b">1 per source</div><div className="l">Tracked phone numbers, so we know which ad made it ring</div></div>
-    <div><div className="b">100%</div><div className="l">Yours: the site, the data, the numbers and the ad accounts</div></div>
+    <div><div className="b">100%</div><div className="l">Yours: the site, the data, the numbers, and the ad accounts</div></div>
   </div>
 </div></div>'''
 
