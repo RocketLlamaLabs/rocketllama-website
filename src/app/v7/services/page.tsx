@@ -87,7 +87,7 @@ export default function Page() {
   <p className="kicker">How it connects</p>
   <h2>Everything points to a website you own. Everything lands in a CRM you own.</h2>
   <p className="sub">Traffic from Google, Meta, and your reviews feeds a site built for search and AI search. The site and the phones feed your CRM. The CRM books the job and records what it was worth.</p>
-  <div className="diagwrap"><SystemDiagram phones={["tracked numbers on Tier 1 carrier", "answers, transfers to you, returns", "to the AI to book, or take a message"]} website={["Hosted free", "schema for Google and AI search, stars per service", "funnels: questions, address autofill, offer, booking"]} crmTitle="Your CRM" googleSub="highest intent, you own account" metaSub="lead forms, you own account" websiteTextY={247} spendLabel="" centerSourcesLabel /></div>
+  <div className="diagwrap"><SystemDiagram phones={["tracked numbers on Tier 1 carrier", "answers, transfers to you, returns", "to the AI to book, or take a message"]} website={["Schema for Google and AI search, stars per service.", "Funnels: questions, address autofill, offer, booking."]} crmTitle="Your CRM" googleSub="highest intent, you own" metaSub="lead forms, you own" websiteTextY={247} spendLabel="" centerSourcesLabel /></div>
 </div></section>
 
 </main>
