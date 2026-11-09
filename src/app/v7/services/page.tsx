@@ -37,7 +37,7 @@ export default function Page() {
     <div className="copy">
     <p className="kicker">Our services</p>
     <h1>Everything your company needs to get the call.</h1>
-    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system and run by one team. Here is every piece we run for you, and how they fit together.</p>
+    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system, and run by one team. Here is every piece we run for you, and how they fit together.</p>
     <DreamBadge tone="blue" />
     </div>
   </div>
