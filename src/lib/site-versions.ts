@@ -3,11 +3,12 @@
 // brand mark rounds live under /public/v2, copied from the bbm-plan repository.
 
 export type SiteVersion = {
-  id: "v1" | "v2";
+  id: "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7" | "v8";
   name: string;
   status: "live" | "sample";
   href: string;
   kitHref?: string;
+  kitLabel?: string;
   summary: string;
   origin: string;
 };
@@ -16,10 +17,10 @@ export const siteVersions: SiteVersion[] = [
   {
     id: "v1",
     name: "Version 1",
-    status: "live",
-    href: "/",
+    status: "sample",
+    href: "/v1",
     summary:
-      "The software and AI studio homepage, mocked. Brand book v1.0: navy, blue, mist, Montserrat and Inter.",
+      "The software and AI studio homepage, mocked. Brand book v1.0: navy, blue, mist, Montserrat and Inter. It was the site at / until version 3 replaced it.",
     origin: "Built in this repository, October 2026.",
   },
   {
@@ -28,10 +29,77 @@ export const siteVersions: SiteVersion[] = [
     status: "sample",
     href: "/v2",
     kitHref: "/admin/website/v2",
+    kitLabel: "Version 2 kit",
     summary:
       "The local home-services marketing site: slideshow hero, the video, the 60-second check, the booking funnel and the qualify quiz. A sample to redesign from.",
     origin:
       "Ported from the BBM Local mockup C (RocketLlamaLabs/bbm-plan), October 2026.",
+  },
+  {
+    id: "v3",
+    name: "Version 3",
+    status: "live",
+    href: "/",
+    kitHref: "/admin/website/v2",
+    kitLabel: "Version 2 kit (shared)",
+    summary:
+      "Version 2's layout in the Rocket Llama colors: navy, blue and mist instead of green, the stacked logo (mascot, then Rocket / Llama on two lines), and no price list. Pricing is replaced by a custom-plan section that sends people to book a call.",
+    origin:
+      "Generated from the version 2 source by scripts/make-v3.py, November 2026. Same pages, quizzes, funnel and photos. Live at the root since November 2026; /v3 redirects there.",
+  },
+  {
+    id: "v4",
+    name: "Version 4 · Ignition",
+    status: "sample",
+    href: "/v4",
+    summary:
+      "Homepage direction A: bold Montserrat, one vivid photo panel beside the headline with a live \"missed call, AI reply, booked\" card playing on top of it. Brand blue with rocket-flame orange as the second accent.",
+    origin:
+      "Built from Madie's copy and photos as a static page (public/mockups/v4.html), November 2026.",
+  },
+  {
+    id: "v5",
+    name: "Version 5 · Sunrise Valley",
+    status: "sample",
+    href: "/v5",
+    summary:
+      "Homepage direction B: the warmest and most colorful. A photo bento hero, a Phoenix-sunrise gradient (gold, coral, ember) against brand blue, big rounded shapes, the mascot on a gradient tile and the horizontal logo in the nav.",
+    origin:
+      "Built from Madie's copy and photos as a static page (public/mockups/v5.html), November 2026.",
+  },
+  {
+    id: "v6",
+    name: "Version 6 · Signal",
+    status: "sample",
+    href: "/v6",
+    summary:
+      "Homepage direction C: clean and editorial. A different display face, a yellow highlighter accent on blue, a live feed of booked jobs over the hero photo, a travelling beam through the three-step system and the monthly report as a live card.",
+    origin:
+      "Built from Madie's copy and photos as a static page (public/mockups/v6.html), November 2026.",
+  },
+  {
+    id: "v7",
+    name: "Version 7",
+    status: "sample",
+    href: "/v7",
+    kitHref: "/admin/website/v2",
+    kitLabel: "Version 2 kit (shared)",
+    summary:
+      "Version 3 plus the custom elements from Madison's mockups: the instant audit in the hero, the four promises strip, why owners switch, the Valley map with open and taken spots per trade, the per-trade tuning and photo band, the speed-to-lead race, the monthly report card with a bad month, the exit checklist, the 90-day timeline and the agency comparison. No price list.",
+    origin:
+      "Generated from the version 2 source by scripts/make-v3.py with the version 7 extras; the custom components live in src/components/v7. November 2026.",
+  },
+  {
+    id: "v8",
+    name: "Version 8",
+    status: "sample",
+    href: "/v8",
+    kitHref: "/admin/website/v2",
+    kitLabel: "Version 2 kit (shared)",
+    summary:
+      "The simplest homepage. A calm banner with one button, the 60-second check right under it, the three leaks, the full system as one list of everything we run (phones, CRM, AI attendant, search, AI search, Google profile, Google, Facebook, Instagram, YouTube and Local Services ads, hosting, design, content, links, AI booking, reviews, funnels, support, custom projects, local commercials, email, voicemail drop), how it works in four steps, who you are talking to, and the trade picker. No pricing.",
+    origin:
+      "Hand-written home in src/components/v8/home.tsx; sub-pages generated from version 2 by scripts/make-v3.py. Structure modelled on a classic home services agency page. November 2026.",
   },
 ];
 

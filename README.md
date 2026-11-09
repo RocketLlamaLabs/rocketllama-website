@@ -43,8 +43,14 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Website versions
 
-- **Version 1** is the homepage at `/` (`src/app/page.tsx`).
-- **Version 2** is the sample site under `/v2` (`src/app/v2`, components in `src/components/v2`), ported from the BBM Local mockup C in [RocketLlamaLabs/bbm-plan](https://github.com/RocketLlamaLabs/bbm-plan). Its photos, video cuts and the logo rounds are in `public/v2`. The admin lists both under **Website**, and `/admin/website/v2` is the version 2 kit: pages, quizzes, calendar, design tokens and every asset.
+- **Version 3** is the live site at `/` (`src/app/(home)`: home, `/services`, `/book`, `/qualify`, `/about-brian`; footer in `src/components/v3`). It is version 2 in the Rocket Llama colors with the stacked logo, rotating hero headlines and no price list, generated from the version 2 source: after editing version 2, run `python3 scripts/make-v3.py` to carry the change forward. The shared components in `src/components/v2` take a `base` prop so both versions can use them. `/v3` redirects to `/`.
+- **Version 1**, the software and AI studio homepage, moved to `/v1` (`src/app/v1/page.tsx`).
+- **Version 2** is the sample site under `/v2` (`src/app/v2`, components in `src/components/v2`), ported from the BBM Local mockup C in [RocketLlamaLabs/bbm-plan](https://github.com/RocketLlamaLabs/bbm-plan). Its photos, video cuts and the logo rounds are in `public/v2`. `/admin/website/v2` is the version 2 kit: pages, quizzes, calendar, design tokens and every asset.
+- **Version 7** is version 3 with the custom elements from Madison's mockups folded in (`src/app/v7`, components and styles in `src/components/v7`): the instant audit in the hero, the Valley map with open and taken spots per trade, the per-trade tuning and photo band, the speed-to-lead race, the monthly report card, the exit checklist, the 90-day timeline and the agency comparison. The same generator writes it, so edits to version 2 carry forward to both 3 and 7.
+- **Version 8** is the simplified homepage (`src/components/v8/home.tsx` and `v8.css`; the sub-pages under `src/app/v8` are generated from version 2 like the others). The 60-second check sits under the banner and the full system is one list.
+- **Versions 4, 5 and 6** are the three homepage directions (Ignition, Sunrise Valley, Signal): single static pages in `public/mockups`, served at `/v4`, `/v5` and `/v6` by rewrites in `next.config.ts`, with a side-by-side index at `/mockups`. The stacked and horizontal logo lockups they use are in `public/brand/logo-*.svg`.
+
+The admin lists every version under **Website**.
 
 To re-port after editing the mockup sources, with a checkout of `bbm-plan` beside this repository:
 

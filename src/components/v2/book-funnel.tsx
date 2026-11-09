@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { mountBookFunnel } from "./behavior/book-funnel";
 
 // BookFunnel: markup from the mockup's _book.html, behaviour mounted on the client.
-export function BookFunnel() {
+export function BookFunnel({ tz = "Phoenix time" }: { tz?: string }) {
   useEffect(mountBookFunnel, []);
   return (
     <>
@@ -18,7 +18,7 @@ export function BookFunnel() {
 
     <div className="step on" data-q="slot" data-auto="1">
       <h3>Pick a time.</h3>
-      <p className="why">Phoenix time. The Zoom link comes by text and email, and you can move it any time.</p>
+      <p className="why">{tz}. The Zoom link comes by text and email, and you can move it any time.</p>
       <span className="f">Day</span>
       <div className="opts five" data-single="q_day" id="q_days" style={{marginTop:"10px"} as CSSProperties}></div>
       <div className="grp" id="g_slots" hidden><span className="f">Time</span><div className="opts five" data-single="q_slot" id="q_slots" style={{marginTop:"10px"} as CSSProperties}></div></div>
@@ -78,11 +78,11 @@ export function BookFunnel() {
           </div>
         </div>
         <svg className="ring" viewBox="0 0 240 240" aria-hidden="true">
-          <defs><pattern id="qzgrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#dfe7e1" strokeWidth="1" /></pattern></defs>
-          <rect width="240" height="240" rx="18" fill="#f4f8f5" /><rect width="240" height="240" rx="18" fill="url(#qzgrid)" />
+          <defs><pattern id="qzgrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="var(--line)" strokeWidth="1" /></pattern></defs>
+          <rect width="240" height="240" rx="18" fill="var(--bg)" /><rect width="240" height="240" rx="18" fill="url(#qzgrid)" />
           <circle className="r r50" cx="120" cy="120" r="104" /><circle className="r r30" cx="120" cy="120" r="66" /><circle className="r r15" cx="120" cy="120" r="34" />
-          <g className="pin2"><circle cx="196" cy="52" r="9" fill="#16a34a" opacity=".9" /><circle cx="56" cy="190" r="9" fill="#16a34a" opacity=".9" /></g>
-          <circle cx="120" cy="120" r="9" fill="#16a34a" stroke="#fff" strokeWidth="3" />
+          <g className="pin2"><circle cx="196" cy="52" r="9" fill="var(--accent)" opacity=".9" /><circle cx="56" cy="190" r="9" fill="var(--accent)" opacity=".9" /></g>
+          <circle cx="120" cy="120" r="9" fill="var(--accent)" stroke="#fff" strokeWidth="3" />
           <text className="lbl" x="120" y="228" textAnchor="middle" id="q_ringlbl">Pick a home base</text>
         </svg>
       </div>

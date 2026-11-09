@@ -1,0 +1,613 @@
+/*
+ * Version 7: styles for the custom elements folded in from Madison's mockups
+ * (instant audit, trust strip, why owners switch, the Valley map and tuning,
+ * the race, the monthly report, the exit checklist, the timeline, the
+ * comparison). Scoped under .v7 and built on the version 3 tokens:
+ * --accent, --accent-ink, --accent-soft, --ink, --muted, --faint, --line,
+ * --surface, --deep, --sans, --serif.
+ */
+
+/* ---- hero: two columns, the audit card on the right ---- */
+.v7 .hero .in.hero-grid{display:grid;gap:32px;align-items:end;padding-block:clamp(64px,8vh,110px) clamp(40px,6vw,72px)}
+@media(min-width:1000px){.v7 .hero .in.hero-grid{grid-template-columns:1.05fr .95fr;gap:48px}}
+.v7 .audit{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:0 30px 60px -24px rgba(4,23,58,.55);padding:24px;position:relative;color:var(--ink);font-family:var(--sans);text-shadow:none}
+@media(min-width:640px){.v7 .audit{padding:30px}}
+.v7 .audit .top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;font-weight:600;color:var(--muted)}
+.v7 .audit .top .live{display:inline-flex;align-items:center;gap:8px;color:var(--accent-ink)}
+.v7 .audit .top .live i{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;animation:v7pulse 1.6s ease-in-out infinite}
+@keyframes v7pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.v7 .audit h2{color:var(--ink);font-size:clamp(1.3rem,2.2vw,1.6rem);margin:12px 0 0;max-width:none;text-shadow:none;letter-spacing:-.02em}
+.v7 .audit .row{display:grid;gap:12px;margin-top:16px}
+@media(min-width:640px){.v7 .audit .row{grid-template-columns:1fr 180px}}
+.v7 .audit label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;color:var(--ink)}
+.v7 .audit input,.v7 .audit select{width:100%;font:inherit;font-size:1rem;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:12px;min-height:48px;padding:10px 14px}
+.v7 .audit input:focus,.v7 .audit select:focus{outline:3px solid var(--accent);outline-offset:1px}
+.v7 .audit .go{margin-top:14px;display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center}
+.v7 .audit button.btn{cursor:pointer}
+.v7 .audit button.btn:disabled{opacity:.6;cursor:wait}
+.v7 .audit .fine{font-size:14px;color:var(--muted);margin:0}
+.v7 .achecks{display:none;margin-top:20px;border-top:1px solid var(--line)}
+.v7 .achecks.on{display:block}
+.v7 .arow{display:grid;grid-template-columns:28px 1fr auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);opacity:.35;transition:opacity .3s}
+.v7 .arow.on{opacity:1}
+.v7 .arow .ic{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center}
+.v7 .arow.on .ic{border-color:var(--accent)}
+.v7 .arow.done .ic{background:var(--accent);border-color:var(--accent)}
+.v7 .arow.done .ic::after{content:"";width:10px;height:6px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:translateY(-1px) rotate(-45deg)}
+.v7 .arow .ic .spin{width:12px;height:12px;border-radius:50%;border:2px solid var(--accent);border-right-color:transparent;animation:v7spin .8s linear infinite;display:none}
+.v7 .arow.on:not(.done) .ic .spin{display:block}
+@keyframes v7spin{to{transform:rotate(360deg)}}
+.v7 .arow .lbl{font-weight:600;font-size:15px}
+.v7 .arow .lbl small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.v7 .arow .val{font-size:14px;font-weight:600;color:var(--muted);min-width:64px;text-align:right}
+.v7 .arow.done .val{color:var(--ink)}
+.v7 .aresult{display:none;margin-top:20px}
+.v7 .aresult.on{display:block;animation:v7rise .4s ease both}
+@keyframes v7rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.v7 .scoreboard{display:grid;gap:18px;align-items:center}
+@media(min-width:640px){.v7 .scoreboard{grid-template-columns:150px 1fr}}
+.v7 .aring{position:relative;width:140px;height:140px;margin:0 auto}
+.v7 .aring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.v7 .aring .n{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-weight:900;font-size:40px;line-height:1;color:var(--ink)}
+.v7 .aring .n small{display:block;font-weight:500;font-size:12px;color:var(--muted);margin-top:4px}
+.v7 .audit .verdict{font-weight:800;font-size:1.15rem;margin:0 0 4px;color:var(--ink)}
+.v7 .abars{display:grid;gap:8px;margin-top:12px}
+.v7 .abar{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:center;font-size:13.5px}
+.v7 .abar .lbl{grid-column:1/-1;display:flex;justify-content:space-between;font-weight:600}
+.v7 .abar .lbl span:last-child{color:var(--muted);font-weight:400}
+.v7 .abar .trk{height:9px;background:var(--accent-soft);border-radius:5px;overflow:hidden;position:relative}
+.v7 .abar .trk i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--accent);border-radius:5px;transition:width 1s ease}
+.v7 .abar .trk.top i{background:var(--deep)}
+.v7 .legend{display:flex;gap:18px;font-size:13px;color:var(--muted);margin:8px 0 0}
+.v7 .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.v7 .legend i.you{background:var(--accent)}.v7 .legend i.top{background:var(--deep)}
+.v7 .ai-cards{display:grid;gap:10px;margin-top:16px}
+.v7 .ai-card{background:var(--accent-soft);border-radius:12px;padding:12px 14px;font-size:13.5px;display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:start}
+.v7 .ai-card p{margin:0}
+.v7 .ai-card .eng{font-size:12.5px;color:var(--muted);display:grid;gap:2px}
+.v7 .ai-card .eng span:first-child{color:var(--ink);font-weight:700}
+.v7 .ai-card p{margin-top:6px;color:var(--muted)}
+.v7 .audit .ctas{margin-top:18px}
+.v7 .audit .btn.ghost{color:var(--ink)}
+
+/* ---- the 60-second check in the hero ---- */
+.v7 .hero .hero-grid h1{font-size:clamp(2.3rem,4.6vw,4rem);max-width:16ch}
+.v7 .hero .hero-grid .lede{font-size:clamp(1.05rem,1.5vw,1.2rem)}
+.v7 .hero .hero-check .chk{margin:0;max-width:none;text-shadow:none;color:var(--ink);box-shadow:0 30px 60px -24px rgba(4,23,58,.55)}
+.v7 .hero .hero-check .chk .kicker{color:var(--accent-ink);text-shadow:none}
+.v7 .hero .hero-check .chk .kicker::before{background:var(--accent)}
+.v7 .hero .hero-check .chk h3{color:var(--ink)}
+.v7 .audit{margin-top:30px;max-width:900px}
+
+/* ---- trust strip ---- */
+.v7 .strip{padding:20px 0;border-bottom:1px solid var(--line);background:var(--surface);font-family:var(--sans)}
+.v7 .strip .wrap{display:flex;flex-wrap:wrap;gap:12px 36px;align-items:center;justify-content:space-between;font-size:15px}
+.v7 .strip .item{display:inline-flex;align-items:center;gap:10px;font-weight:600}
+.v7 .strip .item svg{width:22px;height:22px;color:var(--accent);flex:none}
+
+/* ---- why owners switch ---- */
+.v7 .switch{display:grid;gap:16px;margin-top:36px}
+@media(min-width:720px){.v7 .switch{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.v7 .switch{grid-template-columns:repeat(3,1fr)}}
+.v7 .switch .card h3{margin-top:10px}
+.v7 .card .k{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);display:block}
+.v7 .switch .them{font-size:14px;color:var(--muted);padding:12px 14px;background:var(--accent-soft);border-radius:10px;margin-top:16px;font-family:var(--sans)}
+.v7 .switch .them b{color:var(--ink);font-size:12.5px;display:block;margin-bottom:4px;letter-spacing:.04em;text-transform:uppercase}
+
+/* ---- the Valley ---- */
+.v7 .valley{display:grid;gap:32px;align-items:start}
+@media(min-width:1000px){.v7 .valley{grid-template-columns:1fr 1fr;gap:48px}}
+.v7 .tradebar{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.v7 .tchip{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border-radius:999px;border:1.5px solid var(--ink);color:var(--ink);font-family:var(--sans);font-weight:700;font-size:15px;text-decoration:none;background:var(--surface);cursor:pointer;transition:background .15s,color .15s}
+.v7 .tchip:hover,.v7 .tchip[aria-pressed="true"]{background:var(--ink);color:#fff}
+.v7 .tchip.other{border-style:dashed}
+.v7 .mapwrap{position:relative;background:var(--accent-soft);border-radius:22px;padding:12px}
+.v7 .map{width:100%;height:auto;display:block;font-family:var(--sans)}
+.v7 .map .land{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.v7 .map .road{fill:none;stroke:var(--line);stroke-width:2;stroke-dasharray:6 6}
+.v7 .map .river{fill:none;stroke:var(--line);stroke-width:5;stroke-linecap:round;opacity:.7}
+.v7 .map .city{cursor:pointer}
+.v7 .map .city circle.dot{fill:var(--surface);stroke:var(--accent);stroke-width:3;transition:r .2s}
+.v7 .map .city.sel circle.dot{stroke-width:5}
+.v7 .map .city:hover circle.dot{r:15}
+.v7 .map .city text{font-size:13px;font-weight:700;fill:var(--ink);pointer-events:none}
+.v7 .map .city text.n{font-weight:500;font-size:11.5px;fill:var(--muted)}
+.v7 .map .ring{fill:none;stroke:var(--accent);stroke-width:2;opacity:0}
+.v7 .map .city.sel .ring{animation:v7ripple 1.8s ease-out infinite}
+@keyframes v7ripple{0%{r:12;opacity:.7}100%{r:34;opacity:0}}
+.v7 .map .hq{font-size:11px;fill:var(--muted)}
+.v7 .pin{position:absolute;width:74px;transition:left .4s ease,top .4s ease;filter:drop-shadow(0 8px 14px rgba(4,23,58,.25));pointer-events:none;left:-200px;top:-200px}
+.v7 .mapkey{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--sans);font-size:13px;color:var(--muted);padding:10px 6px 0}
+.v7 .mapkey i{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:-1px;margin-right:6px}
+.v7 .mapkey i.open{background:#fff;border:3px solid var(--accent)}
+.v7 .citycard{background:var(--surface);border-radius:14px;padding:18px 20px;margin-top:22px;display:grid;gap:14px;border:1px solid var(--line);font-family:var(--sans)}
+@media(min-width:640px){.v7 .citycard{grid-template-columns:1fr auto;align-items:center}}
+.v7 .citycard h3{font-size:1.3rem;font-weight:800;margin:0;letter-spacing:-.02em}
+.v7 .citycard .meta{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:6px;font-size:13.5px;color:var(--muted)}
+.v7 .citycard .status{font-weight:700}
+.v7 .citycard .status.open{color:var(--accent-ink)}
+.v7 .cities-k{margin-top:44px}
+.v7 h3.cities-h{font-family:var(--sans);font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:900;letter-spacing:-.03em;margin:0}
+.v7 .cities{display:grid;gap:12px;margin-top:22px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:720px){.v7 .cities{grid-template-columns:repeat(4,1fr)}}
+.v7 .citybtn{text-align:left;display:grid;gap:6px;padding:16px;border-radius:12px;background:var(--surface);border:1.5px solid var(--line);cursor:pointer;color:var(--ink);font-family:var(--sans);font-weight:700;font-size:15px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.v7 .citybtn:hover{transform:translateY(-3px);box-shadow:0 10px 24px -16px rgba(4,23,58,.6)}
+.v7 .citybtn[aria-pressed="true"]{border-color:var(--accent)}
+.v7 .citybtn small{font-weight:400;font-size:12.5px;color:var(--muted)}
+.v7 .citybtn .st{font-size:13.5px;font-weight:700}
+.v7 .citybtn .st.open{color:var(--accent-ink)}
+.v7 .band.photo-band::before{background:linear-gradient(90deg,rgba(4,23,58,.8) 0%,rgba(4,23,58,.5) 55%,rgba(4,23,58,.15) 100%)}
+.v7 .pers{display:grid;gap:16px;margin-top:36px}
+@media(min-width:900px){.v7 .pers{grid-template-columns:repeat(3,1fr)}}
+.v7 .pers .card h3{margin-top:10px}
+.v7 .pers .card .big{font-family:var(--sans);font-weight:900;font-size:clamp(1.6rem,2.6vw,2.1rem);line-height:1.05;letter-spacing:-.03em;color:var(--accent-ink);margin:10px 0 6px}
+.v7 .kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.v7 .kw span{font-family:var(--sans);font-size:13px;background:var(--accent-soft);border-radius:6px;padding:4px 8px}
+.v7 .season{display:grid;grid-template-columns:repeat(12,1fr);gap:5px;align-items:end;height:110px;margin:22px 0 22px}
+.v7 .season .b{background:var(--deep);border-radius:4px 4px 0 0;position:relative;transition:height .4s ease;opacity:.75}
+.v7 .season .b.peak{background:var(--accent);opacity:1}
+.v7 .season .b span{position:absolute;bottom:-20px;left:0;right:0;text-align:center;font-family:var(--sans);font-size:11px;color:var(--muted)}
+.v7 .note{font-family:var(--sans);font-size:13px;color:var(--faint);margin-top:20px}
+
+/* ---- the race ---- */
+.v7 .race{background:var(--surface);border-radius:22px;border:1px solid var(--line);padding:24px;margin-top:34px;box-shadow:0 30px 60px -40px rgba(4,23,58,.35);font-family:var(--sans)}
+@media(min-width:768px){.v7 .race{padding:36px}}
+.v7 .race .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+.v7 .race .clock{font-weight:900;font-size:40px;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.v7 .race .clock small{font-weight:500;font-size:13px;color:var(--muted);display:block;margin-top:4px;letter-spacing:0}
+.v7 .race button.btn{cursor:pointer}
+.v7 .race button.btn:disabled{opacity:.6}
+.v7 .lane{margin-top:24px}
+.v7 .lane .lbl{display:flex;justify-content:space-between;font-weight:700;gap:12px}
+.v7 .lane .lbl span:last-child{font-weight:500;font-size:14px;color:var(--muted)}
+.v7 .lane .trk{position:relative;height:44px;background:var(--accent-soft);border-radius:22px;margin-top:8px;overflow:hidden}
+.v7 .lane .trk .fill{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--accent);border-radius:22px}
+.v7 .lane.them .trk .fill{background:var(--deep)}
+.v7 .lane .trk .flag{position:absolute;left:4%;top:50%;transform:translate(-50%,-50%);width:56px;height:56px;box-sizing:border-box;padding:7px;background:#fff;border-radius:50%;box-shadow:0 2px 10px rgba(4,23,58,.28);object-fit:contain;transition:left .2s linear}
+.v7 .lane .marks{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-top:6px}
+.v7 .lane .done{margin-top:8px;font-weight:700;color:var(--accent-ink);min-height:24px}
+.v7 .lane.them .done{color:var(--muted)}
+.v7 .race .odds{display:grid;gap:16px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+@media(min-width:640px){.v7 .race .odds{grid-template-columns:1fr 1fr}}
+.v7 .race .odds .n{font-weight:900;font-size:36px;line-height:1;margin:0;letter-spacing:-.03em}
+.v7 .race .odds .n.accent{color:var(--accent-ink)}
+.v7 .race .odds .m{color:var(--muted);margin:6px 0 0;font-size:15px}
+.v7 .race .src{font-size:13px;color:var(--faint);margin:18px 0 0}
+
+/* ---- the monthly report ---- */
+.v7 .repgrid{display:grid;gap:32px;align-items:start}
+@media(min-width:1100px){.v7 .repgrid{grid-template-columns:.8fr 1.2fr;gap:48px}}
+.v7 .repgrid .stats{grid-template-columns:1fr 1fr;margin-top:30px}
+.v7 .report{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:0 30px 60px -36px rgba(4,23,58,.45);overflow:hidden;font-family:var(--sans)}
+.v7 .report .bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--accent-soft)}
+.v7 .report .bar .ttl{font-weight:800;font-size:16px}
+.v7 .report .bar .ttl small{display:block;font-weight:400;font-size:12.5px;color:var(--muted)}
+.v7 .months{display:inline-flex;gap:4px;padding:4px;background:var(--surface);border-radius:10px;border:1px solid var(--line)}
+.v7 .months button{border:0;background:transparent;font:inherit;font-size:13px;font-weight:600;color:var(--ink);padding:8px 10px;border-radius:7px;cursor:pointer;min-height:36px}
+.v7 .months button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.v7 .kpis{display:grid;grid-template-columns:repeat(2,1fr);border-bottom:1px solid var(--line)}
+@media(min-width:640px){.v7 .kpis{grid-template-columns:repeat(4,1fr)}}
+.v7 .kpi{padding:18px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.v7 .kpi:nth-child(4n){border-right:0}
+@media(max-width:639px){.v7 .kpi:nth-child(2n){border-right:0}}
+.v7 .kpi .l{font-size:13px;color:var(--muted)}
+.v7 .kpi .v{font-weight:900;font-size:28px;line-height:1.1;margin-top:4px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.v7 .kpi .d{font-size:12.5px;color:var(--muted);margin-top:4px}
+.v7 .kpi .d.up{color:var(--accent-ink)}
+.v7 .report .body{padding:22px;display:grid;gap:22px}
+@media(min-width:720px){.v7 .report .body{grid-template-columns:1.2fr .8fr}}
+.v7 .report h3{font-size:15px;font-weight:800;margin:0}
+.v7 .chart{margin-top:12px;display:grid;gap:10px}
+.v7 .chart .row{display:grid;grid-template-columns:120px 1fr 56px;gap:10px;align-items:center;font-size:14px}
+.v7 .chart .row .trk{height:18px;background:var(--accent-soft);border-radius:9px;overflow:hidden}
+.v7 .chart .row .trk i{display:block;height:100%;width:0;background:var(--deep);border-radius:9px;transition:width .6s ease}
+.v7 .chart .row.ai .trk i{background:var(--accent)}
+.v7 .chart .row .n{font-size:13px;text-align:right;color:var(--muted)}
+.v7 .notes{background:var(--accent-soft);border-radius:12px;padding:16px;font-size:14px}
+.v7 .notes .k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink)}
+.v7 .notes ul{margin:8px 0 0;padding-left:18px;display:grid;gap:6px}
+.v7 .notes .reply{margin-top:12px}
+.v7 .notes .m{color:var(--muted);font-size:13px}
+.v7 .report .foot{padding:14px 22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:13px;color:var(--muted);align-items:center}
+.v7 .honest{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:14px;font-weight:700;color:var(--ink);background:none;border:1.5px solid var(--ink);border-radius:8px;padding:6px 12px;cursor:pointer}
+.v7 .honest[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+/* ---- leaving ---- */
+.v7 .leave{display:grid;gap:28px;align-items:start}
+@media(min-width:900px){.v7 .leave{grid-template-columns:.9fr 1.1fr;gap:48px}}
+.v7 .toggle{display:inline-flex;align-items:center;gap:12px;cursor:pointer;font-family:var(--sans);font-weight:700;margin-top:26px;position:relative}
+.v7 .toggle input{position:absolute;opacity:0;width:1px;height:1px}
+.v7 .toggle .sw{width:56px;height:32px;border-radius:16px;background:var(--line);position:relative;transition:background .2s;flex:none}
+.v7 .toggle .sw::after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:left .2s}
+.v7 .toggle input:checked + .sw{background:var(--accent)}
+.v7 .toggle input:checked + .sw::after{left:27px}
+.v7 .toggle input:focus-visible + .sw{outline:3px solid var(--accent);outline-offset:2px}
+.v7 .assets{display:grid;gap:10px}
+.v7 .asset{display:grid;grid-template-columns:28px 1fr auto;gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface);font-size:15px;transition:border-color .3s;font-family:var(--sans)}
+.v7 .asset .ic{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center}
+.v7 .asset.on{border-color:var(--accent)}
+.v7 .asset.on .ic{background:var(--accent);border-color:var(--accent)}
+.v7 .asset.on .ic::after{content:"";width:10px;height:6px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:translateY(-1px) rotate(-45deg)}
+.v7 .asset b{display:block;font-weight:700}
+.v7 .asset small{color:var(--muted);font-size:13.5px}
+.v7 .asset .st{font-size:12.5px;font-weight:600;color:var(--muted);text-align:right}
+.v7 .asset.on .st{color:var(--accent-ink)}
+
+/* ---- ninety days ---- */
+.v7 .tl{display:grid;margin-top:40px;border-left:3px solid var(--line);margin-left:10px;font-family:var(--sans)}
+@media(min-width:900px){.v7 .tl{grid-template-columns:repeat(6,1fr);border-left:0;border-top:3px solid var(--line);margin-left:0}}
+.v7 .tl .t{position:relative;padding:0 0 28px 28px}
+@media(min-width:900px){.v7 .tl .t{padding:24px 16px 0 0}}
+.v7 .tl .t::before{content:"";position:absolute;left:-11px;top:2px;width:18px;height:18px;border-radius:50%;background:var(--surface);border:3px solid var(--deep)}
+@media(min-width:900px){.v7 .tl .t::before{left:0;top:-12px}}
+.v7 .tl .t.key::before{background:var(--accent);border-color:var(--accent)}
+.v7 .tl .t .w{font-size:12.5px;font-weight:700;color:var(--accent-ink);letter-spacing:.04em;text-transform:uppercase}
+.v7 .tl .t h3{font-size:17px;font-weight:800;margin:4px 0 0}
+.v7 .tl .t p{font-size:14px;margin-top:6px;color:var(--muted)}
+
+/* ---- side by side ---- */
+.v7 .cmpwrap{overflow-x:auto;margin-top:32px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.v7 .compare{width:100%;border-collapse:collapse;font-size:15px;font-family:var(--sans);min-width:560px}
+.v7 .compare th,.v7 .compare td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.v7 .compare th{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.v7 .compare th.us,.v7 .compare td.us{background:var(--accent-soft)}
+.v7 .compare th.us{color:var(--accent-ink)}
+.v7 .compare td.us{font-weight:600}
+.v7 .compare .src{font-size:12.5px;color:var(--muted);display:block;margin-top:4px}
+.v7 .compare tr:last-child td{border-bottom:0}
+
+@media (prefers-reduced-motion:reduce){
+  .v7 .audit .top .live i,.v7 .map .city.sel .ring{animation:none}
+  .v7 .pin{transition:none}
+}
+
+/* Nav and footer logo: the one-line Rocket Llama Labs lockup (public/brand/logo-nav.svg). */
+.v7 .nav .in{min-height:72px;padding-block:10px}
+.v7 .nav .wm img{height:52px}
+.v7 .nav .links{gap:18px;font-size:.88rem}
+.v7 .nav .links a{white-space:nowrap}
+.v7 footer .wm img{height:44px;width:auto}
+/* Hamburger menu below 900px, same as version 8. */
+.v7 .nav .menu{display:none;position:relative;margin-left:auto;background:none;border:0;border-radius:0;padding:0}
+.v7 .nav .menu summary{list-style:none;cursor:pointer;width:44px;height:44px;display:grid;place-items:center;border-radius:12px}
+.v7 .nav .menu summary::after,.v7 .nav .menu[open] summary::after{content:none}
+.v7 .nav .menu summary::-webkit-details-marker{display:none}
+.v7 .nav .menu summary span{display:block;width:22px;height:2px;border-radius:2px;background:var(--ink);box-shadow:0 -7px 0 var(--ink),0 7px 0 var(--ink)}
+.v7 .nav .menu[open] summary{background:var(--surface)}
+.v7 .nav .menu .panel{position:absolute;right:0;top:calc(100% + 10px);min-width:240px;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:10px;display:grid;gap:2px;box-shadow:0 24px 50px -24px rgba(4,23,58,.35)}
+.v7 .nav .menu .panel a{text-decoration:none;color:var(--ink);font-family:var(--sans);font-weight:600;font-size:1rem;padding:10px 14px;border-radius:10px}
+.v7 .nav .menu .panel a:hover{background:var(--surface)}
+.v7 .nav .menu .panel .btn{margin-top:8px;justify-content:center;color:#fff}
+@media(max-width:899px){
+  .v7 .nav .in{min-height:60px;padding-block:7px}
+  .v7 .nav .wm img{height:46px}
+  .v7 .nav .menu{display:block}
+  .v7 .nav .navbtns{display:none}
+}
+/* The page headline; it stays put while the photos and the smaller rotating lines change. */
+.v7 .hero .tagline{margin:0;font-family:var(--sans);font-size:clamp(1rem,4.3vw,3.45rem);line-height:1;letter-spacing:-.04em;font-weight:900;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25);white-space:nowrap;max-width:none}
+.v7 .rot .rslide h2{margin:0 0 4px;font-family:var(--sans);font-size:clamp(1.6rem,3.6vw,2.8rem);line-height:1.04;letter-spacing:-.035em;font-weight:900;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25);max-width:none;text-wrap:balance}
+.v7 .rot .rslide h2 em{font-style:normal;color:#fff;background:linear-gradient(transparent 10%,#FBF719 10%,#FBF719 92%,transparent 92%);padding:0 .08em;margin:0 -.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.55),0 0 10px rgba(0,0,0,.25)}
+/* Banner layout: H1 and the rotating line at the top, buttons and trust line at the foot. */
+.v7 .hero{align-items:stretch;min-height:calc(100svh - 72px)}
+@media(max-width:899px){.v7 .hero{min-height:calc(100svh - 60px)}}
+.v7 .hero .in{display:flex;padding-block:clamp(40px,6.5vh,76px)}
+.v7 .hero .in>div{flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.v7 .hero .rot{margin-block:auto;padding:0}
+.v7 .hero .ctas{margin-top:0}
+/* The 60-second check tile right under the banner. */
+.v7 .qzsec.quiz60{padding-block:clamp(48px,6vw,80px)}
+.v7 .qzsec.quiz60 .chk{margin-top:26px}
+/* "Built for" carousel: two photo layers crossfade under the band's gradient; text and cards fade on the swap. */
+.v7 .photo-band .bg{position:absolute;inset:0;z-index:-2;background:var(--deep) center/cover no-repeat;opacity:0;transition:opacity 1s ease}
+.v7 .photo-band .bg.on{opacity:1}
+.v7 .photo-band .in,.v7 #tuned .pers,.v7 #tuned .kicker{transition:opacity .42s ease}
+.v7 .photo-band.swap .in,.v7 #tuned.swap .pers,.v7 #tuned.swap .kicker{opacity:0}
+@media(prefers-reduced-motion:reduce){.v7 .photo-band .bg,.v7 .photo-band .in,.v7 #tuned .pers,.v7 #tuned .kicker{transition:none}}
+/* The trust line, now in the "system on one page" section. */
+.v7 #system .trust{margin:18px 0 0;font-family:var(--sans);font-size:15px;line-height:1.7;color:var(--muted);max-width:62ch}
+.v7 #system .trust b{color:var(--ink);font-weight:700}
+/* The full system and the four steps, as on version 8. */
+.v7 .sysgrid{display:grid;gap:18px;margin-top:38px}
+@media(min-width:720px){.v7 .sysgrid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1100px){.v7 .sysgrid{grid-template-columns:repeat(4,1fr)}}
+.v7 .sysgroup{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
+.v7 .sysgroup h3{font-family:var(--sans);font-size:1.25rem;font-weight:900;letter-spacing:-.02em;margin:0}
+.v7 .sysgroup .blurb{margin:4px 0 14px;color:var(--muted);font-size:.95rem}
+.v7 .sysgroup ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.v7 .sysgroup li{position:relative;padding-left:26px;font-family:var(--sans);font-weight:600;font-size:.98rem;line-height:1.35}
+.v7 .sysgroup li::before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:50%;background:var(--accent);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='black'/><path d='M7 12.5l3.2 3.2L17 9' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='black'/><path d='M7 12.5l3.2 3.2L17 9' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat}
+.v7 .evolve{margin-top:28px;background:var(--deep);color:#fff;border-radius:22px;padding:clamp(26px,4vw,40px);display:grid;gap:14px;justify-items:start}
+.v7 .evolve p{margin:0;max-width:60ch;font-size:1.08rem;line-height:1.55;color:#dce7f7}
+.v7 .evolve p b{color:#fff}
+.v7 .evolve .dream{font-family:var(--sans);font-weight:900;font-size:clamp(1.5rem,3vw,2.2rem);letter-spacing:-.03em;color:#fff;line-height:1.1}
+.v7 .evolve .btn{margin-top:6px}
+.v7 .steps4{display:grid;gap:18px;margin-top:38px}
+@media(min-width:720px){.v7 .steps4{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1100px){.v7 .steps4{grid-template-columns:repeat(4,1fr)}}
+.v7 .step{position:relative;padding-top:18px;border-top:3px solid var(--line)}
+.v7 .step::before{content:"";position:absolute;top:-3px;left:0;width:56px;height:3px;background:var(--accent)}
+.v7 .step .num{font-family:var(--sans);font-weight:900;font-size:2.4rem;line-height:1;color:var(--accent-ink);display:block}
+.v7 .step h3{font-family:var(--sans);font-size:1.15rem;font-weight:800;margin:10px 0 6px;letter-spacing:-.01em}
+.v7 .step p{margin:0;color:var(--muted);font-size:.97rem;line-height:1.5}
+/* The two "you" in the system heading. */
+.v7 #system h2 em{font-style:normal;color:inherit;background:linear-gradient(transparent 10%,#FBF719 10%,#FBF719 92%,transparent 92%);padding:0 .06em;margin:0 -.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* overflow-x:hidden made .v7 a scroll container and un-stuck the nav; clip does not. */
+.v7{overflow-x:clip}
+/* Carousels driven by script: no CSS animation, crossfades on .on, dashes as buttons. */
+.v7 .hero .slides img{animation:none;opacity:0;transform:scale(1);transition:opacity 1.2s ease}
+.v7 .hero .slides img.on{opacity:1;animation:v7zoom 9.6s linear forwards}
+@keyframes v7zoom{0%{transform:scale(1)}100%{transform:scale(1.13)}}
+.v7 .rot .rslide{animation:none;opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s ease;pointer-events:none}
+.v7 .rot .rslide.on{opacity:1;transform:none;pointer-events:auto}
+.v7 .dots{z-index:3}
+.v7 .dots button{width:26px;height:18px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+.v7 .dots button::before{content:"";position:absolute;left:0;right:0;top:50%;height:3px;margin-top:-1.5px;border-radius:2px;background:rgba(255,255,255,.35);transition:background .3s}
+.v7 .dots button:hover::before{background:rgba(255,255,255,.7)}
+.v7 .dots button.on::before{background:#fff}
+.v7 .dots button:focus-visible{outline:2px solid #fff;outline-offset:2px;border-radius:4px}
+@media(prefers-reduced-motion:reduce){.v7 .hero .slides img,.v7 .rot .rslide{transition:none}}
+/* The evolving-system callout with a photo on the right. */
+.v7 .evolve.with-photo{display:grid;gap:28px;align-items:center}
+@media(min-width:860px){.v7 .evolve.with-photo{grid-template-columns:1.15fr .85fr;gap:40px}}
+.v7 .evolve.with-photo .evolve-text{display:grid;gap:14px;justify-items:start}
+.v7 .evolve-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;display:block}
+/* The line under each big number in the three-ways cards. */
+.v7 #problem .card h3{color:var(--accent)}
+/* Footer: logo left, copyright centred, legal links right, on the light blue. */
+.v7 footer{background:#eaf2fd;border-top:0}
+.v7 footer .in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
+.v7 footer .copy{text-align:center}
+.v7 footer .legal{justify-self:end;white-space:nowrap}
+.v7 footer .legal a{color:var(--muted);text-decoration:none}
+.v7 footer .legal a:hover{color:var(--ink);text-decoration:underline}
+@media(max-width:640px){.v7 footer .in{grid-template-columns:1fr;justify-items:center;text-align:center}.v7 footer .legal{justify-self:center}}
+/* Built-for carousel copy lines up with the page, like every other section. */
+.v7 .band.photo-band .in{width:100%;max-width:1180px;margin:0 auto;padding-inline:clamp(16px,5vw,40px)}
+.v7 .band.photo-band .in h2,.v7 .band.photo-band .in p{margin-inline:0;text-align:left}
+/* The banner audit button: solid white with the bright blue. */
+.v7 .hero .btn.light.audit-btn{background:#fff;color:var(--accent);border-color:#fff}
+.v7 .hero .btn.light.audit-btn:hover{background:#f1f6ff}
+/* Two nav buttons: the audit as an outline, the call solid. */
+.v7 .nav .navbtns{display:flex;gap:10px;align-items:center}
+.v7 .nav .navbtns .ghost{color:var(--accent);border-color:var(--accent);background:transparent}
+.v7 .nav .navbtns .ghost:hover{background:var(--accent-soft)}
+.v7 .nav .menu .panel .btn.ghost{color:var(--accent);border-color:var(--accent);background:transparent;margin-top:0}
+@media(max-width:899px){.v7 .nav .navbtns{display:none}}
+/* Banner buttons sit on one baseline. */
+.v7 .hero .ctas{align-items:center}
+.v7 .hero .btn.light.audit-btn{padding:13px 22px}
+/* Footer text in the navy. */
+.v7 footer,.v7 footer .copy,.v7 footer .legal a{color:var(--deep)}
+.v7 footer .legal a:hover{color:var(--accent)}
+/* Both nav buttons share one width, labels centred. */
+.v7 .nav .navbtns .btn{min-width:176px;justify-content:center}
+.v7 .nav .menu .panel .btn{justify-content:center}
+/* Every full-size button on version 7 is the same width, label centred. */
+.v7 .btn:not(.sm){min-width:220px;justify-content:center;text-align:center}
+/* Every secondary button looks like the banner's: solid white, blue text, same size as the blue one. */
+.v7 .btn.ghost:not(.sm),.v7 .btn.outline,.v7 .chk .btn.ghost,.v7 .nav .navbtns .btn.ghost,.v7 .nav .menu .panel .btn.ghost{background:#fff;color:var(--accent);border-color:#fff;box-shadow:0 1px 0 rgba(4,23,58,.06)}
+.v7 .btn.ghost:not(.sm):hover,.v7 .btn.outline:hover,.v7 .chk .btn.ghost:hover,.v7 .nav .navbtns .btn.ghost:hover{background:#f1f6ff}
+/* On a white background the white button gets the royal blue border. */
+.v7 .nav .navbtns .btn.ghost,.v7 .nav .menu .panel .btn.ghost,.v7 .chk .btn.ghost{border-color:var(--accent);box-shadow:none}
+/* Subpage banners (.hero.small) keep a plain stacked layout: the home-banner rules do not apply. */
+.v7 .hero.small{min-height:min(52vh,480px);display:grid;align-items:center}
+.v7 .hero.small .in{display:block;padding-block:clamp(56px,9vh,96px)}
+.v7 .hero.small .kicker{margin:0 0 16px}
+.v7 .hero.small h1{font-size:clamp(2.3rem,5vw,4rem);line-height:1.02;max-width:18ch;margin:0}
+.v7 .hero.small .lede{margin:20px 0 0;max-width:52ch}
+.v7 .hero.small h1 em{color:#fff;background:linear-gradient(transparent 10%,#FBF719 10%,#FBF719 92%,transparent 92%);padding:0 .08em;margin:0 -.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone;text-shadow:0 1px 2px rgba(0,0,0,.55),0 0 10px rgba(0,0,0,.25)}
+/* The score dial: no Tailwind ring shadow (the class name collides), top edge level with the text. */
+.v7 .chk .ring{box-shadow:none}
+@media(min-width:720px){.v7 .chk .res.on{align-items:start}.v7 .chk .ring{margin-top:4px}}
+/* Score number by band: red under 40, yellow 40 to 80, green 81 and up. */
+.v7 .chk .ring .n [data-band="low"]{color:#e3001b}
+.v7 .chk .ring .n [data-band="mid"]{color:#ffd400}
+.v7 .chk .ring .n [data-band="high"]{color:#00a84f}
+/* The arc takes the same stop-light colour as the number. */
+.v7 .chk .ring circle[data-band="low"]{stroke:#e3001b}
+.v7 .chk .ring circle[data-band="mid"]{stroke:#ffd400}
+.v7 .chk .ring circle[data-band="high"]{stroke:#00a84f}
+/* Callout: the button sits centred in the space under the headline, level with the photo's foot. */
+.v7 .evolve.with-photo .evolve-text{align-self:stretch;grid-template-rows:auto auto 1fr;margin-bottom:calc(-1 * clamp(26px,4vw,40px))}
+.v7 .evolve.with-photo .evolve-text .btn{align-self:center;margin-top:0;transform:translateY(-7px)}
+/* About Us: the story block and the team cards, with dashed placeholders until the owners supply photos. */
+.v7 .story{display:grid;gap:28px;margin-top:30px;align-items:start}
+@media(min-width:900px){.v7 .story{grid-template-columns:1.2fr .8fr;gap:48px}}
+.v7 .story-text .sub{margin-top:0}
+.v7 .story-text .sub+.sub{margin-top:16px}
+.v7 .story-photo,.v7 .headshot{display:grid;place-items:center;border:2px dashed var(--line);border-radius:18px;background:var(--surface);color:var(--muted);font-family:var(--sans);font-weight:600;font-size:.95rem}
+.v7 .story-photo{aspect-ratio:4/5;max-width:420px;width:100%;justify-self:center}
+.v7 .team{display:grid;gap:18px;margin-top:34px}
+@media(min-width:720px){.v7 .team{grid-template-columns:repeat(3,1fr)}}
+.v7 .team .card{padding:24px}
+.v7 .headshot{aspect-ratio:1;border-radius:50%;width:132px;height:132px;margin-bottom:18px}
+.v7 .team h3{font-family:var(--sans);font-weight:800;font-size:1.2rem;margin:0}
+.v7 .team .role{font-family:var(--sans);font-weight:700;color:var(--accent);font-size:.9rem;margin:4px 0 10px}
+.v7 .team p{margin:0;color:var(--muted)}
+.v7 #team .ctas{margin-top:36px}
+/* Secondary button on the About page foot sits on white: blue border. */
+.v7 #team .ctas .btn.ghost{border-color:var(--accent)}
+/* Team cards: the full bio folds under a "Read more" link. */
+.v7 .team .card details.bio{background:none;border:0;border-radius:0;padding:0;margin-top:12px}
+.v7 .team .card details.bio summary{display:inline;font-family:var(--sans);font-weight:700;font-size:.92rem;color:var(--accent);cursor:pointer;list-style:none}
+.v7 .team .card details.bio summary::after{content:none}
+.v7 .team .card details.bio[open] summary{display:none}
+.v7 .team .card details.bio p{margin:12px 0 0;color:var(--muted);font-size:.95rem;line-height:1.55}
+/* Team card with a real headshot; Brian's page: story, portrait and stats, the book, press. */
+.v7 .headshot.photo{border:0;object-fit:cover;object-position:center}
+.v7 .team .card .note{margin:12px 0 0}
+.v7 .story-side{display:grid;gap:22px;justify-items:stretch}
+.v7 .portrait{width:100%;max-width:420px;aspect-ratio:4/5;object-fit:cover;object-position:top;border-radius:18px;justify-self:center}
+.v7 .story-side .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:420px;justify-self:center;width:100%}
+.v7 .story-side .stats div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+.v7 .story-side .stats b{display:block;font-family:var(--sans);font-weight:900;font-size:1.7rem;letter-spacing:-.03em;color:var(--accent);line-height:1}
+.v7 .story-side .stats span{display:block;margin-top:6px;font-family:var(--sans);font-size:.85rem;color:var(--muted);line-height:1.4}
+.v7 .story-text h2{margin-top:0}
+.v7 .story-text .sub+h2{margin-top:36px}
+.v7 .book{display:grid;gap:32px;align-items:center}
+@media(min-width:860px){.v7 .book{grid-template-columns:260px 1fr;gap:48px}}
+.v7 .book .cover{width:100%;max-width:260px;border-radius:10px;box-shadow:0 30px 60px -30px rgba(4,23,58,.45);justify-self:center}
+.v7 .book .sub+.sub{margin-top:14px}
+.v7 #book .ctas,.v7 #press .ctas{margin-top:28px}
+.v7 #book .ctas .btn.ghost,.v7 #press .ctas .btn.ghost{border-color:var(--accent)}
+/* Story block without the photo slot: one column. */
+.v7 #story .story:not(:has(.story-side)){grid-template-columns:1fr}
+.v7 #story .story-text .sub{max-width:none}
+/* Links inside a folded bio. */
+.v7 .team .card details.bio a{color:var(--accent);font-weight:600}
+/* Story paragraphs: both edges straight. */
+.v7 #story .story-text .sub{text-align:justify;hyphens:auto}
+/* Plain page header for the About page: white, navy title, no photo. */
+.v7 .pagehead{background:#fff;border-bottom:1px solid var(--line)}
+.v7 .pagehead .in{padding-block:clamp(56px,8vh,96px) clamp(40px,6vh,64px)}
+.v7 .pagehead .kicker{margin:0 0 16px}
+.v7 .pagehead h1{font-size:clamp(2.3rem,5vw,4rem);line-height:1.02;letter-spacing:-.04em;color:var(--deep);max-width:none;margin:0;text-shadow:none}
+.v7 .pagehead .lede{margin:20px 0 0;max-width:none;text-align:justify;hyphens:auto;font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.55;color:var(--muted)}
+/* No text shadow on H1s that sit on white (industries, audit, report, legal). */
+.v7 main>section h1,.v7 main>section .wrap h1{text-shadow:none}
+/* The system diagram tile sits on white. */
+.v7 .diagwrap{background:#fff}
+/* Race: Start over sits to the left of the button. */
+.v7 .race .head .go{display:flex;align-items:center;gap:18px}
+.v7 .race .again{font-family:var(--sans);font-size:.9rem;color:var(--muted);text-decoration:underline;cursor:pointer}
+.v7 .race .again:hover{color:var(--ink)}
+/* Race: the mascot rides the leading edge of the fill with no lag, centred on it. */
+.v7 .lane .trk .flag{transition:none;transform:translate(0,-50%)}
+/* Legal pages: readable column, clear section headings. */
+.v7 .legal{max-width:none}
+.v7 .legal-sec{margin-top:36px;padding-block:0}
+.v7 .legal-sec:first-child{margin-top:0}
+.v7 .legal-sec h2{font-family:var(--sans);font-size:1.35rem;font-weight:800;letter-spacing:-.02em;margin:0 0 10px}
+.v7 .legal-sec p{margin:0 0 12px;color:var(--muted);line-height:1.65}
+.v7 .legal-sec ul{margin:0 0 12px;padding:0;list-style:none;color:var(--muted);line-height:1.65}
+.v7 .legal-sec li{margin:0 0 12px}
+/* One hanging indent for everything under a heading: paragraphs and list items alike. */
+.v7 .legal-sec p,.v7 .legal-sec li{padding-left:28px}
+.v7 .legal-sec li{position:relative;padding-left:46px}
+.v7 .legal-sec li::before{content:"";position:absolute;left:28px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.v7 .legal-sec p,.v7 .legal-sec li{text-align:justify;hyphens:auto}
+/* Legal pages: the effective date closes the page. */
+.v7 .effective{margin:40px 0 0;padding-left:28px;font-family:var(--sans);font-size:.9rem;color:var(--muted)}
+/* The system diagram section on the services page sits on white, tile and all. */
+.v7 #map.feature{background:#fff;border-block:0}
+
+/* Industries page: title in the same navy as the Services and About page headers. */
+.v7 #industries h1{color:var(--deep)}
+
+/* Race: Rocket Llama Labs sits in white at the centre of our lane. It is invisible on the pale track and shows up as the blue fill passes under it. */
+.v7 .lane .trk .wm-txt{position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;letter-spacing:.01em;pointer-events:none;z-index:1}
+.v7 .lane .trk .flag{z-index:2}
+
+/* Race odds: our 62% in the check's green, the average company's 28% in its red. */
+.v7 .race .odds .n.good{color:#00a84f}
+.v7 .race .odds .n.bad{color:#e3001b}
+
+/* Race lane: mascot starts at the far left; the white lane text is revealed as the blue fill passes under it. */
+.v7 .lane .trk .flag{left:0}
+.v7 .lane .trk .wm-txt{font-weight:900}
+.v7 .lane .trk .wm-txt{font-size:34px;line-height:1;letter-spacing:-.03em}
+/* Race countdown colors by value. */
+.v7 .race .odds .n[data-band="high"]{color:#00a84f}
+.v7 .race .odds .n[data-band="mid"]{color:#ffd400}
+.v7 .race .odds .n[data-band="low"]{color:#e3001b}
+.v7 .lane .trk .wm-txt{clip-path:inset(0 100% 0 0)}
+/* Lane wordmark: the logo artwork in white, a little under the bar height. */
+.v7 .lane .trk .wm-txt img{height:30px;width:auto;display:block}
+
+/* Home stat cards: the big numbers in the heading navy. */
+.v7 .card .n{color:var(--ink)}
+.v7 .card .n .sm{font-size:.72em;color:var(--accent)}
+/* Proportional figures so the 1 in "1 in 5" does not carry tabular blank space beside it. */
+.v7 .card .n{font-variant-numeric:normal}
+.v7 .card .n .sm{vertical-align:baseline;line-height:1}
+
+/* Full system lists: half-size bullet dots, kept on the first line of the item. */
+.v7 .sysgroup li{padding-left:18px}
+.v7 .sysgroup li::before{width:8px;height:8px;top:.45em;left:2px}
+
+/* Revolving "If you can dream it · We can build it" badge (used on the Services header). */
+.v7 .dream-badge{position:absolute;aspect-ratio:1;pointer-events:none;z-index:2}
+.v7 .dream-badge svg{width:100%;height:100%;display:block;animation:dream-spin 22s linear infinite}
+.v7 .dream-badge text{font-family:var(--sans);font-weight:700;font-size:15.5px;letter-spacing:.14em;fill:#fff}
+@keyframes dream-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.v7 .dream-badge svg{animation:none}}
+/* Services header: intro kept to the left at the title's width, the badge large on the right in royal blue. */
+.v7 .pagehead.with-badge .in{position:relative}
+.v7 .pagehead.with-badge h1,.v7 .pagehead.with-badge .lede{max-width:calc(100% - clamp(200px,22vw,300px))}
+.v7 .pagehead.with-badge .lede{text-align:left;hyphens:none}
+.v7 .pagehead .copy{position:relative}
+.v7 .pagehead .dream-badge{right:0;top:0;bottom:0;height:100%;width:auto}
+.v7 .dream-badge.blue text{fill:var(--accent)}
+@media(max-width:859px){.v7 .pagehead.with-badge h1,.v7 .pagehead.with-badge .lede{max-width:none}.v7 .pagehead .dream-badge{display:none}}
+/* Services header copy: indented under the title by about the width of "the". */
+.v7 .pagehead.with-badge .lede{margin-left:2.4em}
+/* Services header copy: justified, its right edge on the end of "call." (the title line is 9.185 times the title font size). */
+.v7 .pagehead.with-badge{--h1:clamp(2.3rem,5vw,4rem)}
+.v7 .pagehead.with-badge .lede{text-align:justify;max-width:none;width:calc(var(--h1) * 9.185 - 2.4em)}
+/* Services header copy: flush left with the title, no indent. */
+.v7 .pagehead.with-badge .lede{margin-left:0;width:calc(var(--h1) * 9.185)}
+/* Services title at the homepage H2 size. */
+.v7 .pagehead.with-badge{--h1:clamp(1.9rem,4.4vw,3.1rem)}
+.v7 .pagehead.with-badge h1{font-size:var(--h1)}
+/* Industries and About titles at the homepage H2 size too. */
+.v7 .pagehead h1,.v7 #industries h1{font-size:clamp(1.9rem,4.4vw,3.1rem)}
+/* Services title: original size, in the heading navy. */
+.v7 .pagehead.with-badge{--h1:clamp(2.3rem,5vw,4rem)}
+.v7 .pagehead.with-badge h1{color:var(--ink)}
+/* Industries and About titles: the Services size, in the heading navy. About copy justified to the end of its title like Services. */
+.v7 .pagehead h1,.v7 #industries h1{font-size:clamp(2.3rem,5vw,4rem);color:var(--ink)}
+.v7 .pagehead.about-head{--h1:clamp(2.3rem,5vw,4rem)}
+.v7 .pagehead.about-head .lede{text-align:justify;hyphens:none;max-width:none;width:calc(var(--h1) * 9.826)}
+@media(max-width:859px){.v7 .pagehead.about-head .lede{width:auto}}
+/* Services header on the light blue used by the footer. */
+.v7 .pagehead.with-badge{background:#eaf2fd;border-bottom:0}
+/* Industries page on the light blue. */
+.v7 #industries{background:#eaf2fd}
+/* Ring a little closer to the words. */
+.v7 .pagehead .dream-badge{right:clamp(40px,9vw,130px)}
+/* Industries page: white footer under the light blue page. */
+.v7:has(#industries) footer{background:#fff}
+/* About page bands: light blue header, white story, light blue team, white questions, light blue footer. */
+.v7 .pagehead.about-head{background:#eaf2fd;border-bottom:0}
+.v7 #story.feature{background:#fff;border-block:0}
+.v7 #team{background:#eaf2fd}
+.v7 #faq.feature{background:#fff;border-block:0}
+/* Ring: slightly smaller than the block and placed so it clears the title with a gap. */
+.v7 .pagehead .dream-badge{height:90%;top:5%;bottom:auto;right:clamp(16px,4vw,56px)}
+/* Team bios: a "Read less" link at the foot of an opened bio. */
+.v7 .team .card details.bio .less{display:inline-block;margin-top:12px;padding:0;border:0;background:none;font-family:var(--sans);font-weight:700;font-size:.92rem;color:var(--accent);cursor:pointer}
+/* Service cards: royal blue dots on the list items. */
+.v7 .svc .card ul{list-style:none;padding-left:0}
+.v7 .svc .card ul li{position:relative;padding-left:18px}
+.v7 .svc .card ul li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+/* Services header ring: centred on the block from the kicker top to the last line of copy. */
+.v7 .pagehead .dream-badge{top:50%;height:92%;transform:translateY(-50%)}
+/* Video section: the action button under the copy. */
+.v7 .watch .ctas{margin-top:22px}
+/* What-we-build section: the button at the standard size like every other one. */
+.v7 #what .btn.sm{font-size:1rem;padding:13px 22px;min-width:220px;justify-content:center}
+/* Services proof band: standard kicker size. */
+.v7 #proof .kicker{font-size:12.5px;letter-spacing:.08em}
+/* Proof band: second sentence as an H3 under the headline. */
+.v7 #proof h3.bsub{font-family:var(--sans);font-size:1.5rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;color:#fff;margin:12px 0 0;max-width:30ch;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+/* Proof band: same label-to-headline gap as the other sections. */
+.v7 #proof .kicker{margin-bottom:18px}
+/* Proof band: second sentence in the same serif paragraph style as the copy under The overview. */
+.v7 #proof h3.bsub{font-family:var(--serif);font-size:16px;font-weight:400;line-height:25.6px;letter-spacing:normal;color:rgb(207, 224, 247);text-shadow:none;max-width:60ch;margin:12px 0 0}
+/* Proof band stats: four equal columns across the row, headings on one line. */
+.v7 #proof .bstats{max-width:none}
+@media(min-width:900px){.v7 #proof .bstats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.v7 #proof .bstats .b{white-space:nowrap;font-size:clamp(1.8rem,3vw,2.6rem)}
+/* Proof band: twice the gap above the stats row. */
+.v7 #proof .bstats{margin-top:76px}
+/* Proof band: stat captions in white. */
+.v7 #proof .bstats .l{color:#fff}
+/* Proof band: second sentence in white too. */
+.v7 #proof h3.bsub{color:#fff}
+/* System diagram: the centred sources label at twice the size. */
+.v7 .diag .lab.lab-lg{font-size:15.75px;letter-spacing:.12em}
+/* Legal pages: bullets in the heading navy. */
+.v7 .legal-sec li::before{background:var(--ink)}
+/* Stat cards: "in" and "vs" in the navy like the numbers. */
+.v7 .card .n .sm{color:var(--ink)}

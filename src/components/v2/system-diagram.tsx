@@ -1,40 +1,31 @@
 import type { CSSProperties } from "react";
 
-// The client's marketing system on one page. Each box is a wrapped HTML
-// paragraph inside the SVG so the text reads as sentences when copied or
-// spoken, and wraps instead of overflowing.
-type Box = { x: number; y: number; w: number; h: number; rx?: number; cls?: string; title: string; text: string };
+// The client's marketing system on one page, from the mockup's system-map.html.
+const PHONES_DEFAULT = ["tracked numbers on Telnyx (Tier 1)", "answers, transfers to you, returns", "to the AI to book or take a message"];
 
-const boxes: Box[] = [
-  { x: 20, y: 32, w: 200, h: 78, title: "Google Business Profile", text: "Reviews, maps, free clicks." },
-  { x: 260, y: 32, w: 200, h: 78, title: "Google Ads and Local Services", text: "Highest intent, you own." },
-  { x: 500, y: 32, w: 200, h: 78, title: "Facebook and Instagram ads", text: "Lead forms, you own." },
-  { x: 740, y: 32, w: 240, h: 78, title: "YouTube, social and AI search", text: "Your channels, your name." },
-  { x: 300, y: 200, w: 400, h: 150, rx: 14, cls: "hub", title: "Your website: home base", text: "Next.js on Vercel, with the code in your GitHub. Schema for Google and AI search, with review stars per service. Funnels with qualifying questions, address autofill, your offer and a booking calendar." },
-  { x: 20, y: 220, w: 230, h: 110, title: "Phones and AI receptionist", text: "Tracked numbers on a Tier 1 carrier. Answers, transfers to you, and returns to the AI to book or take a message." },
-  { x: 750, y: 220, w: 230, h: 110, title: "Reviews per service", text: "Existing reviews cross-referenced with your jobs. New ones collected automatically after every job." },
-  { x: 200, y: 430, w: 600, h: 110, rx: 14, cls: "hub", title: "Your CRM", text: "Pipelines, automations, and an AI text and email reply within 60 seconds. Booking, call tracking, closed-job value and the return on ad spend dashboard." },
-  { x: 20, y: 590, w: 280, h: 64, cls: "own", title: "You own all of it", text: "Export data, port numbers, take the code." },
-  { x: 360, y: 590, w: 280, h: 64, title: "Booked calls and appointments", text: "Leads that already want to work with you." },
-  { x: 700, y: 590, w: 280, h: 64, title: "Closed jobs and revenue", text: "Goal: at least $2 back per $1 spent." },
-];
+const WEBSITE_DEFAULT = ["Next.js on Vercel, code in your GitHub, hosted free", "schema for Google and AI search, stars per service", "funnels: questions, address autofill, offer, booking"];
 
-export function SystemDiagram() {
+export function SystemDiagram({ phones = PHONES_DEFAULT, website = WEBSITE_DEFAULT, crmTitle = "Your CRM (Pulse)", googleSub = "highest intent, your own account", metaSub = "lead forms, your own account", websiteTextY = 236, spendLabel = "SPEND FOLLOWS RESULTS", centerSourcesLabel = false }: { phones?: string[]; website?: string[]; crmTitle?: string; googleSub?: string; metaSub?: string; websiteTextY?: number; spendLabel?: string; centerSourcesLabel?: boolean } = {}) {
   return (
-<svg className="diag" viewBox="0 0 1000 690" role="img" aria-label="The client's marketing system: traffic sources feed a website they own, the phone system and website feed the CRM, the CRM books jobs, closed jobs feed the return on ad spend loop">
+<svg className="diag" viewBox="0 0 1000 680" role="img" aria-label="The client's marketing system: traffic sources feed a website they own, the phone system and website feed the CRM, the CRM books jobs, closed jobs feed the return on ad spend loop">
   <defs><marker id="arrC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" className="mk" /></marker></defs>
-  <text x="20" y="22" className="lab">WHERE CUSTOMERS COME FROM</text>
-  {boxes.map((b) => (
-    <g key={b.title}>
-      <rect x={b.x} y={b.y} width={b.w} height={b.h} rx={b.rx ?? 12} className={b.cls === "hub" ? "hub" : b.cls === "own" ? "box own" : "box"} />
-      <foreignObject x={b.x} y={b.y} width={b.w} height={b.h}>
-        <div {...{ xmlns: "http://www.w3.org/1999/xhtml" }} className={"dbox" + (b.cls === "hub" ? " hub" : "")}>
-          <b>{b.title}</b>
-          <span>{b.text}</span>
-        </div>
-      </foreignObject>
-    </g>
-  ))}
+  <text x={centerSourcesLabel ? 500 : 20} y={centerSourcesLabel ? 14 : 22} className={centerSourcesLabel ? "lab lab-lg" : "lab"} textAnchor={centerSourcesLabel ? "middle" : undefined}>WHERE CUSTOMERS COME FROM</text>
+  <g><rect x="20" y="32" width="200" height="78" rx="12" className="box" /><text x="120" y="60" textAnchor="middle" className="t"><tspan className="b">Google Business Profile</tspan><tspan x="120" dy="19" className="s">reviews, maps, free clicks</tspan></text></g>
+  <g><rect x="260" y="32" width="200" height="78" rx="12" className="box" /><text x="360" y="60" textAnchor="middle" className="t"><tspan className="b">Google Ads + Local Services</tspan><tspan x="360" dy="19" className="s">{googleSub}</tspan></text></g>
+  <g><rect x="500" y="32" width="200" height="78" rx="12" className="box" /><text x="600" y="60" textAnchor="middle" className="t"><tspan className="b">Facebook + Instagram ads</tspan><tspan x="600" dy="19" className="s">{metaSub}</tspan></text></g>
+  <g><rect x="740" y="32" width="240" height="78" rx="12" className="box" /><text x="860" y="60" textAnchor="middle" className="t"><tspan className="b">YouTube + social + AI search</tspan><tspan x="860" dy="19" className="s">your channels, your name</tspan></text></g>
+
+  <g><rect x="300" y="200" width="400" height="150" rx="14" className="hub" /><text x="500" y={websiteTextY} textAnchor="middle" className="t"><tspan className="h">Your website: home base</tspan><tspan x="500" dy="26" className="s">{website[0]}</tspan><tspan x="500" dy="20" className="s">{website[1]}</tspan><tspan x="500" dy="20" className="s">{website[2]}</tspan></text></g>
+
+  <g><rect x="20" y="220" width="230" height="110" rx="12" className="box" /><text x="135" y="250" textAnchor="middle" className="t"><tspan className="b">Phones + AI receptionist</tspan><tspan x="135" dy="19" className="s">{phones[0]}</tspan><tspan x="135" dy="18" className="s">{phones[1]}</tspan><tspan x="135" dy="18" className="s">{phones[2]}</tspan></text></g>
+  <g><rect x="750" y="220" width="230" height="110" rx="12" className="box" /><text x="865" y="250" textAnchor="middle" className="t"><tspan className="b">Reviews per service</tspan><tspan x="865" dy="19" className="s">existing reviews cross-referenced</tspan><tspan x="865" dy="18" className="s">with your jobs; new ones collected</tspan><tspan x="865" dy="18" className="s">automatically after every job</tspan></text></g>
+
+  <g><rect x="200" y="430" width="600" height="110" rx="14" className="hub" /><text x="500" y="462" textAnchor="middle" className="t"><tspan className="h">{crmTitle}</tspan><tspan x="500" dy="26" className="s">pipelines, automations, AI text and email reply within 60 seconds</tspan><tspan x="500" dy="20" className="s">booking, call tracking, closed-job value, return on ad spend dashboard</tspan></text></g>
+
+  <g><rect x="20" y="590" width="280" height="64" rx="12" className="box own" /><text x="160" y="617" textAnchor="middle" className="t"><tspan className="b">You own all of it</tspan><tspan x="160" dy="19" className="s">export data, port numbers, take the code</tspan></text></g>
+  <g><rect x="360" y="590" width="280" height="64" rx="12" className="box" /><text x="500" y="617" textAnchor="middle" className="t"><tspan className="b">Booked calls and appointments</tspan><tspan x="500" dy="19" className="s">leads that already want to work with you</tspan></text></g>
+  <g><rect x="700" y="590" width="280" height="64" rx="12" className="box" /><text x="840" y="617" textAnchor="middle" className="t"><tspan className="b">Closed jobs and revenue</tspan><tspan x="840" dy="19" className="s">goal: at least $2 back per $1 spent</tspan></text></g>
+
   <path d="M120 110 L120 220" className="arrow" />
   <path d="M360 110 L420 200" className="arrow" />
   <path d="M600 110 L560 200" className="arrow" />
@@ -48,7 +39,7 @@ export function SystemDiagram() {
   <path d="M640 622 L700 622" className="arrow" />
   <path d="M300 622 L360 622" className="arrow" style={{strokeDasharray:"4 4"} as CSSProperties} />
   <path d="M980 590 L992 590 L992 71 L980 71" className="arrow" style={{strokeDasharray:"4 4"} as CSSProperties} />
-  <text x="980" y="165" className="lab" textAnchor="end">SPEND FOLLOWS RESULTS</text>
+  {spendLabel ? <text x="980" y="165" className="lab" textAnchor="end">{spendLabel}</text> : null}
 </svg>
   );
 }

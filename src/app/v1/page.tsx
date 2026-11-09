@@ -20,12 +20,16 @@ const services = [
   },
 ];
 
+export const metadata = { title: "Version 1" };
+
+// Version 1: the software and AI studio homepage. It was the site at / until
+// version 3 (the home services site) moved to the root; kept at /v1.
 export default function Home() {
   return (
     <>
       <header className="sticky top-0 z-10 h-[72px] bg-white shadow-sm">
         <div className="mx-auto flex h-full max-w-[1200px] items-center justify-between px-4 sm:px-6">
-          <Link href="/" className="flex items-center">
+          <Link href="/v1" className="flex items-center">
             <Image
               src="/brand/wordmark-horizontal-rocket-o.svg"
               alt="Rocket Llama Labs"
