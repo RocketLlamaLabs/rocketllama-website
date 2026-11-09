@@ -7,8 +7,8 @@ type Box = { x: number; y: number; w: number; h: number; rx?: number; cls?: stri
 
 const boxes: Box[] = [
   { x: 20, y: 32, w: 200, h: 78, title: "Google Business Profile", text: "Reviews, maps, free clicks." },
-  { x: 260, y: 32, w: 200, h: 78, title: "Google Ads and Local Services", text: "Highest intent, you own it." },
-  { x: 500, y: 32, w: 200, h: 78, title: "Facebook and Instagram ads", text: "Lead forms, you own it." },
+  { x: 260, y: 32, w: 200, h: 78, title: "Google Ads and Local Services", text: "Highest intent, you own." },
+  { x: 500, y: 32, w: 200, h: 78, title: "Facebook and Instagram ads", text: "Lead forms, you own." },
   { x: 740, y: 32, w: 240, h: 78, title: "YouTube, social and AI search", text: "Your channels, your name." },
   { x: 300, y: 200, w: 400, h: 150, rx: 14, cls: "hub", title: "Your website: home base", text: "Next.js on Vercel, with the code in your GitHub. Schema for Google and AI search, with review stars per service. Funnels with qualifying questions, address autofill, your offer and a booking calendar." },
   { x: 20, y: 220, w: 230, h: 110, title: "Phones and AI receptionist", text: "Tracked numbers on a Tier 1 carrier. Answers, transfers to you, and returns to the AI to book or take a message." },
