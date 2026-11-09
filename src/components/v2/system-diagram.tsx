@@ -5,11 +5,11 @@ const PHONES_DEFAULT = ["tracked numbers on Telnyx (Tier 1)", "answers, transfer
 
 const WEBSITE_DEFAULT = ["Next.js on Vercel, code in your GitHub, hosted free", "schema for Google and AI search, stars per service", "funnels: questions, address autofill, offer, booking"];
 
-export function SystemDiagram({ phones = PHONES_DEFAULT, website = WEBSITE_DEFAULT, crmTitle = "Your CRM (Pulse)", googleSub = "highest intent, your own account", metaSub = "lead forms, your own account", websiteTextY = 236, spendLabel = "SPEND FOLLOWS RESULTS" }: { phones?: string[]; website?: string[]; crmTitle?: string; googleSub?: string; metaSub?: string; websiteTextY?: number; spendLabel?: string } = {}) {
+export function SystemDiagram({ phones = PHONES_DEFAULT, website = WEBSITE_DEFAULT, crmTitle = "Your CRM (Pulse)", googleSub = "highest intent, your own account", metaSub = "lead forms, your own account", websiteTextY = 236, spendLabel = "SPEND FOLLOWS RESULTS", centerSourcesLabel = false }: { phones?: string[]; website?: string[]; crmTitle?: string; googleSub?: string; metaSub?: string; websiteTextY?: number; spendLabel?: string; centerSourcesLabel?: boolean } = {}) {
   return (
 <svg className="diag" viewBox="0 0 1000 680" role="img" aria-label="The client's marketing system: traffic sources feed a website they own, the phone system and website feed the CRM, the CRM books jobs, closed jobs feed the return on ad spend loop">
   <defs><marker id="arrC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" className="mk" /></marker></defs>
-  <text x="20" y="22" className="lab">WHERE CUSTOMERS COME FROM</text>
+  <text x={centerSourcesLabel ? 500 : 20} y="22" className="lab" textAnchor={centerSourcesLabel ? "middle" : undefined}>WHERE CUSTOMERS COME FROM</text>
   <g><rect x="20" y="32" width="200" height="78" rx="12" className="box" /><text x="120" y="60" textAnchor="middle" className="t"><tspan className="b">Google Business Profile</tspan><tspan x="120" dy="19" className="s">reviews, maps, free clicks</tspan></text></g>
   <g><rect x="260" y="32" width="200" height="78" rx="12" className="box" /><text x="360" y="60" textAnchor="middle" className="t"><tspan className="b">Google Ads + Local Services</tspan><tspan x="360" dy="19" className="s">{googleSub}</tspan></text></g>
   <g><rect x="500" y="32" width="200" height="78" rx="12" className="box" /><text x="600" y="60" textAnchor="middle" className="t"><tspan className="b">Facebook + Instagram ads</tspan><tspan x="600" dy="19" className="s">{metaSub}</tspan></text></g>
