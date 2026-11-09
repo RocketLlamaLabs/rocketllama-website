@@ -388,6 +388,7 @@ def v7_extras(s, f, is_home, base):
             s = s.replace('Google, Local Services and Meta ads, in your name', 'Google, Local Services, and Meta ads in your name', 1)
             s = s.replace('<h3>Funnels, not contact forms</h3>', '<h3>Funnels not contact forms</h3>', 1)
             s = s.replace('<p>Your accounts, your card, our management. Budget up', '<p>Your accounts and your card with our management. Budget up', 1)
+            s = s.replace('Budget up in busy months, down in slow ones, never a contract.', 'Budget up in busy months, budget down in slow ones. Never a contract.', 1)
     if is_home:
         # banner: the tagline sits above the rotating headline, large
         a = '   <div>\n    <p className="kicker">Marketing and technology for local home services</p>\n'
