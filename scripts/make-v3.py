@@ -380,6 +380,8 @@ def v7_extras(s, f, is_home, base):
             s = s.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { Race } from "@/components/v7/race";\nimport { DreamBadge } from "@/components/v7/dream-badge";\n', 1)
             # the walkthrough video is the Rocket Llama cut
             s = s.replace('/v2/video/bbm-local-full.mp4', '/v7/video/rocket-llama-full.mp4')
+            # website card: lead with the benefit, not the stack
+            s = s.replace('<p>Next.js, the code in your GitHub, on Vercel. Preview every change before it goes live. Stop paying Wix or GoDaddy.</p>', '<p>Preview every change before it goes live. Stop paying Wix or GoDaddy.</p>', 1)
     if is_home:
         # banner: the tagline sits above the rotating headline, large
         a = '   <div>\n    <p className="kicker">Marketing and technology for local home services</p>\n'
