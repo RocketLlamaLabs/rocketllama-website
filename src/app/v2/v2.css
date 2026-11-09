@@ -204,6 +204,12 @@
   .v2 .diag .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;fill:var(--accent-ink);font-weight:600}
   .v2 .diag .arrow{fill:none;stroke:var(--muted);stroke-width:1.6;marker-end:url(#arrC)}
   .v2 .diag .mk{fill:var(--muted)}
+  .v2 .diag .dbox{font-family:var(--sans);color:var(--ink);height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6px 12px;box-sizing:border-box;font-size:12.5px;line-height:1.3}
+  .v2 .diag .dbox b{display:block;font-weight:700;font-size:13.5px;margin-bottom:3px}
+  .v2 .diag .dbox span{font-family:var(--serif);color:var(--muted)}
+  .v2 .diag .dbox.hub{padding:10px 24px}
+  .v2 .diag .dbox.hub b{font-weight:800;font-size:17px;letter-spacing:-.01em;margin-bottom:6px}
+  .v2 .diag .dbox.hub span{font-size:13px;line-height:1.4}
 
 /* ---- 60-second check (_check.html) ---- */
   .v2 .chk{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:clamp(22px,4vw,40px);box-shadow:0 30px 60px -40px rgba(11,31,22,.35);font-family:var(--sans);letter-spacing:0;text-transform:none;max-width:860px;margin:28px auto 0}
