@@ -392,7 +392,7 @@ def v7_extras(s, f, is_home, base):
             s = s.replace('<p>Your accounts, your card, our management. Budget up', '<p>Your accounts and your card with our management. Budget up', 1)
             s = s.replace('Budget up in busy months, down in slow ones, never a contract.', 'Budget up in busy months, budget down in slow ones. Never a contract.', 1)
             # phones box in the system diagram
-            s = s.replace('<SystemDiagram />', '<SystemDiagram phones={["tracked numbers on Tier 1 carrier", "answers, transfers to you, returns", "to the AI to book, or take a message"]} />', 1)
+            s = s.replace('<SystemDiagram />', '<SystemDiagram phones={["tracked numbers on Tier 1 carrier", "answers, transfers to you, returns", "to the AI to book, or take a message"]} website={["Hosted free", "schema for Google and AI search, stars per service", "funnels: questions, address autofill, offer, booking"]} />', 1)
     if is_home:
         # banner: the tagline sits above the rotating headline, large
         a = '   <div>\n    <p className="kicker">Marketing and technology for local home services</p>\n'
