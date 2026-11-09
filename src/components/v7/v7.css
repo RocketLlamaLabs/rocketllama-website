@@ -599,3 +599,5 @@
 .v7 #proof .bstats{max-width:none}
 @media(min-width:900px){.v7 #proof .bstats{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .v7 #proof .bstats .b{white-space:nowrap;font-size:clamp(1.8rem,3vw,2.6rem)}
+/* Proof band: twice the gap above the stats row. */
+.v7 #proof .bstats{margin-top:76px}
