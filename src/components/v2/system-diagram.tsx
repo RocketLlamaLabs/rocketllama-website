@@ -5,7 +5,7 @@ const PHONES_DEFAULT = ["tracked numbers on Telnyx (Tier 1)", "answers, transfer
 
 const WEBSITE_DEFAULT = ["Next.js on Vercel, code in your GitHub, hosted free", "schema for Google and AI search, stars per service", "funnels: questions, address autofill, offer, booking"];
 
-export function SystemDiagram({ phones = PHONES_DEFAULT, website = WEBSITE_DEFAULT, crmTitle = "Your CRM (Pulse)", googleSub = "highest intent, your own account", metaSub = "lead forms, your own account" }: { phones?: string[]; website?: string[]; crmTitle?: string; googleSub?: string; metaSub?: string } = {}) {
+export function SystemDiagram({ phones = PHONES_DEFAULT, website = WEBSITE_DEFAULT, crmTitle = "Your CRM (Pulse)", googleSub = "highest intent, your own account", metaSub = "lead forms, your own account", websiteTextY = 236 }: { phones?: string[]; website?: string[]; crmTitle?: string; googleSub?: string; metaSub?: string; websiteTextY?: number } = {}) {
   return (
 <svg className="diag" viewBox="0 0 1000 680" role="img" aria-label="The client's marketing system: traffic sources feed a website they own, the phone system and website feed the CRM, the CRM books jobs, closed jobs feed the return on ad spend loop">
   <defs><marker id="arrC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" className="mk" /></marker></defs>
@@ -15,7 +15,7 @@ export function SystemDiagram({ phones = PHONES_DEFAULT, website = WEBSITE_DEFAU
   <g><rect x="500" y="32" width="200" height="78" rx="12" className="box" /><text x="600" y="60" textAnchor="middle" className="t"><tspan className="b">Facebook + Instagram ads</tspan><tspan x="600" dy="19" className="s">{metaSub}</tspan></text></g>
   <g><rect x="740" y="32" width="240" height="78" rx="12" className="box" /><text x="860" y="60" textAnchor="middle" className="t"><tspan className="b">YouTube + social + AI search</tspan><tspan x="860" dy="19" className="s">your channels, your name</tspan></text></g>
 
-  <g><rect x="300" y="200" width="400" height="150" rx="14" className="hub" /><text x="500" y="236" textAnchor="middle" className="t"><tspan className="h">Your website: home base</tspan><tspan x="500" dy="26" className="s">{website[0]}</tspan><tspan x="500" dy="20" className="s">{website[1]}</tspan><tspan x="500" dy="20" className="s">{website[2]}</tspan></text></g>
+  <g><rect x="300" y="200" width="400" height="150" rx="14" className="hub" /><text x="500" y={websiteTextY} textAnchor="middle" className="t"><tspan className="h">Your website: home base</tspan><tspan x="500" dy="26" className="s">{website[0]}</tspan><tspan x="500" dy="20" className="s">{website[1]}</tspan><tspan x="500" dy="20" className="s">{website[2]}</tspan></text></g>
 
   <g><rect x="20" y="220" width="230" height="110" rx="12" className="box" /><text x="135" y="250" textAnchor="middle" className="t"><tspan className="b">Phones + AI receptionist</tspan><tspan x="135" dy="19" className="s">{phones[0]}</tspan><tspan x="135" dy="18" className="s">{phones[1]}</tspan><tspan x="135" dy="18" className="s">{phones[2]}</tspan></text></g>
   <g><rect x="750" y="220" width="230" height="110" rx="12" className="box" /><text x="865" y="250" textAnchor="middle" className="t"><tspan className="b">Reviews per service</tspan><tspan x="865" dy="19" className="s">existing reviews cross-referenced</tspan><tspan x="865" dy="18" className="s">with your jobs; new ones collected</tspan><tspan x="865" dy="18" className="s">automatically after every job</tspan></text></g>
