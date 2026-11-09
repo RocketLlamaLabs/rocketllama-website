@@ -601,3 +601,5 @@
 .v7 #proof .bstats .b{white-space:nowrap;font-size:clamp(1.8rem,3vw,2.6rem)}
 /* Proof band: twice the gap above the stats row. */
 .v7 #proof .bstats{margin-top:76px}
+/* Proof band: stat captions in white. */
+.v7 #proof .bstats .l{color:#fff}
