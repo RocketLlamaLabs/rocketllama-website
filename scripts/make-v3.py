@@ -398,6 +398,7 @@ def v7_extras(s, f, is_home, base):
             s = s.replace('/v2/video/bbm-local-full.mp4', '/v7/video/rocket-llama-full.mp4')
             s = s.replace('<span className="tag">90 seconds</span>', '', 1)
             s = s.replace('<h2>The full walkthrough.</h2>', '<h2>The overview.</h2>', 1)
+            s = s.replace('<h2>Eight pieces. One system. Yours.</h2>', '<h2>Eight pieces. One system. All yours.</h2>', 1)
             s = s.replace('<p className="kicker">Ninety seconds</p>', '<p className="kicker">Under 90 seconds</p>', 1)
             s = s.replace('Traffic from Google, Meta and your reviews feeds a site', 'Traffic from Google, Meta, and your reviews feeds a site', 1)
             # under the video copy: one action button, no 30-second-cut link

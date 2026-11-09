@@ -55,7 +55,7 @@ export default function Page() {
 
 <section id="what"><div className="wrap">
   <p className="kicker">What we build</p>
-  <h2>Eight pieces. One system. Yours.</h2>
+  <h2>Eight pieces. One system. All yours.</h2>
   <div className="svc">
     <div className="card"><span className="k">01 · Website</span><h3>A website you own, hosted free</h3><p>Preview every change before it goes live. Stop paying Wix or GoDaddy.</p><ul><li>Service pages per service and per city</li><li>Reviews and stars on every page</li><li>Loads fast on a phone in a driveway</li></ul></div>
     <div className="card"><span className="k">02 · Search and AI search</span><h3>Found by Google and by AI</h3><p>Schema on every page: FAQs, authorship, services and review stars per service, so Gemini and ChatGPT can recommend you by name.</p><ul><li>Local pages that answer real questions</li><li>Structured data an AI can read</li><li>Monthly rank and mention report</li></ul></div>
