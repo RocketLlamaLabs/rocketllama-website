@@ -259,6 +259,8 @@ import { CompareTable } from "@/components/v7/compare-table";
 def v7_extras_core(s, f, is_home, base):
     # the one-line nav logo (public/brand/logo-nav.svg) on every v7 page
     s = s.replace('src="/brand/logo-stacked.svg"', 'src="/brand/logo-nav.svg"')
+    # copy edits that apply to every v7 page
+    s = s.replace('four contractors; we never do.', 'four contractors. We never do.')
     if not is_home:
         return s
     # imports

@@ -63,7 +63,7 @@ export default function Page() {
     </div>
     <div className="abox rule">
       <p className="k">Your leads</p>
-      <p><b>Exclusive leads, never shared.</b> Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors; we never do.</p>
+      <p><b>Exclusive leads, never shared.</b> Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors. We never do.</p>
     </div>
     <div className="abox quote">
       <img src="/v2/img/brian-greenberg.jpg" alt="Brian Greenberg" width="64" height="64" loading="lazy" />
