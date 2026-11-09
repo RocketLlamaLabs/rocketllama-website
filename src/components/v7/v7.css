@@ -607,3 +607,5 @@
 .v7 #proof h3.bsub{color:#fff}
 /* System diagram: the centred sources label at twice the size. */
 .v7 .diag .lab.lab-lg{font-size:15.75px;letter-spacing:.12em}
+/* Legal pages: bullets in the heading navy. */
+.v7 .legal-sec li::before{background:var(--ink)}
