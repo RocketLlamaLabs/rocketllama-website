@@ -581,3 +581,5 @@
 .v7 .svc .card ul{list-style:none;padding-left:0}
 .v7 .svc .card ul li{position:relative;padding-left:18px}
 .v7 .svc .card ul li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+/* Services header ring: centred on the block from the kicker top to the last line of copy. */
+.v7 .pagehead .dream-badge{top:50%;height:92%;transform:translateY(-50%)}
