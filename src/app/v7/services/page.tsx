@@ -45,7 +45,7 @@ export default function Page() {
 
 <section className="watch" id="video"><div className="wrap in">
   <div>
-    <p className="kicker">Ninety seconds</p>
+    <p className="kicker">Under 90 seconds</p>
     <h2>The overview.</h2>
     <p>The three ways good companies lose jobs, what we build instead, how the money is tracked, and who is behind it.</p>
     <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a></div>
