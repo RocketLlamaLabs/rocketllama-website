@@ -384,6 +384,7 @@ def v7_extras(s, f, is_home, base):
             s = s.replace('<p>Next.js, the code in your GitHub, on Vercel. Preview every change before it goes live. Stop paying Wix or GoDaddy.</p>', '<p>Preview every change before it goes live. Stop paying Wix or GoDaddy.</p>', 1)
             s = s.replace('20 to 30% conversion against a 5% average', '20% - 30% conversion against a 5% average', 1)
             s = s.replace('closed-job value and the return-on-spend dashboard', 'closed-job value, and the return-on-spend dashboard', 1)
+            s = s.replace('then a booking calendar or a call-back button', 'then a booking calendar, or a call-back button', 1)
     if is_home:
         # banner: the tagline sits above the rotating headline, large
         a = '   <div>\n    <p className="kicker">Marketing and technology for local home services</p>\n'
