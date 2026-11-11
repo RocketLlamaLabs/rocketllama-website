@@ -7,7 +7,7 @@ export function V7Footer({ note: _note }: { note: string }) {
   return (
     <footer>
       <div className="wrap in">
-        <Link className="wm" href="/v7" aria-label="Rocket Llama Labs home">
+        <Link className="wm" href="/" aria-label="Rocket Llama Labs home">
           <Image
             src="/brand/logo-nav.svg"
             alt="Rocket Llama Labs"
@@ -16,7 +16,7 @@ export function V7Footer({ note: _note }: { note: string }) {
           />
         </Link>
         <span className="copy">&copy; 2026 Rocket Llama Labs LLC</span>
-        <span className="legal"><Link href="/v7/privacy">Privacy Policy</Link> / <Link href="/v7/terms">Website Policy</Link> / <Link href="/v7/ai-policy">AI Policy</Link></span>
+        <span className="legal"><Link href="/privacy">Privacy Policy</Link> / <Link href="/terms">Website Policy</Link> / <Link href="/ai-policy">AI Policy</Link></span>
       </div>
     </footer>
   );

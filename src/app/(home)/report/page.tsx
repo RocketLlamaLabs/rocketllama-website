@@ -6,28 +6,28 @@ import { pageMeta, PageStructuredData } from "@/components/v7/page-seo";
 import { V7Footer } from "@/components/v7/footer";
 import { ReportSection } from "@/components/v7/report-section";
 
-export const metadata: Metadata = pageMeta("/v7/report", "The monthly report", "What a Rocket Llama Labs monthly report looks like: booked jobs by source, what they were worth, what it cost and what we changed.");
+export const metadata: Metadata = pageMeta("/report", "The monthly report", "What a Rocket Llama Labs monthly report looks like: booked jobs by source, what they were worth, what it cost and what we changed.");
 
 // The sample monthly report, moved off the home page on 4 November 2026.
 export default function Page() {
   return (
     <>
 <nav className="nav" aria-label="Main"><div className="wrap in">
-  <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links"><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About</a></div>
-  <div className="navbtns"><a className="btn sm" href="/v7/book">Schedule a call</a><a className="btn sm ghost" href="/v7/audit">Run an instant audit</a></div>
+  <a className="wm" href="/" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
+  <div className="links"><a href="/services">Services</a><a href="/industries">Industries</a><a href="/about">About</a></div>
+  <div className="navbtns"><a className="btn sm" href="/book">Schedule a call</a><a className="btn sm ghost" href="/audit">Run an instant audit</a></div>
   <details className="menu">
     <summary aria-label="Menu"><span></span></summary>
     <div className="panel">
-      <a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About</a>
-      <a className="btn sm" href="/v7/book">Schedule a call</a>
-      <a className="btn sm ghost" href="/v7/audit">Run an instant audit</a>
+      <a href="/services">Services</a><a href="/industries">Industries</a><a href="/about">About</a>
+      <a className="btn sm" href="/book">Schedule a call</a>
+      <a className="btn sm ghost" href="/audit">Run an instant audit</a>
     </div>
   </details>
 </div></nav>
 <script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}});document.addEventListener('click',function(e){var b=e.target.closest('.v7 .team details.bio .less');if(b){var d=b.closest('details');d.removeAttribute('open');d.closest('.card').scrollIntoView({block:'nearest'})}})"}} />
 <main>
-<PageStructuredData path="/v7/report" name="The monthly report" description="What a Rocket Llama Labs monthly report looks like: booked jobs by source, what they were worth, what it cost and what we changed." />
+<PageStructuredData path="/report" name="The monthly report" description="What a Rocket Llama Labs monthly report looks like: booked jobs by source, what they were worth, what it cost and what we changed." />
 <ReportSection heading="h1" />
 </main>
       <V7Footer note='Version 7, monthly report' />

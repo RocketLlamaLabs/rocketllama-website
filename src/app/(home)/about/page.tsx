@@ -8,10 +8,10 @@ import { AboutStructuredData } from "@/components/v7/about-seo";
 export const metadata: Metadata = {
   title: { absolute: "About Rocket Llama Labs: the Phoenix marketing team for home service companies" },
   description: "Rocket Llama Labs is Brian Greenberg, Branson Cobb and Madison Schantz, a Phoenix, Arizona team that builds and runs the whole marketing system for home service companies: website, search and AI search, ads, reviews, phones, AI receptionist and CRM. Every lead answered in under a minute, every dollar tracked to a paid job, and you own all of it.",
-  alternates: { canonical: "https://rocketllamalabs.com/v7/about" },
+  alternates: { canonical: "https://rocketllamalabs.com/about" },
   openGraph: {
     type: "website",
-    url: "https://rocketllamalabs.com/v7/about",
+    url: "https://rocketllamalabs.com/about",
     siteName: "Rocket Llama Labs",
     title: "About Rocket Llama Labs",
     description: "The Phoenix marketing and technology team for home service companies. Brian Greenberg, Branson Cobb and Madison Schantz build and run one system that gets you found, answers every lead in under a minute, and tracks every dollar to a paid job.",
@@ -26,15 +26,15 @@ export default function Page() {
   return (
     <>
 <nav className="nav" aria-label="Main"><div className="wrap in">
-  <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links"><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About</a></div>
-  <div className="navbtns"><a className="btn sm" href="/v7/book">Schedule a call</a><a className="btn sm ghost" href="/v7/audit">Run an instant audit</a></div>
+  <a className="wm" href="/" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
+  <div className="links"><a href="/services">Services</a><a href="/industries">Industries</a><a href="/about">About</a></div>
+  <div className="navbtns"><a className="btn sm" href="/book">Schedule a call</a><a className="btn sm ghost" href="/audit">Run an instant audit</a></div>
   <details className="menu">
     <summary aria-label="Menu"><span></span></summary>
     <div className="panel">
-      <a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About</a>
-      <a className="btn sm" href="/v7/book">Schedule a call</a>
-      <a className="btn sm ghost" href="/v7/audit">Run an instant audit</a>
+      <a href="/services">Services</a><a href="/industries">Industries</a><a href="/about">About</a>
+      <a className="btn sm" href="/book">Schedule a call</a>
+      <a className="btn sm ghost" href="/audit">Run an instant audit</a>
     </div>
   </details>
 </div></nav>

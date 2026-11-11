@@ -1,8 +1,8 @@
 import re
 # Generates the versions that derive from the version 2 source:
 #
-#   version 3  ->  src/app/(home)  (the live site: /, /services, /book, /qualify, /about-brian)
-#   version 7  ->  src/app/v7      (version 3 plus the custom elements from Madison's mockups)
+#   version 3  ->  src/app/v3      (a sample under /v3; it was the live site until version 7 replaced it)
+#   version 7  ->  src/app/(home)  (the live site at /: version 3 plus the custom elements from Madison's mockups)
 #   version 8  ->  src/app/v8      (the simplified homepage; its home lives in src/components/v8/home.tsx,
 #                                   the sub-pages come from version 2 like the others)
 #
@@ -41,7 +41,7 @@ def patch_shared():
         edit(os.path.join(comp, f), [('stroke="#dfe7e1"', 'stroke="var(--line)"'), ('fill="#f4f8f5"', 'fill="var(--bg)"'), ('fill="#16a34a"', 'fill="var(--accent)"')])
     edit(os.path.join(comp, 'sixty-second-check.tsx'), [
         ('stroke="#e5ece7"', 'stroke="var(--line)"'), ('stroke="#16a34a"', 'stroke="var(--accent)"'),
-        ('export function SixtySecondCheck() {', 'export function SixtySecondCheck({ base = "/v2", cta = "Book a walkthrough", alt = { label: "Get the free scan", href: "#scan" } }: { base?: string; cta?: string; alt?: { label: string; href: string } }) {\n  const v7 = base === "/v7";'),  # already applied; kept for a fresh checkout
+        ('export function SixtySecondCheck() {', 'export function SixtySecondCheck({ base = "/v2", cta = "Book a walkthrough", alt = { label: "Get the free scan", href: "#scan" } }: { base?: string; cta?: string; alt?: { label: string; href: string } }) {\n  const v7 = base === "";'),  # already applied; kept for a fresh checkout
         ('href="/v2/book">Book a walkthrough</a>', 'href={`${base}/book`}>{cta}</a>'),
     ])
     edit(os.path.join(comp, 'behavior/sixty-second-check.js'), [
@@ -157,8 +157,6 @@ def transform_page(s, f, is_home, base, n, scope, extras):
     s = s.replace('src="/brand/wordmark-horizontal-rocket-o.svg"', 'src="/brand/logo-stacked.svg"')
     s = s.replace('Rocket Llama Labs v2', f'Rocket Llama Labs v{n}').replace('Version 2 sample', f'Version {n}').replace('Version 2', f'Version {n}').replace('version 2', f'version {n}').replace('v2 ·', f'v{n} ·')
     s = s.replace('className={`v2 ${', f'className={{`{scope} ${{').replace('V2Layout', f'V{n}Layout').replace('LayoutProps<"/v2">', f'LayoutProps<"{home}">').replace('LayoutProps<"">', 'LayoutProps<"/">')
-    if base == '':
-        s = s.replace(f'    default: "Rocket Llama Labs · Version {n}",\n    template: "%s · Rocket Llama Labs v{n}",', '    default: "Rocket Llama Labs",\n    template: "%s · Rocket Llama Labs",')
     if n == 7:  # version 7 is the live design: no version tag in page titles
         s = s.replace(f'    default: "Rocket Llama Labs · Version {n}",\n    template: "%s · Rocket Llama Labs v{n}",', '    default: "Rocket Llama Labs",\n    template: "%s | Rocket Llama Labs",')
     s = s.replace('background:"var(--accent-soft)",borderColor:"#bbf7d0"', 'background:"var(--accent-soft)",borderColor:"#BFD8FF"')
@@ -212,7 +210,7 @@ def build(dst_rel, base, n, extras=None, extra_css_import=None, layout_note=''):
         fp = os.path.join(root, f'src/components/v{n}/footer.tsx'); t = open(fp).read()
         t = t.replace('/brand/logo-stacked.svg', '/brand/logo-nav.svg').replace('width={137}', 'width={249}')
         if n == 7:  # a simple footer: the logo and the copyright line
-            t = re.sub(r'        <span>\n          <b>Rocket Llama Labs</b>.*?</span>\n(        <span>\n.*?</span>\n)', '        <span className="copy">&copy; 2026 Rocket Llama Labs LLC</span>\n        <span className="legal"><Link href="/v7/privacy">Privacy Policy</Link> / <Link href="/v7/terms">Website Policy</Link> / <Link href="/v7/ai-policy">AI Policy</Link></span>\n', t, count=1, flags=re.S)
+            t = re.sub(r'        <span>\n          <b>Rocket Llama Labs</b>.*?</span>\n(        <span>\n.*?</span>\n)', '        <span className="copy">&copy; 2026 Rocket Llama Labs LLC</span>\n        <span className="legal"><Link href="/privacy">Privacy Policy</Link> / <Link href="/terms">Website Policy</Link> / <Link href="/ai-policy">AI Policy</Link></span>\n', t, count=1, flags=re.S)
             t = t.replace('export function V7Footer({ note }: { note: string }) {', 'export function V7Footer({ note: _note }: { note: string }) {')
         open(fp, 'w').write(t)
     # pages
@@ -295,7 +293,7 @@ def v7_extras_core(s, f, is_home, base):
     s = s[:i] + s[j:].lstrip('\n')
     s = s.replace('<a className="btn outline" href="#check">Run the instant audit</a>', f'<a className="btn outline" href="{base}/audit">Run the audit</a>').replace('<a className="btn ghost" href="#check">Run the instant audit</a>', '')
     s = s.replace('import { InstantAudit } from "@/components/v7/instant-audit";\n', '', 1)
-    # the monthly report has its own page (/v7/report) and the exit switch tile is gone
+    # the monthly report has its own page (/report) and the exit switch tile is gone
     s = s.replace('import { ReportSection } from "@/components/v7/report-section";\n', '', 1).replace('import { LeaveSwitch } from "@/components/v7/leave-switch";\n', '', 1)
     k = s.index('<p className="kicker">The system on one page</p>'); e = s.index('</div></section>', k)
     s = s[:e] + f'  <p className="note"><a href="{base}/report">See a sample monthly report &rarr;</a></p>\n' + s[e:]
@@ -399,7 +397,7 @@ def v7_extras(s, f, is_home, base):
         if n0 >= 0:
             n1 = s.index('</div></section>\n', n0) + len('</div></section>\n'); s = s[:n0] + s[n1:].lstrip('\n')
         # no pricing link; the van band repeats the race's headline, so it goes
-        s = s.replace('<a className="btn ghost" href="/v7#pricing">Pricing</a>', '', 1)
+        s = s.replace('<a className="btn ghost" href="#pricing">Pricing</a>', '', 1)
         b0 = s.find('<div className="band" style={{"--img":"url(/v2/img/band-van.jpg)"}')
         if b0 >= 0:
             b1 = s.index('</div></div>\n', b0) + len('</div></div>\n'); s = s[:b0] + s[b1:].lstrip('\n')
@@ -418,7 +416,7 @@ def v7_extras(s, f, is_home, base):
             s = s.replace('<p className="kicker">Ninety seconds</p>', '<p className="kicker">Under 90 seconds</p>', 1)
             s = s.replace('Traffic from Google, Meta and your reviews feeds a site', 'Traffic from Google, Meta, and your reviews feeds a site', 1)
             # under the video copy: one action button, no 30-second-cut link
-            s = s.replace('<p><a className="lk" href="/v7/book">Schedule a call</a> &nbsp;·&nbsp; In a hurry? <a className="lk" href="/v2/video/bbm-local-30s.mp4" target="_blank" rel="noopener">The 30-second cut</a></p>', '<div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a></div>', 1)
+            s = s.replace('<p><a className="lk" href="/book">Schedule a call</a> &nbsp;·&nbsp; In a hurry? <a className="lk" href="/v2/video/bbm-local-30s.mp4" target="_blank" rel="noopener">The 30-second cut</a></p>', '<div className="ctas"><a className="btn" href="/book">Schedule a call</a></div>', 1)
             # website card: lead with the benefit, not the stack
             s = s.replace('<p>Next.js, the code in your GitHub, on Vercel. Preview every change before it goes live. Stop paying Wix or GoDaddy.</p>', '<p>Preview every change before it goes live. Stop paying Wix or GoDaddy.</p>', 1)
             s = s.replace('20 to 30% conversion against a 5% average', '20% to 30% conversion against a 5% average', 1)
@@ -480,10 +478,10 @@ V7_WHO = ['']
 ABOUT_META = """export const metadata: Metadata = {
   title: { absolute: "About Rocket Llama Labs: the Phoenix marketing team for home service companies" },
   description: "Rocket Llama Labs is Brian Greenberg, Branson Cobb and Madison Schantz, a Phoenix, Arizona team that builds and runs the whole marketing system for home service companies: website, search and AI search, ads, reviews, phones, AI receptionist and CRM. Every lead answered in under a minute, every dollar tracked to a paid job, and you own all of it.",
-  alternates: { canonical: "https://rocketllamalabs.com/v7/about" },
+  alternates: { canonical: "https://rocketllamalabs.com/about" },
   openGraph: {
     type: "website",
-    url: "https://rocketllamalabs.com/v7/about",
+    url: "https://rocketllamalabs.com/about",
     siteName: "Rocket Llama Labs",
     title: "About Rocket Llama Labs",
     description: "The Phoenix marketing and technology team for home service companies. Brian Greenberg, Branson Cobb and Madison Schantz build and run one system that gets you found, answers every lead in under a minute, and tracks every dollar to a paid job.",
@@ -553,14 +551,14 @@ V7_BRIAN_MAIN = '''<main>
   <p className="kicker">Press and credentials</p>
   <h2>Featured in Forbes, Entrepreneur, Fast Company, HuffPost, Bloomberg, USA Today, Yahoo Finance, Fox, NBC and CBS.</h2>
   <p className="sub">University of Arizona, Eller College of Management. McGuire Entrepreneurship Program. Million Dollar Round Table.</p>
-  <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a><a className="btn ghost" href="/v7/about">Back to About Us</a></div>
+  <div className="ctas"><a className="btn" href="/book">Schedule a call</a><a className="btn ghost" href="/about">Back to About Us</a></div>
 </div></section>
 </main>'''
 
 
 def write_v7_brian():
     """Brian's page, rewritten from the owner's copy, in the same shell as the other subpages."""
-    p = os.path.join(root, 'src/app/v7/about-brian/page.tsx'); t = open(p).read()
+    p = os.path.join(root, 'src/app/(home)/about-brian/page.tsx'); t = open(p).read()
     t = re.sub(r"  description: \"[^\"]*\",", "  description: \"Brian Greenberg, co-founder and CEO of Rocket Llama Labs: twenty years of building businesses that get found online, and the author of The Salesman Who Doesn't Sell.\",", t, count=1)
     i = t.index('<main>'); j = t.index('</main>') + len('</main>')
     open(p, 'w').write(t[:i] + V7_BRIAN_MAIN + t[j:])
@@ -568,21 +566,21 @@ def write_v7_brian():
 
 def write_v7_report():
     """The monthly report card on its own page, built from the about page's shell."""
-    t = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
+    t = open(os.path.join(root, 'src/app/(home)/about-brian/page.tsx')).read()
     t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", "  title: 'The monthly report',\n  description: \"What a Rocket Llama Labs monthly report looks like: booked jobs by source, what they were worth, what it cost and what we changed.\",", t, count=1)
     t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { ReportSection } from "@/components/v7/report-section";\n', 1)
     t = re.sub(r'// Ported from the mockup.*?\n', '// The sample monthly report, moved off the home page on 4 November 2026.\n', t, count=1)
     i = t.index('<main>'); j = t.index('</main>') + len('</main>')
     t = t[:i] + '<main>\n<ReportSection />\n</main>' + t[j:]
     t = t.replace("note='Version 7, about page'", "note='Version 7, monthly report'")
-    os.makedirs(os.path.join(root, 'src/app/v7/report'), exist_ok=True)
-    open(os.path.join(root, 'src/app/v7/report/page.tsx'), 'w').write(t)
+    os.makedirs(os.path.join(root, 'src/app/(home)/report'), exist_ok=True)
+    open(os.path.join(root, 'src/app/(home)/report/page.tsx'), 'w').write(t)
 
 
 def write_v7_about():
     """About Us on its own page, laid out like the other subpages: a photo banner, then a
     section that holds a placeholder for the owners' own story."""
-    t = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
+    t = open(os.path.join(root, 'src/app/(home)/about-brian/page.tsx')).read()
     t = re.sub(r"export const metadata: Metadata = \{.*?\n\};", ABOUT_META, t, count=1, flags=re.S)
     t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { AboutStructuredData } from "@/components/v7/about-seo";\n', 1)
     t = re.sub(r'// Ported from the mockup.*?\n', '// About Us, on its own page. The story section is a placeholder until the owners supply their copy.\n', t, count=1)
@@ -644,13 +642,13 @@ def write_v7_about():
     t = t[:i] + main + t[j:]
     t = t.replace("note='Version 7, about page'", "note='Version 7, about us'")
     t = t.replace('<main>\n<header className="hero small" id="top">', '<main>\n<AboutStructuredData />\n<header className="hero small" id="top">', 1)
-    os.makedirs(os.path.join(root, 'src/app/v7/about'), exist_ok=True)
-    open(os.path.join(root, 'src/app/v7/about/page.tsx'), 'w').write(t)
+    os.makedirs(os.path.join(root, 'src/app/(home)/about'), exist_ok=True)
+    open(os.path.join(root, 'src/app/(home)/about/page.tsx'), 'w').write(t)
 
 
 def write_v7_audit():
     """The instant audit on its own page, linked from the 60-second check."""
-    t = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
+    t = open(os.path.join(root, 'src/app/(home)/about-brian/page.tsx')).read()
     t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", "  title: 'Run an instant audit',\n  description: \"See how your company shows up online in 20 seconds: your Google profile, reviews, website, phone and what the AI engines say, next to the top company in your trade.\",", t, count=1)
     t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { InstantAudit } from "@/components/v7/instant-audit";\n', 1)
     t = re.sub(r'// Ported from the mockup.*?\n', '// The instant audit, on its own page since 4 November 2026.\n', t, count=1)
@@ -659,36 +657,36 @@ def write_v7_audit():
             '  <p className="kicker">The audit</p>\n'
             '  <h1>See how you show up online. In 20 seconds.</h1>\n'
             '  <p className="sub">Your Google profile, your reviews, your website, your phone and what the AI engines say about you, side by side with the top company in your trade in your area. No email, no call, no sales rep. Then decide.</p>\n'
-            '  <InstantAudit base="/v7" />\n</div></section>\n</main>')
+            '  <InstantAudit base="" />\n</div></section>\n</main>')
     t = t[:i] + main + t[j:]
     t = t.replace("note='Version 7, about page'", "note='Version 7, audit'")
-    os.makedirs(os.path.join(root, 'src/app/v7/audit'), exist_ok=True)
-    open(os.path.join(root, 'src/app/v7/audit/page.tsx'), 'w').write(t)
+    os.makedirs(os.path.join(root, 'src/app/(home)/audit'), exist_ok=True)
+    open(os.path.join(root, 'src/app/(home)/audit/page.tsx'), 'w').write(t)
 
 
 def write_v7_industries():
     """The Industries section on its own page."""
-    t = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
+    t = open(os.path.join(root, 'src/app/(home)/about-brian/page.tsx')).read()
     t = re.sub(r"  title: '[^']*',\n  description: \"[^\"]*\",", "  title: 'Industries',\n  description: \"Every trade that goes to a customer's home: HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping and more.\",", t, count=1)
     t = re.sub(r'// Ported from the mockup.*?\n', '// Industries, moved off the home page on 4 November 2026.\n', t, count=1)
     i = t.index('<main>'); j = t.index('</main>') + len('</main>')
     ind = V7_IND[0].replace('<h2>', '<h1>', 1).replace('</h2>', '</h1>', 1)
     t = t[:i] + '<main>\n' + ind + '</main>' + t[j:]
     t = t.replace("note='Version 7, about page'", "note='Version 7, industries'")
-    os.makedirs(os.path.join(root, 'src/app/v7/industries'), exist_ok=True)
-    open(os.path.join(root, 'src/app/v7/industries/page.tsx'), 'w').write(t)
+    os.makedirs(os.path.join(root, 'src/app/(home)/industries'), exist_ok=True)
+    open(os.path.join(root, 'src/app/(home)/industries/page.tsx'), 'w').write(t)
 
 
 def write_v7_legal():
     """The privacy policy, website policy and AI policy pages, built from the copy in
     src/components/v7/legal-copy.tsx and the same page shell as the other subpages."""
-    shell = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
+    shell = open(os.path.join(root, 'src/app/(home)/about-brian/page.tsx')).read()
     for slug, title, const, desc, intro in [
         ('privacy', 'Privacy Policy', 'PRIVACY', 'How Rocket Llama Labs collects, uses, shares and protects personal information, including text-message consent, call recording and cookies.', 'What we collect, how we use it, who we share it with, and the choices you have.'),
         ('terms', 'Website Policy', 'TERMS', 'The conditions for using rocketllamalabs.com.', 'The conditions for using this website and the tools on it.'),
         ('ai-policy', 'AI Policy', 'AI', 'Where Rocket Llama Labs uses artificial intelligence, what it does, and where a person is responsible.', 'Where we use artificial intelligence, what it does, and where a person is responsible.'),
     ]:
-        t = re.sub(r"export const metadata: Metadata = \{.*?\n\};", 'export const metadata: Metadata = {\n  title: "' + title + '",\n  description: "' + desc + '",\n  alternates: { canonical: "https://rocketllamalabs.com/v7/' + slug + '" },\n};', shell, count=1, flags=re.S)
+        t = re.sub(r"export const metadata: Metadata = \{.*?\n\};", 'export const metadata: Metadata = {\n  title: "' + title + '",\n  description: "' + desc + '",\n  alternates: { canonical: "https://rocketllamalabs.com/' + slug + '" },\n};', shell, count=1, flags=re.S)
         t = re.sub(r'// Ported from the mockup.*?\n', '// ' + title + ', built from src/components/v7/legal-copy.tsx.\n', t, count=1)
         t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { LegalBody, ' + const + ', EFFECTIVE } from "@/components/v7/legal-copy";\n', 1)
         i = t.index('<main>'); j = t.index('</main>') + len('</main>')
@@ -697,8 +695,8 @@ def write_v7_legal():
                      '    <p className="lede">' + intro + '</p>\n  </div>\n</header>\n'
                      '<section className="feature"><div className="wrap">\n  <LegalBody sections={' + const + '} />\n  <p className="effective">Effective {EFFECTIVE}.</p>\n</div></section>\n</main>') + t[j:]
         t = t.replace("note='Version 7, about page'", "note='Version 7, " + title.lower() + "'")
-        os.makedirs(os.path.join(root, 'src/app/v7/' + slug), exist_ok=True)
-        open(os.path.join(root, 'src/app/v7/' + slug + '/page.tsx'), 'w').write(t)
+        os.makedirs(os.path.join(root, 'src/app/(home)/' + slug), exist_ok=True)
+        open(os.path.join(root, 'src/app/(home)/' + slug + '/page.tsx'), 'w').write(t)
 
 
 def v8_extras(s, f, is_home, base):
@@ -741,9 +739,9 @@ TRADE_LINES = {
 
 def v7_page_seo():
     for slug, (title, desc, noindex) in V7_PAGE_SEO.items():
-        fp = os.path.join(root, 'src/app/v7', slug, 'page.tsx')
+        fp = os.path.join(root, 'src/app/(home)', slug, 'page.tsx')
         t = open(fp).read()
-        path = '/v7/' + slug
+        path = '/' + slug
         meta = 'export const metadata: Metadata = pageMeta("%s", "%s", "%s"%s);' % (path, title, desc.replace('"', '\\"'), ', { noindex: true }' if noindex else '')
         t, k = re.subn(r"export const metadata: Metadata = \{.*?\n\};", meta, t, count=1, flags=re.S)
         assert k == 1, slug
@@ -765,13 +763,13 @@ def v7_page_seo():
 
 if __name__ == '__main__':
     patch_shared()
-    build('src/app/(home)', '', 3)
-    build('src/app/v7', '/v7', 7, extras=v7_extras, extra_css_import='@/components/v7/v7.css', layout_note=' The custom elements and their styles live in src/components/v7.')
+    build('src/app/v3', '/v3', 3)
+    build('src/app/(home)', '', 7, extras=v7_extras, extra_css_import='@/components/v7/v7.css', layout_note=' The custom elements and their styles live in src/components/v7.')
     write_v7_report()
     write_v7_about()
     write_v7_audit()
     write_v7_industries()
     write_v7_legal()
-    shutil.rmtree(os.path.join(root, 'src/app/v7/about-brian'), ignore_errors=True)  # no separate page for Brian on v7
+    shutil.rmtree(os.path.join(root, 'src/app/(home)/about-brian'), ignore_errors=True)  # no separate page for Brian on v7
     v7_page_seo()
     build('src/app/v8', '/v8', 8, extras=v8_extras, extra_css_import='@/components/v8/v8.css', layout_note=' The home page itself is src/components/v8/home.tsx.')

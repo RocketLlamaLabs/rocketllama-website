@@ -14,12 +14,21 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  // Version 3 moved to the root; its old /v3 links still work.
+  // Version 7 is the live site at the root; its old /v7 links still work.
+  // Only page paths are listed, because its images and video are still
+  // served from /public/v7. Version 3 went back to /v3, so the one root page
+  // only it had (/about-brian) goes to the About page.
   async redirects() {
     return [
-      { source: "/v3", destination: "/", permanent: false },
-      { source: "/v3/:path*", destination: "/:path*", permanent: false },
-      { source: "/v7/about-brian", destination: "/v7/about", permanent: false },
+      { source: "/v7", destination: "/", permanent: false },
+      { source: "/v7/about-brian", destination: "/about", permanent: false },
+      {
+        source:
+          "/v7/:page(about|ai-policy|audit|book|industries|privacy|qualify|report|services|terms)",
+        destination: "/:page",
+        permanent: false,
+      },
+      { source: "/about-brian", destination: "/about", permanent: false },
     ];
   },
   // Versions 4, 5 and 6 are static pages under /public/mockups; these give

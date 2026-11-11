@@ -6,7 +6,7 @@ import { mountSixtySecondCheck } from "./behavior/sixty-second-check";
 
 // SixtySecondCheck: markup from the mockup's _check.html, behaviour mounted on the client.
 export function SixtySecondCheck({ base = "/v2", cta = "Book a walkthrough", alt = { label: "Get the free scan", href: "#scan" } }: { base?: string; cta?: string; alt?: { label: string; href: string } }) {
-  const v7 = base === "/v7";
+  const v7 = base === "";
   useEffect(mountSixtySecondCheck, []);
   return (
     <>
