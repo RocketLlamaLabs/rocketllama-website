@@ -35,7 +35,7 @@ export const ORG = {
   ],
 };
 
-const PEOPLE = [
+export const PEOPLE = [
   {
     "@type": "Person",
     "@id": `${SITE}/about#brian-greenberg`,
@@ -43,7 +43,7 @@ const PEOPLE = [
     jobTitle: "CEO",
     worksFor: { "@id": `${SITE}/#organization` },
     image: `${SITE}/v7/brian-greenberg.jpg`,
-    url: `${SITE}/about#brian-greenberg`,
+    url: `${SITE}/about/brian-greenberg`,
     sameAs: ["https://briangreenberg.com"],
     description:
       "Entrepreneur and author with more than twenty years building businesses that get found online. Built True Blue Life Insurance into a fully digital agency selling in all 50 states with over $50 million in revenue through inbound marketing; Million Dollar Round Table member; founder of SEO Services Internet Marketing LLC and BJG Digital; leads Quoteplicity. Featured in Forbes, Entrepreneur, Fast Company, HuffPost, Bloomberg, USA Today, Yahoo Finance, Fox, NBC and CBS.",
@@ -66,7 +66,7 @@ const PEOPLE = [
     jobTitle: "President and COO",
     worksFor: { "@id": `${SITE}/#organization` },
     image: `${SITE}/v7/branson-cobb.jpg`,
-    url: `${SITE}/about#branson-cobb`,
+    url: `${SITE}/about/branson-cobb`,
     description:
       "President and COO of Rocket Llama Labs. More than 23 years leading sales, business development and client strategy for large healthcare organizations: Market President for CBIZ's Arizona and California offices, business development lead at Aetna, and 13 years at Cigna from underwriter to Senior Account Executive.",
     alumniOf: { "@type": "CollegeOrUniversity", name: "University of Arizona" },
@@ -78,7 +78,7 @@ const PEOPLE = [
     jobTitle: "Chief Marketing Officer",
     worksFor: { "@id": `${SITE}/#organization` },
     image: `${SITE}/v7/madison.jpg`,
-    url: `${SITE}/about#madison-schantz`,
+    url: `${SITE}/about/madison-schantz`,
     description:
       "Creative digital designer, branding specialist, AI content creator and digital architect. Designs the brands, websites and AI-powered tools Rocket Llama Labs builds for home service companies.",
   },
@@ -111,6 +111,26 @@ export function AboutStructuredData() {
         "@id": `${SITE}/about#faq`,
         mainEntity: ABOUT_FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
       },
+    ],
+  };
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
+// Structured data for one person's page: the Person record plus breadcrumbs.
+export function PersonStructuredData({ slug }: { slug: string }) {
+  const person = PEOPLE.find((p) => p["@id"].endsWith("#" + slug));
+  if (!person) return null;
+  const data = {
+    "@context": "https://schema.org",
+    "@graph": [
+      ORG,
+      person,
+      { "@type": "ProfilePage", "@id": `${SITE}/about/${slug}#webpage`, url: `${SITE}/about/${slug}`, mainEntity: { "@id": person["@id"] }, isPartOf: { "@type": "WebSite", url: SITE, name: "Rocket Llama Labs" } },
+      { "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+        { "@type": "ListItem", position: 2, name: "About", item: `${SITE}/about` },
+        { "@type": "ListItem", position: 3, name: person.name, item: `${SITE}/about/${slug}` },
+      ] },
     ],
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;

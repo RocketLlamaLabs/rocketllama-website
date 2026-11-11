@@ -852,3 +852,23 @@
 .v7 .flow.tall .s.src{font-size:11.5px}
 /* Industries tiles: names only, one tidy row height. */
 .v7 #industries .trade{min-height:0;padding:16px 18px;row-gap:0}
+
+/* ---- Person pages (/about/<slug>) and the Read more link on the team cards. ---- */
+.v7 .team .card .more{display:inline-block;margin-top:12px;font-family:var(--sans);font-weight:700;font-size:.92rem;color:var(--accent);text-decoration:none}
+.v7 .team .card .more:hover{text-decoration:underline}
+.v7 .person .pagehead{background:#eaf2fd;border-bottom:0}
+.v7 .person .back{display:inline-block;font-family:var(--sans);font-weight:700;font-size:.92rem;color:var(--accent-ink);text-decoration:none;margin-bottom:28px}
+.v7 .person .back:hover{text-decoration:underline}
+.v7 .person .person-head{display:grid;gap:28px;align-items:center}
+@media(min-width:760px){.v7 .person .person-head{grid-template-columns:220px minmax(0,1fr);gap:44px}}
+.v7 .person .person-head .headshot{width:220px;height:220px;border-radius:50%;object-fit:cover;background:#fff}
+.v7 .person .person-head .kicker{margin:0 0 12px}
+.v7 .person h1{font-size:clamp(2.3rem,5vw,4rem);line-height:1.02;letter-spacing:-.04em;color:var(--ink);margin:0;max-width:none;text-shadow:none}
+.v7 .person .lede{margin:16px 0 0;max-width:62ch;font-size:clamp(1.05rem,1.6vw,1.2rem);line-height:1.55;color:var(--muted)}
+.v7 .person .person-bio{background:#fff}
+.v7 .person .person-bio p{max-width:70ch;margin:0 0 18px;font-size:1.08rem;line-height:1.65;color:var(--ink)}
+.v7 .person .person-bio a{color:var(--accent);font-weight:600}
+.v7 .person .person-bio .ctas{margin-top:30px}
+/* Footer: the same height as the navigation bar. */
+.v7 footer{padding-block:14px}
+.v7 footer .in{min-height:44px;align-items:center}

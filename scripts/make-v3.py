@@ -676,6 +676,16 @@ def write_v7_audit():
     open(os.path.join(root, 'src/app/(home)/audit/page.tsx'), 'w').write(t)
 
 
+V7_PERSON_PAGE = '/* eslint-disable @next/next/no-img-element -- same markup as the rest of the site */\n\nimport type { Metadata } from "next";\nimport { notFound } from "next/navigation";\nimport { V7Footer } from "@/components/v7/footer";\nimport { Nav } from "@/components/v7/about-mockups";\nimport { TEAM } from "@/components/v7/team-data";\nimport { pageMeta } from "@/components/v7/page-seo";\nimport { PersonStructuredData } from "@/components/v7/about-seo";\n\n// One page per person on the team, written by scripts/make-v3.py.\nexport function generateStaticParams() {\n  return TEAM.map((p) => ({ slug: p.slug }));\n}\n\nexport async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {\n  const { slug } = await params;\n  const p = TEAM.find((t) => t.slug === slug);\n  if (!p) return {};\n  return pageMeta(`/about/${p.slug}`, `${p.name}, ${p.role}`, p.summary.replace(/<[^>]+>/g, ""));\n}\n\nexport default async function Page({ params }: { params: Promise<{ slug: string }> }) {\n  const { slug } = await params;\n  const p = TEAM.find((t) => t.slug === slug);\n  if (!p) notFound();\n  return (\n    <>\n      <Nav />\n      <main className="person">\n        <PersonStructuredData slug={p.slug} />\n        <header className="pagehead" id="top"><div className="wrap in">\n          <a className="back" href="/about#team">&larr; Leadership</a>\n          <div className="person-head">\n            <img className="headshot photo" src={p.photo} alt={p.alt} />\n            <div>\n              <p className="kicker">{p.role}</p>\n              <h1>{p.name}</h1>\n              <p className="lede" dangerouslySetInnerHTML={{ __html: p.summary }} />\n            </div>\n          </div>\n        </div></header>\n        <section className="person-bio"><div className="wrap">\n          {p.bio.map((html) => (<p key={html} dangerouslySetInnerHTML={{ __html: html }} />))}\n          <div className="ctas"><a className="btn" href="/book">Schedule a call</a></div>\n        </div></section>\n      </main>\n      <V7Footer note={`Version 7, ${p.name}`} />\n    </>\n  );\n}\n'
+
+
+def write_v7_team_pages():
+    """One page per person under /about/<slug>, from src/components/v7/team-data.ts."""
+    d = os.path.join(root, 'src/app/(home)/about/[slug]')
+    os.makedirs(d, exist_ok=True)
+    open(os.path.join(d, 'page.tsx'), 'w').write(V7_PERSON_PAGE)
+
+
 def write_v7_industries():
     """The Industries section on its own page."""
     t = open(os.path.join(root, 'src/app/(home)/about-brian/page.tsx')).read()
@@ -779,6 +789,7 @@ if __name__ == '__main__':
     build('src/app/(home)', '', 7, extras=v7_extras, extra_css_import='@/components/v7/v7.css', layout_note=' The custom elements and their styles live in src/components/v7.')
     write_v7_report()
     write_v7_about()
+    write_v7_team_pages()
     write_v7_audit()
     write_v7_industries()
     write_v7_legal()
