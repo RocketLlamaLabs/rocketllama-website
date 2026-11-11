@@ -872,3 +872,6 @@
 /* Footer: the same height as the navigation bar. */
 .v7 footer{padding-block:14px}
 .v7 footer .in{min-height:44px;align-items:center}
+/* Person page: button text stays white; intro left aligned. */
+.v7 .person .person-bio .ctas .btn{color:#fff}
+.v7 .person .lede{text-align:left;hyphens:none}
