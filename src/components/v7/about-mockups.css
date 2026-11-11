@@ -93,3 +93,17 @@
 .v7 .am-f .left{display:grid;gap:28px;padding-top:22px;border-top:3px solid var(--accent)}
 .v7 .am-f .left .pull{max-width:26ch}
 .v7 .am-f .right{display:grid;gap:28px;padding-top:22px;border-top:3px solid var(--line);max-width:66ch}
+
+/* F on phones: numbers in one row, tighter gaps between the parts. */
+@media(max-width:899px){
+  .v7 .am-f .pagehead .in{padding-block:36px 20px}
+  .v7 .am-f .am-cols{gap:28px}
+  .v7 .am-f .left{gap:20px;padding-top:18px}
+  .v7 .am-f .left .am-stats{grid-template-columns:repeat(3,1fr);gap:12px}
+  .v7 .am-f .left .am-stats .n{font-size:1.7rem}
+  .v7 .am-f .left .am-stats .l{font-size:.8rem}
+  .v7 .am-f .right{gap:20px;padding-top:18px}
+  .v7 .am-f .am-split{padding-bottom:40px}
+  .v7 .am-f #team{padding-block:40px}
+  .v7 .am-f .team{gap:14px}
+}
