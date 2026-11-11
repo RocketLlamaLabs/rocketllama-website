@@ -44,7 +44,7 @@ export function Motion() {
     window.addEventListener("scroll", sweep, { passive: true });
 
     // count up: numbers that are a plain figure with an optional prefix/suffix
-    const nums = Array.from(document.querySelectorAll<HTMLElement>(".v7 .bstats .b, .v7 .am-stats .n"));
+    const nums = Array.from(document.querySelectorAll<HTMLElement>(".v7 .am-stats .n"));
     const counters = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (!e.isIntersecting) return;
