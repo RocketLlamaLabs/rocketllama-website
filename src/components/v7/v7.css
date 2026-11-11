@@ -893,3 +893,5 @@
 .v7 .person .gallery img,.v7 .person .gallery figure.tall img{aspect-ratio:1;object-fit:cover}
 /* Footer: white on every page, with a thin top rule. */
 .v7 footer,.v7:has(.pagehead.about-head) footer,.v7:has(#industries) footer{background:#fff;border-top:1px solid var(--line)}
+/* Person pages: light blue footer. */
+.v7:has(main.person) footer{background:#eaf2fd;border-top:0}
