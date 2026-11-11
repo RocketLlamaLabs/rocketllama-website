@@ -19,6 +19,25 @@ const ICONS: Record<string, string[]> = {
   key: ["M8 17.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z", "M10.6 11.4L19 3M15.5 6.5L18 9"],
 };
 
+import { MARKS } from "@/components/v7/brand-marks";
+
+// A white tile holding one or two brand marks, centred on `cx`. `y` is the top.
+function BrandTile({ marks, cx, y, size = 34 }: { marks: string[]; cx: number; y: number; size?: number }) {
+  const glyph = size - 12, gap = 8;
+  const w = marks.length * glyph + (marks.length - 1) * gap + 12;
+  const x = cx - w / 2;
+  return (
+    <g className="tile brand" transform={`translate(${x} ${y})`} aria-hidden="true">
+      <rect width={w} height={size} rx={size * 0.28} />
+      {marks.map((m, i) => (
+        <g key={m} transform={`translate(${6 + i * (glyph + gap)} 6) scale(${glyph / 24})`}>
+          {MARKS[m].paths.map((p) => (<path key={p.d} d={p.d} fill={p.fill} />))}
+        </g>
+      ))}
+    </g>
+  );
+}
+
 // A rounded tile with a line icon in it. `x`,`y` is the tile's top-left.
 function Tile({ icon, x, y, size = 34, tone = "" }: { icon: keyof typeof ICONS; x: number; y: number; size?: number; tone?: string }) {
   const s = (size - 12) / 24;
@@ -32,18 +51,18 @@ function Tile({ icon, x, y, size = 34, tone = "" }: { icon: keyof typeof ICONS; 
   );
 }
 
-// A connector: a faint track, moving dashes on top, an arrowhead, and a dot
+// A connector: a still dashed line and a small triangle that travels it, pointing the way
 // that travels the path. `begin` starts each dot part-way along (a negative
 // SMIL begin), so the dots are spread out and none waits at the corner.
 function Line({ d, id, dur = 2.6, begin = 0, quiet = false, head = true }: { d: string; id: string; dur?: number; begin?: number; quiet?: boolean; head?: boolean }) {
   return (
     <g className={quiet ? "ln quiet" : "ln"} aria-hidden="true">
       <path d={d} className="track" />
-      <path d={d} className="run" markerEnd={head ? `url(#${id})` : undefined} />
+      <path d={d} className="run" />
       {quiet ? null : (
-        <circle r="4" className="dot">
-          <animateMotion dur={`${dur}s`} begin={`-${begin}s`} repeatCount="indefinite" path={d} />
-        </circle>
+        <path d="M-6 -5 L6 0 L-6 5 Z" className="dot">
+          <animateMotion dur={`${dur}s`} begin={`-${begin}s`} repeatCount="indefinite" path={d} rotate="auto" />
+        </path>
       )}
     </g>
   );
@@ -61,11 +80,11 @@ function Head({ id }: { id: string }) {
 
 const LABEL = "How the Rocket Llama Labs marketing system connects: Google Business Profile, Google Ads and Local Services, Facebook and Instagram ads, and YouTube, social and AI search send customers to a website you own. The website, the phones with an AI receptionist, and reviews per service feed your CRM. The CRM turns them into booked calls and appointments, then closed jobs and revenue. You own all of it.";
 
-const SOURCES: { icon: keyof typeof ICONS; a: string; b: string; one: string; sub: string }[] = [
-  { icon: "pin", a: "Google Business", b: "Profile", one: "Google Business Profile", sub: "reviews, maps, free clicks" },
-  { icon: "search", a: "Google Ads +", b: "Local Services", one: "Google Ads + Local Services", sub: "highest intent, you own" },
-  { icon: "megaphone", a: "Facebook +", b: "Instagram ads", one: "Facebook + Instagram ads", sub: "lead forms, you own" },
-  { icon: "play", a: "YouTube, social", b: "+ AI search", one: "YouTube + social + AI search", sub: "your channels, your name" },
+const SOURCES: { icon: keyof typeof ICONS; marks: string[]; a: string; b: string; one: string; sub: string }[] = [
+  { icon: "pin", marks: ["google"], a: "Google Business", b: "Profile", one: "Google Business Profile", sub: "reviews, maps, free clicks" },
+  { icon: "search", marks: ["googleads"], a: "Google Ads +", b: "Local Services", one: "Google Ads + Local Services", sub: "highest intent, you own" },
+  { icon: "megaphone", marks: ["facebook", "instagram"], a: "Facebook +", b: "Instagram ads", one: "Facebook + Instagram ads", sub: "lead forms, you own" },
+  { icon: "play", marks: ["youtube"], a: "YouTube, social", b: "+ AI search", one: "YouTube + social + AI search", sub: "your channels, your name" },
 ];
 
 function Wide() {
@@ -92,7 +111,7 @@ function Wide() {
       {SOURCES.map((s, i) => (
         <g key={s.one}>
           <rect x={sx[i]} y="42" width="232" height="104" rx="14" className="fcard" />
-          <Tile icon={s.icon} x={sx[i] + 99} y={54} />
+          <BrandTile marks={s.marks} cx={sx[i] + 116} y={54} />
           <text x={sx[i] + 116} y="112" textAnchor="middle" className="b">{s.one}</text>
           <text x={sx[i] + 116} y="132" textAnchor="middle" className="s">{s.sub}</text>
         </g>
@@ -183,7 +202,7 @@ function Tall() {
         return (
           <g key={s.one}>
             <rect x={x} y={y} width="150" height="112" rx="14" className="fcard" />
-            <Tile icon={s.icon} x={x + 59} y={y + 12} size={32} />
+            <BrandTile marks={s.marks} cx={x + 75} y={y + 12} size={32} />
             <text x={x + 75} y={y + 63} textAnchor="middle" className="b">{s.a}</text>
             <text x={x + 75} y={y + 79} textAnchor="middle" className="b">{s.b}</text>
             <text x={x + 75} y={y + 99} textAnchor="middle" className="s src">{s.sub}</text>

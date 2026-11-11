@@ -835,3 +835,10 @@
 @media(prefers-reduced-motion:reduce){.v7 .flow .ln .run,.v7 .flow .halo{animation:none}.v7 .flow .dot{display:none}.v7 .flow .halo{opacity:.4}}
 /* Services header: the ring keeps its own frame (no rise-in on the copy block). */
 .v7 .pagehead .copy{transform:none!important;opacity:1!important}
+/* Flow diagram: brand-mark tiles are white with the logo in its own colours. */
+.v7 .flow .tile.brand rect{fill:#fff;stroke:var(--line);stroke-width:1.5}
+.v7 .flow .tile.brand path{stroke:none}
+/* Flow diagram: lines hold still; the travelling triangle shows the direction. */
+.v7 .flow .ln .run{animation:none;stroke-dasharray:6 8}
+.v7 .flow .ln.quiet .run{animation:none}
+.v7 .flow .ln .dot{fill:var(--accent);stroke:#fff;stroke-width:1.5;stroke-linejoin:round}
