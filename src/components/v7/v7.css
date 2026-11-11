@@ -974,3 +974,5 @@
 .v7 #industries .trade span{font-size:clamp(.76rem,1.0vw,.9rem);letter-spacing:-.01em}
 .v7 #industries .trade span::after{margin-left:6px}
 @media(min-width:720px) and (max-width:899px){.v7 #industries .trades{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* About page: light blue footer. */
+.v7:has(.about-live) footer{background:#eaf2fd;border-top:0}
