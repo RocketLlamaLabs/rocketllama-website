@@ -658,3 +658,6 @@
 .v7 .trade span{grid-row:1;grid-column:2;white-space:normal}
 .v7 .trade small{grid-row:2;grid-column:2;margin-top:0}
 .v7 .trade{align-content:start;align-items:center}
+/* Industries tiles: sized to their content. */
+.v7 .trade{min-height:0;padding:14px 18px}
+.v7 .trade small{line-height:1.35}
