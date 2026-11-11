@@ -58,18 +58,6 @@ export default function Page() {
   </div>
 </header>
 
-<section id="story" className="feature"><div className="wrap">
-  <p className="kicker">Our story</p>
-  <h2>Who we are and why we built this.</h2>
-  <div className="story">
-    <div className="story-text">
-      <p className="sub">Home service owners are some of the hardest-working people we know, and most are losing jobs they never hear about: the homeowner searched, found someone else, or called and got voicemail. The agencies pitching them sell one tactic at a time, and nobody is responsible for whether the phone rings.</p>
-      <p className="sub">We had each seen the other way work. Brian built and sold companies on an inbound system where customers found him online and booked themselves, including a fully digital insurance agency that passed $50 million in revenue with no cold calls, and he wrote the playbook down in <em>The Salesman Who Doesn&rsquo;t Sell</em>. Branson spent two decades growing businesses by tying every decision to a measurable result. Madison builds the brands, websites and AI tools that make a company one you want to call. We put the three together in Phoenix and built one system for home service companies.</p>
-      <p className="sub">Our goal is to be the marketing team you never have to think about. <a href="/v7/services">One system</a>, built and run by us, that answers every lead in under a minute, tracks every dollar to a paid job, and belongs to you. We run it for <a href="/v7/industries">every trade that goes to a customer&rsquo;s home</a>, across the Valley and beyond. If we do our job, you will not notice the marketing. You will notice the phone ringing and the calendar filling.</p>
-    </div>
-  </div>
-</div></section>
-
 <section id="team"><div className="wrap">
   <p className="kicker">The team</p>
   <h2>Three people. One system.</h2>

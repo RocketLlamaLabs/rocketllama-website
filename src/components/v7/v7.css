@@ -627,3 +627,6 @@
 .v7 .tradecopy p{margin:0;color:var(--muted);font-size:.98rem;line-height:1.5}
 /* About header copy: left aligned so word spacing stays even. */
 .v7 .pagehead.about-head .lede{text-align:left}
+/* About: with the story gone, the team section is white under the light blue header, and the questions light blue. */
+.v7 #team{background:#fff}
+.v7 #faq.feature{background:#eaf2fd}
