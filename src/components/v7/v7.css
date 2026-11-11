@@ -674,3 +674,6 @@
 .v7 #industries .trade small{font-size:.84rem;line-height:1.3}
 /* About: the two standout sentences in royal blue. */
 .v7 .pagehead.about-head .lede.accent{color:var(--accent)}
+/* About: light blue header, white team section, white footer. */
+.v7 .pagehead.about-head{background:#eaf2fd}
+.v7 #team{background:#fff}
