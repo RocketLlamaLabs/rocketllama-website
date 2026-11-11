@@ -630,3 +630,7 @@
 /* About: with the story gone, the team section is white under the light blue header, and the questions light blue. */
 .v7 #team{background:#fff}
 .v7 #faq.feature{background:#eaf2fd}
+/* About: white header, light blue team, white questions. */
+.v7 .pagehead.about-head{background:#fff}
+.v7 #team{background:#eaf2fd}
+.v7 #faq.feature{background:#fff}
