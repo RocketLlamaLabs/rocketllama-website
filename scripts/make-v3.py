@@ -699,6 +699,65 @@ def write_v7_industries():
     open(os.path.join(root, 'src/app/(home)/industries/page.tsx'), 'w').write(t)
 
 
+INDUSTRY_SLUGS = ['hvac', 'plumbing', 'electrical', 'roofing', 'garage-door', 'pest-control', 'landscaping', 'painting',
+                  'window-and-pressure-washing', 'handyman', 'mobile-mechanic', 'windows-and-doors', 'solar', 'flooring', 'remodeling']
+
+def write_v7_industry_pages():
+    """One page per trade (/hvac, /plumbing, ...). Each route file is a thin shell: the copy is in
+    src/components/v7/industries-data.ts and the layout in src/components/v7/industry-page.tsx, both hand-written.
+    Adding a trade means adding it to that data file and to INDUSTRY_SLUGS here."""
+    data = open(os.path.join(root, 'src/components/v7/industries-data.ts')).read()
+    for slug in INDUSTRY_SLUGS:
+        assert 'slug: "%s"' % slug in data, 'no copy for ' + slug
+        os.makedirs(os.path.join(root, 'src/app/(home)', slug), exist_ok=True)
+        open(os.path.join(root, 'src/app/(home)', slug, 'page.tsx'), 'w').write(
+            'import type { Metadata } from "next";\n'
+            'import { IndustryPage } from "@/components/v7/industry-page";\n'
+            'import { INDUSTRY_BY_SLUG } from "@/components/v7/industries-data";\n'
+            'import { industryMeta } from "@/components/v7/page-seo";\n\n'
+            '// The ' + slug + ' industry page. Copy lives in src/components/v7/industries-data.ts.\n'
+            'const ind = INDUSTRY_BY_SLUG["' + slug + '"];\n\n'
+            'export const metadata: Metadata = industryMeta(ind);\n\n'
+            'export default function Page() {\n  return <IndustryPage ind={ind} />;\n}\n')
+
+
+def industry_links(tag='a'):
+    """The fifteen industry pages as links, in the order of the trade grid."""
+    names = dict(zip(INDUSTRY_SLUGS, TRADE_LINES))
+    return ''.join('<%s href="/%s">%s</%s>' % (tag, slug, names[slug], tag) for slug in INDUSTRY_SLUGS)
+
+
+NAV_PLAIN = '<a href="/services">Services</a><a href="/industries">Industries</a><a href="/about">About</a>'
+
+def v7_industry_nav(t):
+    """Industries in the navigation opens a list of every industry page: a dropdown on wide screens,
+    a two-column list inside the hamburger menu on narrow ones. The hand-written navs
+    (src/components/v7/nav.tsx and about-mockups.tsx) carry the same markup."""
+    if NAV_PLAIN not in t:
+        return t
+    wide = ('<a href="/services">Services</a><div className="dd"><a href="/industries" aria-haspopup="true">Industries</a>'
+            '<div className="ddmenu">' + industry_links() + '<a className="all" href="/industries">All industries</a></div></div><a href="/about">About</a>')
+    narrow = ('<a href="/services">Services</a><a href="/industries">Industries</a>'
+              '<div className="sublinks">' + industry_links() + '</div><a href="/about">About</a>')
+    return t.replace(NAV_PLAIN, wide, 1).replace(NAV_PLAIN, narrow, 1)  # the booking pages have no hamburger menu, so only the first applies
+
+
+def write_v7_industry_links():
+    """Link every industry page from the navigation of each v7 page and from the footer."""
+    home = os.path.join(root, 'src/app/(home)')
+    for d, _, files in os.walk(home):
+        for f in files:
+            if f == 'page.tsx':
+                fp = os.path.join(d, f); t = open(fp).read(); u = v7_industry_nav(t)
+                if u != t:
+                    open(fp, 'w').write(u)
+    fp = os.path.join(root, 'src/components/v7/footer.tsx'); t = open(fp).read()
+    a = '      <div className="wrap in">\n'
+    assert t.count(a) == 1, 'v7 footer'
+    t = t.replace(a, a + '        <nav className="find" aria-label="Industries"><b>Industries</b>' + industry_links('Link') + '</nav>\n', 1)
+    open(fp, 'w').write(t)
+
+
 def write_v7_legal():
     """The privacy policy, website policy and AI policy pages, built from the copy in
     src/components/v7/legal-copy.tsx and the same page shell as the other subpages."""
@@ -778,6 +837,11 @@ def v7_page_seo():
             # one short line inside each trade tile
             for name in TRADE_LINES:  # names only on the tiles
                 t = t.replace('>%s</a>' % name, '><span>%s</span></a>' % name, 1)
+            # each tile opens that trade's own page (/hvac, /garage-door, ...); the pages
+            # themselves are hand-written: src/app/(home)/<slug>/page.tsx and src/components/v7/industries-data.ts
+            t, k = re.subn(r'<a className="trade" href="[^"]*"><span>([^<]+)</span></a>', lambda m: '<a className="trade" href="/%s"><span>%s</span></a>' % (m.group(1).lower().replace(' ', '-'), m.group(1)), t)
+            assert k == len(TRADE_LINES), 'industry tiles'
+            t = t.replace('<p className="sub">If you send a truck to a house this is built for you.', '<p className="sub">If you send a truck to a house this is built for you. Pick your trade to see the marketing services we run for it.', 1)
         if slug == 'report':
             t = t.replace('<ReportSection />', '<ReportSection heading="h1" />', 1)
         open(fp, 'w').write(t)
@@ -795,4 +859,6 @@ if __name__ == '__main__':
     write_v7_legal()
     shutil.rmtree(os.path.join(root, 'src/app/(home)/about-brian'), ignore_errors=True)  # no separate page for Brian on v7
     v7_page_seo()
+    write_v7_industry_pages()
+    write_v7_industry_links()
     build('src/app/v8', '/v8', 8, extras=v8_extras, extra_css_import='@/components/v8/v8.css', layout_note=' The home page itself is src/components/v8/home.tsx.')

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ORG, SITE } from "@/components/v7/about-seo";
+import { ORG, PEOPLE, SITE } from "@/components/v7/about-seo";
+import { type Industry, INDUSTRY_AUTHOR, INDUSTRY_PUBLISHED, INDUSTRY_UPDATED } from "@/components/v7/industries-data";
 
 // Metadata and structured data for the version 7 subpages. Search engines and
 // AI assistants read this; visitors never see it. Facts here also appear in
@@ -114,6 +115,9 @@ export const TRADE_COPY: [string, string][] = [
   ["Remodeling", "Projects worth tens of thousands. A site built for the searches homeowners make before they call anyone."],
 ];
 
+// Each trade has its own page; the slug is the trade name in lowercase with hyphens.
+const TRADE_SLUGS: Record<string, string> = Object.fromEntries(TRADE_COPY.map(([name]) => [name, name.toLowerCase().replace(/ /g, "-")]));
+
 export function IndustriesStructuredData() {
   const path = "/industries";
   return (
@@ -128,7 +132,7 @@ export function IndustriesStructuredData() {
           itemListElement: TRADE_COPY.map(([name, description], i) => ({
             "@type": "ListItem",
             position: i + 1,
-            item: { "@type": "Service", name: `${name} marketing`, description, provider: { "@id": `${SITE}/#organization` }, areaServed: ORG.areaServed },
+            item: { "@type": "Service", name: `${name} marketing`, description, url: `${SITE}/${TRADE_SLUGS[name]}`, provider: { "@id": `${SITE}/#organization` }, areaServed: ORG.areaServed },
           })),
         },
       ]}
@@ -138,4 +142,79 @@ export function IndustriesStructuredData() {
 
 export function PageStructuredData({ path, name, description }: { path: string; name: string; description: string }) {
   return <Script graph={[breadcrumbs(path, name), webPage(path, `${name} | Rocket Llama Labs`, description)]} />;
+}
+
+// Metadata for an industry page (/hvac, /plumbing, ...): its own title tag,
+// description and social image, taken from the page's banner photo.
+export function industryMeta(ind: Industry): Metadata {
+  const meta = pageMeta(`/${ind.slug}`, ind.title, ind.description);
+  const image = { url: `${SITE}/v7/img/${ind.image.stem}-1280.webp`, width: 1280, height: 720, alt: ind.image.alt };
+  return {
+    ...meta,
+    authors: [{ name: INDUSTRY_AUTHOR.name, url: `${SITE}/about/${INDUSTRY_AUTHOR.id}` }],
+    openGraph: { ...meta.openGraph, images: [image] },
+    twitter: { ...meta.twitter, images: [image.url] },
+  };
+}
+
+// Structured data for an industry page: where it sits in the site, who wrote it
+// and when, the service it describes, where that service is offered, and the
+// page's questions and answers. Every value is also in the visible page.
+export function IndustryStructuredData({ ind }: { ind: Industry }) {
+  const path = `/${ind.slug}`;
+  const url = `${SITE}${path}`;
+  const authorId = `${SITE}/about#${INDUSTRY_AUTHOR.id}`;
+  const author = PEOPLE.find((p) => p["@id"] === authorId);
+  return (
+    <Script
+      graph={[
+        ORG,
+        ...(author ? [author] : []),
+        {
+          "@type": "BreadcrumbList",
+          "@id": `${url}#breadcrumb`,
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+            { "@type": "ListItem", position: 2, name: "Industries", item: `${SITE}/industries` },
+            { "@type": "ListItem", position: 3, name: `${ind.name} marketing`, item: url },
+          ],
+        },
+        webPage(path, `${ind.title} | Rocket Llama Labs`, ind.description, {
+          author: { "@id": authorId },
+          publisher: { "@id": `${SITE}/#organization` },
+          datePublished: INDUSTRY_PUBLISHED,
+          dateModified: INDUSTRY_UPDATED,
+          breadcrumb: { "@id": `${url}#breadcrumb` },
+          mainEntity: { "@id": `${url}#service` },
+          primaryImageOfPage: { "@type": "ImageObject", "@id": `${url}#image`, url: `${SITE}/v7/img/${ind.image.stem}-1920.webp`, width: 1920, height: 1080, caption: ind.image.alt },
+          speakable: { "@type": "SpeakableSpecification", cssSelector: ["#summary .answer"] },
+        }),
+        {
+          "@type": "Service",
+          "@id": `${url}#service`,
+          name: `${ind.name} marketing services`,
+          serviceType: `${ind.name} marketing`,
+          url,
+          description: ind.summary,
+          image: { "@id": `${url}#image` },
+          provider: { "@id": `${SITE}/#organization` },
+          areaServed: ORG.areaServed,
+          audience: { "@type": "BusinessAudience", audienceType: ind.audience },
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: ind.servicesHeading,
+            itemListElement: ind.services.map(([label, heading, copy]) => ({
+              "@type": "Offer",
+              itemOffered: { "@type": "Service", name: `${label}: ${heading}`, description: copy },
+            })),
+          },
+        },
+        {
+          "@type": "FAQPage",
+          "@id": `${url}#faq`,
+          mainEntity: ind.faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+        },
+      ]}
+    />
+  );
 }
