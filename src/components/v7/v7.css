@@ -683,3 +683,5 @@
 /* About: white header, white team, light blue footer like the rest of the site. */
 .v7 #team{background:#fff}
 .v7:has(.pagehead.about-head) footer{background:#eaf2fd}
+/* About: light blue header, white team, light blue footer. */
+.v7 .pagehead.about-head{background:#eaf2fd}
