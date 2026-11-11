@@ -891,3 +891,5 @@
 @media(min-width:720px){.v7 .person .gallery{grid-template-columns:repeat(4,1fr)}.v7 .person .gallery figure.tall{grid-row:auto}}
 .v7 .person .gallery figure{border-radius:14px}
 .v7 .person .gallery img,.v7 .person .gallery figure.tall img{aspect-ratio:1;object-fit:cover}
+/* Footer: white on every page, with a thin top rule. */
+.v7 footer,.v7:has(.pagehead.about-head) footer,.v7:has(#industries) footer{background:#fff;border-top:1px solid var(--line)}
