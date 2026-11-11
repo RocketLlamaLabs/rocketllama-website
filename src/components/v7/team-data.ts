@@ -2,7 +2,7 @@
 // individual pages under /about/<slug>. Bio copy is HTML (it carries emphasis and links).
 
 export type Gallery = { kicker: string; title: string; text: string; photos: { src: string; alt: string; tall?: boolean }[] };
-export type Person = { slug: string; name: string; role: string; photo: string; alt: string; summary: string; bio: string[]; gallery?: Gallery };
+export type Person = { slug: string; name: string; role: string; shortRole?: string; photo: string; alt: string; summary: string; bio: string[]; gallery?: Gallery };
 
 export const TEAM: Person[] = [
   {
@@ -49,6 +49,7 @@ export const TEAM: Person[] = [
     slug: "madison-schantz",
     name: "Madison Schantz",
     role: "Chief Marketing Officer",
+    shortRole: "CMO",
     photo: "/v7/madison.jpg",
     alt: "Madison Schantz, Chief Marketing Officer at Rocket Llama Labs",
     summary: "Madison designs the brand, the website and the AI-powered tools each client runs on. Her background spans branding, web design, AI content and digital strategy, and she builds every piece so a home service company looks strong online and turns visitors into booked jobs.",

@@ -13,7 +13,7 @@ export function TeamSection({ tone = "blue" }: { tone?: "blue" | "white" }) {
       <article className="card" key={p.slug}>
         <img className="headshot photo" src={p.photo} alt={p.alt} />
         <h3 id={p.slug}>{p.name}</h3>
-        <p className="role">{p.role}</p>
+        <p className="role">{p.shortRole ?? p.role}</p>
         <p dangerouslySetInnerHTML={{ __html: p.summary }} />
         <a className="more" href={`/about/${p.slug}`}>Read more</a>
       </article>
