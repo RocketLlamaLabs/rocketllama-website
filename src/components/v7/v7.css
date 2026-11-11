@@ -948,13 +948,6 @@
 .v7 .nav .menu .panel .sublinks a{font-size:.88rem;font-weight:500;padding:7px 8px;color:var(--muted)}
 /* Navigation: solid white, no see-through. */
 .v7 .nav{background:#fff;backdrop-filter:none}
-/* Full system: the "never stands still" copy as its own full-width photo band. */
-.v7 .evolve-band{min-height:0;padding-block:clamp(56px,8vw,96px)}
-.v7 .evolve-band h2{color:#fff;max-width:20ch}
-.v7 .evolve-band .bsub{font-family:var(--serif);font-size:1.08rem;line-height:1.6;color:#fff;margin:16px 0 0;max-width:60ch}
-.v7 .evolve-band .ctas{margin-top:28px}
-/* Never-standing-still band: inner box spans the full content width like the other bands. */
-.v7 .evolve-band .in{width:100%;justify-self:stretch}
 /* Never-standing-still band: same height and rhythm as the Built-for band. */
 .v7 .evolve-band{min-height:clamp(420px,58vh,640px)}
 .v7 .evolve-band .in{padding-block:clamp(48px,7vw,80px)}
@@ -980,3 +973,14 @@
 /* About page: light blue footer. */
 .v7:has(main.about-live) footer{background:#eaf2fd;border-top:0}
 .v7:has(main.person) footer{background:#eaf2fd;border-top:0}
+
+/* Never standing still: a navy full-width section, copy on the left, the photo in a rounded box on the right. */
+.v7 .evolve-band{background:var(--deep);color:#fff;padding-block:clamp(48px,7vw,80px)}
+.v7 .evolve-band .in{display:grid;gap:32px;align-items:center;width:100%}
+@media(min-width:860px){.v7 .evolve-band .in{grid-template-columns:1.1fr .9fr;gap:56px}}
+.v7 .evolve-band .kicker{color:#fff;text-shadow:none}
+.v7 .evolve-band .kicker::before{background:#fff}
+.v7 .evolve-band h2{color:#fff;max-width:20ch;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.05}
+.v7 .evolve-band .bsub{font-family:var(--serif);font-size:1.05rem;line-height:1.55;color:#dce7f7;margin:14px 0 0;max-width:56ch;text-shadow:none}
+.v7 .evolve-band .ctas{margin-top:22px}
+.v7 .evolve-band .evolve-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px;display:block;border:1px solid rgba(255,255,255,.14)}
