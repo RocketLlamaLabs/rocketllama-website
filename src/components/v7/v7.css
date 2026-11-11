@@ -771,3 +771,27 @@
 /* About: quotes and goal line in navy, the proof numbers in royal blue. */
 .v7 .about-live .pull,.v7 .about-live .goal{color:var(--ink)}
 .v7 .about-live .am-stats .n{color:var(--accent)}
+
+/* ---- Motion. Rise-in on scroll, lifts on hover, button press, nav shadow. All off under prefers-reduced-motion. ---- */
+.v7.motion .rise{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+.v7.motion .rise.in{opacity:1;transform:none}
+.v7 .card,.v7 .trade,.v7 .team .card,.v7 .sysgroup,.v7 .starter a,.v7 .faq details,.v7 .step{transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s,border-color .22s,opacity .6s cubic-bezier(.2,.7,.2,1)}
+.v7 .card:hover,.v7 .sysgroup:hover,.v7 .team .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(4,23,58,.35);border-color:#b7cbe8}
+.v7 a.trade:hover,.v7 .starter a:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(4,23,58,.35);border-color:var(--accent)}
+.v7.motion .rise.card:hover,.v7.motion .rise.trade:hover,.v7.motion .rise.in.card:hover,.v7.motion .rise.in.trade:hover{transform:translateY(-4px)}
+.v7 .btn{transition:transform .15s,filter .15s,box-shadow .15s}
+.v7 .btn:hover{transform:translateY(-1px);box-shadow:0 10px 22px -12px rgba(0,110,255,.6)}
+.v7 .btn:active{transform:translateY(1px) scale(.98);box-shadow:none}
+.v7 .nav{transition:box-shadow .25s}
+.v7 .nav.scrolled{box-shadow:0 8px 30px -18px rgba(4,23,58,.35)}
+.v7 .nav .links a{position:relative}
+.v7 .nav .links a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+.v7 .nav .links a:hover::after{transform:scaleX(1)}
+.v7 .headshot{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.v7 .team .card:hover .headshot{transform:scale(1.04)}
+.v7 details summary{transition:color .15s}
+.v7 details summary::after{transition:transform .2s}
+.v7 details[open] summary::after{transform:rotate(180deg)}
+.v7 .evolve-photo,.v7 .shot video{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.v7 .evolve:hover .evolve-photo{transform:scale(1.02)}
+@media(prefers-reduced-motion:reduce){.v7 *,.v7 *::before,.v7 *::after{transition:none!important;animation:none!important}.v7 .rise{opacity:1;transform:none}}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Libre_Franklin, Source_Serif_4 } from "next/font/google";
 import "./v7.css";
 import "@/components/v7/v7.css";
+import { Motion } from "@/components/v7/motion";
 
 // The version 7 sample keeps the mockup's two typefaces: Libre Franklin for
 // headings and UI, Source Serif 4 for body copy. Both are variable fonts.
@@ -30,6 +31,7 @@ export default function V7Layout({ children }: LayoutProps<"/">) {
     <div
       className={`v7 ${libreFranklin.variable} ${sourceSerif.variable} flex-1`}
     >
+      <Motion />
       {children}
     </div>
   );

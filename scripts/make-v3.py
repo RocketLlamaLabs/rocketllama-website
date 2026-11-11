@@ -231,6 +231,10 @@ def build(dst_rel, base, n, extras=None, extra_css_import=None, layout_note=''):
     if extra_css_import:
         s = s.replace(f'import "./v{n}.css";', f'import "./v{n}.css";\nimport "{extra_css_import}";')
     open(lp, 'w').write(s)
+    if n == 7:  # site-wide motion layer
+        L = open(lp).read()
+        L = L.replace('import "@/components/v7/v7.css";\n', 'import "@/components/v7/v7.css";\nimport { Motion } from "@/components/v7/motion";\n', 1).replace('      {children}\n', '      <Motion />\n      {children}\n', 1)
+        open(lp, 'w').write(L)
     # stylesheet: rescope and recolor
     cp = os.path.join(dst, f'v{n}.css')
     c = open(cp).read()
