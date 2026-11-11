@@ -42,7 +42,7 @@ export function IndustryPage({ ind }: { ind: Industry }) {
 
         <section id="summary" className="isum"><div className="wrap">
           <p className="byline">
-            By <Link href={`/about#${INDUSTRY_AUTHOR.id}`} rel="author">{INDUSTRY_AUTHOR.name}</Link>, {INDUSTRY_AUTHOR.role}
+            By <Link href={`/about/${INDUSTRY_AUTHOR.id}`} rel="author">{INDUSTRY_AUTHOR.name}</Link>, {INDUSTRY_AUTHOR.role}
             <span aria-hidden="true"> · </span>
             Updated <time dateTime={INDUSTRY_UPDATED}>{INDUSTRY_UPDATED_LABEL}</time>
           </p>

@@ -66,3 +66,18 @@ cp .env.example .env.local   # then fill in your Supabase URL and publishable ke
 npm install
 npm run dev
 ```
+
+## Presentation versions
+
+The sales presentation is served at `/slides/v1`, `/slides/v2`, and so on, as a
+full-page viewer anyone with the link can open. Versions are listed in the
+admin under Assets › Presentation.
+
+To add a version from a PowerPoint file:
+
+```bash
+scripts/make-slides.sh v2 path/to/deck.pptx
+```
+
+It writes the slide images to `public/slides/v2/` and prints the entry to add
+to `src/lib/slide-versions.ts`. `/slides` always opens the newest version.

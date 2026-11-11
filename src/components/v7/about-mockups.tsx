@@ -47,15 +47,15 @@ export const BLOCKS: [string, string[]][] = [
 ];
 
 const STATS: [string, string][] = [
-  ["20+", "years building businesses that get found online"],
+  ["20+", "years of building businesses and helping owners get found online"],
   ["$50M+", "generated through inbound marketing"],
-  ["23", "years leading sales and client strategy"],
+  ["20+", "years leading sales and client strategy"],
 ];
 
 export function Stats() {
   return (
     <div className="am-stats">
-      {STATS.map(([n, l]) => (<div key={n}><div className="n">{n}</div><div className="l">{l}</div></div>))}
+      {STATS.map(([n, l]) => (<div key={l}><div className="n">{n}</div><div className="l">{l}</div></div>))}
     </div>
   );
 }

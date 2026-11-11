@@ -774,11 +774,11 @@
 
 /* ---- Motion. Rise-in on scroll, lifts on hover, button press, nav shadow. All off under prefers-reduced-motion. ---- */
 .v7.motion .rise{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
-.v7.motion .rise.in{opacity:1;transform:none}
+.v7.motion .rise.risen{opacity:1;transform:none}
 .v7 .card,.v7 .trade,.v7 .team .card,.v7 .sysgroup,.v7 .starter a,.v7 .faq details,.v7 .step{transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s,border-color .22s,opacity .6s cubic-bezier(.2,.7,.2,1)}
 .v7 .card:hover,.v7 .sysgroup:hover,.v7 .team .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(4,23,58,.35);border-color:#b7cbe8}
 .v7 a.trade:hover,.v7 .starter a:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(4,23,58,.35);border-color:var(--accent)}
-.v7.motion .rise.card:hover,.v7.motion .rise.trade:hover,.v7.motion .rise.in.card:hover,.v7.motion .rise.in.trade:hover{transform:translateY(-4px)}
+.v7.motion .rise.card:hover,.v7.motion .rise.trade:hover,.v7.motion .rise.risen.card:hover,.v7.motion .rise.risen.trade:hover{transform:translateY(-4px)}
 .v7 .btn{transition:transform .15s,filter .15s,box-shadow .15s}
 .v7 .btn:hover{transform:translateY(-1px);box-shadow:0 10px 22px -12px rgba(0,110,255,.6)}
 .v7 .btn:active{transform:translateY(1px) scale(.98);box-shadow:none}
@@ -853,6 +853,48 @@
 /* Industries tiles: names only, one tidy row height. */
 .v7 #industries .trade{min-height:0;padding:16px 18px;row-gap:0}
 
+/* ---- Person pages (/about/<slug>) and the Read more link on the team cards. ---- */
+.v7 .team .card .more{display:inline-block;margin-top:12px;font-family:var(--sans);font-weight:700;font-size:.92rem;color:var(--accent);text-decoration:none}
+.v7 .team .card .more:hover{text-decoration:underline}
+.v7 .person .pagehead{background:#eaf2fd;border-bottom:0}
+.v7 .person .back{display:inline-block;font-family:var(--sans);font-weight:700;font-size:.92rem;color:var(--accent-ink);text-decoration:none;margin-bottom:28px}
+.v7 .person .back:hover{text-decoration:underline}
+.v7 .person .person-head{display:grid;gap:28px;align-items:center}
+@media(min-width:760px){.v7 .person .person-head{grid-template-columns:220px minmax(0,1fr);gap:44px}}
+.v7 .person .person-head .headshot{width:220px;height:220px;border-radius:50%;object-fit:cover;background:#fff}
+.v7 .person .person-head .kicker{margin:0 0 12px}
+.v7 .person h1{font-size:clamp(2.3rem,5vw,4rem);line-height:1.02;letter-spacing:-.04em;color:var(--ink);margin:0;max-width:none;text-shadow:none}
+.v7 .person .lede{margin:16px 0 0;max-width:62ch;font-size:clamp(1.05rem,1.6vw,1.2rem);line-height:1.55;color:var(--muted)}
+.v7 .person .person-bio{background:#fff}
+.v7 .person .person-bio p{max-width:70ch;margin:0 0 18px;font-size:1.08rem;line-height:1.65;color:var(--ink)}
+.v7 .person .person-bio a{color:var(--accent);font-weight:600}
+.v7 .person .person-bio .ctas{margin-top:30px}
+/* Footer: the same height as the navigation bar. */
+.v7 footer{padding-block:14px}
+.v7 footer .in{min-height:44px;align-items:center}
+/* Person page: button text stays white; intro left aligned. */
+.v7 .person .person-bio .ctas .btn{color:#fff}
+.v7 .person .lede{text-align:left;hyphens:none}
+/* Person page gallery. */
+.v7 .person .person-gallery{background:#eaf2fd;border-block:0}
+.v7 .person .person-gallery .sub{max-width:62ch}
+.v7 .person .gallery{display:grid;gap:16px;margin-top:34px}
+@media(min-width:720px){.v7 .person .gallery{grid-template-columns:1fr 1fr}.v7 .person .gallery figure.tall{grid-row:span 2}}
+.v7 .person .gallery figure{margin:0;border-radius:18px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.v7 .person .gallery img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.v7 .person .gallery figure.tall img{aspect-ratio:auto}
+/* Person page gallery: a compact, even row of four. */
+.v7 .person .person-gallery{padding-block:clamp(36px,5vw,56px)}
+.v7 .person .person-gallery h2{font-size:clamp(1.5rem,2.6vw,2.1rem);max-width:30ch}
+.v7 .person .person-gallery .sub{margin-top:10px;font-size:1rem;line-height:1.5}
+.v7 .person .gallery{margin-top:24px;gap:12px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:720px){.v7 .person .gallery{grid-template-columns:repeat(4,1fr)}.v7 .person .gallery figure.tall{grid-row:auto}}
+.v7 .person .gallery figure{border-radius:14px}
+.v7 .person .gallery img,.v7 .person .gallery figure.tall img{aspect-ratio:1;object-fit:cover}
+/* Footer: white on every page, with a thin top rule. */
+.v7 footer,.v7:has(.pagehead.about-head) footer,.v7:has(#industries) footer{background:#fff;border-top:1px solid var(--line)}
+/* Person pages: light blue footer. */
+.v7:has(main.person) footer{background:#eaf2fd;border-top:0}
 /* Industry pages (/hvac, /plumbing, ...): photo banner, byline, summary box, search terms. */
 .v7 .ihero{position:relative;isolation:isolate;overflow:hidden;color:#fff;display:grid;align-items:end;min-height:min(64vh,600px);background:var(--deep)}
 .v7 .ihero .bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}

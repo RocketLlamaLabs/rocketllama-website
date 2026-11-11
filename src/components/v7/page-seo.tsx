@@ -151,7 +151,7 @@ export function industryMeta(ind: Industry): Metadata {
   const image = { url: `${SITE}/v7/img/${ind.image.stem}-1280.webp`, width: 1280, height: 720, alt: ind.image.alt };
   return {
     ...meta,
-    authors: [{ name: INDUSTRY_AUTHOR.name, url: `${SITE}/about#${INDUSTRY_AUTHOR.id}` }],
+    authors: [{ name: INDUSTRY_AUTHOR.name, url: `${SITE}/about/${INDUSTRY_AUTHOR.id}` }],
     openGraph: { ...meta.openGraph, images: [image] },
     twitter: { ...meta.twitter, images: [image.url] },
   };

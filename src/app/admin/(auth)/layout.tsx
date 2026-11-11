@@ -12,12 +12,12 @@ export default function AuthLayout({ children }: LayoutProps<"/admin">) {
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-4 py-12">
         <Link href="/" className="mb-8 self-center">
           <Image
-            src="/brand/wordmark-horizontal-rocket-o.svg"
+            src="/brand/logo-nav.svg"
             alt="Rocket Llama Labs"
-            width={200}
-            height={20}
+            width={249}
+            height={40}
             priority
-            className="h-6 w-auto"
+            className="h-10 w-auto"
           />
         </Link>
         <div className="rounded-lg bg-white p-8 shadow-md">{children}</div>
