@@ -617,3 +617,5 @@
 .v7 .card .src{color:var(--muted)}
 /* Banner: no CSS background photo (the first slide is in the HTML and paints first). */
 .v7 .slides{background-image:none}
+/* About header: copy block as wide as the widest line of the new title. */
+.v7 .pagehead.about-head .lede{width:calc(var(--h1) * 14.3)}
