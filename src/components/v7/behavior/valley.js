@@ -3,7 +3,7 @@
 export function mountValley() {
   var band = document.getElementById('tradeband'); if (!band || band.dataset.mounted) return;
   band.dataset.mounted = '1';
-  var P = { hvac: '/v2/img/hero-hvac.jpg', plumbing: '/v2/img/hero-plumbing.jpg', electrical: '/v2/img/hero-electrical.jpg', roofing: '/v2/img/hero-roofing.jpg', door: '/v2/img/band-door.jpg', nb: '/v2/img/band-neighborhood.jpg' };
+  var P = { hvac: '/v7/img/hero-hvac-1920.webp', plumbing: '/v7/img/hero-plumbing-1920.webp', electrical: '/v7/img/hero-electrical-1920.webp', roofing: '/v7/img/hero-roofing-1920.webp', door: '/v7/img/band-door-1920.webp', nb: '/v7/img/band-neighborhood-1920.webp' };
   var MON = ['J','F','M','A','M','J','J','A','S','O','N','D'];
   var TRADES = {
     'HVAC': { kw: ['ac repair phoenix','emergency ac repair near me','hvac company chandler','ac replacement cost mesa','heat pump install gilbert'], season: 'June to September', seasonP: 'Peak cooling season in the Valley. Local Services Ads and search budgets rise with the temperature and come down in October.', curve: [40,38,45,55,75,100,100,95,80,55,40,42], job: '$6,800', jobP: 'Illustrative average for a replacement in the Phoenix market. The CRM records the real number per job, and that sets next month’s spend.', photo: P.hvac, h2: 'When the AC dies in July, the first company to answer gets the job.', p: 'Every new lead gets a text and an email in under a minute, in your voice, even when your techs are on a roof in 112° degrees. Your phone will still ring first and if nobody can pick up, the AI books an appointment.' },

@@ -20,7 +20,7 @@ export function Valley({ base = "" }: { base?: string }) {
   useEffect(mountValley, []);
   return (
     <>
-<div className="band photo-band" id="tradeband" style={{"--img":"url(/v2/img/hero-hvac.jpg)"} as CSSProperties}><div className="bg on" style={{backgroundImage:"url(/v2/img/hero-hvac.jpg)"} as CSSProperties}></div><div className="bg"></div><div className="dots" id="trade-dots"></div><div className="wrap in">
+<div className="band photo-band" id="tradeband" style={{"--img":"url(/v7/img/hero-hvac-1920.webp)"} as CSSProperties}><div className="bg on" style={{backgroundImage:"url(/v7/img/hero-hvac-1920.webp)"} as CSSProperties}></div><div className="bg"></div><div className="dots" id="trade-dots"></div><div className="wrap in">
   <p className="kicker"><span>Built for <span data-t="trade-lc">HVAC</span></span></p>
   <h2 className="photo-h2">When the AC dies in July, the first company to answer gets the job.</h2>
   <p className="photo-p">Every new lead gets a text and an email in under a minute, in your voice, even when your techs are on a roof in 112° degrees. Your phone will still ring first and if nobody can pick up, the AI books an appointment.</p>

@@ -611,3 +611,9 @@
 .v7 .legal-sec li::before{background:var(--ink)}
 /* Stat cards: "in" and "vs" in the navy like the numbers. */
 .v7 .card .n .sm{color:var(--ink)}
+/* Built-for band: label at the standard size. */
+.v7 #tradeband .kicker{font-size:12.5px;letter-spacing:.08em}
+/* Stat card source lines: readable contrast. */
+.v7 .card .src{color:var(--muted)}
+/* Banner: no CSS background photo (the first slide is in the HTML and paints first). */
+.v7 .slides{background-image:none}

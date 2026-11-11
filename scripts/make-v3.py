@@ -328,6 +328,11 @@ def v7_extras_core(s, f, is_home, base):
     s = re.sub(r"export const metadata: Metadata = \{.*?\n\};", "export const metadata: Metadata = HOME_META;", s, count=1, flags=re.S)
     s = s.replace('import type { Metadata } from "next";\n', 'import type { Metadata } from "next";\nimport { HOME_META, HomeStructuredData } from "@/components/v7/home-seo";\n', 1)
     s = s.replace('<main>\n', '<main>\n<HomeStructuredData />\n', 1)
+    s = s.replace('import { HOME_META, HomeStructuredData } from "@/components/v7/home-seo";', 'import { HOME_META, HomeStructuredData, HomeFaq } from "@/components/v7/home-seo";', 1)
+    # banner photos as WebP with sizes for phones; the first one is the LCP image
+    for i, name in enumerate(['hvac', 'plumbing', 'electrical', 'roofing']):
+        pri = 'className="on" fetchPriority="high"' if i == 0 else 'loading="lazy"'
+        s = s.replace(f'<img src="/v2/img/hero-{name}.jpg" alt="" />', f'<img src="/v7/img/hero-{name}-1920.webp" srcSet="/v7/img/hero-{name}-800.webp 800w, /v7/img/hero-{name}-1280.webp 1280w, /v7/img/hero-{name}-1920.webp 1920w" sizes="100vw" alt="" {pri} decoding="async" />', 1)
     return s
 
 
@@ -461,7 +466,7 @@ def v7_extras(s, f, is_home, base):
         s = s.replace('import { Race } from "@/components/v7/race";\n', '', 1)
         # after the carousel: the full system from version 8, then how it works, then nothing else
         t0 = s.index('\n<div className="band center"'); t1 = s.index('</main>')
-        s = s[:t0] + f'\n<FullSystem base="{base}" id="fullsystem" photo={{{{ src: "/v2/img/band-van.jpg", alt: "A service van on a Phoenix street" }}}} detailed />\n<HowItWorks base="{base}" />\n' + s[t1:]
+        s = s[:t0] + f'\n<FullSystem base="{base}" id="fullsystem" photo={{{{ src: "/v7/img/band-van-1280.webp", alt: "A service van on a Phoenix street" }}}} detailed />\n<HowItWorks base="{base}" />\n<HomeFaq />\n' + s[t1:]
         s = s.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { FullSystem, HowItWorks } from "@/components/v8/full-system";\n', 1)
         for name, path in [('FreeScan', '@/components/v2/free-scan'), ('WhySwitch', '@/components/v7/why-switch'), ('Timeline', '@/components/v7/timeline'), ('CompareTable', '@/components/v7/compare-table')]:
             if f'<{name}' not in s:

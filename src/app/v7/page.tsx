@@ -2,7 +2,7 @@
 
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import { HOME_META, HomeStructuredData } from "@/components/v7/home-seo";
+import { HOME_META, HomeStructuredData, HomeFaq } from "@/components/v7/home-seo";
 import { V7Footer } from "@/components/v7/footer";
 import { FullSystem, HowItWorks } from "@/components/v8/full-system";
 import { SixtySecondCheck } from "@/components/v2/sixty-second-check";
@@ -34,10 +34,10 @@ export default function Page() {
 
 <header className="hero" id="top">
   <div className="slides" aria-hidden="true">
-    <img src="/v2/img/hero-hvac.jpg" alt="" />
-    <img src="/v2/img/hero-plumbing.jpg" alt="" />
-    <img src="/v2/img/hero-electrical.jpg" alt="" />
-    <img src="/v2/img/hero-roofing.jpg" alt="" />
+    <img src="/v7/img/hero-hvac-1920.webp" srcSet="/v7/img/hero-hvac-800.webp 800w, /v7/img/hero-hvac-1280.webp 1280w, /v7/img/hero-hvac-1920.webp 1920w" sizes="100vw" alt="" className="on" fetchPriority="high" decoding="async" />
+    <img src="/v7/img/hero-plumbing-1920.webp" srcSet="/v7/img/hero-plumbing-800.webp 800w, /v7/img/hero-plumbing-1280.webp 1280w, /v7/img/hero-plumbing-1920.webp 1920w" sizes="100vw" alt="" loading="lazy" decoding="async" />
+    <img src="/v7/img/hero-electrical-1920.webp" srcSet="/v7/img/hero-electrical-800.webp 800w, /v7/img/hero-electrical-1280.webp 1280w, /v7/img/hero-electrical-1920.webp 1920w" sizes="100vw" alt="" loading="lazy" decoding="async" />
+    <img src="/v7/img/hero-roofing-1920.webp" srcSet="/v7/img/hero-roofing-800.webp 800w, /v7/img/hero-roofing-1280.webp 1280w, /v7/img/hero-roofing-1920.webp 1920w" sizes="100vw" alt="" loading="lazy" decoding="async" />
   </div>
   <div className="wrap in">
    <div>
@@ -74,8 +74,9 @@ export default function Page() {
 
 <Valley base="/v7" />
 
-<FullSystem base="/v7" id="fullsystem" photo={{ src: "/v2/img/band-van.jpg", alt: "A service van on a Phoenix street" }} detailed />
+<FullSystem base="/v7" id="fullsystem" photo={{ src: "/v7/img/band-van-1280.webp", alt: "A service van on a Phoenix street" }} detailed />
 <HowItWorks base="/v7" />
+<HomeFaq />
 </main>
       <V7Footer note='Version 7 · built from the BBM Local mockup C' />
     </>
