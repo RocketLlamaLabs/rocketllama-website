@@ -945,3 +945,8 @@
 @media(max-width:640px){.v7 footer .find{justify-content:center}}
 /* Navigation: solid white, no see-through. */
 .v7 .nav{background:#fff;backdrop-filter:none}
+/* Full system: the "never stands still" copy as its own full-width photo band. */
+.v7 .evolve-band{min-height:0;padding-block:clamp(56px,8vw,96px)}
+.v7 .evolve-band h2{color:#fff;max-width:20ch}
+.v7 .evolve-band .bsub{font-family:var(--serif);font-size:1.08rem;line-height:1.6;color:#fff;margin:16px 0 0;max-width:60ch}
+.v7 .evolve-band .ctas{margin-top:28px}

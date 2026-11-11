@@ -75,7 +75,7 @@ export default function Page() {
 
 <Valley base="" />
 
-<FullSystem base="" id="fullsystem" photo={{ src: "/v7/img/band-van-1280.webp", alt: "A service van on a Phoenix street" }} detailed />
+<FullSystem base="" id="fullsystem" photo={{ src: "/v7/img/band-van-1280.webp", alt: "A service van on a Phoenix street" }} detailed band />
 <HowItWorks base="" />
 </main>
       <V7Footer note='Version 7 · built from the BBM Local mockup C' />

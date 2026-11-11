@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- same photo markup as the other versions */
 
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 // The full-system list and the four "how it works" steps, shared by the
 // version 8 home and the version 7 home.
 
@@ -28,9 +28,10 @@ const KEEP_RUNNING_DETAILED = [
   "Website updates and new pages as your company grows",
 ];
 
-export function FullSystem({ base, id = "system", photo, detailed, badge, noDream }: { base: string; id?: string; photo?: { src: string; alt: string }; detailed?: boolean; badge?: ReactNode; noDream?: boolean }) {
+export function FullSystem({ base, id = "system", photo, detailed, badge, noDream, band }: { base: string; id?: string; photo?: { src: string; alt: string }; detailed?: boolean; badge?: ReactNode; noDream?: boolean; band?: boolean }) {
   const groups = detailed ? SYSTEM.map(([name, blurb, items]) => [name, blurb, name === "Keep it running" ? KEEP_RUNNING_DETAILED : items] as [string, string, string[]]) : SYSTEM;
   return (
+  <>
 <section id={id} className="feature"><div className="wrap">
   <p className="kicker">The full system</p>
   <h2>Most agencies sell you one tactic.<br />We run the whole thing.</h2>
@@ -44,6 +45,7 @@ export function FullSystem({ base, id = "system", photo, detailed, badge, noDrea
       </div>
     ))}
   </div>
+  {band ? null : (
   <div className={photo ? "evolve with-photo" : "evolve"}>
     <div className="evolve-text">
     <p>{detailed ? <><b>Our system never stands still.</b> As marketing technology and consumer behavior evolve, we continuously improve and adapt to keep your business ahead of the competition. Our mission is simple: take marketing off your plate, make your life easier, and keep bringing new customers through your door.</> : <><b>Our system is constantly evolving</b>, because the marketing systems it runs on never stop changing. Our goal is simple: make your job easier and bring you customers.</>}</p>
@@ -52,7 +54,17 @@ export function FullSystem({ base, id = "system", photo, detailed, badge, noDrea
     </div>
     {photo ? (badge ? <div className="evolve-photo-wrap"><img className="evolve-photo" src={photo.src} alt={photo.alt} />{badge}</div> : <img className="evolve-photo" src={photo.src} alt={photo.alt} />) : null}
   </div>
+  )}
 </div></section>
+  {band && photo ? (
+    <div className="band evolve-band" id="evolve" style={{ "--img": `url(${photo.src})` } as CSSProperties}><div className="wrap in">
+      <p className="kicker">Never standing still</p>
+      <h2>If you can dream it, we can build it.</h2>
+      <p className="bsub">Our system never stands still. As marketing technology and consumer behavior evolve, we continuously improve and adapt to keep your business ahead of the competition. Our mission is simple: take marketing off your plate, make your life easier, and keep bringing new customers through your door.</p>
+      <div className="ctas"><a className="btn" href={`${base}/book`}>Schedule a call</a></div>
+    </div></div>
+  ) : null}
+  </>
   );
 }
 

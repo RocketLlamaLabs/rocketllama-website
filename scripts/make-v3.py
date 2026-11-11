@@ -472,7 +472,7 @@ def v7_extras(s, f, is_home, base):
         s = s.replace('import { Race } from "@/components/v7/race";\n', '', 1)
         # after the carousel: the full system from version 8, then how it works, then nothing else
         t0 = s.index('\n<div className="band center"'); t1 = s.index('</main>')
-        s = s[:t0] + f'\n<FullSystem base="{base}" id="fullsystem" photo={{{{ src: "/v7/img/band-van-1280.webp", alt: "A service van on a Phoenix street" }}}} detailed />\n<HowItWorks base="{base}" />\n' + s[t1:]
+        s = s[:t0] + f'\n<FullSystem base="{base}" id="fullsystem" photo={{{{ src: "/v7/img/band-van-1280.webp", alt: "A service van on a Phoenix street" }}}} detailed band />\n<HowItWorks base="{base}" />\n' + s[t1:]
         s = s.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { FullSystem, HowItWorks } from "@/components/v8/full-system";\n', 1)
         for name, path in [('FreeScan', '@/components/v2/free-scan'), ('WhySwitch', '@/components/v7/why-switch'), ('Timeline', '@/components/v7/timeline'), ('CompareTable', '@/components/v7/compare-table')]:
             if f'<{name}' not in s:
