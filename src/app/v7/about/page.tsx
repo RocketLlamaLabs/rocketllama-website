@@ -3,7 +3,7 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { V7Footer } from "@/components/v7/footer";
-import { AboutStructuredData, ABOUT_FAQ } from "@/components/v7/about-seo";
+import { AboutStructuredData } from "@/components/v7/about-seo";
 
 export const metadata: Metadata = {
   title: { absolute: "About Rocket Llama Labs: the Phoenix marketing team for home service companies" },

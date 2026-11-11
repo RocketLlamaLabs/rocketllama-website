@@ -584,7 +584,7 @@ def write_v7_about():
     section that holds a placeholder for the owners' own story."""
     t = open(os.path.join(root, 'src/app/v7/about-brian/page.tsx')).read()
     t = re.sub(r"export const metadata: Metadata = \{.*?\n\};", ABOUT_META, t, count=1, flags=re.S)
-    t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { AboutStructuredData, ABOUT_FAQ } from "@/components/v7/about-seo";\n', 1)
+    t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { AboutStructuredData } from "@/components/v7/about-seo";\n', 1)
     t = re.sub(r'// Ported from the mockup.*?\n', '// About Us, on its own page. The story section is a placeholder until the owners supply their copy.\n', t, count=1)
     i = t.index('<main>'); j = t.index('</main>') + len('</main>')
     main = (
