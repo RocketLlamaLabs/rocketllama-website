@@ -766,8 +766,8 @@ def v7_page_seo():
             # no "other home service" tile: the grid lists only the trades we work with
             t = re.sub(r'<a className="trade other" href="[^"]*">[^<]*</a>', '', t, count=1)
             # one short line inside each trade tile
-            for name, line in TRADE_LINES.items():
-                t = t.replace('>%s</a>' % name, '><span>%s</span><small>%s</small></a>' % (name, line), 1)
+            for name in TRADE_LINES:  # names only on the tiles
+                t = t.replace('>%s</a>' % name, '><span>%s</span></a>' % name, 1)
         if slug == 'report':
             t = t.replace('<ReportSection />', '<ReportSection heading="h1" />', 1)
         open(fp, 'w').write(t)
