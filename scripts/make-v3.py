@@ -831,8 +831,9 @@ def v7_page_seo():
             # no "other home service" tile: the grid lists only the trades we work with
             t = re.sub(r'<a className="trade other" href="[^"]*">[^<]*</a>', '', t, count=1)
             # one short line inside each trade tile
-            for name in TRADE_LINES:  # names only on the tiles
-                t = t.replace('>%s</a>' % name, '><span>%s</span></a>' % name, 1)
+            for name in TRADE_LINES:  # names only on the tiles; the one long name is shortened so every tile fits one line
+                label = 'Pressure washing' if name == 'Window and pressure washing' else name
+                t = t.replace('>%s</a>' % name, '><span>%s</span></a>' % label, 1)
             # each tile opens that trade's own page (/hvac, /garage-door, ...); the pages
             # themselves are hand-written: src/app/(home)/<slug>/page.tsx and src/components/v7/industries-data.ts
             t, k = re.subn(r'<a className="trade" href="[^"]*"><span>([^<]+)</span></a>', lambda m: '<a className="trade" href="/%s"><span>%s</span></a>' % (m.group(1).lower().replace(' ', '-'), m.group(1)), t)
