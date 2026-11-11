@@ -63,7 +63,8 @@ python3 scripts/port-v2-site.py ../rocketllamalabs/bbm-plan
 
 `/marketing-audit` is internal for now: its pages and `/api/audit/*` need the admin sign-in (gated in `src/proxy.ts`; remove `isAuditPage` and `isAuditApi` there to make it public). It audits a prospect's whole marketing system from a website and/or social handles. The report lives at `/marketing-audit/report?site=…&name=…&city=…&industry=…&ig=…&fb=…&tt=…&yt=…&li=…&x=…`, so any link is a ready-to-run audit (re-run fresh each time it opens). The auditor's "checked by hand" answers are saved in the link's `m=` parameter.
 
-- Code: checks in `src/lib/audit` (site, speed, social, places, ai, checklist), API routes in `src/app/api/audit/*`, report UI in `src/components/audit`.
+- Every warning and failure carries specific fix details: what was found (file names, blocked bots, slow scripts), numbered steps, and paste-ready code or copy prefilled with the business's name, city and service (`src/lib/audit/fixes.ts`). With `ANTHROPIC_API_KEY` set, a "Rewrites, ready to paste" section adds a new title, meta description, H1, about paragraph, Google profile description and FAQ written from the live homepage (`src/lib/audit/copy.ts`).
+- Code: checks in `src/lib/audit` (site and site-analyze, speed, social, places, ai, copy, checklist), API routes in `src/app/api/audit/*`, report UI in `src/components/audit`.
 - Optional keys (see `.env.example`): `ANTHROPIC_API_KEY` turns on the live AI search test, `GOOGLE_PLACES_API_KEY` the Google profile and competitor check, `PAGESPEED_API_KEY` a dedicated PageSpeed quota (the shared keyless quota is often used up).
 - Each API route stays under Netlify's 60-second function limit.
 

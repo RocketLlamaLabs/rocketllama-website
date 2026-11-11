@@ -8,6 +8,6 @@ export async function GET(req: Request) {
   return respond(async () => {
     const url = normalizeSiteUrl(param(req, "url", 500));
     if (!url) throw new Error("Enter a website address, such as acme.com.");
-    return auditSite(url);
+    return auditSite(url, { name: param(req, "name"), city: param(req, "city"), industry: param(req, "industry") });
   });
 }

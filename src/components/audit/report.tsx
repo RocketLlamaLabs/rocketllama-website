@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import type { AiResult } from "@/lib/audit/ai";
+import type { CopyResult } from "@/lib/audit/copy";
 import type { PlacesResult } from "@/lib/audit/places";
 import type { SiteResult } from "@/lib/audit/site";
 import type { SocialResult } from "@/lib/audit/social";
@@ -22,7 +23,7 @@ import {
   scoreFindings,
   verdict,
 } from "@/lib/audit/shared";
-import { Bar, ExtLink, FindingRow, ImpactTag, Panel, ScoreRing, Spinner, StatusChip } from "./parts";
+import { Bar, ExtLink, FindingRow, ImpactTag, Panel, ScoreRing, Snippet, Spinner, StatusChip } from "./parts";
 
 type Load<T> =
   | { state: "loading" }
@@ -33,9 +34,11 @@ type Load<T> =
 
 type ApiReply<T> = { ok: true; data: T } | { ok: false; error: string };
 
-async function call<T>(path: string, params: Record<string, string>, signal: AbortSignal): Promise<Load<T>> {
+async function call<T>(path: string, params: Record<string, string>, signal: AbortSignal, body?: unknown): Promise<Load<T>> {
   try {
-    const res = await fetch(`/api/audit/${path}?${new URLSearchParams(params)}`, { signal, cache: "no-store" });
+    const res = body
+      ? await fetch(`/api/audit/${path}`, { method: "POST", body: JSON.stringify(body), headers: { "content-type": "application/json" }, signal, cache: "no-store" })
+      : await fetch(`/api/audit/${path}?${new URLSearchParams(params)}`, { signal, cache: "no-store" });
     const json = (await res.json()) as ApiReply<T | { disabled: true }>;
     if (!json.ok) return { state: "error", error: json.error };
     if (json.data && typeof json.data === "object" && "disabled" in json.data) return { state: "disabled" };
@@ -71,6 +74,7 @@ export function AuditReport() {
   const [speed, setSpeed] = useState<Load<SpeedResult>>({ state: "loading" });
   const [places, setPlaces] = useState<Load<PlacesResult>>({ state: "loading" });
   const [ai, setAi] = useState<Load<AiResult>>({ state: "loading" });
+  const [copy, setCopy] = useState<Load<CopyResult>>({ state: "loading" });
   const [socials, setSocials] = useState<Partial<Record<Platform, Load<SocialResult>>>>({});
   const [answers, setAnswers] = useState<Record<string, Answer>>(() => parseAnswers(sp.get("m")));
   const [copied, setCopied] = useState(false);
@@ -84,6 +88,7 @@ export function AuditReport() {
       setSpeed({ state: "loading" });
       setPlaces({ state: "loading" });
       setAi({ state: "loading" });
+      setCopy({ state: "loading" });
       setSocials({});
 
       const speedP = input.site
@@ -91,7 +96,7 @@ export function AuditReport() {
         : Promise.resolve(setSpeed({ state: "skipped", why: "No website was entered." }));
 
       let siteRes: Load<SiteResult> = { state: "skipped", why: "No website was entered." };
-      if (input.site) siteRes = await call<SiteResult>("site", { url: input.site }, signal);
+      if (input.site) siteRes = await call<SiteResult>("site", { url: input.site, name: input.name, city: input.city, industry: input.industry }, signal);
       setSite(siteRes);
 
       const found = siteRes.state === "ok" ? siteRes.data.socials : {};
@@ -106,7 +111,11 @@ export function AuditReport() {
       );
       const placesP = name ? call<PlacesResult>("places", ctx, signal).then(setPlaces) : Promise.resolve(setPlaces({ state: "skipped", why: "No business name to search for." }));
       const aiP = name ? call<AiResult>("ai", ctx, signal).then(setAi) : Promise.resolve(setAi({ state: "skipped", why: "No business name to ask about." }));
-      await Promise.all([speedP, placesP, aiP, ...socialP]);
+      const copyP =
+        siteRes.state === "ok"
+          ? call<CopyResult>("copy", {}, signal, { ...ctx, title: siteRes.data.title ?? "", description: siteRes.data.description ?? "", h1: siteRes.data.h1 ?? "", pageText: siteRes.data.pageText }).then(setCopy)
+          : Promise.resolve(setCopy({ state: "skipped", why: "The website check did not run." }));
+      await Promise.all([speedP, placesP, aiP, copyP, ...socialP]);
     };
     run().catch(() => {});
     return () => ac.abort();
@@ -150,6 +159,10 @@ export function AuditReport() {
             ? [d.followers !== null ? `${fmt(d.followers)} followers` : null, d.posts !== null ? `${fmt(d.posts)} posts` : null].filter(Boolean).join(", ") || "The profile is live."
             : d.note ?? "",
         fix: d.state === "missing" ? `Claim the ${p.name} handle and link it from the website, or remove the broken link.` : undefined,
+        steps:
+          d.state === "missing"
+            ? [`Create or claim ${profileUrl(p.id, d.handle)} under the business name.`, "Use the same logo, name, bio and booking link as the other profiles.", "Post the first nine pieces of content before linking it from the website."]
+            : undefined,
       });
     }
     const done = Object.values(socials).every((s) => s && s.state !== "loading");
@@ -190,7 +203,7 @@ export function AuditReport() {
   const overall = scored.length ? Math.round(scored.reduce((s, c) => s + (c.score ?? 0), 0) / scored.length) : null;
   const priorities = findings.filter((f) => f.status === "fail" || f.status === "warn").sort(priorityOrder).slice(0, 8);
 
-  const loads = [site, speed, places, ai, ...Object.values(socials)].filter(Boolean) as Load<unknown>[];
+  const loads = [site, speed, places, ai, copy, ...Object.values(socials)].filter(Boolean) as Load<unknown>[];
   const running = loads.filter((l) => l.state === "loading").length;
 
   async function copyLink() {
@@ -276,6 +289,11 @@ export function AuditReport() {
                   </div>
                   <p className="mt-1 text-sm text-muted">{f.detail}</p>
                   {f.fix ? <p className="mt-1 text-sm">{f.fix}</p> : null}
+                  {f.steps?.length || f.snippet || f.items?.length ? (
+                    <a href={`#f-${f.id}`} className="mt-1 inline-block text-sm font-semibold text-link underline underline-offset-2 print:hidden">
+                      Step-by-step fix{f.snippet ? " and code" : ""}
+                    </a>
+                  ) : null}
                   <p className="mt-2">
                     <ImpactTag impact={f.impact} /> <span className="text-xs text-muted">· {CATEGORIES.find((c) => c.id === f.category)?.name}</span>
                   </p>
@@ -287,6 +305,8 @@ export function AuditReport() {
           <div className="mt-5">{running ? <Spinner label="Collecting findings…" /> : <p className="text-muted">No gaps found in the automated checks.</p>}</div>
         )}
       </section>
+
+      <Rewrites copy={copy} />
 
       {/* Detailed sections */}
       {CATEGORIES.map((c) => {
@@ -630,4 +650,34 @@ function Extras({ c, name, input, speed, places, ai, socials }: { c: CategoryId;
     );
   }
   return null;
+}
+
+function Rewrites({ copy }: { copy: Load<CopyResult> }) {
+  if (copy.state === "disabled" || copy.state === "skipped") return null;
+  return (
+    <section className="border-t border-divider">
+      <div className="mx-auto max-w-6xl px-5 py-10">
+        <h2 className="text-2xl font-bold">Rewrites, ready to paste</h2>
+        <p className="mt-1 max-w-2xl text-muted">Written from what is on the site today. Anything in [brackets] is a fact to fill in.</p>
+        {copy.state === "loading" ? (
+          <div className="mt-5">
+            <Spinner label="Writing new copy…" />
+          </div>
+        ) : copy.state === "error" ? (
+          <p className="mt-5 text-[15px] text-error">The copywriter did not finish: {copy.error}</p>
+        ) : (
+          <div className="mt-5 grid gap-4 lg:grid-cols-2">
+            <div className="space-y-4">
+              <Snippet mono={false} label={`Page title (${copy.data.title.length} characters)`} text={copy.data.title} />
+              <Snippet mono={false} label={`Meta description (${copy.data.metaDescription.length} characters)`} text={copy.data.metaDescription} />
+              <Snippet mono={false} label="Homepage H1 and subheadline" text={`${copy.data.h1}\n${copy.data.subheadline}`} />
+              <Snippet mono={false} label="About paragraph for the homepage" text={copy.data.aboutParagraph} />
+              <Snippet mono={false} label={`Google Business Profile description (${copy.data.gbpDescription.length} of 750 characters)`} text={copy.data.gbpDescription} />
+            </div>
+            <Snippet mono={false} label="FAQ section (also add FAQPage markup)" text={copy.data.faqs.map((q) => `${q.question}\n${q.answer}`).join("\n\n")} />
+          </div>
+        )}
+      </div>
+    </section>
+  );
 }

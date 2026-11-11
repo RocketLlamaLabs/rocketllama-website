@@ -1,4 +1,6 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { useState, type ReactNode } from "react";
 import { AlertTriangle, Check, Info, X } from "lucide-react";
 import type { Finding, Status } from "@/lib/audit/shared";
 
@@ -27,25 +29,87 @@ export function ImpactTag({ impact }: { impact: Finding["impact"] }) {
 }
 
 export function FindingRow({ f }: { f: Finding }) {
+  const open = f.status === "fail" || f.status === "warn";
   return (
-    <li className="grid gap-2 border-t border-divider py-4 first:border-t-0 sm:grid-cols-[110px_1fr]">
+    <li id={`f-${f.id}`} className="grid scroll-mt-4 gap-2 border-t border-divider py-4 first:border-t-0 sm:grid-cols-[110px_1fr]">
       <div>
         <StatusChip status={f.status} />
       </div>
-      <div>
+      <div className="min-w-0">
         <div className="flex flex-wrap items-baseline justify-between gap-x-4">
           <p className="font-semibold">{f.label}</p>
           {f.status !== "info" ? <ImpactTag impact={f.impact} /> : null}
         </div>
         <p className="mt-1 text-[15px] text-muted">{f.detail}</p>
-        {f.fix && (f.status === "fail" || f.status === "warn") ? (
-          <p className="mt-2 text-[15px]">
-            <span className="font-semibold">Fix: </span>
-            {f.fix}
-          </p>
-        ) : null}
+        {open ? <FixDetails f={f} /> : null}
       </div>
     </li>
+  );
+}
+
+/** The specific fix: one-line summary, what failed, the steps and paste-ready code. */
+export function FixDetails({ f }: { f: Finding }) {
+  return (
+    <div className="mt-2 space-y-3">
+      {f.fix ? (
+        <p className="text-[15px]">
+          <span className="font-semibold">Fix: </span>
+          {f.fix}
+        </p>
+      ) : null}
+      {f.items?.length ? (
+        <div>
+          <p className="text-xs font-semibold tracking-wide text-muted uppercase">What we found</p>
+          <ul className="mt-1 space-y-0.5 text-sm">
+            {f.items.map((it) => (
+              <li key={it} className="break-words">
+                · {it}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {f.steps?.length ? (
+        <div>
+          <p className="text-xs font-semibold tracking-wide text-muted uppercase">How to fix it</p>
+          <ol className="mt-1 list-decimal space-y-1 pl-5 text-sm">
+            {f.steps.map((st) => (
+              <li key={st}>{st}</li>
+            ))}
+          </ol>
+        </div>
+      ) : null}
+      {f.snippet ? <Snippet label={f.snippet.label} text={f.snippet.text} /> : null}
+    </div>
+  );
+}
+
+export function Snippet({ label, text, mono = true }: { label: string; text: string; mono?: boolean }) {
+  return (
+    <div className="overflow-hidden rounded-md border border-divider break-inside-avoid">
+      <div className="flex items-center justify-between gap-3 bg-mist px-3 py-1.5">
+        <p className="text-xs font-semibold">{label}</p>
+        <CopyButton text={text} />
+      </div>
+      <pre className={`max-h-72 overflow-auto px-3 py-2 text-[13px] leading-relaxed whitespace-pre-wrap break-words print:max-h-none ${mono ? "font-mono" : "font-sans"}`}>{text}</pre>
+    </div>
+  );
+}
+
+export function CopyButton({ text }: { text: string }) {
+  const [done, setDone] = useState(false);
+  return (
+    <button
+      type="button"
+      className="shrink-0 rounded px-2 py-0.5 text-xs font-semibold text-link hover:bg-white print:hidden"
+      onClick={async () => {
+        await navigator.clipboard.writeText(text);
+        setDone(true);
+        setTimeout(() => setDone(false), 1500);
+      }}
+    >
+      {done ? "Copied" : "Copy"}
+    </button>
   );
 }
 

@@ -139,7 +139,9 @@ Customer question to answer: "${question}"`,
     detail: mentioned
       ? `Asked “${question}”, the AI answer lists ${name} at number ${position ?? "?"} of ${recommended.length}.`
       : `Asked “${question}”, the AI answer recommends ${recommended.map((r) => r.name).slice(0, 3).join(", ") || "other businesses"} and does not mention ${name}.`,
-    fix: "Win citations on the sources AI engines lean on (Google reviews, Yelp, BBB, local lists, Reddit), add schema and an FAQ, and keep name, address and phone identical everywhere.",
+    fix: "Win citations on the sources AI engines lean on, add schema and an FAQ, and keep name, address and phone identical everywhere.",
+    steps: result.recommendations.length ? result.recommendations : undefined,
+    items: result.citationGaps.length ? result.citationGaps.map((g) => `Missing from: ${g}`) : undefined,
   });
   if (result.accuracyIssues.length) {
     result.findings.push({
@@ -150,6 +152,7 @@ Customer question to answer: "${question}"`,
       status: "warn",
       detail: result.accuracyIssues.slice(0, 2).join(" "),
       fix: "Correct the business details on every directory and profile so they match the website and Google profile.",
+      items: result.accuracyIssues,
     });
   }
   return result;

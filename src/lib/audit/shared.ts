@@ -22,9 +22,22 @@ export type Finding = {
   impact: Impact;
   /** What we found, in one or two plain sentences. */
   detail: string;
-  /** What to do about it. Shown on warn and fail. */
+  /** What to do about it, in one line. Shown on warn and fail. */
   fix?: string;
+  /** Step-by-step instructions written for this business. */
+  steps?: string[];
+  /** The specific things that failed: file names, blocked bots, slow scripts. */
+  items?: string[];
+  /** Copy-paste ready code or text, prefilled with this business's details. */
+  snippet?: { label: string; text: string };
 };
+
+/** Who is being audited. Used to prefill suggested copy and code. */
+export type AuditContext = { name: string; city: string; industry: string };
+
+export function titleCase(s: string): string {
+  return s.replace(/\b([a-z])/g, (m) => m.toUpperCase()).replace(/\bHvac\b/g, "HVAC");
+}
 
 export const CATEGORIES: {
   id: CategoryId;
