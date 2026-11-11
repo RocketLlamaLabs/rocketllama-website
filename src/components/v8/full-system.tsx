@@ -60,7 +60,7 @@ export function FullSystem({ base, id = "system", photo, detailed, badge, noDrea
     <div className="band evolve-band" id="evolve" style={{ "--img": `url(${photo.src})` } as CSSProperties}><div className="wrap in">
       <p className="kicker">Never standing still</p>
       <h2>If you can dream it, we can build it.</h2>
-      <p className="bsub">Our system never stands still. As marketing technology and consumer behavior evolve, we continuously improve and adapt to keep your business ahead of the competition. Our mission is simple: take marketing off your plate, make your life easier, and keep bringing new customers through your door.</p>
+      <p className="bsub">Our system never stands still. As marketing technology and consumer behavior evolve, we keep improving it to keep your business ahead. Our mission is simple: take marketing off your plate and keep bringing new customers through your door.</p>
       <div className="ctas"><a className="btn" href={`${base}/book`}>Schedule a call</a></div>
     </div></div>
   ) : null}
