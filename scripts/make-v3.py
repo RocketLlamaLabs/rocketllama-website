@@ -642,6 +642,12 @@ def write_v7_about():
     t = t[:i] + main + t[j:]
     t = t.replace("note='Version 7, about page'", "note='Version 7, about us'")
     t = t.replace('<main>\n<header className="hero small" id="top">', '<main>\n<AboutStructuredData />\n<header className="hero small" id="top">', 1)
+    # the page itself is the chosen layout in src/components/v7/about-page.tsx
+    t = re.sub(r'  return \(\n    <>.*?</>\n  \);', '  return <AboutPage />;', t, count=1, flags=re.S)
+    t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { AboutPage } from "@/components/v7/about-page";\n', 1)
+    t = t.replace('import { AboutStructuredData } from "@/components/v7/about-seo";\n', '', 1)
+    t = t.replace('import type { CSSProperties } from "react";\n', '', 1)
+    t = re.sub(r'/\* eslint-disable @next/next/no-img-element[^\n]*\n\n?', '', t, count=1)
     os.makedirs(os.path.join(root, 'src/app/(home)/about'), exist_ok=True)
     open(os.path.join(root, 'src/app/(home)/about/page.tsx'), 'w').write(t)
 

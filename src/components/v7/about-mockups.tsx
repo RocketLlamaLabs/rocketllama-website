@@ -52,7 +52,7 @@ const STATS: [string, string][] = [
   ["23", "years leading sales and client strategy"],
 ];
 
-function Stats() {
+export function Stats() {
   return (
     <div className="am-stats">
       {STATS.map(([n, l]) => (<div key={n}><div className="n">{n}</div><div className="l">{l}</div></div>))}
