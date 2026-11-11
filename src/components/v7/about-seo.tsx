@@ -35,7 +35,7 @@ export const ORG = {
   ],
 };
 
-const PEOPLE = [
+export const PEOPLE = [
   {
     "@type": "Person",
     "@id": `${SITE}/about#brian-greenberg`,

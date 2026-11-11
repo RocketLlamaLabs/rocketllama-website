@@ -21,6 +21,26 @@ HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, pai
 - [Run an instant audit](https://rocketllamalabs.com/audit): see how a company shows up online
 - [Schedule a call](https://rocketllamalabs.com/book)
 
+## Industry pages
+
+Each page covers the marketing services we run for that trade (Local Services Ads, Google Business Profile verification and management, local SEO, AI search, ads, phones, CRM and reviews), with a summary and questions and answers.
+
+- [HVAC marketing services](https://rocketllamalabs.com/hvac)
+- [Plumbing marketing services](https://rocketllamalabs.com/plumbing)
+- [Electrician marketing services](https://rocketllamalabs.com/electrical)
+- [Roofing marketing services](https://rocketllamalabs.com/roofing)
+- [Garage door marketing services](https://rocketllamalabs.com/garage-door)
+- [Pest control marketing services](https://rocketllamalabs.com/pest-control)
+- [Landscaping marketing services](https://rocketllamalabs.com/landscaping)
+- [Painting contractor marketing services](https://rocketllamalabs.com/painting)
+- [Window cleaning and pressure washing marketing services](https://rocketllamalabs.com/window-and-pressure-washing)
+- [Handyman marketing services](https://rocketllamalabs.com/handyman)
+- [Mobile mechanic marketing services](https://rocketllamalabs.com/mobile-mechanic)
+- [Window and door company marketing services](https://rocketllamalabs.com/windows-and-doors)
+- [Solar marketing services](https://rocketllamalabs.com/solar)
+- [Flooring company marketing services](https://rocketllamalabs.com/flooring)
+- [Remodeling contractor marketing services](https://rocketllamalabs.com/remodeling)
+
 ## Contact
 
 info@rocketllamalabs.com

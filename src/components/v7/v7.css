@@ -852,3 +852,33 @@
 .v7 .flow.tall .s.src{font-size:11.5px}
 /* Industries tiles: names only, one tidy row height. */
 .v7 #industries .trade{min-height:0;padding:16px 18px;row-gap:0}
+
+/* Industry pages (/hvac, /plumbing, ...): photo banner, byline, summary box, search terms. */
+.v7 .ihero{position:relative;isolation:isolate;overflow:hidden;color:#fff;display:grid;align-items:end;min-height:min(64vh,600px);background:var(--deep)}
+.v7 .ihero .bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+.v7 .ihero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(4,23,58,.45) 0%,rgba(4,23,58,.5) 40%,rgba(4,23,58,.88) 100%)}
+.v7 .ihero .in{padding-block:clamp(48px,8vh,96px) clamp(36px,6vh,64px);width:100%}
+.v7 .ihero h1{font-size:clamp(2rem,4.6vw,3.5rem);line-height:1.04;letter-spacing:-.035em;max-width:22ch;margin:0;color:#fff}
+.v7 .ihero .lede{font-size:clamp(1.05rem,1.7vw,1.25rem);line-height:1.55;color:#e3ecfa;max-width:60ch;margin:20px 0 0}
+.v7 .crumbs{font-family:var(--sans);font-size:13px;font-weight:600;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;color:#cfdcf2}
+.v7 .crumbs a{color:#fff;text-decoration:none}
+.v7 .crumbs a:hover{text-decoration:underline}
+.v7 .isum{padding-block:clamp(28px,4vw,44px) clamp(40px,6vw,72px)}
+.v7 .byline{font-family:var(--sans);font-size:14px;color:var(--muted);margin:0 0 22px}
+.v7 .byline a{color:var(--accent-ink);font-weight:700;text-decoration:none}
+.v7 .byline a:hover{text-decoration:underline}
+.v7 .isum .box{display:grid;gap:28px;background:var(--accent-soft);border:1px solid var(--mint-line);border-radius:18px;padding:clamp(22px,3.5vw,40px)}
+@media(min-width:900px){.v7 .isum .box{grid-template-columns:1.25fr 1fr;gap:48px;align-items:start}}
+.v7 .isum h2{font-size:clamp(1.5rem,2.8vw,2.1rem);max-width:none}
+.v7 .isum .answer{margin:16px 0 0;font-size:clamp(1.02rem,1.4vw,1.14rem);line-height:1.6;color:var(--ink)}
+.v7 .isum ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-family:var(--sans);font-size:.98rem;font-weight:600;line-height:1.4;color:var(--ink)}
+.v7 .isum li{position:relative;padding-left:22px}
+.v7 .isum li::before{content:"";position:absolute;left:0;top:.5em;width:9px;height:9px;border-radius:50%;background:var(--accent)}
+.v7 .terms{list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.v7 .terms li{font-family:var(--sans);font-weight:600;font-size:.95rem;padding:10px 16px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)}
+.v7 .faq summary h3{font:inherit;margin:0}
+.v7 .sub a,.v7 .inext .rel a{color:var(--accent-ink)}
+.v7 .inext{background:var(--accent-soft);border-top:1px solid var(--mint-line)}
+.v7 .inext .rel{margin:28px 0 0;font-family:var(--sans);font-size:.95rem;color:var(--muted)}
+/* The industries hub: each tile links to its own page. */
+.v7 #industries .trade span::after{content:"\2192";margin-left:8px;color:var(--accent)}

@@ -89,7 +89,7 @@ Every service, city and industry page has these blocks, in this order.
 | Home | [Trade] in [City] \| [Brand] | AC Repair and Installation in Phoenix \| Desert Air |
 | Service | [Service] in [City] \| [Brand] | Water Heater Replacement in Mesa \| Copper State Plumbing |
 | City | [Trade] in [City], [State] \| [Brand] | Electrician in Gilbert, AZ \| Volt Electric |
-| Industry (B2B) | [Industry] Marketing Services: [benefit] \| [Brand] | HVAC Marketing Services: SEO, Ads and Leads \| Rocket Llama Labs |
+| Industry (B2B) | [Industry] Marketing Services \| [Brand] | HVAC Marketing Services \| Rocket Llama Labs |
 | Article | [The question, as asked] | How Much Does a New AC Unit Cost in Phoenix? |
 
 No two pages on a site share a title, a description, or an H1.
@@ -267,7 +267,7 @@ The industry pages are the reference build for this playbook.
 
 | Rule | Where it lives |
 | --- | --- |
-| One page per industry at a short URL (`/hvac`, `/plumbing`, ...) | `src/app/(home)/[slug]/page.tsx`, one folder per trade |
+| One page per industry at a short URL (`/hvac`, `/plumbing`, ...) | `src/app/(home)/<slug>/page.tsx`, one folder per trade, written by `scripts/make-v3.py` |
 | All copy, titles, FAQs per industry | `src/components/v7/industries-data.ts` |
 | Page template (banner, byline, summary, sections, location, FAQ, related links) | `src/components/v7/industry-page.tsx` |
 | Schema: breadcrumbs, page with author and dates, service, FAQ, organization, person | `IndustryStructuredData` in `src/components/v7/page-seo.tsx` |
