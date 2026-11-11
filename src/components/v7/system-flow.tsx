@@ -127,7 +127,6 @@ function Wide() {
 
       <g>
         <rect x="300" y="205" width="400" height="150" rx="18" className="fhub" />
-        <rect x="300" y="205" width="400" height="150" rx="18" className="halo" />
         <Tile icon="globe" x={324} y={225} size={40} tone="on" />
         <text x="378" y="252" className="h">Your website: home base</text>
         <text x="324" y="292" className="s on">Hosted free, with schema for Google and AI search</text>
@@ -146,7 +145,6 @@ function Wide() {
 
       <g>
         <rect x="180" y="440" width="640" height="120" rx="18" className="fhub" />
-        <rect x="180" y="440" width="640" height="120" rx="18" className="halo late" />
         <g className="tile on" transform="translate(204 460)" aria-hidden="true"><rect width="40" height="40" rx="11" /><image href="/brand/llama-lab.png" x="3" y="3" width="34" height="34" /></g>
         <text x="258" y="487" className="h">Your CRM: Your Data and Management System</text>
         <text x="204" y="522" className="s on">Pipelines, automations, AI text and email reply within 60 seconds</text>
@@ -211,7 +209,6 @@ function Tall() {
 
       <g>
         <rect x="12" y="312" width="316" height="150" rx="18" className="fhub" />
-        <rect x="12" y="312" width="316" height="150" rx="18" className="halo" />
         <Tile icon="globe" x={28} y={328} size={38} tone="on" />
         <text x="78" y="353" className="h">Your website: home base</text>
         <text x="28" y="390" className="s on">Hosted free, with schema for Google</text>
@@ -242,7 +239,6 @@ function Tall() {
 
       <g>
         <rect x="12" y="766" width="316" height="150" rx="18" className="fhub" />
-        <rect x="12" y="766" width="316" height="150" rx="18" className="halo late" />
         <g className="tile on" transform="translate(28 782)" aria-hidden="true"><rect width="38" height="38" rx="10.5" /><image href="/brand/llama-lab.png" x="3" y="3" width="32" height="32" /></g>
         <text x="78" y="800" className="h">Your CRM: Your Data</text>
         <text x="78" y="820" className="h">and Management System</text>
