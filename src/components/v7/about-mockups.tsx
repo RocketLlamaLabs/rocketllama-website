@@ -13,15 +13,15 @@ export function Nav() {
   return (
     <>
       <nav className="nav" aria-label="Main"><div className="wrap in">
-        <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-        <div className="links"><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About</a></div>
-        <div className="navbtns"><a className="btn sm" href="/v7/book">Schedule a call</a><a className="btn sm ghost" href="/v7/audit">Run an instant audit</a></div>
+        <a className="wm" href="/" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
+        <div className="links"><a href="/services">Services</a><a href="/industries">Industries</a><a href="/about">About</a></div>
+        <div className="navbtns"><a className="btn sm" href="/book">Schedule a call</a><a className="btn sm ghost" href="/audit">Run an instant audit</a></div>
         <details className="menu">
           <summary aria-label="Menu"><span></span></summary>
           <div className="panel">
-            <a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About</a>
-            <a className="btn sm" href="/v7/book">Schedule a call</a>
-            <a className="btn sm ghost" href="/v7/audit">Run an instant audit</a>
+            <a href="/services">Services</a><a href="/industries">Industries</a><a href="/about">About</a>
+            <a className="btn sm" href="/book">Schedule a call</a>
+            <a className="btn sm ghost" href="/audit">Run an instant audit</a>
           </div>
         </details>
       </div></nav>
@@ -88,7 +88,7 @@ export function AboutA() {
         <TeamSection tone="blue" />
         <div className="band am-close" style={{ "--img": "url(/v7/img/band-neighborhood-1920.webp)" } as CSSProperties}><div className="wrap in">
           <h2>{PULL_2}</h2>
-          <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a></div>
+          <div className="ctas"><a className="btn" href="/book">Schedule a call</a></div>
         </div></div>
       </main>
       <V7Footer note="About mockup A" />
@@ -123,7 +123,7 @@ export function AboutB() {
           <p className="kicker">In short</p>
           <h2>{PULL_1}</h2>
           <p className="q2">{PULL_2}</p>
-          <div className="ctas"><a className="btn" href="/v7/book">Schedule a call</a></div>
+          <div className="ctas"><a className="btn" href="/book">Schedule a call</a></div>
         </div></div>
         <TeamSection tone="white" />
       </main>
@@ -161,6 +161,110 @@ export function AboutC() {
         <TeamSection tone="blue" />
       </main>
       <V7Footer note="About mockup C" />
+    </>
+  );
+}
+
+// Option D: people first. Light blue header with the title and goal, the team
+// cards right under it, then the copy as one wide column with the two quotes
+// set large between the points. Closing band with the button.
+export function AboutD() {
+  return (
+    <>
+      <Nav />
+      <main className="am am-d">
+        <header className="pagehead" id="top"><div className="wrap in">
+          <p className="kicker">About us</p>
+          <h1>{TITLE}</h1>
+          <p className="goal">{GOAL}</p>
+        </div></header>
+        <TeamSection tone="white" />
+        <section className="am-manifesto feature"><div className="wrap">
+          <p className="kicker">Who we are</p>
+          <p className="lede">{LEDE}</p>
+          <p className="pull">{PULL_1}</p>
+          {BLOCKS.slice(0, 4).map(([h, ps]) => (<div className="ablk" key={h}><h2>{h}</h2>{ps.map((p) => <p key={p}>{p}</p>)}</div>))}
+          <p className="pull">{PULL_2}</p>
+          {BLOCKS.slice(4).map(([h, ps]) => (<div className="ablk" key={h}><h2>{h}</h2>{ps.map((p) => <p key={p}>{p}</p>)}</div>))}
+        </div></section>
+        <div className="band am-close" style={{ "--img": "url(/v7/img/band-door-1920.webp)" } as CSSProperties}><div className="wrap in">
+          <p className="kicker">Next step</p>
+          <h2>See how your company shows up online.</h2>
+          <div className="ctas"><a className="btn" href="/book">Schedule a call</a><a className="btn light audit-btn" href="/audit">Run an instant audit</a></div>
+        </div></div>
+      </main>
+      <V7Footer note="About mockup D" />
+    </>
+  );
+}
+
+// Option E: the numbered list. White header, then the seven points as a
+// vertical list with big royal blue numbers, like the steps on the home page.
+// Quotes on a light blue band, then the team.
+export function AboutE() {
+  return (
+    <>
+      <Nav />
+      <main className="am am-e">
+        <header className="pagehead" id="top"><div className="wrap in">
+          <p className="kicker">About us</p>
+          <h1>{TITLE}</h1>
+          <p className="goal">{GOAL}</p>
+          <p className="lede">{LEDE}</p>
+        </div></header>
+        <section className="am-list"><div className="wrap">
+          <ol>
+            {BLOCKS.map(([h, ps], i) => (
+              <li key={h}><span className="num">{String(i + 1).padStart(2, "0")}</span><div><h2>{h}</h2>{ps.map((p) => <p key={p}>{p}</p>)}</div></li>
+            ))}
+          </ol>
+        </div></section>
+        <section className="am-quoteband feature"><div className="wrap">
+          <div className="two">
+            <p className="pull">{PULL_1}</p>
+            <p className="pull">{PULL_2}</p>
+          </div>
+          <Stats />
+        </div></section>
+        <TeamSection tone="white" />
+      </main>
+      <V7Footer note="About mockup E" />
+    </>
+  );
+}
+
+// Option F: the compact one. Navy header like the video section, with the
+// title, goal and intro. Then two columns: the quotes and stats on the left,
+// the seven points on the right as bold headings that open on a click, so the
+// page stays short. Team on light blue.
+export function AboutF() {
+  return (
+    <>
+      <Nav />
+      <main className="am am-f">
+        <header className="am-dark" id="top"><div className="wrap in">
+          <p className="kicker">About us</p>
+          <h1>{TITLE}</h1>
+          <p className="goal">{GOAL}</p>
+          <p className="lede">{LEDE}</p>
+        </div></header>
+        <section className="am-split"><div className="wrap">
+          <div className="am-cols">
+            <div className="left">
+              <p className="pull">{PULL_1}</p>
+              <Stats />
+              <p className="pull">{PULL_2}</p>
+            </div>
+            <div className="right">
+              {BLOCKS.map(([h, ps]) => (
+                <details className="pt" key={h}><summary>{h}</summary>{ps.map((p) => <p key={p}>{p}</p>)}</details>
+              ))}
+            </div>
+          </div>
+        </div></section>
+        <TeamSection tone="blue" />
+      </main>
+      <V7Footer note="About mockup F" />
     </>
   );
 }

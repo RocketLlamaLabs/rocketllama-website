@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Libre_Franklin, Source_Serif_4 } from "next/font/google";
-import "@/app/(home)/v7.css";
+import "../(home)/v7.css";
 import "@/components/v7/v7.css";
 import "@/components/v7/about-mockups.css";
 
