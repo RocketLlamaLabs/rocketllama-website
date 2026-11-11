@@ -2,22 +2,20 @@
 
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import { HOME_META, HomeStructuredData } from "@/components/v7/home-seo";
 import { V7Footer } from "@/components/v7/footer";
 import { FullSystem, HowItWorks } from "@/components/v8/full-system";
 import { SixtySecondCheck } from "@/components/v2/sixty-second-check";
 import { Valley } from "@/components/v7/valley";
 import { HeroCarousel } from "@/components/v7/hero-carousel";
 
-export const metadata: Metadata = {
-  title: { absolute: "Rocket Llama Labs · Version 7" },
-  description: 'Marketing and technology for local home services in Phoenix: a website you own, every lead answered in under a minute, every dollar tracked to a paid job. Four-image banner that zooms and crossfades, the 30-second video, full-width image sections, the qualification quiz before booking.',
-};
+export const metadata: Metadata = HOME_META;
 
 // Ported from the mockup's src-c.html.
 export default function Page() {
   return (
     <>
-<nav className="nav"><div className="wrap in">
+<nav className="nav" aria-label="Main"><div className="wrap in">
   <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
   <div className="links"><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About</a></div>
   <div className="navbtns"><a className="btn sm" href="/v7/book">Schedule a call</a><a className="btn sm ghost" href="/v7/audit">Run an instant audit</a></div>
@@ -32,6 +30,7 @@ export default function Page() {
 </div></nav>
 <script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}});document.addEventListener('click',function(e){var b=e.target.closest('.v7 .team details.bio .less');if(b){var d=b.closest('details');d.removeAttribute('open');d.closest('.card').scrollIntoView({block:'nearest'})}})"}} />
 <main>
+<HomeStructuredData />
 
 <header className="hero" id="top">
   <div className="slides" aria-hidden="true">

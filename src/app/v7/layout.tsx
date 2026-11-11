@@ -18,8 +18,8 @@ const sourceSerif = Source_Serif_4({
 
 export const metadata: Metadata = {
   title: {
-    default: "Rocket Llama Labs · Version 7",
-    template: "%s · Rocket Llama Labs v7",
+    default: "Rocket Llama Labs",
+    template: "%s | Rocket Llama Labs",
   },
 };
 

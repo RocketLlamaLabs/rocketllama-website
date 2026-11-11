@@ -159,6 +159,8 @@ def transform_page(s, f, is_home, base, n, scope, extras):
     s = s.replace('className={`v2 ${', f'className={{`{scope} ${{').replace('V2Layout', f'V{n}Layout').replace('LayoutProps<"/v2">', f'LayoutProps<"{home}">').replace('LayoutProps<"">', 'LayoutProps<"/">')
     if base == '':
         s = s.replace(f'    default: "Rocket Llama Labs · Version {n}",\n    template: "%s · Rocket Llama Labs v{n}",', '    default: "Rocket Llama Labs",\n    template: "%s · Rocket Llama Labs",')
+    if n == 7:  # version 7 is the live design: no version tag in page titles
+        s = s.replace(f'    default: "Rocket Llama Labs · Version {n}",\n    template: "%s · Rocket Llama Labs v{n}",', '    default: "Rocket Llama Labs",\n    template: "%s | Rocket Llama Labs",')
     s = s.replace('background:"var(--accent-soft)",borderColor:"#bbf7d0"', 'background:"var(--accent-soft)",borderColor:"#BFD8FF"')
     s = s.replace(f'Website version {n} sample for Rocket Llama Labs: version {n} of the light design.', 'Marketing and technology for local home services in Phoenix: a website you own, every lead answered in under a minute, every dollar tracked to a paid job.')
     s = scrub_exclusivity(s)
@@ -260,6 +262,7 @@ import { CompareTable } from "@/components/v7/compare-table";
 def v7_extras_core(s, f, is_home, base):
     # the one-line nav logo (public/brand/logo-nav.svg) on every v7 page
     s = s.replace('src="/brand/logo-stacked.svg"', 'src="/brand/logo-nav.svg"')
+    s = s.replace('<nav className="nav">', '<nav className="nav" aria-label="Main">', 1)
     # copy edits that apply to every v7 page
     s = s.replace('four contractors; we never do.', 'four contractors. We never do.')
     # no Brian quote box on the book and qualify pages
@@ -321,7 +324,10 @@ def v7_extras_core(s, f, is_home, base):
     assert k == 1, 'proof band'
     # leaving, the 90 days and the comparison, before "who you are talking to"
     s = s.replace('\n<section id="who" className="feature">', '\n<LeaveSwitch />\n<Timeline />\n<CompareTable />\n\n<section id="who" className="feature">')
-    s = s.replace('  title: { absolute: "Rocket Llama Labs · Marketing and technology for local home services" },', '  title: { absolute: "Rocket Llama Labs · Version 7" },')
+    # search and AI metadata plus structured data live in src/components/v7/home-seo.tsx
+    s = re.sub(r"export const metadata: Metadata = \{.*?\n\};", "export const metadata: Metadata = HOME_META;", s, count=1, flags=re.S)
+    s = s.replace('import type { Metadata } from "next";\n', 'import type { Metadata } from "next";\nimport { HOME_META, HomeStructuredData } from "@/components/v7/home-seo";\n', 1)
+    s = s.replace('<main>\n', '<main>\n<HomeStructuredData />\n', 1)
     return s
 
 

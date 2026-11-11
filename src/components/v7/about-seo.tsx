@@ -3,9 +3,9 @@
 // Facts here must stay in step with the copy on the page. Fields we do not have
 // yet (street address, phone, social profiles) are left out rather than guessed.
 
-const SITE = "https://rocketllamalabs.com";
+export const SITE = "https://rocketllamalabs.com";
 
-const ORG = {
+export const ORG = {
   "@type": "Organization",
   "@id": `${SITE}/#organization`,
   name: "Rocket Llama Labs",
