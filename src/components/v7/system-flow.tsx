@@ -91,7 +91,7 @@ function Wide() {
 
       {SOURCES.map((s, i) => (
         <g key={s.one}>
-          <rect x={sx[i]} y="42" width="232" height="104" rx="14" className="card" />
+          <rect x={sx[i]} y="42" width="232" height="104" rx="14" className="fcard" />
           <Tile icon={s.icon} x={sx[i] + 99} y={54} />
           <text x={sx[i] + 116} y="112" textAnchor="middle" className="b">{s.one}</text>
           <text x={sx[i] + 116} y="132" textAnchor="middle" className="s">{s.sub}</text>
@@ -99,7 +99,7 @@ function Wide() {
       ))}
 
       <g>
-        <rect x="12" y="210" width="250" height="140" rx="14" className="card" />
+        <rect x="12" y="210" width="250" height="140" rx="14" className="fcard" />
         <Tile icon="phone" x={28} y={226} />
         <text x="72" y="248" className="b">Phones + AI receptionist</text>
         <text x="28" y="284" className="s">tracked numbers on a Tier 1 carrier</text>
@@ -108,7 +108,7 @@ function Wide() {
       </g>
 
       <g>
-        <rect x="300" y="205" width="400" height="150" rx="18" className="hub" />
+        <rect x="300" y="205" width="400" height="150" rx="18" className="fhub" />
         <rect x="300" y="205" width="400" height="150" rx="18" className="halo" />
         <Tile icon="globe" x={324} y={225} size={40} tone="on" />
         <text x="378" y="252" className="h">Your website: home base</text>
@@ -118,7 +118,7 @@ function Wide() {
       </g>
 
       <g>
-        <rect x="738" y="210" width="250" height="140" rx="14" className="card" />
+        <rect x="738" y="210" width="250" height="140" rx="14" className="fcard" />
         <Tile icon="star" x={754} y={226} />
         <text x="798" y="248" className="b">Reviews per service</text>
         <text x="754" y="284" className="s">existing reviews cross-referenced</text>
@@ -127,7 +127,7 @@ function Wide() {
       </g>
 
       <g>
-        <rect x="180" y="440" width="640" height="120" rx="18" className="hub" />
+        <rect x="180" y="440" width="640" height="120" rx="18" className="fhub" />
         <rect x="180" y="440" width="640" height="120" rx="18" className="halo late" />
         <Tile icon="layers" x={204} y={460} size={40} tone="on" />
         <text x="258" y="487" className="h">Your CRM</text>
@@ -136,19 +136,19 @@ function Wide() {
       </g>
 
       <g>
-        <rect x="12" y="620" width="290" height="82" rx="14" className="card own" />
+        <rect x="12" y="620" width="290" height="82" rx="14" className="fcard own" />
         <Tile icon="key" x={28} y={634} />
         <text x="72" y="656" className="b">You own all of it</text>
         <text x="28" y="688" className="s">export data, port numbers, take the code</text>
       </g>
       <g>
-        <rect x="355" y="620" width="290" height="82" rx="14" className="card" />
+        <rect x="355" y="620" width="290" height="82" rx="14" className="fcard" />
         <Tile icon="calendar" x={371} y={634} />
         <text x="415" y="656" className="b">Booked calls and appointments</text>
         <text x="371" y="688" className="s">leads that already want to work with you</text>
       </g>
       <g>
-        <rect x="698" y="620" width="290" height="82" rx="14" className="card" />
+        <rect x="698" y="620" width="290" height="82" rx="14" className="fcard" />
         <Tile icon="dollar" x={714} y={634} />
         <text x="758" y="656" className="b">Closed jobs and revenue</text>
         <text x="714" y="688" className="s">goal: at least $2 back per $1 spent</text>
@@ -182,7 +182,7 @@ function Tall() {
         const x = col[i % 2], y = row[i < 2 ? 0 : 1];
         return (
           <g key={s.one}>
-            <rect x={x} y={y} width="150" height="112" rx="14" className="card" />
+            <rect x={x} y={y} width="150" height="112" rx="14" className="fcard" />
             <Tile icon={s.icon} x={x + 59} y={y + 12} size={32} />
             <text x={x + 75} y={y + 63} textAnchor="middle" className="b">{s.a}</text>
             <text x={x + 75} y={y + 79} textAnchor="middle" className="b">{s.b}</text>
@@ -192,7 +192,7 @@ function Tall() {
       })}
 
       <g>
-        <rect x="12" y="312" width="316" height="150" rx="18" className="hub" />
+        <rect x="12" y="312" width="316" height="150" rx="18" className="fhub" />
         <rect x="12" y="312" width="316" height="150" rx="18" className="halo" />
         <Tile icon="globe" x={28} y={328} size={38} tone="on" />
         <text x="78" y="353" className="h">Your website: home base</text>
@@ -204,7 +204,7 @@ function Tall() {
 
       <circle cx="30" cy="545" r="3.5" className="node" />
       <g>
-        <rect x="52" y="486" width="276" height="118" rx="14" className="card" />
+        <rect x="52" y="486" width="276" height="118" rx="14" className="fcard" />
         <Tile icon="phone" x={68} y={500} />
         <text x="112" y="522" className="b">Phones + AI receptionist</text>
         <text x="68" y="554" className="s">tracked numbers on a Tier 1 carrier</text>
@@ -214,7 +214,7 @@ function Tall() {
 
       <circle cx="30" cy="679" r="3.5" className="node" />
       <g>
-        <rect x="52" y="620" width="276" height="118" rx="14" className="card" />
+        <rect x="52" y="620" width="276" height="118" rx="14" className="fcard" />
         <Tile icon="star" x={68} y={634} />
         <text x="112" y="656" className="b">Reviews per service</text>
         <text x="68" y="688" className="s">existing reviews cross-referenced</text>
@@ -223,7 +223,7 @@ function Tall() {
       </g>
 
       <g>
-        <rect x="12" y="766" width="316" height="150" rx="18" className="hub" />
+        <rect x="12" y="766" width="316" height="150" rx="18" className="fhub" />
         <rect x="12" y="766" width="316" height="150" rx="18" className="halo late" />
         <Tile icon="layers" x={28} y={782} size={38} tone="on" />
         <text x="78" y="807" className="h">Your CRM</text>
@@ -234,19 +234,19 @@ function Tall() {
       </g>
 
       <g>
-        <rect x="12" y="946" width="316" height="84" rx="14" className="card" />
+        <rect x="12" y="946" width="316" height="84" rx="14" className="fcard" />
         <Tile icon="calendar" x={28} y={960} />
         <text x="72" y="982" className="b">Booked calls and appointments</text>
         <text x="28" y="1014" className="s">leads that already want to work with you</text>
       </g>
       <g>
-        <rect x="12" y="1060" width="316" height="84" rx="14" className="card" />
+        <rect x="12" y="1060" width="316" height="84" rx="14" className="fcard" />
         <Tile icon="dollar" x={28} y={1074} />
         <text x="72" y="1096" className="b">Closed jobs and revenue</text>
         <text x="28" y="1128" className="s">goal: at least $2 back per $1 spent</text>
       </g>
       <g>
-        <rect x="12" y="1168" width="316" height="84" rx="14" className="card own" />
+        <rect x="12" y="1168" width="316" height="84" rx="14" className="fcard own" />
         <Tile icon="key" x={28} y={1182} />
         <text x="72" y="1204" className="b">You own all of it</text>
         <text x="28" y="1236" className="s">export data, port numbers, take the code</text>
