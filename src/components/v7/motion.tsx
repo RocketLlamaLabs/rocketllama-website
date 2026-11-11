@@ -21,7 +21,7 @@ export function Motion() {
     const items = Array.from(document.querySelectorAll<HTMLElement>(RISE)).filter((el) => !el.closest(".hero") && !el.closest(".nav") && !el.classList.contains("copy") && !el.classList.contains("dream-badge"));
     items.forEach((el) => {
       const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight * 0.9) { el.classList.add("in"); return; } // above the fold: already visible
+      if (r.top < window.innerHeight * 0.9) { el.classList.add("risen"); return; } // above the fold: already visible
       el.classList.add("rise");
     });
     // stagger siblings that share a parent
@@ -35,12 +35,12 @@ export function Motion() {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         // reveal when it enters the viewport, or once the viewport has scrolled past it
-        if (e.isIntersecting || e.boundingClientRect.bottom < 0) { e.target.classList.add("in"); io.unobserve(e.target); }
+        if (e.isIntersecting || e.boundingClientRect.bottom < 0) { e.target.classList.add("risen"); io.unobserve(e.target); }
       });
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
     items.forEach((el) => { if (el.classList.contains("rise")) io.observe(el); });
     // safety net: anything still hidden after a fast scroll is shown
-    const sweep = () => { items.forEach((el) => { if (el.classList.contains("rise") && !el.classList.contains("in") && el.getBoundingClientRect().top < window.innerHeight) el.classList.add("in"); }); };
+    const sweep = () => { items.forEach((el) => { if (el.classList.contains("rise") && !el.classList.contains("risen") && el.getBoundingClientRect().top < window.innerHeight) el.classList.add("risen"); }); };
     window.addEventListener("scroll", sweep, { passive: true });
 
     // count up: numbers that are a plain figure with an optional prefix/suffix
