@@ -2,7 +2,7 @@
 
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import { HOME_META, HomeStructuredData, HomeFaq } from "@/components/v7/home-seo";
+import { HOME_META, HomeStructuredData } from "@/components/v7/home-seo";
 import { V7Footer } from "@/components/v7/footer";
 import { FullSystem, HowItWorks } from "@/components/v8/full-system";
 import { SixtySecondCheck } from "@/components/v2/sixty-second-check";
@@ -77,7 +77,6 @@ export default function Page() {
 
 <FullSystem base="/v7" id="fullsystem" photo={{ src: "/v7/img/band-van-1280.webp", alt: "A service van on a Phoenix street" }} detailed />
 <HowItWorks base="/v7" />
-<HomeFaq />
 </main>
       <V7Footer note='Version 7 · built from the BBM Local mockup C' />
     </>
