@@ -702,3 +702,4 @@
 /* About blocks: label in a left column, copy beside it. */
 .v7 .pagehead.about-head .ablks{max-width:none}
 @media(min-width:720px){.v7 .pagehead.about-head .ablk{display:grid;grid-template-columns:190px minmax(0,62ch);column-gap:32px;align-items:start}.v7 .pagehead.about-head .ablk h2{margin:4px 0 0}}
+@media(min-width:720px){.v7 .pagehead.about-head .ablk p{grid-column:2}}
