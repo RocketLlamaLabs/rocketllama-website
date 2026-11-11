@@ -950,3 +950,5 @@
 .v7 .evolve-band h2{color:#fff;max-width:20ch}
 .v7 .evolve-band .bsub{font-family:var(--serif);font-size:1.08rem;line-height:1.6;color:#fff;margin:16px 0 0;max-width:60ch}
 .v7 .evolve-band .ctas{margin-top:28px}
+/* Never-standing-still band: inner box spans the full content width like the other bands. */
+.v7 .evolve-band .in{width:100%;justify-self:stretch}
