@@ -2,15 +2,13 @@
 
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import { pageMeta, ServicesStructuredData } from "@/components/v7/page-seo";
 import { V7Footer } from "@/components/v7/footer";
 import { Race } from "@/components/v7/race";
 import { DreamBadge } from "@/components/v7/dream-badge";
 import { SystemDiagram } from "@/components/v2/system-diagram";
 
-export const metadata: Metadata = {
-  title: 'Services',
-  description: 'Rocket Llama Labs services page : the full 90-second video, every piece of the system, the trades it serves.',
-};
+export const metadata: Metadata = pageMeta("/v7/services", "Services", "Every piece of the Rocket Llama Labs marketing system for home service companies: website, local SEO and AI search, Google Business Profile, funnels, phones with an AI receptionist, CRM, ads and reviews.");
 
 // Ported from the mockup's src-c-services.html.
 export default function Page() {
@@ -31,6 +29,7 @@ export default function Page() {
 </div></nav>
 <script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}});document.addEventListener('click',function(e){var b=e.target.closest('.v7 .team details.bio .less');if(b){var d=b.closest('details');d.removeAttribute('open');d.closest('.card').scrollIntoView({block:'nearest'})}})"}} />
 <main>
+<ServicesStructuredData />
 
 <header className="pagehead with-badge" id="top">
   <div className="wrap in">

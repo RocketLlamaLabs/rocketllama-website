@@ -619,3 +619,11 @@
 .v7 .slides{background-image:none}
 /* About header: copy block as wide as the widest line of the new title. */
 .v7 .pagehead.about-head .lede{width:calc(var(--h1) * 14.3)}
+/* Industries: a line of copy per trade under the grid. */
+.v7 .tradecopy{display:grid;gap:22px 40px;margin-top:48px}
+@media(min-width:720px){.v7 .tradecopy{grid-template-columns:1fr 1fr}}
+@media(min-width:1100px){.v7 .tradecopy{grid-template-columns:1fr 1fr 1fr}}
+.v7 .tradecopy h2{font-size:1.15rem;line-height:1.2;letter-spacing:-.01em;margin:0 0 6px;max-width:none}
+.v7 .tradecopy p{margin:0;color:var(--muted);font-size:.98rem;line-height:1.5}
+/* About header copy: left aligned so word spacing stays even. */
+.v7 .pagehead.about-head .lede{text-align:left}

@@ -2,13 +2,11 @@
 
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import { pageMeta, PageStructuredData } from "@/components/v7/page-seo";
 import { V7Footer } from "@/components/v7/footer";
 import { BookFunnel } from "@/components/v2/book-funnel";
 
-export const metadata: Metadata = {
-  title: 'Schedule your free call',
-  description: 'Rocket Llama Labs funnel v2 : schedule a call first, then a few optional questions. The free scan is the exit-intent offer.',
-};
+export const metadata: Metadata = pageMeta("/v7/book", "Schedule a call", "Pick a time for a call with Rocket Llama Labs. We look at how your home service company shows up online and write a marketing plan with a number on it.");
 
 // Ported from the mockup's src-c-book.html.
 export default function Page() {
@@ -20,6 +18,7 @@ export default function Page() {
   <span className="cnt" style={{fontFamily:"var(--sans)",fontSize:"13px",fontWeight:"600",color:"var(--muted)"} as CSSProperties}>About a minute</span>
 </div></nav>
 <main>
+<PageStructuredData path="/v7/book" name="Schedule a call" description="Pick a time for a call with Rocket Llama Labs. We look at how your home service company shows up online and write a marketing plan with a number on it." />
 
 <header className="fhero" id="top"><div className="wrap in">
   <p className="kicker">Schedule a call</p>

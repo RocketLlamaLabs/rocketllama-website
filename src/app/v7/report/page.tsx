@@ -2,13 +2,11 @@
 
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import { pageMeta, PageStructuredData } from "@/components/v7/page-seo";
 import { V7Footer } from "@/components/v7/footer";
 import { ReportSection } from "@/components/v7/report-section";
 
-export const metadata: Metadata = {
-  title: 'The monthly report',
-  description: "What a Rocket Llama Labs monthly report looks like: booked jobs by source, what they were worth, what it cost and what we changed.",
-};
+export const metadata: Metadata = pageMeta("/v7/report", "The monthly report", "What a Rocket Llama Labs monthly report looks like: booked jobs by source, what they were worth, what it cost and what we changed.");
 
 // The sample monthly report, moved off the home page on 4 November 2026.
 export default function Page() {
@@ -29,7 +27,8 @@ export default function Page() {
 </div></nav>
 <script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}});document.addEventListener('click',function(e){var b=e.target.closest('.v7 .team details.bio .less');if(b){var d=b.closest('details');d.removeAttribute('open');d.closest('.card').scrollIntoView({block:'nearest'})}})"}} />
 <main>
-<ReportSection />
+<PageStructuredData path="/v7/report" name="The monthly report" description="What a Rocket Llama Labs monthly report looks like: booked jobs by source, what they were worth, what it cost and what we changed." />
+<ReportSection heading="h1" />
 </main>
       <V7Footer note='Version 7, monthly report' />
     </>

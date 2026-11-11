@@ -2,14 +2,11 @@
 
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import { pageMeta, PageStructuredData } from "@/components/v7/page-seo";
 import { V7Footer } from "@/components/v7/footer";
 import { LegalBody, PRIVACY, EFFECTIVE } from "@/components/v7/legal-copy";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "How Rocket Llama Labs collects, uses, shares and protects personal information, including text-message consent, call recording and cookies.",
-  alternates: { canonical: "https://rocketllamalabs.com/v7/privacy" },
-};
+export const metadata: Metadata = pageMeta("/v7/privacy", "Privacy Policy", "How Rocket Llama Labs collects, uses, shares and protects personal information, including text-message consent, call recording and cookies.");
 
 // Privacy Policy, built from src/components/v7/legal-copy.tsx.
 export default function Page() {
@@ -30,6 +27,7 @@ export default function Page() {
 </div></nav>
 <script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}});document.addEventListener('click',function(e){var b=e.target.closest('.v7 .team details.bio .less');if(b){var d=b.closest('details');d.removeAttribute('open');d.closest('.card').scrollIntoView({block:'nearest'})}})"}} />
 <main>
+<PageStructuredData path="/v7/privacy" name="Privacy Policy" description="How Rocket Llama Labs collects, uses, shares and protects personal information, including text-message consent, call recording and cookies." />
 <header className="pagehead" id="top">
   <div className="wrap in">
     <p className="kicker">Legal</p>

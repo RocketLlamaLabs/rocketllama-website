@@ -2,13 +2,11 @@
 
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import { pageMeta, PageStructuredData } from "@/components/v7/page-seo";
 import { V7Footer } from "@/components/v7/footer";
 import { QualifyQuiz } from "@/components/v2/qualify-quiz";
 
-export const metadata: Metadata = {
-  title: 'See if you qualify',
-  description: 'Rocket Llama Labs qualification funnel : two minutes of questions, then a time on the calendar if you qualify.',
-};
+export const metadata: Metadata = pageMeta("/v7/qualify", "See if you qualify", "Two minutes of questions about your home service company, then a time on the calendar.", { noindex: true });
 
 // Ported from the mockup's src-c-qualify.html.
 export default function Page() {
@@ -20,6 +18,7 @@ export default function Page() {
   <span className="cnt" style={{fontFamily:"var(--sans)",fontSize:"13px",fontWeight:"600",color:"var(--muted)"} as CSSProperties}>Two minutes</span>
 </div></nav>
 <main>
+<PageStructuredData path="/v7/qualify" name="See if you qualify" description="Two minutes of questions about your home service company, then a time on the calendar." />
 
 <header className="fhero" id="top"><div className="wrap in">
   <p className="kicker">See if you qualify</p>

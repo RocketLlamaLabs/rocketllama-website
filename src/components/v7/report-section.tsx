@@ -6,14 +6,15 @@ import { mountReport } from "./behavior/report";
 // The report we send on the first of the month, as a live card: six sample
 // months, booked jobs by source, what we changed and why, and a button that
 // shows a bad month. From Madison's "open book" mockup.
-export function ReportSection() {
+export function ReportSection({ heading = "h2" }: { heading?: "h1" | "h2" } = {}) {
+  const H = heading;
   useEffect(mountReport, []);
   return (
     <section id="proof"><div className="wrap">
       <div className="repgrid">
         <div>
           <p className="kicker">The first of the month</p>
-          <h2>We don&rsquo;t report clicks. We report booked jobs and what they were worth.</h2>
+          <H>We don&rsquo;t report clicks. We report booked jobs and what they were worth.</H>
           <p className="sub">Booked jobs by source. What they were worth. What they cost. The return per dollar. Most agencies show you clicks and a dashboard login. We show you this, every month, and we put it on the website before you call.</p>
           <div className="stats">
             <div className="stat"><div className="b">$2 : $1</div><div className="l">Our floor: two dollars back for every dollar spent, over a rolling quarter, or we work free</div></div>

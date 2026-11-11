@@ -725,6 +725,40 @@ def v8_extras(s, f, is_home, base):
     return s.replace('Book a walkthrough', 'Schedule a call').replace('book a walkthrough', 'schedule a call').replace('Book your free walkthrough', 'Schedule your free call')
 
 
+# ---------- version 7 subpages: full metadata and structured data (src/components/v7/page-seo.tsx)
+V7_PAGE_SEO = {
+    'services':  ('Services',              'Every piece of the Rocket Llama Labs marketing system for home service companies: website, local SEO and AI search, Google Business Profile, funnels, phones with an AI receptionist, CRM, ads and reviews.', False),
+    'industries': ('Industries',           'Home services marketing for HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting and every trade that goes to a customer\'s home.', False),
+    'audit':     ('Run an instant audit',  'See how your home service company shows up online in 20 seconds: Google Business Profile, reviews, website, phone and what the AI engines say about you.', False),
+    'book':      ('Schedule a call',       'Pick a time for a call with Rocket Llama Labs. We look at how your home service company shows up online and write a marketing plan with a number on it.', False),
+    'qualify':   ('See if you qualify',    'Two minutes of questions about your home service company, then a time on the calendar.', True),
+    'report':    ('The monthly report',    'What a Rocket Llama Labs monthly report looks like: booked jobs by source, what they were worth, what it cost and what we changed.', False),
+    'privacy':   ('Privacy Policy',        'How Rocket Llama Labs collects, uses, shares and protects personal information, including text-message consent, call recording and cookies.', False),
+    'terms':     ('Website Policy',        'The conditions for using rocketllamalabs.com and the tools on it: the instant audit, the 60-second check, scheduling and the content on the site.', False),
+    'ai-policy': ('AI Policy',             'Where Rocket Llama Labs uses artificial intelligence, what it does, where a person is responsible, and how client and homeowner data is handled.', False),
+}
+
+def v7_page_seo():
+    for slug, (title, desc, noindex) in V7_PAGE_SEO.items():
+        fp = os.path.join(root, 'src/app/v7', slug, 'page.tsx')
+        t = open(fp).read()
+        path = '/v7/' + slug
+        meta = 'export const metadata: Metadata = pageMeta("%s", "%s", "%s"%s);' % (path, title, desc.replace('"', '\\"'), ', { noindex: true }' if noindex else '')
+        t, k = re.subn(r"export const metadata: Metadata = \{.*?\n\};", meta, t, count=1, flags=re.S)
+        assert k == 1, slug
+        comp = {'services': '<ServicesStructuredData />', 'industries': '<IndustriesStructuredData />'}.get(slug, '<PageStructuredData path="%s" name="%s" description="%s" />' % (path, title, desc.replace('"', '&quot;')))
+        names = {'services': 'ServicesStructuredData', 'industries': 'IndustriesStructuredData'}.get(slug, 'PageStructuredData')
+        t = t.replace('import type { Metadata } from "next";\n', 'import type { Metadata } from "next";\nimport { pageMeta, %s } from "@/components/v7/page-seo";\n' % names, 1)
+        t = t.replace('<main>\n', '<main>\n' + comp + '\n', 1)
+        if slug == 'industries':
+            t = t.replace('import { pageMeta, IndustriesStructuredData } from "@/components/v7/page-seo";', 'import { pageMeta, IndustriesStructuredData, TRADE_COPY } from "@/components/v7/page-seo";')
+            # a line of copy per trade, under the trade grid
+            t = re.sub(r'(<div className="trades">.*?</div>\n)', r'\1  <div className="tradecopy">{TRADE_COPY.map(([name, copy]) => (<div key={name}><h2>{name}</h2><p>{copy}</p></div>))}</div>\n', t, count=1, flags=re.S)
+        if slug == 'report':
+            t = t.replace('<ReportSection />', '<ReportSection heading="h1" />', 1)
+        open(fp, 'w').write(t)
+
+
 if __name__ == '__main__':
     patch_shared()
     build('src/app/(home)', '', 3)
@@ -735,4 +769,5 @@ if __name__ == '__main__':
     write_v7_industries()
     write_v7_legal()
     shutil.rmtree(os.path.join(root, 'src/app/v7/about-brian'), ignore_errors=True)  # no separate page for Brian on v7
+    v7_page_seo()
     build('src/app/v8', '/v8', 8, extras=v8_extras, extra_css_import='@/components/v8/v8.css', layout_note=' The home page itself is src/components/v8/home.tsx.')
