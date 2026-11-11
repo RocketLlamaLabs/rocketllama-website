@@ -44,17 +44,19 @@ export default function Page() {
   <div className="wrap in">
     <p className="kicker">About us</p>
     <h1>Built for the Trades. Powered by Experience. Driven by Results.</h1>
+    <p className="goal">One goal: more customers for your business. Every system we build exists to make the phone ring and the calendar fill.</p>
     <p className="lede">Rocket Llama Labs is a Phoenix, Arizona-based marketing and technology company dedicated to helping home service businesses build stronger operations, attract more customers, and achieve sustainable growth.</p>
-    <p className="lede">We specialize in the industries that keep homes running&mdash;from HVAC, plumbing, electrical, and roofing to garage doors, pest control, landscaping, painting, and virtually every trade that serves homeowners.</p>
-    <p className="lede accent">We are more than a marketing agency. We are a complete growth and technology partner.</p>
-    <p className="lede">Our approach is built around a simple principle: successful businesses need more than individual marketing campaigns, disconnected software, or strategies that look good on paper. They need integrated systems that work together to generate opportunities, improve efficiency, strengthen customer relationships, and support long-term growth.</p>
-    <p className="lede">That&rsquo;s where Rocket Llama Labs comes in.</p>
-    <p className="lede">We don&rsquo;t simply make recommendations and leave businesses to figure out the execution. We design, build, implement, manage, and continuously improve the systems that help home service companies operate and grow.</p>
-    <p className="lede">What truly sets us apart is our foundation in real-world experience. The solutions we deliver are rooted in work we&rsquo;ve already done, challenges we&rsquo;ve already addressed, and systems we&rsquo;ve already implemented. We believe in applying practical experience rather than asking our clients to gamble on unproven ideas.</p>
-    <p className="lede">We understand that home service companies have unique demands. Every missed call can mean a lost opportunity. Every inefficient process can affect profitability. And every customer interaction can determine whether a business earns a one-time job or a relationship that lasts for years.</p>
-    <p className="lede">Our mission is to bring marketing, technology, and business execution together into one coordinated approach&mdash;giving home service companies the tools, systems, and support they need to compete with confidence.</p>
-    <p className="lede">Whether you&rsquo;re an established contractor looking to modernize your business or a growing home service company ready to reach the next level, Rocket Llama Labs is built to help you move forward.</p>
-    <p className="lede accent">We don&rsquo;t just build marketing. We build the systems behind better businesses.</p>
+    <p className="pull">We are more than a marketing agency. We are a complete growth and technology partner.</p>
+    <div className="ablks">
+    <div className="ablk"><h2>Who we serve</h2><p>We specialize in the industries that keep homes running&mdash;from HVAC, plumbing, electrical, and roofing to garage doors, pest control, landscaping, painting, and virtually every trade that serves homeowners.</p></div>
+    <div className="ablk"><h2>Our approach</h2><p>Our approach is built around a simple principle: successful businesses need more than individual marketing campaigns, disconnected software, or strategies that look good on paper. They need integrated systems that work together to generate opportunities, improve efficiency, strengthen customer relationships, and support long-term growth.</p><p>That&rsquo;s where Rocket Llama Labs comes in.</p></div>
+    <div className="ablk"><h2>How we get you customers</h2><p>We don&rsquo;t simply make recommendations and leave businesses to figure out the execution. We design, build, implement, manage, and continuously improve the systems that help home service companies operate and grow.</p></div>
+    <div className="ablk"><h2>What sets us apart</h2><p>What truly sets us apart is our foundation in real-world experience. The solutions we deliver are rooted in work we&rsquo;ve already done, challenges we&rsquo;ve already addressed, and systems we&rsquo;ve already implemented. We believe in applying practical experience rather than asking our clients to gamble on unproven ideas.</p></div>
+    <div className="ablk"><h2>Why it matters</h2><p>We understand that home service companies have unique demands. Every missed call can mean a lost opportunity. Every inefficient process can affect profitability. And every customer interaction can determine whether a business earns a one-time job or a relationship that lasts for years.</p></div>
+    <div className="ablk"><h2>Our mission</h2><p>Our mission is to bring marketing, technology, and business execution together into one coordinated approach&mdash;giving home service companies the tools, systems, and support they need to compete with confidence.</p></div>
+    <div className="ablk"><h2>Who it is for</h2><p>Whether you&rsquo;re an established contractor looking to modernize your business or a growing home service company ready to reach the next level, Rocket Llama Labs is built to help you move forward.</p></div>
+    </div>
+    <p className="pull">We don&rsquo;t just build marketing. We build the systems behind better businesses.</p>
   </div>
 </header>
 
