@@ -768,3 +768,6 @@
 .v7 .about-live details.pt{border-bottom-color:#c9d8e6}
 /* About: the goal line in royal blue. */
 .v7 .about-live .goal{color:var(--accent)}
+/* About: quotes and goal line in navy, the proof numbers in royal blue. */
+.v7 .about-live .pull,.v7 .about-live .goal{color:var(--ink)}
+.v7 .about-live .am-stats .n{color:var(--accent)}
