@@ -846,6 +846,6 @@
 .v7 .flow .tile.on image{pointer-events:none}
 .v7 .flow.tall .h{font-size:16px}
 /* Flow: the "You own all of it" dashed border pulses, dashes growing and shrinking. */
-@keyframes v7ownpulse{0%,100%{stroke-dasharray:3 7;stroke-width:1.5}50%{stroke-dasharray:9 5;stroke-width:2.5}}
-.v7 .flow .fcard.own{animation:v7ownpulse 1.6s ease-in-out infinite}
+@keyframes v7ownpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.v7 .flow .fcard.own{animation:v7ownpulse 2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
 @media(prefers-reduced-motion:reduce){.v7 .flow .fcard.own{animation:none}}
