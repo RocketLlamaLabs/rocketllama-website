@@ -1,7 +1,8 @@
 // The team: one record per person, used by the About page cards and the
 // individual pages under /about/<slug>. Bio copy is HTML (it carries emphasis and links).
 
-export type Person = { slug: string; name: string; role: string; photo: string; alt: string; summary: string; bio: string[] };
+export type Gallery = { kicker: string; title: string; text: string; photos: { src: string; alt: string; tall?: boolean }[] };
+export type Person = { slug: string; name: string; role: string; photo: string; alt: string; summary: string; bio: string[]; gallery?: Gallery };
 
 export const TEAM: Person[] = [
   {
@@ -32,6 +33,17 @@ export const TEAM: Person[] = [
       "At Rocket Llama Labs, Branson believes great marketing is not about chasing trends. It is about building systems that consistently generate leads, drive revenue and help business owners focus on what they do best. His forward-looking approach combines data-driven decision-making with innovative marketing strategies designed specifically for home service businesses.",
       "Outside of work, Branson enjoys traveling, scuba diving, skiing and fishing with his dad. He earned his Bachelor of Science in Finance from the University of Arizona.",
     ],
+    gallery: {
+      kicker: "Off the clock",
+      title: "Branson loves to travel. He found our mascot\u2019s cousins at Machu Picchu.",
+      text: "When Branson is not with clients he is on the road. Travel, scuba diving, skiing and fishing with his dad are where he recharges. On a trip to Machu Picchu in Peru he spent a morning with the llamas that graze the terraces, and these are his photos.",
+      photos: [
+        { src: "/v7/branson/machu-picchu-1", alt: "Llamas grazing on the terraces of Machu Picchu with Huayna Picchu behind" },
+        { src: "/v7/branson/machu-picchu-2", alt: "A llama grazing in front of the stone walls at Machu Picchu" },
+        { src: "/v7/branson/machu-picchu-3", alt: "A brown and white llama grazing at Machu Picchu, close up", tall: true },
+        { src: "/v7/branson/machu-picchu-4", alt: "Two llamas grazing with the Andes behind them at Machu Picchu" },
+      ],
+    },
   },
   {
     slug: "madison-schantz",

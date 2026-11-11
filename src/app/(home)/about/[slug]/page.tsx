@@ -44,6 +44,20 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           {p.bio.map((html) => (<p key={html} dangerouslySetInnerHTML={{ __html: html }} />))}
           <div className="ctas"><a className="btn" href="/book">Schedule a call</a></div>
         </div></section>
+        {p.gallery ? (
+          <section className="person-gallery feature"><div className="wrap">
+            <p className="kicker">{p.gallery.kicker}</p>
+            <h2>{p.gallery.title}</h2>
+            <p className="sub">{p.gallery.text}</p>
+            <div className="gallery">
+              {p.gallery.photos.map((ph) => (
+                <figure key={ph.src} className={ph.tall ? "tall" : undefined}>
+                  <img src={`${ph.src}-1600.webp`} srcSet={`${ph.src}-900.webp 900w, ${ph.src}-1600.webp 1600w`} sizes="(min-width: 900px) 50vw, 100vw" alt={ph.alt} loading="lazy" decoding="async" />
+                </figure>
+              ))}
+            </div>
+          </div></section>
+        ) : null}
       </main>
       <V7Footer note={`Version 7, ${p.name}`} />
     </>
