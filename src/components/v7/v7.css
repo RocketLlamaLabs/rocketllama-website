@@ -657,3 +657,4 @@
 .v7 .trade::before{grid-row:1;grid-column:1}
 .v7 .trade span{grid-row:1;grid-column:2;white-space:normal}
 .v7 .trade small{grid-row:2;grid-column:2;margin-top:0}
+.v7 .trade{align-content:start;align-items:center}
