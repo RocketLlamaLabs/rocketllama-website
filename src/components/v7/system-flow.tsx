@@ -106,7 +106,6 @@ function Wide() {
       <Line id="flowHeadW" d="M500 560 L500 618" dur={1.8} begin={0.4} />
       <Line id="flowHeadW" d="M645 661 L696 661" dur={1.6} begin={1} />
       <Line id="flowHeadW" d="M302 661 L353 661" quiet />
-      <Line id="flowHeadW" d="M988 661 L996 661 L996 94 L990 94" quiet />
 
       {SOURCES.map((s, i) => (
         <g key={s.one}>
