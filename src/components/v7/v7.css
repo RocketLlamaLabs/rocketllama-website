@@ -882,3 +882,22 @@
 .v7 .inext .rel{margin:28px 0 0;font-family:var(--sans);font-size:.95rem;color:var(--muted)}
 /* The industries hub: each tile links to its own page. */
 .v7 #industries .trade span::after{content:"\2192";margin-left:8px;color:var(--accent)}
+/* Navigation: Industries opens the list of industry pages. */
+.v7 .nav .links{align-items:center}
+.v7 .nav .dd{position:relative}
+.v7 .nav .dd>a::before{content:"";position:absolute;inset:-14px -10px -22px}
+.v7 .nav .ddmenu{display:none;position:absolute;left:-18px;top:calc(100% + 18px);width:max-content;grid-template-columns:repeat(2,auto);gap:2px 8px;padding:10px;background:var(--bg);border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 50px -24px rgba(4,23,58,.35)}
+.v7 .nav .dd:hover .ddmenu,.v7 .nav .dd:focus-within .ddmenu{display:grid}
+.v7 .nav .ddmenu a{color:var(--ink);padding:9px 14px;border-radius:10px;font-size:.92rem}
+.v7 .nav .ddmenu a::after{content:none}
+.v7 .nav .ddmenu a:hover{background:var(--accent-soft)}
+.v7 .nav .ddmenu .all{grid-column:1/-1;margin-top:6px;border-top:1px solid var(--line);border-radius:0 0 10px 10px;color:var(--accent-ink)}
+.v7 .nav .menu .panel{max-height:calc(100svh - 84px);overflow-y:auto;min-width:min(320px,calc(100vw - 32px))}
+.v7 .nav .menu .sublinks{display:grid;grid-template-columns:1fr 1fr;gap:0 6px;padding:0 0 6px 10px}
+.v7 .nav .menu .panel .sublinks a{font-size:.88rem;font-weight:500;padding:7px 8px;color:var(--muted)}
+/* Footer: the industry pages, above the logo row. */
+.v7 footer .find{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 18px;padding-bottom:22px;margin-bottom:10px;border-bottom:1px solid #c9dcf5;font-size:13.5px}
+.v7 footer .find b{font-weight:800;margin-right:4px}
+.v7 footer .find a{color:var(--deep);text-decoration:none}
+.v7 footer .find a:hover{color:var(--accent);text-decoration:underline}
+@media(max-width:640px){.v7 footer .find{justify-content:center}}
