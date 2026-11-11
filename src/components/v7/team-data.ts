@@ -26,7 +26,7 @@ export const TEAM: Person[] = [
     role: "President and COO",
     photo: "/v7/branson-cobb.jpg",
     alt: "Branson Cobb, President and COO of Rocket Llama Labs",
-    summary: "Branson runs the business and every client relationship. He spent more than 23 years leading sales, business development and client strategy for some of the country\u2019s largest healthcare organizations, and he brings that growth discipline to home service companies that want more qualified leads and measurable results.",
+    summary: "Branson runs the business and every client relationship. He spent more than 23 years leading sales teams, business development, and client strategy for some of the country\u2019s largest healthcare organizations. He brings that growth discipline to home service companies that want more qualified leads and measurable results.",
     bio: [
       "Before launching Rocket Llama Labs, Branson served as Market President for CBIZ\u2019s Arizona and California offices, where he led market growth, business operations and client retention initiatives. Prior to CBIZ, he spent more than five years with Aetna, leading business development for Arizona\u2019s Public and Labor segment and helping organizations develop strategic growth initiatives.",
       "Branson began his career at Cigna, where he spent 13 years advancing from Medical and Dental Underwriter to Senior Account Executive. His background in underwriting, analytics, account management and sales gave him a unique ability to connect financial insights with business strategy, an approach he continues to bring to every client relationship today.",
