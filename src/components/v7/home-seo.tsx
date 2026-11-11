@@ -60,6 +60,9 @@ export const HOME_FAQ: [string, string][] = [
   ["How fast are leads answered?", "Every new lead gets a text and an email in under a minute, in your voice. If you cannot pick up, the AI receptionist answers the call and books the job or takes a message."],
   ["What trades do you work with?", "HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting and every other trade that goes to a customer's home."],
   ["Do you work outside Phoenix?", "Yes. We start in your service area and expand city by city. The team is based in Phoenix, Arizona, and everything is run remotely."],
+  ["Is Rocket Llama Labs a marketing agency or a lead generation company?", "Both, and more. We are a home services marketing agency that builds and runs the whole system: the website, local SEO and AI search, Google Ads and Local Services Ads, review management, call tracking, the AI receptionist and the CRM. The leads it produces come from your own site and your own ads, so they are exclusive to you and never resold."],
+  ["What does local SEO for a home service company involve?", "Service pages per service and per city, a Google Business Profile that is kept current, reviews on every page, and the schema that lets Google and AI search engines like ChatGPT and Gemini read your site and recommend you. We do all of it as part of the system."],
+  ["How do you track return on marketing spend?", "Every phone number is tracked to its source, every form and call lands in the CRM, and every closed job is recorded with its value. The dashboard shows what each dollar of ad spend brought back in booked, paid work, not clicks or impressions."],
 ];
 
 export function HomeFaq() {

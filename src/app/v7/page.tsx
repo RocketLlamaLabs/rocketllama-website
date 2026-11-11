@@ -65,6 +65,7 @@ export default function Page() {
 <section id="problem"><div className="wrap">
   <p className="kicker">Three ways good companies lose jobs</p>
   <h2>You buy your leads, answer them late, and can&rsquo;t be found where people look now.</h2>
+  <p className="sub">Most home services marketing sells one tactic at a time: a lead generation list, an SEO package, an ad budget. HVAC, plumbing, electrical and roofing companies lose jobs in the gaps between them.</p>
   <div className="grid c3">
     <div className="card"><div className="n">1 <span className="sm">in</span> 5</div><h3>your odds on a shared lead</h3><p>A Yelp or Angi lead is sold to four other contractors, and you pay whether you win it or not. Ours come from your own site and your own ads: exclusive, and about a third of the cost per booked job.</p><span className="src">Top Three Web Design, 2026 · owner&rsquo;s field results</span></div>
     <div className="card"><div className="n">62% <span className="sm">vs</span> 28%</div><h3>close rate, fast vs average</h3><p>Answer inside two minutes and 62% of leads convert. The average company answers in 42 minutes and converts 28%. Only 12% of contractors respond inside five minutes.</p><span className="src">ServiceTitan, 2025 · Hatch, 2026</span></div>

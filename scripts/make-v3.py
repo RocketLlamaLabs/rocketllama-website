@@ -328,6 +328,8 @@ def v7_extras_core(s, f, is_home, base):
     s = re.sub(r"export const metadata: Metadata = \{.*?\n\};", "export const metadata: Metadata = HOME_META;", s, count=1, flags=re.S)
     s = s.replace('import type { Metadata } from "next";\n', 'import type { Metadata } from "next";\nimport { HOME_META, HomeStructuredData } from "@/components/v7/home-seo";\n', 1)
     s = s.replace('<main>\n', '<main>\n<HomeStructuredData />\n', 1)
+    # search phrases worked into the section intros
+    s = s.replace('<h2>You buy your leads, answer them late, and can&rsquo;t be found where people look now.</h2>\n  <div className="grid c3">', '<h2>You buy your leads, answer them late, and can&rsquo;t be found where people look now.</h2>\n  <p className="sub">Most home services marketing sells one tactic at a time: a lead generation list, an SEO package, an ad budget. HVAC, plumbing, electrical and roofing companies lose jobs in the gaps between them.</p>\n  <div className="grid c3">', 1)
     s = s.replace('import { HOME_META, HomeStructuredData } from "@/components/v7/home-seo";', 'import { HOME_META, HomeStructuredData, HomeFaq } from "@/components/v7/home-seo";', 1)
     # banner photos as WebP with sizes for phones; the first one is the LCP image
     for i, name in enumerate(['hvac', 'plumbing', 'electrical', 'roofing']):
