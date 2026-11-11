@@ -68,13 +68,6 @@ export default function Page() {
   </div>
 </div></section>
 
-<section id="faq" className="feature"><div className="wrap">
-  <p className="kicker">Questions</p>
-  <h2>The short version.</h2>
-  <div className="faq">
-    {ABOUT_FAQ.map(([q, a]) => (<details key={q}><summary>{q}</summary><p>{a}</p></details>))}
-  </div>
-</div></section>
 </main>
       <V7Footer note='Version 7, about us' />
     </>

@@ -637,13 +637,6 @@ def write_v7_about():
         '<button type="button" className="less">Read less</button></details></article>\n'
         '  </div>\n'
         '</div></section>\n\n'
-        '<section id="faq" className="feature"><div className="wrap">\n'
-        '  <p className="kicker">Questions</p>\n'
-        '  <h2>The short version.</h2>\n'
-        '  <div className="faq">\n'
-        '    {ABOUT_FAQ.map(([q, a]) => (<details key={q}><summary>{q}</summary><p>{a}</p></details>))}\n'
-        '  </div>\n'
-        '</div></section>\n'
         '</main>'
     )
     t = t[:i] + main + t[j:]
