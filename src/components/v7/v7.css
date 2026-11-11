@@ -892,7 +892,9 @@
 .v7 .person .gallery figure{border-radius:14px}
 .v7 .person .gallery img,.v7 .person .gallery figure.tall img{aspect-ratio:1;object-fit:cover}
 /* Footer: white on every page, with a thin top rule. */
-.v7 footer,.v7:has(.pagehead.about-head) footer,.v7:has(#industries) footer{background:#fff;border-top:1px solid var(--line)}
+.v7 footer{background:#fff;border-top:1px solid var(--line)}
+.v7:has(.pagehead.about-head) footer{background:#fff}
+.v7:has(#industries) footer{background:#fff}
 /* Person pages: light blue footer. */
 .v7:has(main.person) footer{background:#eaf2fd;border-top:0}
 /* Industry pages (/hvac, /plumbing, ...): photo banner, byline, summary box, search terms. */
@@ -975,4 +977,5 @@
 .v7 #industries .trade span::after{margin-left:6px}
 @media(min-width:720px) and (max-width:899px){.v7 #industries .trades{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* About page: light blue footer. */
-.v7:has(.pagehead.about-head) footer,.v7:has(main.about-live) footer,.v7:has(main.person) footer{background:#eaf2fd;border-top:0}
+.v7:has(main.about-live) footer{background:#eaf2fd;border-top:0}
+.v7:has(main.person) footer{background:#eaf2fd;border-top:0}
