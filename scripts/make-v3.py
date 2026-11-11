@@ -751,6 +751,8 @@ def v7_page_seo():
         t = t.replace('<main>\n', '<main>\n' + comp + '\n', 1)
         if slug == 'industries':
             # a line of copy per trade, under the trade grid
+            # no "other home service" tile: the grid lists only the trades we work with
+            t = re.sub(r'<a className="trade other" href="[^"]*">[^<]*</a>', '', t, count=1)
             # one short line inside each trade tile
             for name, line in TRADE_LINES.items():
                 t = t.replace('>%s</a>' % name, '><span>%s</span><small>%s</small></a>' % (name, line), 1)
