@@ -4,11 +4,11 @@ import Link from "next/link";
 import { V7Nav } from "@/components/v7/nav";
 import { V7Footer } from "@/components/v7/footer";
 import { IndustryStructuredData } from "@/components/v7/page-seo";
-import { type Industry, INDUSTRY_AUTHOR, INDUSTRY_BY_SLUG, INDUSTRY_UPDATED, INDUSTRY_UPDATED_LABEL, SERVICE_CITIES } from "@/components/v7/industries-data";
+import { type Industry, INDUSTRY_AUTHOR, INDUSTRY_BY_SLUG, INDUSTRY_UPDATED, INDUSTRY_UPDATED_LABEL } from "@/components/v7/industries-data";
 
 // One industry page (/hvac, /plumbing, ...). The layout follows the page
 // template in docs/seo-playbook.md: banner, byline, summary, unique sections,
-// location, FAQ, related pages. All copy comes from industries-data.ts.
+// FAQ, related pages. All copy comes from industries-data.ts.
 export function IndustryPage({ ind }: { ind: Industry }) {
   const img = `/v7/img/${ind.image.stem}`;
   const book = `/book?trade=${encodeURIComponent(ind.name)}`;
@@ -76,15 +76,16 @@ export function IndustryPage({ ind }: { ind: Industry }) {
         <section id="searches"><div className="wrap">
           <p className="kicker">Search and AI search</p>
           <h2>{ind.searchesHeading}</h2>
-          <p className="sub">{ind.searchesIntro} The same pages are what ChatGPT, Gemini and Google&rsquo;s AI answers read when a homeowner asks who to call.</p>
+          <p className="sub">{ind.searchesIntro}</p>
           <ul className="terms">{ind.searches.map((s) => <li key={s}>{s}</li>)}</ul>
         </div></section>
 
-        <section id="where" className="feature"><div className="wrap">
-          <p className="kicker">Where we work</p>
-          <h2>{ind.name} marketing in Phoenix and across the Valley</h2>
-          <p className="sub">Rocket Llama Labs is based in Phoenix, Arizona. We work with {ind.audience} in {SERVICE_CITIES.slice(0, -1).join(", ")} and {SERVICE_CITIES[SERVICE_CITIES.length - 1]}, and with companies in other markets remotely.</p>
-          <ul className="terms cities">{SERVICE_CITIES.map((c) => <li key={c}>{c}, AZ</li>)}</ul>
+        <section id="how" className="feature"><div className="wrap">
+          <p className="kicker">How it works</p>
+          <h2>{ind.planHeading}</h2>
+          <ol className="isteps">
+            {ind.plan.map(([h, p], i) => <li key={h}><span className="n">{i + 1}</span><h3>{h}</h3><p>{p}</p></li>)}
+          </ol>
         </div></section>
 
         <section id="faq"><div className="wrap">
@@ -96,8 +97,8 @@ export function IndustryPage({ ind }: { ind: Industry }) {
         </div></section>
 
         <section id="next" className="inext"><div className="wrap">
-          <h2>See where your {ind.audience === "HVAC companies" ? "HVAC company" : "company"} stands.</h2>
-          <p className="sub">On the first call we audit how you show up in search, maps and AI answers, and write a marketing plan with a number on it. You keep the plan either way.</p>
+          <h2>{ind.cta[0]}</h2>
+          <p className="sub">{ind.cta[1]}</p>
           <div className="ctas"><a className="btn" href={book}>Schedule a call</a><a className="btn ghost" href="/audit">Run an instant audit</a></div>
           <p className="rel">Related industries: {ind.related.map((s, i) => <span key={s}>{i > 0 ? ", " : ""}<Link href={`/${s}`}>{INDUSTRY_BY_SLUG[s].name} marketing</Link></span>)}, or <Link href="/industries">every trade we work with</Link>.</p>
         </div></section>

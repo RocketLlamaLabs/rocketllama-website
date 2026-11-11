@@ -743,7 +743,7 @@ def v7_industry_nav(t):
 
 
 def write_v7_industry_links():
-    """Link every industry page from the navigation of each v7 page and from the footer."""
+    """Link every industry page from the navigation of each v7 page."""
     home = os.path.join(root, 'src/app/(home)')
     for d, _, files in os.walk(home):
         for f in files:
@@ -751,11 +751,21 @@ def write_v7_industry_links():
                 fp = os.path.join(d, f); t = open(fp).read(); u = v7_industry_nav(t)
                 if u != t:
                     open(fp, 'w').write(u)
-    fp = os.path.join(root, 'src/components/v7/footer.tsx'); t = open(fp).read()
-    a = '      <div className="wrap in">\n'
-    assert t.count(a) == 1, 'v7 footer'
-    t = t.replace(a, a + '        <nav className="find" aria-label="Industries"><b>Industries</b>' + industry_links('Link') + '</nav>\n', 1)
-    open(fp, 'w').write(t)
+
+
+
+def v7_move_proof_band():
+    """The 'Tracked to the job' photo band sits on the Industries page, under the trade grid, not on Services."""
+    sp = os.path.join(root, 'src/app/(home)/services/page.tsx'); t = open(sp).read()
+    i = t.index('<div className="band" id="proof"'); j = t.index('\n</div></div>\n', i) + len('\n</div></div>\n')
+    band = t[i:j]
+    open(sp, 'w').write(t[:i].rstrip('\n') + '\n\n' + t[j:].lstrip('\n'))
+    ip = os.path.join(root, 'src/app/(home)/industries/page.tsx'); t = open(ip).read()
+    assert t.count('</div></section>\n</main>') == 1, 'industries page end'
+    t = t.replace('</div></section>\n</main>', '</div></section>\n\n' + band + '</main>', 1)
+    if 'CSSProperties' not in t.split('export default')[0]:
+        t = t.replace('import type { Metadata } from "next";\n', 'import type { CSSProperties } from "react";\nimport type { Metadata } from "next";\n', 1)
+    open(ip, 'w').write(t)
 
 
 def write_v7_legal():
@@ -859,6 +869,7 @@ if __name__ == '__main__':
     write_v7_legal()
     shutil.rmtree(os.path.join(root, 'src/app/(home)/about-brian'), ignore_errors=True)  # no separate page for Brian on v7
     v7_page_seo()
+    v7_move_proof_band()
     write_v7_industry_pages()
     write_v7_industry_links()
     build('src/app/v8', '/v8', 8, extras=v8_extras, extra_css_import='@/components/v8/v8.css', layout_note=' The home page itself is src/components/v8/home.tsx.')

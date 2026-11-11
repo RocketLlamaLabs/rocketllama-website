@@ -269,9 +269,11 @@ The industry pages are the reference build for this playbook.
 | --- | --- |
 | One page per industry at a short URL (`/hvac`, `/plumbing`, ...) | `src/app/(home)/<slug>/page.tsx`, one folder per trade, written by `scripts/make-v3.py` |
 | All copy, titles, FAQs per industry | `src/components/v7/industries-data.ts` |
-| Page template (banner, byline, summary, sections, location, FAQ, related links) | `src/components/v7/industry-page.tsx` |
+| Page template (banner, byline, summary, sections, FAQ, related links) | `src/components/v7/industry-page.tsx` |
 | Schema: breadcrumbs, page with author and dates, service, FAQ, organization, person | `IndustryStructuredData` in `src/components/v7/page-seo.tsx` |
 | Hub page linking to every industry | `/industries` |
 | Sitemap and `llms.txt` | `src/app/sitemap.ts`, `public/llms.txt` |
+
+Our industry pages sell to companies in any market, so they deliberately skip the location block and city list from section 8; those rules are for client sites that serve a local area.
 
 Still open on our own site, to close before launch: remove the pre-launch `noindex` (`next.config.ts`) and the blanket `Disallow` (`src/app/robots.ts`); add a street address or ZIP, a phone number and social profiles to the organization schema; replace the shared banner photos with one real photo per trade.

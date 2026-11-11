@@ -158,7 +158,7 @@ export function industryMeta(ind: Industry): Metadata {
 }
 
 // Structured data for an industry page: where it sits in the site, who wrote it
-// and when, the service it describes, where that service is offered, and the
+// and when, the service it describes, and the
 // page's questions and answers. Every value is also in the visible page.
 export function IndustryStructuredData({ ind }: { ind: Industry }) {
   const path = `/${ind.slug}`;
@@ -198,7 +198,8 @@ export function IndustryStructuredData({ ind }: { ind: Industry }) {
           description: ind.summary,
           image: { "@id": `${url}#image` },
           provider: { "@id": `${SITE}/#organization` },
-          areaServed: ORG.areaServed,
+          // No city list here: the industry pages are not tied to one market.
+          areaServed: { "@type": "Country", name: "United States" },
           audience: { "@type": "BusinessAudience", audienceType: ind.audience },
           hasOfferCatalog: {
             "@type": "OfferCatalog",
