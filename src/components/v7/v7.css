@@ -703,3 +703,13 @@
 .v7 .pagehead.about-head .ablks{max-width:none}
 @media(min-width:720px){.v7 .pagehead.about-head .ablk{display:grid;grid-template-columns:190px minmax(0,62ch);column-gap:32px;align-items:start}.v7 .pagehead.about-head .ablk h2{margin:4px 0 0}}
 @media(min-width:720px){.v7 .pagehead.about-head .ablk p{grid-column:2}}
+/* Booking and qualify cards on a phone. The 220px button minimum made Back
+   and Next wider than the card, which pushed the whole calendar off the
+   screen. Inside the card the step buttons size to their label and may wrap. */
+.v7 .funnel .in>*{min-width:0}
+.v7 .qz .qznav{flex-wrap:wrap}
+.v7 .qz .qznav .btn{min-width:0}
+.v7 .qz .qznav .btn:not(.ghost){min-width:140px;margin-left:auto}
+@media(min-width:640px){.v7 .qz .qznav .btn:not(.ghost){min-width:220px}}
+/* Day and time tiles: three across on small tablets so a date stays on one line. */
+@media(min-width:640px) and (max-width:819px){.v7 .qz .opts.five{grid-template-columns:repeat(3,1fr)}}
