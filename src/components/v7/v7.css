@@ -919,6 +919,13 @@
 .v7 .isum li{position:relative;padding-left:22px}
 .v7 .isum li::before{content:"";position:absolute;left:0;top:.5em;width:9px;height:9px;border-radius:50%;background:var(--accent)}
 .v7 .terms{list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.v7 .isteps{list-style:none;margin:38px 0 0;padding:0;display:grid;gap:16px}
+@media(min-width:760px){.v7 .isteps{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1100px){.v7 .isteps{grid-template-columns:repeat(4,1fr)}}
+.v7 .isteps li{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
+.v7 .isteps .n{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--sans);font-weight:800;font-size:.95rem}
+.v7 .isteps h3{font-family:var(--sans);font-size:1.12rem;font-weight:800;margin:14px 0 8px;letter-spacing:-.01em}
+.v7 .isteps p{margin:0;color:var(--muted);font-size:.98rem;line-height:1.55}
 .v7 .terms li{font-family:var(--sans);font-weight:600;font-size:.95rem;padding:10px 16px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)}
 .v7 .faq summary h3{font:inherit;margin:0}
 .v7 .sub a,.v7 .inext .rel a{color:var(--accent-ink)}
@@ -939,12 +946,6 @@
 .v7 .nav .menu .panel{max-height:calc(100svh - 84px);overflow-y:auto;min-width:min(320px,calc(100vw - 32px))}
 .v7 .nav .menu .sublinks{display:grid;grid-template-columns:1fr 1fr;gap:0 6px;padding:0 0 6px 10px}
 .v7 .nav .menu .panel .sublinks a{font-size:.88rem;font-weight:500;padding:7px 8px;color:var(--muted)}
-/* Footer: the industry pages, above the logo row. */
-.v7 footer .find{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 18px;padding-bottom:22px;margin-bottom:10px;border-bottom:1px solid #c9dcf5;font-size:13.5px}
-.v7 footer .find b{font-weight:800;margin-right:4px}
-.v7 footer .find a{color:var(--deep);text-decoration:none}
-.v7 footer .find a:hover{color:var(--accent);text-decoration:underline}
-@media(max-width:640px){.v7 footer .find{justify-content:center}}
 /* Navigation: solid white, no see-through. */
 .v7 .nav{background:#fff;backdrop-filter:none}
 /* Full system: the "never stands still" copy as its own full-width photo band. */
