@@ -379,7 +379,7 @@ V7_PROOF_BAND = '''<div className="band" id="proof" style={{"--img":"url(/v2/img
 def v7_extras(s, f, is_home, base):
     s = v7_extras_core(s, f, is_home, base)
     # the book page: Arizona time
-    s = s.replace('<BookFunnel />', '<BookFunnel tz="Arizona time" />', 1)
+    s = s.replace('<BookFunnel />', '<BookFunnel tz="Arizona time" short />', 1)
     # wording: every call to action schedules a call
     s = s.replace('Book a walkthrough', 'Schedule a call').replace('book a walkthrough', 'schedule a call').replace('Book your free walkthrough', 'Schedule your free call')
     s = s.replace(f'<SixtySecondCheck base="{base}" />', f'<SixtySecondCheck base="{base}" cta="Schedule a call" alt={{{{ label: "Run an instant audit", href: "{base}/audit" }}}} />')

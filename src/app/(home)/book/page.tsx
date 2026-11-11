@@ -29,7 +29,7 @@ export default function Page() {
 
 <section className="funnel"><div className="wrap in">
   <div className="qzcol">
-    <BookFunnel tz="Arizona time" />
+    <BookFunnel tz="Arizona time" short />
   </div>
   <aside className="aside">
     <div className="abox">

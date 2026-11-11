@@ -5,7 +5,8 @@ import { useEffect } from "react";
 import { mountBookFunnel } from "./behavior/book-funnel";
 
 // BookFunnel: markup from the mockup's _book.html, behaviour mounted on the client.
-export function BookFunnel({ tz = "Phoenix time" }: { tz?: string }) {
+// `short` keeps only four optional questions after the booking (trade, where you work, pain points, website) and drops the optional website field from the contact step.
+export function BookFunnel({ tz = "Phoenix time", short = false }: { tz?: string; short?: boolean }) {
   useEffect(mountBookFunnel, []);
   return (
     <>
@@ -35,7 +36,9 @@ export function BookFunnel({ tz = "Phoenix time" }: { tz?: string }) {
         <label className="f">Email<input type="email" id="q_email" placeholder="name@company.com" autoComplete="email" inputMode="email" autoCapitalize="none" autoCorrect="off" spellCheck="false" /></label>
         <label className="f"><span id="mob_l">Mobile</span><input type="tel" id="q_mobile" placeholder="(555) 555-5555" autoComplete="tel" inputMode="tel" maxLength={18} pattern="[0-9()+.\- ]*" /></label>
       </div>
+      {short ? null : (
       <div className="grp"><label className="f" htmlFor="q_url">Website <span className="hint">optional, so the audit can include it</span></label><input type="text" id="q_url" placeholder="yourcompany.com" autoComplete="url" inputMode="url" autoCapitalize="none" style={{marginTop:"8px"} as CSSProperties} /></div>
+      )}
       <label className="consent" data-disclosure-version="rll-sms-2026-10-29.v2"><input type="checkbox" id="q_consent" /><span><b>Yes, text me about this request.</b> By checking this box and providing your mobile number, you agree to receive text messages from Rocket Llama Labs about this request: your qualification result, your walkthrough booking and reminders, and your free live audit. No marketing texts without a separate opt-in. Message frequency varies. Message and data rates may apply. Reply STOP to opt out at any time and HELP for help. Consent is not a condition of doing business with us. See our <a href="#privacy">Privacy Policy</a> and <a href="#terms">Terms</a>.</span></label>
     </div>
 
@@ -44,14 +47,16 @@ export function BookFunnel({ tz = "Phoenix time" }: { tz?: string }) {
       <p className="k" id="cf_k">You are booked</p>
       <h3 id="cf_h"></h3>
       <p className="why" id="cf_p"></p>
-      <p className="why">In a hurry? <a className="skip" id="qzskip">Skip the questions</a>.</p>
+      <p className="why" hidden={short}>In a hurry? <a className="skip" id="qzskip">Skip the questions</a>.</p>
     </div>
 
+    {short ? null : (
     <div className="step" data-q="years" data-auto="1">
       <h3>How long have you been in business?</h3>
       <p className="why" id="qzstart" hidden>Starting with <b></b>. About two minutes to go.</p>
       <div className="opts four" data-single="q_years"><label className="opt"><input type="radio" name="q_years" value="Under 1" />Under a year</label><label className="opt"><input type="radio" name="q_years" value="1 to 3" />1 to 3 years</label><label className="opt"><input type="radio" name="q_years" value="3 to 10" />3 to 10 years</label><label className="opt"><input type="radio" name="q_years" value="10 or more" />10 years or more</label></div>
     </div>
+    )}
 
     <div className="step" data-q="trade" data-auto="1">
       <h3>What trade are you in?</h3>
@@ -92,21 +97,27 @@ export function BookFunnel({ tz = "Phoenix time" }: { tz?: string }) {
       </div>
     </div>
 
+    {short ? null : (
     <div className="step" data-q="rev" data-auto="1">
       <h3>What was revenue last year, roughly?</h3>
       <p className="why">We size the budget to the business, so this matters more than anything else you tell us.</p>
       <div className="opts three" data-single="q_rev"><label className="opt"><input type="radio" name="q_rev" value="lt250" />Under $250K</label><label className="opt"><input type="radio" name="q_rev" value="250-500" />$250K to $500K</label><label className="opt"><input type="radio" name="q_rev" value="500-1m" />$500K to $1M</label><label className="opt"><input type="radio" name="q_rev" value="1-2m" />$1M to $2M</label><label className="opt"><input type="radio" name="q_rev" value="2m+" />Over $2M</label><label className="opt"><input type="radio" name="q_rev" value="unsure" />Not sure</label></div>
     </div>
+    )}
 
+    {short ? null : (
     <div className="step" data-q="crew" data-auto="1">
       <h3>How many people are on the crew, including you?</h3>
       <div className="opts four" data-single="q_crew"><label className="opt"><input type="radio" name="q_crew" value="1" />Just me</label><label className="opt"><input type="radio" name="q_crew" value="2-4" />2 to 4</label><label className="opt"><input type="radio" name="q_crew" value="5-9" />5 to 9</label><label className="opt"><input type="radio" name="q_crew" value="10+" />10 or more</label></div>
     </div>
+    )}
 
+    {short ? null : (
     <div className="step" data-q="ticket" data-auto="1">
       <h3>What is an average job worth?</h3>
       <div className="opts four" data-single="q_ticket"><label className="opt"><input type="radio" name="q_ticket" value="Under $300" />Under $300</label><label className="opt"><input type="radio" name="q_ticket" value="$300 to $1,000" />$300 to $1,000</label><label className="opt"><input type="radio" name="q_ticket" value="$1,000 to $5,000" />$1,000 to $5,000</label><label className="opt"><input type="radio" name="q_ticket" value="Over $5,000" />Over $5,000</label></div>
     </div>
+    )}
 
     <div className="step" data-q="pain">
       <h3>What are your biggest pain points right now?</h3>
@@ -114,6 +125,7 @@ export function BookFunnel({ tz = "Phoenix time" }: { tz?: string }) {
       <div className="opts two" data-multi="q_pain"><label className="opt"><input type="checkbox" name="q_pain" value="leads" />Not enough leads</label><label className="opt"><input type="checkbox" name="q_pain" value="cost" />Leads cost too much</label><label className="opt"><input type="checkbox" name="q_pain" value="calls" />We miss calls</label><label className="opt"><input type="checkbox" name="q_pain" value="web" />Nobody finds us online</label><label className="opt"><input type="checkbox" name="q_pain" value="reviews" />Reviews and reputation</label><label className="opt"><input type="checkbox" name="q_pain" value="all" />All of it, and nobody owns it</label></div>
     </div>
 
+    {short ? null : (
     <div className="step" data-q="src">
       <h3>Where do your jobs come from right now?</h3>
       <p className="why">Pick everything that applies.</p>
@@ -133,6 +145,7 @@ export function BookFunnel({ tz = "Phoenix time" }: { tz?: string }) {
         </div>
       </div>
     </div>
+    )}
 
     <div className="step" data-q="site" data-auto="1">
       <h3>Do you have a website today?</h3>
@@ -146,27 +159,35 @@ export function BookFunnel({ tz = "Phoenix time" }: { tz?: string }) {
       </div>
     </div>
 
+    {short ? null : (
     <div className="step" data-q="reviews" data-auto="1">
       <h3>How many Google reviews do you have, roughly?</h3>
       <p className="why">We will look it up anyway. A rough number is fine.</p>
       <div className="opts three" data-single="q_reviews"><label className="opt"><input type="radio" name="q_reviews" value="Under 20" />Under 20</label><label className="opt"><input type="radio" name="q_reviews" value="20 to 50" />20 to 50</label><label className="opt"><input type="radio" name="q_reviews" value="50 to 150" />50 to 150</label><label className="opt"><input type="radio" name="q_reviews" value="150 to 300" />150 to 300</label><label className="opt"><input type="radio" name="q_reviews" value="Over 300" />Over 300</label></div>
     </div>
+    )}
 
+    {short ? null : (
     <div className="step" data-q="spend" data-auto="1">
       <h3>What do you spend on marketing today, per month, all in?</h3>
       <div className="opts three" data-single="q_spend"><label className="opt"><input type="radio" name="q_spend" value="0" />Nothing</label><label className="opt"><input type="radio" name="q_spend" value="lt1k" />Under $1,000</label><label className="opt"><input type="radio" name="q_spend" value="1-2.5k" />$1,000 to $2,500</label><label className="opt"><input type="radio" name="q_spend" value="2.5-5k" />$2,500 to $5,000</label><label className="opt"><input type="radio" name="q_spend" value="5k+" />Over $5,000</label></div>
     </div>
+    )}
 
+    {short ? null : (
     <div className="step" data-q="cap" data-auto="1">
       <h3>If you booked 20% more jobs next month, could you take them?</h3>
       <p className="why">Honest answer. Some months you want to grow, some you do not, and our budget dial is built for that.</p>
       <div className="opts" data-single="q_cap"><label className="opt"><input type="radio" name="q_cap" value="yes" />Yes, we have room now</label><label className="opt"><input type="radio" name="q_cap" value="hire" />Yes, if I hire, and I would</label><label className="opt"><input type="radio" name="q_cap" value="no" />No, we are at capacity for now</label></div>
     </div>
+    )}
 
+    {short ? null : (
     <div className="step" data-q="dm" data-auto="1">
       <h3>What is your role?</h3>
       <div className="opts three" data-single="q_dm"><label className="opt"><input type="radio" name="q_dm" value="owner" />I own the business</label><label className="opt"><input type="radio" name="q_dm" value="partner" />Partner or general manager</label><label className="opt"><input type="radio" name="q_dm" value="staff" />I work here, someone else decides</label></div>
     </div>
+    )}
 
 
     <div className="result" id="r_done">
