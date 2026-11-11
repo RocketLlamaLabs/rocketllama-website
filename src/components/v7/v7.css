@@ -644,3 +644,16 @@
 .v7 .trade span{display:block}
 .v7 .trade small{display:block;font-family:var(--serif);font-weight:400;font-size:.9rem;line-height:1.4;color:var(--muted);margin-top:4px}
 .v7 .trade.other small{display:none}
+/* Industries grid: three columns so fifteen trades fill five even rows; equal tile heights, consistent padding. */
+@media(min-width:720px){.v7 .trades{grid-template-columns:repeat(3,1fr);gap:16px}}
+@media(min-width:1100px){.v7 .trades{grid-template-columns:repeat(3,1fr)}}
+.v7 .trade{padding:18px 20px;display:flex;flex-direction:column;gap:6px;min-height:0}
+.v7 .trade span{font-size:1.05rem;line-height:1.25}
+.v7 .trade small{margin-top:0}
+.v7 .trades{align-items:stretch}
+.v7 .trade span{white-space:nowrap}
+/* Industries tiles: left aligned, dot beside the name, same height for every tile. */
+.v7 .trade{display:grid;grid-template-columns:auto 1fr;column-gap:10px;row-gap:4px;align-items:center;justify-items:start;text-align:left;min-height:112px;padding:18px 20px}
+.v7 .trade::before{grid-row:1;grid-column:1}
+.v7 .trade span{grid-row:1;grid-column:2;white-space:normal}
+.v7 .trade small{grid-row:2;grid-column:2;margin-top:0}
