@@ -127,11 +127,11 @@ function Wide() {
 
       <g>
         <rect x="300" y="205" width="400" height="150" rx="18" className="fhub" />
-        <Tile icon="globe" x={480} y={218} size={40} tone="on" />
-        <text x="500" y="282" textAnchor="middle" className="h">Your website: home base</text>
-        <text x="500" y="304" textAnchor="middle" className="s on">Hosted free, with schema for Google and AI search</text>
-        <text x="500" y="322" textAnchor="middle" className="s on">Stars per service</text>
-        <text x="500" y="340" textAnchor="middle" className="s on">Funnels: questions, address autofill, offer, booking</text>
+        <Tile icon="globe" x={324} y={225} size={40} tone="on" />
+        <text x="378" y="252" className="h">Your website: home base</text>
+        <text x="324" y="292" className="s on">Hosted free, with schema for Google and AI search</text>
+        <text x="324" y="312" className="s on">Stars per service</text>
+        <text x="324" y="332" className="s on">Funnels: questions, address autofill, offer, booking</text>
       </g>
 
       <g>
@@ -145,10 +145,10 @@ function Wide() {
 
       <g>
         <rect x="180" y="440" width="640" height="120" rx="18" className="fhub" />
-        <g className="tile on" transform="translate(480 452)" aria-hidden="true"><rect width="40" height="40" rx="11" /><image href="/brand/llama-lab.png" x="3" y="3" width="34" height="34" /></g>
-        <text x="500" y="514" textAnchor="middle" className="h">Your CRM: your data and management system</text>
-        <text x="500" y="534" textAnchor="middle" className="s on">Pipelines, automations, AI text and email reply within 60 seconds</text>
-        <text x="500" y="552" textAnchor="middle" className="s on">Booking, call tracking, closed-job value, return on ad spend dashboard</text>
+        <g className="tile on" transform="translate(204 460)" aria-hidden="true"><rect width="40" height="40" rx="11" /><image href="/brand/llama-lab.png" x="3" y="3" width="34" height="34" /></g>
+        <text x="258" y="487" className="h">Your CRM: your data and management system</text>
+        <text x="204" y="522" className="s on">Pipelines, automations, AI text and email reply within 60 seconds</text>
+        <text x="204" y="542" className="s on">Booking, call tracking, closed-job value, return on ad spend dashboard</text>
       </g>
 
       <g>
@@ -209,11 +209,11 @@ function Tall() {
 
       <g>
         <rect x="12" y="282" width="316" height="150" rx="18" className="fhub" />
-        <Tile icon="globe" x={151} y={292} size={38} tone="on" />
-        <text x="170" y="353" textAnchor="middle" className="h">Your website: home base</text>
-        <text x="170" y="376" textAnchor="middle" className="s on">Hosted free, with schema for Google</text>
-        <text x="170" y="394" textAnchor="middle" className="s on">and AI search. Stars per service.</text>
-        <text x="170" y="412" textAnchor="middle" className="s on">Funnels: questions, autofill, offer, booking</text>
+        <Tile icon="globe" x={28} y={298} size={38} tone="on" />
+        <text x="78" y="323" className="h">Your website: home base</text>
+        <text x="28" y="360" className="s on">Hosted free, with schema for Google</text>
+        <text x="28" y="378" className="s on">and AI search. Stars per service.</text>
+        <text x="28" y="396" className="s on">Funnels: questions, autofill, offer, booking</text>
       </g>
 
       <circle cx="30" cy="515" r="3.5" className="node" />
@@ -238,12 +238,12 @@ function Tall() {
 
       <g>
         <rect x="12" y="736" width="316" height="150" rx="18" className="fhub" />
-        <g className="tile on" transform="translate(151 746)" aria-hidden="true"><rect width="38" height="38" rx="10.5" /><image href="/brand/llama-lab.png" x="3" y="3" width="32" height="32" /></g>
-        <text x="170" y="806" textAnchor="middle" className="h">Your CRM: your data</text>
-        <text x="170" y="826" textAnchor="middle" className="h">and management system</text>
-        <text x="170" y="848" textAnchor="middle" className="s on">Pipelines, automations, AI text and email</text>
-        <text x="170" y="866" textAnchor="middle" className="s on">reply within 60 seconds. Booking, call tracking,</text>
-        <text x="170" y="884" textAnchor="middle" className="s on">closed-job value, return on ad spend dashboard</text>
+        <g className="tile on" transform="translate(28 752)" aria-hidden="true"><rect width="38" height="38" rx="10.5" /><image href="/brand/llama-lab.png" x="3" y="3" width="32" height="32" /></g>
+        <text x="78" y="770" className="h">Your CRM: your data</text>
+        <text x="78" y="790" className="h">and management system</text>
+        <text x="28" y="818" className="s on">Pipelines, automations, AI text and email</text>
+        <text x="28" y="836" className="s on">reply within 60 seconds. Booking, call tracking,</text>
+        <text x="28" y="854" className="s on">closed-job value, return on ad spend dashboard</text>
       </g>
 
       <g>
