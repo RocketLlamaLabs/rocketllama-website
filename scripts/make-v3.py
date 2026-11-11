@@ -410,8 +410,8 @@ def v7_extras(s, f, is_home, base):
         s = s.replace(a, '<header className="pagehead with-badge" id="top">\n  <div className="wrap in">\n    <div className="copy">\n    <p className="kicker">Our services</p>\n    <h1>Everything your company needs to get the call.</h1>\n    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system, and run by one team. Here is every piece we run for you and how they fit together.</p>\n    <DreamBadge tone="blue" />\n    </div>\n  </div>\n</header>', 1)
         a = '<section id="map" className="feature">'
         if a in s:
-            s = s.replace(a, '<Race />\n\n' + V7_PROOF_BAND + '\n\n' + a, 1)
-            s = s.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { Race } from "@/components/v7/race";\nimport { DreamBadge } from "@/components/v7/dream-badge";\n', 1)
+            s = s.replace(a, V7_PROOF_BAND + '\n\n' + a, 1)
+            s = s.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { DreamBadge } from "@/components/v7/dream-badge";\n', 1)
             # the walkthrough video is the Rocket Llama cut
             s = s.replace('/v2/video/bbm-local-full.mp4', '/v7/video/rocket-llama-overview.mp4')
             s = s.replace('<span className="tag">90 seconds</span>', '', 1)

@@ -4,7 +4,6 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { pageMeta, ServicesStructuredData } from "@/components/v7/page-seo";
 import { V7Footer } from "@/components/v7/footer";
-import { Race } from "@/components/v7/race";
 import { DreamBadge } from "@/components/v7/dream-badge";
 import { SystemFlow } from "@/components/v7/system-flow";
 
@@ -67,8 +66,6 @@ export default function Page() {
     <div className="card" style={{background:"var(--accent-soft)",borderColor:"#BFD8FF"} as CSSProperties}><span className="k">Your leads</span><h3>Exclusive, never shared</h3><p>Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors. We never do.</p><p style={{marginTop:"14px"} as CSSProperties}><a className="btn sm" href="/book">Schedule a call</a></p></div>
   </div>
 </div></section>
-
-<Race />
 
 <div className="band" id="proof" style={{"--img":"url(/v2/img/band-door.jpg)"} as CSSProperties}><div className="wrap in">
   <p className="kicker">Tracked to the job</p>
