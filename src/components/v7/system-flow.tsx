@@ -31,7 +31,7 @@ function BrandTile({ marks, cx, y, size = 34 }: { marks: string[]; cx: number; y
       <rect width={w} height={size} rx={size * 0.28} />
       {marks.map((m, i) => (
         <g key={m} transform={`translate(${6 + i * (glyph + gap)} 6) scale(${glyph / 24})`}>
-          {MARKS[m].paths.map((p) => (<path key={p.d} d={p.d} fill={p.fill} />))}
+          {MARKS[m].paths.map((p) => (<path key={p.d} d={p.d} style={{ color: p.fill }} />))}
         </g>
       ))}
     </g>
@@ -78,13 +78,13 @@ function Head({ id }: { id: string }) {
   );
 }
 
-const LABEL = "How the Rocket Llama Labs marketing system connects: Google Business Profile, Google Ads and Local Services, Facebook and Instagram ads, and YouTube, social and AI search send customers to a website you own. The website, the phones with an AI receptionist, and reviews per service feed your CRM. The CRM turns them into booked calls and appointments, then closed jobs and revenue. You own all of it.";
+const LABEL = "How the Rocket Llama Labs marketing system connects: Google Business Profile, Google Ads and Local Services, social media and ads (Facebook, Instagram, YouTube, TikTok), and AI search (ChatGPT, Gemini, Perplexity) send customers to a website you own. The website, the phones with an AI receptionist, and reviews per service feed your CRM. The CRM turns them into booked calls and appointments, then closed jobs and revenue. You own all of it.";
 
 const SOURCES: { icon: keyof typeof ICONS; marks: string[]; a: string; b: string; one: string; sub: string }[] = [
   { icon: "pin", marks: ["google"], a: "Google Business", b: "Profile", one: "Google Business Profile", sub: "reviews, maps, free clicks" },
   { icon: "search", marks: ["googleads"], a: "Google Ads +", b: "Local Services", one: "Google Ads + Local Services", sub: "highest intent, you own" },
-  { icon: "megaphone", marks: ["facebook", "instagram"], a: "Facebook +", b: "Instagram ads", one: "Facebook + Instagram ads", sub: "lead forms, you own" },
-  { icon: "play", marks: ["youtube"], a: "YouTube, social", b: "+ AI search", one: "YouTube + social + AI search", sub: "your channels, your name" },
+  { icon: "megaphone", marks: ["facebook", "instagram", "youtube", "tiktok"], a: "Social media", b: "and ads", one: "Social media and ads", sub: "your channels, lead forms you own" },
+  { icon: "search", marks: ["gemini", "perplexity"], a: "AI search", b: "", one: "AI search", sub: "ChatGPT, Gemini, Perplexity" },
 ];
 
 function Wide() {
