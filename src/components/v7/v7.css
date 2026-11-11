@@ -766,3 +766,5 @@
 .v7 .about-live .pagehead,.v7 .about-live .am-split{background:#eaf2fd}
 .v7 .about-live .right{border-top-color:#c9d8e6}
 .v7 .about-live details.pt{border-bottom-color:#c9d8e6}
+/* About: the goal line in royal blue. */
+.v7 .about-live .goal{color:var(--accent)}
