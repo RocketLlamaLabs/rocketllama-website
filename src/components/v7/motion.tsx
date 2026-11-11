@@ -7,7 +7,7 @@ import { useEffect } from "react";
 // scrolls. Everything is off when the visitor prefers reduced motion. Elements
 // are picked by class here so the generated pages need no markup changes.
 
-const RISE = ".v7 main section > .wrap > .kicker, .v7 main section > .wrap > h1, .v7 main section > .wrap > h2, .v7 main section > .wrap > .sub, .v7 main section > .wrap > .lede, .v7 .pagehead .in > *, .v7 .card, .v7 .trade, .v7 .svc > .card, .v7 .team .card, .v7 .step, .v7 .sysgroup, .v7 .evolve, .v7 .band .in > *, .v7 .bstats > div, .v7 .diagwrap, .v7 .race, .v7 .chk, .v7 .am-cols > *, .v7 .starter a, .v7 .faq details, .v7 .tradecopy > div, .v7 #industries .trade, .v7 .svc .card, .v7 .what .card";
+const RISE = ".v7 main section > .wrap > .kicker, .v7 main section > .wrap > h1, .v7 main section > .wrap > h2, .v7 main section > .wrap > .sub, .v7 main section > .wrap > .lede, .v7 .pagehead .in > *, .v7 .card, .v7 .trade, .v7 .svc > .card, .v7 .team .card, .v7 .step, .v7 .sysgroup, .v7 .evolve, .v7 .band .in, .v7 .diagwrap, .v7 .race, .v7 .chk, .v7 .am-cols > *, .v7 .starter a, .v7 .faq details, .v7 .tradecopy > div, .v7 #industries .trade, .v7 .svc .card, .v7 .what .card";
 
 export function Motion() {
   useEffect(() => {
@@ -18,7 +18,7 @@ export function Motion() {
     root.classList.add("motion");
 
     // rise in
-    const items = Array.from(document.querySelectorAll<HTMLElement>(RISE)).filter((el) => !el.closest(".hero") && !el.closest(".nav"));
+    const items = Array.from(document.querySelectorAll<HTMLElement>(RISE)).filter((el) => !el.closest(".hero") && !el.closest(".nav") && !el.classList.contains("copy") && !el.classList.contains("dream-badge"));
     items.forEach((el) => {
       const r = el.getBoundingClientRect();
       if (r.top < window.innerHeight * 0.9) { el.classList.add("in"); return; } // above the fold: already visible

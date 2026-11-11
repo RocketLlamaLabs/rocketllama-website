@@ -833,3 +833,5 @@
 @keyframes v7flow{from{stroke-dashoffset:16}to{stroke-dashoffset:0}}
 @keyframes v7halo{0%,100%{opacity:.15;stroke-width:2}50%{opacity:.9;stroke-width:5}}
 @media(prefers-reduced-motion:reduce){.v7 .flow .ln .run,.v7 .flow .halo{animation:none}.v7 .flow .dot{display:none}.v7 .flow .halo{opacity:.4}}
+/* Services header: the ring keeps its own frame (no rise-in on the copy block). */
+.v7 .pagehead .copy{transform:none!important;opacity:1!important}
