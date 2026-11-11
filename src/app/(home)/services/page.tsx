@@ -6,7 +6,7 @@ import { pageMeta, ServicesStructuredData } from "@/components/v7/page-seo";
 import { V7Footer } from "@/components/v7/footer";
 import { Race } from "@/components/v7/race";
 import { DreamBadge } from "@/components/v7/dream-badge";
-import { SystemDiagram } from "@/components/v2/system-diagram";
+import { SystemFlow } from "@/components/v7/system-flow";
 
 export const metadata: Metadata = pageMeta("/services", "Services", "Every piece of the Rocket Llama Labs marketing system for home service companies: website, local SEO and AI search, Google Business Profile, funnels, phones with an AI receptionist, CRM, ads and reviews.");
 
@@ -86,7 +86,7 @@ export default function Page() {
   <p className="kicker">How it connects</p>
   <h2>Everything points to a website you own. Everything lands in a CRM you own.</h2>
   <p className="sub">Traffic from Google, Meta, and your reviews feeds a site built for search and AI search. The site and the phones feed your CRM. The CRM books the job and records what it was worth.</p>
-  <div className="diagwrap"><SystemDiagram phones={["tracked numbers on Tier 1 carrier", "answers, transfers to you, returns", "to the AI to book, or take a message"]} website={["hosted free schema for Google and AI search,", "stars per service funnels: questions,", "address autofill, offer, booking"]} crmTitle="Your CRM" googleSub="highest intent, you own" metaSub="lead forms, you own" websiteTextY={247} spendLabel="" centerSourcesLabel /></div>
+  <SystemFlow />
 </div></section>
 
 </main>
