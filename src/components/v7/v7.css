@@ -975,4 +975,4 @@
 .v7 #industries .trade span::after{margin-left:6px}
 @media(min-width:720px) and (max-width:899px){.v7 #industries .trades{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* About page: light blue footer. */
-.v7:has(.about-live) footer{background:#eaf2fd;border-top:0}
+.v7:has(.pagehead.about-head) footer,.v7:has(main.about-live) footer,.v7:has(main.person) footer{background:#eaf2fd;border-top:0}
