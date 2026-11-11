@@ -2,15 +2,16 @@
 
 import { useState, type ReactNode } from "react";
 import { AlertTriangle, Check, Info, X } from "lucide-react";
+import { grade, plain } from "@/lib/audit/plain";
 import type { Finding, Status } from "@/lib/audit/shared";
 
 // Presentational pieces of the audit report. Brand rules: navy text, one blue
 // accent, mist tints, no gradients, error red only with an icon and a word.
 
 const STATUS: Record<Status, { word: string; className: string; Icon: typeof Check }> = {
-  pass: { word: "Pass", className: "bg-blue text-white", Icon: Check },
-  warn: { word: "Needs work", className: "border-[1.5px] border-navy text-navy bg-white", Icon: AlertTriangle },
-  fail: { word: "Fix", className: "border-[1.5px] border-error text-error bg-white", Icon: X },
+  pass: { word: "Working", className: "bg-blue text-white", Icon: Check },
+  warn: { word: "Improve", className: "border-[1.5px] border-navy text-navy bg-white", Icon: AlertTriangle },
+  fail: { word: "Problem", className: "border-[1.5px] border-error text-error bg-white", Icon: X },
   info: { word: "Note", className: "bg-mist text-muted", Icon: Info },
 };
 
@@ -28,22 +29,72 @@ export function ImpactTag({ impact }: { impact: Finding["impact"] }) {
   return <span className="text-xs font-semibold tracking-wide text-muted uppercase">{impact} impact</span>;
 }
 
-export function FindingRow({ f }: { f: Finding }) {
-  const open = f.status === "fail" || f.status === "warn";
+/** A problem in plain words, with the how-to folded away until asked for. Print shows everything. */
+export function ProblemRow({ f }: { f: Finding }) {
+  const [open, setOpen] = useState(false);
+  const p = plain(f);
+  const hasHow = !!(f.fix || f.steps?.length || f.items?.length || f.snippet);
   return (
-    <li id={`f-${f.id}`} className="grid scroll-mt-4 gap-2 border-t border-divider py-4 first:border-t-0 sm:grid-cols-[110px_1fr]">
-      <div>
+    <li id={`f-${f.id}`} data-f={f.id} data-cat={f.category} data-status={f.status} data-impact={f.impact} className="scroll-mt-4 border-t border-divider py-4 first:border-t-0 break-inside-avoid">
+      <div className="flex flex-wrap items-center gap-2">
         <StatusChip status={f.status} />
+        <p className="font-semibold">{p.problem}</p>
       </div>
-      <div className="min-w-0">
-        <div className="flex flex-wrap items-baseline justify-between gap-x-4">
-          <p className="font-semibold">{f.label}</p>
-          {f.status !== "info" ? <ImpactTag impact={f.impact} /> : null}
-        </div>
-        <p className="mt-1 text-[15px] text-muted">{f.detail}</p>
-        {open ? <FixDetails f={f} /> : null}
-      </div>
+      {p.why ? <p className="mt-1 text-[15px]">{p.why}</p> : null}
+      <p className="mt-1 text-sm text-muted">
+        <span className="font-semibold">Found: </span>
+        {f.detail}
+      </p>
+      {hasHow ? (
+        <>
+          <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} className="mt-2 text-sm font-semibold text-link underline underline-offset-2 print:hidden">
+            {open ? "Hide how to fix" : `Show how to fix${f.snippet ? " (with code)" : ""}`}
+          </button>
+          <div className={open ? "block" : "hidden print:block"}>
+            <FixDetails f={f} />
+          </div>
+        </>
+      ) : null}
+      <p className="mt-2 text-xs text-muted">
+        <ImpactTag impact={f.impact} /> · check: {f.label}
+      </p>
     </li>
+  );
+}
+
+/** Everything that passed, folded into one line. */
+export function WorkingList({ items }: { items: Finding[] }) {
+  const [open, setOpen] = useState(false);
+  if (!items.length) return null;
+  return (
+    <div className="mt-4 rounded-lg bg-mist px-4 py-3 print:bg-white">
+      <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} className="flex w-full items-center justify-between gap-3 text-left">
+        <span className="font-semibold">
+          <span className="text-blue">✓</span> {items.length} thing{items.length > 1 ? "s" : ""} already working
+        </span>
+        <span className="text-sm font-semibold text-link print:hidden">{open ? "Hide" : "Show"}</span>
+      </button>
+      <ul className={`mt-2 space-y-1 text-sm ${open ? "block" : "hidden print:block"}`}>
+        {items.map((f) => (
+          <li key={f.id} data-f={f.id} data-cat={f.category} data-status={f.status} data-impact={f.impact}>
+            <span className="font-semibold">{f.label}.</span> <span className="text-muted">{f.detail}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export function GradeChip({ score, big = false }: { score: number | null; big?: boolean }) {
+  if (score === null) return <span className="text-xs text-muted">Not scored yet</span>;
+  const g = grade(score);
+  const cls = g.tone === "good" ? "bg-blue text-white" : g.tone === "mid" ? "border-[1.5px] border-navy text-navy bg-white" : "border-[1.5px] border-error text-error bg-white";
+  const Icon = g.tone === "good" ? Check : g.tone === "mid" ? AlertTriangle : X;
+  return (
+    <span className={`inline-flex items-center gap-1 rounded-full font-semibold whitespace-nowrap ${big ? "px-3 py-1 text-sm" : "px-2 py-0.5 text-xs"} ${cls}`}>
+      <Icon className={big ? "size-4" : "size-3.5"} strokeWidth={2.5} aria-hidden="true" />
+      {g.word}
+    </span>
   );
 }
 

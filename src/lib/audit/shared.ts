@@ -96,6 +96,9 @@ export const CATEGORIES: {
   },
 ];
 
+/** The fictional business behind the sample report (?demo=1). */
+export const DEMO_INPUT = { site: "https://desertpeakplumbing.com", name: "Desert Peak Plumbing", city: "Mesa, AZ", industry: "plumber" };
+
 export type Platform = "instagram" | "facebook" | "tiktok" | "youtube" | "linkedin" | "x";
 
 export const PLATFORMS: { id: Platform; name: string; param: string }[] = [
@@ -205,8 +208,8 @@ export function priorityOrder(a: Finding, b: Finding): number {
 }
 
 export function verdict(score: number): string {
-  if (score >= 85) return "Strong. A few gaps to close.";
-  if (score >= 70) return "Solid base, real money left on the table.";
-  if (score >= 50) return "Getting found, losing jobs.";
-  return "Invisible where it counts.";
+  if (score >= 85) return "Strong marketing, with a few gaps.";
+  if (score >= 70) return "A solid base, with money left on the table.";
+  if (score >= 50) return "Getting found, but losing jobs.";
+  return "Hard for customers to find and choose.";
 }

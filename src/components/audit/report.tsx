@@ -12,6 +12,7 @@ import type { SpeedResult } from "@/lib/audit/speed";
 import { CHECKLIST, checklistFindings, parseAnswers, serializeAnswers, type Answer } from "@/lib/audit/checklist";
 import {
   CATEGORIES,
+  DEMO_INPUT,
   PLATFORMS,
   type CategoryId,
   type Finding,
@@ -23,7 +24,8 @@ import {
   scoreFindings,
   verdict,
 } from "@/lib/audit/shared";
-import { Bar, ExtLink, FindingRow, ImpactTag, Panel, ScoreRing, Snippet, Spinner, StatusChip } from "./parts";
+import { Bar, ExtLink, GradeChip, Panel, ProblemRow, ScoreRing, Snippet, Spinner, WorkingList } from "./parts";
+import { plain, urgency } from "@/lib/audit/plain";
 
 type Load<T> =
   | { state: "loading" }
@@ -54,7 +56,9 @@ const fmt = (n: number | null | undefined) => (typeof n === "number" ? n.toLocal
 
 export function AuditReport() {
   const sp = useSearchParams();
+  const demo = sp.get("demo") === "1";
   const input = useMemo(() => {
+    if (demo) return { ...DEMO_INPUT, handles: { instagram: "desertpeakplumbing", facebook: "desertpeakplumbing", tiktok: "@desertpeakplumbing" } as Partial<Record<Platform, string>> };
     const handles: Partial<Record<Platform, string>> = {};
     for (const p of PLATFORMS) {
       const h = normalizeHandle(p.id, sp.get(p.param));
@@ -67,7 +71,7 @@ export function AuditReport() {
       industry: sp.get("industry") ?? "",
       handles,
     };
-  }, [sp]);
+  }, [sp, demo]);
   const key = JSON.stringify(input);
 
   const [site, setSite] = useState<Load<SiteResult>>({ state: "loading" });
@@ -83,6 +87,20 @@ export function AuditReport() {
   useEffect(() => {
     const ac = new AbortController();
     const { signal } = ac;
+    if (demo) {
+      fetch("/api/audit/demo", { signal })
+        .then((r) => r.json())
+        .then((d) => {
+          setSite({ state: "ok", data: d.site });
+          setSpeed({ state: "ok", data: d.speed });
+          setPlaces({ state: "ok", data: d.places });
+          setAi({ state: "ok", data: d.ai });
+          setCopy({ state: "ok", data: d.copy });
+          setSocials(Object.fromEntries(Object.entries(d.socials as Record<Platform, SocialResult>).map(([k, v]) => [k, { state: "ok" as const, data: v }])));
+        })
+        .catch(() => {});
+      return () => ac.abort();
+    }
     const run = async () => {
       setSite({ state: "loading" });
       setSpeed({ state: "loading" });
@@ -201,7 +219,13 @@ export function AuditReport() {
   const catScores = CATEGORIES.map((c) => ({ ...c, score: c.id === "speed" && speed.state !== "ok" ? null : scoreFindings(byCat.get(c.id)!) }));
   const scored = catScores.filter((c) => c.score !== null);
   const overall = scored.length ? Math.round(scored.reduce((s, c) => s + (c.score ?? 0), 0) / scored.length) : null;
-  const priorities = findings.filter((f) => f.status === "fail" || f.status === "warn").sort(priorityOrder).slice(0, 8);
+  const problems = findings.filter((f) => f.status === "fail" || f.status === "warn").sort(priorityOrder);
+  const counts = {
+    now: problems.filter((f) => urgency(f) === "now").length,
+    next: problems.filter((f) => urgency(f) === "next").length,
+    later: problems.filter((f) => urgency(f) === "later").length,
+    working: findings.filter((f) => f.status === "pass").length,
+  };
 
   const loads = [site, speed, places, ai, copy, ...Object.values(socials)].filter(Boolean) as Load<unknown>[];
   const running = loads.filter((l) => l.state === "loading").length;
@@ -217,11 +241,12 @@ export function AuditReport() {
 
   return (
     <div>
+      {demo ? <div className="bg-navy px-5 py-2 text-center text-sm text-white print:hidden">Sample report for a fictional business. Real audits look exactly like this.</div> : null}
       {/* Summary */}
       <section className="bg-mist print:bg-white">
         <div className="mx-auto max-w-6xl px-5 py-10">
-          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-            <div>
+          <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+            <div className="max-w-2xl">
               <p className="font-display text-[13px] font-bold tracking-[0.08em] text-blue uppercase">Marketing system audit</p>
               <h1 className="mt-2 text-3xl leading-tight font-bold sm:text-4xl">{businessName}</h1>
               <p className="mt-2 text-muted">
@@ -229,6 +254,11 @@ export function AuditReport() {
                 {" · "}
                 {runAt.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
               </p>
+              {overall !== null ? (
+                <p className="mt-5 text-lg">
+                  <span className="font-semibold">{verdict(overall)}</span> We found <b>{counts.now} urgent problem{counts.now === 1 ? "" : "s"}</b>, {counts.next + counts.later} more thing{counts.next + counts.later === 1 ? "" : "s"} to improve, and {counts.working} thing{counts.working === 1 ? "" : "s"} already working.
+                </p>
+              ) : null}
               <div className="mt-5 flex flex-wrap gap-3 print:hidden">
                 <button type="button" onClick={copyLink} className="inline-flex min-h-11 items-center rounded-md border-[1.5px] border-navy bg-white px-5 font-semibold hover:bg-mist">
                   {copied ? "Link copied" : "Copy share link"}
@@ -241,31 +271,39 @@ export function AuditReport() {
                 </Link>
               </div>
             </div>
-            <div className="flex items-center gap-5">
-              <ScoreRing score={overall} />
-              <div className="max-w-56">
-                <p className="font-display text-xl font-bold">{overall === null ? "Running checks" : verdict(overall)}</p>
-                <p className="mt-1 text-sm text-muted">
-                  {running ? `${running} check${running > 1 ? "s" : ""} still running.` : `${scored.length} of ${CATEGORIES.length} areas scored.`}
-                </p>
-              </div>
+            <div className="flex flex-col items-center gap-2 rounded-lg bg-white p-5 md:min-w-64">
+              <p className="text-sm font-semibold">Overall score</p>
+              <div data-overall><ScoreRing score={overall} /></div>
+              <span data-grade-overall><GradeChip score={overall} big /></span>
+              <p className="text-xs text-muted">{running ? `${running} check${running > 1 ? "s" : ""} still running` : `Average of ${scored.length} areas`}</p>
             </div>
           </div>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+            <span className="font-semibold">How to read the scores:</span>
+            <span className="flex items-center gap-1.5"><span data-grade-tpl="good"><GradeChip score={90} /></span> 80–100</span>
+            <span className="flex items-center gap-1.5"><span data-grade-tpl="mid"><GradeChip score={60} /></span> 50–79</span>
+            <span className="flex items-center gap-1.5"><span data-grade-tpl="bad"><GradeChip score={10} /></span> 0–49</span>
+            <span className="text-muted">Each area scores its checks out of 100. Bigger problems count more.</span>
+          </div>
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {catScores.map((c) => {
               const list = byCat.get(c.id)!;
-              const fails = list.filter((f) => f.status === "fail").length;
+              const problems = list.filter((f) => f.status === "fail" || f.status === "warn").length;
               return (
                 <a key={c.id} href={`#${c.id}`} className="block rounded-lg border border-divider bg-white p-4 hover:border-blue break-inside-avoid">
-                  <div className="flex items-baseline justify-between gap-2">
-                    <p className="font-semibold">{c.name}</p>
-                    <p className="font-display text-xl font-bold">{c.score ?? "–"}</p>
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="font-semibold leading-snug">{c.name}</p>
+                    <p data-score-cat={c.id} className="font-display text-2xl leading-none font-bold">{c.score ?? "–"}</p>
                   </div>
-                  <div className="mt-2">
+                  <div className="mt-3" data-bar-cat={c.id}>
                     <Bar value={c.score} />
                   </div>
-                  <p className="mt-2 text-xs text-muted">{c.score === null ? "Not scored yet" : fails ? `${fails} to fix` : "Nothing critical"}</p>
+                  <div className="mt-3 flex items-center justify-between gap-2">
+                    <span data-grade-cat={c.id}><GradeChip score={c.score} /></span>
+                    <span data-sub-cat={c.id} className="text-xs text-muted">{c.score === null ? "" : problems ? `${problems} to fix` : "All good"}</span>
+                  </div>
                 </a>
               );
             })}
@@ -273,36 +311,48 @@ export function AuditReport() {
         </div>
       </section>
 
-      {/* Priorities */}
+      {/* The fix list */}
       <section className="mx-auto max-w-6xl px-5 py-10">
-        <h2 className="text-2xl font-bold">The fixes that move the needle</h2>
-        <p className="mt-1 text-muted">Ranked by impact. Start at the top.</p>
-        {priorities.length ? (
-          <ol className="mt-5 grid gap-3 md:grid-cols-2">
-            {priorities.map((f, i) => (
-              <li key={f.id} className="flex gap-4 rounded-lg border border-divider p-4 break-inside-avoid">
-                <span className="font-display text-2xl font-bold text-blue">{i + 1}</span>
-                <div>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <p className="font-semibold">{f.label}</p>
-                    <StatusChip status={f.status} />
+        <h2 className="text-2xl font-bold">What to fix, in order</h2>
+        <p className="mt-1 text-muted">Start with the first group. Each item links to the step-by-step fix.</p>
+        {problems.length ? (
+          <div className="mt-6 grid gap-6 lg:grid-cols-3">
+            {(
+              [
+                ["now", "Fix first", "Costing customers today."],
+                ["next", "Fix next", "Clear gains once the urgent items are done."],
+                ["later", "When there's time", "Small improvements."],
+              ] as const
+            ).map(([key, title, sub]) => {
+              const group = problems.filter((f) => urgency(f) === key);
+              return (
+                <div key={key} className={`rounded-lg border p-5 break-inside-avoid ${key === "now" ? "border-navy" : "border-divider"}`}>
+                  <div className="flex items-baseline justify-between gap-2">
+                    <h3 className="text-lg font-bold">{title}</h3>
+                    <span className="font-display text-lg font-bold text-blue">{group.length}</span>
                   </div>
-                  <p className="mt-1 text-sm text-muted">{f.detail}</p>
-                  {f.fix ? <p className="mt-1 text-sm">{f.fix}</p> : null}
-                  {f.steps?.length || f.snippet || f.items?.length ? (
-                    <a href={`#f-${f.id}`} className="mt-1 inline-block text-sm font-semibold text-link underline underline-offset-2 print:hidden">
-                      Step-by-step fix{f.snippet ? " and code" : ""}
-                    </a>
-                  ) : null}
-                  <p className="mt-2">
-                    <ImpactTag impact={f.impact} /> <span className="text-xs text-muted">· {CATEGORIES.find((c) => c.id === f.category)?.name}</span>
-                  </p>
+                  <p className="text-sm text-muted">{sub}</p>
+                  {group.length ? (
+                    <ol className="mt-3 space-y-3">
+                      {group.map((f) => (
+                        <li key={f.id} className="border-t border-divider pt-3">
+                          <a href={`#f-${f.id}`} className="font-semibold hover:text-link hover:underline">
+                            {plain(f).problem}
+                          </a>
+                          <p className="mt-0.5 text-sm text-muted">{plain(f).why}</p>
+                          <p className="mt-1 text-xs text-muted">{CATEGORIES.find((c) => c.id === f.category)?.name}</p>
+                        </li>
+                      ))}
+                    </ol>
+                  ) : (
+                    <p className="mt-3 text-sm text-muted">Nothing here.</p>
+                  )}
                 </div>
-              </li>
-            ))}
-          </ol>
+              );
+            })}
+          </div>
         ) : (
-          <div className="mt-5">{running ? <Spinner label="Collecting findings…" /> : <p className="text-muted">No gaps found in the automated checks.</p>}</div>
+          <div className="mt-5">{running ? <Spinner label="Collecting findings…" /> : <p className="text-muted">No problems found in the automated checks.</p>}</div>
         )}
       </section>
 
@@ -312,24 +362,46 @@ export function AuditReport() {
       {CATEGORIES.map((c) => {
         const list = byCat.get(c.id)!;
         const score = catScores.find((x) => x.id === c.id)!.score;
+        const bad = list.filter((f) => f.status === "fail" || f.status === "warn");
+        const good = list.filter((f) => f.status === "pass");
+        const notes = list.filter((f) => f.status === "info");
         return (
           <section key={c.id} id={c.id} className="scroll-mt-4 border-t border-divider">
             <div className="mx-auto max-w-6xl px-5 py-10">
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <h2 className="text-2xl font-bold">{c.name}</h2>
                   <p className="mt-1 max-w-2xl text-muted">{c.blurb}</p>
                 </div>
-                <p className="font-display text-3xl font-bold">
-                  {score ?? "–"}
-                  <span className="text-base font-semibold text-muted"> / 100</span>
-                </p>
+                <div className="flex items-center gap-3">
+                  <span data-grade-cat={c.id}><GradeChip score={score} big /></span>
+                  <p className="font-display text-3xl font-bold">
+                    <span data-score-cat={c.id}>{score ?? "–"}</span>
+                    <span className="text-base font-semibold text-muted"> / 100</span>
+                  </p>
+                </div>
               </div>
 
               <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_360px]">
                 <div>
                   <SectionStatus c={c.id} site={site} speed={speed} places={places} ai={ai} socials={socials} />
-                  {list.length ? <ul>{list.map((f) => <FindingRow key={f.id} f={f} />)}</ul> : null}
+                  {bad.length ? (
+                    <>
+                      <h3 className="text-lg font-bold">
+                        {bad.length} thing{bad.length > 1 ? "s" : ""} to fix
+                      </h3>
+                      <ul>{bad.map((f) => <ProblemRow key={f.id} f={f} />)}</ul>
+                    </>
+                  ) : list.length ? (
+                    <p className="font-semibold">Nothing to fix here.</p>
+                  ) : null}
+                  <WorkingList items={good} />
+                  {notes.length ? (
+                    <div className="mt-4 text-sm text-muted">
+                      <p className="font-semibold text-navy">Notes</p>
+                      <ul className="mt-1 space-y-1">{notes.map((f) => <li key={f.id}>{f.detail}</li>)}</ul>
+                    </div>
+                  ) : null}
                   <Checklist category={c.id} answers={answers} onAnswer={answer} />
                 </div>
                 <div className="space-y-4">
@@ -409,7 +481,7 @@ function Checklist({ category, answers, onAnswer }: { category: CategoryId; answ
         {items.map((item) => {
           const a = answers[item.id];
           return (
-            <li key={item.id} className="flex flex-col gap-2 border-t border-divider py-3 first:border-t-0 sm:flex-row sm:items-center sm:justify-between">
+            <li key={item.id} data-ck={item.id} data-cat={item.category} data-impact={item.impact} data-soft={item.softNo ? "1" : ""} className="flex flex-col gap-2 border-t border-divider py-3 first:border-t-0 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="font-medium">{item.label}</p>
                 <p className="text-sm text-muted print:hidden">{item.how}</p>
@@ -420,6 +492,7 @@ function Checklist({ category, answers, onAnswer }: { category: CategoryId; answ
                     key={v}
                     type="button"
                     aria-pressed={a === v}
+                    data-v={v}
                     onClick={() => onAnswer(item.id, v)}
                     className={`min-h-9 rounded-md border-[1.5px] px-3 text-sm font-semibold ${a === v ? "border-navy bg-navy text-white" : "border-border text-navy hover:bg-mist"}`}
                   >
