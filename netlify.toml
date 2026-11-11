@@ -1,0 +1,31 @@
+# Netlify builds Next.js with its OpenNext adapter automatically; no plugin
+# entry is needed. Set the environment variables listed in .env.example under
+# Site configuration → Environment variables.
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Netlify's Next.js adapter cannot rewrite to files in public/, so the static
+# mockup versions (rewrites in next.config.ts) get Netlify rewrites as well.
+[[redirects]]
+  from = "/v4"
+  to = "/mockups/v4.html"
+  status = 200
+
+[[redirects]]
+  from = "/v5"
+  to = "/mockups/v5.html"
+  status = 200
+
+[[redirects]]
+  from = "/v6"
+  to = "/mockups/v6.html"
+  status = 200
+
+[[redirects]]
+  from = "/mockups"
+  to = "/mockups/index.html"
+  status = 200

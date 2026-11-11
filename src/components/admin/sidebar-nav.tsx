@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Building2,
+  ClipboardCheck,
   FolderOpen,
   Globe,
   LayoutDashboard,
@@ -14,6 +15,7 @@ import {
 const items = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/website", label: "Website", icon: Globe },
+  { href: "/marketing-audit", label: "Marketing audit", icon: ClipboardCheck },
   { href: "/admin/company", label: "Company", icon: Building2 },
   { href: "/admin/brand", label: "Brand kit", icon: Palette },
   { href: "/admin/assets", label: "Assets", icon: FolderOpen },
