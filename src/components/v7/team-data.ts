@@ -2,13 +2,14 @@
 // individual pages under /about/<slug>. Bio copy is HTML (it carries emphasis and links).
 
 export type Gallery = { kicker: string; title: string; text: string; photos: { src: string; alt: string; tall?: boolean }[] };
-export type Person = { slug: string; name: string; role: string; photo: string; alt: string; summary: string; bio: string[]; gallery?: Gallery };
+export type Person = { slug: string; name: string; role: string; shortRole?: string; photo: string; alt: string; summary: string; bio: string[]; gallery?: Gallery };
 
 export const TEAM: Person[] = [
   {
     slug: "brian-greenberg",
     name: "Brian Greenberg",
-    role: "CEO",
+    role: "Chief Executive Officer",
+    shortRole: "CEO",
     photo: "/v7/brian-greenberg.jpg",
     alt: "Brian Greenberg, CEO of Rocket Llama Labs",
     summary: "Brian sets the strategy and the marketing playbook for every client. He has spent more than twenty years building businesses that get found online, including a fully digital insurance agency that generated $50M+ through inbound marketing, and he wrote <em>The Salesman Who Doesn\u2019t Sell</em>. He has run that same playbook for Phoenix home service companies.",
@@ -23,10 +24,11 @@ export const TEAM: Person[] = [
   {
     slug: "branson-cobb",
     name: "Branson Cobb",
-    role: "President and COO",
+    role: "President and Chief Operating Officer",
+    shortRole: "President and COO",
     photo: "/v7/branson-cobb.jpg",
     alt: "Branson Cobb, President and COO of Rocket Llama Labs",
-    summary: "Branson runs the business and every client relationship. He spent more than 23 years leading sales, business development and client strategy for some of the country\u2019s largest healthcare organizations, and he brings that growth discipline to home service companies that want more qualified leads and measurable results.",
+    summary: "Branson runs the business and every client relationship. He spent more than 23 years leading sales teams, business development, and client strategy for some of the country\u2019s largest healthcare organizations. He brings that growth discipline to home service companies that want more qualified leads and measurable results.",
     bio: [
       "Before launching Rocket Llama Labs, Branson served as Market President for CBIZ\u2019s Arizona and California offices, where he led market growth, business operations and client retention initiatives. Prior to CBIZ, he spent more than five years with Aetna, leading business development for Arizona\u2019s Public and Labor segment and helping organizations develop strategic growth initiatives.",
       "Branson began his career at Cigna, where he spent 13 years advancing from Medical and Dental Underwriter to Senior Account Executive. His background in underwriting, analytics, account management and sales gave him a unique ability to connect financial insights with business strategy, an approach he continues to bring to every client relationship today.",
@@ -49,6 +51,7 @@ export const TEAM: Person[] = [
     slug: "madison-schantz",
     name: "Madison Schantz",
     role: "Chief Marketing Officer",
+    shortRole: "CMO",
     photo: "/v7/madison.jpg",
     alt: "Madison Schantz, Chief Marketing Officer at Rocket Llama Labs",
     summary: "Madison designs the brand, the website and the AI-powered tools each client runs on. Her background spans branding, web design, AI content and digital strategy, and she builds every piece so a home service company looks strong online and turns visitors into booked jobs.",

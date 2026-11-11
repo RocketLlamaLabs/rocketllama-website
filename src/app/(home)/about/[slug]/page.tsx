@@ -42,8 +42,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         </div></header>
         <section className="person-bio"><div className="wrap">
           {p.bio.map((html) => (<p key={html} dangerouslySetInnerHTML={{ __html: html }} />))}
-          <div className="ctas"><a className="btn" href="/book">Schedule a call</a></div>
-        </div></section>
+          </div></section>
         {p.gallery ? (
           <section className="person-gallery feature"><div className="wrap">
             <p className="kicker">{p.gallery.kicker}</p>

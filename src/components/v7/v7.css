@@ -846,7 +846,7 @@
 .v7 .flow .tile.on image{pointer-events:none}
 .v7 .flow.tall .h{font-size:16px}
 /* Flow: the "You own all of it" dashed border pulses, dashes growing and shrinking. */
-@keyframes v7ownpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes v7ownpulse{0%,100%{transform:scale(1);stroke-width:1.5}50%{transform:scale(1.05);stroke-width:3.5}}
 .v7 .flow .fcard.own{animation:v7ownpulse 2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
 @media(prefers-reduced-motion:reduce){.v7 .flow .fcard.own{animation:none}}
 .v7 .flow.tall .s.src{font-size:11.5px}
@@ -892,7 +892,9 @@
 .v7 .person .gallery figure{border-radius:14px}
 .v7 .person .gallery img,.v7 .person .gallery figure.tall img{aspect-ratio:1;object-fit:cover}
 /* Footer: white on every page, with a thin top rule. */
-.v7 footer,.v7:has(.pagehead.about-head) footer,.v7:has(#industries) footer{background:#fff;border-top:1px solid var(--line)}
+.v7 footer{background:#fff;border-top:1px solid var(--line)}
+.v7:has(.pagehead.about-head) footer{background:#fff}
+.v7:has(#industries) footer{background:#fff}
 /* Person pages: light blue footer. */
 .v7:has(main.person) footer{background:#eaf2fd;border-top:0}
 /* Industry pages (/hvac, /plumbing, ...): photo banner, byline, summary box, search terms. */
@@ -951,3 +953,30 @@
 .v7 .evolve-band h2{color:#fff;max-width:20ch}
 .v7 .evolve-band .bsub{font-family:var(--serif);font-size:1.08rem;line-height:1.6;color:#fff;margin:16px 0 0;max-width:60ch}
 .v7 .evolve-band .ctas{margin-top:28px}
+/* Never-standing-still band: inner box spans the full content width like the other bands. */
+.v7 .evolve-band .in{width:100%;justify-self:stretch}
+/* Never-standing-still band: same height and rhythm as the Built-for band. */
+.v7 .evolve-band{min-height:clamp(420px,58vh,640px)}
+.v7 .evolve-band .in{padding-block:clamp(48px,7vw,80px)}
+.v7 .evolve-band h2{font-size:clamp(1.9rem,4vw,2.8rem);max-width:22ch;line-height:1.05}
+.v7 .evolve-band .bsub{font-size:1.05rem;line-height:1.5;margin-top:14px;max-width:56ch}
+.v7 .evolve-band .ctas{margin-top:22px}
+/* Industries tiles: one fixed height, name and arrow on one line. */
+.v7 #industries .trade{height:64px;min-height:64px;padding:0 16px;align-content:center;align-items:center}
+.v7 #industries .trade span{white-space:nowrap;font-size:.95rem;display:inline-flex;align-items:center}
+@media(max-width:1250px){.v7 #industries .trade span{font-size:.88rem}}
+/* Industries: light blue fills everything between the nav and the footer. */
+.v7:has(#industries) main{background:#eaf2fd}
+/* Industries tiles: five equal columns; long names shrink to fit on one line. */
+@media(min-width:1100px){.v7 #industries .trades{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(min-width:720px) and (max-width:1099px){.v7 #industries .trades{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.v7 #industries .trade{min-width:0;overflow:hidden}
+.v7 #industries .trade span{font-size:.95rem}
+/* Industries tiles: text sized so every name fits its equal-width tile on one line. */
+.v7 #industries .trade{padding:0 12px;column-gap:7px}
+.v7 #industries .trade span{font-size:clamp(.76rem,1.0vw,.9rem);letter-spacing:-.01em}
+.v7 #industries .trade span::after{margin-left:6px}
+@media(min-width:720px) and (max-width:899px){.v7 #industries .trades{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* About page: light blue footer. */
+.v7:has(main.about-live) footer{background:#eaf2fd;border-top:0}
+.v7:has(main.person) footer{background:#eaf2fd;border-top:0}
