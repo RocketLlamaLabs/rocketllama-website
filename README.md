@@ -61,7 +61,7 @@ python3 scripts/port-v2-site.py ../rocketllamalabs/bbm-plan
 
 ## Marketing audit
 
-`/marketing-audit` audits a prospect's whole marketing system from a website and/or social handles. The report lives at `/marketing-audit/report?site=…&name=…&city=…&industry=…&ig=…&fb=…&tt=…&yt=…&li=…&x=…`, so any link is a ready-to-run audit (re-run fresh each time it opens). The auditor's "checked by hand" answers are saved in the link's `m=` parameter.
+`/marketing-audit` is internal for now: its pages and `/api/audit/*` need the admin sign-in (gated in `src/proxy.ts`; remove `isAuditPage` and `isAuditApi` there to make it public). It audits a prospect's whole marketing system from a website and/or social handles. The report lives at `/marketing-audit/report?site=…&name=…&city=…&industry=…&ig=…&fb=…&tt=…&yt=…&li=…&x=…`, so any link is a ready-to-run audit (re-run fresh each time it opens). The auditor's "checked by hand" answers are saved in the link's `m=` parameter.
 
 - Code: checks in `src/lib/audit` (site, speed, social, places, ai, checklist), API routes in `src/app/api/audit/*`, report UI in `src/components/audit`.
 - Optional keys (see `.env.example`): `ANTHROPIC_API_KEY` turns on the live AI search test, `GOOGLE_PLACES_API_KEY` the Google profile and competitor check, `PAGESPEED_API_KEY` a dedicated PageSpeed quota (the shared keyless quota is often used up).

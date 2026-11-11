@@ -40,7 +40,13 @@ export async function proxy(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const { pathname } = request.nextUrl;
-  const isAdminPath = pathname === "/admin" || pathname.startsWith("/admin/");
+  // The marketing audit is internal for now: its pages and API need a sign-in too.
+  const isAuditPage = pathname === "/marketing-audit" || pathname.startsWith("/marketing-audit/");
+  const isAuditApi = pathname.startsWith("/api/audit/");
+  if (isAuditApi && !user) {
+    return Response.json({ ok: false, error: "Sign in to run the audit." }, { status: 401 });
+  }
+  const isAdminPath = pathname === "/admin" || pathname.startsWith("/admin/") || isAuditPage;
   const isPublicAdminPath = PUBLIC_ADMIN_PATHS.some(
     (p) => pathname === p || pathname.startsWith(`${p}/`)
   );
@@ -48,7 +54,7 @@ export async function proxy(request: NextRequest) {
   let redirectTo: URL | null = null;
   if (isAdminPath && !user && !isPublicAdminPath) {
     redirectTo = new URL("/admin/login", request.url);
-    if (pathname !== "/admin") redirectTo.searchParams.set("next", pathname);
+    if (pathname !== "/admin") redirectTo.searchParams.set("next", pathname + request.nextUrl.search);
   } else if (user && pathname === "/admin/login") {
     redirectTo = new URL("/admin", request.url);
   }

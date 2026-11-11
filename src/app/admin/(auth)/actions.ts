@@ -31,7 +31,7 @@ export async function signIn(
     return { error: "That email and password don't match.", email };
   }
 
-  redirect(next.startsWith("/admin") ? next : "/admin");
+  redirect(/^\/(admin|marketing-audit)(\/|\?|$)/.test(next) ? next : "/admin");
 }
 
 export async function requestPasswordReset(
