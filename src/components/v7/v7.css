@@ -962,3 +962,5 @@
 .v7 #industries .trade{height:64px;min-height:64px;padding:0 16px;align-content:center;align-items:center}
 .v7 #industries .trade span{white-space:nowrap;font-size:.95rem;display:inline-flex;align-items:center}
 @media(max-width:1250px){.v7 #industries .trade span{font-size:.88rem}}
+/* Industries: light blue fills everything between the nav and the footer. */
+.v7:has(#industries) main{background:#eaf2fd}
