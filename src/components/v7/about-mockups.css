@@ -107,3 +107,11 @@
   .v7 .am-f #team{padding-block:40px}
   .v7 .am-f .team{gap:14px}
 }
+/* F: the points as dropdowns, in the same rhythm as the left column. */
+.v7 .am-f .right{gap:0;border-top:3px solid var(--line);padding-top:0}
+.v7 .am-f details.pt{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:18px 0}
+.v7 .am-f details.pt summary{font-family:var(--sans);font-weight:800;font-size:1.05rem;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.v7 .am-f details.pt summary::-webkit-details-marker{display:none}
+.v7 .am-f details.pt summary::after{content:"+";color:var(--accent-ink);font-size:1.3rem;line-height:1}
+.v7 .am-f details.pt[open] summary::after{content:"\2212"}
+.v7 .am-f details.pt p{margin:10px 0 0;color:var(--muted);font-size:1.02rem;line-height:1.55;max-width:62ch}

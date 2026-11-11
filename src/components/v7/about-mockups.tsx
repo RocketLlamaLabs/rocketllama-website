@@ -256,7 +256,9 @@ export function AboutF() {
               <p className="pull">{PULL_2}</p>
             </div>
             <div className="right">
-              {BLOCKS.map(([h, ps]) => (<div className="ablk" key={h}><h2>{h}</h2>{ps.map((p) => <p key={p}>{p}</p>)}</div>))}
+              {BLOCKS.map(([h, ps], i) => (
+                <details className="pt" key={h} open={i === 0}><summary>{h}</summary>{ps.map((p) => <p key={p}>{p}</p>)}</details>
+              ))}
             </div>
           </div>
         </div></section>
