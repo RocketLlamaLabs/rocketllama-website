@@ -849,3 +849,4 @@
 @keyframes v7ownpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 .v7 .flow .fcard.own{animation:v7ownpulse 2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
 @media(prefers-reduced-motion:reduce){.v7 .flow .fcard.own{animation:none}}
+.v7 .flow.tall .s.src{font-size:11.5px}
