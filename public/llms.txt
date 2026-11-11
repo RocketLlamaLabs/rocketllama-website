@@ -14,12 +14,12 @@ HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, pai
 
 ## Pages
 
-- [Home](https://rocketllamalabs.com/v7): what we do and the 60-second visibility check
-- [Services](https://rocketllamalabs.com/v7/services): every piece of the system
-- [Industries](https://rocketllamalabs.com/v7/industries): the trades we work with
-- [About Us](https://rocketllamalabs.com/v7/about): the team and why we built this
-- [Run an instant audit](https://rocketllamalabs.com/v7/audit): see how a company shows up online
-- [Schedule a call](https://rocketllamalabs.com/v7/book)
+- [Home](https://rocketllamalabs.com/): what we do and the 60-second visibility check
+- [Services](https://rocketllamalabs.com/services): every piece of the system
+- [Industries](https://rocketllamalabs.com/industries): the trades we work with
+- [About Us](https://rocketllamalabs.com/about): the team and why we built this
+- [Run an instant audit](https://rocketllamalabs.com/audit): see how a company shows up online
+- [Schedule a call](https://rocketllamalabs.com/book)
 
 ## Contact
 

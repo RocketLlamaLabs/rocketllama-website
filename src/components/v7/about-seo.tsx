@@ -27,23 +27,23 @@ export const ORG = {
     "HVAC marketing", "Plumbing marketing", "Electrician marketing", "Roofing marketing", "Garage door marketing",
     "Pest control marketing", "Landscaping marketing", "Painting marketing",
   ],
-  founder: [{ "@id": `${SITE}/v7/about#brian-greenberg` }, { "@id": `${SITE}/v7/about#branson-cobb` }],
+  founder: [{ "@id": `${SITE}/about#brian-greenberg` }, { "@id": `${SITE}/about#branson-cobb` }],
   employee: [
-    { "@id": `${SITE}/v7/about#brian-greenberg` },
-    { "@id": `${SITE}/v7/about#branson-cobb` },
-    { "@id": `${SITE}/v7/about#madison-schantz` },
+    { "@id": `${SITE}/about#brian-greenberg` },
+    { "@id": `${SITE}/about#branson-cobb` },
+    { "@id": `${SITE}/about#madison-schantz` },
   ],
 };
 
 const PEOPLE = [
   {
     "@type": "Person",
-    "@id": `${SITE}/v7/about#brian-greenberg`,
+    "@id": `${SITE}/about#brian-greenberg`,
     name: "Brian Greenberg",
     jobTitle: "CEO",
     worksFor: { "@id": `${SITE}/#organization` },
     image: `${SITE}/v7/brian-greenberg.jpg`,
-    url: `${SITE}/v7/about#brian-greenberg`,
+    url: `${SITE}/about#brian-greenberg`,
     sameAs: ["https://briangreenberg.com"],
     description:
       "Entrepreneur and author with more than twenty years building businesses that get found online. Built True Blue Life Insurance into a fully digital agency selling in all 50 states with over $50 million in revenue through inbound marketing; Million Dollar Round Table member; founder of SEO Services Internet Marketing LLC and BJG Digital; leads Quoteplicity. Featured in Forbes, Entrepreneur, Fast Company, HuffPost, Bloomberg, USA Today, Yahoo Finance, Fox, NBC and CBS.",
@@ -52,7 +52,7 @@ const PEOPLE = [
     author: {
       "@type": "Book",
       name: "The Salesman Who Doesn't Sell: A Marketing Guide to Making Money While You Sleep",
-      author: { "@id": `${SITE}/v7/about#brian-greenberg` },
+      author: { "@id": `${SITE}/about#brian-greenberg` },
       sameAs: [
         "https://www.amazon.com/Salesman-Who-Doesnt-Sell-Marketing-ebook/dp/B078HMS1CQ",
         "https://www.audible.com/pd/The-Salesman-Who-Doesnt-Sell-A-Marketing-Guide-for-Making-Money-While-You-Sleep-Audiobook/B0794Q3418",
@@ -61,24 +61,24 @@ const PEOPLE = [
   },
   {
     "@type": "Person",
-    "@id": `${SITE}/v7/about#branson-cobb`,
+    "@id": `${SITE}/about#branson-cobb`,
     name: "Branson Cobb",
     jobTitle: "President and COO",
     worksFor: { "@id": `${SITE}/#organization` },
     image: `${SITE}/v7/branson-cobb.jpg`,
-    url: `${SITE}/v7/about#branson-cobb`,
+    url: `${SITE}/about#branson-cobb`,
     description:
       "President and COO of Rocket Llama Labs. More than 23 years leading sales, business development and client strategy for large healthcare organizations: Market President for CBIZ's Arizona and California offices, business development lead at Aetna, and 13 years at Cigna from underwriter to Senior Account Executive.",
     alumniOf: { "@type": "CollegeOrUniversity", name: "University of Arizona" },
   },
   {
     "@type": "Person",
-    "@id": `${SITE}/v7/about#madison-schantz`,
+    "@id": `${SITE}/about#madison-schantz`,
     name: "Madison Schantz",
     jobTitle: "Chief Marketing Officer",
     worksFor: { "@id": `${SITE}/#organization` },
     image: `${SITE}/v7/madison.jpg`,
-    url: `${SITE}/v7/about#madison-schantz`,
+    url: `${SITE}/about#madison-schantz`,
     description:
       "Creative digital designer, branding specialist, AI content creator and digital architect. Designs the brands, websites and AI-powered tools Rocket Llama Labs builds for home service companies.",
   },
@@ -100,15 +100,15 @@ export function AboutStructuredData() {
       ...PEOPLE,
       {
         "@type": "AboutPage",
-        "@id": `${SITE}/v7/about#webpage`,
-        url: `${SITE}/v7/about`,
+        "@id": `${SITE}/about#webpage`,
+        url: `${SITE}/about`,
         name: "About Rocket Llama Labs",
         about: { "@id": `${SITE}/#organization` },
         isPartOf: { "@type": "WebSite", url: SITE, name: "Rocket Llama Labs" },
       },
       {
         "@type": "FAQPage",
-        "@id": `${SITE}/v7/about#faq`,
+        "@id": `${SITE}/about#faq`,
         mainEntity: ABOUT_FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
       },
     ],

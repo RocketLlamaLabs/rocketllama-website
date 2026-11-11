@@ -26,7 +26,7 @@ function breadcrumbs(path: string, name: string) {
     "@type": "BreadcrumbList",
     "@id": `${SITE}${path}#breadcrumb`,
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/v7` },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
       { "@type": "ListItem", position: 2, name, item: `${SITE}${path}` },
     ],
   };
@@ -63,7 +63,7 @@ export const SERVICE_ITEMS: [string, string][] = [
 ];
 
 export function ServicesStructuredData() {
-  const path = "/v7/services";
+  const path = "/services";
   return (
     <Script
       graph={[
@@ -115,7 +115,7 @@ export const TRADE_COPY: [string, string][] = [
 ];
 
 export function IndustriesStructuredData() {
-  const path = "/v7/industries";
+  const path = "/industries";
   return (
     <Script
       graph={[

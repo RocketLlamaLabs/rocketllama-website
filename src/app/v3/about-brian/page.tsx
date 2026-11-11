@@ -14,9 +14,9 @@ export default function Page() {
   return (
     <>
 <nav className="nav"><div className="wrap in">
-  <a className="wm" href="/" aria-label="Rocket Llama Labs home"><img src="/brand/logo-stacked.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links" style={{display:"flex"} as CSSProperties}><a className="backlink" href="/">&larr; Back to the site</a></div>
-  <a className="btn sm" href="/book">Book a walkthrough</a>
+  <a className="wm" href="/v3" aria-label="Rocket Llama Labs home"><img src="/brand/logo-stacked.svg" alt="Rocket Llama Labs" /></a>
+  <div className="links" style={{display:"flex"} as CSSProperties}><a className="backlink" href="/v3">&larr; Back to the site</a></div>
+  <a className="btn sm" href="/v3/book">Book a walkthrough</a>
 </div></nav>
 <main>
 
@@ -44,7 +44,7 @@ export default function Page() {
   </div>
 </div></section>
 
-<section className="feature" style={{paddingTop:"0"} as CSSProperties}><div className="wrap"><p className="note">Branson and Madison run the day to day at Rocket Llama Labs. Their bios follow. <a href="/book">Book a walkthrough</a> or <a href="/">back to the site</a>.</p></div></section>
+<section className="feature" style={{paddingTop:"0"} as CSSProperties}><div className="wrap"><p className="note">Branson and Madison run the day to day at Rocket Llama Labs. Their bios follow. <a href="/v3/book">Book a walkthrough</a> or <a href="/v3">back to the site</a>.</p></div></section>
 </main>
       <V3Footer note='Version 3, about page' />
     </>

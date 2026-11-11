@@ -7,7 +7,7 @@ export function V3Footer({ note }: { note: string }) {
   return (
     <footer>
       <div className="wrap in">
-        <Link className="wm" href="/" aria-label="Rocket Llama Labs home">
+        <Link className="wm" href="/v3" aria-label="Rocket Llama Labs home">
           <Image
             src="/brand/logo-stacked.svg"
             alt="Rocket Llama Labs"

@@ -2,26 +2,27 @@
 
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import { pageMeta, PageStructuredData } from "@/components/v7/page-seo";
-import { V7Footer } from "@/components/v7/footer";
+import { V3Footer } from "@/components/v3/footer";
 import { BookFunnel } from "@/components/v2/book-funnel";
 
-export const metadata: Metadata = pageMeta("/v7/book", "Schedule a call", "Pick a time for a call with Rocket Llama Labs. We look at how your home service company shows up online and write a marketing plan with a number on it.");
+export const metadata: Metadata = {
+  title: 'Book your free walkthrough',
+  description: 'Rocket Llama Labs funnel v2 : book a walkthrough first, then a few optional questions. The free scan is the exit-intent offer.',
+};
 
 // Ported from the mockup's src-c-book.html.
 export default function Page() {
   return (
     <>
-<nav className="nav" aria-label="Main"><div className="wrap in">
-  <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links"><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About</a></div>
+<nav className="nav"><div className="wrap in">
+  <a className="wm" href="/v3" aria-label="Rocket Llama Labs home"><img src="/brand/logo-stacked.svg" alt="Rocket Llama Labs" /></a>
+  <div className="links" style={{display:"flex"} as CSSProperties}><a className="backlink" href="/v3">&larr; Back to the site</a></div>
   <span className="cnt" style={{fontFamily:"var(--sans)",fontSize:"13px",fontWeight:"600",color:"var(--muted)"} as CSSProperties}>About a minute</span>
 </div></nav>
 <main>
-<PageStructuredData path="/v7/book" name="Schedule a call" description="Pick a time for a call with Rocket Llama Labs. We look at how your home service company shows up online and write a marketing plan with a number on it." />
 
 <header className="fhero" id="top"><div className="wrap in">
-  <p className="kicker">Schedule a call</p>
+  <p className="kicker">Book a walkthrough</p>
   <h1>Pick a time. About a minute.</h1>
   <p>Book the walkthrough and the call opens with a free live audit of how you show up online: your Google profile, your reviews, your website and how your phone gets answered, side by side with the top company in your trade. No obligation.</p>
   <div className="meta"><span><b>Book first</b> · questions after, optional</span><span><b>Free live audit</b> on the call</span><span><b>No obligation</b></span><span><b>Nothing shared</b> outside Rocket Llama Labs</span></div>
@@ -29,7 +30,7 @@ export default function Page() {
 
 <section className="funnel"><div className="wrap in">
   <div className="qzcol">
-    <BookFunnel tz="Arizona time" />
+    <BookFunnel />
   </div>
   <aside className="aside">
     <div className="abox">
@@ -62,12 +63,16 @@ export default function Page() {
     </div>
     <div className="abox rule">
       <p className="k">Your leads</p>
-      <p><b>Exclusive leads, never shared.</b> Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors. We never do.</p>
+      <p><b>Exclusive leads, never shared.</b> Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors; we never do.</p>
+    </div>
+    <div className="abox quote">
+      <img src="/v2/img/brian-greenberg.jpg" alt="Brian Greenberg" width="64" height="64" loading="lazy" />
+      <blockquote>&quot;I competed for the top spots on the internet nationally against the biggest players. Doing it for one city and one trade is the fight I want.&quot;<cite>Brian Greenberg, Rocket Llama Labs</cite></blockquote>
     </div>
   </aside>
 </div></section>
 </main>
-      <V7Footer note='Version 7, booking funnel' />
+      <V3Footer note='Version 3, booking funnel' />
     </>
   );
 }

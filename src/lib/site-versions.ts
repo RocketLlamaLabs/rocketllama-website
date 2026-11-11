@@ -38,14 +38,14 @@ export const siteVersions: SiteVersion[] = [
   {
     id: "v3",
     name: "Version 3",
-    status: "live",
-    href: "/",
+    status: "sample",
+    href: "/v3",
     kitHref: "/admin/website/v2",
     kitLabel: "Version 2 kit (shared)",
     summary:
       "Version 2's layout in the Rocket Llama colors: navy, blue and mist instead of green, the stacked logo (mascot, then Rocket / Llama on two lines), and no price list. Pricing is replaced by a custom-plan section that sends people to book a call.",
     origin:
-      "Generated from the version 2 source by scripts/make-v3.py, November 2026. Same pages, quizzes, funnel and photos. Live at the root since November 2026; /v3 redirects there.",
+      "Generated from the version 2 source by scripts/make-v3.py, November 2026. Same pages, quizzes, funnel and photos. It was the live site at the root until version 7 replaced it on 11 November 2026.",
   },
   {
     id: "v4",
@@ -80,14 +80,14 @@ export const siteVersions: SiteVersion[] = [
   {
     id: "v7",
     name: "Version 7",
-    status: "sample",
-    href: "/v7",
+    status: "live",
+    href: "/",
     kitHref: "/admin/website/v2",
     kitLabel: "Version 2 kit (shared)",
     summary:
       "Version 3 plus the custom elements from Madison's mockups: the instant audit in the hero, the four promises strip, why owners switch, the Valley map with open and taken spots per trade, the per-trade tuning and photo band, the speed-to-lead race, the monthly report card with a bad month, the exit checklist, the 90-day timeline and the agency comparison. No price list.",
     origin:
-      "Generated from the version 2 source by scripts/make-v3.py with the version 7 extras; the custom components live in src/components/v7. November 2026.",
+      "Generated from the version 2 source by scripts/make-v3.py with the version 7 extras; the custom components live in src/components/v7. Live at the root since 11 November 2026; the old /v7 links redirect there.",
   },
   {
     id: "v8",

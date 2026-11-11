@@ -2,23 +2,24 @@
 
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import { pageMeta, PageStructuredData } from "@/components/v7/page-seo";
-import { V7Footer } from "@/components/v7/footer";
+import { V3Footer } from "@/components/v3/footer";
 import { QualifyQuiz } from "@/components/v2/qualify-quiz";
 
-export const metadata: Metadata = pageMeta("/v7/qualify", "See if you qualify", "Two minutes of questions about your home service company, then a time on the calendar.", { noindex: true });
+export const metadata: Metadata = {
+  title: 'See if you qualify',
+  description: 'Rocket Llama Labs qualification funnel : two minutes of questions, then a time on the calendar if you qualify.',
+};
 
 // Ported from the mockup's src-c-qualify.html.
 export default function Page() {
   return (
     <>
-<nav className="nav" aria-label="Main"><div className="wrap in">
-  <a className="wm" href="/v7" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links"><a href="/v7/services">Services</a><a href="/v7/industries">Industries</a><a href="/v7/about">About</a></div>
+<nav className="nav"><div className="wrap in">
+  <a className="wm" href="/v3" aria-label="Rocket Llama Labs home"><img src="/brand/logo-stacked.svg" alt="Rocket Llama Labs" /></a>
+  <div className="links" style={{display:"flex"} as CSSProperties}><a className="backlink" href="/v3">&larr; Back to the site</a></div>
   <span className="cnt" style={{fontFamily:"var(--sans)",fontSize:"13px",fontWeight:"600",color:"var(--muted)"} as CSSProperties}>Two minutes</span>
 </div></nav>
 <main>
-<PageStructuredData path="/v7/qualify" name="See if you qualify" description="Two minutes of questions about your home service company, then a time on the calendar." />
 
 <header className="fhero" id="top"><div className="wrap in">
   <p className="kicker">See if you qualify</p>
@@ -62,12 +63,16 @@ export default function Page() {
     </div>
     <div className="abox rule">
       <p className="k">Your leads</p>
-      <p><b>Exclusive leads, never shared.</b> Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors. We never do.</p>
+      <p><b>Exclusive leads, never shared.</b> Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors; we never do.</p>
+    </div>
+    <div className="abox quote">
+      <img src="/v2/img/brian-greenberg.jpg" alt="Brian Greenberg" width="64" height="64" loading="lazy" />
+      <blockquote>&quot;I competed for the top spots on the internet nationally against the biggest players. Doing it for one city and one trade is the fight I want.&quot;<cite>Brian Greenberg, Rocket Llama Labs</cite></blockquote>
     </div>
   </aside>
 </div></section>
 </main>
-      <V7Footer note='Version 7, qualify funnel' />
+      <V3Footer note='Version 3, qualify funnel' />
     </>
   );
 }
