@@ -75,9 +75,9 @@ export function ServicesStructuredData() {
           name: "The Rocket Llama Labs overview",
           description: "The three ways good companies lose jobs, what we build instead, and how the money is tracked. Under 90 seconds.",
           thumbnailUrl: `${SITE}/v7/video-poster.png`,
-          contentUrl: `${SITE}/v7/video/rocket-llama-full.mp4`,
+          contentUrl: `${SITE}/v7/video/rocket-llama-overview.mp4`,
           uploadDate: "2026-11-06",
-          duration: "PT1M20S",
+          duration: "PT1M2S",
           publisher: { "@id": `${SITE}/#organization` },
         },
         {
