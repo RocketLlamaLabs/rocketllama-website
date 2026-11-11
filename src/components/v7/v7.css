@@ -677,3 +677,6 @@
 /* About: light blue header, white team section, white footer. */
 .v7 .pagehead.about-head{background:#eaf2fd}
 .v7 #team{background:#fff}
+/* About: white header, light blue team, white footer. */
+.v7 .pagehead.about-head{background:#fff}
+.v7 #team{background:#eaf2fd}
