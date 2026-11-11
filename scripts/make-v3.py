@@ -719,6 +719,24 @@ V7_PAGE_SEO = {
     'ai-policy': ('AI Policy',             'Where Rocket Llama Labs uses artificial intelligence, what it does, where a person is responsible, and how client and homeowner data is handled.', False),
 }
 
+TRADE_LINES = {
+    'HVAC': 'Calls answered first when the AC dies',
+    'Plumbing': 'Emergency calls booked by the AI, day or night',
+    'Electrical': 'Reviews and a profile that put you on the map',
+    'Roofing': 'Storm-season leads qualified and booked',
+    'Garage door': 'Local Services Ads that get you the call first',
+    'Pest control': 'A CRM that re-books and asks for the review',
+    'Landscaping': 'Ads up in spring, down in summer, every dollar tracked',
+    'Painting': 'Estimates that turn into booked jobs',
+    'Window and pressure washing': 'Reviews and repeat customers on autopilot',
+    'Handyman': 'A site that ranks for every service, per city',
+    'Mobile mechanic': 'The first number that answers wins the job',
+    'Windows and doors': 'Leads captured and kept warm in the CRM',
+    'Solar': 'Exclusive leads tracked to the signed contract',
+    'Flooring': 'Reviews, photos and a calendar for the measure',
+    'Remodeling': 'Found for the searches made before anyone calls',
+}
+
 def v7_page_seo():
     for slug, (title, desc, noindex) in V7_PAGE_SEO.items():
         fp = os.path.join(root, 'src/app/v7', slug, 'page.tsx')
@@ -732,9 +750,10 @@ def v7_page_seo():
         t = t.replace('import type { Metadata } from "next";\n', 'import type { Metadata } from "next";\nimport { pageMeta, %s } from "@/components/v7/page-seo";\n' % names, 1)
         t = t.replace('<main>\n', '<main>\n' + comp + '\n', 1)
         if slug == 'industries':
-            t = t.replace('import { pageMeta, IndustriesStructuredData } from "@/components/v7/page-seo";', 'import { pageMeta, IndustriesStructuredData, TRADE_COPY } from "@/components/v7/page-seo";')
             # a line of copy per trade, under the trade grid
-            t = re.sub(r'(<div className="trades">.*?</div>\n)', r'\1  <div className="tradecopy">{TRADE_COPY.map(([name, copy]) => (<div key={name}><h2>{name}</h2><p>{copy}</p></div>))}</div>\n', t, count=1, flags=re.S)
+            # one short line inside each trade tile
+            for name, line in TRADE_LINES.items():
+                t = t.replace('>%s</a>' % name, '><span>%s</span><small>%s</small></a>' % (name, line), 1)
         if slug == 'report':
             t = t.replace('<ReportSection />', '<ReportSection heading="h1" />', 1)
         open(fp, 'w').write(t)

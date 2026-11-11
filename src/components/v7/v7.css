@@ -639,3 +639,8 @@
 /* About: light blue team section, white footer. */
 .v7 #team{background:#eaf2fd}
 .v7:has(.pagehead.about-head) footer{background:#fff}
+/* Industries tiles: trade name with a short line under it. */
+.v7 .trade{display:block}
+.v7 .trade span{display:block}
+.v7 .trade small{display:block;font-family:var(--serif);font-weight:400;font-size:.9rem;line-height:1.4;color:var(--muted);margin-top:4px}
+.v7 .trade.other small{display:none}
