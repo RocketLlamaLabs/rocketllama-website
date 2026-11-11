@@ -35,8 +35,8 @@ export default async function AssetsPage() {
         actions={<UploadForm />}
       />
 
-      <section aria-labelledby="presentation" className="mt-10">
-        <h2 id="presentation" className="text-2xl font-semibold">
+      <section id="presentation" aria-labelledby="presentation-title" className="mt-10 scroll-mt-8">
+        <h2 id="presentation-title" className="text-2xl font-semibold">
           Presentation
         </h2>
         <p className="mt-1 max-w-[68ch] text-muted">
