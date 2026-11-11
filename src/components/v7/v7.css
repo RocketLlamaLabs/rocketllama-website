@@ -842,3 +842,6 @@
 .v7 .flow .ln .run{animation:none;stroke-dasharray:6 8}
 .v7 .flow .ln.quiet .run{animation:none}
 .v7 .flow .ln .dot{fill:var(--accent);stroke:#fff;stroke-width:1.5;stroke-linejoin:round}
+/* Flow: the lab-coat llama sits in the CRM tile. */
+.v7 .flow .tile.on image{pointer-events:none}
+.v7 .flow.tall .h{font-size:16px}
