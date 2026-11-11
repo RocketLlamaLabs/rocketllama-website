@@ -636,3 +636,6 @@
 .v7 #faq.feature{background:#fff}
 /* About: header white, team white too now that the questions section is gone. */
 .v7 #team{background:#fff}
+/* About: light blue team section, white footer. */
+.v7 #team{background:#eaf2fd}
+.v7:has(.pagehead.about-head) footer{background:#fff}
