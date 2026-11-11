@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 // Site-wide motion for version 7: sections and cards rise in as they scroll
-// into view, the big numbers count up, the nav gets a shadow once the page
+// into view, the nav gets a shadow once the page
 // scrolls. Everything is off when the visitor prefers reduced motion. Elements
 // are picked by class here so the generated pages need no markup changes.
 
@@ -43,37 +43,11 @@ export function Motion() {
     const sweep = () => { items.forEach((el) => { if (el.classList.contains("rise") && !el.classList.contains("risen") && el.getBoundingClientRect().top < window.innerHeight) el.classList.add("risen"); }); };
     window.addEventListener("scroll", sweep, { passive: true });
 
-    // count up: numbers that are a plain figure with an optional prefix/suffix
-    const nums = Array.from(document.querySelectorAll<HTMLElement>(".v7 .am-stats .n"));
-    const counters = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        counters.unobserve(e.target);
-        const el = e.target as HTMLElement;
-        const text = el.textContent ?? "";
-        const m = text.match(/^(\D*)(\d[\d,.]*)([\s\S]*)$/);
-        if (!m || el.querySelector("*")) return; // leave mixed markup (62% vs 28%) alone
-        const [, pre, numStr, post] = m;
-        const target = parseFloat(numStr.replace(/,/g, ""));
-        if (!isFinite(target) || target === 0) return;
-        const decimals = (numStr.split(".")[1] || "").length;
-        const t0 = performance.now(); const dur = 900;
-        const tick = (t: number) => {
-          const k = Math.min(1, (t - t0) / dur); const eased = 1 - Math.pow(1 - k, 3);
-          const v = target * eased;
-          el.textContent = pre + v.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + post;
-          if (k < 1) requestAnimationFrame(tick); else el.textContent = text;
-        };
-        requestAnimationFrame(tick);
-      });
-    }, { threshold: 0.5 });
-    nums.forEach((el) => counters.observe(el));
-
     // nav shadow on scroll
     const nav = document.querySelector(".v7 .nav");
     const onScroll = () => { if (nav) nav.classList.toggle("scrolled", window.scrollY > 8); };
     onScroll(); window.addEventListener("scroll", onScroll, { passive: true });
-    return () => { io.disconnect(); counters.disconnect(); window.removeEventListener("scroll", onScroll); window.removeEventListener("scroll", sweep); };
+    return () => { io.disconnect(); window.removeEventListener("scroll", onScroll); window.removeEventListener("scroll", sweep); };
   }, []);
   return null;
 }
