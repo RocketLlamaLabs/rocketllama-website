@@ -751,11 +751,7 @@ def write_v7_industry_links():
                 fp = os.path.join(d, f); t = open(fp).read(); u = v7_industry_nav(t)
                 if u != t:
                     open(fp, 'w').write(u)
-    fp = os.path.join(root, 'src/components/v7/footer.tsx'); t = open(fp).read()
-    a = '      <div className="wrap in">\n'
-    assert t.count(a) == 1, 'v7 footer'
-    t = t.replace(a, a + '        <nav className="find" aria-label="Industries"><b>Industries</b>' + industry_links('Link') + '</nav>\n', 1)
-    open(fp, 'w').write(t)
+    # (no industries strip in the footer)
 
 
 def write_v7_legal():
