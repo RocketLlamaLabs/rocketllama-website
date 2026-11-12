@@ -15,8 +15,8 @@ export type Industry = {
   description: string;
   h1: string;
   lede: string;
-  /** File stem under /public/v7/img (three widths each) and its alt text. */
-  image: { stem: string; alt: string };
+  /** File stem under /public/v7/img (three widths each), its alt text, and which part of the photo the banner keeps in view (CSS object-position). */
+  image: { stem: string; alt: string; focus?: string };
   summary: string;
   facts: string[];
   problemsHeading: string;
@@ -283,7 +283,7 @@ export const INDUSTRIES: Industry[] = [
     description: "Garage door marketing services: Local Services Ads, Google Business Profile verification, local SEO and same-day repair calls answered.",
     h1: "Garage door marketing services for same-day jobs.",
     lede: "A door that will not open traps the car inside. The homeowner wants it fixed today and calls whoever is at the top of the search. We put you there and make sure the call is answered.",
-    image: { stem: "band-van", alt: "A service technician taking a customer call from the driver's seat of a work van" },
+    image: { stem: "hero-garage-door", alt: "A garage door technician on a ladder adjusting the spring above an open two-car garage", focus: "50% 25%" },
     summary: "Rocket Llama Labs provides garage door marketing services for garage door repair and installation companies. We run Local Services Ads, Google Business Profile verification and management, local SEO, AI search optimization, paid search, review requests, call tracking and an AI receptionist, so same-day repair calls are answered in under a minute and tracked to a paid job.",
     facts: [
       "Built for spring replacement, opener repair, off-track doors and new door installation",
@@ -338,7 +338,7 @@ export const INDUSTRIES: Industry[] = [
     description: "Pest control marketing services: Local Services Ads, Google Business Profile verification, local SEO, AI search and recurring-plan follow-up.",
     h1: "Pest control marketing services that build recurring revenue.",
     lede: "The first visit pays for the marketing. The service plan is where the money is. We bring in the first call and run the follow-up that turns it into a customer who stays.",
-    image: { stem: "band-door", alt: "Two service technicians greeting a homeowner at the front door of a desert home" },
+    image: { stem: "hero-pest-control", alt: "A pest control technician with a backpack sprayer treating the base of a stucco wall", focus: "50% 12%" },
     summary: "Rocket Llama Labs provides pest control marketing services for pest control and termite companies. We run Local Services Ads, Google Business Profile verification and management, local SEO, AI search optimization, paid ads, review requests, call tracking, an AI receptionist and CRM follow-up, so one-time calls for scorpions, termites or rodents are answered in under a minute and converted to recurring service plans.",
     facts: [
       "Built for general pest, scorpion, termite, rodent and bed bug services",
@@ -448,7 +448,7 @@ export const INDUSTRIES: Industry[] = [
     description: "Painting contractor marketing services: local SEO, Google Business Profile verification, AI search and funnels that book and close estimates.",
     h1: "Painting contractor marketing services that turn estimates into jobs.",
     lede: "Painting is won at the estimate. We bring in homeowners who are ready for one, book it on your calendar, and follow up until they decide.",
-    image: { stem: "band-neighborhood", alt: "A desert neighborhood of stucco homes at sunset" },
+    image: { stem: "hero-painting", alt: "A house painter rolling fresh paint onto a stucco exterior wall", focus: "50% 30%" },
     summary: "Rocket Llama Labs provides marketing services for painting contractors. We run local SEO, Google Business Profile verification and management, Local Services Ads, AI search optimization, Google and Meta ads, estimate-booking funnels, review requests, call tracking and CRM follow-up, so interior and exterior painting leads are answered in under a minute and tracked to a paid job.",
     facts: [
       "Built for interior, exterior, cabinet and commercial repaint work",
@@ -503,7 +503,7 @@ export const INDUSTRIES: Industry[] = [
     description: "Marketing for window cleaning and pressure washing companies: local SEO, Google Business Profile verification, reviews and repeat bookings.",
     h1: "Marketing services for window cleaning and pressure washing companies.",
     lede: "High volume, modest tickets, and customers who should come back twice a year. We fill the route, ask for the review, and bring the same homes back on schedule.",
-    image: { stem: "band-neighborhood", alt: "Rows of homes in a desert neighborhood at dusk" },
+    image: { stem: "hero-window-and-pressure-washing", alt: "A window cleaner squeegeeing a large window, with a pressure washer on the paver patio behind him", focus: "50% 25%" },
     summary: "Rocket Llama Labs provides marketing services for window cleaning and pressure washing companies. We run local SEO, Google Business Profile verification and management, Local Services Ads where available, AI search optimization, paid ads, review requests, call tracking and CRM re-booking, so new customers are answered in under a minute and past customers are brought back on a schedule.",
     facts: [
       "Built for window cleaning, pressure washing, soft washing, solar panel and gutter cleaning",
@@ -558,7 +558,7 @@ export const INDUSTRIES: Industry[] = [
     description: "Handyman marketing services: a page for every service you offer, Google Business Profile verification, AI search and every call answered.",
     h1: "Handyman marketing services that rank for every job you do.",
     lede: "A handyman does forty different jobs, and homeowners search for each one by name. We build a site that shows up for all of them, in every neighborhood you cover.",
-    image: { stem: "band-door", alt: "Two service professionals meeting a homeowner at her front door" },
+    image: { stem: "hero-handyman", alt: "A handyman hanging an interior door with a cordless drill, tool bag open beside him", focus: "50% 30%" },
     summary: "Rocket Llama Labs provides handyman marketing services for handyman businesses. We run local SEO with a page per service and city, Google Business Profile verification and management, Local Services Ads, AI search optimization, paid search, review requests, call tracking and an AI receptionist, so requests for repairs and small projects are answered in under a minute and tracked to a paid job.",
     facts: [
       "Built for repairs, drywall, doors, TV mounting, assembly, fixtures and small projects",
@@ -613,7 +613,7 @@ export const INDUSTRIES: Industry[] = [
     description: "Mobile mechanic marketing services: local SEO, Google Business Profile verification without a shop, search ads and every call answered.",
     h1: "Mobile mechanic marketing services that make your phone the first one answered.",
     lede: "A driver with a car that will not start searches once and calls the first number that picks up. We put your number at the top and make sure it is answered.",
-    image: { stem: "band-van", alt: "A mobile service professional answering a customer call in his work van" },
+    image: { stem: "hero-mobile-mechanic", alt: "A mobile mechanic working under the hood of a car in a driveway, service van open behind him", focus: "50% 40%" },
     summary: "Rocket Llama Labs provides marketing services for mobile mechanics. We run local SEO, Google Business Profile verification and management, search ads, AI search optimization, review requests, call tracking and an AI receptionist, so drivers who need a repair at home, at work or at the roadside are answered in under a minute and tracked to a paid job.",
     facts: [
       "Built for no-starts, batteries, brakes, diagnostics and on-site maintenance",
@@ -668,7 +668,7 @@ export const INDUSTRIES: Industry[] = [
     description: "Marketing services for window and door companies: local SEO, Google Business Profile verification, ads, AI search and long-cycle follow-up.",
     h1: "Marketing services for window and door replacement companies.",
     lede: "Replacement windows are a large purchase that takes weeks to decide. We capture the homeowner at the first search and keep your company in front of them until they sign.",
-    image: { stem: "band-door", alt: "Two home service consultants speaking with a homeowner at her front door" },
+    image: { stem: "hero-windows-and-doors", alt: "Two installers fitting a replacement window into a stucco wall and checking it with a level", focus: "50% 18%" },
     summary: "Rocket Llama Labs provides marketing services for window and door replacement companies. We run local SEO, Google Business Profile verification and management, Google and Meta ads, AI search optimization, consultation-booking funnels, review requests, call tracking and CRM follow-up, so replacement window and door leads are answered in under a minute and nurtured through a long decision to a signed contract.",
     facts: [
       "Built for replacement windows, entry doors, patio and sliding doors",
@@ -723,7 +723,7 @@ export const INDUSTRIES: Industry[] = [
     description: "Solar marketing services: exclusive leads from your own site and ads, local SEO, Google Business Profile verification and AI search.",
     h1: "Solar marketing services that produce exclusive leads.",
     lede: "Solar leads are among the most expensive to buy and the most often resold. We generate them from your own website and your own ads, so the homeowner is only talking to you.",
-    image: { stem: "band-neighborhood", alt: "Rooftops across a desert neighborhood with mountains at sunset" },
+    image: { stem: "hero-solar", alt: "A solar installer in a safety harness fastening panels on a clay tile roof, desert mountains behind", focus: "50% 38%" },
     summary: "Rocket Llama Labs provides solar marketing services for residential solar installers. We run local SEO, Google Business Profile verification and management, Google and Meta ads, AI search optimization, qualifying funnels, review requests, call tracking and CRM follow-up, producing exclusive solar leads that are answered in under a minute and tracked to a signed contract.",
     facts: [
       "Built for residential solar, battery storage and system service",
@@ -778,7 +778,7 @@ export const INDUSTRIES: Industry[] = [
     description: "Flooring marketing services: local SEO, Google Business Profile verification, ads, AI search and funnels that book the in-home measure.",
     h1: "Flooring marketing services that book the in-home measure.",
     lede: "Showroom traffic starts with a search. We put your company in front of homeowners choosing a floor, and book the measure before they visit a big-box store.",
-    image: { stem: "band-door", alt: "Two home service professionals arriving at a customer's front door" },
+    image: { stem: "hero-flooring", alt: "A flooring installer on knee pads laying vinyl plank flooring in a bright living room", focus: "50% 22%" },
     summary: "Rocket Llama Labs provides marketing services for flooring companies and installers. We run local SEO, Google Business Profile verification and management, Google and Meta ads, AI search optimization, measure-booking funnels, review requests, call tracking and CRM follow-up, so leads for tile, hardwood, vinyl plank and carpet are answered in under a minute and tracked to a paid job.",
     facts: [
       "Built for tile, hardwood, luxury vinyl plank, laminate and carpet",
@@ -833,7 +833,7 @@ export const INDUSTRIES: Industry[] = [
     description: "Remodeling contractor marketing services: local SEO, Google Business Profile verification, AI search and funnels that qualify projects.",
     h1: "Remodeling contractor marketing services for bigger, better-qualified projects.",
     lede: "A kitchen or bath remodel starts months before the first call, with a homeowner searching for ideas, costs and contractors. We make sure your company is what they find.",
-    image: { stem: "band-neighborhood", alt: "An aerial view of homes in a desert neighborhood" },
+    image: { stem: "hero-remodeling", alt: "A remodeling contractor installing kitchen cabinets, with building plans on the unfinished island", focus: "50% 25%" },
     summary: "Rocket Llama Labs provides marketing services for remodeling contractors. We run local SEO, Google Business Profile verification and management, Google and Meta ads, AI search optimization, project-qualifying funnels, review requests, call tracking and CRM follow-up, so kitchen, bathroom and whole-home remodel leads are answered in under a minute and tracked to a signed project.",
     facts: [
       "Built for kitchen, bathroom, whole-home remodels and additions",

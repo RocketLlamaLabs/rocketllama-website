@@ -27,6 +27,7 @@ export function IndustryPage({ ind }: { ind: Industry }) {
             width={1920}
             height={1080}
             alt={ind.image.alt}
+            style={ind.image.focus ? { objectPosition: ind.image.focus } : undefined}
             fetchPriority="high"
             decoding="async"
           />
