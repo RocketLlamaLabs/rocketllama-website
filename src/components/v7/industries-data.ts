@@ -283,7 +283,7 @@ export const INDUSTRIES: Industry[] = [
     description: "Garage door marketing services: Local Services Ads, Google Business Profile verification, local SEO and same-day repair calls answered.",
     h1: "Garage door marketing services for same-day jobs.",
     lede: "A door that will not open traps the car inside. The homeowner wants it fixed today and calls whoever is at the top of the search. We put you there and make sure the call is answered.",
-    image: { stem: "hero-garage-door", alt: "A garage door technician on a ladder adjusting the opener track above an open garage door", focus: "50% 20%" },
+    image: { stem: "hero-garage-door", alt: "A garage door technician on a ladder adjusting the spring above an open garage door", focus: "50% 30%" },
     summary: "Rocket Llama Labs provides garage door marketing services for garage door repair and installation companies. We run Local Services Ads, Google Business Profile verification and management, local SEO, AI search optimization, paid search, review requests, call tracking and an AI receptionist, so same-day repair calls are answered in under a minute and tracked to a paid job.",
     facts: [
       "Built for spring replacement, opener repair, off-track doors and new door installation",
@@ -723,7 +723,7 @@ export const INDUSTRIES: Industry[] = [
     description: "Solar marketing services: exclusive leads from your own site and ads, local SEO, Google Business Profile verification and AI search.",
     h1: "Solar marketing services that produce exclusive leads.",
     lede: "Solar leads are among the most expensive to buy and the most often resold. We generate them from your own website and your own ads, so the homeowner is only talking to you.",
-    image: { stem: "hero-solar", alt: "A solar installer in a safety harness fastening panels on a shingle roof, neighborhood rooftops behind", focus: "50% 30%" },
+    image: { stem: "hero-solar", alt: "A solar installer in a safety harness fastening a panel to a shingle roof, neighborhood rooftops behind", focus: "50% 35%" },
     summary: "Rocket Llama Labs provides solar marketing services for residential solar installers. We run local SEO, Google Business Profile verification and management, Google and Meta ads, AI search optimization, qualifying funnels, review requests, call tracking and CRM follow-up, producing exclusive solar leads that are answered in under a minute and tracked to a signed contract.",
     facts: [
       "Built for residential solar, battery storage and system service",
