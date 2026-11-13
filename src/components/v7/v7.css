@@ -984,3 +984,13 @@
 .v7 .evolve-band .bsub{font-family:var(--serif);font-size:1.05rem;line-height:1.55;color:#dce7f7;margin:14px 0 0;max-width:56ch;text-shadow:none}
 .v7 .evolve-band .ctas{margin-top:22px}
 .v7 .evolve-band .evolve-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px;display:block;border:1px solid rgba(255,255,255,.14)}
+/* Phones: the banner paragraph is hard to read over the photo, so banners show the headline and buttons only.
+   The paragraph stays in the page for larger screens. The home headline sits just above the buttons, where the
+   photo is darkest, and the overlay is a little stronger behind the text. */
+@media(max-width:700px){
+  .v7 .hero .rot .lede,.v7 .ihero .lede{display:none}
+  .v7 .hero .rot{margin-block:auto 22px}
+  .v7 .hero::after{background:linear-gradient(180deg,rgba(4,23,58,.5) 0%,rgba(4,23,58,.22) 28%,rgba(4,23,58,.4) 55%,rgba(4,23,58,.9) 100%)}
+  .v7 .ihero{min-height:0}
+  .v7 .ihero::after{background:linear-gradient(180deg,rgba(4,23,58,.55) 0%,rgba(4,23,58,.6) 45%,rgba(4,23,58,.9) 100%)}
+}
