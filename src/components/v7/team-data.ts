@@ -23,13 +23,12 @@ export const TEAM: Person[] = [
     gallery: {
       kicker: "Off the clock",
       title: "Branson loves to travel. He found our mascot\u2019s cousins in Peru.",
-      text: "When Branson is not with clients he is on the road. Travel, scuba diving, skiing and fishing with his dad are where he recharges. In Peru he visited Machu Picchu and met the llamas and alpacas of the Andes, and he has been everywhere from the ski slopes to the Big Buddha in Hong Kong. These are his photos.",
+      text: "When Branson is not with clients he is on the road. Travel, scuba diving, skiing and fishing with his dad are where he recharges. In Peru he visited Machu Picchu and met the llamas and alpacas of the Andes. These are his photos.",
       photos: [
-        { src: "/v7/branson/alpacas-with-branson", alt: "Branson Cobb with a brown alpaca and a white alpaca on a mountain trail in Peru" },
+        { src: "/v7/branson/dance-pose", alt: "Branson Cobb in a suit striking a dance pose with a young girl in a pink dress outside a house" },
         { src: "/v7/branson/llama-and-alpaca", alt: "A white and brown llama with a young brown alpaca beside it" },
         { src: "/v7/branson/machu-picchu-2", alt: "A llama grazing in front of the stone walls at Machu Picchu" },
         { src: "/v7/branson/skiing", alt: "Branson Cobb in a ski helmet and goggles, snow in his beard" },
-        { src: "/v7/branson/big-buddha", alt: "Branson Cobb raising his hand in front of the Big Buddha in Hong Kong" },
       ],
     },
   },
