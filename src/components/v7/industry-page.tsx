@@ -37,7 +37,7 @@ export function IndustryPage({ ind }: { ind: Industry }) {
             </nav>
             <h1>{ind.h1}</h1>
             <p className="lede">{ind.lede}</p>
-            <div className="ctas"><a className="btn" href={book}>Schedule a call</a><a className="btn light" href="/audit">Run an instant audit</a></div>
+            <div className="ctas"><a className="btn" href={book}>Schedule a call</a><span className="hero-proof">We get you customers.</span></div>
           </div>
         </header>
 
