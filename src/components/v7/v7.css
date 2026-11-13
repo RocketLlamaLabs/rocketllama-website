@@ -1124,3 +1124,13 @@
 .v7 .nav .menu .panel details.sub .sublinks a.all{color:var(--accent);font-weight:600}
 /* Home banner on phones: the photo takes most of the screen, with a sliver of the next section below. */
 @media(max-width:700px){.v7 .hero{min-height:min(88svh,780px)}}
+/* Home banner on phones: a little larger type. The small heading may wrap to two lines; the headline stays at two lines. */
+@media(max-width:700px){
+  .v7 .hero .tagline{font-size:min(13px,3.4vw);white-space:normal;line-height:1.35;max-width:24em}
+  .v7 .rot .rslide h2{font-size:clamp(2rem,8.9vw,2.45rem)}
+  .v7 .rot .rslide:nth-child(2) h2{max-width:7.4em}
+  /* A three-line headline stretched the shared grid row and pushed two-line slides into the button; the row now
+     takes the height of the slide on show (behavior/hero.js) and each slide starts at the top. */
+  .v7 .hero .rot{grid-template-rows:minmax(0,1fr)}
+  .v7 .rot .rslide{align-self:start}
+}
