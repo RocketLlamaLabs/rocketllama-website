@@ -1035,3 +1035,12 @@
 .v7 .person .person-book .sub{max-width:62ch}
 .v7 .person .person-book .ctas{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
 .v7 .person .person-book .btn.outline{border-color:var(--accent)}
+/* Home banner on phones: the words sit in the middle of the photo, everything left-aligned,
+   a normal-width button, and no promise line under it. */
+@media(max-width:700px){
+  .v7 .hero .in>div{justify-content:center}
+  .v7 .hero .in{padding-block:40px}
+  .v7 .hero .ctas{align-items:flex-start}
+  .v7 .hero .ctas .btn{width:auto;align-self:flex-start}
+  .v7 .hero .hero-proof{display:none}
+}
