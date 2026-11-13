@@ -510,7 +510,7 @@ V7_BRIAN_MAIN = '''<main>
 <header className="hero small" id="top">
   <div className="slides" aria-hidden="true" style={{backgroundImage:"url(/v2/img/band-neighborhood.jpg)"} as CSSProperties}></div>
   <div className="wrap in">
-    <p className="kicker">Brian Greenberg &middot; CEO</p>
+    <p className="kicker">Brian Greenberg &middot; Chief Strategy Officer</p>
     <h1>&ldquo;Nobody wakes up wanting to be sold to. So don&rsquo;t sell. <em>Get found.</em>&rdquo;</h1>
     <p className="lede">Brian has spent more than twenty years building businesses that get found online. He built True Blue Life Insurance into a fully digital agency that sold in all 50 states with no cold calls, generating over $50 million in revenue through inbound marketing, and he has delivered the same local SEO and inbound playbook to home services companies, including Phoenix pool service companies. He is the author of <em>The Salesman Who Doesn&rsquo;t Sell</em> and a Million Dollar Round Table member.</p>
   </div>
@@ -526,7 +526,7 @@ V7_BRIAN_MAIN = '''<main>
       <h2>The same machine, for other businesses.</h2>
       <p className="sub">The inbound system that sold policies also powered Wholesale Warehouse Supply&rsquo;s online stores, and Brian has been delivering it to other businesses ever since. He built SEO Services Internet Marketing LLC, a digital marketing and SEO company, and later BJG Digital, a local services marketing agency that helped Phoenix pool service companies win their local market through local SEO, reviews and inbound funnels. He also leads Quoteplicity, quoting software for insurance agents whose funnels have generated more than 200,000 leads.</p>
       <h2>Rocket Llama Labs.</h2>
-      <p className="sub">Rocket Llama Labs brings that playbook to local home services companies, run with modern AI tools so a small team delivers what used to take an agency floor. Brian&rsquo;s job as CEO is to keep the company pointed at the only thing that matters to a client: being the business people find first, and the one they call.</p>
+      <p className="sub">Rocket Llama Labs brings that playbook to local home services companies, run with modern AI tools so a small team delivers what used to take an agency floor. Brian&rsquo;s job as Chief Strategy Officer is to keep the company pointed at the only thing that matters to a client: being the business people find first, and the one they call.</p>
     </div>
     <div className="story-side">
       <img className="portrait" src="/v2/img/brian-greenberg.jpg" alt="Brian Greenberg" />
@@ -565,7 +565,7 @@ V7_BRIAN_MAIN = '''<main>
 def write_v7_brian():
     """Brian's page, rewritten from the owner's copy, in the same shell as the other subpages."""
     p = os.path.join(root, 'src/app/(home)/about-brian/page.tsx'); t = open(p).read()
-    t = re.sub(r"  description: \"[^\"]*\",", "  description: \"Brian Greenberg, co-founder and CEO of Rocket Llama Labs: twenty years of building businesses that get found online, and the author of The Salesman Who Doesn't Sell.\",", t, count=1)
+    t = re.sub(r"  description: \"[^\"]*\",", "  description: \"Brian Greenberg, co-founder and Chief Strategy Officer of Rocket Llama Labs: twenty years of building businesses that get found online, and the author of The Salesman Who Doesn't Sell.\",", t, count=1)
     i = t.index('<main>'); j = t.index('</main>') + len('</main>')
     open(p, 'w').write(t[:i] + V7_BRIAN_MAIN + t[j:])
 
@@ -616,16 +616,16 @@ def write_v7_about():
         '  <p className="kicker">The team</p>\n'
         '  <h2>Three people. One system.</h2>\n'
         '  <div className="team">\n'
-        '    <article className="card"><img className="headshot photo" src="/v7/brian-greenberg.jpg" alt="Brian Greenberg, CEO of Rocket Llama Labs" /><h3 id="brian-greenberg">Brian Greenberg</h3><p className="role">CEO</p>'
+        '    <article className="card"><img className="headshot photo" src="/v7/brian-greenberg.jpg" alt="Brian Greenberg, Chief Strategy Officer of Rocket Llama Labs" /><h3 id="brian-greenberg">Brian Greenberg</h3><p className="role">Chief Strategy Officer</p>'
         '<p>Brian sets the strategy and the marketing playbook for every client. He has spent more than twenty years building businesses that get found online, including a fully digital insurance agency that generated $50M+ through inbound marketing, and he wrote <em>The Salesman Who Doesn&rsquo;t Sell</em>. He has run that same playbook for Phoenix home service companies.</p>'
         '<details className="bio"><summary>Read more</summary>'
         '<p>Entrepreneurship is the family trade. Brian learned it from his father, and it was everywhere around him: his grandfather ran his own business, and so did every one of his uncles. Growing up in Highland Park, Illinois, he never seriously considered working for anyone else. The University of Arizona&rsquo;s Eller College of Management gave him the formal version, entrepreneurship and marketing, sharpened by the McGuire Entrepreneurship Program. Then he settled in Scottsdale, Arizona, and got to work.</p>'
         '<p>In 2003 Brian started two companies at once: True Blue Life Insurance and Wholesale Warehouse Supply, an e-commerce business. At True Blue he pioneered selling life insurance fully online, in all 50 states. No cold calls. No kitchen-table pitches. Content, search, funnels and automation did the selling, and the results followed: more than $1 million in annual premium for ten consecutive years, over $50 million in total revenue, and membership in the Million Dollar Round Table, the top 1% of financial professionals worldwide.</p>'
         '<p>The inbound system that sold policies also powered Wholesale Warehouse Supply&rsquo;s online stores, and Brian has been delivering it to other businesses ever since. He built SEO Services Internet Marketing LLC, a digital marketing and SEO company, and later BJG Digital, a local services marketing agency that helped Phoenix pool service companies win their local market through local SEO, reviews and inbound funnels. He also leads Quoteplicity, quoting software for insurance agents whose funnels have generated more than 200,000 leads.</p>'
-        '<p>Rocket Llama Labs brings that playbook to local home services companies, run with modern AI tools so a small team delivers what used to take an agency floor. Brian&rsquo;s job as CEO is to keep the company pointed at the only thing that matters to a client: being the business people find first, and the one they call.</p>'
+        '<p>Rocket Llama Labs brings that playbook to local home services companies, run with modern AI tools so a small team delivers what used to take an agency floor. Brian&rsquo;s job as Chief Strategy Officer is to keep the company pointed at the only thing that matters to a client: being the business people find first, and the one they call.</p>'
         '<p>He is the author of <em>The Salesman Who Doesn&rsquo;t Sell: A Marketing Guide to Making Money While You Sleep</em>, with a foreword by Marques Colston, Super Bowl champion wide receiver. <a href="https://www.amazon.com/Salesman-Who-Doesnt-Sell-Marketing-ebook/dp/B078HMS1CQ" target="_blank" rel="noopener">Buy on Amazon</a> or <a href="https://www.audible.com/pd/The-Salesman-Who-Doesnt-Sell-A-Marketing-Guide-for-Making-Money-While-You-Sleep-Audiobook/B0794Q3418" target="_blank" rel="noopener">listen on Audible</a>. Featured in Forbes, Entrepreneur, Fast Company, HuffPost, Bloomberg, USA Today, Yahoo Finance, Fox, NBC and CBS.</p>'
         '<button type="button" className="less">Read less</button></details></article>\n'
-        '    <article className="card"><img className="headshot photo" src="/v7/branson-cobb.jpg" alt="Branson Cobb, President and COO of Rocket Llama Labs" /><h3 id="branson-cobb">Branson Cobb</h3><p className="role">President and COO</p>'
+        '    <article className="card"><img className="headshot photo" src="/v7/branson-cobb.jpg" alt="Branson Cobb, CEO of Rocket Llama Labs" /><h3 id="branson-cobb">Branson Cobb</h3><p className="role">CEO</p>'
         '<p>Branson runs the business and every client relationship. He spent more than 23 years leading sales teams, business development, and client strategy for some of the country&rsquo;s largest healthcare organizations. He brings that growth discipline to home service companies that want more qualified leads and measurable results.</p>'
         '<details className="bio"><summary>Read more</summary>'
         '<p>Before launching Rocket Llama Labs, Branson served as Market President for CBIZ&rsquo;s Arizona and California offices, where he led market growth, business operations and client retention initiatives. Prior to CBIZ, he spent more than five years with Aetna, leading business development for Arizona&rsquo;s Public and Labor segment and helping organizations develop strategic growth initiatives.</p>'

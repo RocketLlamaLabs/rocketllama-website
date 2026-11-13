@@ -38,9 +38,21 @@ export const ORG = {
 export const PEOPLE = [
   {
     "@type": "Person",
+    "@id": `${SITE}/about#branson-cobb`,
+    name: "Branson Cobb",
+    jobTitle: "CEO",
+    worksFor: { "@id": `${SITE}/#organization` },
+    image: `${SITE}/v7/branson-cobb.jpg`,
+    url: `${SITE}/about/branson-cobb`,
+    description:
+      "CEO of Rocket Llama Labs. More than 23 years leading sales, business development and client strategy for large healthcare organizations: Market President for CBIZ's Arizona and California offices, business development lead at Aetna, and 13 years at Cigna from underwriter to Senior Account Executive.",
+    alumniOf: { "@type": "CollegeOrUniversity", name: "University of Arizona" },
+  },
+  {
+    "@type": "Person",
     "@id": `${SITE}/about#brian-greenberg`,
     name: "Brian Greenberg",
-    jobTitle: "CEO",
+    jobTitle: "Chief Strategy Officer",
     worksFor: { "@id": `${SITE}/#organization` },
     image: `${SITE}/v7/brian-greenberg.jpg`,
     url: `${SITE}/about/brian-greenberg`,
@@ -61,18 +73,6 @@ export const PEOPLE = [
   },
   {
     "@type": "Person",
-    "@id": `${SITE}/about#branson-cobb`,
-    name: "Branson Cobb",
-    jobTitle: "President and COO",
-    worksFor: { "@id": `${SITE}/#organization` },
-    image: `${SITE}/v7/branson-cobb.jpg`,
-    url: `${SITE}/about/branson-cobb`,
-    description:
-      "President and COO of Rocket Llama Labs. More than 23 years leading sales, business development and client strategy for large healthcare organizations: Market President for CBIZ's Arizona and California offices, business development lead at Aetna, and 13 years at Cigna from underwriter to Senior Account Executive.",
-    alumniOf: { "@type": "CollegeOrUniversity", name: "University of Arizona" },
-  },
-  {
-    "@type": "Person",
     "@id": `${SITE}/about#madison-schantz`,
     name: "Madison Schantz",
     jobTitle: "Chief Marketing Officer",
@@ -85,7 +85,7 @@ export const PEOPLE = [
 ];
 
 export const ABOUT_FAQ: [string, string][] = [
-  ["Who is Rocket Llama Labs?", "Rocket Llama Labs is a marketing and technology company in Phoenix, Arizona, run by Brian Greenberg (CEO), Branson Cobb (President and COO) and Madison Schantz (Chief Marketing Officer). We build and run the whole marketing system for home service companies."],
+  ["Who is Rocket Llama Labs?", "Rocket Llama Labs is a marketing and technology company in Phoenix, Arizona, run by Branson Cobb (CEO), Brian Greenberg (Chief Strategy Officer) and Madison Schantz (Chief Marketing Officer). We build and run the whole marketing system for home service companies."],
   ["Where is Rocket Llama Labs based?", "Phoenix, Arizona. We serve home service companies across the Valley, including Scottsdale, Mesa, Chandler, Gilbert, Glendale, Tempe and Peoria, and work with companies in other markets remotely."],
   ["What trades does Rocket Llama Labs work with?", "HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting and every other trade that goes to a customer's home."],
   ["What does Rocket Llama Labs do?", "One system, built and run by us: a website you own, Google and AI search, your Google Business Profile, ads in your name, review management, tracked phone numbers, an AI receptionist and a CRM. Every lead is answered in under a minute and every dollar is tracked to a paid job."],
