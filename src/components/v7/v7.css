@@ -1002,3 +1002,8 @@
 .v7 #team .team .headshot.photo{background:#fff}
 /* Person pages: white footer under the light blue gallery. */
 .v7:has(main.person) footer{background:#fff;border-top:1px solid var(--line)}
+/* Person page: the book, between the bio and the gallery. */
+.v7 .person .person-book{background:#fff;padding-top:0}
+.v7 .person .person-book .sub{max-width:62ch}
+.v7 .person .person-book .ctas{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
+.v7 .person .person-book .btn.outline{border-color:var(--accent)}
