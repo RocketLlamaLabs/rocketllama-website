@@ -1100,3 +1100,5 @@
   .v7 .hero .ctas .btn{width:auto;align-self:flex-start}
   .v7 .hero .hero-proof{display:none}
 }
+/* Person page gallery with five photos: one row of five on larger screens. */
+@media(min-width:720px){.v7 .person .gallery:has(> figure:nth-child(5):last-child){grid-template-columns:repeat(5,1fr)}}

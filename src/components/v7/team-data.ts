@@ -26,11 +26,8 @@ export const TEAM: Person[] = [
       text: "When Branson is not with clients he is on the road. Travel, scuba diving, skiing and fishing with his dad are where he recharges. In Peru he visited Machu Picchu and met the llamas and alpacas of the Andes, and he has been everywhere from the ski slopes to the Big Buddha in Hong Kong. These are his photos.",
       photos: [
         { src: "/v7/branson/alpacas-with-branson", alt: "Branson Cobb with a brown alpaca and a white alpaca on a mountain trail in Peru" },
-        { src: "/v7/branson/alpaca", alt: "A white alpaca looking at the camera, with a brown alpaca in front" },
         { src: "/v7/branson/llama-and-alpaca", alt: "A white and brown llama with a young brown alpaca beside it" },
-        { src: "/v7/branson/machu-picchu-1", alt: "Llamas grazing on the terraces of Machu Picchu with Huayna Picchu behind" },
         { src: "/v7/branson/machu-picchu-2", alt: "A llama grazing in front of the stone walls at Machu Picchu" },
-        { src: "/v7/branson/machu-picchu-3", alt: "A brown and white llama grazing at Machu Picchu, close up", tall: true },
         { src: "/v7/branson/skiing", alt: "Branson Cobb in a ski helmet and goggles, snow in his beard" },
         { src: "/v7/branson/big-buddha", alt: "Branson Cobb raising his hand in front of the Big Buddha in Hong Kong" },
       ],
