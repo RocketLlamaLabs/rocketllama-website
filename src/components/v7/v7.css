@@ -984,6 +984,8 @@
 .v7 .evolve-band .bsub{font-family:var(--serif);font-size:1.05rem;line-height:1.55;color:#dce7f7;margin:14px 0 0;max-width:56ch;text-shadow:none}
 .v7 .evolve-band .ctas{margin-top:22px}
 .v7 .evolve-band .evolve-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px;display:block;border:1px solid rgba(255,255,255,.14)}
+/* Home banner: one button, with a short promise under it. */
+.v7 .hero .hero-proof{margin:16px 0 0;font-family:var(--sans);font-weight:800;font-size:1.05rem;letter-spacing:-.01em;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.45)}
 /* Phones: the banner paragraph is hard to read over the photo, so banners show the headline and buttons only.
    The paragraph stays in the page for larger screens. The home headline sits just above the buttons, where the
    photo is darkest, and the overlay is a little stronger behind the text. */
@@ -1002,7 +1004,10 @@
   .v7 .rot .rslide:nth-child(2) h2{max-width:7.2em}
   .v7 .hero .ctas,.v7 .ihero .ctas{flex-direction:column;align-items:stretch;gap:10px}
   .v7 .hero .ctas .btn,.v7 .ihero .ctas .btn{width:100%;justify-content:center}
-  .v7 .hero .in{padding-bottom:56px}
+  .v7 .hero .in{padding-bottom:52px}
+  /* The banner takes about three quarters of the screen, so the next section shows below it. */
+  .v7 .hero{min-height:min(74svh,640px)}
+  .v7 .hero .hero-proof{margin-top:14px;font-size:1rem;text-align:center}
   .v7 .hero::after{background:linear-gradient(180deg,rgba(4,23,58,.5) 0%,rgba(4,23,58,.22) 28%,rgba(4,23,58,.4) 55%,rgba(4,23,58,.9) 100%)}
   .v7 .ihero{min-height:0}
   .v7 .ihero::after{background:linear-gradient(180deg,rgba(4,23,58,.55) 0%,rgba(4,23,58,.6) 45%,rgba(4,23,58,.9) 100%)}
