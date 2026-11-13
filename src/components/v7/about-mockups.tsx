@@ -48,7 +48,7 @@ export const BLOCKS: [string, string[]][] = [
 const STATS: [string, string][] = [
   ["20+", "years of building businesses and helping owners get found online"],
   ["$50M+", "generated through inbound marketing"],
-  ["20+", "years leading sales and client strategy"],
+  ["23+", "years leading sales and client strategy"],
 ];
 
 export function Stats() {
