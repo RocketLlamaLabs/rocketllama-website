@@ -1110,3 +1110,5 @@
   .v7 .hero .rot{transition:height .6s ease}
 }
 @media(prefers-reduced-motion:reduce){.v7 .hero .rot{transition:none}}
+/* Person page gallery with one or two photos: two across, at a comfortable width. */
+.v7 .person .gallery:not(:has(> figure:nth-child(3))){grid-template-columns:repeat(2,1fr);max-width:760px}

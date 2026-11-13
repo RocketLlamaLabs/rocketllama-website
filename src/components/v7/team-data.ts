@@ -88,5 +88,13 @@ export const TEAM: Person[] = [
       "Driven by curiosity and a passion for innovation, Madison enjoys exploring new technologies, creative trends and opportunities to push the boundaries of traditional digital design. She values attention to detail, strategic thinking and bringing fresh perspectives to every project.",
       "Outside of her professional work, Madison enjoys working out, reading and traveling. She has a strong appreciation for personal growth, wellness and discovering new places and cultures. These interests inspire her creativity, broaden her perspective and encourage her to continuously learn, evolve and approach both life and work with an open mind.",
     ],
+    gallery: {
+      kicker: "Off the clock",
+      title: "Madison never passes up a good bookstore.",
+      text: "When she is not designing, Madison is reading, working out or traveling somewhere new. Personal growth, wellness and new places keep her creative, and a good bookstore is never far off the itinerary.",
+      photos: [
+        { src: "/v7/madison/bookstore", alt: "Inside a bookstore with tall wooden shelves, hanging bulb lights and racks of greeting cards" },
+      ],
+    },
   },
 ];
