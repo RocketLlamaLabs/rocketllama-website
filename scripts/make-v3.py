@@ -391,8 +391,8 @@ def v7_extras(s, f, is_home, base):
     if btn not in s:  # layout.tsx has no nav
         return s
     menu = ('\n  <details className="menu">\n    <summary aria-label="Menu"><span></span></summary>\n    <div className="panel">\n      ' + links
-            + f'\n      <a className="btn sm" href="{base}/book">Schedule a call</a>\n      <a className="btn sm ghost" href="{base}/audit">Run an instant audit</a>\n    </div>\n  </details>')
-    s = s.replace(btn, f'  <div className="navbtns"><a className="btn sm" href="{base}/book">Schedule a call</a><a className="btn sm ghost" href="{base}/audit">Run an instant audit</a></div>{menu}\n</div></nav>\n<script dangerouslySetInnerHTML={{{{__html:"{MENU_SCRIPT}"}}}} />', 1)
+            + f'\n      <a className="btn sm" href="{base}/book">Schedule a call</a>\n    </div>\n  </details>')
+    s = s.replace(btn, f'  <div className="navbtns"><a className="btn sm" href="{base}/book">Schedule a call</a></div>{menu}\n</div></nav>\n<script dangerouslySetInnerHTML={{{{__html:"{MENU_SCRIPT}"}}}} />', 1)
     if f == 'page.tsx' and '<section id="what">' in s and '<Race />' not in s:
         # services page: a clear banner, a branded poster on the video, then the race after the service list
         s = s.replace('poster="/v2/video/poster.png"', 'poster="/v7/video-poster.png"', 1)
