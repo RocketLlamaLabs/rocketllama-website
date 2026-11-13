@@ -48,8 +48,7 @@ export default function Page() {
       <div className="rslide"><h2>Show up where homeowners look <em>first.</em></h2><p className="lede">When they search Google, check Google Maps, or ask ChatGPT who to call, your business shows up. With a website you own that&rsquo;s built for search engines and AI, an optimized Google Business Profile, and ads running under your name, you&rsquo;re positioned to be the go-to home service company.</p></div>
       <div className="rslide"><h2>Know what every <em>dollar</em> brings in.</h2><p className="lede">No chasing clicks or digging through dashboards. Every call and form submission is tracked in a CRM you own, showing where each lead came from and how much revenue it generated. Real results&mdash;not guesswork&mdash;drive your marketing budget.</p></div>
     </div>
-    <div className="ctas"><a className="btn" href="/book">Schedule a call</a></div>
-    <p className="hero-proof">We get you customers.</p>
+    <div className="ctas"><a className="btn" href="/book">Schedule a call</a><span className="hero-proof">We get you customers.</span></div>
    </div>
   </div>
   <div className="dots"><button type="button" aria-label="Picture 1"></button><button type="button" aria-label="Picture 2"></button><button type="button" aria-label="Picture 3"></button><button type="button" aria-label="Picture 4"></button></div>
