@@ -457,7 +457,7 @@ def v7_extras(s, f, is_home, base):
         assert a in s; s = s.replace(a, '  <div className="dots"><button type="button" aria-label="Picture 1"></button><button type="button" aria-label="Picture 2"></button><button type="button" aria-label="Picture 3"></button><button type="button" aria-label="Picture 4"></button></div>\n</header>\n<HeroCarousel />\n', 1)
         s = s.replace('import { Race } from "@/components/v7/race";\n', 'import { Race } from "@/components/v7/race";\nimport { HeroCarousel } from "@/components/v7/hero-carousel";\n', 1)
         a = f'<div className="ctas"><a className="btn light" href="{base}/book">Schedule a call</a><a className="btn outline" href="{base}/audit">Run the audit</a></div>'
-        assert a in s; s = s.replace(a, f'<div className="ctas"><a className="btn" href="{base}/book">Schedule a call</a><a className="btn light audit-btn" href="{base}/audit">Run an instant audit</a></div>', 1)
+        assert a in s; s = s.replace(a, f'<div className="ctas"><a className="btn" href="{base}/book">Schedule a call</a></div>\n    <p className="hero-proof">We get you customers.</p>', 1)  # one call to action in the banner; the instant audit stays in the navigation and the 60-second check
         # the monthly report and the 'who you are talking to' section live on their own pages
         s = s.replace('<ReportSection />\n', '', 1)
         w0 = s.index('<section id="who" className="feature">'); w1 = s.index('</div></section>\n', w0) + len('</div></section>\n')
