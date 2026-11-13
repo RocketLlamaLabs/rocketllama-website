@@ -26,11 +26,13 @@ case "$src" in
 esac
 
 rm -f "$out"/slide-*.webp
-pdftoppm -png -scale-to-x 1920 -scale-to-y -1 "$tmp/deck.pdf" "$tmp/s"
+# PowerPoint's 16:9 page is a hair wider than 1920x1080, so render one pixel
+# over and crop: scaling it down instead leaves a white line on the right.
+pdftoppm -png -scale-to-x 1921 -scale-to-y -1 "$tmp/deck.pdf" "$tmp/s"
 n=0
 for png in "$tmp"/s-*.png; do
   n=$((n + 1))
-  cwebp -quiet -q 86 "$png" -o "$out/slide-$(printf '%02d' "$n").webp"
+  cwebp -quiet -q 86 -crop 0 0 1920 1080 "$png" -o "$out/slide-$(printf '%02d' "$n").webp"
 done
 
 file="rocket-llama-labs-presentation-$id.${src##*.}"
