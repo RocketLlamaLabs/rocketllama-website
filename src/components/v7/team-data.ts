@@ -26,6 +26,7 @@ export const TEAM: Person[] = [
       text: "When Branson is not with clients he is on the road. Travel, scuba diving, skiing and fishing with his dad are where he recharges. In Peru he visited Machu Picchu and met the llamas and alpacas of the Andes. These are his photos.",
       photos: [
         { src: "/v7/branson/dance-pose", alt: "Branson Cobb in a suit striking a dance pose with a young girl in a pink dress outside a house" },
+        { src: "/v7/branson/scuba", alt: "Branson Cobb scuba diving over a rocky reef, hands spread toward the camera" },
         { src: "/v7/branson/llama-and-alpaca", alt: "A white and brown llama with a young brown alpaca beside it" },
         { src: "/v7/branson/machu-picchu-2", alt: "A llama grazing in front of the stone walls at Machu Picchu" },
         { src: "/v7/branson/skiing", alt: "Branson Cobb in a ski helmet and goggles, snow in his beard" },
