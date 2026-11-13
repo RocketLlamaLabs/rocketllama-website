@@ -20,16 +20,15 @@ export const slideVersions: SlideVersion[] = [
     id: "v1",
     name: "Sales presentation",
     author: "Rocket Llama Labs",
-    added: "2026-11-11",
+    added: "2026-11-13",
     summary:
-      "The home services sales deck, written from the live site: the three ways good companies lose jobs, the full system, speed to lead, tracking, ownership, the team and how to start.",
+      "The home services sales deck, written from the live site: the three ways good companies lose jobs, the full system, answering every call, getting found, tracking, ownership, the team and how to start.",
     file: "rocket-llama-labs-sales-presentation-v1.pptx",
     slides: [
       "Your calendar should be full.",
       "Three ways good companies lose jobs",
       "Most agencies sell you one tactic. We run the whole thing.",
       "One system, from the first search to the booked job",
-      "Answer in two minutes and 62% of leads close",
       "Never miss a call again",
       "Show up where homeowners look first",
       "We report booked jobs and what they were worth",
@@ -37,7 +36,7 @@ export const slideVersions: SlideVersion[] = [
       "Every trade that goes to a customer’s home",
       "Three people, one system",
       "Getting started is simple",
-      "Your calendar should be full. Schedule a call or run an instant audit.",
+      "Your calendar should be full. Schedule a call.",
     ],
   },
 ];
