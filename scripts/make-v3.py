@@ -391,7 +391,7 @@ def v7_extras(s, f, is_home, base):
     if btn not in s:  # layout.tsx has no nav
         return s
     menu = ('\n  <details className="menu">\n    <summary aria-label="Menu"><span></span></summary>\n    <div className="panel">\n      ' + links
-            + f'\n      <a className="btn sm" href="{base}/book">Schedule a call</a>\n    </div>\n  </details>')
+            + '\n    </div>\n  </details>')  # the menu holds Services and Industries only
     s = s.replace(btn, f'  <div className="navbtns"><a className="btn sm" href="{base}/book">Schedule a call</a></div>{menu}\n</div></nav>\n<script dangerouslySetInnerHTML={{{{__html:"{MENU_SCRIPT}"}}}} />', 1)
     if f == 'page.tsx' and '<section id="what">' in s and '<Race />' not in s:
         # services page: a clear banner, a branded poster on the video, then the race after the service list
@@ -731,14 +731,14 @@ NAV_PLAIN = '<a href="/services">Services</a><a href="/industries">Industries</a
 
 def v7_industry_nav(t):
     """Industries in the navigation opens a list of every industry page: a dropdown on wide screens,
-    a two-column list inside the hamburger menu on narrow ones. The hand-written navs
+    a fold-out list under Industries inside the hamburger menu on narrow ones. The hand-written navs
     (src/components/v7/nav.tsx and about-mockups.tsx) carry the same markup."""
     if NAV_PLAIN not in t:
         return t
     wide = ('<a href="/services">Services</a><div className="dd"><a href="/industries" aria-haspopup="true">Industries</a>'
             '<div className="ddmenu">' + industry_links() + '<a className="all" href="/industries">All industries</a></div></div><a href="/about">About</a>')
-    narrow = ('<a href="/services">Services</a><a href="/industries">Industries</a>'
-              '<div className="sublinks">' + industry_links() + '</div><a href="/about">About</a>')
+    narrow = ('<a href="/services">Services</a><details className="sub"><summary>Industries</summary>'
+              '<div className="sublinks">' + industry_links() + '<a className="all" href="/industries">All industries</a></div></details>')
     return t.replace(NAV_PLAIN, wide, 1).replace(NAV_PLAIN, narrow, 1)  # the booking pages have no hamburger menu, so only the first applies
 
 
