@@ -33,6 +33,7 @@ export const slideVersions: SlideVersion[] = [
       "Show up where homeowners look first",
       "We report booked jobs and what they were worth",
       "Never locked in",
+      "Everything points to a website you own. Everything lands in a CRM you own.",
       "Every trade that goes to a customer’s home",
       "Three people, one system",
       "Getting started is simple",
