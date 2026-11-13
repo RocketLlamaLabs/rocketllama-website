@@ -12,7 +12,14 @@ export function mountHero() {
     imgs.forEach(function (e, j) { e.classList.toggle('on', j === i); });
     lines.forEach(function (e, j) { e.classList.toggle('on', j === i); });
     dots.forEach(function (e, j) { e.classList.toggle('on', j === i); e.setAttribute('aria-current', j === i ? 'true' : 'false'); });
+    fit();
   }
+  // The rotating lines are stacked, so their box is as tall as the longest one. Size it to the line on show, so the
+  // button always sits the same distance under the paragraph and the group stays centred on the photo.
+  var rot = lines.length ? lines[0].parentElement : null;
+  function fit() { if (rot && lines[i]) rot.style.height = lines[i].offsetHeight + 'px'; }
+  window.addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   function start() { if (timer) clearInterval(timer); if (!still) timer = setInterval(function () { show(i + 1); }, 9000); }
   dots.forEach(function (d, j) { d.addEventListener('click', function () { show(j); start(); }); });
   show(0); start();

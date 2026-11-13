@@ -1102,3 +1102,11 @@
 }
 /* Person page gallery with five photos: one row of five on larger screens. */
 @media(min-width:720px){.v7 .person .gallery:has(> figure:nth-child(5):last-child){grid-template-columns:repeat(5,1fr)}}
+/* Home banner on tablet and desktop: the text box follows the slide on show (see behavior/hero.js), so the button
+   keeps the same gap under every paragraph, and the group is centred top to bottom on the photo. */
+@media(min-width:701px){
+  .v7 .hero .in>div{justify-content:center}
+  .v7 .hero .in{padding-block:56px}
+  .v7 .hero .rot{transition:height .6s ease}
+}
+@media(prefers-reduced-motion:reduce){.v7 .hero .rot{transition:none}}
