@@ -1078,3 +1078,25 @@
   .v7 .ihero .ctas{margin-top:26px}
   .v7 .ihero::after{background:linear-gradient(180deg,rgba(4,23,58,.5) 0%,rgba(4,23,58,.3) 28%,rgba(4,23,58,.55) 55%,rgba(4,23,58,.92) 100%)}
 }
+/* Home "How it works" and Services "How it connects": light blue sections, footer stays white. */
+.v7 #how{background:#eaf2fd;border-block:0}
+.v7 #map.feature{background:#eaf2fd;border-block:0}
+/* About: white team section with light blue cards and white circles behind the headshots. */
+.v7 #team .team .card{background:#eaf2fd;border-color:#c9d8e6}
+.v7 #team .team .headshot.photo{background:#fff}
+/* Person pages: white footer under the light blue gallery. */
+.v7:has(main.person) footer{background:#fff;border-top:1px solid var(--line)}
+/* Person page: the book, between the bio and the gallery. */
+.v7 .person .person-book{background:#fff;padding-top:0}
+.v7 .person .person-book .sub{max-width:62ch}
+.v7 .person .person-book .ctas{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
+.v7 .person .person-book .btn.outline{border-color:var(--accent)}
+/* Home banner on phones: the words sit in the middle of the photo, everything left-aligned,
+   a normal-width button, and no promise line under it. */
+@media(max-width:700px){
+  .v7 .hero .in>div{justify-content:center}
+  .v7 .hero .in{padding-block:40px}
+  .v7 .hero .ctas{align-items:flex-start}
+  .v7 .hero .ctas .btn{width:auto;align-self:flex-start}
+  .v7 .hero .hero-proof{display:none}
+}
