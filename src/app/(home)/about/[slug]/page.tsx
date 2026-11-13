@@ -43,6 +43,21 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <section className="person-bio"><div className="wrap">
           {p.bio.map((html) => (<p key={html} dangerouslySetInnerHTML={{ __html: html }} />))}
           </div></section>
+        {p.book ? (
+          <section className="person-book"><div className="wrap">
+            <div className="book">
+              <img className="cover" src={p.book.cover} alt={p.book.alt} width="323" height="500" loading="lazy" decoding="async" />
+              <div>
+                <p className="kicker">{p.book.kicker}</p>
+                <h2>{p.book.title}</h2>
+                {p.book.text.map((html) => (<p key={html} className="sub" dangerouslySetInnerHTML={{ __html: html }} />))}
+                <div className="ctas">
+                  {p.book.links.map((l, i) => (<a key={l.href} className={i === 0 ? "btn" : "btn outline"} href={l.href} target="_blank" rel="noopener">{l.label}</a>))}
+                </div>
+              </div>
+            </div>
+          </div></section>
+        ) : null}
         {p.gallery ? (
           <section className="person-gallery feature"><div className="wrap">
             <p className="kicker">{p.gallery.kicker}</p>
