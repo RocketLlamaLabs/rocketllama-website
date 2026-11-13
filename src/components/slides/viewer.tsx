@@ -119,7 +119,7 @@ export function SlideViewer({
       <h1 className="sr-only">{name}</h1>
 
       <div
-        className="relative flex min-h-0 flex-1 items-center justify-center"
+        className="relative flex min-h-0 flex-1 items-center justify-center p-3 sm:p-4"
         onTouchStart={(e) => {
           touchX.current = e.touches[0].clientX;
         }}
@@ -207,8 +207,9 @@ export function SlideViewer({
         </div>
       ) : null}
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-end justify-between gap-3 p-3 sm:p-4">
-        <div className="pointer-events-auto flex items-center gap-1 rounded-lg bg-navy/90 p-1 shadow-md ring-1 ring-white/15">
+      {/* Its own strip under the slide, so it never covers the slide's footer. */}
+      <div className="relative z-20 flex shrink-0 items-center justify-between gap-3 px-3 pb-3 sm:px-4 sm:pb-4">
+        <div className="flex items-center gap-1 rounded-lg bg-navy/90 p-1 shadow-md ring-1 ring-white/15">
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
@@ -241,7 +242,7 @@ export function SlideViewer({
           </button>
         </div>
 
-        <div className="pointer-events-auto flex items-center gap-1 rounded-lg bg-navy/90 p-1 shadow-md ring-1 ring-white/15">
+        <div className="flex items-center gap-1 rounded-lg bg-navy/90 p-1 shadow-md ring-1 ring-white/15">
           {versions.length > 1 ? (
             <label className="flex items-center gap-2 pl-3 text-sm font-semibold">
               <span className="sr-only sm:not-sr-only">Version</span>
