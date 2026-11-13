@@ -26,6 +26,9 @@ export const slideVersions: SlideVersion[] = [
     file: "rocket-llama-labs-sales-presentation-v1.pptx",
     slides: [
       "Your calendar should be full.",
+      "Built for the trades. Powered by experience. Driven by results.",
+      "More than a marketing agency",
+      "Home service companies have unique demands",
       "Three ways good companies lose jobs",
       "Most agencies sell you one tactic. We run the whole thing.",
       "One system, from the first search to the booked job",
