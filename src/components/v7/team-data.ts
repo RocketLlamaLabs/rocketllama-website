@@ -90,9 +90,13 @@ export const TEAM: Person[] = [
     ],
     gallery: {
       kicker: "Off the clock",
-      title: "Madison never passes up a good bookstore.",
-      text: "When she is not designing, Madison is reading, working out or traveling somewhere new. Personal growth, wellness and new places keep her creative, and a good bookstore is never far off the itinerary.",
+      title: "Madison is always headed somewhere new.",
+      text: "When she is not designing, Madison is reading, working out or traveling. The beach, the ski slopes, a music festival or a good bookstore: new places keep her creative, and they show up in her work.",
       photos: [
+        { src: "/v7/madison/beignet", alt: "Madison Schantz smiling with a Mickey-shaped beignet at an outdoor caf\u00e9" },
+        { src: "/v7/madison/beach-balcony", alt: "Madison Schantz hugging on a balcony above a white-sand beach" },
+        { src: "/v7/madison/skiing", alt: "Madison Schantz in ski gear and goggles in a snowy mountain parking lot" },
+        { src: "/v7/madison/festival", alt: "Two people with backpacks walking into a music festival under palm trees" },
         { src: "/v7/madison/bookstore", alt: "Inside a bookstore with tall wooden shelves, hanging bulb lights and racks of greeting cards" },
       ],
     },
