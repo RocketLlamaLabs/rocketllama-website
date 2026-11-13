@@ -38,7 +38,7 @@ export type Industry = {
 };
 
 /** Author and date shown in the byline and repeated in the structured data. */
-export const INDUSTRY_AUTHOR = { name: "Brian Greenberg", role: "CEO, Rocket Llama Labs", id: "brian-greenberg" };
+export const INDUSTRY_AUTHOR = { name: "Brian Greenberg", role: "Chief Strategy Officer, Rocket Llama Labs", id: "brian-greenberg" };
 export const INDUSTRY_PUBLISHED = "2026-11-11";
 export const INDUSTRY_UPDATED = "2026-11-11";
 export const INDUSTRY_UPDATED_LABEL = "November 11, 2026";
