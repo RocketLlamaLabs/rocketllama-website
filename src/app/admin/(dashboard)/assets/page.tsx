@@ -91,22 +91,7 @@ export default async function AssetsPage() {
               </div>
             </Card>
           ))}
-        </div>
-        <p className="mt-4 max-w-[68ch] text-sm text-muted">
-          To add a version, run{" "}
-          <code className="font-mono">scripts/make-slides.sh v2 deck.pptx</code>{" "}
-          and add the entry it prints to{" "}
-          <code className="font-mono">src/lib/slide-versions.ts</code>. The new
-          version appears here and at its own link once the change is deployed.
-        </p>
-      </section>
-
-      <section id="checklists" aria-labelledby="checklists-title" className="mt-12 scroll-mt-8">
-        <h2 id="checklists-title" className="text-2xl font-semibold">
-          Checklists
-        </h2>
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          <Card className="flex flex-col gap-3">
+          <Card id="implementation-checklist" className="flex flex-col gap-3">
             <div>
               <p className="text-[13px] font-bold tracking-[0.08em] text-blue uppercase font-display">
                 New client onboarding
@@ -134,6 +119,13 @@ export default async function AssetsPage() {
             </div>
           </Card>
         </div>
+        <p className="mt-4 max-w-[68ch] text-sm text-muted">
+          To add a version, run{" "}
+          <code className="font-mono">scripts/make-slides.sh v2 deck.pptx</code>{" "}
+          and add the entry it prints to{" "}
+          <code className="font-mono">src/lib/slide-versions.ts</code>. The new
+          version appears here and at its own link once the change is deployed.
+        </p>
       </section>
 
       <h2 className="mt-12 text-2xl font-semibold">Files</h2>
