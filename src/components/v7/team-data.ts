@@ -15,15 +15,15 @@ export const TEAM: Person[] = [
     alt: "Branson Cobb, CEO of Rocket Llama Labs",
     summary: "Branson runs the business and every client relationship. He spent more than 23 years leading sales teams, business development, and client strategy for some of the country\u2019s largest healthcare organizations. He brings that growth discipline to home service companies that want more qualified leads and measurable results.",
     bio: [
-      "Before launching Rocket Llama Labs, Branson served as Market President for CBIZ\u2019s Arizona and California offices, where he led market growth, business operations and client retention initiatives. Prior to CBIZ, he spent more than five years with Aetna, leading business development for Arizona\u2019s Public and Labor segment and helping organizations develop strategic growth initiatives.",
-      "Branson began his career at Cigna, where he spent 13 years advancing from Medical and Dental Underwriter to Senior Account Executive. His background in underwriting, analytics, account management and sales gave him a unique ability to connect financial insights with business strategy, an approach he continues to bring to every client relationship today.",
-      "At Rocket Llama Labs, Branson believes great marketing is not about chasing trends. It is about building systems that consistently generate leads, drive revenue and help business owners focus on what they do best. His forward-looking approach combines data-driven decision-making with innovative marketing strategies designed specifically for home service businesses.",
-      "Outside of work, Branson enjoys traveling, scuba diving, skiing and fishing with his dad. He earned his Bachelor of Science in Finance from the University of Arizona.",
+      "Before co-launching Rocket Llama Labs, Branson served as Market President for CBIZ\u2019s Phoenix and California offices where he led market growth, business operations, and client retention initiatives. Prior to CBIZ, he spent more than five years with Aetna leading business development for Arizona\u2019s Public and Labor segment and helping organizations develop strategic growth initiatives.",
+      "Branson began his career at Cigna where he spent 13 years advancing from Underwriter to Senior Account Executive. His background in underwriting, analytics, account management, and sales gave him a unique ability to connect financial insights with business strategy, an approach he continues to bring to every client relationship today.",
+      "At Rocket Llama Labs, Branson believes great marketing is not about chasing trends. It is about building systems that consistently generate leads, drive revenue, and help business owners focus on what they do best. His forward-looking approach combines data driven decision making with innovative marketing strategies designed specifically for home service businesses.",
+      "Outside of work, Branson enjoys traveling, scuba diving, skiing, and fly-fishing. He earned his Bachelor of Science in Finance from the University of Arizona.",
     ],
     gallery: {
       kicker: "Off the clock",
       title: "Branson loves to travel. He found our mascot\u2019s cousins in Peru.",
-      text: "When Branson is not with clients he is on the road. Travel, scuba diving, skiing and fishing with his dad are where he recharges. In Peru he visited Machu Picchu and met the llamas and alpacas of the Andes. These are his photos.",
+      text: "When Branson is not with clients he is on the road. Travel, scuba diving, skiing and fly-fishing are where he recharges. In Peru he visited Machu Picchu and met the llamas and alpacas of the Andes. These are his photos.",
       photos: [
         { src: "/v7/branson/dance-pose", alt: "Branson Cobb in a suit striking a dance pose with a young girl in a pink dress outside a house" },
         { src: "/v7/branson/scuba", alt: "Branson Cobb scuba diving over a rocky reef, hands spread toward the camera" },
