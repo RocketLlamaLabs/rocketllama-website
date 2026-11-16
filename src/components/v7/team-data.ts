@@ -18,7 +18,7 @@ export const TEAM: Person[] = [
       "Before co-launching Rocket Llama Labs, Branson served as Market President for CBIZ\u2019s Phoenix and California offices where he led market growth, business operations, and client retention initiatives. Prior to CBIZ, he spent more than five years with Aetna leading business development for Arizona\u2019s Public and Labor segment and helping organizations develop strategic growth initiatives.",
       "Branson began his career at Cigna where he spent 13 years advancing from Underwriter to Senior Account Executive. His background in underwriting, analytics, account management, and sales gave him a unique ability to connect financial insights with business strategy, an approach he continues to bring to every client relationship today.",
       "At Rocket Llama Labs, Branson believes great marketing is not about chasing trends. It is about building systems that consistently generate leads, drive revenue, and help business owners focus on what they do best. His forward-looking approach combines data driven decision making with innovative marketing strategies designed specifically for home service businesses.",
-      "Outside of work, Branson enjoys traveling, scuba diving, skiing, and fly-fishing. He earned his Bachelor of Science in Finance from the University of Arizona.",
+      "Branson earned his Bachelor of Science in Finance from the University of Arizona.",
     ],
     gallery: {
       kicker: "Off the clock",
