@@ -45,7 +45,7 @@ export const PEOPLE = [
     image: `${SITE}/v7/branson-cobb.jpg`,
     url: `${SITE}/about/branson-cobb`,
     description:
-      "CEO of Rocket Llama Labs. More than 23 years leading sales, business development and client strategy for large healthcare organizations: Market President for CBIZ's Arizona and California offices, business development lead at Aetna, and 13 years at Cigna from underwriter to Senior Account Executive.",
+      "CEO of Rocket Llama Labs. More than 23 years leading sales, business development and client strategy for large healthcare organizations: Market President for CBIZ's Phoenix and California offices, business development lead at Aetna, and 13 years at Cigna from underwriter to Senior Account Executive.",
     alumniOf: { "@type": "CollegeOrUniversity", name: "University of Arizona" },
   },
   {
