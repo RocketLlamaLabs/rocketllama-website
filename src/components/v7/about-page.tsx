@@ -4,7 +4,7 @@ import { TeamSection } from "@/components/v7/about-team";
 import { Nav, Stats, TITLE, GOAL, LEDE, PULL_1, PULL_2, BLOCKS } from "@/components/v7/about-mockups";
 
 // The page's one heading names who we are and what we do; the slogan sits above it.
-const H1 = "The Phoenix marketing team for home service companies.";
+const H1 = "The marketing team for home service companies.";
 
 // The About page: mockup F, chosen on 11 November 2026. Light blue header and
 // two-column section (quotes and proof numbers on the left, the seven points as

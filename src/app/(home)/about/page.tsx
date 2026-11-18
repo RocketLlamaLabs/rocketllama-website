@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { AboutPage } from "@/components/v7/about-page";
 
 export const metadata: Metadata = {
-  title: { absolute: "About Rocket Llama Labs | Phoenix Home Service Marketing" },
-  description: "Rocket Llama Labs is a Phoenix marketing and technology team that builds and runs the whole marketing system for HVAC, plumbing and other home service trades.",
+  title: { absolute: "About Rocket Llama Labs | Home Service Marketing Team" },
+  description: "Rocket Llama Labs is a marketing and technology team that builds and runs the whole marketing system for HVAC, plumbing and other home service companies.",
   alternates: { canonical: "https://rocketllamalabs.com/about" },
   openGraph: {
     type: "website",

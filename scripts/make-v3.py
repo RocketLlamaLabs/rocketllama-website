@@ -482,8 +482,8 @@ def v7_extras(s, f, is_home, base):
 
 V7_WHO = ['']
 ABOUT_META = """export const metadata: Metadata = {
-  title: { absolute: "About Rocket Llama Labs | Phoenix Home Service Marketing" },
-  description: "Rocket Llama Labs is a Phoenix marketing and technology team that builds and runs the whole marketing system for HVAC, plumbing and other home service trades.",
+  title: { absolute: "About Rocket Llama Labs | Home Service Marketing Team" },
+  description: "Rocket Llama Labs is a marketing and technology team that builds and runs the whole marketing system for HVAC, plumbing and other home service companies.",
   alternates: { canonical: "https://rocketllamalabs.com/about" },
   openGraph: {
     type: "website",
