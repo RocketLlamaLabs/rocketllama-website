@@ -7,7 +7,7 @@ import { ORG, SITE } from "@/components/v7/about-seo";
 // profiles, reviews) are left out rather than guessed. The street address and
 // ZIP stay off the site on purpose.
 
-const TITLE = "Home Services Marketing in Phoenix | Rocket Llama Labs";
+const TITLE = "Home Services Marketing and Technology | Rocket Llama Labs";
 const DESCRIPTION =
   "Phoenix marketing and technology for HVAC, plumbing, electrical, roofing and other home service companies. Every lead answered in under a minute.";
 
