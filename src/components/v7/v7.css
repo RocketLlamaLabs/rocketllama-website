@@ -1320,5 +1320,3 @@
   .v7.v7 main > header.svchero .answer{margin-top:14px;line-height:1.5}
   .v7.v7 main > header.svchero .ctas{margin-top:20px}
 }
-/* Team galleries with nine photos: three across, three rows. */
-.v7 .person .gallery:has(> figure:nth-child(9):last-child){grid-template-columns:repeat(3,1fr)}

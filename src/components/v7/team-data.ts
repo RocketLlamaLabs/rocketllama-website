@@ -66,16 +66,12 @@ export const TEAM: Person[] = [
     gallery: {
       kicker: "Off the clock",
       title: "Brian\u2019s best work is at home: a wife and three kids.",
-      text: "Brian built his businesses to run without him in the room, and this is what that time goes to: backyard afternoons, ballgames, paintball, Pink Path Foundation nights, family photo days and trips to the beach with his wife and their three kids.",
+      text: "Brian built his businesses to run without him in the room, and this is what that time goes to: backyard afternoons, ballgames, paintball, Pink Path Foundation nights and trips to the beach with his wife and their three kids.",
       photos: [
         { src: "/v7/brian/paintball", alt: "Brian Greenberg in a black cap taking a selfie at paintball with a player in a mask" },
         { src: "/v7/brian/family-1", alt: "Brian Greenberg with his wife and three children on a blanket in their backyard", tall: true },
         { src: "/v7/brian/pink-path", alt: "Brian Greenberg and family smiling in Pink Path Foundation caps" },
-        { src: "/v7/brian/family-2", alt: "Black and white photo of Brian Greenberg and his family in front of a vine-covered wall" },
-        { src: "/v7/brian/beach-group", alt: "Brian Greenberg with family on a beach boardwalk at sunset" },
         { src: "/v7/brian/family-3", alt: "Brian Greenberg and his family walking hand in hand on the beach" },
-        { src: "/v7/brian/family-couch", alt: "Brian Greenberg in a large family portrait around a white sofa" },
-        { src: "/v7/brian/family-4", alt: "Brian Greenberg and his family dressed up outside a stone building", tall: true },
         { src: "/v7/brian/ballgame", alt: "Brian Greenberg and his family at an Arizona Diamondbacks game, the two youngest in carriers" },
       ],
     },
