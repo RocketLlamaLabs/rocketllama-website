@@ -1365,3 +1365,16 @@
 /* About banner: the headline and the bold line sit midway between the label at the top and the paragraph at the
    foot, the same space above as below. */
 @media(min-width:701px){.v7.v7 .about-live > header.pagehead .goal + .lede{margin-top:auto;padding-top:22px}}
+/* Home carousel: the text box keeps the height of the longest slide, so every slide's headline starts at the same
+   height; shorter slides leave the extra room under their paragraph. (Overrides the per-slide height set by
+   behavior/hero.js on tablet and desktop.) */
+@media(min-width:701px){.v7.v7 .hero .rot{height:auto !important;transition:none}.v7.v7 .hero .rot .rslide{align-self:start}}
+/* Services banner: the four facts are larger and sit in the middle of the banner, top to bottom. */
+@media(min-width:1000px){
+  .v7.v7 main > header.svchero .facts{grid-row:1 / -1;align-self:center;height:0;margin-block:var(--hero-top);display:flex;flex-direction:column;justify-content:center;gap:22px;font-size:clamp(1.12rem,1.45vw,1.35rem);line-height:1.35}
+  .v7.v7 main > header.svchero .facts li{padding-left:28px}
+  .v7.v7 main > header.svchero .in > .kicker{grid-column:1;grid-row:1}
+  .v7.v7 main > header.svchero .facts li::before{width:11px;height:11px;top:.45em}
+}
+@media(min-width:1000px) and (max-height:820px){.v7.v7 main > header.svchero .facts{gap:16px}}
+@media(min-width:1100px) and (max-height:820px){.v7.v7 main > header.svchero .facts{margin-top:28px}}
