@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { pageMeta, IndustriesStructuredData } from "@/components/v7/page-seo";
 import { V7Footer } from "@/components/v7/footer";
 import { IndustriesFaq } from "@/components/v7/industries-extra";
+import { DreamBadge } from "@/components/v7/dream-badge";
 
 export const metadata: Metadata = pageMeta("/industries", "Home Service Industries We Market For", "Marketing for HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting, solar and every trade that goes to a customer's home.");
 
@@ -27,10 +28,18 @@ export default function Page() {
 <script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}});document.addEventListener('click',function(e){var b=e.target.closest('.v7 .team details.bio .less');if(b){var d=b.closest('details');d.removeAttribute('open');d.closest('.card').scrollIntoView({block:'nearest'})}})"}} />
 <main>
 <IndustriesStructuredData />
+<header className="pagehead with-badge indhero" id="top">
+  <div className="wrap in">
+    <div className="copy">
+      <p className="kicker">Industries</p>
+      <h1>Marketing for every trade that goes to a customer&rsquo;s home.</h1>
+      <p className="lede">If you send a truck to a house this is built for you. Pick your trade to see the marketing services we run for it. We start in your service area and expand city by city. Every lead comes from your own site and your own ads so it is yours alone, never sold to four other contractors.</p>
+    <DreamBadge tone="blue" />
+    </div>
+  </div>
+</header>
+
 <section id="industries"><div className="wrap">
-  <p className="kicker">Industries</p>
-  <h1>Marketing for every trade that goes to a customer&rsquo;s home.</h1>
-  <p className="sub">If you send a truck to a house this is built for you. Pick your trade to see the marketing services we run for it. We start in your service area and expand city by city. Every lead comes from your own site and your own ads so it is yours alone, never sold to four other contractors.</p>
   <div className="trades"><a className="trade" href="/hvac"><span>HVAC</span></a><a className="trade" href="/plumbing"><span>Plumbing</span></a><a className="trade" href="/electrical"><span>Electrical</span></a><a className="trade" href="/roofing"><span>Roofing</span></a><a className="trade" href="/garage-door"><span>Garage door</span></a><a className="trade" href="/pest-control"><span>Pest control</span></a><a className="trade" href="/landscaping"><span>Landscaping</span></a><a className="trade" href="/painting"><span>Painting</span></a><a className="trade" href="/window-and-pressure-washing"><span>Pressure washing</span></a><a className="trade" href="/handyman"><span>Handyman</span></a><a className="trade" href="/mobile-mechanic"><span>Mobile mechanic</span></a><a className="trade" href="/windows-and-doors"><span>Windows and doors</span></a><a className="trade" href="/solar"><span>Solar</span></a><a className="trade" href="/flooring"><span>Flooring</span></a><a className="trade" href="/remodeling"><span>Remodeling</span></a></div>
 </div></section>
 

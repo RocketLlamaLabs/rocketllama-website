@@ -710,6 +710,15 @@ def v7_industries_extras():
     a = '<h1>Every trade that goes to a customer&rsquo;s home.</h1>'
     assert t.count(a) == 1, 'industries h1'
     t = t.replace(a, '<h1>Marketing for every trade that goes to a customer&rsquo;s home.</h1>', 1)
+    # the banner matches every other page: a light-blue header with the revolving badge, the same height and type as
+    # the home banner; the trade tiles move into their own section right under it
+    i = t.index('<section id="industries"><div className="wrap">\n'); j = t.index('  <div className="trades">', i)
+    head = t[i + len('<section id="industries"><div className="wrap">\n'):j]
+    head = head.replace('<p className="sub">', '<p className="lede">', 1)
+    head = ''.join('    ' + l + '\n' for l in head.strip('\n').split('\n'))
+    t = t[:i] + ('<header className="pagehead with-badge indhero" id="top">\n  <div className="wrap in">\n    <div className="copy">\n' + head +
+                 '    <DreamBadge tone="blue" />\n    </div>\n  </div>\n</header>\n\n<section id="industries"><div className="wrap">\n') + t[j:]
+    t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { DreamBadge } from "@/components/v7/dream-badge";\n', 1)
     t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { IndustriesFaq } from "@/components/v7/industries-extra";\n', 1)
     a = '<div className="band" id="proof"'
     assert t.count(a) == 1 and t.count('</main>') == 1, 'industries band'
@@ -928,10 +937,12 @@ def v7_page_seo():
             assert k == len(TRADE_LINES), 'industry tiles'
             t = t.replace('<p className="sub">If you send a truck to a house this is built for you.', '<p className="sub">If you send a truck to a house this is built for you. Pick your trade to see the marketing services we run for it.', 1)
         if slug == 'services':
-            # an answer-first summary under the banner and real questions at the bottom, as on the industry pages
-            t = t.replace('import { DreamBadge } from "@/components/v7/dream-badge";\n', 'import { DreamBadge } from "@/components/v7/dream-badge";\nimport { ServicesSummary, ServicesFaq } from "@/components/v7/services-extra";\n', 1)
+            # the answer-first summary is the banner: headline, summary paragraph and facts (services-extra.tsx),
+            # in place of the old banner with its lede and badge; real questions at the bottom, as on the industry pages
+            t = t.replace('import { DreamBadge } from "@/components/v7/dream-badge";\n', 'import { ServicesHero, ServicesFaq } from "@/components/v7/services-extra";\n', 1)
             assert t.count('</header>\n') == 1 and t.count('\n</main>') == 1, 'services page'
-            t = t.replace('</header>\n', '</header>\n\n<ServicesSummary />\n', 1)
+            t, k = re.subn(r'<header className="pagehead with-badge" id="top">.*?</header>\n', '<ServicesHero />\n', t, count=1, flags=re.S)
+            assert k == 1, 'services banner'
             t = t.replace('\n</main>', '\n<ServicesFaq />\n\n</main>', 1)
             # each overview card's heading links to that service's own page (/services/<slug>)
             t = t.replace('import type { Metadata } from "next";\n', 'import type { Metadata } from "next";\nimport Link from "next/link";\n', 1)
