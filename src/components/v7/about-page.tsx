@@ -3,6 +3,9 @@ import { AboutStructuredData } from "@/components/v7/about-seo";
 import { TeamSection } from "@/components/v7/about-team";
 import { Nav, Stats, TITLE, GOAL, LEDE, PULL_1, PULL_2, BLOCKS } from "@/components/v7/about-mockups";
 
+// The page's one heading names who we are and what we do; the slogan sits above it.
+const H1 = "The marketing team for home service companies.";
+
 // The About page: mockup F, chosen on 11 November 2026. Light blue header and
 // two-column section (quotes and proof numbers on the left, the seven points as
 // dropdowns on the right), the team on white, the light blue footer.
@@ -13,8 +16,8 @@ export function AboutPage() {
       <main className="am am-f about-live">
         <AboutStructuredData />
         <header className="pagehead" id="top"><div className="wrap in">
-          <p className="kicker">About us</p>
-          <h1>{TITLE}</h1>
+          <p className="kicker">{TITLE}</p>
+          <h1>{H1}</h1>
           <p className="goal">{GOAL}</p>
           <p className="lede">{LEDE}</p>
         </div></header>

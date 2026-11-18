@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { AboutPage } from "@/components/v7/about-page";
 
 export const metadata: Metadata = {
-  title: { absolute: "About Rocket Llama Labs: the Phoenix marketing team for home service companies" },
-  description: "Rocket Llama Labs is Brian Greenberg, Branson Cobb and Madison Schantz, a Phoenix, Arizona team that builds and runs the whole marketing system for home service companies: website, search and AI search, ads, reviews, phones, AI receptionist and CRM. Every lead answered in under a minute, every dollar tracked to a paid job, and you own all of it.",
+  title: { absolute: "About Rocket Llama Labs | Home Service Marketing Team" },
+  description: "Rocket Llama Labs is a marketing and technology team that builds and runs the whole marketing system for HVAC, plumbing and other home service companies.",
   alternates: { canonical: "https://rocketllamalabs.com/about" },
   openGraph: {
     type: "website",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ORG, PEOPLE, SITE } from "@/components/v7/about-seo";
 import { type Industry, INDUSTRY_AUTHOR, INDUSTRY_PUBLISHED, INDUSTRY_UPDATED } from "@/components/v7/industries-data";
+import { SERVICES_FAQ, SERVICES_SUMMARY } from "@/components/v7/services-extra";
 
 // Metadata and structured data for the version 7 subpages. Search engines and
 // AI assistants read this; visitors never see it. Facts here also appear in
@@ -69,7 +70,9 @@ export function ServicesStructuredData() {
     <Script
       graph={[
         breadcrumbs(path, "Services"),
-        webPage(path, "Services | Rocket Llama Labs", "Every piece of the Rocket Llama Labs marketing system for home service companies, and how they fit together."),
+        webPage(path, "Home Service Marketing Services | Rocket Llama Labs", SERVICES_SUMMARY, {
+          speakable: { "@type": "SpeakableSpecification", cssSelector: ["#summary .answer"] },
+        }),
         {
           "@type": "VideoObject",
           "@id": `${SITE}${path}#video`,
@@ -90,6 +93,11 @@ export function ServicesStructuredData() {
             position: i + 1,
             item: { "@type": "Service", name, description, provider: { "@id": `${SITE}/#organization` }, areaServed: ORG.areaServed, audience: { "@type": "BusinessAudience", audienceType: "Home service companies" } },
           })),
+        },
+        {
+          "@type": "FAQPage",
+          "@id": `${SITE}${path}#faq`,
+          mainEntity: SERVICES_FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
         },
       ]}
     />
