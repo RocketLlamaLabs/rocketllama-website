@@ -29,7 +29,6 @@ export const TEAM: Person[] = [
         { src: "/v7/branson/dance-pose", alt: "Branson Cobb in a suit striking a dance pose with a young girl in a pink dress outside a house" },
         { src: "/v7/branson/scuba", alt: "Branson Cobb scuba diving over a rocky reef, hands spread toward the camera" },
         { src: "/v7/branson/llama-and-alpaca", alt: "A white and brown llama with a young brown alpaca beside it" },
-        { src: "/v7/branson/machu-picchu-2", alt: "A llama grazing in front of the stone walls at Machu Picchu" },
         { src: "/v7/branson/skiing", alt: "Branson Cobb in a ski helmet and goggles, snow in his beard" },
       ],
     },

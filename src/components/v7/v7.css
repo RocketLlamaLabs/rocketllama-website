@@ -1298,3 +1298,6 @@
   .v7.v7 main > header.indhero .in{padding-bottom:28px}
 }
 @media(min-width:1000px) and (max-height:820px){.v7.v7 .indhero #industries{margin-top:22px}.v7.v7 main > header.indhero .in::after{flex-basis:74px}}
+/* Footer: Facebook as its logo instead of the word. */
+.v7 footer .contact a.social{display:inline-flex;vertical-align:-4px}
+.v7 footer .contact a.social:hover{text-decoration:none}
