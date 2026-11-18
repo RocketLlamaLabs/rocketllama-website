@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = TEAM.find((t) => t.slug === slug);
   if (!p) return {};
-  return pageMeta(`/about/${p.slug}`, `${p.name}, ${p.role}`, p.summary.replace(/<[^>]+>/g, ""));
+  return pageMeta(`/about/${p.slug}`, `${p.name}, ${p.role}`, p.description);
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {

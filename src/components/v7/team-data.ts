@@ -3,7 +3,7 @@
 
 export type Gallery = { kicker: string; title: string; text: string; photos: { src: string; alt: string; tall?: boolean }[] };
 export type Book = { cover: string; alt: string; kicker: string; title: string; text: string[]; links: { href: string; label: string }[] };
-export type Person = { slug: string; name: string; role: string; shortRole?: string; photo: string; alt: string; summary: string; bio: string[]; book?: Book; gallery?: Gallery };
+export type Person = { slug: string; name: string; role: string; shortRole?: string; photo: string; alt: string; summary: string; /** Meta description for the person's page, 160 characters or fewer. */ description: string; bio: string[]; book?: Book; gallery?: Gallery };
 
 export const TEAM: Person[] = [
   {
@@ -13,6 +13,7 @@ export const TEAM: Person[] = [
     shortRole: "CEO",
     photo: "/v7/branson-cobb.jpg",
     alt: "Branson Cobb, CEO of Rocket Llama Labs",
+    description: "Branson Cobb, CEO of Rocket Llama Labs, spent 23+ years leading sales and client strategy at CBIZ, Aetna and Cigna. Now he helps home service companies grow.",
     summary: "Branson runs the business and every client relationship. He spent more than 23 years leading sales teams, business development, and client strategy for some of the country\u2019s largest healthcare organizations. He brings that growth discipline to home service companies that want more qualified leads and measurable results.",
     bio: [
       "Before co-launching Rocket Llama Labs, Branson served as Market President for CBIZ\u2019s Phoenix and California offices where he led market growth, business operations, and client retention initiatives. Prior to CBIZ, he spent more than five years with Aetna leading business development for Arizona\u2019s Public and Labor segment and helping organizations develop strategic growth initiatives.",
@@ -40,6 +41,7 @@ export const TEAM: Person[] = [
     shortRole: "CSO",
     photo: "/v7/brian-greenberg.jpg",
     alt: "Brian Greenberg, Chief Strategy Officer of Rocket Llama Labs",
+    description: "Brian Greenberg, Chief Strategy Officer of Rocket Llama Labs, built a $50M+ insurance agency on inbound marketing and wrote The Salesman Who Doesn\u2019t Sell.",
     summary: "Brian sets the strategy and the marketing playbook for every client. He has spent more than twenty years building businesses that get found online, including a fully digital insurance agency that generated $50M+ through inbound marketing, and he wrote <em>The Salesman Who Doesn\u2019t Sell</em>. He has run that same playbook for Phoenix home service companies.",
     bio: [
       "Entrepreneurship is the family trade. Brian learned it from his father, and it was everywhere around him: his grandfather ran his own business, and so did every one of his uncles. Growing up in Highland Park, Illinois, he never seriously considered working for anyone else. The University of Arizona\u2019s Eller College of Management gave him the formal version, entrepreneurship and marketing, sharpened by the McGuire Entrepreneurship Program. Then he settled in Scottsdale, Arizona, and got to work.",
@@ -81,6 +83,7 @@ export const TEAM: Person[] = [
     shortRole: "CMO",
     photo: "/v7/madison.jpg",
     alt: "Madison Schantz, Chief Marketing Officer at Rocket Llama Labs",
+    description: "Madison Schantz, CMO of Rocket Llama Labs, is a digital designer, branding specialist and AI content creator who builds brands and websites for home services.",
     summary: "Madison designs the brand, the website and the AI-powered tools each client runs on. Her background spans branding, web design, AI content and digital strategy, and she builds every piece so a home service company looks strong online and turns visitors into booked jobs.",
     bio: [
       "Madison is a creative digital designer, branding specialist, AI content creator, and digital architecture professional with a passion for transforming innovative ideas into meaningful digital experiences. With experience in website design, brand development, artificial intelligence, and digital strategy, she specializes in creating visually compelling, functional, and user-friendly solutions that help businesses establish a distinctive and memorable online presence.",
