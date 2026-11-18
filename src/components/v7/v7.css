@@ -1392,3 +1392,5 @@
 .v7.v7 main > header.pagehead .lede,.v7.v7 main > header.ihero .lede,.v7.v7 .hero .rot .lede{hyphens:manual}
 /* About headline: the first line ("The marketing team for") starts a little left of the second, as approved by eye. */
 .v7.v7 .about-live > header.pagehead h1{text-indent:-.025em}
+/* Services page only: the footer is the same light blue as the banners. */
+.v7:has(main > header.svchero) footer{background:#eaf2fd;border-top:0}
