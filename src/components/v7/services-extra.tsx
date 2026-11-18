@@ -34,7 +34,7 @@ export const SERVICES_FAQ: [string, string][] = [
   ],
   [
     "What does home service marketing cost with Rocket Llama Labs?",
-    "Every company is quoted on its own, because the number depends on your trade, the size of your service area, how many trucks you run and which services you need. On the first call we write a marketing plan for your company with that number on it. You see the plan before you pay for anything, and you keep it either way.",
+    "There is no price list. Rocket Llama Labs prices each company after a review, because the number depends on your trade, your service area, how many trucks you run, which services you need and how you show up online today. Schedule a call and we review your company, then write a marketing plan with that number on it. You see the plan before you pay for anything, and you keep it either way.",
   ],
   [
     "Is there a contract, and who owns the website and accounts?",

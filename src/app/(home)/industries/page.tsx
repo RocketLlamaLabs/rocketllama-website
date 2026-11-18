@@ -4,8 +4,9 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { pageMeta, IndustriesStructuredData } from "@/components/v7/page-seo";
 import { V7Footer } from "@/components/v7/footer";
+import { IndustriesList, IndustriesFaq } from "@/components/v7/industries-extra";
 
-export const metadata: Metadata = pageMeta("/industries", "Industries", "Home services marketing for HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting and every trade that goes to a customer's home.");
+export const metadata: Metadata = pageMeta("/industries", "Home Service Industries We Market For", "Marketing for HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting, solar and every trade that goes to a customer's home.");
 
 // Industries, moved off the home page on 4 November 2026.
 export default function Page() {
@@ -28,10 +29,12 @@ export default function Page() {
 <IndustriesStructuredData />
 <section id="industries"><div className="wrap">
   <p className="kicker">Industries</p>
-  <h1>Every trade that goes to a customer&rsquo;s home.</h1>
+  <h1>Marketing for every trade that goes to a customer&rsquo;s home.</h1>
   <p className="sub">If you send a truck to a house this is built for you. Pick your trade to see the marketing services we run for it. We start in your service area and expand city by city. Every lead comes from your own site and your own ads so it is yours alone, never sold to four other contractors.</p>
   <div className="trades"><a className="trade" href="/hvac"><span>HVAC</span></a><a className="trade" href="/plumbing"><span>Plumbing</span></a><a className="trade" href="/electrical"><span>Electrical</span></a><a className="trade" href="/roofing"><span>Roofing</span></a><a className="trade" href="/garage-door"><span>Garage door</span></a><a className="trade" href="/pest-control"><span>Pest control</span></a><a className="trade" href="/landscaping"><span>Landscaping</span></a><a className="trade" href="/painting"><span>Painting</span></a><a className="trade" href="/window-and-pressure-washing"><span>Pressure washing</span></a><a className="trade" href="/handyman"><span>Handyman</span></a><a className="trade" href="/mobile-mechanic"><span>Mobile mechanic</span></a><a className="trade" href="/windows-and-doors"><span>Windows and doors</span></a><a className="trade" href="/solar"><span>Solar</span></a><a className="trade" href="/flooring"><span>Flooring</span></a><a className="trade" href="/remodeling"><span>Remodeling</span></a></div>
 </div></section>
+
+<IndustriesList />
 
 <div className="band" id="proof" style={{"--img":"url(/v2/img/band-door.jpg)"} as CSSProperties}><div className="wrap in">
   <p className="kicker">Tracked to the job</p>
@@ -44,6 +47,8 @@ export default function Page() {
     <div><div className="b">100%</div><div className="l">Yours: the site, the data, the numbers, and the ad accounts</div></div>
   </div>
 </div></div>
+
+<IndustriesFaq />
 </main>
       <V7Footer note='Version 7, industries' />
     </>

@@ -123,8 +123,34 @@ export const TRADE_COPY: [string, string][] = [
   ["Remodeling", "Projects worth tens of thousands. A site built for the searches homeowners make before they call anyone."],
 ];
 
+// Questions on the Industries page, shown by industries-extra.tsx and repeated as FAQPage data.
+export const INDUSTRIES_FAQ: [string, string][] = [
+  [
+    "What industries does Rocket Llama Labs work with?",
+    "Rocket Llama Labs markets home service companies: HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting, window and pressure washing, handyman, mobile mechanic, windows and doors, solar, flooring and remodeling. If your company sends a truck to a customer’s home, the same system works for you.",
+  ],
+  [
+    "Is the marketing different for each trade?",
+    "Yes. The system is the same, but what it targets is not. Each trade has its own searches, its own busy and slow seasons, and its own job values, from a same-day garage door repair to a remodel worth tens of thousands. Every trade page above shows the searches, the services and the year-round plan we run for that trade.",
+  ],
+  [
+    "My trade isn’t listed. Can you still help?",
+    "Most likely. The list covers the trades we see most, not every one we work with. If you send a truck to a house, the website, search, ads, phones and CRM work the same way for you. Schedule a call and we will look at how your company shows up online today.",
+  ],
+  [
+    "Who owns the leads?",
+    "You do. Every lead comes from your own website and your own ads, so it is yours alone. A lead marketplace sells the same homeowner to four contractors; we never do. The website, the ad accounts, the phone numbers and the customer list are all in your company’s name.",
+  ],
+  [
+    "How do you show what the marketing brought in?",
+    "Every ad source gets its own tracked phone number, and every call and form lands in a CRM you own. The CRM records which source each lead came from and what the job was worth once it is paid. Each month you see booked jobs by source, what they were worth and what they cost.",
+  ],
+];
+
+export const INDUSTRIES_DESCRIPTION = "Marketing for HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting, solar and every trade that goes to a customer's home.";
+
 // Each trade has its own page; the slug is the trade name in lowercase with hyphens.
-const TRADE_SLUGS: Record<string, string> = Object.fromEntries(TRADE_COPY.map(([name]) => [name, name.toLowerCase().replace(/ /g, "-")]));
+export const TRADE_SLUGS: Record<string, string> = Object.fromEntries(TRADE_COPY.map(([name]) => [name, name.toLowerCase().replace(/ /g, "-")]));
 
 export function IndustriesStructuredData() {
   const path = "/industries";
@@ -132,7 +158,7 @@ export function IndustriesStructuredData() {
     <Script
       graph={[
         breadcrumbs(path, "Industries"),
-        webPage(path, "Industries | Rocket Llama Labs", "Home services marketing for HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting and every trade that goes to a customer's home."),
+        webPage(path, "Home Service Industries We Market For | Rocket Llama Labs", INDUSTRIES_DESCRIPTION),
         {
           "@type": "ItemList",
           "@id": `${SITE}${path}#trades`,
@@ -142,6 +168,11 @@ export function IndustriesStructuredData() {
             position: i + 1,
             item: { "@type": "Service", name: `${name} marketing`, description, url: `${SITE}/${TRADE_SLUGS[name]}`, provider: { "@id": `${SITE}/#organization` }, areaServed: ORG.areaServed },
           })),
+        },
+        {
+          "@type": "FAQPage",
+          "@id": `${SITE}${path}#faq`,
+          mainEntity: INDUSTRIES_FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
         },
       ]}
     />

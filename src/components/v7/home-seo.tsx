@@ -7,7 +7,7 @@ import { ORG, SITE } from "@/components/v7/about-seo";
 // profiles, reviews) are left out rather than guessed. The street address and
 // ZIP stay off the site on purpose.
 
-const TITLE = "Home Services Marketing in Phoenix | Rocket Llama Labs";
+const TITLE = "Home Services Marketing and Technology | Rocket Llama Labs";
 const DESCRIPTION =
   "Phoenix marketing and technology for HVAC, plumbing, electrical, roofing and other home service companies. Every lead answered in under a minute.";
 
@@ -55,7 +55,7 @@ const SERVICES: [string, string][] = [
 
 // Shown on the home page under "Questions" and repeated as FAQ structured data. Keep the two in step.
 export const HOME_FAQ: [string, string][] = [
-  ["What does it cost?", "Every company is quoted on its own. On the first call we write a marketing plan for your company with a number on it. You see the plan before you pay for anything, and you keep it either way."],
+  ["What does it cost?", "There is no price list. Rocket Llama Labs prices each company after a review. Schedule a call: we review your company and how it shows up online, then write a marketing plan with a number on it. You see the plan before you pay for anything, and you keep it either way."],
   ["Do I own the website, the data and the ad accounts?", "Yes. The website code, the data, the phone numbers and the ad accounts are all in your name. If you ever leave, you take everything with you."],
   ["Is there a contract?", "No. Everything is month to month. Turn the budget up in busy months and down in slow ones."],
   ["How fast are leads answered?", "Every new lead gets a text and an email in under a minute, in your voice. If you cannot pick up, the AI receptionist answers the call and books the job or takes a message."],
@@ -123,6 +123,7 @@ export function HomeStructuredData() {
         about: { "@id": `${SITE}/#organization` },
         primaryImageOfPage: { "@type": "ImageObject", url: `${SITE}/v7/og.png`, width: 1200, height: 630 },
         inLanguage: "en-US",
+        speakable: { "@type": "SpeakableSpecification", cssSelector: ["#summary .answer"] },
       },
     ],
   };
