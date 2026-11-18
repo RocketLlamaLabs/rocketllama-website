@@ -274,6 +274,6 @@ The industry pages are the reference build for this playbook.
 | Hub page linking to every industry | `/industries` |
 | Sitemap and `llms.txt` | `src/app/sitemap.ts`, `public/llms.txt` |
 
-Our industry pages sell to companies in any market, so they deliberately skip the city list from section 8; those rules are for client sites that serve a local area. Each page still says where we are based, as its last summary fact and in one FAQ ("Do you only work with … in Phoenix?"), so search engines and AI assistants can place the company without tying the page to one city.
+Our industry pages sell to companies in any market, so they deliberately skip the city list from section 8; those rules are for client sites that serve a local area.
 
 Still open on our own site, to close before launch: remove the pre-launch `noindex` (`next.config.ts`) and the blanket `Disallow` (`src/app/robots.ts`); add the Google Business Profile, LinkedIn and other social profiles to the organization schema's `sameAs` as they go live (phone and Facebook are in; the street address and ZIP stay off the site on purpose); replace the shared banner photos with one real photo per trade.
