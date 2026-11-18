@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ORG, PEOPLE, SITE } from "@/components/v7/about-seo";
 import { type Industry, INDUSTRY_AUTHOR, INDUSTRY_PUBLISHED, INDUSTRY_UPDATED } from "@/components/v7/industries-data";
 import { SERVICES_FAQ, SERVICES_SUMMARY } from "@/components/v7/services-extra";
+import { type ServiceDetail, SERVICE_PUBLISHED, SERVICE_UPDATED } from "@/components/v7/services-data";
 
 // Metadata and structured data for the version 7 subpages. Search engines and
 // AI assistants read this; visitors never see it. Facts here also appear in
@@ -253,6 +254,72 @@ export function IndustryStructuredData({ ind }: { ind: Industry }) {
           "@type": "FAQPage",
           "@id": `${url}#faq`,
           mainEntity: ind.faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+        },
+      ]}
+    />
+  );
+}
+
+// Metadata for a service page (/services/websites, ...).
+export function serviceMeta(svc: ServiceDetail): Metadata {
+  const meta = pageMeta(`/services/${svc.slug}`, svc.title, svc.description);
+  return { ...meta, authors: [{ name: INDUSTRY_AUTHOR.name, url: `${SITE}/about/${INDUSTRY_AUTHOR.id}` }] };
+}
+
+// Structured data for a service page: where it sits in the site, who wrote it and
+// when, the service it describes and the page's questions and answers. Every
+// value is also in the visible page.
+export function ServiceStructuredData({ svc }: { svc: ServiceDetail }) {
+  const path = `/services/${svc.slug}`;
+  const url = `${SITE}${path}`;
+  const authorId = `${SITE}/about#${INDUSTRY_AUTHOR.id}`;
+  const author = PEOPLE.find((p) => p["@id"] === authorId);
+  return (
+    <Script
+      graph={[
+        ORG,
+        ...(author ? [author] : []),
+        {
+          "@type": "BreadcrumbList",
+          "@id": `${url}#breadcrumb`,
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+            { "@type": "ListItem", position: 2, name: "Services", item: `${SITE}/services` },
+            { "@type": "ListItem", position: 3, name: svc.name, item: url },
+          ],
+        },
+        webPage(path, `${svc.title} | Rocket Llama Labs`, svc.description, {
+          author: { "@id": authorId },
+          publisher: { "@id": `${SITE}/#organization` },
+          datePublished: SERVICE_PUBLISHED,
+          dateModified: SERVICE_UPDATED,
+          breadcrumb: { "@id": `${url}#breadcrumb` },
+          mainEntity: { "@id": `${url}#service` },
+          speakable: { "@type": "SpeakableSpecification", cssSelector: ["#summary .answer"] },
+        }),
+        {
+          "@type": "Service",
+          "@id": `${url}#service`,
+          name: svc.name,
+          serviceType: svc.title,
+          url,
+          description: svc.summary,
+          provider: { "@id": `${SITE}/#organization` },
+          areaServed: { "@type": "Country", name: "United States" },
+          audience: { "@type": "BusinessAudience", audienceType: "Home service companies" },
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: svc.includedHeading,
+            itemListElement: svc.included.map(([label, heading, copy]) => ({
+              "@type": "Offer",
+              itemOffered: { "@type": "Service", name: `${label}: ${heading}`, description: copy },
+            })),
+          },
+        },
+        {
+          "@type": "FAQPage",
+          "@id": `${url}#faq`,
+          mainEntity: svc.faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
         },
       ]}
     />

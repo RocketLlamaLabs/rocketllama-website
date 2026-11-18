@@ -21,6 +21,19 @@ HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, pai
 - [Run an instant audit](https://rocketllamalabs.com/audit): see how a company shows up online
 - [Schedule a call](https://rocketllamalabs.com/book)
 
+## Service pages
+
+Each page covers one part of the system: what it includes, how we set it up, and questions and answers.
+
+- [Websites for Home Service Companies](https://rocketllamalabs.com/services/websites)
+- [Local SEO and AI Search Optimization](https://rocketllamalabs.com/services/local-seo-and-ai-search)
+- [Google Business Profile Management](https://rocketllamalabs.com/services/google-business-profile)
+- [Lead Funnels for Home Service Companies](https://rocketllamalabs.com/services/lead-funnels)
+- [AI Receptionist and Call Tracking](https://rocketllamalabs.com/services/ai-receptionist)
+- [CRM With AI Follow-Up for Home Services](https://rocketllamalabs.com/services/crm)
+- [Google, Local Services and Meta Ads](https://rocketllamalabs.com/services/google-and-meta-ads)
+- [Review Management for Home Services](https://rocketllamalabs.com/services/review-management)
+
 ## Industry pages
 
 Each page covers the marketing services we run for that trade (Local Services Ads, Google Business Profile verification and management, local SEO, AI search, ads, phones, CRM and reviews), with a summary and questions and answers.

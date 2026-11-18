@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { pageMeta, ServicesStructuredData } from "@/components/v7/page-seo";
 import { V7Footer } from "@/components/v7/footer";
 import { DreamBadge } from "@/components/v7/dream-badge";
-import { ServicesSummary, ServicesFaq } from "@/components/v7/services-extra";
+import { ServicesSummary, ServicesFaq, ServicePagesList } from "@/components/v7/services-extra";
 import { SystemFlow } from "@/components/v7/system-flow";
 
 export const metadata: Metadata = pageMeta("/services", "Home Service Marketing Services", "Websites, local SEO and AI search, Google Business Profile, ads, reviews, phones with an AI receptionist and CRM for home service companies, run as one system.");
@@ -68,6 +68,8 @@ export default function Page() {
     <div className="card" style={{background:"var(--accent-soft)",borderColor:"#BFD8FF"} as CSSProperties}><span className="k">Your leads</span><h3>Exclusive, never shared</h3><p>Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors. We never do.</p><p style={{marginTop:"14px"} as CSSProperties}><a className="btn sm" href="/book">Schedule a call</a></p></div>
   </div>
 </div></section>
+
+<ServicePagesList />
 
 <section id="map" className="feature"><div className="wrap">
   <p className="kicker">How it connects</p>

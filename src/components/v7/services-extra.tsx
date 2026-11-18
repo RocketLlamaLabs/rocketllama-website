@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { SERVICE_PAGES } from "@/components/v7/services-data";
+
 // The Services page's summary block and FAQ, laid out like the industry pages
 // (src/components/v7/industry-page.tsx) so the page answers "what is this and
 // who is it for" up top and carries real questions at the bottom. The same
@@ -68,6 +71,26 @@ export function ServicesFaq() {
       <h2>Home service marketing questions</h2>
       <div className="faq">
         {SERVICES_FAQ.map(([q, a], i) => <details key={q} open={i === 0}><summary><h3>{q}</h3></summary><p>{a}</p></details>)}
+      </div>
+    </div></section>
+  );
+}
+
+// A card for each service page, under the overview cards. Eight cards fill full
+// rows at every width: four, two or one per row (v7.css .svclinks).
+export function ServicePagesList() {
+  return (
+    <section id="each"><div className="wrap">
+      <p className="kicker">Each service in detail</p>
+      <h2>Explore every service</h2>
+      <div className="svclinks">
+        {SERVICE_PAGES.map((p) => (
+          <Link className="card" key={p.slug} href={`/services/${p.slug}`}>
+            <h3>{p.name}</h3>
+            <p>{p.description}</p>
+            <span className="more">Read more <span aria-hidden="true">&rarr;</span></span>
+          </Link>
+        ))}
       </div>
     </div></section>
   );
