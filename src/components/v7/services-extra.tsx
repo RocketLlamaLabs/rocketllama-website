@@ -42,10 +42,6 @@ export const SERVICES_FAQ: [string, string][] = [
     "Is there a contract, and who owns the website and accounts?",
     "There is no contract. Rocket Llama Labs works month to month. The website, the Google Business Profile, the ad accounts and the tracked phone numbers are in your company’s name, and the ads run on your card. If you leave, you export your data, port your numbers, take the code, and we help the next provider get set up.",
   ],
-  [
-    "Do you only work with home service companies in Phoenix?",
-    "No. Rocket Llama Labs is based in Phoenix, Arizona, and works with home service companies anywhere in the United States. Companies in the Valley, including Scottsdale, Mesa, Chandler, Gilbert, Glendale, Tempe and Peoria, get the proposal in person; companies in other markets work with us remotely. We start in your service area and expand city by city.",
-  ],
 ];
 
 export function ServicesSummary() {
