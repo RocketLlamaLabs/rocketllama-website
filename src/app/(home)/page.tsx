@@ -8,6 +8,7 @@ import { FullSystem, HowItWorks } from "@/components/v8/full-system";
 import { SixtySecondCheck } from "@/components/v2/sixty-second-check";
 import { Valley } from "@/components/v7/valley";
 import { HeroCarousel } from "@/components/v7/hero-carousel";
+import { HomeSummary } from "@/components/v7/home-extra";
 
 export const metadata: Metadata = HOME_META;
 
@@ -53,6 +54,8 @@ export default function Page() {
   <div className="dots"><button type="button" aria-label="Picture 1"></button><button type="button" aria-label="Picture 2"></button><button type="button" aria-label="Picture 3"></button><button type="button" aria-label="Picture 4"></button></div>
 </header>
 <HeroCarousel />
+
+<HomeSummary />
 
 <section id="quiz" className="qzsec quiz60"><div className="wrap">
   <p className="kicker">The 60-second check</p>

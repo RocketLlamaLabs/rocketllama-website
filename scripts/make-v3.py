@@ -702,6 +702,33 @@ def write_v7_industries():
 INDUSTRY_SLUGS = ['hvac', 'plumbing', 'electrical', 'roofing', 'garage-door', 'pest-control', 'landscaping', 'painting',
                   'window-and-pressure-washing', 'handyman', 'mobile-mechanic', 'windows-and-doors', 'solar', 'flooring', 'remodeling']
 
+def v7_industries_extras():
+    """Industries page: a keyword headline, one line per trade linking to its page, and an FAQ.
+    The sections are hand-written in src/components/v7/industries-extra.tsx."""
+    ip = os.path.join(root, 'src/app/(home)/industries/page.tsx'); t = open(ip).read()
+    a = '<h1>Every trade that goes to a customer&rsquo;s home.</h1>'
+    assert t.count(a) == 1, 'industries h1'
+    t = t.replace(a, '<h1>Marketing for every trade that goes to a customer&rsquo;s home.</h1>', 1)
+    t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { IndustriesList, IndustriesFaq } from "@/components/v7/industries-extra";\n', 1)
+    a = '<div className="band" id="proof"'
+    assert t.count(a) == 1 and t.count('</main>') == 1, 'industries band'
+    t = t.replace(a, '<IndustriesList />\n\n' + a, 1)
+    t = t.replace('</main>', '\n<IndustriesFaq />\n</main>', 1)
+    open(ip, 'w').write(t)
+
+
+def v7_home_extras():
+    """Home page: an answer-first summary under the banner (src/components/v7/home-extra.tsx)."""
+    hp = os.path.join(root, 'src/app/(home)/page.tsx'); t = open(hp).read()
+    a = '<HeroCarousel />\n'
+    assert t.count(a) == 1, 'home carousel'
+    t = t.replace(a, a + '\n<HomeSummary />\n', 1)
+    a = 'import { HeroCarousel } from "@/components/v7/hero-carousel";\n'
+    assert t.count(a) == 1, 'home imports'
+    t = t.replace(a, a + 'import { HomeSummary } from "@/components/v7/home-extra";\n', 1)
+    open(hp, 'w').write(t)
+
+
 def write_v7_industry_pages():
     """One page per trade (/hvac, /plumbing, ...). Each route file is a thin shell: the copy is in
     src/components/v7/industries-data.ts and the layout in src/components/v7/industry-page.tsx, both hand-written.
@@ -800,7 +827,7 @@ def v8_extras(s, f, is_home, base):
 # ---------- version 7 subpages: full metadata and structured data (src/components/v7/page-seo.tsx)
 V7_PAGE_SEO = {
     'services':  ('Home Service Marketing Services', 'Websites, local SEO and AI search, Google Business Profile, ads, reviews, phones with an AI receptionist and CRM for home service companies, run as one system.', False),
-    'industries': ('Industries',           'Home services marketing for HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting and every trade that goes to a customer\'s home.', False),
+    'industries': ('Home Service Industries We Market For', 'Marketing for HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting, solar and every trade that goes to a customer\'s home.', False),
     'audit':     ('Run an instant audit',  'See how your home service company shows up online in 20 seconds: Google Business Profile, reviews, website, phone and what the AI engines say about you.', False),
     'book':      ('Schedule a call',       'Pick a time for a call with Rocket Llama Labs. We look at how your home service company shows up online and write a marketing plan with a number on it.', False),
     'qualify':   ('See if you qualify',    'Two minutes of questions about your home service company, then a time on the calendar.', True),
@@ -877,6 +904,8 @@ if __name__ == '__main__':
     shutil.rmtree(os.path.join(root, 'src/app/(home)/about-brian'), ignore_errors=True)  # no separate page for Brian on v7
     v7_page_seo()
     v7_move_proof_band()
+    v7_industries_extras()
+    v7_home_extras()
     write_v7_industry_pages()
     write_v7_industry_links()
     build('src/app/v8', '/v8', 8, extras=v8_extras, extra_css_import='@/components/v8/v8.css', layout_note=' The home page itself is src/components/v8/home.tsx.')

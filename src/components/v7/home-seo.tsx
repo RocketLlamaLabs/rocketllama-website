@@ -123,6 +123,7 @@ export function HomeStructuredData() {
         about: { "@id": `${SITE}/#organization` },
         primaryImageOfPage: { "@type": "ImageObject", url: `${SITE}/v7/og.png`, width: 1200, height: 630 },
         inLanguage: "en-US",
+        speakable: { "@type": "SpeakableSpecification", cssSelector: ["#summary .answer"] },
       },
     ],
   };
