@@ -1351,3 +1351,10 @@
 }
 @media(min-width:1000px) and (max-height:820px){.v7.v7 main > header.indhero .in > :last-child{margin-top:22px}}
 @media(min-width:701px) and (max-width:999px){.v7.v7 main > header.indhero #industries{margin-top:auto;padding-top:22px}}
+/* About: the left side of the navy section scrolls with the page instead of following it down. */
+.v7.v7 .about-live .am-split .left{position:static}
+/* Home carousel: more room between each slide's headline and its paragraph. */
+@media(min-width:701px){.v7.v7 .hero .rot .lede{margin-top:34px}}
+@media(min-width:701px) and (max-height:820px){.v7.v7 .hero .rot .lede{margin-top:28px}}
+/* About banner: the extra room is shared evenly above the bold line and above the paragraph. */
+@media(min-width:701px){.v7.v7 .about-live > header.pagehead .goal{margin-top:auto}.v7.v7 .about-live > header.pagehead .goal + .lede{margin-top:auto;padding-top:22px}}
