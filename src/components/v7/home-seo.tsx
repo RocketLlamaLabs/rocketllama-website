@@ -55,7 +55,7 @@ const SERVICES: [string, string][] = [
 
 // Shown on the home page under "Questions" and repeated as FAQ structured data. Keep the two in step.
 export const HOME_FAQ: [string, string][] = [
-  ["What does it cost?", "Every company is quoted on its own. On the first call we write a marketing plan for your company with a number on it. You see the plan before you pay for anything, and you keep it either way."],
+  ["What does it cost?", "There is no price list. Rocket Llama Labs prices each company after a review. Schedule a call: we review your company and how it shows up online, then write a marketing plan with a number on it. You see the plan before you pay for anything, and you keep it either way."],
   ["Do I own the website, the data and the ad accounts?", "Yes. The website code, the data, the phone numbers and the ad accounts are all in your name. If you ever leave, you take everything with you."],
   ["Is there a contract?", "No. Everything is month to month. Turn the budget up in busy months and down in slow ones."],
   ["How fast are leads answered?", "Every new lead gets a text and an email in under a minute, in your voice. If you cannot pick up, the AI receptionist answers the call and books the job or takes a message."],

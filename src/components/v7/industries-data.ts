@@ -44,10 +44,10 @@ export const INDUSTRY_UPDATED = "2026-11-18";
 export const INDUSTRY_UPDATED_LABEL = "November 18, 2026";
 
 
-// Two questions every trade asks. The answer names what the price depends on and what the company keeps, for that trade.
+// Two questions every trade asks. The answer says pricing comes after a review (no price list), names what the price depends on for that trade, and what the company keeps.
 const cost = (audience: string, basis: string): [string, string] => [
   `What does marketing cost for ${audience}?`,
-  `Every company is quoted on its own. For ${audience} the number depends on ${basis}. On the first call we write a marketing plan for your company with that number on it. You see the plan before you pay for anything, and you keep it either way.`,
+  `There is no price list. Rocket Llama Labs prices each company after a review, and for ${audience} the number depends on ${basis}. Schedule a call: we review your company and how it shows up online, then write a marketing plan with that number on it. You see the plan before you pay for anything, and you keep it either way.`,
 ];
 // Where we are and who we work with. The industry pages sell to companies in any market, so this names the base without tying the page to one city.
 const whereWeWork = (audience: string): [string, string] => [
