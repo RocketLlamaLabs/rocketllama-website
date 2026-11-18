@@ -1253,3 +1253,27 @@
   .v7.v7 main > header.pagehead .lede,.v7.v7 main > header.pagehead .goal,.v7.v7 main > header.pagehead .answer,.v7.v7 main > header.ihero .lede{display:none}
 }
 .v7.v7 main > header.indhero:not(.with-badge) h1{max-width:none}
+/* Industries banner: the revolving badge to the right of the headline, level with its first line. The headline
+   narrows to make room; the paragraph and the trade tiles keep the full width below. Hidden under 860px. */
+.v7.v7 .indhero .in{position:relative}
+.v7.v7 .indhero{--badge:clamp(150px,15vw,230px)}
+.v7.v7 .indhero .dream-badge{top:calc(var(--hero-top) + 57px);bottom:auto;right:0;height:var(--badge);width:var(--badge);transform:none}
+.v7.v7 main > header.indhero:not(.with-badge) h1{max-width:calc(100% - var(--badge) - 40px)}
+@media(min-width:860px) and (max-width:999px){.v7.v7 .indhero .dream-badge{top:calc(var(--hero-top) + 48px)}}
+@media(max-width:859px){.v7.v7 main > header.indhero:not(.with-badge) h1{max-width:none}}
+/* About: the section under the banner is navy, so it breaks clearly from the light-blue banner; white words,
+   light-blue figures, the same layout. */
+.v7.v7 .about-live .am-split{background:var(--deep);color:#fff}
+.v7.v7 .about-live .am-split .pull{color:#fff}
+.v7.v7 .about-live .am-split .am-stats .n{color:#7fb2ff}
+.v7.v7 .about-live .am-split .am-stats .l,.v7.v7 .about-live .am-split p{color:#c9d7ee}
+.v7.v7 .about-live .am-split .pull{color:#fff}
+.v7.v7 .about-live .am-split details.pt summary{color:#fff}
+.v7.v7 .about-live .am-split .right,.v7.v7 .about-live .am-split details.pt{border-color:rgba(255,255,255,.18)}
+.v7.v7 .about-live .am-split .left{border-color:#7fb2ff}
+/* Narrower than 1100px the badge would push the headline to a third line, so it shows from 1100px up. */
+@media(max-width:1099px){.v7.v7 .indhero .dream-badge{display:none}.v7.v7 main > header.indhero:not(.with-badge) h1{max-width:none}}
+/* Industries banner tiles: five across from 1000px (three rows), so the banner keeps the shared height. */
+@media(min-width:1000px) and (max-width:1099px){.v7.v7 .indhero #industries .trades{grid-template-columns:repeat(5,minmax(0,1fr))}}
+/* The badge is exactly as tall as the two-line headline beside it, so it never reaches the paragraph. */
+.v7.v7 .indhero{--badge:calc(2.04 * clamp(3.2rem,5.4vw,4.75rem))}

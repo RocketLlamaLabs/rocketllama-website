@@ -709,7 +709,7 @@ def v7_industries_extras():
     ip = os.path.join(root, 'src/app/(home)/industries/page.tsx'); t = open(ip).read()
     a = '<h1>Every trade that goes to a customer&rsquo;s home.</h1>'
     assert t.count(a) == 1, 'industries h1'
-    t = t.replace(a, '<h1>Marketing for every trade that goes to a customer&rsquo;s home.</h1>', 1)
+    t = t.replace(a, '<h1>Marketing for every home service trade.</h1>', 1)
     # the banner matches every other page (the home banner's height, type and spacing) and holds the label,
     # headline, paragraph and the trade tiles, three rows of five
     i = t.index('<section id="industries"><div className="wrap">\n'); j = t.index('</div></section>\n', i) + len('</div></section>\n')
@@ -718,8 +718,11 @@ def v7_industries_extras():
     head, tiles = body[:k], body[k:]
     head = head.replace('<p className="sub">', '<p className="lede">', 1)
     head = ''.join('    ' + l + '\n' for l in head.strip('\n').split('\n'))
+    # the revolving badge sits to the right of the headline
+    head = head.replace('</h1>\n', '</h1>\n    <DreamBadge tone="blue" />\n', 1)
     t = t[:i] + ('<header className="pagehead indhero" id="top">\n  <div className="wrap in">\n' + head +
                  '    <div id="industries">\n    ' + tiles.strip('\n') + '\n    </div>\n  </div>\n</header>\n') + t[j:]
+    t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { DreamBadge } from "@/components/v7/dream-badge";\n', 1)
     t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { IndustriesFaq } from "@/components/v7/industries-extra";\n', 1)
     a = '<div className="band" id="proof"'
     assert t.count(a) == 1 and t.count('</main>') == 1, 'industries band'
