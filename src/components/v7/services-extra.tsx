@@ -5,7 +5,7 @@
 // Placed on the page by scripts/make-v3.py (v7_page_seo).
 
 export const SERVICES_SUMMARY =
-  "Rocket Llama Labs builds and runs the whole marketing system for home service companies: a website you own, local SEO and AI search optimization, Google Business Profile management, Google, Local Services and Meta ads, review management, funnels, a phone system with call tracking and an AI receptionist, and a CRM with AI follow-up. One team runs every piece, every lead is answered in under a minute, and every dollar is tracked to a paid job.";
+  "Rocket Llama Labs builds and runs the whole marketing system for home service companies: your website, local SEO and AI search, Google Business Profile, ads, reviews, phones with an AI receptionist, and a CRM. One team runs every piece, every lead is answered in under a minute, and every dollar is tracked to a paid job.";
 
 export const SERVICES_FACTS = [
   "Eight services, run as one system by one team",
