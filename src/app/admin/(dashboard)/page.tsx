@@ -3,6 +3,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Building2,
+  ClipboardCheck,
   Download,
   FolderOpen,
   Globe,
@@ -43,6 +44,12 @@ const shortcuts = [
     icon: Building2,
     title: "Company",
     body: "Legal entity, leadership and the Drive folders.",
+  },
+  {
+    href: "/admin/assets/implementation-checklist",
+    icon: ClipboardCheck,
+    title: "Implementation",
+    body: "The new client onboarding checklist, start to launch.",
   },
 ];
 

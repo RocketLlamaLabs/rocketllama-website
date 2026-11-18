@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function AdminLayout({ children }: LayoutProps<"/admin">) {
   return (
     <div className="flex flex-1 flex-col bg-mist/40 lg:flex-row">
-      <aside className="flex w-full shrink-0 flex-col gap-4 border-b border-divider bg-white px-4 pt-4 pb-3 lg:sticky lg:top-0 lg:h-screen lg:w-72 lg:gap-8 lg:border-r lg:border-b-0 lg:px-5 lg:py-7">
+      <aside className="flex w-full print:hidden shrink-0 flex-col gap-4 border-b border-divider bg-white px-4 pt-4 pb-3 lg:sticky lg:top-0 lg:h-screen lg:w-72 lg:gap-8 lg:border-r lg:border-b-0 lg:px-5 lg:py-7">
         <div className="flex items-center justify-between gap-3 lg:flex-col lg:items-start">
           <Link href="/admin" className="block px-1" aria-label="Rocket Llama Labs admin">
             <Image

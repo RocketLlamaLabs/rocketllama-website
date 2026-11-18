@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ArrowUpRight, Download, Trash2 } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight, Download, Trash2 } from "lucide-react";
 import { Card, PageHeader } from "@/components/ui";
 import { getAdminUser } from "@/lib/admin-auth";
 import {
@@ -8,6 +9,10 @@ import {
   formatDate,
   type Asset,
 } from "@/lib/assets";
+import {
+  checklistItemCount,
+  checklistSections,
+} from "@/lib/implementation-checklist";
 import { slideFile, slideImage, slideVersions } from "@/lib/slide-versions";
 import { deleteAsset } from "./actions";
 import { UploadForm } from "./upload-form";
@@ -86,6 +91,33 @@ export default async function AssetsPage() {
               </div>
             </Card>
           ))}
+          <Card id="implementation-checklist" className="flex flex-col gap-3">
+            <div>
+              <p className="text-[13px] font-bold tracking-[0.08em] text-blue uppercase font-display">
+                New client onboarding
+              </p>
+              <h3 className="mt-1 text-xl font-semibold">
+                Implementation Checklist
+              </h3>
+              <p className="mt-1 text-sm text-muted">
+                {checklistItemCount} items · {checklistSections.length} sections
+              </p>
+            </div>
+            <p className="text-muted">
+              Everything we need from a new client and everything we set up:
+              website, Google, ads, social media, reviews, phones, CRM and
+              launch.
+            </p>
+            <div className="mt-auto pt-2">
+              <Link
+                href="/admin/assets/implementation-checklist"
+                className="inline-flex min-h-11 items-center gap-1 rounded-md bg-blue px-5 font-semibold text-white hover:bg-action-hover"
+              >
+                Open the checklist
+                <ArrowRight className="size-4" />
+              </Link>
+            </div>
+          </Card>
         </div>
         <p className="mt-4 max-w-[68ch] text-sm text-muted">
           To add a version, run{" "}
