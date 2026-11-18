@@ -1324,3 +1324,30 @@
    instead of a full screen with the words sitting at the top. */
 .v7.v7 .person > header.pagehead{min-height:0}
 .v7.v7 .person > header.pagehead .in{padding-bottom:var(--hero-top)}
+/* Every banner, Home included: the space under the last button or block matches the space above the blue rule
+   (the --hero-top gap). Each banner keeps the shared height; any extra room goes just above the last item, and
+   on screens too short for the full gap a spacer gives it up first (down to 28px). Team pages fit their bio and
+   the Industries banner has its own rules above. */
+@media(min-width:701px){
+  .v7.v7 .hero .in{padding-bottom:0}
+  .v7.v7 .hero .in>div{display:flex;flex-direction:column}
+  .v7.v7 .hero .in>div>.ctas{margin-top:auto}
+  .v7.v7 .hero .in>div::after{content:"";flex:1 0 28px;max-height:var(--hero-top)}
+  .v7.v7 main > header.pagehead,.v7.v7 main > header.ihero{align-items:stretch}
+  .v7.v7 main > header.pagehead > .in,.v7.v7 main > header.ihero > .in{display:flex;flex-direction:column;padding-bottom:0}
+  .v7.v7 main > header.pagehead > .in > :last-child,.v7.v7 main > header.ihero > .in > :last-child{margin-top:auto}
+  .v7.v7 main > header.pagehead > .in::after,.v7.v7 main > header.ihero > .in::after{content:"";flex:1 0 28px;max-height:var(--hero-top)}
+  .v7.v7 main.person > header.pagehead > .in::after{content:none}
+}
+@media(min-width:1000px){
+  .v7.v7 main > header.svchero > .in{display:grid;grid-template-rows:auto auto minmax(0,1fr);align-content:stretch}
+  .v7.v7 main > header.svchero > .in::after{content:none}
+  .v7.v7 main > header.svchero #summary > div{display:flex;flex-direction:column;min-height:0}
+  .v7.v7 main > header.svchero #summary > div > .ctas{margin-top:auto}
+  .v7.v7 main > header.svchero #summary > div::after{content:"";flex:1 0 28px;max-height:var(--hero-top)}
+  .v7.v7 main > header.indhero > .in > :last-child{margin-top:28px}
+  .v7.v7 main > header.indhero > .in{padding-bottom:var(--hero-top)}
+  .v7.v7 main > header.indhero > .in::after{flex:1 1 68px;min-height:0;max-height:none}
+}
+@media(min-width:1000px) and (max-height:820px){.v7.v7 main > header.indhero .in > :last-child{margin-top:22px}}
+@media(min-width:701px) and (max-width:999px){.v7.v7 main > header.indhero #industries{margin-top:auto;padding-top:22px}}
