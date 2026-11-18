@@ -1277,3 +1277,24 @@
 @media(min-width:1000px) and (max-width:1099px){.v7.v7 .indhero #industries .trades{grid-template-columns:repeat(5,minmax(0,1fr))}}
 /* The badge is exactly as tall as the two-line headline beside it, so it never reaches the paragraph. */
 .v7.v7 .indhero{--badge:calc(2.04 * clamp(3.2rem,5.4vw,4.75rem))}
+/* Industries badge, larger: the top of the ring is level with the top of the headline's first line, and the ring
+   runs down beside the paragraph, which narrows to stay clear of it. (The ring's letters reach 89% of the box.) */
+.v7.v7 .indhero{--hfs:clamp(3.2rem,5.4vw,4.75rem);--badge:calc(4.3 * var(--hfs))}
+.v7.v7 .indhero .dream-badge{top:calc(var(--hero-top) + 57px - .1465 * var(--hfs))}
+@media(min-width:1100px){.v7.v7 main > header.indhero .lede{max-width:calc(100% - var(--badge) - 40px);hyphens:manual}}
+/* On short laptop screens the narrower paragraph takes a fourth line, so the tiles tighten to keep the banner
+   the same height as Home's. */
+@media(min-width:1100px) and (max-height:820px){.v7.v7 .indhero #industries{margin-top:22px}.v7.v7 .indhero #industries .trade{height:40px;min-height:40px}}
+/* The top of the ring sits level with the blue rule above "Industries" (the ring's letters start 5.5% into the box). */
+.v7.v7 .indhero .dream-badge{top:calc(var(--hero-top) - .055 * var(--badge))}
+/* About an inch (96px) between the paragraph and the trade tiles. The banner keeps Home's height exactly: a
+   spacer between them gives up its space first on screens too short for the full inch. */
+@media(min-width:1000px){
+  .v7.v7 main > header.indhero{height:min(calc(100svh - 72px),max(600px,82svh))}
+  .v7.v7 main > header.indhero > .wrap{align-self:stretch;display:flex}
+  .v7.v7 main > header.indhero .in{flex:1;display:flex;flex-direction:column;min-height:0}
+  .v7.v7 main > header.indhero .in::after{content:"";order:1;flex:0 1 68px;min-height:0}
+  .v7.v7 .indhero #industries{order:2;margin-top:28px;flex:none}
+  .v7.v7 main > header.indhero .in{padding-bottom:28px}
+}
+@media(min-width:1000px) and (max-height:820px){.v7.v7 .indhero #industries{margin-top:22px}.v7.v7 main > header.indhero .in::after{flex-basis:74px}}
