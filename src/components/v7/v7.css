@@ -1320,3 +1320,7 @@
   .v7.v7 main > header.svchero .answer{margin-top:14px;line-height:1.5}
   .v7.v7 main > header.svchero .ctas{margin-top:20px}
 }
+/* Team pages: the banner fits the headshot and bio, with the same space under the bio as above the blue rule,
+   instead of a full screen with the words sitting at the top. */
+.v7.v7 .person > header.pagehead{min-height:0}
+.v7.v7 .person > header.pagehead .in{padding-bottom:var(--hero-top)}
