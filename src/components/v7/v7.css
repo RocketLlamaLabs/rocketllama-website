@@ -1388,3 +1388,8 @@
 /* Banner headlines: pull the big letters left by their built-in side spacing, so their left edge lines up exactly
    with the blue rule, the label and the paragraph below. */
 .v7.v7 main > header.pagehead h1,.v7.v7 main > header.ihero h1,.v7.v7 .hero .rot .rslide h2{margin-left:-.035em}
+/* Banner paragraphs: whole words only, no "tech-nology" splits. */
+.v7.v7 main > header.pagehead .lede,.v7.v7 main > header.ihero .lede,.v7.v7 .hero .rot .lede{hyphens:manual}
+/* About headline: the "T" of "The" sits a hair further left than the "h" of "home" below it; nudge the first
+   line so the two letters start at the same edge. */
+.v7.v7 .about-live > header.pagehead h1{text-indent:.015em}
