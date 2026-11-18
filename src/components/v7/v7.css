@@ -963,16 +963,16 @@
 @media(max-width:1250px){.v7 #industries .trade span{font-size:.88rem}}
 /* Industries: light blue fills everything between the nav and the footer. */
 .v7:has(#industries) main{background:#eaf2fd}
-/* Industries tiles: five equal columns; long names shrink to fit on one line. */
+/* Industries tiles: 15 trades in full rows at every width: five columns on desktop,
+   three on tablets (and on small screens from 640px, via the base rule), one on phones. */
 @media(min-width:1100px){.v7 #industries .trades{grid-template-columns:repeat(5,minmax(0,1fr))}}
-@media(min-width:720px) and (max-width:1099px){.v7 #industries .trades{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(min-width:720px) and (max-width:1099px){.v7 #industries .trades{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .v7 #industries .trade{min-width:0;overflow:hidden}
 .v7 #industries .trade span{font-size:.95rem}
 /* Industries tiles: text sized so every name fits its equal-width tile on one line. */
 .v7 #industries .trade{padding:0 12px;column-gap:7px}
 .v7 #industries .trade span{font-size:clamp(.76rem,1.0vw,.9rem);letter-spacing:-.01em}
 .v7 #industries .trade span::after{margin-left:6px}
-@media(min-width:720px) and (max-width:899px){.v7 #industries .trades{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* About page: light blue footer. */
 .v7:has(main.about-live) footer{background:#eaf2fd;border-top:0}
 .v7:has(main.person) footer{background:#eaf2fd;border-top:0}
