@@ -1362,5 +1362,6 @@
 /* Home carousel: more room between each slide's headline and its paragraph. */
 @media(min-width:701px){.v7.v7 .hero .rot .lede{margin-top:34px}}
 @media(min-width:701px) and (max-height:820px){.v7.v7 .hero .rot .lede{margin-top:28px}}
-/* About banner: the bold line and the paragraph follow the headline at the foot of the banner. */
-@media(min-width:701px){.v7.v7 .about-live > header.pagehead .goal + .lede{margin-top:28px}}
+/* About banner: the headline and the bold line sit midway between the label at the top and the paragraph at the
+   foot, the same space above as below. */
+@media(min-width:701px){.v7.v7 .about-live > header.pagehead .goal + .lede{margin-top:auto;padding-top:22px}}
