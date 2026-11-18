@@ -1146,9 +1146,62 @@
 /* Services: overview card headings link to each service page. */
 .v7 #what .svc .card h3 a{color:inherit;text-decoration:none}
 .v7 #what .svc .card h3 a:hover{color:var(--accent);text-decoration:underline}
-/* Industries: the headline and trade tiles fill the first screen under the nav
-   (73px on desktop, 61px below 900px), centred top to bottom. On small screens,
-   where the tiles are taller than the screen, the section simply grows. */
-.v7 #industries{min-height:calc(100svh - 73px);display:flex;align-items:center}
-.v7 #industries > .wrap{width:100%}
-@media(max-width:899px){.v7 #industries{min-height:calc(100svh - 61px)}}
+
+/* Services banner: headline, summary and facts in two columns on the light-blue header. */
+.v7 .svchero .svchero-grid{display:grid;gap:32px;align-items:center}
+@media(min-width:900px){.v7 .svchero .svchero-grid{grid-template-columns:1.45fr 1fr;gap:56px}}
+.v7 .svchero h1{max-width:16ch}
+.v7 .svchero .answer{margin:20px 0 0;font-size:clamp(1.02rem,1.4vw,1.14rem);line-height:1.6;color:var(--ink);max-width:62ch}
+.v7 .svchero .ctas{margin-top:26px}
+.v7 .svchero .facts{list-style:none;margin:0;padding:0;display:grid;gap:14px;font-family:var(--sans);font-size:1rem;font-weight:600;line-height:1.4;color:var(--ink)}
+.v7 .svchero .facts li{position:relative;padding-left:22px}
+.v7 .svchero .facts li::before{content:"";position:absolute;left:0;top:.5em;width:9px;height:9px;border-radius:50%;background:var(--accent)}
+
+/* Every page banner matches the home banner (the "Home banner" rules above): the same height, headline size,
+   paragraph size and spacing at each width, with the words centred top to bottom. Light pages share the light
+   blue; the industry pages keep their photos. ".v7.v7" outranks the older per-page header rules. */
+.v7.v7 main > header.pagehead,.v7.v7 main > header.ihero{display:flex;align-items:center;min-height:min(calc(100svh - 72px),max(600px,82svh))}
+.v7.v7 main > header.pagehead{background:#eaf2fd;border-bottom:0}
+.v7.v7 main > header.pagehead > .wrap,.v7.v7 main > header.ihero > .wrap{width:100%}
+.v7.v7 main > header.pagehead .in,.v7.v7 main > header.ihero .in{padding-block:56px}
+.v7.v7 main > header.pagehead{--h1:clamp(3.2rem,5.4vw,4.75rem)}
+.v7.v7 main > header.pagehead h1,.v7.v7 main > header.ihero h1{font-size:clamp(3.2rem,5.4vw,4.75rem);line-height:1.02;letter-spacing:-.04em;margin:0}
+.v7.v7 main > header.pagehead:not(.with-badge) h1,.v7.v7 main > header.ihero h1{max-width:13em}
+.v7.v7 main > header.pagehead .kicker,.v7.v7 main > header.pagehead .crumbs,.v7.v7 main > header.ihero .crumbs{font-size:14px;margin:0 0 20px}
+.v7.v7 main > header.pagehead .lede,.v7.v7 main > header.pagehead .goal,.v7.v7 main > header.pagehead .answer,.v7.v7 main > header.ihero .lede{font-size:1.25rem;line-height:1.55;margin-top:22px}
+.v7.v7 main > header.pagehead .ctas,.v7.v7 main > header.ihero .ctas{margin-top:34px}
+@media(min-width:701px) and (max-width:999px){
+  .v7.v7 main > header.pagehead,.v7.v7 main > header.ihero{min-height:min(76svh,780px)}
+  .v7.v7 main > header.pagehead{--h1:clamp(2.5rem,5.8vw,3.3rem)}
+  .v7.v7 main > header.pagehead h1,.v7.v7 main > header.ihero h1{font-size:clamp(2.5rem,5.8vw,3.3rem);line-height:1.04}
+  .v7.v7 main > header.pagehead .kicker,.v7.v7 main > header.pagehead .crumbs,.v7.v7 main > header.ihero .crumbs{font-size:13px;margin:0 0 16px}
+  .v7.v7 main > header.pagehead .lede,.v7.v7 main > header.pagehead .goal,.v7.v7 main > header.pagehead .answer,.v7.v7 main > header.ihero .lede{font-size:1.12rem;margin-top:16px}
+  .v7.v7 main > header.pagehead .ctas,.v7.v7 main > header.ihero .ctas{margin-top:28px}
+}
+@media(max-width:700px){
+  .v7.v7 main > header.pagehead,.v7.v7 main > header.ihero{min-height:min(88svh,780px)}
+  .v7.v7 main > header.pagehead .in,.v7.v7 main > header.ihero .in{padding-block:40px}
+  .v7.v7 main > header.pagehead{--h1:clamp(2rem,8.9vw,2.45rem)}
+  .v7.v7 main > header.pagehead h1,.v7.v7 main > header.ihero h1{font-size:clamp(2rem,8.9vw,2.45rem);line-height:1.06;letter-spacing:-.035em}
+  .v7.v7 main > header.pagehead .kicker,.v7.v7 main > header.pagehead .crumbs,.v7.v7 main > header.ihero .crumbs{font-size:min(13px,3.4vw);margin:0 0 14px}
+  .v7.v7 main > header.pagehead .lede,.v7.v7 main > header.pagehead .goal,.v7.v7 main > header.pagehead .answer{font-size:1.05rem;margin-top:14px}
+  .v7.v7 main > header.pagehead .ctas,.v7.v7 main > header.ihero .ctas{margin-top:26px}
+}
+/* Industries: the trade tiles sit on white right under the banner. */
+.v7.v7 #industries{background:#fff;padding-block:clamp(40px,6vw,72px)}
+.v7.v7 #industries .trades{margin-top:0}
+/* Services banner: a wider paragraph column keeps the banner at the shared height on desktop; on phones the
+   facts list drops, as the home banner drops its paragraph there. */
+@media(min-width:900px){.v7.v7 .svchero .svchero-grid{grid-template-columns:1.75fr 1fr;gap:48px}}
+@media(max-width:700px){.v7.v7 .svchero .facts{display:none}}
+/* Team pages on phones: a smaller headshot beside nothing, so the banner keeps the shared height. */
+@media(max-width:759px){.v7 .person .person-head{gap:18px}.v7 .person .person-head .headshot{width:120px;height:120px}}
+@media(max-width:700px){.v7.v7 main > header.svchero .answer{font-size:.98rem;line-height:1.5}}
+/* Industries banner: the badge is a fixed size, centred on the right, and the words stay clear of it. */
+@media(min-width:860px){
+  .v7.v7 .indhero .dream-badge{top:50%;bottom:auto;height:clamp(220px,22vw,320px);transform:translateY(-50%);right:0}
+  .v7.v7 .indhero h1,.v7.v7 .indhero .lede{max-width:calc(100% - clamp(260px,27vw,380px));width:auto;text-align:left;margin-left:0}
+}
+/* Team pages on phones: a slightly smaller summary keeps the banner at the shared height. */
+@media(max-width:700px){.v7.v7 .person .pagehead .lede{font-size:.98rem;line-height:1.5}}
+@media(max-width:859px){.v7.v7 .pagehead.with-badge .lede{text-align:left;width:auto;max-width:none;margin-left:0}}

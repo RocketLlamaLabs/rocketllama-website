@@ -5,8 +5,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { pageMeta, ServicesStructuredData } from "@/components/v7/page-seo";
 import { V7Footer } from "@/components/v7/footer";
-import { DreamBadge } from "@/components/v7/dream-badge";
-import { ServicesSummary, ServicesFaq } from "@/components/v7/services-extra";
+import { ServicesHero, ServicesFaq } from "@/components/v7/services-extra";
 import { SystemFlow } from "@/components/v7/system-flow";
 
 export const metadata: Metadata = pageMeta("/services", "Home Service Marketing Services", "Websites, local SEO and AI search, Google Business Profile, ads, reviews, phones with an AI receptionist and CRM for home service companies, run as one system.");
@@ -31,18 +30,7 @@ export default function Page() {
 <main>
 <ServicesStructuredData />
 
-<header className="pagehead with-badge" id="top">
-  <div className="wrap in">
-    <div className="copy">
-    <p className="kicker">Our services</p>
-    <h1>Home service marketing services that get you the call.</h1>
-    <p className="lede">The website, the phones, the CRM, the reviews and the ads, built as one system, and run by one team. Here is every piece we run for you and how they fit together.</p>
-    <DreamBadge tone="blue" />
-    </div>
-  </div>
-</header>
-
-<ServicesSummary />
+<ServicesHero />
 
 <section className="watch" id="video"><div className="wrap in">
   <div>

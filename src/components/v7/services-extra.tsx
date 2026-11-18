@@ -41,18 +41,21 @@ export const SERVICES_FAQ: [string, string][] = [
   ],
 ];
 
-export function ServicesSummary() {
+// The Services banner: the page's one heading, the answer-first summary (marked
+// Speakable through #summary .answer) and the facts, on the light-blue header.
+export function ServicesHero() {
   return (
-    <section id="summary" className="isum"><div className="wrap">
-      <div className="box">
+    <header className="pagehead svchero" id="top"><div className="wrap in">
+      <p className="kicker">Our services</p>
+      <h1>Home service marketing services that get you the call.</h1>
+      <div id="summary" className="svchero-grid">
         <div>
-          <p className="kicker">Summary</p>
-          <h2>Home service marketing services, in short</h2>
           <p className="answer">{SERVICES_SUMMARY}</p>
+          <div className="ctas"><a className="btn" href="/book">Schedule a call</a></div>
         </div>
-        <ul>{SERVICES_FACTS.map((f) => <li key={f}>{f}</li>)}</ul>
+        <ul className="facts">{SERVICES_FACTS.map((f) => <li key={f}>{f}</li>)}</ul>
       </div>
-    </div></section>
+    </div></header>
   );
 }
 
