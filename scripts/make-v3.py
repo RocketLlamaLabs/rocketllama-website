@@ -890,6 +890,18 @@ TRADE_LINES = {
     'Remodeling': 'Found for the searches made before anyone calls',
 }
 
+# Overview cards on /services whose headings link to the service pages; card 08 (ownership) has no page.
+SERVICE_CARD_LINKS = [
+    ('01 · Website', 'A website you own, hosted free', '<Link href="/services/websites">A website you own, hosted free</Link>'),
+    ('02 · Search and AI search', 'Found by Google and by AI', '<Link href="/services/local-seo-and-ai-search">Found by Google and by AI</Link>'),
+    ('03 · Reviews', 'Google profile and reviews, worked hard', '<Link href="/services/google-business-profile">Google profile</Link> and <Link href="/services/review-management">reviews</Link>, worked hard'),
+    ('04 · Funnels', 'Funnels not contact forms', '<Link href="/services/lead-funnels">Funnels not contact forms</Link>'),
+    ('05 · Phones', 'An AI receptionist that gets you the call first', '<Link href="/services/ai-receptionist">An AI receptionist that gets you the call first</Link>'),
+    ('06 · CRM', 'Your CRM, with AI follow-up', '<Link href="/services/crm">Your CRM, with AI follow-up</Link>'),
+    ('07 · Ads', 'Google, Local Services, and Meta ads in your name', '<Link href="/services/google-and-meta-ads">Google, Local Services, and Meta ads in your name</Link>'),
+]
+
+
 def v7_page_seo():
     for slug, (title, desc, noindex) in V7_PAGE_SEO.items():
         fp = os.path.join(root, 'src/app/(home)', slug, 'page.tsx')
@@ -921,11 +933,12 @@ def v7_page_seo():
             assert t.count('</header>\n') == 1 and t.count('\n</main>') == 1, 'services page'
             t = t.replace('</header>\n', '</header>\n\n<ServicesSummary />\n', 1)
             t = t.replace('\n</main>', '\n<ServicesFaq />\n\n</main>', 1)
-            # a card for each service page, after the overview cards (src/components/v7/services-extra.tsx)
-            t = t.replace('import { ServicesSummary, ServicesFaq } from', 'import { ServicesSummary, ServicesFaq, ServicePagesList } from', 1)
-            a = '<section id="map" className="feature">'
-            assert t.count(a) == 1, 'services map'
-            t = t.replace(a, '<ServicePagesList />\n\n' + a, 1)
+            # each overview card's heading links to that service's own page (/services/<slug>)
+            t = t.replace('import type { Metadata } from "next";\n', 'import type { Metadata } from "next";\nimport Link from "next/link";\n', 1)
+            for label, heading, linked in SERVICE_CARD_LINKS:
+                a = '<span className="k">%s</span><h3>%s</h3>' % (label, heading)
+                assert t.count(a) == 1, 'services card ' + label
+                t = t.replace(a, '<span className="k">%s</span><h3>%s</h3>' % (label, linked), 1)
         if slug == 'report':
             t = t.replace('<ReportSection />', '<ReportSection heading="h1" />', 1)
         open(fp, 'w').write(t)
