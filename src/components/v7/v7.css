@@ -1205,3 +1205,10 @@
 /* Team pages on phones: a slightly smaller summary keeps the banner at the shared height. */
 @media(max-width:700px){.v7.v7 .person .pagehead .lede{font-size:.98rem;line-height:1.5}}
 @media(max-width:859px){.v7.v7 .pagehead.with-badge .lede{text-align:left;width:auto;max-width:none;margin-left:0}}
+/* Services banner: the headline runs the full width so it wraps less and the banner keeps the shared height. */
+.v7.v7 main > header.svchero h1{max-width:none}
+/* Short laptop screens: less space above and below the banner words on every page (Home included), so the
+   fullest banner (Services) still fits the shared height. Centred words look the same everywhere else. */
+@media(min-width:701px) and (max-height:820px){
+  .v7.v7 .hero .in,.v7.v7 main > header.pagehead .in,.v7.v7 main > header.ihero .in{padding-block:28px}
+}
