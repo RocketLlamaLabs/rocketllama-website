@@ -210,7 +210,7 @@ def build(dst_rel, base, n, extras=None, extra_css_import=None, layout_note=''):
         fp = os.path.join(root, f'src/components/v{n}/footer.tsx'); t = open(fp).read()
         t = t.replace('/brand/logo-stacked.svg', '/brand/logo-nav.svg').replace('width={137}', 'width={249}')
         if n == 7:  # a simple footer: the logo and the copyright line
-            t = re.sub(r'        <span>\n          <b>Rocket Llama Labs</b>.*?</span>\n(        <span>\n.*?</span>\n)', '        <span className="copy">&copy; 2026 Rocket Llama Labs LLC</span>\n        <span className="legal"><Link href="/privacy">Privacy Policy</Link> / <Link href="/terms">Website Policy</Link> / <Link href="/ai-policy">AI Policy</Link></span>\n', t, count=1, flags=re.S)
+            t = re.sub(r'        <span>\n          <b>Rocket Llama Labs</b>.*?</span>\n(        <span>\n.*?</span>\n)', '        <span className="copy">&copy; 2026 Rocket Llama Labs LLC<span className="contact"><a href="tel:+14808855700">(480) 885-5700</a> · <a href="mailto:info@rocketllamalabs.com">info@rocketllamalabs.com</a> · <a href="https://www.facebook.com/rocketllamalabs" target="_blank" rel="me noopener">Facebook</a></span></span>\n        <span className="legal"><Link href="/privacy">Privacy Policy</Link> / <Link href="/terms">Website Policy</Link> / <Link href="/ai-policy">AI Policy</Link></span>\n', t, count=1, flags=re.S)
             t = t.replace('export function V7Footer({ note }: { note: string }) {', 'export function V7Footer({ note: _note }: { note: string }) {')
         open(fp, 'w').write(t)
     # pages

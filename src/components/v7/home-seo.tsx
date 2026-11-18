@@ -3,8 +3,9 @@ import { ORG, SITE } from "@/components/v7/about-seo";
 
 // Metadata and structured data for the version 7 home page. Search engines
 // and AI assistants read this; visitors never see it. Everything stated here
-// also appears in the page copy, and fields we do not have yet (street
-// address, phone, social profiles, reviews) are left out rather than guessed.
+// also appears in the page copy, and fields we do not have yet (other social
+// profiles, reviews) are left out rather than guessed. The street address and
+// ZIP stay off the site on purpose.
 
 const TITLE = "Home Services Marketing in Phoenix | Rocket Llama Labs";
 const DESCRIPTION =

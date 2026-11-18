@@ -15,7 +15,7 @@ export function V7Footer({ note: _note }: { note: string }) {
             height={40}
           />
         </Link>
-        <span className="copy">&copy; 2026 Rocket Llama Labs LLC</span>
+        <span className="copy">&copy; 2026 Rocket Llama Labs LLC<span className="contact"><a href="tel:+14808855700">(480) 885-5700</a> · <a href="mailto:info@rocketllamalabs.com">info@rocketllamalabs.com</a> · <a href="https://www.facebook.com/rocketllamalabs" target="_blank" rel="me noopener">Facebook</a></span></span>
         <span className="legal"><Link href="/privacy">Privacy Policy</Link> / <Link href="/terms">Website Policy</Link> / <Link href="/ai-policy">AI Policy</Link></span>
       </div>
     </footer>

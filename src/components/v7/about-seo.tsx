@@ -1,7 +1,9 @@
 // Structured data for the About page: the organization, the three people, and a
 // short FAQ. Search engines and AI assistants read this, visitors never see it.
 // Facts here must stay in step with the copy on the page. Fields we do not have
-// yet (street address, phone, social profiles) are left out rather than guessed.
+// yet (street address, Google Business Profile, LinkedIn and other profiles) are
+// left out rather than guessed. The street address and ZIP stay off the site on
+// purpose. Phone and Facebook match the Meta business profile.
 
 export const SITE = "https://rocketllamalabs.com";
 
@@ -13,9 +15,12 @@ export const ORG = {
   url: SITE,
   logo: `${SITE}/brand/logo-nav.svg`,
   email: "info@rocketllamalabs.com",
+  telephone: "+1-480-885-5700",
   description:
     "A Phoenix, Arizona marketing and technology company that builds and runs the whole marketing system for home service companies: website, search and AI search, Google Business Profile, ads, reviews, phones, AI receptionist and CRM, with every lead answered in under a minute and every dollar tracked to a paid job.",
   address: { "@type": "PostalAddress", addressLocality: "Phoenix", addressRegion: "AZ", addressCountry: "US" },
+  contactPoint: { "@type": "ContactPoint", contactType: "sales", telephone: "+1-480-885-5700", email: "info@rocketllamalabs.com", areaServed: "US", availableLanguage: "English" },
+  sameAs: ["https://www.facebook.com/rocketllamalabs"],
   areaServed: [
     { "@type": "City", name: "Phoenix" }, { "@type": "City", name: "Scottsdale" }, { "@type": "City", name: "Mesa" },
     { "@type": "City", name: "Chandler" }, { "@type": "City", name: "Gilbert" }, { "@type": "City", name: "Glendale" },
