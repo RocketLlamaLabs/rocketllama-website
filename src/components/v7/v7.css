@@ -1382,3 +1382,6 @@
 @media(min-width:1000px){.v7.v7 .hero .tagline,.v7.v7 main > header.pagehead .kicker,.v7.v7 main > header.pagehead .crumbs,.v7.v7 main > header.ihero .crumbs{font-size:17px}}
 @media(min-width:701px) and (max-width:999px){.v7.v7 .hero .tagline,.v7.v7 main > header.pagehead .kicker,.v7.v7 main > header.pagehead .crumbs,.v7.v7 main > header.ihero .crumbs{font-size:15px}}
 @media(min-width:1000px) and (max-height:820px){.v7.v7 main > header.svchero .answer{margin-top:10px}.v7.v7 main > header.svchero .ctas{margin-top:16px}}
+/* About: the words sit in the middle of the navy section, the same space above as below. */
+.v7.v7 .about-live .am-split{padding-top:104px;padding-bottom:104px}
+@media(max-width:899px){.v7.v7 .about-live .am-split{padding-top:40px;padding-bottom:40px}}
