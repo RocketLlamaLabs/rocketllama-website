@@ -703,16 +703,16 @@ INDUSTRY_SLUGS = ['hvac', 'plumbing', 'electrical', 'roofing', 'garage-door', 'p
                   'window-and-pressure-washing', 'handyman', 'mobile-mechanic', 'windows-and-doors', 'solar', 'flooring', 'remodeling']
 
 def v7_industries_extras():
-    """Industries page: a keyword headline, one line per trade linking to its page, and an FAQ.
+    """Industries page: a keyword headline and an FAQ. (A card per trade was tried and dropped:
+    the trade tiles at the top already link to every trade page.)
     The sections are hand-written in src/components/v7/industries-extra.tsx."""
     ip = os.path.join(root, 'src/app/(home)/industries/page.tsx'); t = open(ip).read()
     a = '<h1>Every trade that goes to a customer&rsquo;s home.</h1>'
     assert t.count(a) == 1, 'industries h1'
     t = t.replace(a, '<h1>Marketing for every trade that goes to a customer&rsquo;s home.</h1>', 1)
-    t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { IndustriesList, IndustriesFaq } from "@/components/v7/industries-extra";\n', 1)
+    t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { IndustriesFaq } from "@/components/v7/industries-extra";\n', 1)
     a = '<div className="band" id="proof"'
     assert t.count(a) == 1 and t.count('</main>') == 1, 'industries band'
-    t = t.replace(a, '<IndustriesList />\n\n' + a, 1)
     t = t.replace('</main>', '\n<IndustriesFaq />\n</main>', 1)
     open(ip, 'w').write(t)
 

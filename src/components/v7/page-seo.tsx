@@ -131,7 +131,7 @@ export const INDUSTRIES_FAQ: [string, string][] = [
   ],
   [
     "Is the marketing different for each trade?",
-    "Yes. The system is the same, but what it targets is not. Each trade has its own searches, its own busy and slow seasons, and its own job values, from a same-day garage door repair to a remodel worth tens of thousands. Every trade page above shows the searches, the services and the year-round plan we run for that trade.",
+    "Yes. The system is the same, but what it targets is not. Each trade has its own searches, its own busy and slow seasons, and its own job values, from a same-day garage door repair to a remodel worth tens of thousands. Each trade page, linked above, shows the searches, the services and the year-round plan we run for that trade.",
   ],
   [
     "My trade isn’t listed. Can you still help?",
