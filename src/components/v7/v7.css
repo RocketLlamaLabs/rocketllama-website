@@ -1151,3 +1151,9 @@
 .v7 .svclinks .card h3{margin:0 0 8px}
 .v7 .svclinks .card p{margin:0 0 14px;font-size:.95rem}
 .v7 .svclinks .card .more{margin-top:auto;font-family:var(--sans);font-weight:700;font-size:.92rem;color:var(--accent)}
+/* Industries: the headline and trade tiles fill the first screen under the nav
+   (73px on desktop, 61px below 900px), centred top to bottom. On small screens,
+   where the tiles are taller than the screen, the section simply grows. */
+.v7 #industries{min-height:calc(100svh - 73px);display:flex;align-items:center}
+.v7 #industries > .wrap{width:100%}
+@media(max-width:899px){.v7 #industries{min-height:calc(100svh - 61px)}}

@@ -54,7 +54,6 @@ const whereWeWork = (audience: string): [string, string] => [
   `Do you only work with ${audience} in Phoenix?`,
   `No. Rocket Llama Labs is based in Phoenix, Arizona, and works with ${audience} anywhere in the United States. Companies in the Valley, including Scottsdale, Mesa, Chandler, Gilbert, Glendale, Tempe and Peoria, get the proposal in person; companies in other markets work with us remotely. Every page, profile and ad is built for your own service area.`,
 ];
-const basedFact = (audience: string) => `Based in Phoenix, Arizona, working with ${audience} nationwide`;
 const ownership = (audience: string, assets: string): [string, string] => [
   `Is there a contract, and who owns the website and ad accounts?`,
   `There is no contract. Rocket Llama Labs works month to month with ${audience}. The website, the Google Business Profile and the ad accounts are in your company's name and on your card. ${assets} are yours too. If you leave, you keep every piece and we help the next provider get set up.`,
@@ -77,7 +76,6 @@ export const INDUSTRIES: Industry[] = [
       "Budget turned up before the summer and down in the mild months",
       "Every lead answered by text and email in under 60 seconds",
       "Maintenance plan customers re-contacted every spring and fall",
-      basedFact("HVAC companies"),
     ],
     problemsHeading: "Where HVAC companies lose the job",
     problems: [
@@ -134,7 +132,6 @@ export const INDUSTRIES: Industry[] = [
       "One tracked phone number per ad source, so you know what made it ring",
       "Service pages per city, on a website you own",
       "Emergency and scheduled work tracked separately, so you see which pays",
-      basedFact("plumbing companies"),
     ],
     problemsHeading: "Why good plumbers lose jobs online",
     problems: [
@@ -191,7 +188,6 @@ export const INDUSTRIES: Industry[] = [
       "Google Business Profile verified and managed",
       "License shown on every page, where homeowners and Google look for it",
       "Estimate follow-up tracked to won or lost",
-      basedFact("electrical contractors"),
     ],
     problemsHeading: "What holds electricians back online",
     problems: [
@@ -248,7 +244,6 @@ export const INDUSTRIES: Industry[] = [
       "Ad budget raised during storm season, lowered after",
       "CRM follow-up on every open estimate",
       "Storm leads and retail leads reported separately",
-      basedFact("roofing companies"),
     ],
     problemsHeading: "The roofing lead problem",
     problems: [
@@ -305,7 +300,6 @@ export const INDUSTRIES: Industry[] = [
       "Google Business Profile verified, which matters in a category Google polices closely",
       "Tracked numbers show which ad produced each call",
       "Repair and new-door leads reported separately",
-      basedFact("garage door companies"),
     ],
     problemsHeading: "What costs garage door companies the job",
     problems: [
@@ -362,7 +356,6 @@ export const INDUSTRIES: Industry[] = [
       "A page per pest and per city",
       "Review requests after every service visit",
       "Plan sign-ups and renewals tracked as recurring revenue",
-      basedFact("pest control companies"),
     ],
     problemsHeading: "Where pest control companies leak revenue",
     problems: [
@@ -419,7 +412,6 @@ export const INDUSTRIES: Industry[] = [
       "Photo-led pages and profile, because landscaping sells on pictures",
       "Estimate requests followed up until they close",
       "Maintenance and install leads reported separately",
-      basedFact("landscaping companies"),
     ],
     problemsHeading: "Why landscapers struggle to grow past referrals",
     problems: [
@@ -476,7 +468,6 @@ export const INDUSTRIES: Industry[] = [
       "Follow-up on every open estimate by text and email",
       "Before-and-after photos on the site and the Google profile",
       "Close rate on estimates reported every month",
-      basedFact("painting contractors"),
     ],
     problemsHeading: "Where painting contractors lose work",
     problems: [
@@ -533,7 +524,6 @@ export const INDUSTRIES: Industry[] = [
       "Review requests after every job",
       "Online booking, so small jobs do not need a phone call",
       "Repeat revenue reported next to new-customer revenue",
-      basedFact("window cleaning and pressure washing companies"),
     ],
     problemsHeading: "What limits a washing business",
     problems: [
@@ -590,7 +580,6 @@ export const INDUSTRIES: Industry[] = [
       "Calls answered while you are on a job",
       "Repeat customers re-contacted by the CRM",
       "Which services bring in the most work, reported monthly",
-      basedFact("handyman businesses"),
     ],
     problemsHeading: "Why handyman businesses stay hidden",
     problems: [
@@ -647,7 +636,6 @@ export const INDUSTRIES: Industry[] = [
       "Service-area Google Business Profile, verified without a shop address",
       "A page per repair and per city",
       "Calls answered versus calls missed, reported monthly",
-      basedFact("mobile mechanics"),
     ],
     problemsHeading: "What mobile mechanics are up against",
     problems: [
@@ -704,7 +692,6 @@ export const INDUSTRIES: Industry[] = [
       "CRM nurture for decisions that take weeks",
       "Every lead tracked to a signed contract and its value",
       "Cost per signed contract reported, not cost per lead",
-      basedFact("window and door companies"),
     ],
     problemsHeading: "The window and door sales problem",
     problems: [
@@ -761,7 +748,6 @@ export const INDUSTRIES: Industry[] = [
       "Funnels that qualify by homeownership, roof and utility bill before booking",
       "CRM follow-up through a long decision",
       "Every lead tracked to a signed contract",
-      basedFact("solar installers"),
     ],
     problemsHeading: "Why solar lead costs are so high",
     problems: [
@@ -818,7 +804,6 @@ export const INDUSTRIES: Industry[] = [
       "Photo galleries of your own installations",
       "Estimate follow-up by text and email",
       "Measures booked and quotes won reported monthly",
-      basedFact("flooring companies"),
     ],
     problemsHeading: "What flooring companies compete against",
     problems: [
@@ -875,7 +860,6 @@ export const INDUSTRIES: Industry[] = [
       "Portfolio pages built from your own finished projects",
       "CRM follow-up across a months-long decision",
       "Qualified consultations and signed projects reported monthly",
-      basedFact("remodeling contractors"),
     ],
     problemsHeading: "What stands between remodelers and good projects",
     problems: [

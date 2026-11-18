@@ -15,7 +15,6 @@ export const SERVICES_FACTS = [
   "Every lead answered by text and email in under 60 seconds",
   "Ads run in your company’s name, on your card",
   "Month to month, with no contract",
-  "Based in Phoenix, Arizona, working with home service companies nationwide",
 ];
 
 export const SERVICES_FAQ: [string, string][] = [
