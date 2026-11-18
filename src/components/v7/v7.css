@@ -1285,3 +1285,5 @@
 /* On short laptop screens the narrower paragraph takes a fourth line, so the tiles tighten to keep the banner
    the same height as Home's. */
 @media(min-width:1100px) and (max-height:820px){.v7.v7 .indhero #industries{margin-top:22px}.v7.v7 .indhero #industries .trade{height:40px;min-height:40px}}
+/* The top of the ring sits level with the blue rule above "Industries" (the ring's letters start 5.5% into the box). */
+.v7.v7 .indhero .dream-badge{top:calc(var(--hero-top) - .055 * var(--badge))}
