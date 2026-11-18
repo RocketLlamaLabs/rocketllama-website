@@ -407,6 +407,7 @@ export const SERVICE_PAGES: ServiceDetail[] = [
       ["Matching", "Reviews tied to jobs", "Reviews are cross-referenced with your jobs, so you can see which services and techs earn them."],
       ["On your site", "Stars where people decide", "Your reviews and stars show on your website, next to the services they mention."],
       ["Google first", "Where reviews count most", "Requests point to your Google Business Profile first, where reviews weigh most on maps and Local Services Ads."],
+      ["Reporting", "Reviews in your monthly report", "Each month you see your new reviews, your rating and every reply, next to the jobs they came from."],
     ],
     stepsHeading: "How we run your reviews",
     steps: [

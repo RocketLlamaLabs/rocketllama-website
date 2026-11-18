@@ -729,6 +729,41 @@ def v7_home_extras():
     open(hp, 'w').write(t)
 
 
+V7_SERVICE_PAGE = """import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { ServicePage } from "@/components/v7/service-page";
+import { SERVICE_BY_SLUG, SERVICE_PAGES } from "@/components/v7/services-data";
+import { serviceMeta } from "@/components/v7/page-seo";
+
+// One page per service under /services/<slug>, written by scripts/make-v3.py.
+// Copy lives in src/components/v7/services-data.ts.
+export function generateStaticParams() {
+  return SERVICE_PAGES.map((s) => ({ slug: s.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const svc = SERVICE_BY_SLUG[slug];
+  return svc ? serviceMeta(svc) : {};
+}
+
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const svc = SERVICE_BY_SLUG[slug];
+  if (!svc) notFound();
+  return <ServicePage svc={svc} />;
+}
+"""
+
+
+def write_v7_service_pages():
+    """One page per service under /services/<slug>. The route is a thin shell: the copy is in
+    src/components/v7/services-data.ts and the layout in src/components/v7/service-page.tsx."""
+    d = os.path.join(root, 'src/app/(home)/services/[slug]')
+    os.makedirs(d, exist_ok=True)
+    open(os.path.join(d, 'page.tsx'), 'w').write(V7_SERVICE_PAGE)
+
+
 def write_v7_industry_pages():
     """One page per trade (/hvac, /plumbing, ...). Each route file is a thin shell: the copy is in
     src/components/v7/industries-data.ts and the layout in src/components/v7/industry-page.tsx, both hand-written.
@@ -886,6 +921,11 @@ def v7_page_seo():
             assert t.count('</header>\n') == 1 and t.count('\n</main>') == 1, 'services page'
             t = t.replace('</header>\n', '</header>\n\n<ServicesSummary />\n', 1)
             t = t.replace('\n</main>', '\n<ServicesFaq />\n\n</main>', 1)
+            # a card for each service page, after the overview cards (src/components/v7/services-extra.tsx)
+            t = t.replace('import { ServicesSummary, ServicesFaq } from', 'import { ServicesSummary, ServicesFaq, ServicePagesList } from', 1)
+            a = '<section id="map" className="feature">'
+            assert t.count(a) == 1, 'services map'
+            t = t.replace(a, '<ServicePagesList />\n\n' + a, 1)
         if slug == 'report':
             t = t.replace('<ReportSection />', '<ReportSection heading="h1" />', 1)
         open(fp, 'w').write(t)
@@ -906,6 +946,7 @@ if __name__ == '__main__':
     v7_move_proof_band()
     v7_industries_extras()
     v7_home_extras()
+    write_v7_service_pages()
     write_v7_industry_pages()
     write_v7_industry_links()
     build('src/app/v8', '/v8', 8, extras=v8_extras, extra_css_import='@/components/v8/v8.css', layout_note=' The home page itself is src/components/v8/home.tsx.')
