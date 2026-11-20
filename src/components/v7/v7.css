@@ -1431,3 +1431,5 @@
 /* Industries badge, smaller: about four fifths of the headline-and-paragraph height, centred top to bottom on
    it (equal insets above and below, so the ring's middle is the text block's middle). */
 @media(min-width:1100px){.v7.v7 .indhero .indhead .dream-badge{top:7%;bottom:7%;right:calc((var(--badge) + 40px) / 2);transform:translate(50%,-16px)}}
+/* Footer: the gap between the email and the Facebook icon keeps the width of " · " without showing the dot. */
+.v7 footer .contact .gap{visibility:hidden}
