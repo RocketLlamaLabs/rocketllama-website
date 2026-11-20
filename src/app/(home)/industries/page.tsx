@@ -31,9 +31,11 @@ export default function Page() {
 <header className="pagehead indhero" id="top">
   <div className="wrap in">
       <p className="kicker">Industries</p>
+    <div className="indhead">
       <h1>Marketing for every home service trade.</h1>
     <DreamBadge tone="blue" />
       <p className="lede">If you send a truck to a house this is built for you. Pick your trade to see the marketing services we run for it. We start in your service area and expand city by city. Every lead comes from your own site and your own ads so it is yours alone, never sold to four other contractors.</p>
+    </div>
     <div id="industries">
       <div className="trades"><a className="trade" href="/hvac"><span>HVAC</span></a><a className="trade" href="/plumbing"><span>Plumbing</span></a><a className="trade" href="/electrical"><span>Electrical</span></a><a className="trade" href="/roofing"><span>Roofing</span></a><a className="trade" href="/garage-door"><span>Garage door</span></a><a className="trade" href="/pest-control"><span>Pest control</span></a><a className="trade" href="/landscaping"><span>Landscaping</span></a><a className="trade" href="/painting"><span>Painting</span></a><a className="trade" href="/window-and-pressure-washing"><span>Pressure washing</span></a><a className="trade" href="/handyman"><span>Handyman</span></a><a className="trade" href="/mobile-mechanic"><span>Mobile mechanic</span></a><a className="trade" href="/windows-and-doors"><span>Windows and doors</span></a><a className="trade" href="/solar"><span>Solar</span></a><a className="trade" href="/flooring"><span>Flooring</span></a><a className="trade" href="/remodeling"><span>Remodeling</span></a></div>
     </div>

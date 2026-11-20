@@ -720,6 +720,9 @@ def v7_industries_extras():
     head = ''.join('    ' + l + '\n' for l in head.strip('\n').split('\n'))
     # the revolving badge sits to the right of the headline
     head = head.replace('</h1>\n', '</h1>\n    <DreamBadge tone="blue" />\n', 1)
+    # headline, badge and paragraph share one block, so the badge can centre on the two of them
+    h0 = head.index('    <h1>'); h1 = head.index('</p>\n', head.index('className="lede"')) + len('</p>\n')
+    head = head[:h0] + '    <div className="indhead">\n' + head[h0:h1] + '    </div>\n' + head[h1:]
     t = t[:i] + ('<header className="pagehead indhero" id="top">\n  <div className="wrap in">\n' + head +
                  '    <div id="industries">\n    ' + tiles.strip('\n') + '\n    </div>\n  </div>\n</header>\n') + t[j:]
     t = t.replace('import { V7Footer } from "@/components/v7/footer";\n', 'import { V7Footer } from "@/components/v7/footer";\nimport { DreamBadge } from "@/components/v7/dream-badge";\n', 1)
