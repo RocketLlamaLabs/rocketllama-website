@@ -1457,6 +1457,3 @@
 
 /* Map graphic removed from the "Where do you work?" step: one full-width column. */
 .v7 .qz .geo{grid-template-columns:1fr}
-
-/* The nav "Schedule a call" button matches the hero button: same size, font and padding. */
-.v7 .nav .navbtns .btn{font-size:1.08rem;padding:16px 30px;min-width:220px}
