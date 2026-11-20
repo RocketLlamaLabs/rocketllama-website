@@ -121,7 +121,7 @@ export function BookFunnel({ tz = "Phoenix time", short = false }: { tz?: string
 
     <div className="step" data-q="pain">
       <h3>What are your biggest pain points right now?</h3>
-      <p className="why">Pick everything that costs you sleep.</p>
+      <p className="why">Pick everything that keeps you up at night.</p>
       <div className="opts two" data-multi="q_pain"><label className="opt"><input type="checkbox" name="q_pain" value="leads" />Not enough leads</label><label className="opt"><input type="checkbox" name="q_pain" value="cost" />Leads cost too much</label><label className="opt"><input type="checkbox" name="q_pain" value="calls" />We miss calls</label><label className="opt"><input type="checkbox" name="q_pain" value="web" />Nobody finds us online</label><label className="opt"><input type="checkbox" name="q_pain" value="reviews" />Reviews and reputation</label><label className="opt"><input type="checkbox" name="q_pain" value="all" />All of it, and nobody owns it</label></div>
     </div>
 
