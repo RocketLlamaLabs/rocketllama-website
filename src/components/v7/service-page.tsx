@@ -70,7 +70,7 @@ export function ServicePage({ svc }: { svc: ServiceDetail }) {
           <p className="kicker">Questions</p>
           <h2>{svc.faqHeading}</h2>
           <div className="faq">
-            {svc.faq.map(([q, a], i) => <details key={q} open={i === 0}><summary><h3>{q}</h3></summary><p>{a}</p></details>)}
+            {svc.faq.map(([q, a]) => <details key={q}><summary><h3>{q}</h3></summary><p>{a}</p></details>)}
           </div>
         </div></section>
 
