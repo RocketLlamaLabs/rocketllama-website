@@ -127,7 +127,7 @@ export function mountBookFunnel() {
   function closeScan(){ wrap.hidden=true }
   onDoc('mouseout',function(e){ if(!e.relatedTarget&&e.clientY<=0&&!scanShown&&!seen) openScan() });
   idle=setTimeout(function(){ if(steps[i].dataset.q==='slot'&&!val('q_day')&&!scanShown&&!seen) openScan() },45000);
-  $('scanlink').addEventListener('click',function(e){ e.preventDefault(); wrap.hidden=false; scanShown=true });
+  var scanlink = $('scanlink'); if (scanlink) scanlink.addEventListener('click',function(e){ e.preventDefault(); wrap.hidden=false; scanShown=true });
   $('scanx').addEventListener('click',closeScan); $('scanno').addEventListener('click',closeScan);
   wrap.addEventListener('click',function(e){ if(e.target===wrap) closeScan() });
   onDoc('keydown',function(e){ if(e.key==='Escape'&&!wrap.hidden) closeScan() });
