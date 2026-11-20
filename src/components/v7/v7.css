@@ -1450,3 +1450,5 @@
 @media(min-width:640px) and (max-width:819px){.v7 .qz .opts.five{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(min-width:820px){.v7 .qz .opts.five{grid-template-columns:repeat(5,minmax(0,1fr))}}
 @media(min-width:820px) and (max-width:899px){.v7 .qz .opts.five .opt{font-size:.8rem;padding-left:32px}.v7 .qz .opts.five .opt::before{left:8px;width:16px;height:16px}.v7 .qz .opts.five .opt::after{left:13px}}
+/* Booking questions: a lone tile on the last row of a three-across list sits in the middle column. */
+@media(min-width:640px){.v7 .qz .opts.three > .opt:last-child:nth-child(3n+1){grid-column:2}}
