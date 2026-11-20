@@ -61,15 +61,35 @@ export function mountBookFunnel() {
   }
   function fail(msg){ err.textContent=msg; err.style.display='block' }
   function toSlotStep(msg){ i=steps.indexOf(root.querySelector('.step[data-q="slot"]')); show(true); fail(msg) }
+  // The visibility check on the home page (sixty-second-check.js) leaves its score and four answers in
+  // sessionStorage. A visitor who took it carries them into the booking twice: as quiz_answers, which the CRM
+  // writes to contact fields ("Quiz Score", "Quiz Google Reviews", ...), and as lines under the company in
+  // comments, which is what the appointment and the team's "New booking" email show. A visitor who arrives
+  // with only ?score= (a new tab has no sessionStorage) carries the score alone. No check taken: null.
+  var CHECK_KEYS=['quiz_google_reviews','quiz_missed_calls','quiz_website','quiz_job_sources'];
+  function checkResult(){
+    var c=null, fields={}, lines=[];
+    try{ c=JSON.parse(sessionStorage.getItem('rll_check')) }catch{}
+    var score=c&&typeof c.score==='number'?c.score:NaN;
+    if(isNaN(score)){ try{ var p=new URLSearchParams(location.search).get('score'); if(/^\d{1,3}$/.test(p||'')) score=+p }catch{} }
+    if(isNaN(score)||score<0||score>100) return null;
+    fields.quiz_score=score; lines.push('Visibility check: '+score+' out of 100');
+    (c&&Array.isArray(c.answers)?c.answers:[]).slice(0,CHECK_KEYS.length).forEach(function(x,k){
+      if(!x||typeof x.q!=='string'||typeof x.a!=='string'||!x.a) return;
+      fields[CHECK_KEYS[k]]=x.a.slice(0,200); lines.push(x.q.slice(0,200)+' '+x.a.slice(0,200)) });
+    return {fields:fields,lines:lines};
+  }
   function book(){
     if(busy) return;
     var iso=slotIso[val('q_slot')]; if(!iso){ toSlotStep('Pick a time.'); return }
     busy=true; next.disabled=true; back.disabled=true; next.textContent='Booking...';
     var nm=$('q_name').value.trim().split(/\s+/), url=$('q_url')?$('q_url').value.trim():'';
-    fetch(CRM+'/create',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+    var body={
       first_name:nm[0], last_name:nm.slice(1).join(' '), email:$('q_email').value.trim(), phone:$('q_mobile').value,
       comments:'Company: '+$('q_company').value.trim()+(url?'. Website: '+url:''),
-      slot:iso, timezone:TZ, lead_source:'Rocket Llama Labs website', sms_consent:$('q_consent').checked })
+      slot:iso, timezone:TZ, lead_source:'Rocket Llama Labs website', sms_consent:$('q_consent').checked };
+    var chk=checkResult(); if(chk){ body.comments+='\n\n'+chk.lines.join('\n'); body.quiz_answers=chk.fields }
+    fetch(CRM+'/create',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)
     }).then(function(r){ return r.json().catch(function(){return {}}).then(function(d){return {status:r.status,d:d||{}}}) }).then(function(res){
       busy=false; next.disabled=false;
       if(res.status===200&&res.d.appointment_id){ bookedAppt=res.d; confirmScreen(); booked=true; clearTimeout(idle); move(1); show(true); return }

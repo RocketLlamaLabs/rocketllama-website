@@ -23,9 +23,14 @@ export function mountSixtySecondCheck() {
     requestAnimationFrame(function step(ts){ if(!t0) t0=ts; var k=Math.min(1,(ts-t0)/900); sc.textContent=Math.round(s*k); if(k<1) requestAnimationFrame(step) });
     setTimeout(function(){ arc.style.strokeDashoffset=String(326.7*(1-s/100)) },50);
     var bk=document.getElementById('chk_book'); bk.href=bk.getAttribute('href').split('?')[0]+'?score='+s;
+    // Keep the score and the four answers (question and chosen option, as shown) for the booking page,
+    // which sends them to the CRM with the booking: see checkResult() in book-funnel.js.
+    try{ sessionStorage.setItem('rll_check',JSON.stringify({score:s,answers:qs.map(function(q){ var r=q.querySelector('input:checked'); return r?{q:q.querySelector('h3').textContent.trim(),a:r.closest('.opt').textContent.trim()}:null })})) }catch{}
     res.scrollIntoView({behavior:'smooth',block:'nearest'});
   }
-  document.getElementById('chk_again').addEventListener('click',function(){ root.querySelectorAll('input').forEach(function(r){r.checked=false; r.closest('.opt').classList.remove('sel')}); document.getElementById('chk_res').classList.remove('on'); document.getElementById('chk_arc').style.strokeDashoffset='326.7'; i=0; show() });
+  document.getElementById('chk_again').addEventListener('click',function(){ root.querySelectorAll('input').forEach(function(r){r.checked=false; r.closest('.opt').classList.remove('sel')}); document.getElementById('chk_res').classList.remove('on'); document.getElementById('chk_arc').style.strokeDashoffset='326.7';
+    var bk=document.getElementById('chk_book'); bk.href=bk.getAttribute('href').split('?')[0]; try{ sessionStorage.removeItem('rll_check') }catch{}
+    i=0; show() });
   show();
 
 }
