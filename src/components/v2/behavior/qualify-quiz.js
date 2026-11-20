@@ -65,7 +65,7 @@ export function mountQualifyQuiz() {
     switch(steps[i].dataset.q){
       case 'years': p=need(val('q_years'),grpOf('q_years'),'Pick how long you have been in business.'); break;
       case 'trade': p=need(val('q_trade'),grpOf('q_trade'),'Pick your trade.')||need(val('q_trade')!=='other'||$('q_other').value.trim(),$('q_other'),'Tell us what kind of business it is.'); break;
-      case 'city': p=need(homeIn.value.trim(),homeIn,'Add your home base, like Phoenix, AZ.')||need(val('q_radius'),grpOf('q_radius'),'Pick how far you go.')||need(val('q_radius')!=='multi'||$('q_areas').value.trim(),$('q_areas'),'List the other metros or states you serve.'); break;
+      case 'city': p=need(homeIn.value.trim(),homeIn,'Add your home city, like Phoenix, AZ.')||need(val('q_radius'),grpOf('q_radius'),'Pick how far you go.')||need(val('q_radius')!=='multi'||$('q_areas').value.trim(),$('q_areas'),'List the other metros or states you serve.'); break;
       case 'rev': p=need(val('q_rev'),grpOf('q_rev'),'Pick a revenue range.'); break;
       case 'crew': p=need(val('q_crew'),grpOf('q_crew'),'Pick your crew size.'); break;
       case 'ticket': p=need(val('q_ticket'),grpOf('q_ticket'),'Pick an average job size.'); break;
