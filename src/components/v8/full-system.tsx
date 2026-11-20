@@ -48,7 +48,7 @@ export function FullSystem({ base, id = "system", photo, detailed, badge, noDrea
   {band ? null : (
   <div className={photo ? "evolve with-photo" : "evolve"}>
     <div className="evolve-text">
-    <p>{detailed ? <><b>Our system never stands still.</b> As marketing technology and consumer behavior evolve, we continuously improve and adapt to keep your business ahead of the competition. Our mission is simple: take marketing off your plate, make your life easier, and keep bringing new customers through your door.</> : <><b>Our system is constantly evolving</b>, because the marketing systems it runs on never stop changing. Our goal is simple: make your job easier and bring you customers.</>}</p>
+    <p>{detailed ? <><b>Our system never stands still.</b> As marketing, technology, and consumer behavior evolve, we continuously improve and adapt to keep your business ahead of the competition. Our mission is simple: take marketing off your plate, make your life easier, and keep bringing new customers through your door.</> : <><b>Our system is constantly evolving</b>, because the marketing systems it runs on never stop changing. Our goal is simple: make your job easier and bring you customers.</>}</p>
     {noDream ? null : <p className="dream">If you can dream it, we can build it.</p>}
     <a className="btn" href={`${base}/book`}>Schedule a call</a>
     </div>
@@ -61,7 +61,7 @@ export function FullSystem({ base, id = "system", photo, detailed, badge, noDrea
       <div className="evolve-text">
         <p className="kicker">Never standing still</p>
         <h2>If you can dream it, we can build it.</h2>
-        <p className="bsub">Our system never stands still. As marketing technology and consumer behavior evolve, we keep improving it to keep your business ahead. Our mission is simple: take marketing off your plate and keep bringing new customers through your door.</p>
+        <p className="bsub">Our system never stands still. As marketing, technology, and consumer behavior evolve, we keep improving it to keep your business ahead. Our mission is simple: take marketing off your plate and keep bringing new customers through your door.</p>
         <div className="ctas"><a className="btn" href={`${base}/book`}>Schedule a call</a></div>
       </div>
       <img className="evolve-photo" src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
