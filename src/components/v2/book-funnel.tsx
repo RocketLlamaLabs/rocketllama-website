@@ -15,7 +15,7 @@ export function BookFunnel({ tz = "Phoenix time", short = false }: { tz?: string
 <div className="qz" id="qz">
   <div className="bar"><i id="qzbar"></i></div>
   <div className="body">
-    <div className="prog"><span id="qzcnt">Step 1 of 2</span><span id="qztitle">About a minute</span></div>
+    <div className="prog"><span id="qzcnt">Step 1 of 2</span><span id="qztitle"></span></div>
 
     <div className="step on" data-q="slot" data-auto="1">
       <h3>Pick a time.</h3>
