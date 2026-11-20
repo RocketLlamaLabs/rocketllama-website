@@ -20,7 +20,7 @@ export const ORG = {
     "A Phoenix, Arizona marketing and technology company that builds and runs the whole marketing system for home service companies: website, search and AI search, Google Business Profile, ads, reviews, phones, AI receptionist and CRM, with every lead answered in under a minute and every dollar tracked to a paid job.",
   address: { "@type": "PostalAddress", addressLocality: "Phoenix", addressRegion: "AZ", addressCountry: "US" },
   contactPoint: { "@type": "ContactPoint", contactType: "sales", telephone: "+1-480-885-5700", email: "info@rocketllamalabs.com", areaServed: "US", availableLanguage: "English" },
-  sameAs: ["https://www.facebook.com/rocketllamalabs"],
+  sameAs: ["https://www.facebook.com/rocketllamalabs", "https://www.instagram.com/rocketllamalabs/"],
   areaServed: [
     { "@type": "City", name: "Phoenix" }, { "@type": "City", name: "Scottsdale" }, { "@type": "City", name: "Mesa" },
     { "@type": "City", name: "Chandler" }, { "@type": "City", name: "Gilbert" }, { "@type": "City", name: "Glendale" },
