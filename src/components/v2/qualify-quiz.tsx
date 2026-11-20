@@ -107,7 +107,7 @@ export function QualifyQuiz() {
       <h3>Do you have a website today?</h3>
       <div className="opts two" data-single="q_site"><label className="opt"><input type="radio" name="q_site" value="none" />No website yet</label><label className="opt"><input type="radio" name="q_site" value="diy" />Yes, I built it <small>Wix, GoDaddy, Squarespace</small></label><label className="opt"><input type="radio" name="q_site" value="agency" />Yes, an agency built it and hosts it</label><label className="opt"><input type="radio" name="q_site" value="unsure" />Yes, but not sure who runs it</label></div>
       <div className="cond" id="c_site" hidden>
-        <p className="k">So we can include it in the audit. If it works, we keep it, and your setup comes down.</p>
+        <p className="note">So we can perform a more detailed audit.</p>
         <div className="fields two">
           <label className="f">Website address<input type="text" id="q_url" placeholder="yourcompany.com" autoComplete="url" inputMode="url" autoCapitalize="none" /></label>
           <label className="f">What do you pay a month for it?<select id="q_sitefee"><option value="">Choose one</option><option>Nothing</option><option>Under $50</option><option>$50 to $200</option><option>Over $200</option><option>Not sure</option></select></label>

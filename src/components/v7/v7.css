@@ -1452,3 +1452,5 @@
 @media(min-width:820px) and (max-width:899px){.v7 .qz .opts.five .opt{font-size:.8rem;padding-left:32px}.v7 .qz .opts.five .opt::before{left:8px;width:16px;height:16px}.v7 .qz .opts.five .opt::after{left:13px}}
 /* Booking questions: a lone tile on the last row of a three-across list sits in the middle column. */
 @media(min-width:640px){.v7 .qz .opts.three > .opt:last-child:nth-child(3n+1){grid-column:2}}
+/* Booking questions: a plain note at the top of a follow-up box (paragraph style, not the small capitals label). */
+.v7 .qz .cond .note{margin:0 0 14px;font-family:var(--sans);font-size:1.05rem;font-weight:500;line-height:1.5;letter-spacing:0;text-transform:none;color:var(--ink)}
