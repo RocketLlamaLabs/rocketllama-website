@@ -158,7 +158,7 @@ export function mountBookFunnel() {
   function confirmScreen(){ var b=goal()==='book', n=live().filter(isQ).length;
     $('cf_k').textContent=b?'You are booked':'Your scan is on its way';
     $('cf_h').textContent=b?when()+'. See you then.':'It lands in your inbox within one business day.';
-    $('cf_p').textContent=b?sent().what+' and a reminder are on their way '+sent().how+'.':'While you are here: '+n+' quick questions, one tap each, so the scan is about your business, not a generic checklist.' }
+    $('cf_p').textContent=b?sent().what+' and a reminder are on their way.':'While you are here: '+n+' quick questions, one tap each, so the scan is about your business, not a generic checklist.' }
   function finish(){
     steps.forEach(function(s){s.classList.remove('on')}); nav.style.display='none'; bar.style.width='100%'; cnt.textContent='Done'; title.textContent='';
     var b=goal()==='book'; $('r_done').classList.add('on');
