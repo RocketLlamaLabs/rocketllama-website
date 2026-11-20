@@ -1433,3 +1433,7 @@
 @media(min-width:1100px){.v7.v7 .indhero .indhead .dream-badge{top:7%;bottom:7%;right:calc((var(--badge) + 40px) / 2);transform:translate(50%,-16px)}}
 /* Footer: the gap between the email and the Facebook icon keeps the width of " · " without showing the dot. */
 .v7 footer .contact .gap{visibility:hidden}
+/* Schedule a call banner: the text lines up with the logo and the rest of the site's column (it sat against the
+   left edge); the words keep their own widths, and the facts row stays as wide as it was. */
+.v7 .fhero .in{max-width:1180px;margin-inline:auto}
+.v7 .fhero .meta{max-width:680px}
