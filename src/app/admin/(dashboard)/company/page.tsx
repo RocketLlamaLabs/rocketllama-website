@@ -113,7 +113,6 @@ const sitePages: { label: string; href: string; icon: LucideIcon }[] = [
   { label: "Industries", href: "/industries", icon: Globe },
   { label: "About", href: "/about", icon: Globe },
   { label: "Schedule a call", href: "/book", icon: Globe },
-  { label: "Instant audit", href: "/audit", icon: Globe },
   { label: "Sales presentation", href: "/slides/v1", icon: Presentation },
 ];
 

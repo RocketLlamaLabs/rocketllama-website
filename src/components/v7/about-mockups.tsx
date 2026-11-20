@@ -189,7 +189,7 @@ export function AboutD() {
         <div className="band am-close" style={{ "--img": "url(/v7/img/band-door-1920.webp)" } as CSSProperties}><div className="wrap in">
           <p className="kicker">Next step</p>
           <h2>See how your company shows up online.</h2>
-          <div className="ctas"><a className="btn" href="/book">Schedule a call</a><a className="btn light audit-btn" href="/audit">Run an instant audit</a></div>
+          <div className="ctas"><a className="btn" href="/book">Schedule a call</a></div>
         </div></div>
       </main>
       <V7Footer note="About mockup D" />

@@ -21,13 +21,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/v7", destination: "/", permanent: false },
+      { source: "/v7/audit", destination: "/book", permanent: false },
       { source: "/v7/about-brian", destination: "/about", permanent: false },
       {
         source:
-          "/v7/:page(about|ai-policy|audit|book|industries|privacy|qualify|report|services|terms)",
+          "/v7/:page(about|ai-policy|book|industries|privacy|qualify|report|services|terms)",
         destination: "/:page",
         permanent: false,
       },
+      // The instant audit page was removed on 20 November 2026; old links go to the booking page.
+      { source: "/audit", destination: "/book", permanent: false },
       { source: "/about-brian", destination: "/about", permanent: false },
     ];
   },

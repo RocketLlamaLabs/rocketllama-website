@@ -57,7 +57,6 @@ const quickLinks = [
   { label: "Live site", href: "/" },
   { label: "Sales presentation", href: "/slides/v1" },
   { label: "Schedule a call page", href: "/book" },
-  { label: "Instant audit", href: "/audit" },
 ];
 
 export default async function AdminHome() {

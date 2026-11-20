@@ -75,7 +75,7 @@ export default function WebsitePage() {
         <h2 className="text-xl font-semibold">How versions work here</h2>
         <p className="mt-2 text-muted">
           Version 7 is the live site at <code className="font-mono text-sm">/</code>{" "}
-          (with /services, /industries, /about, /audit, /book, /qualify, /report
+          (with /services, /industries, /about, /book, /qualify, /report
           and the three policy pages); it is generated from the version 2 source
           by <code className="font-mono text-sm">scripts/make-v3.py</code>, with
           the custom elements from Madison&rsquo;s mockups spliced in, so edits

@@ -27,7 +27,7 @@ export default function Page() {
 <script dangerouslySetInnerHTML={{__html:"document.addEventListener('click',function(e){var m=e.target.closest('.v7 .nav .menu');if(m){if(e.target.closest('a'))m.removeAttribute('open');}else{document.querySelectorAll('.v7 .nav .menu[open]').forEach(function(x){x.removeAttribute('open')})}});document.addEventListener('click',function(e){var b=e.target.closest('.v7 .team details.bio .less');if(b){var d=b.closest('details');d.removeAttribute('open');d.closest('.card').scrollIntoView({block:'nearest'})}})"}} />
 <main>
 <PageStructuredData path="/ai-policy" name="AI Policy" description="Where Rocket Llama Labs uses artificial intelligence, what it does, where a person is responsible, and how client and homeowner data is handled." />
-<header className="pagehead" id="top">
+<header className="pagehead legalhead" id="top">
   <div className="wrap in">
     <p className="kicker">Legal</p>
     <h1>AI Policy</h1>

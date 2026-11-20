@@ -17,7 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${site}/about/brian-greenberg`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${site}/about/branson-cobb`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${site}/about/madison-schantz`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${site}/audit`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${site}/book`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${site}/report`, lastModified: now, changeFrequency: "monthly", priority: 0.4 },
     { url: `${site}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },

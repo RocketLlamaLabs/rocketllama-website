@@ -77,7 +77,7 @@ export function ServicePage({ svc }: { svc: ServiceDetail }) {
         <section id="next" className="inext"><div className="wrap">
           <h2>{svc.cta[0]}</h2>
           <p className="sub">{svc.cta[1]}</p>
-          <div className="ctas"><a className="btn" href="/book">Schedule a call</a><a className="btn ghost" href="/audit">Run an instant audit</a></div>
+          <div className="ctas"><a className="btn" href="/book">Schedule a call</a></div>
           <p className="rel">Related services: {svc.related.map((s, i) => <span key={s}>{i > 0 ? ", " : ""}<Link href={`/services/${s}`}>{SERVICE_BY_SLUG[s].name}</Link></span>)}, or <Link href="/industries">the trades we work with</Link>.</p>
         </div></section>
       </main>
