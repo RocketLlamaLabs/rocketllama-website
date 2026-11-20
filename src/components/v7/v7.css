@@ -1454,3 +1454,6 @@
 @media(min-width:640px){.v7 .qz .opts.three > .opt:last-child:nth-child(3n+1){grid-column:2}}
 /* Booking questions: a plain note at the top of a follow-up box (paragraph style, not the small capitals label). */
 .v7 .qz .cond .note{margin:0 0 14px;font-family:var(--sans);font-size:1.05rem;font-weight:500;line-height:1.5;letter-spacing:0;text-transform:none;color:var(--ink)}
+
+/* Map graphic removed from the "Where do you work?" step: one full-width column. */
+.v7 .qz .geo{grid-template-columns:1fr}
