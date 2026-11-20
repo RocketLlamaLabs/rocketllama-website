@@ -69,7 +69,7 @@ export function BookFunnel({ tz = "Phoenix time", short = false }: { tz?: string
 
     <div className="step" data-q="city">
       <h3>Where do you work?</h3>
-      <p className="why">Your home base, and how far the trucks go. Whole metro, several metros, more than one state: all fine.</p>
+      <p className="why">What’s your home city and your service area. Whole metro, several metros, more than one state?</p>
       <div className="geo">
         <div>
           <label className="f" htmlFor="q_home">Home base</label>
