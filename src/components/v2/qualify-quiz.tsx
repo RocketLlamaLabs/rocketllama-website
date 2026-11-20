@@ -157,7 +157,7 @@ export function QualifyQuiz() {
       <div className="tick">&#10003;</div>
       <p className="k">You qualify</p>
       <h3>Pick a time for your walkthrough.</h3>
-      <p className="why">Thirty to forty-five minutes on Zoom, or in person if you are in the Valley. The call opens with a free live audit of your Google profile, your website and your reviews. Then we show you what the top company in your trade is doing to get customers online, and what your numbers look like on the same system. No obligation.</p>
+      <p className="why">Thirty to forty-five minutes on Google Meet, or in person if you are in the Valley. The call opens with a free live audit of your Google profile, your website and your reviews. Then we show you what the top company in your trade is doing to get customers online, and what your numbers look like on the same system. No obligation.</p>
       <div className="cal"><b>Booking calendar</b>In the real site this is the Pulse CRM booking widget, pre-filled with your answers.
         <div className="slots"><button className="slot" type="button">Tue 9:00 am</button><button className="slot" type="button">Tue 2:30 pm</button><button className="slot" type="button">Wed 10:00 am</button><button className="slot" type="button">Thu 8:30 am</button><button className="slot" type="button">Thu 4:00 pm</button><button className="slot" type="button">Fri 11:00 am</button></div>
       </div>

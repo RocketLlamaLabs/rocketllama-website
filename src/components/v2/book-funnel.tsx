@@ -19,7 +19,7 @@ export function BookFunnel({ tz = "Phoenix time", short = false }: { tz?: string
 
     <div className="step on" data-q="slot" data-auto="1">
       <h3>Pick a time.</h3>
-      <p className="why">{tz}. The Zoom link comes by text and email, and you can move it any time.</p>
+      <p className="why">{tz}. The Google Meet link comes by text and email, and you can move it any time.</p>
       <span className="f">Day</span>
       <div className="opts five" data-single="q_day" id="q_days" style={{marginTop:"10px"} as CSSProperties}></div>
       <div className="grp" id="g_slots" hidden><span className="f">Time</span><div className="opts five" data-single="q_slot" id="q_slots" style={{marginTop:"10px"} as CSSProperties}></div></div>
@@ -27,7 +27,7 @@ export function BookFunnel({ tz = "Phoenix time", short = false }: { tz?: string
 
     <div className="step" data-q="who">
       <h3 id="who_h">Where do we send the confirmation?</h3>
-      <p className="why" id="who_p">The Zoom link and a reminder the day before. Nothing goes to a sales list.</p>
+      <p className="why" id="who_p">The Google Meet link and a reminder the day before. Nothing goes to a sales list.</p>
       <div className="fields two">
         <label className="f">Company name<input type="text" id="q_company" placeholder="Company name" autoComplete="organization" /></label>
         <label className="f">Your name<input type="text" id="q_name" placeholder="First and last name" autoComplete="name" /></label>

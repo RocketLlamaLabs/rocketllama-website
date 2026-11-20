@@ -102,12 +102,12 @@ export function mountBookFunnel() {
   function confirmScreen(){ var b=goal()==='book', n=live().filter(isQ).length;
     $('cf_k').textContent=b?'You are booked':'Your scan is on its way';
     $('cf_h').textContent=b?when()+'. See you then.':'It lands in your inbox within one business day.';
-    $('cf_p').textContent=(b?'The Zoom link and a reminder are on their way by text and email. ':'')+'While you are here: '+n+' quick questions, one tap each, so the '+(b?'call is about you from the first minute.':'scan is about your business, not a generic checklist.') }
+    $('cf_p').textContent=(b?'The Google Meet link and a reminder are on their way by text and email. ':'')+'While you are here: '+n+' quick questions, one tap each, so the '+(b?'call is about you from the first minute.':'scan is about your business, not a generic checklist.') }
   function finish(){
     steps.forEach(function(s){s.classList.remove('on')}); nav.style.display='none'; bar.style.width='100%'; cnt.textContent='Done'; title.textContent='';
     var b=goal()==='book'; $('r_done').classList.add('on');
     $('done_h').textContent=b?'See you '+when()+'.':'Your scan is on its way.';
-    $('done_p').textContent=b?'The Zoom link is in your inbox and on your phone. The call opens with the free live audit, then what the top company in your trade is doing, and your numbers on the same system. No obligation.':'Within one business day you get the written scan of your Google profile, reviews, website and phone answering, with the three fixes that matter most. If you want them done, the walkthrough is one reply away.';
+    $('done_p').textContent=b?'The Google Meet link is in your inbox and on your phone. The call opens with the free live audit, then what the top company in your trade is doing, and your numbers on the same system. No obligation.':'Within one business day you get the written scan of your Google profile, reviews, website and phone answering, with the three fixes that matter most. If you want them done, the walkthrough is one reply away.';
     var tradeLabel=val('q_trade')==='other'?($('q_other').value.trim()||'other'):(val('q_trade')||'not given');
     $('sum_done').textContent='On file: '+$('q_company').value+' ('+tradeLabel+'; '+(homeIn.value.trim()?cityLabel():'area not given')+'), '+(val('q_years')||'?')+' years, revenue band '+(val('q_rev')||'not given')+', crew '+(val('q_crew')||'?')+', leads from '+(vals('q_src').join(', ')||'not given')+', pain points: '+(vals('q_pain').join(', ')||'not given')+'. Reach '+$('q_name').value+' at '+($('q_mobile').value||'no mobile')+' / '+$('q_email').value.trim()+'. Texting: '+($('q_consent').checked?'agreed':'no')+'.';
     root.scrollIntoView({behavior:'smooth',block:'start'});
