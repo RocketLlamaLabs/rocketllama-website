@@ -1402,10 +1402,11 @@
   .v7 .isum .box > div{display:contents}
   .v7 .isum .box > div > .kicker{grid-column:1;grid-row:1}
   .v7 .isum .box > div > h2{grid-column:1;grid-row:2;margin-bottom:16px}
-  .v7 .isum .box > div > .answer{grid-column:1;grid-row:3;margin-top:0;align-self:center}
-  /* List and paragraph share a middle. A list up to 40px taller than the paragraph runs evenly above and
-     below it (the negative margins); a still longer list grows the row and the paragraph centres on it. */
-  .v7 .isum .box > ul{grid-column:2;grid-row:3;align-self:center;margin-block:-20px}
+  .v7 .isum .box > div > .answer{grid-column:1;grid-row:3;margin-top:0;align-self:start}
+  /* The list is centred between the top of the title's letters and the bottom of the paragraph's letters
+     (it spans the title and paragraph rows; the offsets trim the space above the capitals and below the last
+     line). The negative margins let a list a little taller than that run evenly past it without moving the text. */
+  .v7 .isum .box > ul{grid-column:2;grid-row:2 / 4;align-self:center;margin-block:-20px;position:relative;top:var(--isum-nudge,0px)}
 }
 /* Industries banner: the revolving badge is centred top to bottom on the headline and paragraph together. */
 .v7.v7 .indhero .indhead{display:contents}
@@ -1419,3 +1420,11 @@
    .indhead, the same push goes on the headline (1000-1099px, where .indhead is display:contents) or the block. */
 @media(min-width:1000px){.v7.v7 main > header.indhero .indhead > h1{margin-top:auto}}
 @media(min-width:1100px){.v7.v7 main > header.indhero > .in > .indhead{margin-top:auto}.v7.v7 main > header.indhero .indhead > h1{margin-top:0}}
+/* Industries badge, sized to the text: the ring's letters run from the top of the headline's letters to the
+   bottom of the paragraph's last line. The badge is positioned against the headline-and-paragraph block (top and
+   bottom set, square by aspect-ratio); the ring's letters sit 5.5% inside the badge, and the em offsets take out
+   the space above the headline's capitals and below the paragraph's last line. */
+@media(min-width:1100px){
+  .v7.v7 .indhero .indhead{position:relative}
+  .v7.v7 .indhero .indhead .dream-badge{position:absolute;right:0;top:-7px;bottom:-8px;height:auto;width:auto;aspect-ratio:1;grid-column:auto;grid-row:auto;align-self:auto}
+}
