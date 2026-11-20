@@ -1437,3 +1437,5 @@
    left edge); the words keep their own widths, and the facts row stays as wide as it was. */
 .v7 .fhero .in{max-width:1180px;margin-inline:auto}
 .v7 .fhero .meta{max-width:680px}
+/* Footer: the Facebook logo in the site's royal blue. */
+.v7 footer .contact a.social{color:var(--accent)}
