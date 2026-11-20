@@ -34,7 +34,7 @@ export default function Page() {
     <div className="abox">
       <p className="k">What happens next</p>
       <ol className="steps">
-        <li><span><b>Pick a time.</b>Provide your company name, your name, email, and you are booked.</span></li>
+        <li><span><b>Pick a time.</b>Provide your company name, your name, email.</span></li>
         <li><span><b>A few quick questions</b>After you schedule a call, if you have time. One per screen, so the call is about your business from the first minute.</span></li>
         <li><span><b>The call.</b>Thirty to forty-five minutes. We will ask some discovery questions and walk through an audit of your website and how you show up online.</span></li>
       </ol>
