@@ -20,7 +20,7 @@ export function HomeSummary() {
       <div className="box">
         <div>
           <p className="kicker">Summary</p>
-          <h2>Rocket Llama Labs, in short</h2>
+          <h2>Rocket Llama Labs</h2>
           <p className="answer">{HOME_SUMMARY}</p>
         </div>
         <ul>{HOME_FACTS.map((f) => <li key={f}>{f}</li>)}</ul>
