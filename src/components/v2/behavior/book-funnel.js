@@ -85,7 +85,7 @@ export function mountBookFunnel() {
     steps.forEach(function(s,k){s.classList.toggle('on',k===i)});
     var l=live(), cur=steps[i], qs=l.filter(isQ), pre=l.filter(function(s){return !isQ(s)&&s.dataset.q!=='confirm'});
     if(cur.dataset.q==='confirm'){ cnt.textContent=goal()==='book'?'Booked':'On its way'; title.textContent=''; bar.style.width='50%' }
-    else if(isQ(cur)){ var n=qs.indexOf(cur)+1, N=qs.length, m=Math.max(1,Math.round((1-n/N)*2)); cnt.textContent='Question '+n+' of '+N; title.textContent=N-n<=1?'Almost done':(N-n<=4?'Nearly there':'About '+m+' minute'+(m===1?'':'s')+' to go'); bar.style.width=(50+n/N*50)+'%' }
+    else if(isQ(cur)){ var n=qs.indexOf(cur)+1, N=qs.length, m=Math.max(1,Math.round((1-n/N)*2)); cnt.textContent='Question '+n+' of '+N; title.textContent=N-n<=1?'Almost done':(N-n<=4?'':'About '+m+' minute'+(m===1?'':'s')+' to go'); bar.style.width=(50+n/N*50)+'%' }
     else { var n2=pre.indexOf(cur)+1, N2=2; cnt.textContent='Step '+n2+' of '+N2; title.textContent=''; bar.style.width=(n2/N2*50)+'%' }
     var lk=l.indexOf(cur); back.disabled=lk<=0||cur.dataset.q==='confirm'||(lk>0&&l[lk-1].dataset.q==='confirm');
     next.textContent=cur.dataset.q==='who'?'Book it':cur.dataset.q==='confirm'?'Continue to questions':isLast()?'Finish':'Next';
