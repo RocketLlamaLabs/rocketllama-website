@@ -61,7 +61,7 @@ export default function Page() {
   <p className="kicker">The 60-second check</p>
   <h2>How does your company show up online?</h2>
   <p className="sub">Four questions, one click each. You&rsquo;ll get a score out of 100 and see where you stand on your company&rsquo;s visibility. Know where you perform well and learn where you need to improve.</p>
-  <SixtySecondCheck base="" cta="Schedule a call" alt={{ label: "Run an instant audit", href: "/audit" }} />
+  <SixtySecondCheck base="" cta="Schedule a call" alt={null} />
 </div></section>
 
 <section id="problem"><div className="wrap">

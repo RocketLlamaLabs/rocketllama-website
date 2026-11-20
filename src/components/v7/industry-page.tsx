@@ -100,7 +100,7 @@ export function IndustryPage({ ind }: { ind: Industry }) {
         <section id="next" className="inext"><div className="wrap">
           <h2>{ind.cta[0]}</h2>
           <p className="sub">{ind.cta[1]}</p>
-          <div className="ctas"><a className="btn" href={book}>Schedule a call</a><a className="btn ghost" href="/audit">Run an instant audit</a></div>
+          <div className="ctas"><a className="btn" href={book}>Schedule a call</a></div>
           <p className="rel">Related industries: {ind.related.map((s, i) => <span key={s}>{i > 0 ? ", " : ""}<Link href={`/${s}`}>{INDUSTRY_BY_SLUG[s].name} marketing</Link></span>)}, or <Link href="/industries">every trade we work with</Link>.</p>
         </div></section>
       </main>

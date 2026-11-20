@@ -1457,3 +1457,18 @@
 
 /* Map graphic removed from the "Where do you work?" step: one full-width column. */
 .v7 .qz .geo{grid-template-columns:1fr}
+
+/* Phones: banners on every page below Home fit their words instead of filling most of the screen, so there is
+   no empty stretch under the button. The space under the last item matches the space above the label. */
+@media(max-width:700px){
+  .v7.v7 main > header.pagehead,.v7.v7 main > header.ihero{min-height:0}
+  .v7.v7 main > header.pagehead .in,.v7.v7 main > header.ihero .in{padding-bottom:var(--hero-top)}
+}
+/* Legal pages (Privacy Policy, Website Policy, AI Policy): a short banner at every width. The label, headline and
+   one-line summary sit together with even space above and below, and the headline is smaller than on other pages. */
+.v7.v7 main > header.pagehead.legalhead{min-height:0;align-items:flex-start}
+.v7.v7 main > header.pagehead.legalhead > .in{display:block;padding-block:clamp(32px,5vw,56px)}
+.v7.v7 main > header.pagehead.legalhead > .in::after{content:none}
+.v7.v7 main > header.pagehead.legalhead > .in > h1{margin-top:0;font-size:clamp(2rem,4.2vw,3.25rem)}
+.v7.v7 main > header.pagehead.legalhead .kicker{min-height:0;margin-bottom:14px}
+.v7.v7 main > header.pagehead.legalhead .lede{display:block;margin-top:14px}
