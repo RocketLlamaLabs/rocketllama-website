@@ -1428,3 +1428,6 @@
   .v7.v7 .indhero .indhead{position:relative}
   .v7.v7 .indhero .indhead .dream-badge{position:absolute;right:0;top:-7px;bottom:-8px;height:auto;width:auto;aspect-ratio:1;grid-column:auto;grid-row:auto;align-self:auto}
 }
+/* Industries badge, smaller: about three quarters of the headline-and-paragraph height, centred top to bottom on
+   it (equal insets above and below, so the ring's middle is the text block's middle). */
+@media(min-width:1100px){.v7.v7 .indhero .indhead .dream-badge{top:12%;bottom:12%;right:calc((var(--badge) + 40px) / 2);transform:translateX(50%)}}
