@@ -28,7 +28,13 @@ export function mountBookFunnel() {
   function fmtDay(k){var p=k.split('-');return new Date(+p[0],p[1]-1,+p[2],12).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}
   function fmtTime(iso){return new Date(iso).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',timeZone:TZ}).toLowerCase()}
   function dayNote(msg){ var n=document.createElement('p'); n.className='why'; n.textContent=msg; $('q_days').innerHTML=''; $('q_days').appendChild(n) }
-  function paintSlots(label){ slotIso={}; tiles($('q_slots'),'q_slot',(byDay[dayKey[label]]||[]).map(function(iso){var t=fmtTime(iso); slotIso[t]=iso; return t})) }
+  // Show half of each day's open times so the calendar does not read as empty. Each time gets a
+  // fixed score from its own clock value and the lower-scoring half is shown, so every visitor sees
+  // the same set on every load. A day with only a few times left shows all of them. Hidden times
+  // stay open in the CRM for the team to use.
+  function score(iso){ var x=Math.floor(Date.parse(iso)/60000); x=Math.imul(x^(x>>>15),2246822519); x=Math.imul(x^(x>>>13),3266489917); return (x^(x>>>16))>>>0 }
+  function shown(list){ if(list.length<=4) return list; var cut=list.map(score).sort(function(p,q){return p-q})[Math.ceil(list.length/2)-1]; return list.filter(function(iso){return score(iso)<=cut}) }
+  function paintSlots(label){ slotIso={}; tiles($('q_slots'),'q_slot',shown(byDay[dayKey[label]]||[]).map(function(iso){var t=fmtTime(iso); slotIso[t]=iso; return t})) }
   function loadSlots(){
     $('g_slots').hidden=true; $('q_slots').innerHTML=''; dayNote('Loading open times...');
     return fetch(CRM+'/availability?tz='+encodeURIComponent(TZ)+'&days=14').then(function(r){ if(!r.ok) throw new Error('availability'); return r.json() }).then(function(d){
