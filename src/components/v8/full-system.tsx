@@ -9,7 +9,7 @@ const SYSTEM: [string, string, string[]][] = [
     "Ranking in Google search", "AI search (ChatGPT, Gemini, Perplexity)", "Google Business Profile management", "Website design", "Free website hosting", "Landing page and funnel optimization", "Link building", "Content creation",
   ]],
   ["Get the call", "Ads that run in your name, on your card.", [
-    "Google Ads", "Google Local Services Ads", "Facebook Ads", "Instagram", "YouTube ads", "Targeted local commercials", "Email campaigns", "Voicemail drop",
+    "Google Ads", "Google Local Services Ads", "Facebook Ads", "Instagram", "Targeted local commercials", "Email campaigns", "Voicemail drop",
   ]],
   ["Answer and book", "Every lead answered, every job on the calendar.", [
     "Phone system and call tracking", "AI voice attendant", "AI calendar booking", "CRM with AI built in", "Review management",
@@ -35,7 +35,7 @@ export function FullSystem({ base, id = "system", photo, detailed, badge, noDrea
 <section id={id} className="feature"><div className="wrap">
   <p className="kicker">The full system</p>
   <h2>Most agencies sell you one tactic.<br />We run the whole thing.</h2>
-  <p className="sub">{detailed ? "Website, local SEO and AI search, Google Ads, reviews, call tracking, the CRM, and the AI receptionist that answers for you, built as one system and run by one marketing and technology team for home service contractors." : "Phones, website, search, ads, reviews, the CRM and the AI that answers for you, built as one system and run by one team. Pick the pieces you need; most owners want all of it."}</p>
+  <p className="sub">{detailed ? "A website, local SEO and AI search, Google Ads, reviews, call tracking, the CRM, and the AI receptionist that answers for you. Built as one system and run by one marketing and technology team for home service contractors." : "Phones, website, search, ads, reviews, the CRM and the AI that answers for you, built as one system and run by one team. Pick the pieces you need; most owners want all of it."}</p>
   <div className="sysgrid">
     {groups.map(([name, blurb, items]) => (
       <div className="sysgroup" key={name}>
