@@ -36,7 +36,7 @@ export function QualifyQuiz() {
       <p className="why">Your home base, and how far the trucks go. Whole metro, several metros, more than one state: all fine.</p>
       <div className="geo">
         <div>
-          <label className="f" htmlFor="q_home">Home base</label>
+          <label className="f" htmlFor="q_home">Home city</label>
           <div className="ta"><input type="text" id="q_home" placeholder="City, State" autoComplete="off" autoCapitalize="words" style={{marginTop:"8px"} as CSSProperties} /><div className="sug" id="q_homesug" hidden></div></div>
           <span className="f" style={{marginTop:"18px"} as CSSProperties}>How far do you go?</span>
           <div className="opts" data-single="q_radius" style={{marginTop:"10px"} as CSSProperties}>
