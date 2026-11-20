@@ -1439,3 +1439,5 @@
 .v7 .fhero .meta{max-width:680px}
 /* Footer: the Facebook logo in the site's royal blue. */
 .v7 footer .contact a.social{color:var(--accent)}
+/* Schedule a call: the section behind the booking form in the site's light blue; the form card stays white. */
+.v7 .funnel{background:#eaf2fd}

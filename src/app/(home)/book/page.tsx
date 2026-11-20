@@ -30,38 +30,6 @@ export default function Page() {
   <div className="qzcol">
     <BookFunnel tz="Arizona time" short />
   </div>
-  <aside className="aside">
-    <div className="abox">
-      <p className="k">What happens next</p>
-      <ol className="steps">
-        <li><span><b>Pick a time.</b>Provide your company name, your name, email.</span></li>
-        <li><span><b>A few quick questions</b>After you schedule a call, if you have time. One per screen, so the call is about your business from the first minute.</span></li>
-        <li><span><b>The call.</b>Thirty to forty-five minutes. We will ask some discovery questions and walk through an audit of your website and how you show up online.</span></li>
-      </ol>
-    </div>
-    <div className="abox">
-      <p className="k">What you get on the call</p>
-      <ul className="checks">
-        <li>A free audit, on screen: your Google Business Profile, your website, and your reviews</li>
-        <li>What your numbers look like on the system, floor to ceiling</li>
-        <li>The website design first. We work with you until your vision is achieved</li>
-      </ul>
-    </div>
-    <div className="abox">
-      <p className="k">The free live audit</p>
-      <h4>Ten minutes, on screen, and you keep the notes.</h4>
-      <ul className="checks">
-        <li>Your Google Business Profile: completeness, photos, posts, and where you rank on the map for your top three searches</li>
-        <li>Your reviews: count, pace and replies, against the top company in your trade</li>
-        <li>Your website: speed on a phone, what a search engine and an AI can read, and whether a lead can book</li>
-        <li>The phone test: we call your number and time how long it takes to reach a person</li>
-      </ul>
-    </div>
-    <div className="abox rule">
-      <p className="k">Your leads</p>
-      <p><b>Exclusive leads, never shared.</b> Every lead comes from your own website and your own ads, so it is yours alone. A marketplace sells the same homeowner to four contractors. We never do.</p>
-    </div>
-  </aside>
 </div></section>
 </main>
       <V7Footer note='Version 7, booking funnel' />
