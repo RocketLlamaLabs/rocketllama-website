@@ -20,13 +20,46 @@ export function mountBookFunnel() {
   function isLast(){var l=live();return l[l.length-1]===steps[i]}
   function move(dir){var l=live(), k=l.indexOf(steps[i])+dir; if(k<0||k>=l.length) return false; if(dir<0&&(l[k].dataset.q==='confirm'||steps[i].dataset.q==='confirm')) return false; i=steps.indexOf(l[k]); return true}
   function clearBad(){root.querySelectorAll('.bad').forEach(function(e){e.classList.remove('bad')}); err.style.display='none'}
-  // the booking calendar: the next five weekdays, five slots each (the real site uses the Pulse CRM widget)
-  var DAYS=[], d=new Date(); d.setHours(12,0,0,0);
-  while(DAYS.length<5){ d.setDate(d.getDate()+1); if(d.getDay()>0&&d.getDay()<6) DAYS.push(new Date(d)) }
-  var SLOTS=['9:00 am','10:30 am','1:00 pm','2:30 pm','4:00 pm'];
-  function fmtDay(x){return x.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}
+  // The booking calendar is live: free times come from the Llama Labs CRM calendar below, and
+  // "Book it" creates the appointment there. The CRM sends the confirmation and reminders and
+  // tells the calendar owner. Times are shown in Arizona time, as the page says.
+  var CRM='https://crm.rocketllamalabs.com/book/branson-cobb', TZ='America/Phoenix';
+  var byDay={}, dayKey={}, slotIso={}, bookedAppt=null, busy=false;
+  function fmtDay(k){var p=k.split('-');return new Date(+p[0],p[1]-1,+p[2],12).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}
+  function fmtTime(iso){return new Date(iso).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',timeZone:TZ}).toLowerCase()}
+  function dayNote(msg){ var n=document.createElement('p'); n.className='why'; n.textContent=msg; $('q_days').innerHTML=''; $('q_days').appendChild(n) }
+  function paintSlots(label){ slotIso={}; tiles($('q_slots'),'q_slot',(byDay[dayKey[label]]||[]).map(function(iso){var t=fmtTime(iso); slotIso[t]=iso; return t})) }
+  function loadSlots(){
+    $('g_slots').hidden=true; $('q_slots').innerHTML=''; dayNote('Loading open times...');
+    return fetch(CRM+'/availability?tz='+encodeURIComponent(TZ)+'&days=14').then(function(r){ if(!r.ok) throw new Error('availability'); return r.json() }).then(function(d){
+      byDay=d.by_day||{}; dayKey={};
+      var keys=Object.keys(byDay).filter(function(k){return byDay[k].length>0}).sort().slice(0,5);
+      if(!keys.length){ dayNote('No open times in the next two weeks. Check back soon.'); return }
+      tiles($('q_days'),'q_day',keys.map(function(k){var l=fmtDay(k); dayKey[l]=k; return l}));
+    }).catch(function(){ dayNote('The calendar did not load. Refresh the page to try again.') });
+  }
+  function fail(msg){ err.textContent=msg; err.style.display='block' }
+  function toSlotStep(msg){ i=steps.indexOf(root.querySelector('.step[data-q="slot"]')); show(true); fail(msg) }
+  function book(){
+    if(busy) return;
+    var iso=slotIso[val('q_slot')]; if(!iso){ toSlotStep('Pick a time.'); return }
+    busy=true; next.disabled=true; back.disabled=true; next.textContent='Booking...';
+    var nm=$('q_name').value.trim().split(/\s+/), url=$('q_url')?$('q_url').value.trim():'';
+    fetch(CRM+'/create',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      first_name:nm[0], last_name:nm.slice(1).join(' '), email:$('q_email').value.trim(), phone:$('q_mobile').value,
+      comments:'Company: '+$('q_company').value.trim()+(url?'. Website: '+url:''),
+      slot:iso, timezone:TZ, lead_source:'Rocket Llama Labs website', sms_consent:$('q_consent').checked })
+    }).then(function(r){ return r.json().catch(function(){return {}}).then(function(d){return {status:r.status,d:d||{}}}) }).then(function(res){
+      busy=false; next.disabled=false;
+      if(res.status===200&&res.d.appointment_id){ bookedAppt=res.d; confirmScreen(); booked=true; clearTimeout(idle); move(1); show(true); return }
+      if(res.status===409){ loadSlots().then(function(){ toSlotStep('That time was just taken. Pick another.') }); return }
+      show(false); fail(res.status===422&&res.d.error?res.d.error:'The booking did not go through. Try again in a moment.');
+    }).catch(function(){ busy=false; next.disabled=false; show(false); fail('The booking did not go through. Check your connection and try again.') });
+  }
+  // What the confirmation really carries: a meeting link only when the calendar has one, a text only with consent.
+  function sent(){ return {what:bookedAppt&&/^https?:/.test(bookedAppt.meeting_location||'')?'The Google Meet link':'Your confirmation', how:$('q_consent').checked?'by text and email':'by email'} }
   function tiles(box,name,items){ box.innerHTML=''; items.forEach(function(t){var l=document.createElement('label'); l.className='opt'; var r=document.createElement('input'); r.type='radio'; r.name=name; r.value=t; l.appendChild(r); l.appendChild(document.createTextNode(t)); box.appendChild(l)}) }
-  tiles($('q_days'),'q_day',DAYS.map(fmtDay)); tiles($('q_slots'),'q_slot',SLOTS);
+  loadSlots();
   function show(scroll){
     steps.forEach(function(s,k){s.classList.toggle('on',k===i)});
     var l=live(), cur=steps[i], qs=l.filter(isQ), pre=l.filter(function(s){return !isQ(s)&&s.dataset.q!=='confirm'});
@@ -42,7 +75,7 @@ export function mountBookFunnel() {
   root.addEventListener('change',function(e){
     var t=e.target; if(t.type==='radio'){root.querySelectorAll('input[name="'+t.name+'"]').forEach(function(r){r.closest('.opt').classList.toggle('sel',r.checked)})}
     if(t.type==='checkbox'&&t.closest('.opt')){t.closest('.opt').classList.toggle('sel',t.checked)}
-    if(t.name==='q_day'){ $('g_slots').hidden=false }
+    if(t.name==='q_day'){ paintSlots(t.value); $('g_slots').hidden=false }
     var src=vals('q_src'); $('c_marketplace').hidden=!(src.indexOf('angi')>-1||src.indexOf('thumbtack')>-1||src.indexOf('yelp')>-1);
     $('c_agency').hidden=src.indexOf('agency')===-1;
     var site=val('q_site'); $('c_site').hidden=!(site==='diy'||site==='agency'||site==='unsure');
@@ -102,17 +135,17 @@ export function mountBookFunnel() {
   function confirmScreen(){ var b=goal()==='book', n=live().filter(isQ).length;
     $('cf_k').textContent=b?'You are booked':'Your scan is on its way';
     $('cf_h').textContent=b?when()+'. See you then.':'It lands in your inbox within one business day.';
-    $('cf_p').textContent=(b?'The Google Meet link and a reminder are on their way by text and email. ':'')+'While you are here: '+n+' quick questions, one tap each, so the '+(b?'call is about you from the first minute.':'scan is about your business, not a generic checklist.') }
+    $('cf_p').textContent=(b?sent().what+' and a reminder are on their way '+sent().how+'. ':'')+'While you are here: '+n+' quick questions, one tap each, so the '+(b?'call is about you from the first minute.':'scan is about your business, not a generic checklist.') }
   function finish(){
     steps.forEach(function(s){s.classList.remove('on')}); nav.style.display='none'; bar.style.width='100%'; cnt.textContent='Done'; title.textContent='';
     var b=goal()==='book'; $('r_done').classList.add('on');
     $('done_h').textContent=b?'See you '+when()+'.':'Your scan is on its way.';
-    $('done_p').textContent=b?'The Google Meet link is in your inbox and on your phone. The call opens with the free live audit, then what the top company in your trade is doing, and your numbers on the same system. No obligation.':'Within one business day you get the written scan of your Google profile, reviews, website and phone answering, with the three fixes that matter most. If you want them done, the walkthrough is one reply away.';
+    $('done_p').textContent=b?sent().what+' is on its way '+sent().how+'. The call opens with the free live audit, then what the top company in your trade is doing, and your numbers on the same system. No obligation.':'Within one business day you get the written scan of your Google profile, reviews, website and phone answering, with the three fixes that matter most. If you want them done, the walkthrough is one reply away.';
     var tradeLabel=val('q_trade')==='other'?($('q_other').value.trim()||'other'):(val('q_trade')||'not given');
     $('sum_done').textContent='On file: '+$('q_company').value+' ('+tradeLabel+'; '+(homeIn.value.trim()?cityLabel():'area not given')+'), '+(val('q_years')||'?')+' years, revenue band '+(val('q_rev')||'not given')+', crew '+(val('q_crew')||'?')+', leads from '+(vals('q_src').join(', ')||'not given')+', pain points: '+(vals('q_pain').join(', ')||'not given')+'. Reach '+$('q_name').value+' at '+($('q_mobile').value||'no mobile')+' / '+$('q_email').value.trim()+'. Texting: '+($('q_consent').checked?'agreed':'no')+'.';
     root.scrollIntoView({behavior:'smooth',block:'start'});
   }
-  next.addEventListener('click',function(){ var v=valid(); if(!v.ok){err.textContent=v.msg;err.style.display='block';v.el.classList.add('bad');(v.el.querySelector&&v.el.querySelector('input,select')||v.el).focus({preventScroll:false});return} if(steps[i].dataset.q==='who'){ confirmScreen(); booked=true; clearTimeout(idle) } if(!isLast()){move(1);show(true)} else finish() });
+  next.addEventListener('click',function(){ var v=valid(); if(!v.ok){err.textContent=v.msg;err.style.display='block';v.el.classList.add('bad');(v.el.querySelector&&v.el.querySelector('input,select')||v.el).focus({preventScroll:false});return} if(steps[i].dataset.q==='who'&&goal()==='book'&&!booked){ book(); return } if(!isLast()){move(1);show(true)} else finish() });
   back.addEventListener('click',function(){ if(move(-1))show(true) });
   $('qzskip').addEventListener('click',function(e){ e.preventDefault(); finish() });
   try{
