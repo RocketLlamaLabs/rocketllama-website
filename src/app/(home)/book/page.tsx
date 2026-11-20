@@ -42,11 +42,9 @@ export default function Page() {
     <div className="abox">
       <p className="k">What you get on the call</p>
       <ul className="checks">
-        <li>A free live audit, on screen: your Google Business Profile, your website and your reviews, side by side with the top company in your trade</li>
-        <li>A look at who is winning your trade in your area, and how</li>
+        <li>A free audit, on screen: your Google Business Profile, your website, and your reviews</li>
         <li>What your numbers look like on the system, floor to ceiling</li>
-        <li>The website design first. Setup is refunded if you do not like it</li>
-        <li>A straight answer on whether it fits</li>
+        <li>The website design first. We work with you until your vision is achieved</li>
       </ul>
     </div>
     <div className="abox">
