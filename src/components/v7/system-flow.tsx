@@ -19,19 +19,31 @@ const ICONS: Record<string, string[]> = {
   key: ["M6.5 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z", "M10 12h11", "M16.5 12v2.5", "M20 12v3.5"],
 };
 
-import { MARKS } from "@/components/v7/brand-marks";
+import { useId } from "react";
+import { MARKS, GRADIENTS, type MarkPath } from "@/components/v7/brand-marks";
 
 // A white tile holding one or two brand marks, centred on `cx`. `y` is the top.
 function BrandTile({ marks, cx, y, size = 34 }: { marks: string[]; cx: number; y: number; size?: number }) {
   const glyph = size - 12, gap = 8;
   const w = marks.length * glyph + (marks.length - 1) * gap + 12;
   const x = cx - w / 2;
+  // Gradient ids are unique per tile, so the wide and tall diagrams (one of them hidden) each paint their own.
+  const uid = useId().replace(/:/g, "");
+  const used = [...new Set(marks.flatMap((m) => MARKS[m].paths.map((p) => p.paint).filter(Boolean)))] as (keyof typeof GRADIENTS)[];
+  const style = (p: MarkPath) => p.stroke ? { fill: "none", stroke: p.stroke, strokeWidth: p.sw ?? 2 } : p.paint ? { fill: `url(#${uid}-${p.paint})` } : { color: p.fill };
   return (
     <g className="tile brand" transform={`translate(${x} ${y})`} aria-hidden="true">
+      {used.length ? (
+        <defs>{used.map((k) => (
+          <radialGradient key={k} id={`${uid}-${k}`} cx={GRADIENTS[k].cx} cy={GRADIENTS[k].cy} r={GRADIENTS[k].r}>
+            {GRADIENTS[k].stops.map(([o, c]) => (<stop key={o} offset={o} stopColor={c} />))}
+          </radialGradient>
+        ))}</defs>
+      ) : null}
       <rect width={w} height={size} rx={size * 0.28} />
       {marks.map((m, i) => (
         <g key={m} transform={`translate(${6 + i * (glyph + gap)} 6) scale(${glyph / 24})`}>
-          {MARKS[m].paths.map((p) => (<path key={p.d} d={p.d} style={{ color: p.fill }} />))}
+          {MARKS[m].paths.map((p) => (<path key={p.d} d={p.d} style={style(p)} />))}
         </g>
       ))}
     </g>
