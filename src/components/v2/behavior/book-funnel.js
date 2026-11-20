@@ -173,9 +173,9 @@ export function mountBookFunnel() {
   $('qzskip').addEventListener('click',function(e){ e.preventDefault(); finish() });
   try{
     var qs=new URLSearchParams(location.search), pt=qs.get('trade');
-    if(pt){var hit=[].filter.call(root.querySelectorAll('input[name="q_trade"]'),function(r){return r.value.toLowerCase()===pt.toLowerCase()})[0]||root.querySelector('input[name="q_trade"][value="other"]');
+    if(pt){var hit=[].filter.call(root.querySelectorAll('input[name="q_trade"]'),function(r){return r.value.toLowerCase()===pt.toLowerCase()})[0]||root.querySelector('input[name="q_trade"][value="other"]')||root.querySelector('input[name="q_trade"][value="Other home service"]'), unlisted=hit&&hit.value.toLowerCase()!==pt.toLowerCase();
       hit.checked=true; hit.closest('.opt').classList.add('sel'); if(hit.value==='other'){$('c_other').hidden=false} else {hit.closest('.step').classList.add('skip')}
-      var note=document.getElementById('qzstart'); if(note){note.hidden=false; note.querySelector('b').textContent=hit.value==='other'?pt:hit.value}}
+      var note=document.getElementById('qzstart'); if(note){note.hidden=false; note.querySelector('b').textContent=(hit.value==='other'||unlisted)?pt:hit.value}}
   }catch{}
   // The free scan: exit intent (pointer leaves the top of the page, or the first screen idles for 45 s), or the quiet link. Once per visit, never after a booking.
   var wrap=$('scanwrap'), scanShown=false, seen=false; try{ seen=sessionStorage.getItem('rll_scan_seen')==='1' }catch{}
