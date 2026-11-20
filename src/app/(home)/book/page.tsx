@@ -24,7 +24,6 @@ export default function Page() {
   <p className="kicker">Schedule a call</p>
   <h1>Pick a time.</h1>
   <p>Book a call and we will provide a free audit of how you show up online: your Google profile, your reviews, your website, and how your phone gets answered. No obligation.</p>
-  <div className="meta"><span><b>Book first</b> · questions after, optional</span><span><b>Free live audit</b> on the call</span><span><b>No obligation</b></span><span><b>Nothing shared</b> outside Rocket Llama Labs</span></div>
 </div></header>
 
 <section className="funnel"><div className="wrap in">
