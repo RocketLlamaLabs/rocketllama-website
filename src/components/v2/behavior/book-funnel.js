@@ -25,6 +25,20 @@ export function mountBookFunnel() {
   // tells the calendar owner. Times are shown in Arizona time, as the page says.
   var CRM='https://crm.rocketllamalabs.com/book/branson-cobb', TZ='America/Phoenix';
   var byDay={}, dayKey={}, slotIso={}, bookedAppt=null, busy=false;
+  // Calls are booked at least one business day ahead: the first day offered is the next weekday after today
+  // (Arizona time), so a visitor on Friday, Saturday or Sunday starts on Monday. Holidays are not skipped.
+  function firstBookableDay(){
+    var t=new Intl.DateTimeFormat('en-CA',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).split('-');
+    var d=new Date(Date.UTC(+t[0],t[1]-1,+t[2]));
+    do{ d.setUTCDate(d.getUTCDate()+1) }while(d.getUTCDay()===0||d.getUTCDay()===6);
+    return d.toISOString().slice(0,10);
+  }
+  // Calls run every day from 9:00 am to 4:30 pm (last start time), Arizona time.
+  function callHours(days){
+    var hm=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'numeric',hourCycle:'h23'}), out={};
+    Object.keys(days).forEach(function(k){ out[k]=days[k].filter(function(iso){ var p=hm.format(new Date(iso)).split(':'), m=+p[0]*60+(+p[1]); return m>=9*60&&m<=16*60+30 }) });
+    return out;
+  }
   function fmtDay(k){var p=k.split('-');return new Date(+p[0],p[1]-1,+p[2],12).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}
   function fmtTime(iso){return new Date(iso).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',timeZone:TZ}).toLowerCase()}
   function dayNote(msg){ var n=document.createElement('p'); n.className='why'; n.textContent=msg; $('q_days').innerHTML=''; $('q_days').appendChild(n) }
@@ -32,8 +46,8 @@ export function mountBookFunnel() {
   function loadSlots(){
     $('g_slots').hidden=true; $('q_slots').innerHTML=''; dayNote('Loading open times...');
     return fetch(CRM+'/availability?tz='+encodeURIComponent(TZ)+'&days=14').then(function(r){ if(!r.ok) throw new Error('availability'); return r.json() }).then(function(d){
-      byDay=d.by_day||{}; dayKey={};
-      var keys=Object.keys(byDay).filter(function(k){return byDay[k].length>0}).sort().slice(0,5);
+      byDay=callHours(d.by_day||{}); dayKey={};
+      var first=firstBookableDay(), keys=Object.keys(byDay).filter(function(k){return k>=first&&byDay[k].length>0}).sort().slice(0,5);
       if(!keys.length){ dayNote('No open times in the next two weeks. Check back soon.'); return }
       tiles($('q_days'),'q_day',keys.map(function(k){var l=fmtDay(k); dayKey[l]=k; return l}));
     }).catch(function(){ dayNote('The calendar did not load. Refresh the page to try again.') });
@@ -76,11 +90,13 @@ export function mountBookFunnel() {
     var t=e.target; if(t.type==='radio'){root.querySelectorAll('input[name="'+t.name+'"]').forEach(function(r){r.closest('.opt').classList.toggle('sel',r.checked)})}
     if(t.type==='checkbox'&&t.closest('.opt')){t.closest('.opt').classList.toggle('sel',t.checked)}
     if(t.name==='q_day'){ paintSlots(t.value); $('g_slots').hidden=false }
-    var src=vals('q_src'); $('c_marketplace').hidden=!(src.indexOf('angi')>-1||src.indexOf('thumbtack')>-1||src.indexOf('yelp')>-1);
-    $('c_agency').hidden=src.indexOf('agency')===-1;
-    var site=val('q_site'); $('c_site').hidden=!(site==='diy'||site==='agency'||site==='unsure');
-    $('c_other').hidden=val('q_trade')!=='other';
-    $('c_multi').hidden=val('q_radius')!=='multi'; if(t.name==='q_radius') ringLabel();
+    // The short form leaves some of these follow-ups out, so each one is only set when it is on the page.
+    function hide(id,h){ var el=$(id); if(el) el.hidden=h }
+    var src=vals('q_src'); hide('c_marketplace',!(src.indexOf('angi')>-1||src.indexOf('thumbtack')>-1||src.indexOf('yelp')>-1));
+    hide('c_agency',src.indexOf('agency')===-1);
+    var site=val('q_site'); hide('c_site',!(site==='diy'||site==='agency'||site==='unsure'));
+    hide('c_other',val('q_trade')!=='other');
+    hide('c_multi',val('q_radius')!=='multi'); if(t.name==='q_radius') ringLabel();
     if(t.closest('.bad')){t.closest('.bad').classList.remove('bad'); err.style.display='none'}
     if(t.type==='radio'&&steps[i].dataset.auto&&!steps[i].querySelector('.cond:not([hidden])')&&!isLast()){setTimeout(function(){if(valid().ok&&move(1))show(true)},280)}
   });

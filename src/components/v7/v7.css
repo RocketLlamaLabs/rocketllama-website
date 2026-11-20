@@ -1441,3 +1441,12 @@
 .v7 footer .contact a.social{color:var(--accent)}
 /* Schedule a call: the section behind the booking form in the site's light blue; the form card stays white. */
 .v7 .funnel{background:#eaf2fd}
+/* Booking form day and time tiles: every label on one line, every tile the same size. */
+.v7 .qz .opts.five .opt{white-space:nowrap;padding-right:8px;padding-left:36px;font-size:clamp(.86rem,1.25vw,.98rem);min-height:56px}
+.v7 .qz .opts.five .opt::before{left:10px}
+.v7 .qz .opts.five .opt::after{left:16px}
+.v7 .qz .opts.five{grid-auto-rows:1fr}
+.v7 .qz .opts.five{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:640px) and (max-width:819px){.v7 .qz .opts.five{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:820px){.v7 .qz .opts.five{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(min-width:820px) and (max-width:899px){.v7 .qz .opts.five .opt{font-size:.8rem;padding-left:32px}.v7 .qz .opts.five .opt::before{left:8px;width:16px;height:16px}.v7 .qz .opts.five .opt::after{left:13px}}
