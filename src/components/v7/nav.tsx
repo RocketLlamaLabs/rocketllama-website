@@ -3,13 +3,14 @@
 // The site navigation, as it appears on every version 7 page. The generated
 // pages carry this markup inline (scripts/make-v3.py); hand-written pages use
 // this component. Keep the two in step.
-export function V7Nav() {
+// onBook: the booking page keeps the button's space (so the links stay put) but hides the button itself.
+export function V7Nav({ onBook = false }: { onBook?: boolean } = {}) {
   return (
     <>
       <nav className="nav" aria-label="Main"><div className="wrap in">
         <a className="wm" href="/" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
         <div className="links"><a href="/services">Services</a><div className="dd"><a href="/industries" aria-haspopup="true">Industries</a><div className="ddmenu"><a href="/hvac">HVAC</a><a href="/plumbing">Plumbing</a><a href="/electrical">Electrical</a><a href="/roofing">Roofing</a><a href="/garage-door">Garage door</a><a href="/pest-control">Pest control</a><a href="/landscaping">Landscaping</a><a href="/painting">Painting</a><a href="/window-and-pressure-washing">Window and pressure washing</a><a href="/handyman">Handyman</a><a href="/mobile-mechanic">Mobile mechanic</a><a href="/windows-and-doors">Windows and doors</a><a href="/solar">Solar</a><a href="/flooring">Flooring</a><a href="/remodeling">Remodeling</a><a className="all" href="/industries">All industries</a></div></div><a href="/about">About</a></div>
-        <div className="navbtns"><a className="btn sm" href="/book">Schedule a call</a></div>
+        <div className="navbtns" style={onBook ? { visibility: "hidden" } : undefined} aria-hidden={onBook || undefined}><a className="btn sm" href="/book" tabIndex={onBook ? -1 : undefined}>Schedule a call</a></div>
         <details className="menu">
           <summary aria-label="Menu"><span></span></summary>
           <div className="panel">

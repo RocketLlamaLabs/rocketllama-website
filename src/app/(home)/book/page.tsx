@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import { pageMeta, PageStructuredData } from "@/components/v7/page-seo";
 import { V7Footer } from "@/components/v7/footer";
+import { V7Nav } from "@/components/v7/nav";
 import { BookFunnel } from "@/components/v2/book-funnel";
 
 export const metadata: Metadata = pageMeta("/book", "Schedule a call", "Pick a time for a call with Rocket Llama Labs. We look at how your home service company shows up online and write a marketing plan with a number on it.");
@@ -11,10 +12,7 @@ export const metadata: Metadata = pageMeta("/book", "Schedule a call", "Pick a t
 export default function Page() {
   return (
     <>
-<nav className="nav" aria-label="Main"><div className="wrap in">
-  <a className="wm" href="/" aria-label="Rocket Llama Labs home"><img src="/brand/logo-nav.svg" alt="Rocket Llama Labs" /></a>
-  <div className="links"><a href="/services">Services</a><div className="dd"><a href="/industries" aria-haspopup="true">Industries</a><div className="ddmenu"><a href="/hvac">HVAC</a><a href="/plumbing">Plumbing</a><a href="/electrical">Electrical</a><a href="/roofing">Roofing</a><a href="/garage-door">Garage door</a><a href="/pest-control">Pest control</a><a href="/landscaping">Landscaping</a><a href="/painting">Painting</a><a href="/window-and-pressure-washing">Window and pressure washing</a><a href="/handyman">Handyman</a><a href="/mobile-mechanic">Mobile mechanic</a><a href="/windows-and-doors">Windows and doors</a><a href="/solar">Solar</a><a href="/flooring">Flooring</a><a href="/remodeling">Remodeling</a><a className="all" href="/industries">All industries</a></div></div><a href="/about">About</a></div>
-</div></nav>
+<V7Nav onBook />
 <main>
 <PageStructuredData path="/book" name="Schedule a call" description="Pick a time for a call with Rocket Llama Labs. We look at how your home service company shows up online and write a marketing plan with a number on it." />
 
