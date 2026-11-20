@@ -2,15 +2,19 @@
 
 import { revalidatePath } from "next/cache";
 import { getAdminUser } from "@/lib/admin-auth";
-import { ASSETS_BUCKET, type AssetCategory } from "@/lib/assets";
+import {
+  ASSETS_BUCKET,
+  ASSET_CATEGORIES,
+  type AssetCategory,
+} from "@/lib/assets";
 
-const CATEGORIES: AssetCategory[] = [
-  "brand",
-  "logo",
-  "document",
-  "template",
-  "other",
-];
+const CATEGORIES = ASSET_CATEGORIES.map((c) => c.value);
+
+function revalidateAssetPages() {
+  revalidatePath("/admin/assets");
+  revalidatePath("/admin/proposals");
+  revalidatePath("/admin");
+}
 
 // Called by the upload form after the file is already in storage.
 export async function registerAsset(input: {
@@ -48,8 +52,7 @@ export async function registerAsset(input: {
     return { error: "Couldn't save the asset. Try again." };
   }
 
-  revalidatePath("/admin/assets");
-  revalidatePath("/admin");
+  revalidateAssetPages();
   return {};
 }
 
@@ -68,6 +71,5 @@ export async function deleteAsset(formData: FormData) {
   await supabase.storage.from(ASSETS_BUCKET).remove([asset.storage_path]);
   await supabase.from("assets").delete().eq("id", id);
 
-  revalidatePath("/admin/assets");
-  revalidatePath("/admin");
+  revalidateAssetPages();
 }

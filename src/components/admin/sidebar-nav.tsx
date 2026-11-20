@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Building2,
+  FileText,
   FolderOpen,
   Globe,
   LayoutDashboard,
@@ -25,6 +26,7 @@ const groups: { label: string; items: Item[] }[] = [
       { href: "/admin/website", label: "Website", icon: Globe },
       { href: "/admin/brand", label: "Brand kit", icon: Palette },
       { href: "/admin/assets", label: "Assets", icon: FolderOpen },
+      { href: "/admin/proposals", label: "Proposals", icon: FileText },
     ],
   },
   {

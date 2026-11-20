@@ -4,6 +4,7 @@ import {
   ArrowUpRight,
   Building2,
   Download,
+  FileText,
   FolderOpen,
   Globe,
   Palette,
@@ -37,6 +38,12 @@ const shortcuts = [
     icon: FolderOpen,
     title: "Assets",
     body: "Brand book, logo files, documents and templates.",
+  },
+  {
+    href: "/admin/proposals",
+    icon: FileText,
+    title: "Proposals",
+    body: "Client proposals and marketing plans, as PowerPoint and PDF.",
   },
   {
     href: "/admin/company",
