@@ -116,7 +116,6 @@ export function mountBookFunnel() {
   homeIn.addEventListener('input',suggest); homeIn.addEventListener('blur',function(){ setTimeout(function(){sug.hidden=true},120) });
   homeIn.addEventListener('keydown',function(e){ if(e.key==='Enter'&&!sug.hidden&&sug.firstChild){ homeIn.value=sug.firstChild.textContent; sug.hidden=true; ringLabel(); e.stopPropagation(); e.preventDefault() } });
   function ringLabel(){ var ring=root.querySelector('.ring'), r=val('q_radius'); ring.className.baseVal='ring'+(r?' k'+r:''); var home=homeIn.value.trim()||'Pick a home base'; var t={15:'about 15 miles around ',30:'about 30 miles around ',50:'50+ miles around ',multi:'several areas, from '}[r]||''; $('q_ringlbl').textContent=(r?t+home:home).slice(0,44) }
-  function cityLabel(){ var r=val('q_radius'); var t={15:'about 15 mi',30:'about 30 mi',50:'50+ mi',multi:'several areas'}[r]||''; var o=$('q_areas').value.trim(); return homeIn.value.trim()+(t?' ('+t+')':'')+(r==='multi'&&o?' plus '+o:'') }
   // Phone: a real US or Canadian mobile. Ten digits (a leading 1 is fine), area code and exchange
   // that cannot start with 0 or 1, not the same digit repeated, not a run like 123-456-7890.
   function digits(v){ var d=String(v||'').replace(/\D/g,''); if(d[0]==='1') d=d.slice(1); return d }
@@ -163,9 +162,7 @@ export function mountBookFunnel() {
     steps.forEach(function(s){s.classList.remove('on')}); nav.style.display='none'; bar.style.width='100%'; cnt.textContent='Done'; title.textContent='';
     var b=goal()==='book'; $('r_done').classList.add('on');
     $('done_h').textContent=b?'See you '+when()+'.':'Your scan is on its way.';
-    $('done_p').textContent=b?sent().what+' is on its way '+sent().how+'. The call opens with the free live audit, then what the top company in your trade is doing, and your numbers on the same system. No obligation.':'Within one business day you get the written scan of your Google profile, reviews, website and phone answering, with the three fixes that matter most. If you want them done, the walkthrough is one reply away.';
-    var tradeLabel=val('q_trade')==='other'?($('q_other').value.trim()||'other'):(val('q_trade')||'not given');
-    $('sum_done').textContent='On file: '+$('q_company').value+' ('+tradeLabel+'; '+(homeIn.value.trim()?cityLabel():'area not given')+'), '+(val('q_years')||'?')+' years, revenue band '+(val('q_rev')||'not given')+', crew '+(val('q_crew')||'?')+', leads from '+(vals('q_src').join(', ')||'not given')+', pain points: '+(vals('q_pain').join(', ')||'not given')+'. Reach '+$('q_name').value+' at '+($('q_mobile').value||'no mobile')+' / '+$('q_email').value.trim()+'. Texting: '+($('q_consent').checked?'agreed':'no')+'.';
+    $('done_p').textContent=b?sent().what+' is on its way. Talk soon!':'Within one business day you get the written scan of your Google profile, reviews, website and phone answering, with the three fixes that matter most. If you want them done, the walkthrough is one reply away.';
     root.scrollIntoView({behavior:'smooth',block:'start'});
   }
   next.addEventListener('click',function(){ var v=valid(); if(!v.ok){err.textContent=v.msg;err.style.display='block';v.el.classList.add('bad');(v.el.querySelector&&v.el.querySelector('input,select')||v.el).focus({preventScroll:false});return} if(steps[i].dataset.q==='who'&&goal()==='book'&&!booked){ book(); return } if(!isLast()){move(1);show(true)} else finish() });

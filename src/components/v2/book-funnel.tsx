@@ -195,7 +195,6 @@ export function BookFunnel({ tz = "Phoenix time", short = false }: { tz?: string
       <p className="k">All set</p>
       <h3 id="done_h"></h3>
       <p className="why" id="done_p"></p>
-      <p className="summary" id="sum_done"></p>
     </div>
 
     <div className="qznav" id="qznav">
