@@ -4,6 +4,7 @@ import { Card, PageHeader } from "@/components/ui";
 import { getAdminUser } from "@/lib/admin-auth";
 import {
   ASSET_CATEGORIES,
+  PROPOSAL_CATEGORY,
   formatBytes,
   formatDate,
   type Asset,
@@ -19,6 +20,7 @@ export default async function AssetsPage() {
   const { data } = await supabase
     .from("assets")
     .select("*")
+    .neq("category", PROPOSAL_CATEGORY)
     .order("created_at", { ascending: false });
   const assets = (data ?? []) as Asset[];
 

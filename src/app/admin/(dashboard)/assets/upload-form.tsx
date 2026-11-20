@@ -12,13 +12,19 @@ import {
   Select,
   Textarea,
 } from "@/components/ui";
-import { ASSETS_BUCKET, ASSET_CATEGORIES } from "@/lib/assets";
+import {
+  ASSETS_BUCKET,
+  ASSET_CATEGORIES,
+  PROPOSAL_CATEGORY,
+} from "@/lib/assets";
 import { createClient } from "@/lib/supabase/client";
 import { registerAsset } from "./actions";
 
 // Uploads straight from the browser to Supabase Storage (so large files don't
-// pass through a Server Action), then registers the metadata.
-export function UploadForm() {
+// pass through a Server Action), then registers the metadata. With
+// kind="proposal" the file is filed under Proposals and the category is fixed.
+export function UploadForm({ kind = "asset" }: { kind?: "asset" | "proposal" }) {
+  const proposal = kind === "proposal";
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -53,7 +59,9 @@ export function UploadForm() {
     const result = await registerAsset({
       title: String(data.get("title") ?? ""),
       description: String(data.get("description") ?? ""),
-      category: String(data.get("category") ?? "other"),
+      category: proposal
+        ? PROPOSAL_CATEGORY
+        : String(data.get("category") ?? "other"),
       version: String(data.get("version") ?? ""),
       storagePath,
       mimeType: file.type,
@@ -75,7 +83,7 @@ export function UploadForm() {
     return (
       <Button type="button" onClick={() => setOpen(true)}>
         <Upload className="size-4" />
-        Upload asset
+        {proposal ? "Upload proposal" : "Upload asset"}
       </Button>
     );
   }
@@ -83,7 +91,9 @@ export function UploadForm() {
   return (
     <Card className="mt-6">
       <form onSubmit={onSubmit} className="grid gap-5 sm:grid-cols-2">
-        <h2 className="text-xl font-semibold sm:col-span-2">Upload an asset</h2>
+        <h2 className="text-xl font-semibold sm:col-span-2">
+          {proposal ? "Upload a proposal" : "Upload an asset"}
+        </h2>
 
         {error ? (
           <div className="sm:col-span-2">
@@ -97,23 +107,42 @@ export function UploadForm() {
           </Field>
         </div>
 
-        <Field label="Title" htmlFor="title">
-          <Input id="title" name="title" required placeholder="Brand book" />
+        <Field
+          label={proposal ? "Client or proposal name" : "Title"}
+          htmlFor="title"
+          hint={
+            proposal
+              ? "Use the same name for the PowerPoint and the PDF to keep them together."
+              : undefined
+          }
+        >
+          <Input
+            id="title"
+            name="title"
+            required
+            placeholder={
+              proposal ? "Rhino Mobile Mechanics marketing plan" : "Brand book"
+            }
+          />
         </Field>
 
         <Field label="Version" htmlFor="version" hint="Optional, e.g. 1.0">
           <Input id="version" name="version" placeholder="1.0" />
         </Field>
 
-        <Field label="Category" htmlFor="category">
-          <Select id="category" name="category" defaultValue="brand">
-            {ASSET_CATEGORIES.map((c) => (
-              <option key={c.value} value={c.value}>
-                {c.label}
-              </option>
-            ))}
-          </Select>
-        </Field>
+        {proposal ? null : (
+          <Field label="Category" htmlFor="category">
+            <Select id="category" name="category" defaultValue="brand">
+              {ASSET_CATEGORIES.filter(
+                (c) => c.value !== PROPOSAL_CATEGORY
+              ).map((c) => (
+                <option key={c.value} value={c.value}>
+                  {c.label}
+                </option>
+              ))}
+            </Select>
+          </Field>
+        )}
 
         <div className="sm:col-span-2">
           <Field label="Description" htmlFor="description">

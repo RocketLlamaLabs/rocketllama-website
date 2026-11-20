@@ -3,6 +3,7 @@ export type AssetCategory =
   | "logo"
   | "document"
   | "template"
+  | "proposal"
   | "other";
 
 export type Asset = {
@@ -23,10 +24,24 @@ export const ASSET_CATEGORIES: { value: AssetCategory; label: string }[] = [
   { value: "logo", label: "Logo" },
   { value: "document", label: "Document" },
   { value: "template", label: "Template" },
+  { value: "proposal", label: "Proposal" },
   { value: "other", label: "Other" },
 ];
 
 export const ASSETS_BUCKET = "assets";
+
+// Proposals are assets in their own category, listed at /admin/proposals.
+export const PROPOSAL_CATEGORY: AssetCategory = "proposal";
+
+// "PowerPoint", "PDF" and so on, for a download button, from the file name.
+export function fileKind(storagePath: string) {
+  const ext = storagePath.split(".").pop()?.toLowerCase() ?? "";
+  if (ext === "pptx" || ext === "ppt") return "PowerPoint";
+  if (ext === "pdf") return "PDF";
+  if (ext === "docx" || ext === "doc") return "Word";
+  if (ext === "xlsx" || ext === "xls") return "Excel";
+  return ext ? ext.toUpperCase() : "File";
+}
 
 export function formatBytes(bytes: number | null) {
   if (bytes == null) return "—";
