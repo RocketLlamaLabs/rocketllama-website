@@ -125,8 +125,12 @@ export function mountBookFunnel() {
   var wrap=$('scanwrap'), scanShown=false, seen=false; try{ seen=sessionStorage.getItem('rll_scan_seen')==='1' }catch{}
   function openScan(){ if(booked||$('r_done').classList.contains('on')) return; wrap.hidden=false; scanShown=true; try{sessionStorage.setItem('rll_scan_seen','1')}catch{} setTimeout(function(){$('s_company').focus({preventScroll:true})},200) }
   function closeScan(){ wrap.hidden=true }
-  onDoc('mouseout',function(e){ if(!e.relatedTarget&&e.clientY<=0&&!scanShown&&!seen) openScan() });
-  idle=setTimeout(function(){ if(steps[i].dataset.q==='slot'&&!val('q_day')&&!scanShown&&!seen) openScan() },45000);
+  // Exit pop-up switched off for now: set EXIT_POPUP to true to bring back both triggers.
+  var EXIT_POPUP=false;
+  if(EXIT_POPUP){
+    onDoc('mouseout',function(e){ if(!e.relatedTarget&&e.clientY<=0&&!scanShown&&!seen) openScan() });
+    idle=setTimeout(function(){ if(steps[i].dataset.q==='slot'&&!val('q_day')&&!scanShown&&!seen) openScan() },45000);
+  }
   var scanlink = $('scanlink'); if (scanlink) scanlink.addEventListener('click',function(e){ e.preventDefault(); wrap.hidden=false; scanShown=true });
   $('scanx').addEventListener('click',closeScan); $('scanno').addEventListener('click',closeScan);
   wrap.addEventListener('click',function(e){ if(e.target===wrap) closeScan() });
