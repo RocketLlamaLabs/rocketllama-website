@@ -33,10 +33,11 @@ export function mountBookFunnel() {
     do{ d.setUTCDate(d.getUTCDate()+1) }while(d.getUTCDay()===0||d.getUTCDay()===6);
     return d.toISOString().slice(0,10);
   }
-  // Calls run every day from 9:00 am to 4:30 pm (last start time), Arizona time.
+  // Calls run every day from 9:00 am to 4:30 pm (last start time), Arizona time, with no calls at 10:00 or 10:30:
+  // 9:00, 9:30, then 11:00 to 4:30 every half hour.
   function callHours(days){
     var hm=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'numeric',hourCycle:'h23'}), out={};
-    Object.keys(days).forEach(function(k){ out[k]=days[k].filter(function(iso){ var p=hm.format(new Date(iso)).split(':'), m=+p[0]*60+(+p[1]); return m>=9*60&&m<=16*60+30 }) });
+    Object.keys(days).forEach(function(k){ out[k]=days[k].filter(function(iso){ var p=hm.format(new Date(iso)).split(':'), m=+p[0]*60+(+p[1]); return m>=9*60&&m<=16*60+30&&!(m>=10*60&&m<11*60) }) });
     return out;
   }
   function fmtDay(k){var p=k.split('-');return new Date(+p[0],p[1]-1,+p[2],12).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}
@@ -83,11 +84,11 @@ export function mountBookFunnel() {
   function show(scroll){
     steps.forEach(function(s,k){s.classList.toggle('on',k===i)});
     var l=live(), cur=steps[i], qs=l.filter(isQ), pre=l.filter(function(s){return !isQ(s)&&s.dataset.q!=='confirm'});
-    if(cur.dataset.q==='confirm'){ cnt.textContent=goal()==='book'?'Booked':'On its way'; title.textContent=qs.length+' quick questions, optional'; bar.style.width='50%' }
+    if(cur.dataset.q==='confirm'){ cnt.textContent=goal()==='book'?'Booked':'On its way'; title.textContent=''; bar.style.width='50%' }
     else if(isQ(cur)){ var n=qs.indexOf(cur)+1, N=qs.length, m=Math.max(1,Math.round((1-n/N)*2)); cnt.textContent='Question '+n+' of '+N; title.textContent=N-n<=1?'Almost done':(N-n<=4?'Nearly there':'About '+m+' minute'+(m===1?'':'s')+' to go'); bar.style.width=(50+n/N*50)+'%' }
-    else { var n2=pre.indexOf(cur)+1, N2=2; cnt.textContent='Step '+n2+' of '+N2; title.textContent='About a minute'; bar.style.width=(n2/N2*50)+'%' }
+    else { var n2=pre.indexOf(cur)+1, N2=2; cnt.textContent='Step '+n2+' of '+N2; title.textContent=''; bar.style.width=(n2/N2*50)+'%' }
     var lk=l.indexOf(cur); back.disabled=lk<=0||cur.dataset.q==='confirm'||(lk>0&&l[lk-1].dataset.q==='confirm');
-    next.textContent=cur.dataset.q==='who'?'Book it':cur.dataset.q==='confirm'?'Continue':isLast()?'Finish':'Next';
+    next.textContent=cur.dataset.q==='who'?'Book it':cur.dataset.q==='confirm'?'Continue to questions':isLast()?'Finish':'Next';
     clearBad();
     if(scroll)root.scrollIntoView({behavior:'smooth',block:'start'});
     var f=cur.querySelector('input[type=text],input[type=tel],input[type=email]'); if(f&&scroll&&window.matchMedia('(min-width:900px)').matches) setTimeout(function(){f.focus({preventScroll:true})},320);
@@ -157,7 +158,7 @@ export function mountBookFunnel() {
   function confirmScreen(){ var b=goal()==='book', n=live().filter(isQ).length;
     $('cf_k').textContent=b?'You are booked':'Your scan is on its way';
     $('cf_h').textContent=b?when()+'. See you then.':'It lands in your inbox within one business day.';
-    $('cf_p').textContent=(b?sent().what+' and a reminder are on their way '+sent().how+'. ':'')+'While you are here: '+n+' quick questions, one tap each, so the '+(b?'call is about you from the first minute.':'scan is about your business, not a generic checklist.') }
+    $('cf_p').textContent=b?sent().what+' and a reminder are on their way '+sent().how+'.':'While you are here: '+n+' quick questions, one tap each, so the scan is about your business, not a generic checklist.' }
   function finish(){
     steps.forEach(function(s){s.classList.remove('on')}); nav.style.display='none'; bar.style.width='100%'; cnt.textContent='Done'; title.textContent='';
     var b=goal()==='book'; $('r_done').classList.add('on');
