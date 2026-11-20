@@ -10,7 +10,7 @@ export function IndustriesFaq() {
       <p className="kicker">Questions</p>
       <h2>Home service industry questions</h2>
       <div className="faq">
-        {INDUSTRIES_FAQ.map(([q, a], i) => <details key={q} open={i === 0}><summary><h3>{q}</h3></summary><p>{a}</p></details>)}
+        {INDUSTRIES_FAQ.map(([q, a]) => <details key={q}><summary><h3>{q}</h3></summary><p>{a}</p></details>)}
       </div>
     </div></section>
   );

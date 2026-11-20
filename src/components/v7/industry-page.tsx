@@ -93,7 +93,7 @@ export function IndustryPage({ ind }: { ind: Industry }) {
           <p className="kicker">Questions</p>
           <h2>{ind.faqHeading}</h2>
           <div className="faq">
-            {ind.faq.map(([q, a], i) => <details key={q} open={i === 0}><summary><h3>{q}</h3></summary><p>{a}</p></details>)}
+            {ind.faq.map(([q, a]) => <details key={q}><summary><h3>{q}</h3></summary><p>{a}</p></details>)}
           </div>
         </div></section>
 
