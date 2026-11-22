@@ -95,7 +95,7 @@ const LABEL = "How the Rocket Llama Labs marketing system connects: Google Busin
 const SOURCES: { icon: keyof typeof ICONS; marks: string[]; a: string; b: string; one: string; sub: string; subTall?: string }[] = [
   { icon: "pin", marks: ["google"], a: "Google Business", b: "Profile", one: "Google Business Profile", sub: "reviews, maps, free clicks", subTall: "reviews, maps, free clicks" },
   { icon: "search", marks: ["googleads"], a: "Google Ads +", b: "Local Services", one: "Google Ads + Local Services", sub: "highest intent, you own", subTall: "highest intent, you own" },
-  { icon: "megaphone", marks: ["facebook", "instagram", "youtube", "tiktok"], a: "Social media", b: "and ads", one: "Social media and ads", sub: "your channel, leads you own", subTall: "your channel, leads you own" },
+  { icon: "megaphone", marks: ["facebook", "instagram", "youtube", "tiktok"], a: "Social media", b: "and ads", one: "Social media and ads", sub: "your channels, leads you own", subTall: "your channels, leads you own" },
   { icon: "search", marks: ["gemini", "perplexity"], a: "AI search", b: "", one: "AI search", sub: "ChatGPT, Gemini, Perplexity", subTall: "ChatGPT, Gemini and more" },
 ];
 
