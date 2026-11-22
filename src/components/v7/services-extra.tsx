@@ -20,7 +20,7 @@ export const SERVICES_FAQ: [string, string][] = [
     "Rocket Llama Labs provides eight services as one system: a website you own with free hosting, local SEO and AI search optimization, Google Business Profile management, funnels that book the job, a phone system with call tracking and an AI receptionist, a CRM with AI follow-up, Google, Local Services and Meta ads, and review management. One team builds and runs all of it for HVAC, plumbing, electrical, roofing and other home service companies.",
   ],
   [
-    "How is one system different from hiring separate vendors for SEO, ads and a website?",
+    "How is one system different from hiring separate vendors for SEO, ads, and a website?",
     "Separate vendors each report their own numbers and nobody owns the result. With Rocket Llama Labs the website, ads, phones and CRM are built to work together, so every call and form is answered in under a minute and every booked job is tied back to the ad, search or review that produced it. You see one report: booked jobs, what they were worth and what they cost.",
   ],
   [
