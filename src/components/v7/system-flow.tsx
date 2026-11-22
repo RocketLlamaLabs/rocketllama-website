@@ -159,8 +159,8 @@ function Wide() {
         <rect x="180" y="440" width="640" height="120" rx="18" className="fhub" />
         <g className="tile on" transform="translate(204 460)" aria-hidden="true"><rect width="40" height="40" rx="11" /><image href="/brand/llama-lab.png" x="3" y="3" width="34" height="34" /></g>
         <text x="258" y="487" className="h">Your CRM: your data and management system</text>
-        <text x="204" y="522" className="s on">Pipelines, automations, AI text and email reply within 60 seconds</text>
-        <text x="204" y="542" className="s on">Booking, call tracking, closed-job value, return on ad spend dashboard</text>
+        <text x="204" y="522" className="s on">Pipelines, automations, AI text, and email reply within 60 seconds. Booking,</text>
+        <text x="204" y="542" className="s on">call tracking, closed-job value, return on ad spend dashboard</text>
       </g>
 
       <g>
@@ -253,8 +253,8 @@ function Tall() {
         <g className="tile on" transform="translate(28 752)" aria-hidden="true"><rect width="38" height="38" rx="10.5" /><image href="/brand/llama-lab.png" x="3" y="3" width="32" height="32" /></g>
         <text x="78" y="770" className="h">Your CRM: your data</text>
         <text x="78" y="790" className="h">and management system</text>
-        <text x="28" y="818" className="s on">Pipelines, automations, AI text and email</text>
-        <text x="28" y="836" className="s on">reply within 60 seconds. Booking, call tracking,</text>
+        <text x="28" y="818" className="s on">Pipelines, automations, AI text, and email reply</text>
+        <text x="28" y="836" className="s on">within 60 seconds. Booking, call tracking,</text>
         <text x="28" y="854" className="s on">closed-job value, return on ad spend dashboard</text>
       </g>
 
