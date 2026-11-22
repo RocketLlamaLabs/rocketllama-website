@@ -11,7 +11,7 @@ const HOME_FACTS = [
   "Every lead answered in under 60 seconds",
   "Every dollar tracked to a booked, paid job",
   "Website, ad accounts and phone numbers in your company’s name",
-  "Month to month, with no contract",
+  "Month to month, no contract",
 ];
 
 export function HomeSummary() {

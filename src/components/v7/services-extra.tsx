@@ -11,7 +11,7 @@ export const SERVICES_FACTS = [
   "Eight services, run as one system by one team",
   "Every lead answered by text and email in under 60 seconds",
   "Ads run in your company’s name, on your card",
-  "Month to month, with no contract",
+  "Month to month, no contract",
 ];
 
 export const SERVICES_FAQ: [string, string][] = [
