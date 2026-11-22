@@ -20,6 +20,7 @@ export function AboutPage() {
           <h1>{H1}</h1>
           <p className="goal">{GOAL}</p>
           <p className="lede">{LEDE}</p>
+          <p className="motto">Built for the Trades. Powered by Experience. Driven by Results.</p>
         </div></header>
         <section className="am-split"><div className="wrap">
           <div className="am-cols">
