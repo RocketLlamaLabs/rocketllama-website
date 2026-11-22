@@ -41,6 +41,11 @@ export const SERVICES_FAQ: [string, string][] = [
   ],
 ];
 
+// Desktop: the facts list spans the headline and the paragraph (v7.css). This lines the
+// top of the first fact's capitals up with the top of the headline's capitals, and the
+// last fact's baseline with the paragraph's last baseline, whatever the fonts and widths.
+const FACTS_ALIGN = "(function(){function cap(e){var s=getComputedStyle(e),c=document.createElement('canvas').getContext('2d');c.font=s.fontWeight+' '+s.fontSize+' '+s.fontFamily;return c.measureText('H').actualBoundingBoxAscent}function base(e,end){var m=document.createElement('span');m.style.cssText='display:inline-block;width:0;height:0';end?e.appendChild(m):e.insertBefore(m,e.firstChild);var y=m.getBoundingClientRect().top;m.remove();return y}function fit(){var h=document.querySelector('header.svchero');if(!h)return;var u=h.querySelector('.facts'),t=h.querySelector('h1'),a=h.querySelector('.answer');if(!u||!t||!a)return;var l=u.querySelectorAll('li');if(!l.length)return;u.style.paddingTop=u.style.paddingBottom='';if(!matchMedia('(min-width:1000px)').matches)return;u.style.paddingTop=u.style.paddingBottom='0px';var top=(base(t)-cap(t))-(base(l[0])-cap(l[0]));var bot=base(a,1)-base(l[l.length-1],1);u.style.paddingTop=Math.max(0,top)+'px';u.style.paddingBottom=Math.max(0,-bot)+'px'}fit();addEventListener('resize',fit);addEventListener('load',fit);if(document.fonts)document.fonts.ready.then(fit)})()";
+
 // The Services banner: the page's one heading, the answer-first summary (marked
 // Speakable through #summary .answer) and the facts, on the light-blue header.
 export function ServicesHero() {
@@ -55,7 +60,7 @@ export function ServicesHero() {
         </div>
         <ul className="facts">{SERVICES_FACTS.map((f) => <li key={f}>{f}</li>)}</ul>
       </div>
-    </div></header>
+    </div><script dangerouslySetInnerHTML={{ __html: FACTS_ALIGN }} /></header>
   );
 }
 
