@@ -24,7 +24,7 @@ export const SERVICES_FAQ: [string, string][] = [
     "Each separate vendor reports their own numbers and nobody owns the result. With Rocket Llama Labs the website, ads, phones, and CRM are built to work together, so every call and form is answered in under a minute and every booked job is tied back to the ad, search, or review that produced it. You see one report: booked jobs, what they were worth, and what they cost.",
   ],
   [
-    "How do you get a home service company recommended by ChatGPT, Gemini and other AI assistants?",
+    "How do you get a home service company recommended by ChatGPT, Gemini, and other AI assistants?",
     "AI assistants recommend companies they can read and verify. We publish a clear page for each service and city, add structured data and FAQs, keep your name, address and phone identical across listings, and grow your review count. Each month we ask the assistants the same questions about your trade and city and report whether your company is named.",
   ],
   [
