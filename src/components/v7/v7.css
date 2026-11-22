@@ -1491,13 +1491,15 @@
   .v7.v7.v7 main > header.svchero .facts{grid-column:2;grid-row:3 / 5;align-self:stretch;height:auto;margin:0;justify-content:space-between;gap:12px}
 }
 
-/* Services banner, desktop: the headline sits the same distance under the OUR SERVICES label as the
-   Industries headline does under its label on a laptop screen (48px), instead of being pushed down to
-   the bottom of a full-screen banner. The banner ends below the button. */
+/* Landing banners on desktop (Services, Industries, About, every service and industry page): the
+   headline's capitals start 100px under the label, the distance Home has on a laptop screen, instead
+   of the headline being pushed to the bottom of a full-screen banner. Each banner ends below its own
+   content. .105em is the gap between the top of the headline's line box and its capitals. */
 @media(min-width:1000px){
-  .v7.v7.v7 main > header.svchero{min-height:0}
+  .v7.v7.v7 main:not(.person) > header.pagehead:not(.legalhead),.v7.v7.v7 main > header.ihero{min-height:0;height:auto}
+  .v7.v7.v7 main:not(.person) > header.pagehead:not(.legalhead) .in > :is(.kicker,.crumbs),.v7.v7.v7 main > header.ihero .in > .crumbs{margin-bottom:0}
+  .v7.v7.v7 main:not(.person) > header.pagehead:not(.legalhead) h1,.v7.v7.v7 main > header.ihero h1{margin-top:calc(100px - .105em)}
   .v7.v7.v7 main > header.svchero > .in{grid-template-rows:auto 0 auto auto auto}
-  .v7.v7.v7 main > header.svchero .in > .kicker{margin-bottom:48px}
 }
 
 /* About banner: the tagline under the paragraph, styled like the label above the headline
