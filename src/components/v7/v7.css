@@ -1490,3 +1490,12 @@
   .v7.v7.v7 main > header.svchero .ctas{grid-column:1;grid-row:5}
   .v7.v7.v7 main > header.svchero .facts{grid-column:2;grid-row:3 / 5;align-self:stretch;height:auto;margin:0;justify-content:space-between;gap:12px}
 }
+
+/* Services banner, desktop: the headline sits the same distance under the OUR SERVICES label as the
+   Industries headline does under its label on a laptop screen (48px), instead of being pushed down to
+   the bottom of a full-screen banner. The banner ends below the button. */
+@media(min-width:1000px){
+  .v7.v7.v7 main > header.svchero{min-height:0}
+  .v7.v7.v7 main > header.svchero > .in{grid-template-rows:auto 0 auto auto auto}
+  .v7.v7.v7 main > header.svchero .in > .kicker{margin-bottom:48px}
+}
