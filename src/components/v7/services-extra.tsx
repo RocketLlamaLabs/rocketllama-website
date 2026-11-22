@@ -25,7 +25,7 @@ export const SERVICES_FAQ: [string, string][] = [
   ],
   [
     "How do you get a home service company recommended by ChatGPT, Gemini, and other AI assistants?",
-    "AI assistants recommend companies they can read and verify. We publish a clear page for each service and city, add structured data and FAQs, keep your name, address and phone identical across listings, and grow your review count. Each month we ask the assistants the same questions about your trade and city and report whether your company is named.",
+    "AI assistants recommend companies they can read and verify. We publish a clear page for each service and city, add structured data and FAQs. We keep your name, address, and phone identical across listings and grow your review count. Each month we ask the assistants the same questions about your trade and city and report whether your company is named.",
   ],
   [
     "How fast are new leads answered?",
