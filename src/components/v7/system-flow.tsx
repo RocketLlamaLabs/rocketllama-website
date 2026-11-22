@@ -95,7 +95,7 @@ const LABEL = "How the Rocket Llama Labs marketing system connects: Google Busin
 const SOURCES: { icon: keyof typeof ICONS; marks: string[]; a: string; b: string; one: string; sub: string; subTall?: string }[] = [
   { icon: "pin", marks: ["google"], a: "Google Business", b: "Profile", one: "Google Business Profile", sub: "reviews, maps, free clicks", subTall: "reviews, maps, free clicks" },
   { icon: "search", marks: ["googleads"], a: "Google Ads +", b: "Local Services", one: "Google Ads + Local Services", sub: "highest intent, you own", subTall: "highest intent, you own" },
-  { icon: "megaphone", marks: ["facebook", "instagram", "youtube", "tiktok"], a: "Social media", b: "and ads", one: "Social media and ads", sub: "your channels, lead forms you own", subTall: "your channels, you own" },
+  { icon: "megaphone", marks: ["facebook", "instagram", "youtube", "tiktok"], a: "Social media", b: "and ads", one: "Social media and ads", sub: "your channel, leads you own", subTall: "your channel, leads you own" },
   { icon: "search", marks: ["gemini", "perplexity"], a: "AI search", b: "", one: "AI search", sub: "ChatGPT, Gemini, Perplexity", subTall: "ChatGPT, Gemini and more" },
 ];
 
@@ -214,7 +214,7 @@ function Tall() {
             <BrandTile marks={s.marks} cx={x + 75} y={y + 12} size={32} />
             <text x={x + 75} y={y + 63} textAnchor="middle" className="b">{s.a}</text>
             <text x={x + 75} y={y + 79} textAnchor="middle" className="b">{s.b}</text>
-            <text x={x + 75} y={y + 99} textAnchor="middle" className="s src">{s.subTall ?? s.sub}</text>
+            <text x={x + 75} y={y + 99} textAnchor="middle" className={(s.subTall ?? s.sub).length > 24 ? "s src long" : "s src"}>{s.subTall ?? s.sub}</text>
           </g>
         );
       })}

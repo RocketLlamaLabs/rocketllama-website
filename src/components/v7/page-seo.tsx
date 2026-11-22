@@ -58,7 +58,7 @@ export const SERVICE_ITEMS: [string, string][] = [
   ["Website design and hosting for home service companies", "A website you own, hosted free. Service pages per service and per city, reviews and stars on every page, and fast load on a phone in a driveway."],
   ["Local SEO and AI search optimization", "Schema and content that Google, ChatGPT, Gemini and Perplexity can read, so your company is found and recommended where homeowners look now."],
   ["Google Business Profile management", "Your profile kept current, with reviews, photos and services worked hard for maps and local search."],
-  ["Funnels", "Qualifying questions, address autofill, your offer, and your reviews. Then a booking calendar or a call-back button. 20% to 30% conversion against a 5% average."],
+  ["Funnels", "Qualifying questions, address autofill, your offer, and your reviews. Then a booking calendar or a call-back button. 20% to 30% conversion against an average of 5%."],
   ["Phone system with call tracking and AI receptionist", "Tracked numbers per source on a Tier 1 carrier. The AI answers, transfers to you, and books the job or takes a message if you cannot pick up."],
   ["CRM with AI follow-up", "Text and email reply in under a minute, pipelines, booking, closed-job value, and the return-on-spend dashboard."],
   ["Google, Local Services, and Meta ads in your name", "Your accounts and your card with our management. Budget up in busy months, budget down in slow ones. Never a contract."],
