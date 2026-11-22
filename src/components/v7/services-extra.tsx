@@ -29,7 +29,7 @@ export const SERVICES_FAQ: [string, string][] = [
   ],
   [
     "How fast are new leads answered?",
-    "Every call, form and estimate request gets a reply by text and email in under 60 seconds, day or night. Calls are answered by an AI receptionist that takes the details and rings your team; if nobody picks up, it books a callback or takes a message instead of sending the homeowner to voicemail.",
+    "Every call, form, and estimate request gets a reply by text and email in under 60 seconds – day or night. Calls are answered by an AI receptionist that takes the details and rings your team. If nobody picks up, it books a callback or takes a message instead of sending the homeowner to voicemail.",
   ],
   [
     "What does home service marketing cost with Rocket Llama Labs?",
