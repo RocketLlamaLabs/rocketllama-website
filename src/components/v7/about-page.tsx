@@ -1,7 +1,7 @@
 import { V7Footer } from "@/components/v7/footer";
 import { AboutStructuredData } from "@/components/v7/about-seo";
 import { TeamSection } from "@/components/v7/about-team";
-import { Nav, Stats, TITLE, GOAL, LEDE, PULL_1, PULL_2, BLOCKS } from "@/components/v7/about-mockups";
+import { Nav, Stats, GOAL, LEDE, PULL_1, PULL_2, BLOCKS } from "@/components/v7/about-mockups";
 
 // The page's one heading names who we are and what we do; the slogan sits above it.
 const H1 = "The marketing team for home service companies.";
@@ -16,10 +16,11 @@ export function AboutPage() {
       <main className="am am-f about-live">
         <AboutStructuredData />
         <header className="pagehead" id="top"><div className="wrap in">
-          <p className="kicker">{TITLE}</p>
+          <p className="kicker">About Rocket Llama Labs</p>
           <h1>{H1}</h1>
           <p className="goal">{GOAL}</p>
           <p className="lede">{LEDE}</p>
+          <p className="motto">Built for the Trades. Powered by Experience. Driven by Results.</p>
         </div></header>
         <section className="am-split"><div className="wrap">
           <div className="am-cols">

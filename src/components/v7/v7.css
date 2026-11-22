@@ -1490,3 +1490,18 @@
   .v7.v7.v7 main > header.svchero .ctas{grid-column:1;grid-row:5}
   .v7.v7.v7 main > header.svchero .facts{grid-column:2;grid-row:3 / 5;align-self:stretch;height:auto;margin:0;justify-content:space-between;gap:12px}
 }
+
+/* Services banner, desktop: the headline sits the same distance under the OUR SERVICES label as the
+   Industries headline does under its label on a laptop screen (48px), instead of being pushed down to
+   the bottom of a full-screen banner. The banner ends below the button. */
+@media(min-width:1000px){
+  .v7.v7.v7 main > header.svchero{min-height:0}
+  .v7.v7.v7 main > header.svchero > .in{grid-template-rows:auto 0 auto auto auto}
+  .v7.v7.v7 main > header.svchero .in > .kicker{margin-bottom:48px}
+}
+
+/* About banner: the tagline under the paragraph, styled like the label above the headline
+   (royal blue, bold, capitals, spaced letters) without the blue rule. */
+.v7.v7 .about-live > header.pagehead .motto{margin:22px 0 0;font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;line-height:1.35;color:rgb(0,87,217);text-align:left}
+@media(min-width:701px) and (max-width:999px){.v7.v7 .about-live > header.pagehead .motto{font-size:15px;line-height:1.3}}
+@media(min-width:1000px){.v7.v7 .about-live > header.pagehead .motto{font-size:17px;line-height:1.3}}
