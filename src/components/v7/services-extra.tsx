@@ -47,7 +47,7 @@ export function ServicesHero() {
   return (
     <header className="pagehead svchero" id="top"><div className="wrap in">
       <p className="kicker">Our services</p>
-      <h1>Home service marketing services that get you the call.</h1>
+      <h1>Marketing Services that get you the call.</h1>
       <div id="summary" className="svchero-grid">
         <div>
           <p className="answer">{SERVICES_SUMMARY}</p>
