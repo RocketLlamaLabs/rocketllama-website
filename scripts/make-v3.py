@@ -910,7 +910,7 @@ TRADE_LINES = {
 SERVICE_CARD_LINKS = [
     ('01 · Website', 'A website you own, hosted free', '<Link href="/services/websites">A website you own, hosted free</Link>'),
     ('02 · Search and AI search', 'Found by Google and by AI', '<Link href="/services/local-seo-and-ai-search">Found by Google and by AI</Link>'),
-    ('03 · Reviews', 'Google profile and reviews, worked hard', '<Link href="/services/google-business-profile">Google profile</Link> and <Link href="/services/review-management">reviews</Link>, worked hard'),
+    ('03 · Reviews', 'Google profile and reviews, worked hard', '<Link href="/services/google-business-profile">Google profile</Link> and <Link href="/services/review-management">reviews</Link>'),
     ('04 · Funnels', 'Funnels not contact forms', '<Link href="/services/lead-funnels">Funnels not contact forms</Link>'),
     ('05 · Phones', 'An AI receptionist that gets you the call first', '<Link href="/services/ai-receptionist">An AI receptionist that gets you the call first</Link>'),
     ('06 · CRM', 'Your CRM, with AI follow-up', '<Link href="/services/crm">Your CRM, with AI follow-up</Link>'),
