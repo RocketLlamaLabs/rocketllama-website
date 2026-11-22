@@ -21,7 +21,7 @@ export const SERVICES_FAQ: [string, string][] = [
   ],
   [
     "How is one system different from hiring separate vendors for SEO, ads, and a website?",
-    "Separate vendors each report their own numbers and nobody owns the result. With Rocket Llama Labs the website, ads, phones and CRM are built to work together, so every call and form is answered in under a minute and every booked job is tied back to the ad, search or review that produced it. You see one report: booked jobs, what they were worth and what they cost.",
+    "Each separate vendor reports their own numbers and nobody owns the result. With Rocket Llama Labs the website, ads, phones, and CRM are built to work together, so every call and form is answered in under a minute and every booked job is tied back to the ad, search, or review that produced it. You see one report: booked jobs, what they were worth, and what they cost.",
   ],
   [
     "How do you get a home service company recommended by ChatGPT, Gemini and other AI assistants?",
