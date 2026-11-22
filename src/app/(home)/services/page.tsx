@@ -36,7 +36,7 @@ export default function Page() {
   <div>
     <p className="kicker">Under 90 seconds</p>
     <h2>The overview.</h2>
-    <p>The three ways good companies lose jobs, what we build instead, how the money is tracked, and who is behind it.</p>
+    <p>Three ways good companies lose jobs, what we build instead, how the money is tracked, and who is behind it.</p>
     <div className="ctas"><a className="btn" href="/book">Schedule a call</a></div>
   </div>
   <div className="shot"><video controls playsInline preload="metadata" poster="/v7/video-poster.png"><source src="/v7/video/rocket-llama-overview.mp4" type="video/mp4" /></video></div>
