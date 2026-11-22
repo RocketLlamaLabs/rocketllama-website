@@ -134,7 +134,7 @@ function Wide() {
         <text x="72" y="248" className="b">Phones + AI receptionist</text>
         <text x="28" y="284" className="s">tracked numbers on a Tier 1 carrier</text>
         <text x="28" y="304" className="s">answers, transfers to you, returns</text>
-        <text x="28" y="324" className="s">to the AI to book, or take a message</text>
+        <text x="28" y="324" className="s">to the AI to book, or takes a message</text>
       </g>
 
       <g>
@@ -235,7 +235,7 @@ function Tall() {
         <text x="112" y="492" className="b">Phones + AI receptionist</text>
         <text x="68" y="524" className="s">tracked numbers on a Tier 1 carrier</text>
         <text x="68" y="542" className="s">answers, transfers to you, returns</text>
-        <text x="68" y="560" className="s">to the AI to book, or take a message</text>
+        <text x="68" y="560" className="s">to the AI to book, or takes a message</text>
       </g>
 
       <circle cx="30" cy="649" r="3.5" className="node" />
