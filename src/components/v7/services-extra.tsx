@@ -37,7 +37,7 @@ export const SERVICES_FAQ: [string, string][] = [
   ],
   [
     "Is there a contract? Who owns the website, ads, and contact accounts?",
-    "There is no contract. Rocket Llama Labs works month to month. The website, the Google Business Profile, the ad accounts and the tracked phone numbers are in your company’s name, and the ads run on your card. If you leave, you export your data, port your numbers, take the code, and we help the next provider get set up.",
+    "There is no contract. Rocket Llama Labs works month to month. The website, the Google Business Profile, the ad accounts, and the tracked phone numbers are in your company’s name. The ads run on your card. If you leave, you can export your data, port your numbers, take the code, and we help the next provider get set up.",
   ],
 ];
 
