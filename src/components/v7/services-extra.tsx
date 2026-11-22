@@ -33,7 +33,7 @@ export const SERVICES_FAQ: [string, string][] = [
   ],
   [
     "What is the cost to partner with Rocket Llama Labs on my marketing strategy?",
-    "There is no price list. Rocket Llama Labs prices each company after a review, because the number depends on your trade, your service area, how many trucks you run, which services you need and how you show up online today. Schedule a call and we review your company, then write a marketing plan with that number on it. You see the plan before you pay for anything, and you keep it either way.",
+    "There is no price list. Rocket Llama Labs prices each company after a review. The cost depends on your trade, your service area, how many trucks you run, which services you need, and how you show up online today. Schedule a call and we'll review an audit of your company and discuss a strategy. You will see the strategy and the cost before you pay for anything. No month to month contract. You own everything if you decide to leave.",
   ],
   [
     "Is there a contract, and who owns the website and accounts?",
