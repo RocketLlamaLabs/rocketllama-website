@@ -1476,3 +1476,6 @@
 
 /* Phone diagram: a source line longer than the box holds at the normal size gets a slightly smaller font. */
 .v7 .flow.tall .s.src.long{font-size:10.4px}
+
+/* Desktop diagram, Reviews per service box: its longest line needs a slightly smaller size to keep its margins. */
+.v7 .flow .s.tight{font-size:12px}

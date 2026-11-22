@@ -150,9 +150,9 @@ function Wide() {
         <rect x="738" y="210" width="250" height="140" rx="14" className="fcard" />
         <Tile icon="star" x={754} y={226} />
         <text x="798" y="248" className="b">Reviews per service</text>
-        <text x="754" y="284" className="s">existing reviews cross-referenced</text>
-        <text x="754" y="304" className="s">with your jobs; new ones collected</text>
-        <text x="754" y="324" className="s">automatically after every job</text>
+        <text x="754" y="284" className="s tight">existing reviews cross-referenced</text>
+        <text x="754" y="304" className="s tight">with your jobs while new ones collected</text>
+        <text x="754" y="324" className="s tight">automatically after every job</text>
       </g>
 
       <g>
@@ -244,7 +244,7 @@ function Tall() {
         <Tile icon="star" x={68} y={604} />
         <text x="112" y="626" className="b">Reviews per service</text>
         <text x="68" y="658" className="s">existing reviews cross-referenced</text>
-        <text x="68" y="676" className="s">with your jobs; new ones collected</text>
+        <text x="68" y="676" className="s">with your jobs while new ones collected</text>
         <text x="68" y="694" className="s">automatically after every job</text>
       </g>
 
