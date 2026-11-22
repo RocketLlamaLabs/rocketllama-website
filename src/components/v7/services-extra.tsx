@@ -32,7 +32,7 @@ export const SERVICES_FAQ: [string, string][] = [
     "Every call, form, and estimate request gets a reply by text and email in under 60 seconds – day or night. Calls are answered by an AI receptionist that takes the details and rings your team. If nobody picks up, it books a callback or takes a message instead of sending the homeowner to voicemail.",
   ],
   [
-    "What does home service marketing cost with Rocket Llama Labs?",
+    "What is the cost to partner with Rocket Llama Labs on my marketing strategy?",
     "There is no price list. Rocket Llama Labs prices each company after a review, because the number depends on your trade, your service area, how many trucks you run, which services you need and how you show up online today. Schedule a call and we review your company, then write a marketing plan with that number on it. You see the plan before you pay for anything, and you keep it either way.",
   ],
   [
