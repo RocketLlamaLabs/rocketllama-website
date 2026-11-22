@@ -1473,3 +1473,6 @@
 .v7.v7 main > header.pagehead.legalhead > .in > h1{margin-top:0;font-size:clamp(2rem,4.2vw,3.25rem)}
 .v7.v7 main > header.pagehead.legalhead .kicker{min-height:0;margin-bottom:14px}
 .v7.v7 main > header.pagehead.legalhead .lede{display:block;margin-top:14px}
+
+/* Phone diagram: a source line longer than the box holds at the normal size gets a slightly smaller font. */
+.v7 .flow.tall .s.src.long{font-size:10.4px}
