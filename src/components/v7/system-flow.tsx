@@ -141,9 +141,9 @@ function Wide() {
         <rect x="300" y="205" width="400" height="150" rx="18" className="fhub" />
         <Tile icon="globe" x={324} y={225} size={40} tone="on" />
         <text x="378" y="252" className="h">Your website: home base</text>
-        <text x="324" y="292" className="s on">Hosted free, with schema for Google and AI search</text>
-        <text x="324" y="312" className="s on">Stars per service</text>
-        <text x="324" y="332" className="s on">Funnels: questions, address autofill, offer, booking</text>
+        <text x="324" y="292" className="s on">Hosted free, with schema for Google and AI search,</text>
+        <text x="324" y="312" className="s on">stars per service, and funnels: questions,</text>
+        <text x="324" y="332" className="s on">address autofill, offer, booking</text>
       </g>
 
       <g>
@@ -223,9 +223,9 @@ function Tall() {
         <rect x="12" y="282" width="316" height="150" rx="18" className="fhub" />
         <Tile icon="globe" x={28} y={298} size={38} tone="on" />
         <text x="78" y="323" className="h">Your website: home base</text>
-        <text x="28" y="360" className="s on">Hosted free, with schema for Google</text>
-        <text x="28" y="378" className="s on">and AI search. Stars per service.</text>
-        <text x="28" y="396" className="s on">Funnels: questions, autofill, offer, booking</text>
+        <text x="28" y="360" className="s on">Hosted free, with schema for Google and AI</text>
+        <text x="28" y="378" className="s on">search, stars per service, and funnels: questions,</text>
+        <text x="28" y="396" className="s on">address autofill, offer, booking</text>
       </g>
 
       <circle cx="30" cy="515" r="3.5" className="node" />
