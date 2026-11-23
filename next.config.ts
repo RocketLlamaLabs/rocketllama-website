@@ -4,13 +4,22 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
-  // Pre-launch: noindex every response (including images and other non-HTML
-  // assets) at the HTTP level. Remove when the site goes public.
+  // The public site is open to search engines. The admin and the earlier
+  // design versions and mockups stay out: every response under them
+  // (pages, files, redirects) carries a noindex header. Version 2 is listed
+  // page by page because the live site still uses images under /v2/img.
   async headers() {
+    const noindex = [{ key: "X-Robots-Tag", value: "noindex, nofollow" }];
     return [
       {
-        source: "/(.*)",
-        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+        source:
+          "/:section(admin|v1|v3|v4|v5|v6|v8|slides|mockups|about-mockups)/:path*",
+        headers: noindex,
+      },
+      { source: "/v2", headers: noindex },
+      {
+        source: "/v2/:page(about-brian|book|qualify|services)/:path*",
+        headers: noindex,
       },
     ];
   },
