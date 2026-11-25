@@ -17,7 +17,7 @@ export function ReportSection({ heading = "h2" }: { heading?: "h1" | "h2" } = {}
           <H>We don&rsquo;t report clicks. We report booked jobs and what they were worth.</H>
           <p className="sub">Booked jobs by source. What they were worth. What they cost. The return per dollar. Most agencies show you clicks and a dashboard login. We show you this, every month, and we put it on the website before you call.</p>
           <div className="stats">
-            <div className="stat"><div className="b">$2 : $1</div><div className="l">Our floor: two dollars back for every dollar spent, over a rolling quarter, or we work free</div></div>
+            <div className="stat"><div className="b">$2 : $1</div><div className="l">Our goal: two dollars back for every dollar spent, over a rolling quarter</div></div>
             <div className="stat"><div className="b">&lt;60s</div><div className="l">AI reply to every new lead, text and email</div></div>
           </div>
         </div>
@@ -28,7 +28,7 @@ export function ReportSection({ heading = "h2" }: { heading?: "h1" | "h2" } = {}
             <div><h3>Booked jobs by source</h3><div className="chart"><div className="row"><span>Google profile</span><div className="trk"><i></i></div><span className="n"></span></div><div className="row"><span>Local Services Ads</span><div className="trk"><i></i></div><span className="n"></span></div><div className="row"><span>Search ads</span><div className="trk"><i></i></div><span className="n"></span></div><div className="row"><span>Meta</span><div className="trk"><i></i></div><span className="n"></span></div><div className="row ai"><span>AI search</span><div className="trk"><i></i></div><span className="n"></span></div><div className="row"><span>Referrals, repeat</span><div className="trk"><i></i></div><span className="n"></span></div></div></div>
             <div className="notes"><span className="k">What we changed, and why</span><ul className="k-notes"></ul><p className="reply"><span className="k">Median reply time</span><br /><b className="k-reply">—</b> <span className="m">text and email, every lead</span></p></div>
           </div>
-          <div className="foot"><span>Floor: $2 back per $1, rolling quarter · <b className="k-floor">—</b></span><button className="honest" type="button" aria-pressed="false">Show me a bad month</button></div>
+          <div className="foot"><span>Goal: $2 back per $1, rolling quarter · <b className="k-floor">—</b></span><button className="honest" type="button" aria-pressed="false">Show me a bad month</button></div>
         </div>
       </div>
     </div></section>
