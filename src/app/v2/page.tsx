@@ -34,7 +34,7 @@ export default function Page() {
     <h1>Your calendar should be <em>full.</em></h1>
     <p className="lede">For plumbers, electricians, HVAC, roofers and every trade that goes to a customer&rsquo;s home. Calls, forms and free-estimate requests, every one answered in under a minute and booked onto your calendar. Every dollar tracked to a paid job. You own all of it.</p>
     <div className="ctas"><a className="btn light" href="/v2/book">Book a walkthrough</a><a className="btn outline" href="#check">Take the 60-second check</a></div>
-    <p className="trust"><b>Month to month.</b> No contracts. <b>Limited spots per trade per area.</b> Hosting free. <b>Not happy?</b> We work free until you are.</p>
+    <p className="trust"><b>Month to month.</b> No contracts. <b>Limited spots per trade per area.</b> Hosting free.</p>
   </div>
   <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 </header>
@@ -82,7 +82,7 @@ export default function Page() {
   <p className="kicker">Tracked to the job</p>
   <h2>We don&rsquo;t report clicks. We report booked jobs and what they were worth.</h2>
   <div className="bstats">
-    <div><div className="b">$2 : $1</div><div className="l">Our floor: two dollars back for every dollar spent</div></div>
+    <div><div className="b">$2 : $1</div><div className="l">Our goal: two dollars back for every dollar spent</div></div>
     <div><div className="b">$3 to $4</div><div className="l">What many clients see · owner&rsquo;s field results</div></div>
     <div><div className="b">&lt;60s</div><div className="l">AI reply to every new lead, text and email</div></div>
     <div><div className="b">1 per source</div><div className="l">Tracked phone numbers, so we know which ad made it ring</div></div>

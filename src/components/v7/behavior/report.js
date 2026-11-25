@@ -24,7 +24,7 @@ export function mountReport() {
     var max = Math.max.apply(null, mo.src); rep.querySelectorAll('.chart .row').forEach(function (r, k) { r.querySelector('i').style.width = (mo.src[k] / max * 100) + '%'; r.querySelector('.n').textContent = mo.src[k] + ' jobs'; });
     q('.k-notes').innerHTML = mo.notes.map(function (n) { return '<li>' + n + '</li>'; }).join(''); q('.k-reply').textContent = mo.reply;
     var qs = MONTHS.slice(Math.max(0, i - 2), i + 1), qr = qs.reduce(function (a, m) { return a + m.rev; }, 0) / qs.reduce(function (a, m) { return a + m.spend; }, 0);
-    q('.k-floor').textContent = 'quarter at $' + qr.toFixed(2) + ' per $1' + (qr >= 2 ? ', above the floor' : ', below the floor, we work free');
+    q('.k-floor').textContent = 'quarter at $' + qr.toFixed(2) + ' per $1' + (qr >= 2 ? ', above the goal' : ', below the goal');
   }
   hb.addEventListener('click', function () { honest = !honest; hb.setAttribute('aria-pressed', honest ? 'true' : 'false'); hb.textContent = honest ? 'That is June. Back to the month I picked' : hb.getAttribute('data-label'); draw(); });
   draw();

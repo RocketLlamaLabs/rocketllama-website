@@ -18,7 +18,7 @@ export function CompareTable() {
           <tr><td>Local footprint</td><td className="us">Phoenix address, city pages, Brian in person</td><td>National, no city pages<span className="src">10 of 10</span></td></tr>
           <tr><td>Fields to book a call</td><td className="us">Four, then optional questions</td><td>7 to 11, including annual revenue</td></tr>
           <tr><td>Speed to lead</td><td className="us">Under 60 seconds, text and email, every lead</td><td>&ldquo;Within 2 hours&rdquo; at best</td></tr>
-          <tr><td>Guarantee</td><td className="us">$2 back per $1 over a quarter, or we work free</td><td>&ldquo;We do not guarantee results&rdquo;</td></tr>
+          <tr><td>Goal</td><td className="us">$2 back per $1 over a quarter</td><td>None stated</td></tr>
           <tr><td>A bad month</td><td className="us">In the report, with the reason and the fix</td><td>Not shown</td></tr>
         </tbody>
       </table></div>

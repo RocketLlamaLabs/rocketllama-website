@@ -38,7 +38,7 @@ export default function Page() {
       <div className="rslide"><h1>Every dollar tracked to a <em>paid job.</em></h1><p className="lede">We do not report clicks. Every call and form lands in a CRM you own with its source and what the job was worth, and that number sets next month&rsquo;s spend. You see exactly what the marketing brought in.</p></div>
     </div>
     <div className="ctas"><a className="btn light" href="/v3/book">Book a walkthrough</a><a className="btn outline" href="#check">Take the 60-second check</a></div>
-    <p className="trust"><b>Month to month.</b> No contracts. <b>Exclusive leads, never shared.</b> Hosting free. <b>Not happy?</b> We work free until you are.</p>
+    <p className="trust"><b>Month to month.</b> No contracts. <b>Exclusive leads, never shared.</b> Hosting free.</p>
   </div>
   <div className="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 </header>
@@ -86,7 +86,7 @@ export default function Page() {
   <p className="kicker">Tracked to the job</p>
   <h2>We don&rsquo;t report clicks. We report booked jobs and what they were worth.</h2>
   <div className="bstats">
-    <div><div className="b">$2 : $1</div><div className="l">Our floor: two dollars back for every dollar spent</div></div>
+    <div><div className="b">$2 : $1</div><div className="l">Our goal: two dollars back for every dollar spent</div></div>
     <div><div className="b">$3 to $4</div><div className="l">What many clients see · owner&rsquo;s field results</div></div>
     <div><div className="b">&lt;60s</div><div className="l">AI reply to every new lead, text and email</div></div>
     <div><div className="b">1 per source</div><div className="l">Tracked phone numbers, so we know which ad made it ring</div></div>
