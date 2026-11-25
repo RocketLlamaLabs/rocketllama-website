@@ -144,7 +144,7 @@ export const INDUSTRIES_FAQ: [string, string][] = [
   ],
   [
     "How do you show what the marketing brought in?",
-    "Every ad source gets its own tracked phone number, and every call and form lands in a CRM you own. The CRM records which source each lead came from and what the job was worth once it is paid. Each month you see booked jobs by source, what they were worth and what they cost.",
+    "Every ad source gets its own tracked phone number and every call and form lands in a CRM you own. The CRM records which source each lead came from and what the job was worth once it is paid. Each month you will receive reporting from us that shows booked jobs by source, what they were worth, and what they cost.",
   ],
 ];
 
