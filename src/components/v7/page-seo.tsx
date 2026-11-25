@@ -140,7 +140,7 @@ export const INDUSTRIES_FAQ: [string, string][] = [
   ],
   [
     "Who owns the leads?",
-    "You do. Every lead comes from your own website and your own ads, so it is yours alone. A lead marketplace sells the same homeowner to four contractors; we never do. The website, the ad accounts, the phone numbers and the customer list are all in your company’s name.",
+    "You do. Every lead comes from your own website and your own ads, so it is yours alone. A lead marketplace sells the same homeowner to four contractors. We never do. The website, the ad accounts, the phone numbers, and the customer list are all in your company’s name and paid by you. We just direct the spend.",
   ],
   [
     "How do you show what the marketing brought in?",
