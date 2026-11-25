@@ -597,7 +597,7 @@ def write_v7_about():
         '  <div className="wrap in">\n'
         '    <p className="kicker">About us</p>\n'
         '    <h1>Built for the Trades. Powered by Experience. Driven by Results.</h1>\n'
-        '    <p className="goal">One goal: more customers for your business. Every system we build exists to make the phone ring and the calendar fill.</p>\n'
+        '    <p className="goal">Our goal is simple &ndash; more customers for your business. Every system we build exists to make your phone ring and your calendar full.</p>\n'
         '    <p className="lede">Rocket Llama Labs is a Phoenix, Arizona-based marketing and technology company dedicated to helping home service businesses build stronger operations, attract more customers, and achieve sustainable growth.</p>\n'
         '    <p className="pull">We are more than a marketing agency. We are a complete growth and technology partner.</p>\n'
         '    <div className="ablks">\n'
