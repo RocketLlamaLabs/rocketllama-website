@@ -128,7 +128,7 @@ export const TRADE_COPY: [string, string][] = [
 export const INDUSTRIES_FAQ: [string, string][] = [
   [
     "What industries does Rocket Llama Labs work with?",
-    "Rocket Llama Labs markets home service companies: HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting, window and pressure washing, handyman, mobile mechanic, windows and doors, solar, flooring and remodeling. If your company sends a truck to a customer’s home, the same system works for you.",
+    "Rocket Llama Labs markets home service companies: HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting, window and pressure washing, handyman, mobile mechanic, windows and doors, solar, flooring and remodeling. If your company sends a truck to a customer’s home, our system works for you.",
   ],
   [
     "Is the marketing different for each trade?",
