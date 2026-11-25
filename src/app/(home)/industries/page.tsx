@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { pageMeta, IndustriesStructuredData } from "@/components/v7/page-seo";
 import { V7Footer } from "@/components/v7/footer";
 import { IndustriesFaq } from "@/components/v7/industries-extra";
-import { DreamBadge } from "@/components/v7/dream-badge";
+import { BADGE_FIT, DreamBadge } from "@/components/v7/dream-badge";
 
 export const metadata: Metadata = pageMeta("/industries", "Home Service Industries We Market For", "Marketing for HVAC, plumbing, electrical, roofing, garage door, pest control, landscaping, painting, solar and every trade that goes to a customer's home.");
 
@@ -34,7 +34,8 @@ export default function Page() {
     <div className="indhead">
       <h1>Marketing for every home service trade.</h1>
     <DreamBadge tone="blue" />
-      <p className="lede">If you send a truck to a house this is built for you. Pick your trade to see the marketing services we run for it. We start in your service area and expand city by city. Every lead comes from your own site and your own ads so it is yours alone, never sold to four other contractors.</p>
+    <script dangerouslySetInnerHTML={{ __html: BADGE_FIT }} />
+      <p className="lede">If you send a truck to a house Rocket Llama Labs is built for you. Pick your trade to see the marketing services we run for it. We start in your service area and expand city by city. Every lead comes from your own site and your own ads so it is yours alone, never sold to four other contractors.</p>
     </div>
     <div id="industries">
       <div className="trades"><a className="trade" href="/hvac"><span>HVAC</span></a><a className="trade" href="/plumbing"><span>Plumbing</span></a><a className="trade" href="/electrical"><span>Electrical</span></a><a className="trade" href="/roofing"><span>Roofing</span></a><a className="trade" href="/garage-door"><span>Garage door</span></a><a className="trade" href="/pest-control"><span>Pest control</span></a><a className="trade" href="/landscaping"><span>Landscaping</span></a><a className="trade" href="/painting"><span>Painting</span></a><a className="trade" href="/window-and-pressure-washing"><span>Pressure washing</span></a><a className="trade" href="/handyman"><span>Handyman</span></a><a className="trade" href="/mobile-mechanic"><span>Mobile mechanic</span></a><a className="trade" href="/windows-and-doors"><span>Windows and doors</span></a><a className="trade" href="/solar"><span>Solar</span></a><a className="trade" href="/flooring"><span>Flooring</span></a><a className="trade" href="/remodeling"><span>Remodeling</span></a></div>
@@ -47,7 +48,7 @@ export default function Page() {
   <h2>We don&rsquo;t report clicks.</h2>
   <h3 className="bsub">We report booked jobs and what they were worth.</h3>
   <div className="bstats">
-    <div><div className="b">$2 : $1</div><div className="l">Our floor: two dollars back for every dollar spent or we work free</div></div>
+    <div><div className="b">$2 : $1</div><div className="l">Our floor: two dollars back for every dollar spent.</div></div>
     <div><div className="b">&lt;60s</div><div className="l">Every new lead gets a text and an email in your voice</div></div>
     <div><div className="b">1 per source</div><div className="l">Tracked phone numbers, so we know which ad made it ring</div></div>
     <div><div className="b">100%</div><div className="l">Yours: the site, the data, the numbers, and the ad accounts</div></div>
