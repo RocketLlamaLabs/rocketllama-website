@@ -36,7 +36,7 @@ export const PULL_1 = "We are more than a marketing agency. We are a complete gr
 export const PULL_2 = "We don’t just build marketing. We build the systems behind better businesses.";
 
 export const BLOCKS: [string, string[]][] = [
-  ["Who we serve", ["We specialize in the industries that keep homes running. From HVAC, plumbing, electrical, and roofing to garage doors, pest control, landscaping, painting, and virtually every trade that serves homeowners."]],
+  ["Who we serve", ["We specialize in the industries that keep homes running. From HVAC, plumbing, electrical, and roofing to garage doors, pest control, landscaping, painting, and virtually every trade that serves homeowners. We also can help businesses in other industries as well."]],
   ["Our approach", ["Our approach is built around a simple principle: successful businesses need more than individual marketing campaigns, disconnected software, or strategies that look good on paper. They need integrated systems that work together to generate opportunities, improve efficiency, strengthen customer relationships, and support long-term growth.", "That’s where Rocket Llama Labs comes in."]],
   ["How we get you customers", ["We don’t simply make recommendations and leave businesses to figure out the execution. We design, build, implement, manage, and continuously improve the systems that help home service companies operate and grow."]],
   ["What sets us apart", ["What truly sets us apart is our foundation in real-world experience. The solutions we deliver are rooted in work we’ve already done, challenges we’ve already addressed, and systems we’ve already implemented. We believe in applying practical experience rather than asking our clients to gamble on unproven ideas."]],
