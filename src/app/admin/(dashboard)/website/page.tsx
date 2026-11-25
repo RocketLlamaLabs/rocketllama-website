@@ -8,6 +8,7 @@ export const metadata: Metadata = { title: "Website" };
 const statusLabel = {
   live: "Live at /",
   sample: "Sample",
+  removed: "Removed",
 } as const;
 
 export default function WebsitePage() {
@@ -42,7 +43,7 @@ export default function WebsitePage() {
             <p className="text-muted">{v.summary}</p>
             <p className="text-sm text-muted">{v.origin}</p>
             <div className="mt-auto flex flex-wrap gap-3 pt-2">
-              <a
+              {v.status === "removed" ? null : <a
                 href={v.href}
                 target="_blank"
                 rel="noopener"
@@ -50,7 +51,7 @@ export default function WebsitePage() {
               >
                 Open {v.href}
                 <ArrowUpRight className="size-4" />
-              </a>
+              </a>}
               {v.kitHref ? (
                 <a target="_blank" rel="noopener"
                   href={v.kitHref}
@@ -76,23 +77,12 @@ export default function WebsitePage() {
         <p className="mt-2 text-muted">
           Version 7 is the live site at <code className="font-mono text-sm">/</code>{" "}
           (with /services, /industries, /about, /book, /qualify, /report
-          and the three policy pages); it is generated from the version 2 source
-          by <code className="font-mono text-sm">scripts/make-v3.py</code>, with
-          the custom elements from Madison&rsquo;s mockups spliced in, so edits
-          to version 2 can be carried forward. Its old{" "}
+          and the three policy pages). Its old{" "}
           <code className="font-mono text-sm">/v7</code> links redirect to the
-          root. Version 3, the previous live site, is back under{" "}
-          <code className="font-mono text-sm">/v3</code>. Version 1 moved to{" "}
-          <code className="font-mono text-sm">/v1</code> and version 2 lives
-          under <code className="font-mono text-sm">/v2</code>, each with its
-          own stylesheet, fonts and components. Versions 4 to 6 are
-          single static pages under{" "}
-          <code className="font-mono text-sm">/v4</code>,{" "}
-          <code className="font-mono text-sm">/v5</code> and{" "}
-          <code className="font-mono text-sm">/v6</code> (
-          <a className="underline" href="/mockups" target="_blank" rel="noopener">side by side</a>
-          ). Everything is kept out of search engines until launch. When a
-          version is ready to replace the live one, its routes move to the root.
+          root. The earlier versions (1 to 6 and 8) and the mockups were taken
+          off the site on 25 November 2026; their old links go to the home
+          page. They are kept here as a record and can be brought back from the
+          repository&rsquo;s history.
         </p>
       </Card>
     </div>

@@ -5,7 +5,7 @@
 export type SiteVersion = {
   id: "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7" | "v8";
   name: string;
-  status: "live" | "sample";
+  status: "live" | "sample" | "removed";
   href: string;
   kitHref?: string;
   kitLabel?: string;
@@ -17,7 +17,7 @@ export const siteVersions: SiteVersion[] = [
   {
     id: "v1",
     name: "Version 1",
-    status: "sample",
+    status: "removed",
     href: "/v1",
     summary:
       "The software and AI studio homepage, mocked. Brand book v1.0: navy, blue, mist, Montserrat and Inter. It was the site at / until version 3 replaced it.",
@@ -26,7 +26,7 @@ export const siteVersions: SiteVersion[] = [
   {
     id: "v2",
     name: "Version 2",
-    status: "sample",
+    status: "removed",
     href: "/v2",
     kitHref: "/admin/website/v2",
     kitLabel: "Version 2 kit",
@@ -38,7 +38,7 @@ export const siteVersions: SiteVersion[] = [
   {
     id: "v3",
     name: "Version 3",
-    status: "sample",
+    status: "removed",
     href: "/v3",
     kitHref: "/admin/website/v2",
     kitLabel: "Version 2 kit (shared)",
@@ -50,7 +50,7 @@ export const siteVersions: SiteVersion[] = [
   {
     id: "v4",
     name: "Version 4 · Ignition",
-    status: "sample",
+    status: "removed",
     href: "/v4",
     summary:
       "Homepage direction A: bold Montserrat, one vivid photo panel beside the headline with a live \"missed call, AI reply, booked\" card playing on top of it. Brand blue with rocket-flame orange as the second accent.",
@@ -60,7 +60,7 @@ export const siteVersions: SiteVersion[] = [
   {
     id: "v5",
     name: "Version 5 · Sunrise Valley",
-    status: "sample",
+    status: "removed",
     href: "/v5",
     summary:
       "Homepage direction B: the warmest and most colorful. A photo bento hero, a Phoenix-sunrise gradient (gold, coral, ember) against brand blue, big rounded shapes, the mascot on a gradient tile and the horizontal logo in the nav.",
@@ -70,7 +70,7 @@ export const siteVersions: SiteVersion[] = [
   {
     id: "v6",
     name: "Version 6 · Signal",
-    status: "sample",
+    status: "removed",
     href: "/v6",
     summary:
       "Homepage direction C: clean and editorial. A different display face, a yellow highlighter accent on blue, a live feed of booked jobs over the hero photo, a travelling beam through the three-step system and the monthly report as a live card.",
@@ -92,7 +92,7 @@ export const siteVersions: SiteVersion[] = [
   {
     id: "v8",
     name: "Version 8",
-    status: "sample",
+    status: "removed",
     href: "/v8",
     kitHref: "/admin/website/v2",
     kitLabel: "Version 2 kit (shared)",

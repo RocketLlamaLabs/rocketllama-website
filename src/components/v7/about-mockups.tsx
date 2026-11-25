@@ -30,8 +30,8 @@ export function Nav() {
 }
 
 export const TITLE = "Built for the Trades. Powered by Experience. Driven by Results.";
-export const GOAL = "One goal: more customers for your business. Every system we build exists to make the phone ring and the calendar fill.";
-export const LEDE = "Rocket Llama Labs is a Phoenix, Arizona-based marketing and technology company dedicated to helping home service businesses build stronger operations, attract more customers, and achieve sustainable growth.";
+export const GOAL = "Our goal is simple – more customers for your business. Every system we build exists to make your phone ring and your calendar full.";
+export const LEDE = "Rocket Llama Labs is a Phoenix, Arizona based marketing and technology company dedicated to helping home service businesses build stronger operations, attract more customers, and achieve sustainable growth.";
 export const PULL_1 = "We are more than a marketing agency. We are a complete growth and technology partner.";
 export const PULL_2 = "We don’t just build marketing. We build the systems behind better businesses.";
 

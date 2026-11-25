@@ -23,8 +23,8 @@ export default function Page() {
 <header className="fhero" id="top"><div className="wrap in">
   <p className="kicker">See if you qualify</p>
   <h1>Two minutes of questions. Then a time on the calendar.</h1>
-  <p>We like to know the business before we talk, so the call is about you from the first minute. If you qualify, you book right here, and the call opens with a free live audit of how you show up online.</p>
-  <div className="meta"><span><b>One question per screen</b> · about two minutes</span><span><b>Free live audit</b> on the call</span><span><b>No obligation</b></span><span><b>Nothing shared</b> outside Rocket Llama Labs</span></div>
+  <p>We like to know the business before we talk, so the call is about you from the first minute. If you qualify, you book right here, and the call opens with a free audit of how you show up online.</p>
+  <div className="meta"><span><b>One question per screen</b> · about two minutes</span><span><b>Free audit</b> on the call</span><span><b>No obligation</b></span><span><b>Nothing shared</b> outside Rocket Llama Labs</span></div>
 </div></header>
 
 <section className="funnel"><div className="wrap in">
@@ -43,7 +43,7 @@ export default function Page() {
     <div className="abox">
       <p className="k">What you get on the call</p>
       <ul className="checks">
-        <li>A free live audit, on screen: your Google Business Profile, your website and your reviews, side by side with the top company in your trade</li>
+        <li>A free audit, on screen: your Google Business Profile, your website and your reviews, side by side with the top company in your trade</li>
         <li>A look at who is winning your trade in your area, and how</li>
         <li>What your numbers look like on the system, floor to ceiling</li>
         <li>The website design first. Setup is refunded if you do not like it</li>
@@ -51,7 +51,7 @@ export default function Page() {
       </ul>
     </div>
     <div className="abox">
-      <p className="k">The free live audit</p>
+      <p className="k">The free audit</p>
       <h4>Ten minutes, on screen, and you keep the notes.</h4>
       <ul className="checks">
         <li>Your Google Business Profile: completeness, photos, posts, and where you rank on the map for your top three searches</li>

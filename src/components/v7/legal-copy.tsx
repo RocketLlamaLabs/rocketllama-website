@@ -34,7 +34,7 @@ export const PRIVACY: Section[] = [
   { h: "How we use it", p: [
     [
       "To answer you: to run your check, show you the result, and follow up on it.",
-      "To book and hold your call: confirmations, reminders and the details for the live audit.",
+      "To book and hold your call: confirmations, reminders and the details for the free audit.",
       "To do the work: if you hire us, to build and run your website, ads, phones, reviews and CRM, and to report on them.",
       "To improve the site: to see which pages work, fix what breaks, and keep the site secure.",
       "To market to you, only with your separate consent, as described under text messages and email below.",
@@ -42,7 +42,7 @@ export const PRIVACY: Section[] = [
     ],
   ]},
   { h: "Text messages", p: [
-    `When you check the consent box on our booking form and give us your mobile number, you agree to receive text messages from Rocket Llama Labs about that request: your qualification result, your call booking and reminders, and your free live audit. We do not send marketing texts without a separate opt-in. Message frequency varies. Message and data rates may apply. Reply STOP at any time to opt out and HELP for help. Consent to receive texts is not a condition of doing business with us.`,
+    `When you check the consent box on our booking form and give us your mobile number, you agree to receive text messages from Rocket Llama Labs about that request: your qualification result, your call booking and reminders, and your free audit. We do not send marketing texts without a separate opt-in. Message frequency varies. Message and data rates may apply. Reply STOP at any time to opt out and HELP for help. Consent to receive texts is not a condition of doing business with us.`,
     "Mobile information will not be sold or shared with third parties for promotional or marketing purposes. We do not sell, rent or share your mobile number, your text-message opt-in or your consent with third parties or affiliates for their marketing or promotional purposes. The only companies that receive this information are the service providers that deliver our text messages, and they may use it only to do that.",
     "We keep a record of your consent, including the wording you agreed to and when, so we can honor it and prove it.",
   ]},
@@ -103,7 +103,7 @@ export const TERMS: Section[] = [
     "Booking a call does not create a client relationship or any obligation on either side. We will write you a plan and a quote; you decide whether to go ahead. If you check the text-message box on the booking form, the terms in our privacy policy apply to those texts.",
   ]},
   { h: "Text messages", p: [
-    `If you check the consent box on our booking form and give us your mobile number, Rocket Llama Labs will text you about that request: your qualification result, your call booking and reminders, and your free live audit. We do not send marketing texts without a separate opt-in. Message frequency varies with your request. Message and data rates may apply. Reply STOP to any message to opt out, and HELP for help, or email ${CONTACT_EMAIL}. Consent to receive texts is not a condition of doing business with us. Carriers are not liable for delayed or undelivered messages. Mobile information will not be sold or shared with third parties for promotional or marketing purposes. Our Privacy Policy explains how we handle your mobile number and consent.`,
+    `If you check the consent box on our booking form and give us your mobile number, Rocket Llama Labs will text you about that request: your qualification result, your call booking and reminders, and your free audit. We do not send marketing texts without a separate opt-in. Message frequency varies with your request. Message and data rates may apply. Reply STOP to any message to opt out, and HELP for help, or email ${CONTACT_EMAIL}. Consent to receive texts is not a condition of doing business with us. Carriers are not liable for delayed or undelivered messages. Mobile information will not be sold or shared with third parties for promotional or marketing purposes. Our Privacy Policy explains how we handle your mobile number and consent.`,
   ]},
   { h: "Your use of the site", p: [
     "You agree not to:",

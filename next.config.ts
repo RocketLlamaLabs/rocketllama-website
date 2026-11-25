@@ -41,16 +41,15 @@ const nextConfig: NextConfig = {
       // The instant audit page was removed on 20 November 2026; old links go to the booking page.
       { source: "/audit", destination: "/book", permanent: false },
       { source: "/about-brian", destination: "/about", permanent: false },
-    ];
-  },
-  // Versions 4, 5 and 6 are static pages under /public/mockups; these give
-  // them version URLs like the Next.js versions have.
-  async rewrites() {
-    return [
-      { source: "/v4", destination: "/mockups/v4.html" },
-      { source: "/v5", destination: "/mockups/v5.html" },
-      { source: "/v6", destination: "/mockups/v6.html" },
-      { source: "/mockups", destination: "/mockups/index.html" },
+      // The earlier design versions (v1 to v6, v8) and the mockups were removed on 25 November 2026;
+      // old links go to the home page. Version 2 is matched page by page because the live site still
+      // uses images under /public/v2.
+      { source: "/:v(v1|v3|v4|v5|v6|v8)", destination: "/", permanent: false },
+      { source: "/:v(v1|v3|v8)/:path*", destination: "/", permanent: false },
+      { source: "/v2", destination: "/", permanent: false },
+      { source: "/v2/:page(about-brian|book|qualify|services)/:path*", destination: "/", permanent: false },
+      { source: "/:m(mockups|about-mockups)", destination: "/", permanent: false },
+      { source: "/:m(mockups|about-mockups)/:path*", destination: "/", permanent: false },
     ];
   },
   turbopack: {
