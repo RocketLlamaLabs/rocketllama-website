@@ -3,8 +3,19 @@ import Link from "next/link";
 
 // Footer for version 7: the version 2 layout in the Rocket Llama colors,
 // with the stacked logo (mascot, then Rocket / Llama on two lines).
+// Phones: a slim "Schedule a call" bar fixed to the bottom of the screen. It shows once the visitor has
+// scrolled past most of the first screen, hides again when the footer comes into view, and never shows on
+// the booking pages (they are the form). Hidden on wider screens by CSS (v7.css .mbar).
+const MBAR_SCRIPT = "(function(){if(window.__mbar)return;window.__mbar=1;function u(){var b=document.querySelector('.mbar');if(!b)return;var show=scrollY>innerHeight*0.6&&!/^\\/(book|qualify|audit)(\\/|$)/.test(location.pathname);var f=document.querySelector('footer');if(show&&f&&f.getBoundingClientRect().top<innerHeight)show=false;b.classList.toggle('on',show)}addEventListener('scroll',u,{passive:true});addEventListener('resize',u);setInterval(u,800);u()})()";
+
 export function V7Footer({ note: _note }: { note: string }) {
   return (
+    <>
+    <div className="mbar" role="region" aria-label="Schedule a call">
+      <a className="btn" href="/book">Schedule a call</a>
+      <span>Free audit on the call.<br />No obligation.</span>
+    </div>
+    <script dangerouslySetInnerHTML={{ __html: MBAR_SCRIPT }} />
     <footer>
       <div className="wrap in">
         <Link className="wm" href="/" aria-label="Rocket Llama Labs home">
@@ -19,5 +30,6 @@ export function V7Footer({ note: _note }: { note: string }) {
         <span className="legal"><Link href="/privacy">Privacy Policy</Link> / <Link href="/terms">Website Policy</Link> / <Link href="/ai-policy">AI Policy</Link></span>
       </div>
     </footer>
+    </>
   );
 }
