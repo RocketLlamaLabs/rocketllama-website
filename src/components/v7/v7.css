@@ -1553,3 +1553,29 @@
 }
 /* Phones, the Industries page: no paragraph on any phone, so the trade buttons start right under the headline. */
 @media(max-width:700px){.v7.v7.v7 main > header.indhero .lede{display:none}}
+
+/* ===== Phones: shorter, easier pages =====
+   1. Card groups become one swipeable row: the first card fills most of the screen and the next one peeks in
+      at the right edge, so the page is about a third shorter and it is clear there is more to swipe. */
+@media(max-width:700px){
+  .v7 main :is(#problem .grid.c3,#fullsystem .sysgrid,#how .steps4,#how .isteps,.svc){display:flex!important;flex-wrap:nowrap!important;grid-template-columns:none!important;gap:12px!important;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:19.5px;margin-inline:-19.5px;padding:4px 19.5px 10px;scrollbar-width:none;list-style:none}
+  .v7 main :is(#problem .grid.c3,#fullsystem .sysgrid,#how .steps4,#how .isteps,.svc)::-webkit-scrollbar{display:none}
+  .v7 main :is(#problem .grid.c3,#fullsystem .sysgrid,#how .steps4,#how .isteps,.svc)>*{flex:0 0 84%;min-width:0;scroll-snap-align:start;margin:0!important}
+  .v7 main #how .steps4>*{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+  /* Card text at 16px and a slightly darker grey, for reading outdoors. */
+  .v7 main :is(#problem .grid.c3,#fullsystem .sysgrid,#how .steps4,#how .isteps,.svc) p{font-size:16px}
+  .v7{--muted:#3d4f70}
+}
+/* 2. The summary under each banner uses the full width: no box around it on phones. */
+@media(max-width:700px){.v7 .isum .box{padding:0;border:0;background:none;border-radius:0;box-shadow:none}}
+/* 3. The bottom "Schedule a call" bar (footer.tsx): phones only, slides up once shown. */
+.v7 .mbar{display:none}
+@media(max-width:700px){
+  .v7 .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;align-items:center;gap:14px;padding:10px 19.5px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(4,23,58,.08);transform:translateY(110%);visibility:hidden;transition:transform .25s ease,visibility 0s linear .25s}
+  .v7 .mbar.on{transform:none;visibility:visible;transition:transform .25s ease}
+  .v7 .mbar .btn{padding:12px 20px;font-size:.98rem;flex:none}
+  .v7 .mbar span{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink);line-height:1.3;white-space:nowrap}
+}
+@media(max-width:700px) and (prefers-reduced-motion:reduce){.v7 .mbar,.v7 .mbar.on{transition:none}}
+/* Very narrow phones (iPhone SE, 320px): the bar keeps just the button, so nothing runs off the edge. */
+@media(max-width:359px){.v7 .mbar span{display:none}}
