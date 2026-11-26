@@ -1515,3 +1515,24 @@
 @media(min-width:701px){.v7.v7.v7 main > header.indhero #industries{margin-top:52px}}
 @media(min-width:1000px){.v7.v7.v7 main > header.indhero #industries{margin-top:65px}}
 @media(min-width:1000px) and (max-height:820px){.v7.v7.v7 main > header.indhero #industries{margin-top:53px}}
+
+/* Phones: the home carousel fills the whole screen below the 60px top bar. */
+@media(max-width:700px){.v7.v7 .hero{min-height:calc(100svh - 60px)}}
+/* Phones: everything left-justified. The banner buttons keep their own width and sit on the left (they
+   stretched across the screen), the line under them is left-aligned, and the footer stacks on the left. */
+@media(max-width:700px){
+  .v7.v7 .hero .ctas,.v7.v7 .ihero .ctas{align-items:flex-start}
+  .v7.v7 .hero .ctas .btn,.v7.v7 .ihero .ctas .btn{width:auto}
+  .v7.v7 .hero .hero-proof,.v7.v7 .ihero .hero-proof{text-align:left}
+}
+@media(max-width:640px){.v7.v7 footer .in{justify-items:start;text-align:left}.v7.v7 footer .legal{justify-self:start}.v7.v7 footer .copy{text-align:left}}
+/* Phones: with the carousel filling the screen, its words sit at the bottom over the photo, as on desktop.
+   The headline area keeps the height of the tallest slide (every slide shares one grid cell) and each
+   headline sits at its foot, so the small heading and the button stay still while the slides change. */
+@media(max-width:700px){
+  .v7.v7 .hero .in>div{justify-content:flex-end}
+  .v7.v7 .hero .rot{height:auto !important;grid-template-rows:auto}
+  .v7.v7 .hero .rot .rslide{align-self:end}
+}
+/* Phones: room for the slide dots below the button. */
+@media(max-width:700px){.v7.v7 .hero .in{padding-bottom:78px}}
