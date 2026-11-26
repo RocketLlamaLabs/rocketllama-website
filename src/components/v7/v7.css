@@ -1536,3 +1536,20 @@
 }
 /* Phones: room for the slide dots below the button. */
 @media(max-width:700px){.v7.v7 .hero .in{padding-bottom:78px}}
+
+/* Phones, industry pages (HVAC, Plumbing, ...): the photo banner fills the screen below the 60px top bar, like
+   the home carousel, with the breadcrumb at the top and the headline, button and line at the bottom. The
+   paragraph stays hidden on phones so the photo shows. */
+@media(max-width:700px){
+  .v7.v7.v7 main > header.ihero{min-height:calc(100svh - 60px);display:flex;align-items:stretch}
+  .v7.v7.v7 main > header.ihero > .wrap.in{display:flex;flex-direction:column;width:100%;padding-bottom:44px}
+  .v7.v7.v7 main > header.ihero > .in > h1{margin-top:auto}
+  .v7.v7.v7 main > header.ihero .lede{display:none}
+}
+/* Phones, the eight service pages: the banner paragraph shows on every phone (it dropped on shorter ones),
+   left-aligned rather than justified. */
+@media(max-width:700px){
+  .v7.v7.v7 .svcpage > header.pagehead .lede{display:block;text-align:left;hyphens:manual}
+}
+/* Phones, the Industries page: no paragraph on any phone, so the trade buttons start right under the headline. */
+@media(max-width:700px){.v7.v7.v7 main > header.indhero .lede{display:none}}
