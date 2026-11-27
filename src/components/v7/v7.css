@@ -1579,3 +1579,7 @@
 @media(max-width:700px) and (prefers-reduced-motion:reduce){.v7 .mbar,.v7 .mbar.on{transition:none}}
 /* Very narrow phones (iPhone SE, 320px): the bar keeps just the button, so nothing runs off the edge. */
 @media(max-width:359px){.v7 .mbar span{display:none}}
+
+/* About team cards: the full title (Chief Executive Officer) on desktop and tablet, the short one (CEO) on phones. */
+.v7 .team .role .role-short{display:none}
+@media(max-width:700px){.v7 .team .role .role-full{display:none}.v7 .team .role .role-short{display:inline}}
