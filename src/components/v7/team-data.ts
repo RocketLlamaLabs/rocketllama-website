@@ -48,7 +48,6 @@ export const TEAM: Person[] = [
       "In 2003 Brian started two companies at once: True Blue Life Insurance and Wholesale Warehouse Supply, an e-commerce business. At True Blue he pioneered selling life insurance fully online in all 50 states. No cold calls. No kitchen-table pitches. Content, searches, funnels, and automation did the selling. The results followed \u2013 more than $1 million in annual premium for ten consecutive years, over $50 million in total revenue, and membership in the Million Dollar Round Table, the top 1% of financial professionals worldwide.",
       "The inbound system that sold policies also powered Wholesale Warehouse Supply\u2019s online stores and Brian has been delivering it to other businesses ever since. He built SEO Services Internet Marketing LLC, a digital marketing and SEO company, and later BJG Digital, a local services marketing agency that helped Phoenix pool service companies win their local market through local SEO, reviews, and inbound funnels. He also leads Quoteplicity, quoting software for insurance agents whose funnels have generated more than 200,000 leads.",
       "Rocket Llama Labs brings that playbook to local home services companies. Run with modern AI tools so a small team delivers what used to take an agency floor. Brian\u2019s job as Chief Strategy Officer is to keep the company pointed at the only thing that matters to a client: being the business people find first, and the one they call.",
-      "Outside of work, Brian is a husband and a dad of three, and most of his time off belongs to his family, from backyard weekends to days at the beach.",
     ],
     book: {
       cover: "/v2/img/book-salesman.jpg",
@@ -67,7 +66,7 @@ export const TEAM: Person[] = [
     gallery: {
       kicker: "Off the clock",
       title: "Brian\u2019s best work is at home: a wife and three kids.",
-      text: "Brian built his businesses to run without him in the room, and this is what that time goes to: backyard afternoons, ballgames, paintball, Pink Path Foundation nights and goofing off at home with his wife and their three kids.",
+      text: "Brian built his businesses to be automated so he had time with his family. He enjoys backyard afternoons, ballgames, paintball, Pink Path Foundation nights, and goofing around at home with his wife and their three kids.",
       photos: [
         { src: "/v7/brian/paintball", alt: "Brian Greenberg in a black cap taking a selfie at paintball with a player in a mask" },
         { src: "/v7/brian/family-1", alt: "Brian Greenberg with his wife and three children on a blanket in their backyard", tall: true },
