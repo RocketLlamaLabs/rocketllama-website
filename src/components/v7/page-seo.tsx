@@ -81,7 +81,8 @@ export function ServicesStructuredData() {
           description: "The three ways good companies lose jobs, what we build instead, and how the money is tracked. Under 90 seconds.",
           thumbnailUrl: `${SITE}/v7/video-poster.png`,
           contentUrl: `${SITE}/v7/video/rocket-llama-overview.mp4`,
-          uploadDate: "2026-11-06",
+          // Google wants a full ISO 8601 datetime with a timezone here; a bare date is flagged in Search Console.
+          uploadDate: "2026-11-06T00:00:00-07:00",
           duration: "PT1M2S",
           publisher: { "@id": `${SITE}/#organization` },
         },
