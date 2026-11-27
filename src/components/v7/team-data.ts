@@ -67,7 +67,7 @@ export const TEAM: Person[] = [
     gallery: {
       kicker: "Off the clock",
       title: "Brian\u2019s best work is at home: a wife and three kids.",
-      text: "Brian built his businesses to run without him in the room, and this is what that time goes to: backyard afternoons, ballgames, paintball, Pink Path Foundation nights and goofing off at home with his wife and their three kids.",
+      text: "Brian built his businesses to be automated so he had time with his family. He enjoys backyard afternoons, ballgames, paintball, Pink Path Foundation nights, and goofing around at home with his wife and their three kids.",
       photos: [
         { src: "/v7/brian/paintball", alt: "Brian Greenberg in a black cap taking a selfie at paintball with a player in a mask" },
         { src: "/v7/brian/family-1", alt: "Brian Greenberg with his wife and three children on a blanket in their backyard", tall: true },
