@@ -1583,3 +1583,5 @@
 /* About team cards: the full title (Chief Executive Officer) on desktop and tablet, the short one (CEO) on phones. */
 .v7 .team .role .role-short{display:none}
 @media(max-width:700px){.v7 .team .role .role-full{display:none}.v7 .team .role .role-short{display:inline}}
+@media(min-width:1000px){.v7.v7 .about-live > header.pagehead .motto{margin-bottom:33px}}
+.v7.v7 .about-live .am-split details.pt summary::after{color:#7fb2ff}
