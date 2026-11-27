@@ -94,7 +94,7 @@ export const TEAM: Person[] = [
     gallery: {
       kicker: "Off the clock",
       title: "Madison is always headed somewhere new.",
-      text: "When she is not designing, Madison is reading, working out or traveling. The ski slopes, a music festival or time with horses: new places keep her creative, and they show up in her work.",
+      text: "When she is not designing, Madison is reading, working out, or traveling. Whether it be the ski slopes, a music festival, or riding horses, new places keep her creative and they show up in her work.",
       photos: [
         { src: "/v7/madison/beignet", alt: "Madison Schantz smiling with a Mickey-shaped beignet at an outdoor caf\u00e9" },
         { src: "/v7/madison/skiing", alt: "Madison Schantz in ski gear and goggles in a snowy mountain parking lot" },
