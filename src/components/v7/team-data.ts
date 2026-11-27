@@ -24,7 +24,7 @@ export const TEAM: Person[] = [
     gallery: {
       kicker: "Off the clock",
       title: "Branson loves to travel. He found our mascot\u2019s cousins in Peru.",
-      text: "When Branson is not with clients he is on the road. Travel, scuba diving, skiing and fly-fishing are where he recharges. In Peru he visited Machu Picchu and met the llamas and alpacas of the Andes. These are his photos.",
+      text: "When Branson is not with clients he is on the road. Traveling, scuba diving, skiing, and fly-fishing are where he recharges. In Peru he visited Machu Picchu and met the llamas and alpacas, which became the idea for the logo.",
       photos: [
         { src: "/v7/branson/dance-pose", alt: "Branson Cobb in a suit striking a dance pose with a young girl in a pink dress outside a house" },
         { src: "/v7/branson/scuba", alt: "Branson Cobb scuba diving over a rocky reef, hands spread toward the camera" },
